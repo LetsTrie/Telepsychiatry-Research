@@ -1,1 +1,1 @@
-# Telepsychiatry-Research
+# Telepsychiatry Research

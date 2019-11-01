@@ -9,10 +9,11 @@
   > npm i
   
   > npm run server
+- Then go to **localhost:3000**
 
 ## Modules
 
 - Authentication
   - Login
-  - Register (General user/ Expert user / Organization)
+  - Register (General user/ Expert user/ Organization)
   - Reset Password

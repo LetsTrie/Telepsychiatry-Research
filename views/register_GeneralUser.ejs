@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./partials/vendorsTop %>
+
+    <link rel="stylesheet" href="/css/register.css" />
+    <title>Register | General User | Telepsychiatry Research</title>
+  </head>
+  <body>
+    <% include ./partials/loader %> <% include ./partials/topNavbar %>
+
+    <section class="register">
+      <div class="register_wrapper">
+        <div class="register_header">
+          <h1>General User</h1>
+        </div>
+
+        <div class="flex-parent">
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Full Name:</p>
+            </div>
+            <div class="form-inputbox">
+              <input type="text" name="fullname" placeholder="Full Name" />
+            </div>
+          </div>
+
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Email Address:</p>
+            </div>
+            <div class="form-inputbox">
+              <input type="email" name="email" placeholder="Email Address" />
+            </div>
+          </div>
+
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Password:</p>
+            </div>
+            <div class="form-inputbox">
+              <input type="text" name="password" placeholder="Password" />
+            </div>
+          </div>
+
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Confirm Password:</p>
+            </div>
+            <div class="form-inputbox">
+              <input
+                type="text"
+                name="confirmpassword"
+                placeholder="Confirm Password"
+              />
+            </div>
+          </div>
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Mobile Number:</p>
+            </div>
+            <div class="form-inputbox">
+              <input
+                type="text"
+                name="mobilenumber"
+                placeholder="Mobile Number"
+              />
+            </div>
+          </div>
+
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Country:</p>
+            </div>
+            <div class="form-selectpicker">
+              <select
+                class="selectpicker"
+                data-width="100%"
+                title="Country"
+                data-live-search="true"
+                data-size="6"
+                required
+              >
+                <% for(let i = 0 ; i < country.length; i++) { %>
+                <option value="<%=i%>"><%=country[i].name%></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex-child">
+            <div class="form-header">
+              <p>Home Address:</p>
+            </div>
+            <div class="form-inputbox">
+              <input
+                type="text"
+                name="homeaddress"
+                placeholder="Home Address"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="submit-btn ">
+          <button class="green-btn">Submit</button>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <% include ./partials/vendorsBottom %>
+  <script>
+    $('.submit-btn').on('click', function() {
+      location = '/auth/verify-message';
+    });
+  </script>
+</html>

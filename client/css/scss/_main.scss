@@ -1,0 +1,137 @@
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+button {
+  display: inline-block;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.bootstrap-select > .dropdown-toggle.bs-placeholder,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:hover {
+  color: black;
+}
+
+h1 {
+  margin: 0px;
+}
+
+.bootstrap-select {
+  .dropdown-toggle .filter-option-inner-inner {
+    padding: 0px 0.8rem 0px 0.5rem;
+  }
+
+  .dropdown-menu .inner {
+    width: 100%;
+  }
+
+  .btn-light {
+    color: #212529;
+    background-color: white;
+    border-color: black;
+  }
+
+  .btn {
+    transition: none;
+    padding: 8px;
+    font-size: 18px;
+    border-radius: 0.25em;
+    border: 1px solid black;
+    background: white;
+    color: rgba(0, 0, 0, 0.8);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: white;
+      color: rgba(0, 0, 0, 0.8);
+      border: 1px solid black;
+    }
+  }
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show > .btn-light.dropdown-toggle {
+  color: #212529;
+  background-color: white;
+  border-color: black;
+}
+
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
+  outline: thin dotted transparent;
+  outline: 0px auto transparent !important;
+  outline-offset: 0px;
+}
+
+.dropdown-item {
+  font-size: 1rem;
+
+  &:hover,
+  &:focus {
+    color: #16181b;
+    text-decoration: none;
+    background-color: rgb(204, 201, 201);
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #272727;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #272727;
+  outline: none;
+
+  &:hover {
+    outline: none;
+    text-decoration: none;
+    color: #272727;
+  }
+}
+
+.loader {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: none;
+
+  .img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+button {
+  &:focus {
+    transform: translateY(0px);
+  }
+
+  &:active {
+    transform: translateY(3px);
+  }
+}
+
+.bs-placeholder .filter-option-inner-inner {
+  color: gray;
+}
+@import "_header";

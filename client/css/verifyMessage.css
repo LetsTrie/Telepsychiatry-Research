@@ -345,109 +345,47 @@ button:active {
   display: none;
 }
 
-.header {
-  border-bottom: 0px solid #eaeaea;
+.top-nav {
+  width: 88%;
 }
 
-.leftRightMargin {
-  margin: 0 10%;
+.messageWrapper .tick_icon {
+  -webkit-animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
+       -o-animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
+          animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
+  text-align: center;
+  padding-top: 50px;
 }
 
-@media (max-width: 1600px) {
-  .leftRightMargin {
-    margin: 0 7%;
-  }
+.messageWrapper .tick_icon i {
+  font-size: 200px;
+  color: #52dd12;
 }
 
-@media (max-width: 1200px) {
-  .leftRightMargin {
-    margin: 0 3% 0 5%;
-  }
+.messageWrapper .message {
+  text-align: center;
 }
 
-@media (max-width: 950px) {
-  .leftRightMargin {
-    margin: 0 1% 0 5%;
-  }
-}
-
-.headerWrapper {
-  min-height: 100vh;
-  background: url("../images/background-banner.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  -webkit-background-size: cover;
-          background-size: cover;
-}
-
-.desc {
-  padding: 250px 0;
-  max-width: 550px;
-  font-family: 'Lato', sans-serif;
-}
-
-@media (max-width: 1400px) {
-  .desc {
-    padding: 250px 0;
-  }
-}
-
-@media (max-width: 900px) {
-  .desc {
-    padding: 200px 0;
-  }
-}
-
-@media (max-width: 700px) {
-  .desc {
-    max-width: 480px;
-    font-size: 30px;
-    padding: 150px 0;
-  }
-}
-
-@media (max-width: 650px) {
-  .desc {
-    max-width: 450px;
-    font-size: 28px;
-    padding: 120px 0;
-  }
-}
-
-.desc .mediumText {
-  font-size: 22px;
-  color: #2e2d2d;
-  letter-spacing: 1px;
-  -webkit-animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
-       -o-animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
-          animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
-}
-
-.desc .largeText {
-  font-size: 36px;
-  font-weight: 700;
-  -webkit-animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
-       -o-animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
-          animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
-}
-
-@media (max-width: 700px) {
-  .desc .largeText {
-    font-size: 30px;
-  }
-}
-
-.desc .smallText {
+.messageWrapper .message .big {
+  -webkit-animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.4s backwards;
+       -o-animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.4s backwards;
+          animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.4s backwards;
+  font-size: 35px;
+  font-weight: 500;
   padding-top: 10px;
-  font-size: 17px;
-  letter-spacing: 1.5px;
-  color: #686767;
-  -webkit-animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.25s backwards;
-       -o-animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.25s backwards;
-          animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.25s backwards;
 }
 
-@-webkit-keyframes fromBottom {
+.messageWrapper .message .small {
+  -webkit-animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.8s backwards;
+       -o-animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.8s backwards;
+          animation: fadeup 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.8s backwards;
+  font-weight: 500;
+  font-size: 25px;
+  padding-top: 5px;
+  letter-spacing: 1px;
+}
+
+@-webkit-keyframes fadeup {
   0% {
     opacity: 0;
   }
@@ -456,7 +394,7 @@ button:active {
   }
 }
 
-@-o-keyframes fromBottom {
+@-o-keyframes fadeup {
   0% {
     opacity: 0;
   }
@@ -465,7 +403,7 @@ button:active {
   }
 }
 
-@keyframes fromBottom {
+@keyframes fadeup {
   0% {
     opacity: 0;
   }

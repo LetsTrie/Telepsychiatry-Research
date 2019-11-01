@@ -1,52 +1,8 @@
-// ################# DEFAULT CSS ######################
-
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+@import '_main';
+.header {
+  border-bottom: 0px solid #eaeaea;
 }
 
-p {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  color: #272727;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #272727;
-  outline: none;
-
-  &:hover {
-    outline: none;
-    text-decoration: none;
-    color: #272727;
-  }
-}
-
-.loader {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  display: none;
-
-  .img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-// ################# DEFAULT CSS ######################
 .leftRightMargin {
   margin: 0 10%;
 
@@ -65,106 +21,48 @@ a {
 
 .headerWrapper {
   min-height: 100vh;
-  background: url("../images/background-banner.jpg");
+  background: url('../images/background-banner.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.top-nav {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  // display: none;
-
-  .logo {
-    img {
-      max-height: 140px;
-    }
-  }
-
-  nav {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    ul {
-      display: flex;
-
-      li {
-        font-size: 1.2rem;
-        padding: 0 25px;
-        font-weight: 500;
-
-        a {
-          position: relative;
-          padding: 10px;
-          text-shadow: 0px 1px 15px rgb(216, 211, 211);
-
-          &::after {
-            content: "";
-            position: absolute;
-            display: block;
-            height: 5px;
-            bottom: -1px;
-            background: rgb(16, 167, 194);
-
-            width: 0%;
-            transition: width 0.65s;
-          }
-
-          &:hover {
-            &::after {
-              content: "";
-              position: absolute;
-              display: block;
-              height: 5px;
-              bottom: -1px;
-              background: rgb(16, 167, 194);
-
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 .desc {
-  margin: 250px 0;
+  padding: 250px 0;
   max-width: 550px;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 
   @media (max-width: 1400px) {
-    margin: 250px 0;
+    padding: 250px 0;
   }
   @media (max-width: 900px) {
-    margin: 250px 0;
+    padding: 200px 0;
   }
   @media (max-width: 700px) {
     max-width: 480px;
     font-size: 30px;
+    padding: 150px 0;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     max-width: 450px;
     font-size: 28px;
+    padding: 120px 0;
   }
 
   .mediumText {
     font-size: 22px;
     color: #2e2d2d;
     letter-spacing: 1px;
-    text-shadow: 0px 1px 10px rgb(172, 170, 170);
-    animation: fromTop 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
+    // text-shadow: 0px 1px 10px rgb(172, 170, 170);
+    animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s
+      backwards;
   }
   .largeText {
-    text-shadow: 0px 2px 15px rgb(202, 199, 199);
+    // text-shadow: 0px 2px 15px rgb(202, 199, 199);
 
     font-size: 36px;
     font-weight: 700;
-    animation: fromLeft 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.8s
+    animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s
       backwards;
 
     @media (max-width: 700px) {
@@ -172,49 +70,23 @@ a {
     }
   }
   .smallText {
-    text-shadow: 0px 1px 15px rgb(230, 224, 224);
+    // text-shadow: 0px 1px 15px rgb(230, 224, 224);
     padding-top: 10px;
     font-size: 17px;
     letter-spacing: 1.5px;
     color: rgb(104, 103, 103);
-    animation: fromBottom 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.2s
+    animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.25s
       backwards;
-  }
-}
-
-@keyframes fromTop {
-  0% {
-    opacity: 0;
-    transform: translateY(-250px);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-250px);
-  }
-  60% {
-    opacity: 0.8;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
   }
 }
 
 @keyframes fromBottom {
   0% {
     opacity: 0;
-    transform: translateY(250px);
+    // transform: translateY(250px);
   }
   100% {
     opacity: 1;
-    transform: none;
+    // transform: none;
   }
 }

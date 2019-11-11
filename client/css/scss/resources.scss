@@ -1,0 +1,16 @@
+@import '_main';
+
+// ****************** TOP NAV (START) (EXTRA CSS) *************************
+.top-nav {
+  width: 88%;
+  @media (max-width: 805px) {
+    width: 98%;
+  }
+}
+// ****************** TOP NAV (END) ***************************************
+
+.resources {
+  min-height: 100vh;
+  color: #3b372f;
+  background: #f7f6f1;
+}

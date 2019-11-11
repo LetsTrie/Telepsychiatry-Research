@@ -285,4 +285,13 @@
     </div>
   </body>
   <% include ./partials/vendorsBottom %>
+  <script>
+    $('.discussion__title').click(function() {
+      location = '/forum/single';
+    });
+
+    $('.addForum__newDiscussion button').click(function() {
+      location = '/forum/new';
+    });
+  </script>
 </html>

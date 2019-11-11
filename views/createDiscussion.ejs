@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./partials/vendorsTop %>
+    <link rel="stylesheet" href="/css/createDiscussion.css" />
+    <title>Create new discussion | Telepsychiatry Research</title>
+  </head>
+
+  <body>
+    <% include ./partials/loader %> <% include ./partials/topNavbar %>
+
+    <section class="wrapper">
+      <div class="createDiscussion">
+        <div class="createDiscussion__header">
+          <p>Create new discussion</p>
+        </div>
+        <div class="createDiscussion__form">
+          <div class="createDiscussion__title box">
+            <div class="createDiscussion__el_header">
+              <p>Title:</p>
+            </div>
+            <div class="createDiscussion__el_box">
+              <input type="text" name="title" />
+            </div>
+          </div>
+
+          <div class="createDiscussion__tag box">
+            <div class="createDiscussion__el_header">
+              <p>Tag: <span>(multiple tags must be comma separated)</span></p>
+            </div>
+            <div class="createDiscussion__el_box">
+              <input type="text" name="tag" />
+            </div>
+          </div>
+
+          <div class="createDiscussion__desc box">
+            <div class="createDiscussion__el_header">
+              <p>Description:</p>
+            </div>
+            <div class="createDiscussion__el_box">
+              <textarea name="content" id="editor"> </textarea>
+            </div>
+          </div>
+
+          <div class="createDiscussion__submit">
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <% include ./partials/vendorsBottom %>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor.create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+</html>

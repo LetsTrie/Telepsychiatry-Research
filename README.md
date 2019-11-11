@@ -9,7 +9,7 @@
       npm i
       npm run server
 
-- Then go to **localhost:3000**
+- Then go to **http://localhost:3000/**
 
 ## Modules
 
@@ -18,8 +18,12 @@
   - Header
 
 - Authentication
+
   - Login
   - Register (General user/ Expert user/ Organization)
   - Reset Password
+
 - Forum
+
   - Get all discussions
+  - Create new discussion

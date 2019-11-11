@@ -186,6 +186,12 @@
         padding: 5px 0;
         border-bottom: 1px solid #bdb9b9;
         line-height: 1.6;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
         i {
           padding-right: 10px;
         }
@@ -217,11 +223,13 @@
       font-weight: 700;
       padding-bottom: 10px;
       text-decoration: none;
+
       p {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        cursor: pointer;
       }
 
       &:hover {
@@ -266,15 +274,28 @@
       &_love {
         i {
           font-size: 30px;
-          color: rgb(246, 89, 68);
+          color: white;
           text-shadow: 0 0 2px #000;
+          cursor: pointer;
+          text-shadow: 0 0 4px #000;
+          transition: color 0.2s linear;
+
+          &:hover {
+            color: rgb(246, 89, 68);
+          }
         }
       }
       &_comment {
         i {
           font-size: 30px;
           color: white;
+          cursor: pointer;
           text-shadow: 0 0 4px #000;
+          transition: color 0.2s linear;
+
+          &:hover {
+            color: rgb(246, 89, 68);
+          }
         }
       }
     }

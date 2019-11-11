@@ -630,6 +630,11 @@ button:active {
   padding: 5px 0;
   border-bottom: 1px solid #bdb9b9;
   line-height: 1.6;
+  cursor: pointer;
+}
+
+.allCatogory .category__option p:hover {
+  text-decoration: underline;
 }
 
 .allCatogory .category__option p i {
@@ -672,6 +677,7 @@ button:active {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .alldiscussions .eachDiscussion .discussion__title:hover {
@@ -731,12 +737,29 @@ button:active {
 
 .alldiscussions .eachDiscussion .discussion__react_love i {
   font-size: 30px;
-  color: #f65944;
+  color: white;
   text-shadow: 0 0 2px #000;
+  cursor: pointer;
+  text-shadow: 0 0 4px #000;
+  -webkit-transition: color 0.2s linear;
+  -o-transition: color 0.2s linear;
+  transition: color 0.2s linear;
+}
+
+.alldiscussions .eachDiscussion .discussion__react_love i:hover {
+  color: #f65944;
 }
 
 .alldiscussions .eachDiscussion .discussion__react_comment i {
   font-size: 30px;
   color: white;
+  cursor: pointer;
   text-shadow: 0 0 4px #000;
+  -webkit-transition: color 0.2s linear;
+  -o-transition: color 0.2s linear;
+  transition: color 0.2s linear;
+}
+
+.alldiscussions .eachDiscussion .discussion__react_comment i:hover {
+  color: #f65944;
 }

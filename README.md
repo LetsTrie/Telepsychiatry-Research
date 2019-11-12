@@ -25,5 +25,6 @@
 
 - Forum
 
-  - Get all discussions
   - Create new discussion
+  - See all discussions
+  - See single discussion

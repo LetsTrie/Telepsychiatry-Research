@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+
 *,
 *::before,
 *::after {
@@ -87,7 +89,7 @@ h1 {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #272727;
 }
 
@@ -134,4 +136,4 @@ button {
 .bs-placeholder .filter-option-inner-inner {
   color: gray;
 }
-@import "_header";
+@import '_header';

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather&display=swap");
 *,
 *::before,
 *::after {
@@ -85,7 +86,7 @@ h1 {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #272727;
 }
 
@@ -354,4 +355,120 @@ button:active {
   .top-nav {
     width: 98%;
   }
+}
+
+.wrapper {
+  background: #f6f6f2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.singleDiscussion {
+  width: 70%;
+  margin: 0 auto;
+  min-height: 100vh;
+  color: #3b372f;
+  padding: 10px;
+  padding-top: 35px;
+  font-family: 'Merriweather', serif;
+}
+
+@media (max-width: 1200px) {
+  .singleDiscussion {
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .singleDiscussion {
+    width: 98%;
+  }
+}
+
+.singleDiscussion .singleDiscussion__info {
+  border-bottom: 1px solid #585143;
+  padding-bottom: 10px;
+  width: 95%;
+  margin: auto;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__title p {
+  font-size: 2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: justify;
+  font-weight: 700;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__nameTime {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 12px;
+  font-size: 16px;
+  color: #585143;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__nameTime .singleDiscussion__name p i {
+  color: #3b372f;
+  font-size: 20px;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__follow {
+  text-align: right;
+  padding: 0 0 10px 0;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__follow button {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  background-color: #d3368a;
+  border: 2px solid #d3368a;
+  cursor: pointer;
+  padding: 5px 22px;
+  font-weight: 700;
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__desc {
+  padding-top: 15px;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__desc p {
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__react_love {
+  padding-top: 20px;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__react_love p {
+  font-size: 20px;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__react_love p i {
+  font-size: 30px;
+  color: white;
+  text-shadow: 0 0 2px #000;
+  cursor: pointer;
+  text-shadow: 0 0 4px #000;
+  -webkit-transition: color 0.2s linear;
+  -o-transition: color 0.2s linear;
+  transition: color 0.2s linear;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__react_love p i:hover {
+  color: #f65944;
 }

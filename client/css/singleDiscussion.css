@@ -388,16 +388,11 @@ button:active {
 .singleDiscussion .singleDiscussion__info {
   border-bottom: 1px solid #585143;
   padding-bottom: 10px;
-  width: 95%;
   margin: auto;
 }
 
 .singleDiscussion .singleDiscussion__info .singleDiscussion__title p {
   font-size: 2rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   text-align: justify;
   font-weight: 700;
 }
@@ -414,6 +409,10 @@ button:active {
   padding-top: 12px;
   font-size: 16px;
   color: #585143;
+}
+
+.singleDiscussion .singleDiscussion__info .singleDiscussion__nameTime .singleDiscussion__name p {
+  cursor: pointer;
 }
 
 .singleDiscussion .singleDiscussion__info .singleDiscussion__nameTime .singleDiscussion__name p i {
@@ -452,6 +451,8 @@ button:active {
 
 .singleDiscussion .singleDiscussion__info .singleDiscussion__react_love {
   padding-top: 20px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 .singleDiscussion .singleDiscussion__info .singleDiscussion__react_love p {
@@ -471,4 +472,154 @@ button:active {
 
 .singleDiscussion .singleDiscussion__info .singleDiscussion__react_love p i:hover {
   color: #f65944;
+}
+
+.singleDescription_comments {
+  padding: 25px 0;
+}
+
+.singleDescription_comments .giveComment {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.singleDescription_comments .giveComment .giveComment__image {
+  padding-right: 20px;
+}
+
+.singleDescription_comments .giveComment .giveComment__image img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+}
+
+.singleDescription_comments .giveComment .giveComment__SendComment {
+  width: 90%;
+}
+
+.singleDescription_comments .giveComment .giveComment__SendComment .sendComment__textarea textarea {
+  border-radius: 2px;
+  border: 1px solid gray;
+  width: 100%;
+}
+
+.singleDescription_comments .giveComment .giveComment__SendComment .sendComment__buttons {
+  text-align: right;
+  padding-top: 10px;
+}
+
+.singleDescription_comments .giveComment .giveComment__SendComment .sendComment__buttons .postCommentBtn {
+  padding: 10px 15px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #11ac56;
+}
+
+.singleDescription_comments .giveComment .giveComment__SendComment .sendComment__buttons .cancelCommentBtn {
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  background: #dfebe4;
+  border: 1px solid #b3beb8;
+  color: #3b372f;
+}
+
+.allComments {
+  padding-top: 5px;
+}
+
+.allComments .eachComment,
+.allComments .eachComment_reply {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.allComments .eachComment .user_image,
+.allComments .eachComment_reply .user_image {
+  padding-right: 20px;
+}
+
+.allComments .eachComment .user_image img,
+.allComments .eachComment_reply .user_image img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.allComments .eachComment .user_comment_info .user_name,
+.allComments .eachComment_reply .user_comment_info .user_name {
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.allComments .eachComment .user_comment_info .user_name:hover,
+.allComments .eachComment_reply .user_comment_info .user_name:hover {
+  text-decoration: underline;
+}
+
+.allComments .eachComment .user_comment_info .commentbody,
+.allComments .eachComment_reply .user_comment_info .commentbody {
+  font-size: 17px;
+  color: #585143;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time,
+.allComments .eachComment_reply .user_comment_info .like_reply_time {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time > div,
+.allComments .eachComment_reply .user_comment_info .like_reply_time > div {
+  padding-right: 15px;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time .like,
+.allComments .eachComment_reply .user_comment_info .like_reply_time .like {
+  color: #2d68c8;
+  cursor: pointer;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time .like:hover,
+.allComments .eachComment_reply .user_comment_info .like_reply_time .like:hover {
+  text-decoration: underline;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time .reply,
+.allComments .eachComment_reply .user_comment_info .like_reply_time .reply {
+  color: #2e6ccf;
+  cursor: pointer;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time .reply:hover,
+.allComments .eachComment_reply .user_comment_info .like_reply_time .reply:hover {
+  text-decoration: underline;
+}
+
+.allComments .eachComment .user_comment_info .like_reply_time .time,
+.allComments .eachComment_reply .user_comment_info .like_reply_time .time {
+  color: gray;
+}
+
+.allComments .eachComment_reply {
+  padding-left: 8%;
 }

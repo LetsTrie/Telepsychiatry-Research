@@ -437,7 +437,7 @@ button:active {
 .createDiscussion__submit {
   width: 100%;
   text-align: center;
-  padding: 20px 0;
+  padding: 25px 0;
 }
 
 .createDiscussion__submit button {
@@ -445,8 +445,8 @@ button:active {
   outline: none;
   background: #ef7c00;
   color: #fff;
-  padding: 6px 30px;
-  font-size: 30px;
+  padding: 10px 22px;
+  font-size: 24px;
   letter-spacing: 0.5px;
   border-radius: 4px;
 }

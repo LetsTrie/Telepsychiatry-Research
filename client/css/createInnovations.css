@@ -458,7 +458,7 @@ button:active {
           box-sizing: border-box;
 }
 
-.createDiscussion {
+.createInnovations {
   width: 70%;
   margin: 0 auto;
   min-height: 100vh;
@@ -469,54 +469,60 @@ button:active {
 }
 
 @media (max-width: 1200px) {
-  .createDiscussion {
+  .createInnovations {
     width: 90%;
   }
 }
 
 @media (max-width: 900px) {
-  .createDiscussion {
+  .createInnovations {
     width: 98%;
   }
 }
 
-.createDiscussion__header {
+.createInnovations__header {
   font-size: 3.2rem;
   border-bottom: 2px solid gray;
 }
 
 @media (max-width: 900px) {
-  .createDiscussion__header {
+  .createInnovations__header {
     font-size: 2.7rem;
   }
 }
 
-.createDiscussion__form {
+@media (max-width: 570px) {
+  .createInnovations__header {
+    font-size: 2.2rem;
+  }
+}
+
+.input_boxes {
   padding: 20px 0;
 }
 
-.createDiscussion__form .box {
+.input_boxes .one_box {
   padding: 5px 0;
 }
 
-.createDiscussion__form .box .createDiscussion__el_header p {
+.input_boxes .one_box .box_header p {
   font-size: 1.5rem;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  color: black;
 }
 
-.createDiscussion__form .box .createDiscussion__el_header p span {
+.input_boxes .one_box .box_header p span {
   font-size: 1rem;
   color: #8a5555;
 }
 
-.createDiscussion__form .box .createDiscussion__el_box {
+.input_boxes .one_box .input_box {
   width: 100%;
 }
 
-.createDiscussion__form .box .createDiscussion__el_box input {
+.input_boxes .one_box .input_box textarea,
+.input_boxes .one_box .input_box input:not([type='file']) {
   padding: 7px;
   border-radius: 5px;
   outline: none;
@@ -525,13 +531,76 @@ button:active {
   width: 100%;
 }
 
-.createDiscussion__submit {
+.flex-parent {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.flex-child {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  width: 49%;
+  margin-right: 0.5rem;
+}
+
+.flex-child:last-child {
+  margin-right: 0rem;
+}
+
+@media (max-width: 900px) {
+  .flex-child {
+    margin-right: 0rem;
+    width: 100%;
+  }
+}
+
+.flex-child .form-header p {
+  margin: 6px 0;
+  font-size: 1.5rem;
+  padding-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.flex-child .form-header p span {
+  font-size: 1rem;
+  color: #8a5555;
+}
+
+.flex-child input[type='text'],
+.flex-child input[type='email'],
+.flex-child textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #bdb9b9;
+  border-radius: 4px;
+}
+
+.flex-child input[type='text']:focus,
+.flex-child input[type='email']:focus,
+.flex-child textarea:focus {
+  outline: none;
+}
+
+.createInnovations__submit {
   width: 100%;
   text-align: center;
   padding: 25px 0;
 }
 
-.createDiscussion__submit button {
+.createInnovations__submit button {
   border: none;
   outline: none;
   background: #ef7c00;

@@ -10,21 +10,3 @@
       npm run server
 
 - Then go to **http://localhost:3000/**
-
-## Modules
-
-- Homepage
-
-  - Header
-
-- Authentication
-
-  - Login
-  - Register (General user/ Expert user/ Organization)
-  - Reset Password
-
-- Forum
-
-  - Create new discussion
-  - See all discussions
-  - See single discussion

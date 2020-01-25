@@ -1,92 +1,41 @@
-@import '_main';
-.header {
-  border-bottom: 0px solid #eaeaea;
-}
+@import './_main.scss';
+@import './_navbar.scss';
 
-.leftRightMargin {
-  margin: 0 10%;
-
-  @media (max-width: 1600px) {
-    margin: 0 7%;
-  }
-
-  @media (max-width: 1200px) {
-    margin: 0 3% 0 5%;
-  }
-
-  @media (max-width: 950px) {
-    margin: 0 1% 0 5%;
-  }
-}
-
-.headerWrapper {
-  min-height: 100vh;
-  background: url('../images/background-banner.jpg');
+.intro_page_header {
+  background: url('/images/background-banner.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  min-height: 100vh;
 }
 
 .desc {
-  padding: 250px 0;
-  max-width: 550px;
   font-family: 'Lato', sans-serif;
+  padding: 20vmin 1vmin;
+  max-width: 600px;
 
-  @media (max-width: 1400px) {
-    padding: 250px 0;
+  @media only screen and (max-width: 500px) {
+    padding: 30vmin 1vmin;
   }
-  @media (max-width: 900px) {
-    padding: 200px 0;
-  }
-  @media (max-width: 700px) {
-    max-width: 480px;
-    font-size: 30px;
-    padding: 150px 0;
-  }
-  @media (max-width: 650px) {
-    max-width: 450px;
-    font-size: 28px;
-    padding: 120px 0;
-  }
+  padding-bottom: 30vmin;
 
-  .mediumText {
-    font-size: 22px;
-    color: #2e2d2d;
-    letter-spacing: 1px;
-    // text-shadow: 0px 1px 10px rgb(172, 170, 170);
-    animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s
-      backwards;
-  }
   .largeText {
-    // text-shadow: 0px 2px 15px rgb(202, 199, 199);
-
-    font-size: 36px;
+    font-size: 56px;
     font-weight: 700;
-    animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s
+    color: rgb(77, 79, 83);
+    animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s
       backwards;
 
     @media (max-width: 700px) {
-      font-size: 30px;
+      font-size: 35px;
     }
   }
   .smallText {
-    // text-shadow: 0px 1px 15px rgb(230, 224, 224);
     padding-top: 10px;
     font-size: 17px;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
     color: rgb(104, 103, 103);
-    animation: fromBottom 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s
+    animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s
       backwards;
-  }
-}
-
-@keyframes fromBottom {
-  0% {
-    opacity: 0;
-    // transform: translateY(250px);
-  }
-  100% {
-    opacity: 1;
-    // transform: none;
   }
 }

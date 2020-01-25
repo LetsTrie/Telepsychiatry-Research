@@ -448,96 +448,78 @@ button:active {
   padding-bottom: 10px;
 }
 
-.ck-editor__editable {
-  min-height: 300px;
-}
-
-.wrapper {
-  background: #f6f6f2;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.createDiscussion {
-  width: 70%;
-  margin: 0 auto;
-  min-height: 100vh;
-  color: #3b372f;
-  padding: 10px;
-  padding-top: 35px;
-  font-family: 'Merriweather', serif;
-}
-
-@media (max-width: 1200px) {
-  .createDiscussion {
-    width: 90%;
-  }
-}
-
-@media (max-width: 900px) {
-  .createDiscussion {
-    width: 98%;
-  }
-}
-
-.createDiscussion__header {
-  font-size: 3.2rem;
-  border-bottom: 2px solid gray;
-}
-
-@media (max-width: 900px) {
-  .createDiscussion__header {
-    font-size: 2.7rem;
-  }
-}
-
-.createDiscussion__form {
-  padding: 20px 0;
-}
-
-.createDiscussion__form .box {
-  padding: 5px 0;
-}
-
-.createDiscussion__form .box .createDiscussion__el_header p {
-  font-size: 1.5rem;
-  padding-bottom: 5px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: black;
-}
-
-.createDiscussion__form .box .createDiscussion__el_header p span {
-  font-size: 1rem;
-  color: #8a5555;
-}
-
-.createDiscussion__form .box .createDiscussion__el_box {
-  width: 100%;
-}
-
-.createDiscussion__form .box .createDiscussion__el_box input {
-  padding: 7px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  border: 1px solid #bdb9b9;
-  width: 100%;
-}
-
-.createDiscussion__submit {
-  width: 100%;
+.addInnovations {
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+  padding: 22px 0px;
   text-align: center;
-  padding: 25px 0;
+  border: 1px solid #bdb9b9;
+  background: #f6f6f4;
 }
 
-.createDiscussion__submit button {
+.addInnovations .innovationsHeading {
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+.addInnovations .submitInnovations {
+  padding: 0.7rem;
+}
+
+.addInnovations .submitInnovations button {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+  background-color: #d3368a;
+  border: 2px solid #d3368a;
+  cursor: pointer;
+  padding: 10px 25px;
+  font-weight: 700;
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-size: 20px;
+  -webkit-box-shadow: 0px 0px 7px #a7a5a5;
+          box-shadow: 0px 0px 7px #a7a5a5;
+}
+
+.searching {
+  padding: 0 0 45px 0;
+}
+
+.searching form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.searching .searchbox {
+  width: 30%;
+}
+
+@media (max-width: 1000px) {
+  .searching .searchbox {
+    width: 60%;
+  }
+}
+
+.searching .searchbox input[type='text'] {
+  padding: 9px;
+  width: 100%;
+}
+
+.searching .searchBtn input[type='submit'] {
+  padding: 5px 30px;
+  font-size: 24px;
   border: none;
   outline: none;
-  background: #ef7c00;
-  color: #fff;
-  padding: 10px 22px;
-  font-size: 24px;
-  letter-spacing: 0.5px;
-  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  background: #13ce66;
 }

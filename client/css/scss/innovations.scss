@@ -1,7 +1,7 @@
 @import './_main.scss';
 @import './_navbar.scss';
 
-.addResource {
+.addInnovations {
   box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
     inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
 
@@ -11,12 +11,12 @@
   border: 1px solid #bdb9b9;
   background: #f6f6f4;
 
-  .resourcesHeading {
+  .innovationsHeading {
     font-size: 2.5rem;
     letter-spacing: 0.5px;
   }
 
-  .submitResources {
+  .submitInnovations {
     padding: 0.7rem;
     button {
       text-decoration: none;

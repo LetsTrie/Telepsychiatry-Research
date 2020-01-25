@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <% include ./partials/vendorsTop %>
+    <%- include('./partials/vendorsTop')%>
+
     <link rel="stylesheet" href="/css/homepage.css" />
     <title>Homepage | Telepsychiatry Research</title>
   </head>
   <body>
-    <% include ./partials/loader %>
-    <div class="homepage">
-      <div class="headerWrapper">
-        <div class="leftRightMargin">
-          <% include ./partials/topNavbar %>
-
+    <div class="intro_page">
+      <header class="intro_page_header">
+        <%- include('./partials/navbar.ejs')%>
+        <div class="wrapper container">
           <div class="desc">
-            <div class="mediumText">
-              <p>Caring for better life</p>
-            </div>
             <div class="largeText">
-              <p>Dedicated to develop innovative mental health projects</p>
+              <p>
+                <span>We Help You To Live</span> <br />
+                <span>
+                  A <span style="color: #00baff;"> Healthy Life</span>
+                </span>
+              </p>
             </div>
             <div class="smallText">
-              <p>Promoting mental health awareness</p>
+              <p>
+                We promotes mental health awareness and care about your health.
+                Join our community for all kinds of health supports.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </div>
+    <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
   </body>
-  <% include ./partials/vendorsBottom %>
 </html>

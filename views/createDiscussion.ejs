@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <% include ./partials/vendorsTop %>
+    <%- include('./partials/vendorsTop')%>
     <link rel="stylesheet" href="/css/createDiscussion.css" />
-    <title>Create new discussion | Telepsychiatry Research</title>
+    <title>Create new Discussion | Telepsychiatry Research</title>
   </head>
 
   <body>
-    <% include ./partials/loader %> <% include ./partials/topNavbar %>
-
     <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
       <div class="createDiscussion">
         <div class="createDiscussion__header">
           <p>Create new discussion</p>
@@ -49,7 +51,7 @@
       </div>
     </section>
   </body>
-  <% include ./partials/vendorsBottom %>
+  <%- include('./partials/vendorsBottom')%>
   <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
   <script>
     ClassicEditor.create(document.querySelector('#editor'))

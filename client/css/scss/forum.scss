@@ -1,15 +1,8 @@
 @import '_main';
+@import '_navbar';
 
-// ****************** TOP NAV (START) (EXTRA CSS) *************************
-.top-nav {
-  width: 88%;
-  @media (max-width: 805px) {
-    width: 98%;
-  }
-}
-// ****************** TOP NAV (END) ***************************************
 .whole_wrapper {
-  background: #f6f6f2;
+  // background: #f6f6f2;
   box-sizing: border-box;
 }
 
@@ -18,8 +11,8 @@
   margin: 0 auto;
   min-height: 100vh;
   color: #3b372f;
-  padding: 10px;
-  padding-top: 35px;
+  padding: 10px 25px;
+  padding-top: 25px;
   font-family: 'Merriweather', serif;
   @media (max-width: 1500px) {
     width: 90%;
@@ -126,6 +119,7 @@
 
 .bootstrap-select .btn {
   background: transparent;
+  border: 1px solid black;
   color: black;
 }
 .bs-placeholder .filter-option-inner-inner {
@@ -236,8 +230,14 @@
     }
     .discussion__usernameTime {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       padding-bottom: 10px;
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        padding-bottom: 2px;
+      }
 
       .discussion__username {
         p {

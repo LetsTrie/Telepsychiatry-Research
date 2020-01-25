@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/createResources.css" />
+    <title>Create new Resources | Telepsychiatry Research</title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+      <div class="createResources">
+        <div class="createResources__header">
+          <p id="submitResources">Submit new Resources</p>
+        </div>
+        <div class="input_boxes">
+          <form>
+            <div class="one_box">
+              <div class="box_header"><p>Title:</p></div>
+              <div class="input_box">
+                <input type="text" name="title" placeholder="Title" />
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header">
+                <p>Authors: <span> (Comma Separated) </span></p>
+              </div>
+              <div class="input_box">
+                <input type="text" name="authors" placeholder="Authors" />
+              </div>
+            </div>
+
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header"><p>Page Type:</p></div>
+                <div class="form-selectpicker two_box_spicker">
+                  <select
+                    class="selectpicker"
+                    data-width="100%"
+                    title="Select Page Types"
+                    multiple
+                    data-selected-text-format="count > 1"
+                    data-size="6"
+                    required
+                  >
+                    <option value="Implementation">Implementation</option>
+                    <option value="Policy and Advocacy">
+                      Policy and Advocacy
+                    </option>
+
+                    <option value="Evaluation">Evaluation</option>
+                    <option value="Health Promotion">Health Promotion</option>
+                    <option value="Screening/diagonstic tools">
+                      Screening/diagonstic tools
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="two_box_one  flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Publication year:</p>
+                </div>
+                <div>
+                  <div class="form-selectpicker two_box_spicker">
+                    <select
+                      class="selectpicker"
+                      data-width="100%"
+                      title="Select Page Types"
+                      data-size="6"
+                      required
+                    >
+                      <% for(let i = (new Date()).getFullYear(); i >= 1940; i--)
+                      { %>
+                      <option value="<%= i %>"><%= i %></option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header"><p>Summary:</p></div>
+              <div class="input_box">
+                <textarea
+                  name="summary"
+                  id="summary"
+                  cols="30"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header"><p>Breif Description:</p></div>
+              <div class="input_box">
+                <textarea name="content" id="editor"> </textarea>
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header"><p>Logo:</p></div>
+              <div class="input_box"><input type="file" /></div>
+            </div>
+          </form>
+          <div class="createResources__submit">
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor.create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+</html>

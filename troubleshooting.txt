@@ -1,7 +1,0 @@
-1.
-Error: System limit for number of file watchers reached
-Soln : sudo sysctl fs.inotify.max_user_watches=582222 && sudo sysctl -p
-
-2.
-Error: listen EADDRINUSE: address already in use :::3000
-Soln : sudo pkill node

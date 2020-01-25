@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/resources.css" />
+    <link rel="stylesheet" href="/css/innovations.css" />
 
     <style>
       body {
@@ -19,7 +19,7 @@
         cursor: pointer;
       }
     </style>
-    <title>Resources | Telepsychiatry Research</title>
+    <title>Innovations | Telepsychiatry Research</title>
   </head>
 
   <body>
@@ -29,12 +29,12 @@
       </nav>
       <div class="my-3 divider"></div>
 
-      <div class="addResource container my-5">
-        <div class="resourcesHeading">
-          <p>Resources</p>
+      <div class="addInnovations container my-5">
+        <div class="innovationsHeading">
+          <p>Innovations</p>
         </div>
-        <div class="submitResources">
-          <button>Submit Resources</button>
+        <div class="submitInnovations">
+          <button>Submit Innovations</button>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
       </div>
 
       <div
-        class="allResources container"
+        class="allInnovations container"
         style="display: flex; justify-content: space-around; flex-wrap: wrap;"
       >
         <% for(let i = 0 ; i < 9; i++) { %>
@@ -59,7 +59,6 @@
           style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
 "
           data-aos="zoom-in-up"
-          data-aos-anchor-placement="top-bottom"
           data-aos-duration="1000"
         >
           <img src="/images/res1.jpg" class="card-img-top" />
@@ -93,13 +92,12 @@
 
       <%- include('./partials/pagination.ejs') %>
     </section>
-
     <%- include('./partials/footer')%>
   </body>
   <%- include('./partials/vendorsBottom')%>
   <script>
-    $('.submitResources').on('click', e => {
-      window.location = '/resources/new';
+    $('.submitInnovations').on('click', e => {
+      window.location = '/Innovations/new';
     });
   </script>
 </html>

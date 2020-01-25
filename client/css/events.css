@@ -448,96 +448,193 @@ button:active {
   padding-bottom: 10px;
 }
 
-.ck-editor__editable {
-  min-height: 300px;
+.events {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  letter-spacing: 0.5px;
 }
 
-.wrapper {
-  background: #f6f6f2;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.createDiscussion {
-  width: 70%;
-  margin: 0 auto;
-  min-height: 100vh;
-  color: #3b372f;
+.events .event {
+  margin: 10px;
+  margin-bottom: 30px;
+  border: 1px solid gray;
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
   padding: 10px;
-  padding-top: 35px;
-  font-family: 'Merriweather', serif;
+}
+
+.flex-parent {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 @media (max-width: 1200px) {
-  .createDiscussion {
-    width: 90%;
+  .flex-parent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
-@media (max-width: 900px) {
-  .createDiscussion {
-    width: 98%;
+.flex-child {
+  padding: 20px;
+}
+
+.dateFlex {
+  width: 35%;
+}
+
+@media (max-width: 1200px) {
+  .dateFlex {
+    width: 100%;
   }
 }
 
-.createDiscussion__header {
-  font-size: 3.2rem;
-  border-bottom: 2px solid gray;
+.detailsFlex {
+  width: 65%;
+  padding: 30px 20px;
+  color: rgba(93, 88, 88, 0.849);
+  font-size: 15px;
 }
 
-@media (max-width: 900px) {
-  .createDiscussion__header {
-    font-size: 2.7rem;
+@media (max-width: 1200px) {
+  .detailsFlex {
+    width: 100%;
   }
 }
 
-.createDiscussion__form {
-  padding: 20px 0;
+.DateMonth {
+  height: 100%;
+  width: 100%;
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00000031), to(#00000031)), url("/images/singleEventPic.jpeg");
+  background: -webkit-linear-gradient(#00000031, #00000031), url("/images/singleEventPic.jpeg");
+  background: -o-linear-gradient(#00000031, #00000031), url("/images/singleEventPic.jpeg");
+  background: linear-gradient(#00000031, #00000031), url("/images/singleEventPic.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+          background-size: cover;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 100px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700px;
 }
 
-.createDiscussion__form .box {
-  padding: 5px 0;
+@media (max-width: 700px) {
+  .DateMonth {
+    font-size: 60px;
+  }
 }
 
-.createDiscussion__form .box .createDiscussion__el_header p {
-  font-size: 1.5rem;
-  padding-bottom: 5px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+.DateMonth p {
+  margin: 0px;
+}
+
+.event_title p {
   color: black;
+  font-size: 20px;
+  font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.createDiscussion__form .box .createDiscussion__el_header p span {
-  font-size: 1rem;
-  color: #8a5555;
+.event_title p:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.createDiscussion__form .box .createDiscussion__el_box {
-  width: 100%;
+.event_details p {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.createDiscussion__form .box .createDiscussion__el_box input {
-  padding: 7px;
+.event {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.event .DateMonth {
+  -webkit-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
+}
+
+.event:hover {
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+}
+
+.event:hover .DateMonth {
+  -webkit-transform: scale(1.025);
+      -ms-transform: scale(1.025);
+       -o-transform: scale(1.025);
+          transform: scale(1.025);
+}
+
+.events_header p {
+  font-family: 'Merriweather', serif;
+  font-size: 3.1rem;
+  margin-bottom: 8px;
+}
+
+.add_event_button {
+  padding-bottom: 0rem;
+  padding: 0.7rem;
+  padding-top: 0;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .add_event_button {
+    padding: 0.7rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.add_event_button button {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: white;
   border-radius: 5px;
-  outline: none;
-  border: none;
-  border: 1px solid #bdb9b9;
-  width: 100%;
-}
-
-.createDiscussion__submit {
-  width: 100%;
-  text-align: center;
-  padding: 25px 0;
-}
-
-.createDiscussion__submit button {
-  border: none;
-  outline: none;
-  background: #ef7c00;
-  color: #fff;
-  padding: 10px 22px;
-  font-size: 24px;
-  letter-spacing: 0.5px;
-  border-radius: 4px;
+  background-color: #d3368a;
+  border: 2px solid #d3368a;
+  cursor: pointer;
+  padding: 5px 15px;
+  font-weight: 700;
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-size: 20px;
+  -webkit-box-shadow: 0px 0px 7px #a7a5a5;
+          box-shadow: 0px 0px 7px #a7a5a5;
 }

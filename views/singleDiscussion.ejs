@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <% include ./partials/vendorsTop %>
+    <%- include('./partials/vendorsTop')%>
     <link rel="stylesheet" href="/css/singleDiscussion.css" />
     <title>Single Discussion | Telepsychiatry Research</title>
   </head>
 
   <body>
-    <% include ./partials/loader %> <% include ./partials/topNavbar %>
-
     <div class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
       <div class="singleDiscussion">
         <div class="singleDiscussion__info">
           <div class="singleDiscussion__follow">
@@ -257,5 +259,5 @@
       </div>
     </div>
   </body>
-  <% include ./partials/vendorsBottom %>
+  <%- include('./partials/vendorsBottom')%>
 </html>

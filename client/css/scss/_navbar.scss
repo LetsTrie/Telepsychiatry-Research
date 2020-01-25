@@ -1,0 +1,52 @@
+.nav-link,
+.navbar-brand {
+  cursor: pointer;
+}
+
+.nav-item {
+  margin: 8px 12px;
+}
+
+.nav-link {
+  padding: 0px;
+}
+
+.navbar-nav a {
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  line-height: 60px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+.navbar-nav a:hover {
+  color: #00baff;
+}
+
+.navbar-nav a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 12px;
+  left: 0;
+  color: #00baff;
+  background-color: #00baff;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  transition: all 0.3s ease-in;
+  z-index: 1;
+}
+
+.navbar-nav a:hover:after {
+  visibility: visible;
+  transform: scaleX(1);
+  transition: all 0.4s ease-out;
+}
+
+.navbar {
+  padding-bottom: 10px;
+}

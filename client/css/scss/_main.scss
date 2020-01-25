@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap');
+*,
+*:after,
+*:before {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+@keyframes fromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(250px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.divider {
+  background: #002147;
+  height: 60px;
+  box-shadow: 2px 4px 5px -2px gray;
+}
 
 *,
 *::before,
@@ -10,11 +36,6 @@
 
 button {
   display: inline-block;
-}
-
-p {
-  margin: 0px;
-  padding: 0px;
 }
 
 .bootstrap-select > .dropdown-toggle.bs-placeholder,
@@ -40,7 +61,7 @@ h1 {
   .btn-light {
     color: #212529;
     background-color: white;
-    border-color: black;
+    border-color: #bdb9b9;
   }
 
   .btn {
@@ -48,7 +69,6 @@ h1 {
     padding: 8px;
     font-size: 18px;
     border-radius: 0.25em;
-    border: 1px solid black;
     background: white;
     color: rgba(0, 0, 0, 0.8);
 
@@ -57,7 +77,6 @@ h1 {
     &:active {
       background: white;
       color: rgba(0, 0, 0, 0.8);
-      border: 1px solid black;
     }
   }
 }
@@ -136,4 +155,6 @@ button {
 .bs-placeholder .filter-option-inner-inner {
   color: gray;
 }
-@import '_header';
+
+@import '_pagination';
+@import 'footer';

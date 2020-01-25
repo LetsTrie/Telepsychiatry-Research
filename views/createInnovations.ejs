@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/createInnovations.css" />
+    <title>Create new Innovations | Telepsychiatry Research</title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+      <div class="createInnovations">
+        <div class="createInnovations__header">
+          <p id="submitInnovations">Submit new Innovations</p>
+        </div>
+        <div class="input_boxes">
+          <form>
+            <div class="one_box">
+              <div class="box_header"><p>Title:</p></div>
+              <div class="input_box">
+                <input type="text" name="title" placeholder="Title" />
+              </div>
+            </div>
+
+            <div class="flex-parent">
+              <div class="flex-child">
+                <div class="form-header"><p>Project Type:</p></div>
+                <div class="form-selectpicker">
+                  <select
+                    class="selectpicker"
+                    data-width="100%"
+                    title="Select Page Types"
+                    data-size="6"
+                    required
+                  >
+                    <option value="Program">Program</option>
+                    <option value="Research Project">
+                      Research Project
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="flex-child">
+                <div class="form-header">
+                  <p>Tag:<span> (Comma Separated) </span></p>
+                </div>
+                <div>
+                  <input type="text" name="tag" />
+                </div>
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header"><p>Objective:</p></div>
+              <div class="input_box">
+                <textarea
+                  name="summary"
+                  id="summary"
+                  cols="30"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header"><p>Breif Description:</p></div>
+              <div class="input_box">
+                <textarea name="content" id="editor"> </textarea>
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header"><p>Logo:</p></div>
+              <div class="input_box"><input type="file" /></div>
+            </div>
+          </form>
+          <div class="createInnovations__submit">
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor.create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+</html>

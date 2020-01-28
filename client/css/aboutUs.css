@@ -385,6 +385,10 @@ button:active {
   max-height: 160px;
 }
 
+p {
+  margin-bottom: 8px;
+}
+
 .nav-link,
 .navbar-brand {
   cursor: pointer;

@@ -91,5 +91,11 @@
   </body>
   <%- include('./partials/vendorsBottom')%>
 
-  <script></script>
+  <script>
+    document
+      .getElementsByClassName('add_event_button')[0]
+      .addEventListener('click', e => {
+        window.location = '/events/new';
+      });
+  </script>
 </html>

@@ -17,9 +17,11 @@
           <p id="submitInnovations">Submit new Innovations</p>
         </div>
         <div class="input_boxes">
-          <form>
+          <form action="/innovations/new" method="POST">
             <div class="one_box">
-              <div class="box_header"><p>Title:</p></div>
+              <div class="box_header">
+                <p>Title:</p>
+              </div>
               <div class="input_box">
                 <input type="text" name="title" placeholder="Title" />
               </div>
@@ -27,10 +29,13 @@
 
             <div class="flex-parent">
               <div class="flex-child">
-                <div class="form-header"><p>Project Type:</p></div>
+                <div class="form-header">
+                  <p>Project Type:</p>
+                </div>
                 <div class="form-selectpicker">
                   <select
                     class="selectpicker"
+                    name="pagetype"
                     data-width="100%"
                     title="Select Page Types"
                     data-size="6"
@@ -54,7 +59,9 @@
             </div>
 
             <div class="one_box">
-              <div class="box_header"><p>Objective:</p></div>
+              <div class="box_header">
+                <p>Objective:</p>
+              </div>
               <div class="input_box">
                 <textarea
                   name="summary"
@@ -66,7 +73,9 @@
             </div>
 
             <div class="one_box">
-              <div class="box_header"><p>Breif Description:</p></div>
+              <div class="box_header">
+                <p>Breif Description:</p>
+              </div>
               <div class="input_box">
                 <textarea name="content" id="editor"> </textarea>
               </div>
@@ -76,11 +85,10 @@
               <div class="box_header"><p>Logo:</p></div>
               <div class="input_box"><input type="file" /></div>
             </div> -->
+            <div class="createInnovations__submit">
+              <button>Submit</button>
+            </div>
           </form>
-
-          <div class="createInnovations__submit">
-            <button>Submit</button>
-          </div>
         </div>
       </div>
     </section>

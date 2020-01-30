@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const innovations = require('../controllers/innovations');
 
-router.get('/', (req, res, next) => res.render('innovations'));
-router.get('/new', (req, res, next) => res.render('createInnovations'));
+router.get('/', innovations.innovations);
+router.get('/new', innovations.createInnovations);
+router.post('/new', innovations.postInnovations);
 
 module.exports = router;

@@ -478,78 +478,103 @@ p {
   display: block;
 }
 
-.addResource {
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-  padding: 22px 0px;
-  text-align: center;
-  border: 1px solid #bdb9b9;
-  background: #f6f6f4;
+.contactUs {
+  font-family: 'Merriweather', serif;
+  padding: 30px 0 60px 0;
 }
 
-.addResource .resourcesHeading {
-  font-size: 2.5rem;
+.contactUs .container .wrapper {
+  width: 85%;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .contactUs .container .wrapper {
+    width: 95%;
+  }
+}
+
+.contactUs .contactUs_header p {
+  font-size: 45px;
+  margin-bottom: 8px;
+  color: #4d4f53;
   letter-spacing: 0.5px;
 }
 
-.addResource .submitResources {
-  padding: 0.7rem;
+.contactUs .contactUs_form form p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  letter-spacing: 0.6px;
+  margin: 0px;
+  color: #363636;
 }
 
-.addResource .submitResources button {
-  text-decoration: none;
+.contactUs .contactUs_form form input[type='text'],
+.contactUs .contactUs_form form input[type='email'],
+.contactUs .contactUs_form form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border: 1px solid #a8a3a3;
+  border-radius: 4px;
+}
+
+.contactUs .contactUs_form form input[type='text']:focus,
+.contactUs .contactUs_form form input[type='email']:focus,
+.contactUs .contactUs_form form textarea:focus {
   outline: none;
-  border: none;
-  color: white;
-  border-radius: 40px;
-  letter-spacing: 0.3px;
-  background-color: #d3368a;
-  border: 2px solid #d3368a;
-  cursor: pointer;
-  padding: 10px 25px;
-  font-weight: 700;
-  font-family: 'Lato', Helvetica, sans-serif;
-  font-size: 20px;
-  -webkit-box-shadow: 0px 0px 7px #a7a5a5;
-          box-shadow: 0px 0px 7px #a7a5a5;
 }
 
-.searching {
-  padding: 0 0 45px 0;
-}
-
-.searching form {
+.contactUs .contactUs_form form .flex-parentt {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  width: 100%;
+  padding: 5px 0;
 }
 
-.searching .searchbox {
-  width: 30%;
+.contactUs .contactUs_form form .flex-parentt .flex-childd {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  width: 49%;
+  margin-right: 0.5rem;
 }
 
-@media (max-width: 1000px) {
-  .searching .searchbox {
-    width: 60%;
+.contactUs .contactUs_form form .flex-parentt .flex-childd:last-child {
+  margin-right: 0rem;
+}
+
+@media (max-width: 900px) {
+  .contactUs .contactUs_form form .flex-parentt .flex-childd {
+    margin-right: 0rem;
+    width: 100%;
   }
 }
 
-.searching .searchbox input[type='text'] {
-  padding: 9px;
+.submit {
   width: 100%;
+  text-align: center;
+  padding: 25px 0;
 }
 
-.searching .searchBtn input[type='submit'] {
-  padding: 5px 30px;
-  font-size: 24px;
+.submit button {
   border: none;
   outline: none;
-  color: white;
-  cursor: pointer;
-  background: #13ce66;
+  background: #ef7c00;
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
 }

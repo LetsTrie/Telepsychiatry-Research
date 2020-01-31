@@ -1,12 +1,16 @@
+const innovationModel = require('../models/innovations');
+
 module.exports.innovations = (req, res, next) => {
+    innovationModel.find({}, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+    });
     return res.render('innovations');
 };
 
 module.exports.createInnovations = (req, res, next) => {
     return res.render('createInnovations');
 };
-
-const innovationModel = require('../models/innovations');
 
 module.exports.postInnovations = async (req, res, next) => {
     if (typeof req.body.tag != 'string') {

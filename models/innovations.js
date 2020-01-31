@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const innovationSchema = new mongoose.Schema({
-    title: String,
+    title: {
+        type: String,
+        trim: true
+    },
     pageType: String,
     tags: [String],
     objective: String,

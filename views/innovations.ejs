@@ -1,92 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/innovations.css" />
 
-<head>
-  <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/innovations.css" />
+    <style>
+      body {
+        font-family: 'Merriweather', serif;
+      }
 
-  <style>
-    body {
-      font-family: 'Merriweather', serif;
-    }
+      h5 {
+        font-family: 'Lato', serif;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+      }
 
-    h5 {
-      font-family: 'Lato', serif;
-      letter-spacing: 0.5px;
-      font-weight: 700;
-    }
+      h5:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    </style>
+    <title>Innovations | Telepsychiatry Research</title>
+  </head>
 
-    h5:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  </style>
-  <title>Innovations | Telepsychiatry Research</title>
-</head>
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
 
-<body>
-  <section class="wrapper">
-    <nav>
-      <%- include('./partials/navbar')%>
-    </nav>
-    <div class="my-3 divider"></div>
-
-    <div class="addInnovations container my-5">
-      <div class="innovationsHeading">
-        <p>Innovations</p>
-      </div>
-      <div class="submitInnovations">
-        <button>Submit Innovations</button>
-      </div>
-    </div>
-
-    <div class="searching">
-      <form action="#" method="POST">
-        <div class="searchbox">
-          <input type="text" name="search" required />
+      <div class="addInnovations container my-5">
+        <div class="innovationsHeading">
+          <p>Innovations</p>
         </div>
-        <div class="searchBtn">
-          <input type="submit" value="search" />
+        <div class="submitInnovations">
+          <button>Submit Innovations</button>
         </div>
-      </form>
-    </div>
+      </div>
 
-    <div class="allInnovations container" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-      <% for(let i = 0 ; i < 9; i++) { %>
-      <div class="m-1 mb-5" style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
-" data-aos="zoom-in-up" data-aos-duration="1000">
-        <img src="/images/res1.jpg" class="card-img-top" />
-        <div class="card-body">
-          <h5 class="card-title" style="display: -webkit-box;
+      <div class="searching">
+        <form action="#" method="POST">
+          <div class="searchbox">
+            <input type="text" name="search" required />
+          </div>
+          <div class="searchBtn">
+            <input type="submit" value="search" />
+          </div>
+        </form>
+      </div>
+
+      <div
+        class="allInnovations container"
+        style="display: flex; justify-content: space-around; flex-wrap: wrap;"
+      >
+        <% for (let singleData of data) { %>
+        <div
+          class="m-1 mb-5"
+          style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
+"
+          data-aos="zoom-in-up"
+          data-aos-duration="1000"
+        >
+          <img src="/images/res1.jpg" class="card-img-top" />
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;  
-  overflow: hidden;">
-            Global Epilepsy Report: A Public Health Imperative
-          </h5>
-          <p class="card-text" style="color:rgb(105, 102, 102)  ;  display: -webkit-box;
-  -webkit-line-clamp: 7;
+  overflow: hidden;"
+            >
+              <%= singleData.title %>
+            </h5>
+            <p
+              class="card-text"
+              style="color:rgb(105, 102, 102)  ;  display: -webkit-box;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;  
-  overflow: hidden;">
-            The focus of this year’s World Mental Health Day, on 10 October,
-            was suicide prevention. WHO used the opportunity of World Suicide
-            Prevention Day on 10 September to launch, together with partners,
-            a campaign asking people to prepare to take 40 seconds of action
-            on World Mental Health Day and published a number of materials.
-          </p>
+  overflow: hidden;"
+            >
+              <%- singleData.content %>
+            </p>
+          </div>
         </div>
+        <% } %>
       </div>
-      <% } %>
-    </div>
 
-    <%- include('./partials/pagination.ejs') %>
-  </section>
-  <%- include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-<script>
-  $('.submitInnovations').on('click', e => {
-    window.location = '/Innovations/new';
-  });
-</script>
-
+      <%- include('./partials/pagination.ejs') %>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $('.submitInnovations').on('click', e => {
+      window.location = '/Innovations/new';
+    });
+  </script>
 </html>

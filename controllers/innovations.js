@@ -1,29 +1,49 @@
 const innovationModel = require('../models/innovations');
+const Joi = require('joi');
 
 module.exports.getInnovations = async (req, res, next) => {
-  const data = await innovationModel.find();
-  return res.render('innovations', { data });
+    const data = await innovationModel.find();
+    return res.render('innovations', { data });
 };
 
 module.exports.createInnovations = (req, res, next) => {
-  return res.render('createInnovations');
+    return res.render('createInnovations');
 };
 
 module.exports.postInnovations = async (req, res, next) => {
-  let { content } = req.body;
-  let modifiedContent = content;
+    let { content } = req.body;
+    let modifiedContent = content;
 
-  if (content.startsWith('<p>') && content.endsWith('</p>')) {
-    modifiedContent = content.substring(3, content.length - 4);
-  }
+    if (content.startsWith('<p>') && content.endsWith('</p>')) {
+        modifiedContent = content.substring(3, content.length - 4);
+    }
 
-  const data = new innovationModel({
-    title: req.body.title,
-    pageType: req.body.pagetype,
-    tags: req.body.tag.split(','),
-    objective: req.body.summary,
-    content: modifiedContent
-  });
-  await data.save();
-  return res.redirect('/innovations');
+    const data = new innovationModel({
+        title: req.body.title,
+        pageType: req.body.pagetype,
+        tags: req.body.tag.split(','),
+        objective: req.body.summary,
+        content: modifiedContent
+    });
+
+    const schema = Joi.object().keys({
+        _id: Joi.any(),
+        title: Joi.string().min(8).required(),
+        pageType: Joi.string().required(),
+        tags: Joi.array().items(Joi.string().regex(/^([^0-9]+)$/)),
+        objective: Joi.string().min(20).required(),
+        content: Joi.string().min(20).required(),
+        time: Joi.date()
+    });
+
+    await Joi.validate(data.toObject(), schema, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.json(err);
+        }
+        else {
+            data.save();
+            return res.redirect('/innovations');
+        }
+    });
 };

@@ -7,5 +7,5 @@ router.use('/forum', require('./forum'));
 router.use('/events', require('./events'));
 router.use('/auth', require('./auth'));
 router.use('/contactUs', require('./contactUs'));
-
+router.use('/services', require('./services'));
 module.exports = router;

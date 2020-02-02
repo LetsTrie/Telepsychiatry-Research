@@ -1,100 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/innovations.css" />
 
-    <style>
-      body {
-        font-family: 'Merriweather', serif;
-      }
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/innovations.css" />
 
-      h5 {
-        font-family: 'Lato', serif;
-        letter-spacing: 0.5px;
-        font-weight: 700;
-      }
+  <style>
+    body {
+      font-family: 'Merriweather', serif;
+    }
 
-      h5:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    </style>
-    <title>Innovations | Telepsychiatry Research</title>
-  </head>
+    h5 {
+      font-family: 'Lato', serif;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
 
-  <body>
-    <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
+    h5:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+  <title>Innovations | Telepsychiatry Research</title>
+</head>
 
-      <div class="addInnovations container my-5">
-        <div class="innovationsHeading">
-          <p>Innovations</p>
-        </div>
-        <div class="submitInnovations">
-          <button>Submit Innovations</button>
-        </div>
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="my-3 divider"></div>
+
+    <div class="addInnovations container my-5">
+      <div class="innovationsHeading">
+        <p>Innovations</p>
       </div>
-
-      <div class="searching">
-        <form action="#" method="POST">
-          <div class="searchbox">
-            <input type="text" name="search" required />
-          </div>
-          <div class="searchBtn">
-            <input type="submit" value="search" />
-          </div>
-        </form>
+      <div class="submitInnovations">
+        <button>Submit Innovations</button>
       </div>
+    </div>
 
-      <div
-        class="allInnovations container"
-        style="display: flex; justify-content: space-around; flex-wrap: wrap;"
-      >
-        <% for (let singleData of data) { %>
-        <div
-          class="m-1 mb-5"
-          style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
-"
-          data-aos="zoom-in-up"
-          data-aos-duration="1000"
-        >
-          <img src="/images/res1.jpg" class="card-img-top" />
-          <div class="card-body">
-            <h5
-              class="card-title"
-              style="display: -webkit-box;
+    <div class="searching">
+      <form action="#" method="POST">
+        <div class="searchbox">
+          <input type="text" name="search" required />
+        </div>
+        <div class="searchBtn">
+          <input type="submit" value="search" />
+        </div>
+      </form>
+    </div>
+
+    <div class="allInnovations container" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+      <% for (let singleData of data.results) { %>
+      <div class="m-1 mb-5" style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
+" data-aos="zoom-in-up" data-aos-duration="1000">
+        <img src="/images/res1.jpg" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title" style="display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;  
-  overflow: hidden;"
-            >
-              <%= singleData.title %>
-            </h5>
-            <p
-              class="card-text"
-              style="color:rgb(105, 102, 102)  ;  display: -webkit-box;
+  overflow: hidden;">
+            <%= singleData.title %>
+          </h5>
+          <p class="card-text" style="color:rgb(105, 102, 102)  ;  display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;  
-  overflow: hidden;"
-            >
-              <%- singleData.content %>
-            </p>
-          </div>
+  overflow: hidden;">
+            <%- singleData.content %>
+          </p>
         </div>
-        <% } %>
       </div>
+      <% } %>
+    </div>
 
-      <%- include('./partials/pagination.ejs') %>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $('.submitInnovations').on('click', e => {
-      window.location = '/Innovations/new';
-    });
-  </script>
+    <%- include('./partials/pagination.ejs') %>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.submitInnovations').on('click', e => {
+    window.location = '/Innovations/new';
+  });
+</script>
+
 </html>

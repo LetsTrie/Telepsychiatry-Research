@@ -1,8 +1,14 @@
 const innovationModel = require('../models/innovations');
 const Joi = require('joi');
+const LIMIT = 9
 
 module.exports.getInnovations = async (req, res, next) => {
-    const data = await innovationModel.find();
+    const page = req.query.page || 1;
+    const data = {
+        results: await innovationModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT),
+        current: page,
+        totalPage: Math.ceil(innovationModel.count() / LIMIT)
+    };
     return res.render('innovations', { data });
 };
 

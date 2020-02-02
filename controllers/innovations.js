@@ -1,5 +1,5 @@
 const innovationModel = require('../models/innovations');
-const Joi = require('joi');
+const { innovationValidation } = require('./validation')
 const LIMIT = 9
 
 module.exports.getInnovations = async (req, res, next) => {
@@ -17,6 +17,12 @@ module.exports.createInnovations = (req, res, next) => {
 };
 
 module.exports.postInnovations = async (req, res, next) => {
+    const { error } = innovationValidation(req.body);
+    if (error) {
+        console.log(error);
+        return res.send(error.details[0].message);
+    }
+
     let { content } = req.body;
     let modifiedContent = content;
 
@@ -32,24 +38,6 @@ module.exports.postInnovations = async (req, res, next) => {
         content: modifiedContent
     });
 
-    const schema = Joi.object().keys({
-        _id: Joi.any(),
-        title: Joi.string().min(8).required(),
-        pageType: Joi.string().required(),
-        tags: Joi.array().items(Joi.string().regex(/^([^0-9]+)$/)),
-        objective: Joi.string().min(20).required(),
-        content: Joi.string().min(20).required(),
-        time: Joi.date()
-    });
-
-    await Joi.validate(data.toObject(), schema, (err, result) => {
-        if (err) {
-            console.log(err);
-            return res.json(err);
-        }
-        else {
-            data.save();
-            return res.redirect('/innovations');
-        }
-    });
+    await data.save();
+    return res.redirect('/innovations');
 };

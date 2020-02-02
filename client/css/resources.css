@@ -479,6 +479,56 @@ p {
   display: block;
 }
 
+body {
+  font-family: 'Merriweather', serif;
+}
+
+h5 {
+  font-family: 'Lato', serif;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+h5:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.allResources {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.eachCard {
+  width: 300px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 7px #a7a5a5;
+          box-shadow: 0px 0px 7px #a7a5a5;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-text {
+  color: #696666;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .addResource {
   -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
           box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;

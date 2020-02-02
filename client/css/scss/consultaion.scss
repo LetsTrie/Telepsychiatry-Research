@@ -30,3 +30,109 @@
     }
   }
 }
+
+.card p {
+  letter-spacing: 0.3px;
+}
+
+p {
+  margin-bottom: 8px;
+}
+.twoButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.twoButtons {
+  .bookNow {
+    background-color: #0de0fe;
+    color: #fff;
+  }
+}
+
+.twoButtons button,
+.bookDoctor__showMore button {
+  color: #0de0fe;
+  font-size: 17px;
+  border: 2px solid #0de0fe;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  padding: 6px;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.twoButtons button:hover,
+.bookDoctor__showMore button:hover {
+  background-color: #0de0fe;
+  color: #fff;
+}
+
+.bookDoctor__showMore {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 30px;
+}
+
+.bookDoctor__showMore button {
+  padding: 10px 20px;
+  background: #0de0fe;
+  color: white;
+}
+.checked {
+  color: #f4c150;
+}
+
+.verified {
+  color: #28a745;
+  margin-left: 3px;
+  font-weight: 900;
+}
+
+.card {
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0px 0px 7px rgb(167, 165, 165);
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cardName {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2e3842;
+}
+
+.cardDegree {
+  font-size: 14px;
+  font-weight: 400;
+  color: #757575;
+}
+
+.ratingCount {
+  font-size: 15px;
+  font-family: 'Lato';
+}
+
+.card-text {
+  color: rgb(105, 102, 102);
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

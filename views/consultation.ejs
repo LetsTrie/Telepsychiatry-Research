@@ -11,68 +11,6 @@
       rel="stylesheet"
       href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
     />
-    <style>
-
-      .card p {
-        letter-spacing: 0.3px;
-      }
-
-      p {
-        margin-bottom: 8px;
-      }
-      .twoButtons {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 30px;
-      }
-
-      .twoButtons button, .bookDoctor__showMore button {
-        color: #0de0fe;
-        font-size: 17px;
-        border: 2px solid #0de0fe;
-        text-align: center;
-        display: block;
-        font-weight: 500;
-        padding: 6px;
-        cursor: pointer;
-        user-select: none;
-        background-color: transparent;
-        line-height: 1.5;
-        border-radius: .25rem;
-        transition: color .15s ease-in-out,
-                    background-color .15s ease-in-out,
-                    border-color .15s ease-in-out,
-                    box-shadow .15s ease-in-out;
-      }
-
-      .twoButtons button:hover, .bookDoctor__showMore button:hover {
-        background-color: #0de0fe;
-        color: #fff;
-      }
-
-      .bookDoctor__showMore {
-        display: flex;
-        justify-content: center;
-
-        margin-bottom: 30px;
-      }
-
-      .bookDoctor__showMore button {
-        padding: 10px 20px;
-        background: #0de0fe;
-        color: white
-      }
-      .checked {
-        color: #f4c150;
-      }
-
-      .verified {
-        color: #28a745;
-        margin-left: 3px;
-        font-weight: 900;
-      }
-    </style>
 
     <title>Psychiatric Consultations | Telepsychiatry Research</title>
   </head>
@@ -99,36 +37,14 @@
             <div class="owl-carousel owl-theme">
           <% for(let i = 0 ; i < 9; i++) { %>
           <div class="item">
-            <div
-              class="m-1 mb-5 card"
-              style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
-"
-            >
+            <div class="m-1 mb-5 card">
               <img src="/images/doctor.jpg" class="card-img-top" />
               <div class="card-body">
-                <h5
-                  class="card-title"
-                  style="display: -webkit-box;
-                        -webkit-line-clamp: 3;
-                        -webkit-box-orient: vertical;  
-                        overflow: hidden;
-                        font-family: 'Poppins', sans-serif;
-                        "
-                >
-                  <p
-                    style="
-                        font-size: 17px;
-                        font-weight: 500;
-                        color: #2E3842;"
-                  >
+                <h5 class="card-title">
+                  <p class="cardName">
                     Sharmin Afroz <i class="fa fa-check-circle verified"></i>
                   </p>
-                  <p
-                    style="
-                        font-size: 14px;
-                        font-weight: 400;
-                        color: #757575;"
-                  >
+                  <p class="cardDegree">
                     MBBS, MD, DNB - Cardiology
                   </p>
 
@@ -137,26 +53,18 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>  <span style="font-size: 15px;font-family: 'Lato'">(38)</span>
+                    <span class="fa fa-star"></span>  
+                    <span class="ratingCount">(38)</span>
                   </div>
                 </h5>
-                <p
-                  class="card-text"
-                  style="color:rgb(105, 102, 102);  
-                        display: -webkit-box;
-                        -webkit-line-clamp: 7;
-                        -webkit-box-orient: vertical;  
-                        overflow: hidden;"
-                >
+                <p class="card-text">
                   <p style="color: #757575"><span class="fa fa-map-marker">&nbsp;&nbsp;</span>&nbsp;&nbsp;Mirpur, Dhaka</p>
                   <p style="color: #757575"> <span class="fa fa-money">&nbsp;</span> $100 - $400 </p>
 
-                  <div class="twoButtons" >
+                  <div class="twoButtons">
                     <div><button class="doctorsProfile">View Profile</button></div>
-                    <div><button style="background-color: #0de0fe;
-        color: #fff;">Book Now</button></div>
+                    <div><button class="bookNow">Book Now</button></div>
                   </div>
-                  
                 </p>
               </div>
             </div>

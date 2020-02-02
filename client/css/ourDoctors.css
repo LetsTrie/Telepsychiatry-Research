@@ -479,6 +479,90 @@ p {
   display: block;
 }
 
+.card p {
+  letter-spacing: 0.3px;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+.twoButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 30px;
+}
+
+.twoButtons .BookNow {
+  background-color: #0de0fe;
+  color: #fff;
+}
+
+.twoButtons button,
+.bookDoctor__showMore button {
+  color: #0de0fe;
+  font-size: 17px;
+  border: 2px solid #0de0fe;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  padding: 6px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: transparent;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.twoButtons button:hover,
+.bookDoctor__showMore button:hover {
+  background-color: #0de0fe;
+  color: #fff;
+}
+
+.bookDoctor__showMore {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 30px;
+}
+
+.bookDoctor__showMore button {
+  padding: 10px 20px;
+  background: #0de0fe;
+  color: white;
+}
+
+.checked {
+  color: #f4c150;
+}
+
+.verified {
+  color: #28a745;
+  margin-left: 3px;
+  font-weight: 900;
+}
+
 .ourDoctorsHeading {
   text-align: center;
   font-family: 'Merriweather', sans-serif;
@@ -530,4 +614,52 @@ p {
   color: white;
   cursor: pointer;
   background: #13ce66;
+}
+
+.allResources {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.allResources .item .card {
+  width: 300px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 7px #a7a5a5;
+          box-shadow: 0px 0px 7px #a7a5a5;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cardName {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2e3842;
+}
+
+.cardDegree {
+  font-size: 14px;
+  font-weight: 400;
+  color: #757575;
+}
+
+.card-text {
+  color: #696666;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

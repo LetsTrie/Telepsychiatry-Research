@@ -4,12 +4,12 @@ const LIMIT = 9
 
 module.exports.getInnovations = async (req, res, next) => {
     const page = req.query.page || 1;
-    const data = {
-        results: await innovationModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT),
-        current: page,
+    const data = await innovationModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT);
+    return res.render('innovations', {
+        data: data,
+        page: page,
         totalPage: Math.ceil(innovationModel.count() / LIMIT)
-    };
-    return res.render('innovations', { data });
+    });
 };
 
 module.exports.createInnovations = (req, res, next) => {

@@ -643,3 +643,11 @@ p {
   letter-spacing: 0.5px;
   border-radius: 4px;
 }
+
+.slct_picker {
+  padding-top: 4px;
+}
+
+.imageFile {
+  padding-top: 10px;
+}

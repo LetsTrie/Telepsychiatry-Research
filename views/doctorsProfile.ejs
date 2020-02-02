@@ -3,20 +3,11 @@
   <head>
     <%- include('./partials/vendorsTop')%>
     <link rel="stylesheet" href="/css/doctorProfile.css" />
-
-    <style>
-      .card-tabs-2 .card-header {
-        padding-bottom: 0;
-      }
-
-      .card-tabs-2 .nav-tabs {
-        margin: -1px;
-      }
-
-      .nav-item .nav-link {
-        padding: 10px 30px;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
 
     <title>Profile | Doctor | Telepsychiatry Research</title>
   </head>
@@ -51,7 +42,7 @@
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>
-                <span style="font-size: 15px;font-family: 'Lato'">(38)</span>
+                <span class="ratingNumber">(38)</span>
               </div>
 
               <p class="location">
@@ -71,7 +62,12 @@
               </p>
 
               <div class="bookingg">
-                <button>Book appointment</button>
+                <button
+                  data-toggle="modal"
+                  data-target="#BOOK_APPOINTMENT_MODAL"
+                >
+                  Book appointment
+                </button>
               </div>
             </div>
           </div>
@@ -209,8 +205,48 @@
       </section>
     </section>
 
+    <%- include('./partials/vendorsBottom')%> <%-
+    include('./partials/bookAppointment') %>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+    <script>
+      $('input[name="meet_date"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: parseInt(moment().format('YYYY'), 10),
+        maxYear: parseInt(moment().format('YYYY'), 10) + 1,
+        autoUpdateInput: false,
+        locale: {
+          cancelLabel: 'Clear'
+        }
+      });
+
+      $('input[name="meet_date"]').on('apply.daterangepicker', function(
+        ev,
+        picker
+      ) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY'));
+      });
+
+      $('input[name="meet_date"]').on('cancel.daterangepicker', function(
+        ev,
+        picker
+      ) {
+        $(this).val('');
+      });
+    </script>
+
     <%- include('./partials/footer')%>
   </body>
-
-  <%- include('./partials/vendorsBottom')%>
 </html>

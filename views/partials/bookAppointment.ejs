@@ -1,0 +1,88 @@
+<div class="modal fade" id="BOOK_APPOINTMENT_MODAL">
+  <div
+    class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Book your Appointment</h2>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="two_box flex-parent">
+            <div class="two_box_one flex-child">
+              <div class="two_box_header form-header">
+                <p>Date:</p>
+              </div>
+              <div class="input_box">
+                <input type="text" name="meet_date" placeholder="Select Time" />
+              </div>
+            </div>
+            <div class="two_box_one  flex-child">
+              <div class="two_box_header  form-header">
+                <p>Time:</p>
+              </div>
+              <div class="input_box slct_picker">
+                <div class="form-selectpicker">
+                  <select
+                    class="selectpicker"
+                    data-width="100%"
+                    title="Select Time"
+                    data-size="3"
+                    required
+                  >
+                    <option value="10">05:00 PM - 06:00 PM</option>
+                    <option value="11">06:00 PM - 07:00 PM</option>
+                    <option value="12">07:00 PM - 08:00 PM</option>
+                    <option value="13">08:00 PM - 09:00 PM</option>
+                    <option value="14">09:00 PM - 10:00 PM</option>
+                    <option value="15">10:00 PM - 11:00 PM</option>
+                    <option value="0">07:00 AM - 08:00 AM</option>
+                    <option value="1">08:00 AM - 09:00 AM</option>
+                    <option value="2">09:00 AM - 10:00 AM</option>
+                    <option value="3">10:00 AM - 11:00 AM</option>
+                    <option value="4">11:00 AM - 12:00 AM</option>
+                    <option value="5">12:00 AM - 01:00 PM</option>
+                    <option value="6">01:00 PM - 02:00 PM</option>
+                    <option value="7">02:00 PM - 03:00 PM</option>
+                    <option value="8">03:00 PM - 04:00 PM</option>
+                    <option value="9">04:00 PM - 05:00 PM</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="two_box_one  flex-child">
+            <div class="two_box_header  form-header">
+              <p>Booking Type:</p>
+            </div>
+            <div class="input_box slct_picker">
+              <div class="form-selectpicker">
+                <select
+                  class="selectpicker"
+                  data-width="100%"
+                  title="Select Type"
+                  required
+                >
+                  <option value="Online">Online</option>
+                  <option value="Face to Face"> Face to Face </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="modal-body-submit submit">
+          <button class="green-btn gotoResetPass">Proceed to Pay</button>
+        </div>
+      </div>
+
+      <div class="modal-footer submit">
+        <button type="button" class="red-btn" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

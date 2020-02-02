@@ -479,29 +479,55 @@ p {
   display: block;
 }
 
-.bookDoctor {
-  padding: 50px 0;
-  font-family: 'Lato', sans-serif;
+.ourDoctorsHeading {
+  text-align: center;
+  font-family: 'Merriweather', sans-serif;
+  margin-bottom: 30px;
 }
 
-.bookDoctor .bookDoctorHeader p {
+.ourDoctorsHeading p {
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 500;
   color: #2a2a2a;
   letter-spacing: 0.5px;
 }
 
-.bookDoctor .bookDoctorHeader__info {
-  margin: 20px 40px 20px 5px;
-  text-align: center;
+.searching {
+  padding: 0 0 45px 0;
 }
 
-.bookDoctor .bookDoctorHeader__info p {
-  color: #626161;
-  font-size: 17px;
-  letter-spacing: 0.6px;
+.searching form {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.searching .searchbox {
+  width: 30%;
+}
+
+@media (max-width: 1000px) {
+  .searching .searchbox {
+    width: 60%;
+  }
+}
+
+.searching .searchbox input[type='text'] {
+  padding: 9px;
+  width: 100%;
+}
+
+.searching .searchBtn input[type='submit'] {
+  padding: 5px 30px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  background: #13ce66;
 }

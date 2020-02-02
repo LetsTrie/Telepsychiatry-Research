@@ -1,2 +1,32 @@
 @import '_main';
 @import '_navbar';
+
+.bookDoctor {
+  padding: 50px 0;
+  font-family: 'Lato', sans-serif;
+
+  .bookDoctorHeader {
+    p {
+      font-size: 40px;
+      font-weight: 700;
+      color: #2a2a2a;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .bookDoctorHeader__info {
+    margin: 20px 40px 20px 5px;
+    text-align: center;
+
+    p {
+      color: #626161;
+      font-size: 17px;
+      letter-spacing: 0.6px;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}

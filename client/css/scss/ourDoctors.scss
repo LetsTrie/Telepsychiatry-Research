@@ -1,0 +1,46 @@
+@import '_main';
+@import '_navbar';
+
+.ourDoctorsHeading {
+  text-align: center;
+  font-family: 'Merriweather', sans-serif;
+  margin-bottom: 30px;
+
+  p {
+    font-size: 40px;
+    font-weight: 500;
+    color: #2a2a2a;
+    letter-spacing: 0.5px;
+  }
+}
+
+.searching {
+  padding: 0 0 45px 0;
+
+  form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .searchbox {
+    width: 30%;
+    @media (max-width: 1000px) {
+      width: 60%;
+    }
+    input[type='text'] {
+      padding: 9px;
+      width: 100%;
+    }
+  }
+  .searchBtn {
+    input[type='submit'] {
+      padding: 5px 30px;
+      font-size: 24px;
+      border: none;
+      outline: none;
+      color: white;
+      cursor: pointer;
+      background: #13ce66;
+    }
+  }
+}

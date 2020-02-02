@@ -2,16 +2,10 @@
 <html lang="en">
   <head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/consultaion.css" />
-    <link
-      rel="stylesheet"
-      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
-    />
-    <style>
+    <link rel="stylesheet" href="/css/ourDoctors.css" />
+    <title>Our Doctors | Telepsychiatry Research</title>
+  
+   <style>
 
       .card p {
         letter-spacing: 0.3px;
@@ -73,36 +67,46 @@
         font-weight: 900;
       }
     </style>
-
-    <title>Psychiatric Consultations | Telepsychiatry Research</title>
   </head>
+
+
   <body>
-    <section>
-      <header>
-        <nav class="cnav">
-          <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
-      <div class="bookDoctor">
-        <div class=" container">
-          <div class="bookDoctorHeader text-center">
-            <p>Book our Doctor</p>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+
+      <div class="addResource container my-4">
+        <div class="ourDoctorsHeading mt-5">
+          <p>Our Doctors</p>
+        </div>
+      </div>
+
+      <div class="searching">
+        <form action="#" method="POST">
+          <div class="searchbox">
+            <input type="text" name="search" required />
           </div>
-          <div class="bookDoctorHeader__info">
-            <p>Energistically develop 24/365 outsourcing rather than market positioning sources. Collaboratively iterate bricks-and-clicks relationships with sustainable deliverables. Enthusiastically productivate highly efficient bandwidth for economically sound initiatives. Synergistically enhance top-line.</p>
+          <div class="searchBtn">
+            <input type="submit" value="search" />
           </div>
-          <div class="bookDoctor__showMore text-center">
-            <button>See More</button>
-          </div>
-          <div class="all-items">
-            <div class="owl-carousel owl-theme">
-          <% for(let i = 0 ; i < 9; i++) { %>
-          <div class="item">
+        </form>
+      </div>
+
+      <div
+        class="allResources container"
+        style="display: flex; justify-content: space-around; flex-wrap: wrap;"
+      >
+        <% for(let i = 0 ; i < 9; i++) { %>
+        <div class="item">
             <div
               class="m-1 mb-5 card"
               style="width: 300px;    padding: 10px  ;box-shadow: 0px 0px 7px rgb(167, 165, 165);
 "
+          data-aos="zoom-in-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="1000"
             >
               <img src="/images/doctor.jpg" class="card-img-top" />
               <div class="card-body">
@@ -151,8 +155,8 @@
                   <p style="color: #757575"><span class="fa fa-map-marker">&nbsp;&nbsp;</span>&nbsp;&nbsp;Mirpur, Dhaka</p>
                   <p style="color: #757575"> <span class="fa fa-money">&nbsp;</span> $100 - $400 </p>
 
-                  <div class="twoButtons" >
-                    <div><button class="doctorsProfile">View Profile</button></div>
+                  <div class="twoButtons">
+                    <div><button onclick="go()">View Profile</button></div>
                     <div><button style="background-color: #0de0fe;
         color: #fff;">Book Now</button></div>
                   </div>
@@ -161,58 +165,21 @@
               </div>
             </div>
           </div>
-          <% } %>
-          </div>
-          </div>
-        </div>
+        <% } %>
       </div>
+
+      <%- include('./partials/pagination.ejs') %>
     </section>
 
     <%- include('./partials/footer')%>
   </body>
-
   <%- include('./partials/vendorsBottom')%>
-  <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-  <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
   <script>
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 5000,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        750: {
-          items: 1
-        },
-        960: {
-          items: 2
-        },
-        1000: {
-          items: 3
-        }
-      }
+    $('.submitResources').on('click', e => {
+      window.location = '/researches/new';
     });
-    owl.on('mousewheel', '.owl-stage', function(e) {
-      if (e.deltaY > 0) {
-        owl.trigger('next.owl');
-      } else {
-        owl.trigger('prev.owl');
-      }
-      e.preventDefault();
-    });
-
-    document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
-      location = '/services/ourDoctors';
-    })
-
-    $('.twoButtons .doctorsProfile').click(e => {
+    function go() {
       location = '/services/doctor/profile/1';
-    })
-    
+    }
   </script>
 </html>

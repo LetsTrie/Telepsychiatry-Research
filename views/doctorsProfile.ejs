@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/doctorProfile.css" />
+
+    <style>
+      .card-tabs-2 .card-header {
+        padding-bottom: 0;
+      }
+
+      .card-tabs-2 .nav-tabs {
+        margin: -1px;
+      }
+
+      .nav-item .nav-link {
+        padding: 10px 30px;
+      }
+    </style>
+
+    <title>Profile | Doctor | Telepsychiatry Research</title>
+  </head>
+  <body>
+    <section>
+      <header>
+        <nav class="cnav">
+          <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
+
+      <section>
+        <div class="doctor_profile_heading my-4">
+          <p>Profile</p>
+        </div>
+        <div class="container">
+          <div class="doctor_identity">
+            <div class="his_photo">
+              <img src="/images/doctor.jpg" alt="Doctor" />
+            </div>
+            <div class="His_profession">
+              <p class="name">Sharmin Afroz</p>
+              <p class="degree">BDS, MDS - Oral & Maxillofacial Surgery</p>
+              <p class="profession">
+                <i class="fa fa-user"></i>&nbsp;&nbsp;Dentist
+              </p>
+
+              <div class="ratingg">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span style="font-size: 15px;font-family: 'Lato'">(38)</span>
+              </div>
+
+              <p class="location">
+                <span class="fa fa-map-marker">&nbsp;&nbsp;</span
+                >&nbsp;&nbsp;Mirpur, Dhaka &dash;
+                <span class="map_location">
+                  <a
+                    href="https://goo.gl/maps/y7ueXKkTSEQz8DvY8"
+                    target="_blank"
+                  >
+                    Get Directions
+                  </a>
+                </span>
+              </p>
+              <p class="bill">
+                <span class="fa fa-money">&nbsp;</span> $100 - $400
+              </p>
+
+              <div class="bookingg">
+                <button>Book appointment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="aboutDoctor_wrapper">
+          <div class="container">
+            <div class="card card-tabs-2 aboutDoctor">
+              <div class="card-header">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      data-toggle="tab"
+                      href="#tab1"
+                      role="tab"
+                      >Overview</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      data-toggle="tab"
+                      href="#tab2"
+                      role="tab"
+                      >Locations</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="card-block">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab1">
+                    <div class="card-text">
+                      <div class="overview_aboutMe">
+                        <p class="overview_aboutMe_header">About me</p>
+                        <p class="overview_aboutMe_info">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Asperiores neque expedita doloribus. Nostrum
+                          harum quae reprehenderit error velit praesentium,
+                          alias nulla eaque tenetur labore consectetur non
+                          asperiores mollitia fugiat eveniet atque consequatur
+                          magni, ipsam adipisci assumenda ea tempora, aperiam
+                          cupiditate. Incidunt sint earum facere. Eos pariatur
+                          molestiae quae aliquam tempora aspernatur, beatae
+                          voluptatum adipisci consequuntur nemo officiis
+                          inventore. Sequi debitis amet voluptatibus aspernatur
+                          voluptate ipsam, odit impedit id dolor? Fugit placeat
+                          velit omnis. Eaque, odio! Perferendis nesciunt
+                          corrupti atque animi dicta ad vero tempora id. Rem
+                          recusandae eius maxime tempora officiis, at ipsa
+                          veniam impedit, earum deleniti tenetur dolores sed?
+                        </p>
+                      </div>
+
+                      <div class="overview_education">
+                        <p class="overview_education_header">Education</p>
+                        <div class="overview_education_institutes">
+                          <ul>
+                            <% for (let i = 0 ; i < 3 ; i++) { %>
+                            <li class="overview_education_institutes_one">
+                              <p class="ins">Dhaka Medical College</p>
+                              <p class="deg">BDS</p>
+                              <p class="yrr">1998-2003</p>
+                            </li>
+                            <% } %>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="overview_exper">
+                        <p class="overview_exper_header">Work & Experience</p>
+                        <div class="overview_exper_institutes">
+                          <ul>
+                            <% for (let i = 0 ; i < 3 ; i++) { %>
+                            <li class="overview_exper_institutes_one">
+                              <p class="ins">Comfort Care Dental Clinic</p>
+                              <p class="yrr">2010 - Present (5 years)</p>
+                            </li>
+                            <% } %>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="overview_services">
+                        <p class="overview_services_header">Services</p>
+                        <div class="overview_services_points">
+                          <p>&rarr;&nbsp;&nbsp;&nbsp;Tooth cleaning</p>
+                          <p>&rarr;&nbsp;&nbsp;&nbsp;Composite Bonding</p>
+                          <p>&rarr;&nbsp;&nbsp;&nbsp;Fissure Sealants</p>
+                          <p>&rarr;&nbsp;&nbsp;&nbsp;Root Canal Therapy</p>
+                          <p>&rarr;&nbsp;&nbsp;&nbsp;Surgical Extractions</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tab2">
+                    <div class="card-text">
+                      <%for(let i = 0 ; i < 2 ; i++) { %>
+                      <div class="locationTimeMoney">
+                        <div class="location">
+                          <p class="ins_nam">Smile Dental Care</p>
+                          <p class="ins_loc">450/A Shewrapara, Mirpur, Dhaka</p>
+                          <p class="ins_dir">
+                            <a
+                              href="https://goo.gl/maps/y7ueXKkTSEQz8DvY8"
+                              target="_blank"
+                              >Get Directions</a
+                            >
+                          </p>
+                        </div>
+                        <div class="timee">
+                          <div class="time_each">
+                            <p class="dayy">Mon-Sat</p>
+                            <p class="tmm">10:00AM-2:00PM</p>
+                            <p class="tmm">4:00PM-9:00PM</p>
+                          </div>
+                          <div class="time_each">
+                            <p class="dayy">Sun</p>
+                            <p class="tmm">10:00AM-2:00PM</p>
+                          </div>
+                        </div>
+                        <div class="moneyy">
+                          <div><p>$250</p></div>
+                        </div>
+                      </div>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <%- include('./partials/footer')%>
+  </body>
+
+  <%- include('./partials/vendorsBottom')%>
+</html>

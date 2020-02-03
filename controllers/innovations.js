@@ -5,10 +5,17 @@ const LIMIT = 9
 module.exports.getInnovations = async (req, res, next) => {
     const page = req.query.page || 1;
     const data = await innovationModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT);
+    const totalPage = Math.ceil(innovationModel.count() / LIMIT);
+    const hasNextPage = page < totalPage;
+    const hasPreviousPage = page > 1;
     return res.render('innovations', {
         data: data,
         page: page,
-        totalPage: Math.ceil(innovationModel.count() / LIMIT)
+        totalPage: totalPage,
+        hasNextPage: hasNextPage,
+        hasPreviousPage: hasPreviousPage,
+        next: page + 1,
+        previous: page - 1
     });
 };
 

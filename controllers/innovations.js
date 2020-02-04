@@ -80,7 +80,7 @@ module.exports.searchInnovations = async (req, res, next) => {
         }
         ]
     }).limit(LIMIT).skip(LIMIT * page - LIMIT);
-    var dataLength = await innovationModel.find({
+    const dataLength = await innovationModel.find({
         $or: [{
             title: {
                 $regex: search,
@@ -106,8 +106,7 @@ module.exports.searchInnovations = async (req, res, next) => {
             }
         }
         ]
-    });
-    dataLength = dataLength.length;
+    }).countDocuments();
     const totalPage = Math.ceil(dataLength / LIMIT);
     const hasNextPage = page < totalPage;
     const hasPreviousPage = page > 1;

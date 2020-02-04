@@ -40,11 +40,84 @@ module.exports.postInnovations = async (req, res, next) => {
     const data = new innovationModel({
         title: req.body.title,
         pageType: req.body.pagetype,
-        tags: req.body.tag.split(','),
+        tags: req.body.tag.split(', '),
         objective: req.body.summary,
         content: modifiedContent
     });
 
     await data.save();
     return res.redirect('/innovations');
+};
+
+module.exports.searchInnovations = async (req, res, next) => {
+    const { search } = req.body;
+
+    const page = req.query.page || 1;
+    const data = await innovationModel.find({
+        $or: [{
+            title: {
+                $regex: search,
+                $options: "i"
+            }
+        },
+        {
+            objective: {
+                $regex: search,
+                $options: "i"
+            }
+        },
+        {
+            content: {
+                $regex: search,
+                $options: "i"
+            }
+        },
+        {
+            tags: {
+                $regex: search,
+                $options: "i"
+            }
+        }
+        ]
+    }).limit(LIMIT).skip(LIMIT * page - LIMIT);
+    var dataLength = await innovationModel.find({
+        $or: [{
+            title: {
+                $regex: search,
+                $options: "i"
+            }
+        },
+        {
+            objective: {
+                $regex: search,
+                $options: "i"
+            }
+        },
+        {
+            content: {
+                $regex: search,
+                $options: "i"
+            }
+        },
+        {
+            tags: {
+                $regex: search,
+                $options: "i"
+            }
+        }
+        ]
+    });
+    dataLength = dataLength.length;
+    const totalPage = Math.ceil(dataLength / LIMIT);
+    const hasNextPage = page < totalPage;
+    const hasPreviousPage = page > 1;
+    return res.render('innovations', {
+        data: data,
+        page: page,
+        totalPage: totalPage,
+        hasNextPage: hasNextPage,
+        hasPreviousPage: hasPreviousPage,
+        next: page + 1,
+        previous: page - 1
+    });
 };

@@ -34,7 +34,7 @@
       </div>
 
       <div class="allResources container">
-        <% for(let i = 0 ; i < 9; i++) { %>
+        <% for(let i = 0 ; i < posts.length; i++) { %>
         <div
           class="m-1 mb-5 eachCard"
           data-aos="zoom-in-up"
@@ -44,14 +44,10 @@
           <img src="/images/res1.jpg" class="card-img-top" />
           <div class="card-body">
             <h5 class="card-title">
-              Global Epilepsy Report: A Public Health Imperative
+              <%= posts[i].title %>
             </h5>
             <p class="card-text">
-              The focus of this year’s World Mental Health Day, on 10 October,
-              was suicide prevention. WHO used the opportunity of World Suicide
-              Prevention Day on 10 September to launch, together with partners,
-              a campaign asking people to prepare to take 40 seconds of action
-              on World Mental Health Day and published a number of materials.
+              <%= posts[i].summary %>
             </p>
           </div>
         </div>

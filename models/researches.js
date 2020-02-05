@@ -1,21 +1,25 @@
 const mongoose = require('mongoose');
 
-const innovationsSchema = new mongoose.Schema({
+const researchSchema = new mongoose.Schema({
     title: {
       type: String,
       required: [true, 'Add a title']
     },
-    tags: {
+    authors: {
       type: [String],
-      required: [true, 'Add a tag']
+      required: [true, 'Add an author']
     },
-    projectType: {
+    pageType: {
       type: String,
       required: [true, 'Select page type']
     },
-    objective: {
+    publicationYear: {
       type: String,
-      required: [true, 'Add an objective']
+      required: [true, 'Select publication year']
+    },
+    summary: {
+      type: String,
+      required: [true, 'Add a summary']
     },
     description: {
       type: String,
@@ -27,4 +31,4 @@ const innovationsSchema = new mongoose.Schema({
     }
 });
 
-exports.InnovationsModel = mongoose.model('innovations', innovationsSchema);
+exports.ResearchModel = mongoose.model('researches', researchSchema);

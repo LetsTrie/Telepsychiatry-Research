@@ -13,15 +13,21 @@
       </nav>
       <div class="my-3 divider"></div>
       <div class="createResources">
+        <div class="alert alert-danger" id="alert" role="alert"></div>
         <div class="createResources__header">
           <p id="submitResources">Submit new Resources</p>
         </div>
         <div class="input_boxes">
-          <form>
+          <form action="/researches/new_research" method="POST">
             <div class="one_box">
               <div class="box_header"><p>Title:</p></div>
               <div class="input_box">
-                <input type="text" name="title" placeholder="Title" />
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  placeholder="Title"
+                />
               </div>
             </div>
 
@@ -30,7 +36,12 @@
                 <p>Authors: <span> (Comma Separated) </span></p>
               </div>
               <div class="input_box">
-                <input type="text" name="authors" placeholder="Authors" />
+                <input
+                  type="text"
+                  name="authors"
+                  id="authors"
+                  placeholder="Authors"
+                />
               </div>
             </div>
 
@@ -42,8 +53,9 @@
                     class="selectpicker"
                     data-width="100%"
                     title="Select Page Types"
-                    multiple
+                    id="pageType"
                     data-selected-text-format="count > 1"
+                    name="pageType"
                     data-size="6"
                     required
                   >
@@ -69,8 +81,10 @@
                     <select
                       class="selectpicker"
                       data-width="100%"
-                      title="Select Page Types"
+                      title="Select Publication Year"
                       data-size="6"
+                      id="publicationYear"
+                      name="publicationYear"
                       required
                     >
                       <% for(let i = (new Date()).getFullYear(); i >= 1940; i--)
@@ -98,12 +112,12 @@
             <div class="one_box">
               <div class="box_header"><p>Breif Description:</p></div>
               <div class="input_box">
-                <textarea name="content" id="editor"> </textarea>
+                <textarea name="description" id="editor"> </textarea>
               </div>
             </div>
 
             <div class="createResources__submit">
-              <button>Submit</button>
+              <button id="form-submit">Submit</button>
             </div>
           </form>
         </div>
@@ -112,13 +126,57 @@
   </body>
   <%- include('./partials/vendorsBottom')%>
   <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"
+  ></script>
   <script>
-    ClassicEditor.create(document.querySelector('#editor'))
+    ClassicEditor.create(document.querySelector("#editor"))
       .then(editor => {
         console.log(editor);
       })
       .catch(error => {
         console.error(error);
       });
+
+    $(document).ready(() => {
+      console.log("resource ready");
+      function isAlphaSpace(str) {
+        for (let i=0; i<str.length; i++) {
+          if (!(str[i] >= 'A' && str[i] <= 'Z') && !(str[i] >= 'a' && str[i] <= 'z') && str[i] != ' ' && str[i] != ','){
+            return false
+          }
+        }
+        return true
+      }
+      console.log(isAlphaSpace('is ,alpha'))
+
+      $("#form-submit").click(e => {
+        const title = $("#title").val();
+        const authors = $("#authors").val();
+        const summary = $("#summary").val();
+        let error = false
+        if (title.length < 20) {
+          error = true;
+          $("#alert").show();
+          $("#alert").html("Title must at least be 20 characters long");
+        }
+        if (!isAlphaSpace(authors)) {
+          error = true;
+          $("#alert").show();
+          $("#alert").html("Authors may contain only alphabets and spaces");
+        }
+        if (summary.length < 100) {
+          error = true;
+          $("#alert").show();
+          $("#alert").html("Summary must at least be 100 characters long");
+        }
+        if (!error) {
+          console.log('submitted')
+          $("#form").submit();
+        }
+      });
+    });
   </script>
 </html>

@@ -403,8 +403,9 @@ p {
   padding: 0px;
 }
 
-.navbar-nav a,
-.dropdownNAV {
+.navbar-nav .mainNav,
+.dropdownNAV,
+.dropdown-content a {
   font-family: 'Open Sans', sans-serif;
   color: #000000;
   line-height: 60px;
@@ -415,11 +416,12 @@ p {
   letter-spacing: 0.5px;
 }
 
-.navbar-nav a:hover {
+.navbar-nav a:hover,
+.mainNav:hover {
   color: #00baff;
 }
 
-.navbar-nav a:after {
+.navbar-nav .mainNav:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -439,7 +441,7 @@ p {
   z-index: 1;
 }
 
-.navbar-nav a:hover:after {
+.navbar-nav .mainNav:hover:after {
   visibility: visible;
   -webkit-transform: scaleX(1);
       -ms-transform: scaleX(1);
@@ -458,7 +460,7 @@ p {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 250px;
+  min-width: 330px;
   -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -701,7 +703,6 @@ p {
 }
 
 .clinical-color {
-  border: 1px solid gray;
   cursor: pointer;
   font-family: 'roboto', sans-serif;
   letter-spacing: 1px;
@@ -709,25 +710,17 @@ p {
   -webkit-box-shadow: 2px 2px 5px #d4d2d2;
           box-shadow: 2px 2px 5px #d4d2d2;
   font-weight: 500;
-  background: #00d2ff;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #3a7bd5, #05b0d6);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#3a7bd5), to(#05b0d6));
-  background: -webkit-linear-gradient(left, #3a7bd5, #05b0d6);
-  background: -o-linear-gradient(left, #3a7bd5, #05b0d6);
-  background: linear-gradient(to right, #3a7bd5, #05b0d6);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #0de0fe;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
   -o-transition: -o-transform 0.3s ease;
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease, -o-transform 0.3s ease;
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
 }
 
 .clinical-color:hover {
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
   -webkit-transform: scale(1.03);
       -ms-transform: scale(1.03);
        -o-transform: scale(1.03);

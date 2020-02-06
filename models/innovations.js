@@ -27,4 +27,4 @@ const innovationsSchema = new mongoose.Schema({
     }
 });
 
-exports.InnovationsModel = mongoose.model('innovations', innovationsSchema);
+exports.InnovationsModel = mongoose.model('innovation', innovationsSchema);

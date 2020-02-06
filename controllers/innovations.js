@@ -6,7 +6,7 @@ module.exports.getInnovations = async (req, res, next) => {
     const page = req.query.page || 1;
     const data = await InnovationsModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT);
     return res.render('innovations', {
-        data: data,
+        posts: data,
         page: page,
         totalPage: Math.ceil(InnovationsModel.count() / LIMIT)
     });

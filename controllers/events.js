@@ -1,12 +1,30 @@
-const events = require('../models/events')
+const { eventsModel } = require('../models/events')
 
-exports.createEvent = (req, res, next) => {
+exports.getEvents = async(req, res, next) => {
+    const events = await eventsModel.find()
+    res.render('events', {
+        posts: events
+    })
+}
+
+exports.createEvent = async(req, res, next) => {
     const {
         title,
         description,
-        Location,
-        datetime
+        location,
+        date,
+        time
     } = req.body
 
-    console.log(datetime)
+    // const newEvent = await new eventsModel({
+    //     title,
+    //     description,
+    //     location,
+    //     date,
+    //     time
+    // }).save()
+
+    // console.log(newEvent)
+    req.flash('created', 'event created')
+    res.redirect('/events')
 }

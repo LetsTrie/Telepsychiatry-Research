@@ -1,16 +1,19 @@
 const mongoose = require('mongoose');
 
 const eventsSchema = new mongoose.Schema({
-    tile: {
+    title: {
         type: String
     },
     description: {
         type: String
     },
-    Location: {
+    location: {
         type: String
     },
-    datetime: {
+    date: {
+        type: String
+    },
+    time: {
         type: String
     }
 });

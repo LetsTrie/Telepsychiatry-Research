@@ -1,7 +1,6 @@
 const { ResearchModel } = require("../models/researches");
 
 module.exports.get_resources = async(req, res) => {
-    console.log('hi')
     const resources = await ResearchModel.find()
     res.render('researches', {
         posts: resources,

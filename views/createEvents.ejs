@@ -37,7 +37,7 @@
                             <p>Brief Description :</p>
                         </div>
                         <div class="input_box">
-                            <textarea name="content" id="editor"> </textarea>
+                            <textarea name="description" id="editor"> </textarea>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@
                             </p>
                         </div>
                         <div class="input_box">
-                            <input id="location" required type="text" name="authors" placeholder="Address" />
+                            <input id="location" required type="text" name="location" placeholder="Address" />
                         </div>
                     </div>
 
@@ -58,6 +58,8 @@
                         </div>
                         <div class="input_box">
                             <input id="datetime" required type="text" name="datetimes" placeholder="Time && Date" />
+                            <input type="hidden" name="date" id="date">
+                            <input type="hidden" name="time" id="time">
                         </div>
                     </div>
                     <div class="createResources__submit">
@@ -78,10 +80,10 @@
     <script>
         ClassicEditor.create(document.querySelector('#editor'))
             .then(editor => {
-                console.log(editor);
+                console.log('ok: ', editor);
             })
             .catch(error => {
-                console.error(error);
+                console.error('error: ', error);
             });
 
         $('input[name="datetimes"]').daterangepicker({
@@ -182,6 +184,14 @@
             return true
         }
 
+        function getDate(dt) {
+            return (dt.substring(0, 10) + dt.substring(19, 30))
+        }
+
+        function getTime(dt) {
+            return (dt.substring(11, 19) + ' - ' + dt.substring(33, 41))
+        }
+
         $('#form-submit').click((e) => {
             e.preventDefault()
             const title = $('#title').val()
@@ -198,7 +208,10 @@
                 showAlert('Error in location')
             }
             if (!error) {
-                console.log('submit')
+                const date = getDate(datetime)
+                const time = getTime(datetime)
+                $('#date').val(date)
+                $('#time').val(time)
                 $('#form').submit()
             }
 

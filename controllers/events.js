@@ -16,15 +16,15 @@ exports.createEvent = async(req, res, next) => {
         time
     } = req.body
 
-    // const newEvent = await new eventsModel({
-    //     title,
-    //     description,
-    //     location,
-    //     date,
-    //     time
-    // }).save()
+    const newEvent = await new eventsModel({
+        title,
+        description,
+        location,
+        date,
+        time
+    }).save()
 
-    // console.log(newEvent)
+    console.log(newEvent)
     req.flash('created', 'event created')
     res.redirect('/events')
 }

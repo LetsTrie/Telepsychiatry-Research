@@ -1,12 +1,12 @@
-const { ResearchModel } = require("../models/researches");
+const { ResearchModel } = require('../models/researches');
 
-module.exports.get_resources = async(req, res) => {
-  const resources = await ResearchModel.find()
+module.exports.get_resources = async (req, res) => {
+  const resources = await ResearchModel.find();
   res.render('researches', {
     posts: resources,
     new: false
-  })
-}
+  });
+};
 
 module.exports.post_resources = async (req, res) => {
   const {
@@ -36,7 +36,7 @@ module.exports.post_resources = async (req, res) => {
 
   await newResearch.save();
 
-  const resources = await ResearchModel.find()
+  const resources = await ResearchModel.find();
   res.render('researches', {
     posts: resources,
     new: true

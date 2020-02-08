@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/innovations.css" />
 
-    <title>Innovations | Telepsychiatry Research</title>
-  </head>
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/innovations.css" />
 
-  <body>
-    <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
+  <title>Innovations | Telepsychiatry Research</title>
+</head>
 
-      <div class="addInnovations container my-5">
-        <div class="innovationsHeading">
-          <p>Innovations</p>
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="my-3 divider"></div>
+
+    <div class="addInnovations container my-5">
+      <div class="innovationsHeading">
+        <p>Innovations</p>
+      </div>
+      <div class="submitInnovations">
+        <button>Submit Innovations</button>
+      </div>
+    </div>
+
+    <div class="searching">
+      <form action="/innovations/search" method="POST">
+        <div class="searchbox">
+          <input type="text" name="search" required />
         </div>
-        <div class="submitInnovations">
-          <button>Submit Innovations</button>
+        <div class="searchBtn">
+          <input type="submit" value="search" />
+        </div>
+      </form>
+    </div>
+
+    <div class="allInnovations container">
+      <% for (let singleData of data) { %>
+      <div class="m-1 mb-5 eachCard" data-aos="zoom-in-up" data-aos-duration="1000">
+        <img src="/images/res1.jpg" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= singleData.title %>
+          </h5>
+          <p class="card-text">
+            <%- singleData.description %>
+          </p>
         </div>
       </div>
+      <% } %>
+    </div>
 
-      <div class="searching">
-        <form action="#" method="POST">
-          <div class="searchbox">
-            <input type="text" name="search" required />
-          </div>
-          <div class="searchBtn">
-            <input type="submit" value="search" />
-          </div>
-        </form>
-      </div>
+    <%- include('./partials/pagination.ejs') %>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.submitInnovations').on('click', e => {
+    window.location = '/Innovations/new';
+  });
+</script>
 
-      <div class="allInnovations container">
-        <% for (i=0; i<posts.length; i++) { %>
-        <div
-          class="m-1 mb-5 eachCard"
-          data-aos="zoom-in-up"
-          data-aos-duration="1000"
-        >
-          <img src="/images/res1.jpg" class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= posts[i].title %>
-            </h5>
-            <p class="card-text">
-              <%- posts[i].description %>
-            </p>
-          </div>
-        </div>
-        <% } %>
-      </div>
-
-      <%- include('./partials/pagination.ejs') %>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $('.submitInnovations').on('click', e => {
-      window.location = '/Innovations/new';
-    });
-  </script>
 </html>

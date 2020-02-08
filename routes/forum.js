@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const forum = require('../controllers/forum');
 
-router.get('/', (req, res, next) => res.render('forum'));
-router.get('/single', (req, res, next) => res.render('singleDiscussion'));
-router.get('/new', (req, res, next) => res.render('createDiscussion'));
+router.get('/', forum.getForum);
+router.get('/single', forum.singleForum);
+router.get('/new', forum.createForum);
 
 module.exports = router;

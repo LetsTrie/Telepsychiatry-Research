@@ -3,6 +3,7 @@ const innovations = require('../controllers/innovations');
 
 router.get('/', innovations.getInnovations);
 router.get('/new', innovations.createInnovations);
-router.post('/new', innovations.postInnovations);
+router.post('/', innovations.postInnovations);
+router.post('/search', innovations.searchInnovations);
 
 module.exports = router;

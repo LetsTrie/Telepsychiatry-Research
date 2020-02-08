@@ -1,11 +1,14 @@
 const innovationModel = require('../models/innovations');
 const { innovationValidation } = require('./validation');
 
-const LIMIT = 9
+const LIMIT = 9;
 
 module.exports.getInnovations = async (req, res, next) => {
   const page = req.query.page || 1;
-  const data = await innovationModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT);
+  const data = await innovationModel
+    .find()
+    .limit(LIMIT)
+    .skip(LIMIT * page - LIMIT);
   const totalPage = Math.ceil(innovationModel.count() / LIMIT);
   const hasNextPage = page < totalPage;
   const hasPreviousPage = page > 1;
@@ -18,7 +21,7 @@ module.exports.getInnovations = async (req, res, next) => {
     next: page + 1,
     previous: page - 1
   });
-}
+};
 
 module.exports.createInnovations = (req, res, next) => {
   return res.render('createInnovations');
@@ -54,60 +57,67 @@ module.exports.searchInnovations = async (req, res, next) => {
   const { search } = req.body;
 
   const page = req.query.page || 1;
-  const data = await innovationModel.find({
-    $or: [{
-      title: {
-        $regex: search,
-        $options: "i"
-      }
-    },
-    {
-      objective: {
-        $regex: search,
-        $options: "i"
-      }
-    },
-    {
-      content: {
-        $regex: search,
-        $options: "i"
-      }
-    },
-    {
-      tags: {
-        $regex: search,
-        $options: "i"
-      }
-    }
-    ]
-  }).limit(LIMIT).skip(LIMIT * page - LIMIT);
-  const dataLength = await innovationModel.find({
-    $or: [{
-      title: {
-        $regex: search,
-        $options: "i"
-      }
-    },
-    {
-      objective: {
-        $regex: search,
-        $options: "i"
-      }
-    },
-    {
-      content: {
-        $regex: search,
-        $options: "i"
-      }
-    },
-    {
-      tags: {
-        $regex: search,
-        $options: "i"
-      }
-    }
-    ]
-  }).countDocuments();
+  const data = await innovationModel
+    .find({
+      $or: [
+        {
+          title: {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          objective: {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          content: {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          tags: {
+            $regex: search,
+            $options: 'i'
+          }
+        }
+      ]
+    })
+    .limit(LIMIT)
+    .skip(LIMIT * page - LIMIT);
+  const dataLength = await innovationModel
+    .find({
+      $or: [
+        {
+          title: {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          objective: {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          content: {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          tags: {
+            $regex: search,
+            $options: 'i'
+          }
+        }
+      ]
+    })
+    .countDocuments();
   const totalPage = Math.ceil(dataLength / LIMIT);
   const hasNextPage = page < totalPage;
   const hasPreviousPage = page > 1;
@@ -120,4 +130,4 @@ module.exports.searchInnovations = async (req, res, next) => {
     next: page + 1,
     previous: page - 1
   });
-}; 
+};

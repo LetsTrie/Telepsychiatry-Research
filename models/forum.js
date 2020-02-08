@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const forumSchema = new mongoose.Schema({
-    userId: {
+    createdBy: {
         type: Number,
         default: 123456
     },

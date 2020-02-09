@@ -565,22 +565,19 @@ p {
   letter-spacing: 0.5px;
 }
 
-.doctor_identity .His_profession .profession {
-  color: #20c0f3;
-  font-size: 15px;
-  margin-bottom: 20px;
-  letter-spacing: 0.3px;
-  cursor: pointer;
-}
-
-.doctor_identity .His_profession .profession i {
-  color: #20c0f3;
-  font-size: 17px;
-}
-
-.doctor_identity .His_profession .location {
+.doctor_identity .His_profession .aff,
+.doctor_identity .His_profession .college {
   margin-bottom: 5px;
   color: #6e6774;
+}
+
+.doctor_identity .His_profession .aff {
+  padding-bottom: 3px;
+  padding-top: 20px;
+}
+
+.doctor_identity .His_profession .college {
+  padding-bottom: 20px;
 }
 
 .doctor_identity .His_profession .bill {

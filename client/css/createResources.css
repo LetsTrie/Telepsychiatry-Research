@@ -11,10 +11,6 @@
           box-sizing: border-box;
 }
 
-.alert {
-  display: none;
-}
-
 @-webkit-keyframes fromBottom {
   0% {
     opacity: 0;
@@ -549,7 +545,7 @@ p {
 
 .input_boxes .one_box .box_header p span {
   font-size: 1rem;
-  color: #8a5555;
+  color: #6d6666;
 }
 
 .input_boxes .one_box .input_box {

@@ -62,22 +62,32 @@
       margin-bottom: 15px;
       letter-spacing: 0.5px;
     }
-    .profession {
-      color: #20c0f3;
-      font-size: 15px;
-      margin-bottom: 20px;
-      letter-spacing: 0.3px;
-      cursor: pointer;
+    // .profession {
+    //   color: #20c0f3;
+    //   font-size: 15px;
+    //   margin-bottom: 20px;
+    //   letter-spacing: 0.3px;
+    //   cursor: pointer;
 
-      i {
-        color: #20c0f3;
-        font-size: 17px;
-      }
-    }
-    .location {
+    //   i {
+    //     color: #20c0f3;
+    //     font-size: 17px;
+    //   }
+    // }
+    .aff,
+    .college {
       margin-bottom: 5px;
 
       color: #6e6774;
+    }
+
+    .aff {
+      padding-bottom: 3px;
+      padding-top: 20px;
+    }
+
+    .college {
+      padding-bottom: 20px;
     }
     .bill {
       margin-bottom: 25px;

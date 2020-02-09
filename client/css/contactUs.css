@@ -11,10 +11,6 @@
           box-sizing: border-box;
 }
 
-.alert {
-  display: none;
-}
-
 @-webkit-keyframes fromBottom {
   0% {
     opacity: 0;

@@ -24,8 +24,17 @@ module.exports.getForum = async (req, res, next) => {
     });
 };
 
-module, exports.singleForum = (req, res, next) => {
-    return res.render('singleDiscussion');
+module, exports.singleForum = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const data = await forumModel.findById(id);
+        data.user = "Pial Vai";
+        return res.render('singleDiscussion', {
+            data: data
+        });
+    } catch (e) {
+        res.send("<h1>Did not find any discussion</h1>");
+    }
 };
 
 module.exports.createForum = (req, res, next) => {

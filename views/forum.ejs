@@ -58,11 +58,11 @@
         <div class="alldiscussions">
           <% for(let singleData of data) { %>
           <div class="eachDiscussion" data-aos="fade-up" data-aos-duration="1000">
-            <div class="discussion__title">
+            <a class="discussion__title" href="/forum/<%= singleData._id %>/">
               <p>
                 <%= singleData.title %>
               </p>
-            </div>
+            </a>
             <div class="discussion__usernameTime">
               <div class="discussion__username">
                 <p><i class="fa fa-user"></i> <%= singleData.user %> </p>
@@ -101,9 +101,6 @@
 <%- include('./partials/vendorsBottom')%>
 
 <script>
-  $('.discussion__title').click(function () {
-    location = '/forum/single';
-  });
   $('.addForum__newDiscussion button').click(function () {
     location = '/forum/new';
   });

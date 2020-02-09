@@ -1,263 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/singleDiscussion.css" />
-    <title>Single Discussion | Telepsychiatry Research</title>
-  </head>
 
-  <body>
-    <div class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-      <div class="singleDiscussion">
-        <div class="singleDiscussion__info">
-          <div class="singleDiscussion__follow">
-            <button>Follow</button>
-          </div>
-          <div class="singleDiscussion__title">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              optio corporis quibusdam quasi cupiditate recusandae libero
-              voluptas natus placeat cumque deserunt accusantium illo, enim
-              omnis iste
-            </p>
-          </div>
-          <div class="singleDiscussion__nameTime">
-            <div class="singleDiscussion__name">
-              <p><i class="fa fa-user"></i> &nbsp; MD. Sakib Khan</p>
-            </div>
-            <div class="singleDiscussion__time"><p>about 2 hours ago</p></div>
-          </div>
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/singleDiscussion.css" />
+  <title><%= data.title %> | Telepsychiatry Research</title>
+</head>
 
-          <div class="singleDiscussion__desc">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-              aperiam iusto unde assumenda vel adipisci dolore quibusdam laborum
-              nulla similique a, rem incidunt doloribus reprehenderit quia, odit
-              repellat sunt sapiente totam aliquam. Vitae aliquid maxime eaque,
-              atque dolorem modi debitis maiores fugiat, vel facere optio sunt
-              obcaecati eligendi. Neque consectetur quisquam atque assumenda
-              nostrum distinctio vitae, illo consequatur totam dolores commodi
-              quos enim reiciendis corrupti porro at? Deleniti, optio voluptas?
-              Ex totam dolorem, repudiandae nihil quasi eum explicabo eaque
-              asperiores blanditiis, dicta odio. <br />
-              <br />
-              Fugiat sint repudiandae est amet minus, odio recusandae corporis
-              iusto magnam dolorum quaerat minima explicabo ipsum suscipit
-              ullam? Iste dignissimos blanditiis commodi, praesentium
-              necessitatibus nostrum accusamus fugiat asperiores obcaecati
-              consectetur debitis sed ad impedit. Eius amet cumque, nihil quis
-              quos alias assumenda ad voluptatem excepturi qui fuga quia nemo
-              ducimus neque accusantium, consequuntur impedit, pariatur beatae
-              odio sint harum doloribus necessitatibus magnam! Nostrum nobis
-              officiis vel earum esse placeat, repudiandae, in dolorem. <br />
-              <br />
-              officia expedita reiciendis sunt dolore corrupti aliquam. Sequi
-              harum molestias recusandae neque, officia repellat. Dolorum
-              voluptatibus, exercitationem repellendus, hic, officia minus
-              consectetur magnam itaque optio culpa odit suscipit velit eaque
-              ipsa tempora pariatur tempore. Ipsa eveniet ut consequatur odit,
-              qui, iure quam sunt ullam assumenda minus facilis, atque dolor
-              beatae illo sapiente laboriosam repellat placeat reprehenderit
-              veniam! Temporibus <br />
-              <br />
-              vero voluptas nulla incidunt natus dolor tempora officiis dicta
-              dolorum quasi? Dicta, quis eius? Dolorum eius quidem dolore vero
-              numquam et saepe voluptatem expedita nihil reiciendis ea quas
-              facere recusandae rerum dolor necessitatibus tenetur sunt sint
-              illo fugiat, sed excepturi harum eveniet eum. Molestiae debitis
-              alias nulla accusamus et explicabo! Veritatis tempora ad labore
-              ut, veniam, nihil obcaecati vero minus, magni iste eos magnam?
-              Repudiandae, quos facere cupiditate voluptas rerum ratione error
-              sapiente optio ab saepe animi deserunt voluptate praesentium in,
-              inventore suscipit, aspernatur iusto consequatur at?
-            </p>
+<body>
+  <div class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="my-3 divider"></div>
+    <div class="singleDiscussion">
+      <div class="singleDiscussion__info">
+        <div class="singleDiscussion__follow">
+          <button>Follow</button>
+        </div>
+        <div class="singleDiscussion__title">
+          <p>
+            <%= data.title %>
+          </p>
+        </div>
+        <div class="singleDiscussion__nameTime">
+          <div class="singleDiscussion__name">
+            <p><i class="fa fa-user"></i>&nbsp;&nbsp;<%= data.user %></p>
           </div>
-          <div class="singleDiscussion__react_love">
-            <p><i class="fa fa-heart"></i>&nbsp; 12</p>
+          <div class="singleDiscussion__time">
+            <p>
+              <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 18px"></i>
+              <%= data.createdAt.toLocaleString() %>
+            </p>
           </div>
         </div>
-        <div class="singleDescription_comments">
-          <div class="giveComment">
-            <div class="giveComment__image">
+
+        <div class="singleDiscussion__desc">
+          <p>
+            <%- data.description %>
+          </p>
+        </div>
+        <div class="singleDiscussion__react_love">
+          <p><i class="fa fa-heart"></i>&nbsp; 12</p>
+        </div>
+      </div>
+      <div class="singleDescription_comments">
+        <div class="giveComment">
+          <div class="giveComment__image">
+            <img src="/images/userr.jpg" alt="user image" />
+          </div>
+          <div class="giveComment__SendComment">
+            <div class="sendComment__textarea">
+              <textarea name="comment" id="commentID" rows="6"></textarea>
+            </div>
+            <div class="sendComment__buttons">
+              <button class="postCommentBtn">Post Comment</button>
+              <button class="cancelCommentBtn">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="allComments">
+          <div class="eachComment">
+            <div class="user_image">
               <img src="/images/userr.jpg" alt="user image" />
             </div>
-            <div class="giveComment__SendComment">
-              <div class="sendComment__textarea">
-                <textarea name="comment" id="commentID" rows="6"></textarea>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
               </div>
-              <div class="sendComment__buttons">
-                <button class="postCommentBtn">Post Comment</button>
-                <button class="cancelCommentBtn">Cancel</button>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
               </div>
             </div>
           </div>
 
-          <div class="allComments">
-            <div class="eachComment">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
+          <div class="eachComment_reply">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
+            </div>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
               </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
               </div>
             </div>
+          </div>
+          <div class="eachComment_reply">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
+            </div>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
+              </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
+              </div>
+            </div>
+          </div>
+          <div class="eachComment_reply">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
+            </div>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
+              </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
+              </div>
+            </div>
+          </div>
 
-            <div class="eachComment_reply">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
+          <div class="eachComment">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
+            </div>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
               </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
               </div>
             </div>
-            <div class="eachComment_reply">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
-              </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
-              </div>
-            </div>
-            <div class="eachComment_reply">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
-              </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
-              </div>
-            </div>
+          </div>
 
-            <div class="eachComment">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
+          <div class="eachComment_reply">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
+            </div>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
               </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
               </div>
             </div>
+          </div>
 
-            <div class="eachComment_reply">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
+          <div class="eachComment_reply">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
+            </div>
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
               </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
               </div>
             </div>
+          </div>
 
-            <div class="eachComment_reply">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
-              </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
-              </div>
+          <div class="eachComment">
+            <div class="user_image">
+              <img src="/images/userr.jpg" alt="user image" />
             </div>
-
-            <div class="eachComment">
-              <div class="user_image">
-                <img src="/images/userr.jpg" alt="user image" />
+            <div class="user_comment_info">
+              <div class="user_name">MD. Sakib Khan</div>
+              <div class="commentbody">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                qui aut culpa, quo consectetur deleniti. Ut, quidem
+                perspiciatis! Aliquid quasi sed rem earum!
               </div>
-              <div class="user_comment_info">
-                <div class="user_name">MD. Sakib Khan</div>
-                <div class="commentbody">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                  qui aut culpa, quo consectetur deleniti. Ut, quidem
-                  perspiciatis! Aliquid quasi sed rem earum!
-                </div>
-                <div class="like_reply_time">
-                  <div class="like">Like</div>
-                  <div class="reply">Reply</div>
-                  <div class="time">1m</div>
-                </div>
+              <div class="like_reply_time">
+                <div class="like">Like</div>
+                <div class="reply">Reply</div>
+                <div class="time">1m</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+  </div>
+</body>
+<%- include('./partials/vendorsBottom')%>
+
 </html>

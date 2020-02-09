@@ -11,8 +11,8 @@
   padding: 0px;
 }
 
-.navbar-nav a,
-.dropdownNAV {
+.nav-link,
+.dropdown-content a {
   font-family: 'Open Sans', sans-serif;
   color: #000000;
   line-height: 60px;
@@ -22,11 +22,16 @@
   position: relative;
   letter-spacing: 0.5px;
 }
-.navbar-nav a:hover {
+
+.dropdown-content a {
+  line-height: 45px;
+}
+.nav-link:hover,
+.dropdown-content a:hover {
   color: #00baff;
 }
 
-.navbar-nav a:after {
+.nav-link:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -42,7 +47,7 @@
   z-index: 1;
 }
 
-.navbar-nav a:hover:after {
+.nav-link:hover:after {
   visibility: visible;
   transform: scaleX(1);
   transition: all 0.4s ease-out;

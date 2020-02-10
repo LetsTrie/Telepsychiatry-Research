@@ -1,14 +1,13 @@
-const InnovationModel = require('../models/innovations');
+const { ResearchModel } = require('../models/researches');
 const { pagination } = require('./utils');
-
 const LIMIT = 9;
 
-exports.getInnovation = async (req, res) => {
-  const data = await InnovationModel.findById(req.params.id);
-  res.render('singleInnovations', { data });
+exports.getResearch = async (req, res) => {
+  const data = await ResearchModel.findById(req.params.id);
+  res.render('singleResearch', { data });
 };
 
-exports.getInnovations = async (req, res) => {
+exports.getResearches = async (req, res) => {
   const page = +req.query.page || 1;
   const search = req.query.search;
   let searchKey = {};
@@ -32,20 +31,18 @@ exports.getInnovations = async (req, res) => {
     };
   } else baseUrl += `?page=`;
 
-  const data = await InnovationModel.find(searchKey)
+  const data = await ResearchModel.find(searchKey)
     .limit(LIMIT)
     .skip(LIMIT * (page - 1));
-  const totalItems = await InnovationModel.find(searchKey).countDocuments();
-  return res.render('innovations', {
+  const totalItems = await ResearchModel.find(searchKey).countDocuments();
+  return res.render('researches', {
     data,
     search,
     ...pagination(page, LIMIT, totalItems, baseUrl)
   });
 };
 
-exports.getNewInnovations = (req, res) => res.render('createInnovations');
-
-exports.postInnovations = async (req, res) => {
+exports.postResearches = async (req, res) => {
   const {
     title,
     BriefDesciption,
@@ -62,7 +59,7 @@ exports.postInnovations = async (req, res) => {
     modifiedDesciption = x.substring(3, x.length - 4);
   }
 
-  const newInnovations = new InnovationModel({
+  const newResearch = new ResearchModel({
     title,
     BriefDesciption: modifiedDesciption,
     conflictOfInterest,
@@ -72,6 +69,8 @@ exports.postInnovations = async (req, res) => {
     authors
   });
 
-  await newInnovations.save();
-  res.redirect('/innovations');
+  await newResearch.save();
+  res.redirect('/researches');
 };
+
+exports.getNewResearches = (req, res) => res.render('createResearches');

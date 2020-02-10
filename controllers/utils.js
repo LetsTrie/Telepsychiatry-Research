@@ -1,5 +1,6 @@
-exports.pagination = (page, LIMIT, totalItems) => {
+exports.pagination = (page, LIMIT, totalItems, baseUrl) => {
   return {
+    URL: baseUrl,
     currentPage: page,
     hasNextPage: page * LIMIT < totalItems,
     hasPreviousPage: page > 1,

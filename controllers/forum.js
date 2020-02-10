@@ -10,7 +10,7 @@ module.exports.getForum = async (req, res, next) => {
         data[i].user = "Pial Vai";
         console.log(data[i].createdAt.toDateString());
     }
-    const totalPage = Math.ceil(forumModel.count() / LIMIT);
+    const totalPage = Math.ceil(await forumModel.count() / LIMIT);
     const hasNextPage = page < totalPage;
     const hasPreviousPage = page > 1;
     return res.render('forum', {

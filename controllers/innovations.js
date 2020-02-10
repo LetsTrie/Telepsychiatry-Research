@@ -9,7 +9,7 @@ module.exports.getInnovations = async (req, res, next) => {
     .find()
     .limit(LIMIT)
     .skip(LIMIT * page - LIMIT);
-  const totalPage = Math.ceil(innovationModel.count() / LIMIT);
+  const totalPage = Math.ceil(await innovationModel.count() / LIMIT);
   const hasNextPage = page < totalPage;
   const hasPreviousPage = page > 1;
   return res.render('innovations', {

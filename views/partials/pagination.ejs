@@ -1,15 +1,31 @@
 <div class="custom_pagination">
   <div class="myPagination">
-    <a href="#" class="arrow">&laquo;</a>
-    <a href="#">1</a>
-    <a href="#">2</a>
+    <% if(hasPreviousPage) { %>
+    <a href="/forum?page=<%=previousPage%>" class="arrow">&laquo;</a>
+    <% } else { %>
+    <a href="#" class="arrow disabledBTN">&laquo;</a>
+    <% } if(currentPage >= 5) { %>
+    <a href="/forum?page=1">1</a>
+    <a href="/forum?page=2">2</a>
     <a href="#">...</a>
-    <a href="#">41</a>
-    <a href="#" class="active">42</a>
-    <a href="#">43</a>
+    <a href="/forum?page=<%=currentPage - 1%>"><%=currentPage - 1%></a>
+    <% } else { for(let i = 1 ; i < currentPage; i++) { %>
+    <a href="/forum?page=<%=i%>"><%=i%></a>
+    <% } } %>
+    <a href="/forum?page=<%=currentPage%>" class="active"><%=currentPage%></a>
+    <% if(currentPage + 5 > lastPage) { for(let i = currentPage + 1; i <=
+    lastPage; i++) { %>
+    <a href="/forum?page=<%=i%>"><%=i%></a>
+    <% } } else { %>
+    <a href="/forum?page=<%=currentPage + 1%>"><%=currentPage + 1%></a>
     <a href="#">...</a>
-    <a href="#">121</a>
-    <a href="#">122</a>
-    <a href="#" class="arrow">&raquo;</a>
+    <a href="/forum?page=<%=lastPage - 1%>"><%=lastPage - 1%></a>
+    <a href="/forum?page=<%=lastPage%>"><%=lastPage%></a>
+
+    <% } if(hasNextPage) { %>
+    <a href="/forum?page=<%=nextPage%>" class="arrow">&raquo;</a>
+    <% } else { %>
+    <a href="#" class="arrow disabledBTN">&raquo;</a>
+    <% } %>
   </div>
 </div>

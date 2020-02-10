@@ -150,3 +150,16 @@ p {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.aff,
+.college {
+  color: rgb(105, 102, 102);
+  span {
+    color: rgb(61, 60, 60);
+  }
+}
+
+.college {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}

@@ -3,48 +3,42 @@ const { discussionValidation } = require('./validation');
 
 const LIMIT = 6;
 
-module.exports.getForum = async (req, res, next) => {
-    const page = req.query.page || 1;
-    const data = await forumModel.find().limit(LIMIT).skip(LIMIT * page - LIMIT);
+exports.getForums = async (req, res, next) => {
+    const page = +req.query.page || 1;
+    const data = await forumModel
+        .find()
+        .limit(LIMIT)
+        .skip(LIMIT * page - LIMIT);
+
     for (let i = 0; i < data.length; i++) {
-        data[i].user = "Pial Vai";
-        console.log(data[i].createdAt.toDateString());
+        data[i].username = 'Pial';
     }
-    const totalPage = Math.ceil(await forumModel.count() / LIMIT);
-    const hasNextPage = page < totalPage;
-    const hasPreviousPage = page > 1;
+    const totalItems = await forumModel.countDocuments();
+
     return res.render('forum', {
         data: data,
-        page: page,
-        totalPage: totalPage,
-        hasNextPage: hasNextPage,
-        hasPreviousPage: hasPreviousPage,
-        next: page + 1,
-        previous: page - 1
+        currentPage: page,
+        hasNextPage: page * LIMIT < totalItems,
+        hasPreviousPage: page > 1,
+        nextPage: page + 1,
+        previousPage: page - 1,
+        lastPage: Math.ceil(totalItems / LIMIT)
     });
 };
 
-module, exports.singleForum = async (req, res, next) => {
-    const { id } = req.params;
-    try {
-        const data = await forumModel.findById(id);
-        data.user = "Pial Vai";
-        return res.render('singleDiscussion', {
-            data: data
-        });
-    } catch (e) {
-        res.send("<h1>Did not find any discussion</h1>");
-    }
+exports.singleForum = async (req, res, next) => {
+    const data = await forumModel.findById(req.params.id);
+    data.username = 'Pial';
+    return res.render('singleDiscussion', { data });
 };
 
-module.exports.createForum = (req, res, next) => {
+exports.createForum = (req, res, next) => {
     return res.render('createDiscussion');
 };
 
 module.exports.postDiscussion = async (req, res, next) => {
     const { error } = discussionValidation(req.body);
     if (error) {
-        console.log(error);
         return res.send(error.details[0].message);
     }
     let { content } = req.body;

@@ -1,228 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/singleDiscussion.css" />
+    <title><%= data.title %> | Telepsychiatry Research</title>
+  </head>
 
-<head>
-  <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/singleDiscussion.css" />
-  <title><%= data.title %> | Telepsychiatry Research</title>
-</head>
-
-<body>
-  <div class="wrapper">
-    <nav>
-      <%- include('./partials/navbar')%>
-    </nav>
-    <div class="my-3 divider"></div>
-    <div class="singleDiscussion">
-      <div class="singleDiscussion__info">
-        <div class="singleDiscussion__follow">
+  <body>
+    <div class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+      <div class="singleDiscussion">
+        <div class="singleDiscussion__info">
+          <!-- <div class="singleDiscussion__follow">
           <button>Follow</button>
-        </div>
-        <div class="singleDiscussion__title">
-          <p>
-            <%= data.title %>
-          </p>
-        </div>
-        <div class="singleDiscussion__nameTime">
-          <div class="singleDiscussion__name">
-            <p><i class="fa fa-user"></i>&nbsp;&nbsp;<%= data.user %></p>
-          </div>
-          <div class="singleDiscussion__time">
+        </div> -->
+          <div class="singleDiscussion__title">
             <p>
-              <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 18px"></i>
-              <%= data.createdAt.toLocaleString() %>
+              <%= data.title %>
             </p>
           </div>
+          <div class="singleDiscussion__nameTime">
+            <div class="singleDiscussion__name">
+              <p><i class="fa fa-user"></i>&nbsp;&nbsp;<%= data.username %></p>
+            </div>
+            <div class="singleDiscussion__time">
+              <p>
+                <i
+                  class="fa fa-clock-o"
+                  aria-hidden="true"
+                  style="font-size: 18px"
+                ></i>
+                <%= data.createdAt.toLocaleString() %>
+              </p>
+            </div>
+          </div>
+
+          <div class="singleDiscussion__desc">
+            <p>
+              <%- data.description %>
+            </p>
+          </div>
+          <div class="singleDiscussion__react_love">
+            <p><i class="fa fa-heart"></i>&nbsp; 12</p>
+          </div>
         </div>
-
-        <div class="singleDiscussion__desc">
-          <p>
-            <%- data.description %>
-          </p>
-        </div>
-        <div class="singleDiscussion__react_love">
-          <p><i class="fa fa-heart"></i>&nbsp; 12</p>
-        </div>
-      </div>
-      <div class="singleDescription_comments">
-        <div class="giveComment">
-          <div class="giveComment__image">
-            <img src="/images/userr.jpg" alt="user image" />
-          </div>
-          <div class="giveComment__SendComment">
-            <div class="sendComment__textarea">
-              <textarea name="comment" id="commentID" rows="6"></textarea>
-            </div>
-            <div class="sendComment__buttons">
-              <button class="postCommentBtn">Post Comment</button>
-              <button class="cancelCommentBtn">Cancel</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="allComments">
-          <div class="eachComment">
-            <div class="user_image">
+        <div class="singleDescription_comments">
+          <div class="giveComment">
+            <div class="giveComment__image">
               <img src="/images/userr.jpg" alt="user image" />
             </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
+            <div class="giveComment__SendComment">
+              <div class="sendComment__textarea">
+                <textarea name="comment" id="commentID" rows="6"></textarea>
               </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
+              <div class="sendComment__buttons">
+                <button class="postCommentBtn">Post Comment</button>
+                <button class="cancelCommentBtn">Cancel</button>
               </div>
             </div>
           </div>
 
-          <div class="eachComment_reply">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
+          <div class="allComments">
+            <div class="eachComment">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
               </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
-              </div>
-            </div>
-          </div>
-          <div class="eachComment_reply">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
-              </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="eachComment_reply">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
-              </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
-              </div>
-            </div>
-          </div>
 
-          <div class="eachComment">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
+            <div class="eachComment_reply">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
               </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
               </div>
             </div>
-          </div>
+            <div class="eachComment_reply">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
+              </div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
+              </div>
+            </div>
+            <div class="eachComment_reply">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
+              </div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
+              </div>
+            </div>
 
-          <div class="eachComment_reply">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
+            <div class="eachComment">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
               </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="eachComment_reply">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
+            <div class="eachComment_reply">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
               </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="eachComment">
-            <div class="user_image">
-              <img src="/images/userr.jpg" alt="user image" />
-            </div>
-            <div class="user_comment_info">
-              <div class="user_name">MD. Sakib Khan</div>
-              <div class="commentbody">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Fugit, architecto laborum dicta, incidunt ullam quidem alias
-                qui aut culpa, quo consectetur deleniti. Ut, quidem
-                perspiciatis! Aliquid quasi sed rem earum!
+            <div class="eachComment_reply">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
               </div>
-              <div class="like_reply_time">
-                <div class="like">Like</div>
-                <div class="reply">Reply</div>
-                <div class="time">1m</div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="eachComment">
+              <div class="user_image">
+                <img src="/images/userr.jpg" alt="user image" />
+              </div>
+              <div class="user_comment_info">
+                <div class="user_name">MD. Sakib Khan</div>
+                <div class="commentbody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, architecto laborum dicta, incidunt ullam quidem alias
+                  qui aut culpa, quo consectetur deleniti. Ut, quidem
+                  perspiciatis! Aliquid quasi sed rem earum!
+                </div>
+                <div class="like_reply_time">
+                  <div class="like">Like</div>
+                  <div class="reply">Reply</div>
+                  <div class="time">1m</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-<%- include('./partials/vendorsBottom')%>
-
+  </body>
+  <%- include('./partials/vendorsBottom')%>
 </html>

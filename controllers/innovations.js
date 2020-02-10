@@ -4,22 +4,21 @@ const { innovationValidation } = require('./validation');
 const LIMIT = 9;
 
 module.exports.getInnovations = async (req, res, next) => {
-  const page = req.query.page || 1;
+  const page = +req.query.page || 1;
   const data = await innovationModel
     .find()
     .limit(LIMIT)
     .skip(LIMIT * page - LIMIT);
-  const totalPage = Math.ceil(innovationModel.count() / LIMIT);
-  const hasNextPage = page < totalPage;
-  const hasPreviousPage = page > 1;
+  const totalItems = await innovationModel.countDocuments();
+
   return res.render('innovations', {
     data: data,
-    page: page,
-    totalPage: totalPage,
-    hasNextPage: hasNextPage,
-    hasPreviousPage: hasPreviousPage,
-    next: page + 1,
-    previous: page - 1
+    currentPage: page,
+    hasNextPage: page * LIMIT < totalItems,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalItems / LIMIT)
   });
 };
 
@@ -56,7 +55,7 @@ module.exports.postInnovations = async (req, res, next) => {
 module.exports.searchInnovations = async (req, res, next) => {
   const { search } = req.body;
 
-  const page = req.query.page || 1;
+  const page = +req.query.page || 1;
   const data = await innovationModel
     .find({
       $or: [
@@ -88,7 +87,7 @@ module.exports.searchInnovations = async (req, res, next) => {
     })
     .limit(LIMIT)
     .skip(LIMIT * page - LIMIT);
-  const dataLength = await innovationModel
+  const totalItems = await innovationModel
     .find({
       $or: [
         {
@@ -118,16 +117,14 @@ module.exports.searchInnovations = async (req, res, next) => {
       ]
     })
     .countDocuments();
-  const totalPage = Math.ceil(dataLength / LIMIT);
-  const hasNextPage = page < totalPage;
-  const hasPreviousPage = page > 1;
+
   return res.render('innovations', {
     data: data,
-    page: page,
-    totalPage: totalPage,
-    hasNextPage: hasNextPage,
-    hasPreviousPage: hasPreviousPage,
-    next: page + 1,
-    previous: page - 1
+    currentPage: page,
+    hasNextPage: page * LIMIT < totalItems,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalItems / LIMIT)
   });
 };

@@ -242,7 +242,7 @@ button:active {
   border-bottom-left-radius: 6px;
 }
 
-.custom_pagination .myPagination a:hover:not(.active) {
+.custom_pagination .myPagination a:hover:not(.active):not(.disabledBTN) {
   background-color: #c7c5c5;
 }
 
@@ -277,6 +277,11 @@ button:active {
   .custom_pagination .myPagination .arrow {
     font-size: 15px;
   }
+}
+
+.disabledBTN {
+  background: #bdbbbb;
+  pointer-events: none;
 }
 
 .footerr-wrapper {

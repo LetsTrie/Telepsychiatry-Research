@@ -1,179 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/singleResearcher.css" />
-    <title>Research | Telepsychiatry Research</title>
-  </head>
+        <link rel="stylesheet" href="/css/singleResearcher.css" />
+        <title>
+            <%= data.title %> | Telepsychiatry Research
+        </title>
+</head>
 
-  <body>
+<body>
     <div>
-      <header>
-        <nav>
-          <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
-      <!-- NEXT -->
-      <section class="containerr">
-        <div class="contentTitle">
-          <p>
-            Future strategies to combat the hidden burden of suicide among
-            farmers in South East Asia
-          </p>
-        </div>
-        <div class="contentDescription">
-          <p>
-            Southeast Asia accounts about 40% of annual global suicide (WHO,
-            2014). Among the different professions farmers encounter higher rate
-            of suicide than the general population due to the easy availability
-            of toxic pesticides, economic uncertainties, psychological stress,
-            bureaucratic apathy, illiteracy and lack of friendly policies
-            (Milner et al., 2013). Despite the higher reporting rate of suicide
-            among the farmers, the real magnitude of the problem hardly comes to
-            the surface in the South East Asia due to multiple sociocultural and
-            economic factors, wide spread stigma, and political views (Hendin et
-            al., 2008). Due to rural area residence, farmers have less access to
-            healthcare and most of the urban-life associated benefits. However,
-            the mobile phone and other electronic devices are connecting them
-            with the central facilities. Poor farmers are now able to enjoy
-            mobile phones due to mobile phone and call rate price reductions. A
-            technology-based mental health service or Telepsychiatry can be a
-            cost-effective and attractive service for these farmers as it
-            provides easy and ready access to the mental health professionals
-            (Soron, 2016). Telepsychiatry allows the farmers to bypass
-            widespread stigma associated with suicidal thoughts in addition to
-            the travel time to the centrally located hospital for stress
-            management and get rid of the suicidal thoughts. Moreover, we can
-            inform the farmers and their family members on the importance of
-            early help seeking by sending regular short text messages (SMS) and
-            voice calls. Interactive social media posts and promotional videos
-            on when, how, and where to seek help can add value in facilitating
-            overall awareness of the existing services and the importance of
-            timely help seeking. Primary care physicians should be trained to
-            detect suicide intentions among farmers when they visit to
-            healthcare centers for different medical conditions and disorders.
-            We need to establish innovative technology based on freely available
-            screening tools for the professionals to examine who is at risk of
-            suicide. The local community health workers and community leaders
-            can be trained to provide primary mental health care by distance
-            training by the experts. Moreover, health workers can report
-            suspected suicide prone farmers early by using their phones and can
-            communicate with the farmers by phone without the need of home
-            visits. In addition to mental health service, mobile phones and
-            other information technologies can be a source of information how
-            they can increase the production, market price and other
-            micro-credit economic activities-the indirect interventions to
-            reduce the suicide. According to Keshavan et al. (2013), we need to
-            restrict the access to lethal methods in addition to expanding
-            mental health services and improving access. Pesticide is the most
-            common method of suicide among farmers and the practice of keeping
-            the pesticide in locked boxes showed promising results in Srilanka
-            (Pearson et al., 2017). Suicide is considered as a criminal offence
-            in Bangladesh and Pakistan and it should be decriminalized from all
-            the countries in the region (Soron, 2019). Moreover, the financial
-            activities of local Non-Government Organizations (NGOs) need to
-            bring under regional regulation. We need to develop a regional media
-            guideline to reduce the unethical and unprofessional reporting of
-            suicide in print and electronic media. The countries need active
-            collaboration among environment, economics, human rights, education,
-            politicians and religious leaders (Murthy, 2018). We suggest text
-            book authorities to add a chapter on importance of early help
-            seeking for common mental health and suicide, the school going
-            children will disseminate the information to the family and will
-            reduce the stigma. Moreover, every nation should have a holistic
-            implementable national suicide prevention plan and a regional annual
-            suicide plan will be more helpful
-          </p>
-        </div>
+        <header>
+            <nav>
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
+        <!-- NEXT -->
+        <section class="containerr">
+            <div class="contentTitle">
+                <p>
+                    <%= data.title %>
+                </p>
+            </div>
+            <div class="contentDescription">
+                <p>
+                    <%- data.BriefDesciption %>
+                </p>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Financial support</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              This work “Future strategies to combat the hidden burden of
-              suicide among farmers in South East Asia” received no specific
-              grant from any funding agency, commercial or not-for-profit
-              sectors.
-            </p>
-          </div>
-        </div>
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Conflict of interest</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              None.
-            </p>
-          </div>
-        </div>
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Acknowledgement</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              The author acknowledges the inspiration of Md. Abdur Rashid and
-              Suraiya Begume.
-            </p>
-          </div>
-        </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Financial support</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.financialSupport %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Conflict of interest</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.conflictOfInterest %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>
+                        Acknowledgement
+                    </p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%- data.references %>
+                    </p>
+                </div>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>References</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              Hendin, H., Phillips, M.R., Vijayakumar, L., Pirkis, J., Wang, H.,
-              Yip, P., Wasserman, D., Bertolote, J.M., Fleischmann, A., 2008.
-              Suicide and Suicide Prevention in Asia. Mental Health and
-              Substance Abuse. World Health Organization, Geneva, Switzerland.
-              Keshavan, M.S., Shenoy, S., Li, H., 2013. Suicide in Asian
-              countries. Asian J. Psychiat. 355.
-              https://doi.org/10.1016/j.ajp.2013.08.063. Milner, A., Sveticic,
-              J., De Leo, D., 2013. Suicide in the absence of mental disorder? A
-              review of psychological autopsy studies across countries. Int. J.
-              Soc. Psychiat. 59 (Sep 6), 545–554. Murthy, R.S., 2018. Future of
-              mental health. Asian J. Psychiat. 38, A7–A11. https://doi.
-              org/10.1016/j.ajp.2018.11.007. Pearson, M., Metcalfe, C.,
-              Jayamanne, S., Gunnell, D., Weerasinghe, M., Pieris, R.,
-              Priyadarshana, C., Knipe, D.W., Hawton, K., Dawson, A.H., Bandara,
-              P., deSilva, D., Gawarammana, I., Eddleston, M., Konradsen, F.,
-              2017. Effectiveness of household lockable pesticide storage to
-              reduce pesticide self-poisoning in rural Asia: a community-based,
-              cluster-randomised controlled trial. Lancet.
-              https://doi.org/10.1016/ S0140-6736(17)31961-X. Soron, T.R., 2016.
-              Telepsychiatry for depression management in Bangladesh. Int. J.
-              Ment. Health 1–2. https://doi.org/10.1080/00207411.2016.1234305.
-              Soron, T.R., 2019. Use of Facebook for developing Suicide Database
-              in Bangladesh. Asian J. Psychiat. 39, 110–111.
-              https://doi.org/10.1016/j.ajp.2018.12.017. World Health
-              Organization, 2014. Preventing Suicide. Luxembourg.
-              https://doi.org/ ISBN: 978 92 4 156477 9. T
-            </p>
-          </div>
-        </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>References</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%- data.authors %>
+                    </p>
+                </div>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Authors</p>
-          </div>
-          <div class="content_box_details">
-            <p class="author_name">Tanjir Rashid Soron</p>
-            <p class="author_designation">
-              Telepsychiatry Research and Innovation Network, Mogbazar, 1217,
-              Dhaka, Bangladesh
-            </p>
-            <p class="author_email">Email: tanjirsoron@yahoo.com</p>
-          </div>
-        </div>
-      </section>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Authors</p>
+                </div>
+                <div class="content_box_details">
+                    <p class="author_name">Tanjir Rashid Soron</p>
+                    <p class="author_designation">
+                        Telepsychiatry Research and Innovation Network, Mogbazar, 1217, Dhaka, Bangladesh
+                    </p>
+                    <p class="author_email">Email: tanjirsoron@yahoo.com</p>
+                </div>
+            </div>
+        </section>
     </div>
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+
 </html>

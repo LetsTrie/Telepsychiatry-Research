@@ -1,71 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/resources.css" />
-    <title>Resources | Telepsychiatry Research</title>
-  </head>
+        <link rel="stylesheet" href="/css/resources.css" />
+        <title>Resources | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar') %>
-      </nav>
-      <div class="my-3 divider"></div>
+        <nav>
+            <%- include('./partials/navbar') %>
+        </nav>
+        <div class="my-3 divider"></div>
 
-      <div class="addResource container my-5">
-        <div class="resourcesHeading">
-          <p>Researches</p>
+        <div class="addResource container my-5">
+            <div class="resourcesHeading">
+                <p>Researches</p>
+            </div>
+            <div class="submitResources">
+                <button>Submit Researches</button>
+            </div>
         </div>
-        <div class="submitResources">
-          <button>Submit Researches</button>
+
+        <div class="searching">
+            <form action="#" method="POST">
+                <div class="searchbox">
+                    <input type="text" name="search" required />
+                </div>
+                <div class="searchBtn">
+                    <input type="submit" value="search" />
+                </div>
+            </form>
         </div>
-      </div>
 
-      <div class="searching">
-        <form action="#" method="POST">
-          <div class="searchbox">
-            <input type="text" name="search" required />
-          </div>
-          <div class="searchBtn">
-            <input type="submit" value="search" />
-          </div>
-        </form>
-      </div>
-
-      <div class="allResources container">
-        <% for(let i = 0 ; i < posts.length; i++) { %>
-        <div
-          class="m-1 mb-5 eachCard"
-          data-aos="zoom-in-up"
-          data-aos-anchor-placement="top-bottom"
-          data-aos-duration="1000"
-        >
-          <img src="/images/res1.jpg" class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title researchTitle">
-              <%= posts[i].title %>
-            </h5>
-            <p class="card-text">
-              <%= posts[i].summary %>
-            </p>
-          </div>
+        <div class="allResources container">
+            <% for(let i = 0 ; i < posts.length; i++) { %>
+                <a href="/researches/single/<%= posts[i]._id %>">
+                    <div class="m-1 mb-5 eachCard" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
+                        <img src="/images/res1.jpg" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title researchTitle">
+                                <%= posts[i].title %>
+                            </h5>
+                            <p class="card-text">
+                                <%- posts[i].BriefDesciption %>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
         </div>
-        <% } %>
-      </div>
 
-      <%- include('./partials/pagination.ejs') %>
+        <%- include('./partials/pagination.ejs') %>
     </section>
 
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $('.submitResources').on('click', e => {
-      window.location = '/researches/new';
-    });
-    $('.researchTitle').on('click', e => {
-      window.location = '/researches/single';
-    });
-  </script>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script>
+        $('.submitResources').on('click', e => {
+            window.location = '/researches/new';
+        });
+        $('.researchTitle').on('click', e => {
+            window.location = '/researches/single';
+        });
+    </script>
+
 </html>

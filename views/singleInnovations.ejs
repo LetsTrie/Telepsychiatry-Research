@@ -1,191 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/singleResearcher.css" />
-    <title>Innovation | Telepsychiatry Research</title>
-  </head>
+        <link rel="stylesheet" href="/css/singleResearcher.css" />
+        <title>
+            <%= data.title %> | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <div>
-      <header>
-        <nav>
-          <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
-      <!-- NEXT -->
-      <section class="containerr">
-        <div class="contentTitle">
-          <p>
-            Decriminalizing suicide in Bangladesh
-          </p>
-        </div>
-        <div class="contentDescription">
-          <p>
-            Norms, values, and ethics are time-dependent, culturally specific
-            and dynamic. They vary from country to country or even in the same
-            country and from century to century (Cooter, 2004). Suicide is the
-            leading cause of death among young women (15–29 year) in Bangladesh
-            (Salam et al., 2017). However, it is stigmatized, neglected and
-            considered a criminal offense according to section 309 of the Penal
-            Code “Whoever attempts to commit suicide and does any act towards
-            the commission of such offense, shall be punished with simple
-            imprisonment for a term which may extend to one year, or with fine,
-            or with both” (Penal code 1860). It gives police the power to arrest
-            people for attempting suicide and the court can punish. Patients
-            frequently leave the hospital without completing the treatment to
-            avoid the legal proceedings. Moreover, people are afraid of sharing
-            suicide intent or seeking help or admitting previous suicide attempt
-            to avoid social or legal harassments. My inborn religious believes,
-            and conservative moral or cultural values hardly give me any scope
-            to ventilate my distress and seek help. I should have the freedom to
-            choose between life and death, and the decision to die by suicide is
-            my right according to Libertarians perspective (Mishara and
-            Weisstub, 2005). My country should not force me to drag a life that
-            has no charm to me against my desire. However, human rights,
-            philosophy, religious beliefs, ethics, and reality hardly stand in
-            the same line. Autonomy is my right; however, my religious beliefs
-            on God's sovereign power over my life and death prevent me from
-            killing myself (Ahaddour et al., 2017). Moreover, the conflict
-            persists between personal autonomy and responsibility to society
-            (Khan and Mian, 2010). Few critics may argue that if there was no
-            religious prohibition or law against suicide, the rate might have
-            been increased. However, we need to keep in mind that “suicide is a
-            matter for treatment and not punishment” (Suryadevara and Tandon,
-            2018). Moreover, the World Health Organization recommended all
-            countries to review the legal provision of suicide to provide
-            adequate scope to seek help (World Health Organization, 2014).
-            Despite these initiatives, suicide is considered a crime in 21 of
-            the 51 nations in Asia (Tandon and Nathani, 2018). Many researchers
-            consider suicide attempts as a cry for help. When people have no
-            easy scope to express their distress or receive attention, they
-            forced to take alternative pathway. Germany was the first country to
-            decriminalize attempted suicide (Kazarian and Evans, 2001) and most
-            of the developed countries followed. Bangladesh as a part of the
-            Indian Subcontinent inherited the Penal Code Act 1860 at the time of
-            its liberation and this 118-year-old law is the backbone of the
-            legal frame. However, the law is going through modification. In a
-            judgment, the Delhi High Court condemned section 309 as “unworthy of
-            society” (Behere et al., 2017) and following a series of events the
-            section 309 of the Indian Panel Code was deleted on December 10,
-            2014 from the statute book. Bangladesh can follow the same path. The
-            demand for decriminalization has been raised in other Asian
-            countries. Majeed et al., (2018) recently published a paper with
-            this demand for Pakistan. They considered the decimalization will
-            provide better access to health care due to the lowered stigma and
-            removal of legal restriction. Moreover, after the decriminalization
-            of suicide, the rate of suicide reduced in most countries (Kahn and
-            Lester, 2013). Bangladesh has enacted a new law on Mental Health
-            Act-2018 (Mental Health Act, 2018) and it is high time to
-            decriminalize the suicide attempt in Bangladesh. However, we should
-            empower legal authorities to ensure care for people for attempting
-            suicide not to punish. The threat of punishment hardly prevents a
-            person who dares to kill one’s own life. The society and the state
-            should provide better support, care and adequate scope for everybody
-            to seek help when they are in distress and discomfort.
-          </p>
-        </div>
+        <header>
+            <nav>
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
+        <!-- NEXT -->
+        <section class="containerr">
+            <div class="contentTitle">
+                <p>
+                    <%= data.title %>
+                </p>
+            </div>
+            <div class="contentDescription">
+                <p>
+                    <%- data.BriefDesciption %>
+                </p>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Financial support</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              This work received no specific grant from any funding agency,
-              commercial or not-for-profit sectors.
-            </p>
-          </div>
-        </div>
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Conflict of interest</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              None.
-            </p>
-          </div>
-        </div>
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Acknowledgement</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              The author acknowledges the support and inspiration of Mrs Suraiya
-              Begume, Abdur Rashid and Dr. Chaman Afrooz Chowdhury.
-            </p>
-          </div>
-        </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Financial support</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.financialSupport %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Conflict of interest</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.conflictOfInterest %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Acknowledgement</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.Acknowledgement %>
+                    </p>
+                </div>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>References</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              Ahaddour, C., Van den Branden, S., Broeckaert, B., 2017. ‘“God is
-              the giver and taker of life”. Muslim beliefs and attitudes
-              regarding assisted suicide and euthanasia’. AJOB Empir. Bioeth.
-              https://doi.org/10.1080/23294515.2017.1420708. pp. 00–00. Behere,
-              P.B., Rao, T.S.S., Mulmule, A.N., 2017. Decriminalization of
-              Attempted Suicide Law: Journey of Fifteen Decades Vol. 57. pp.
-              2015–2017. https://doi.org/10.4103/ 0019-5545.158131. Cooter, R.,
-              2004. Bioethics. Lancet 364 (9447), 1749.
-              https://doi.org/10.1016/s0140- 6736(04)17381-9. [Online] [Accessed
-              12 December 2018] Available from. Indian Penal Code, 1860. Chapter
-              XVI: Of Offenses Affecting The Human Body. Act 45 of 1860. pp.
-              s309. Kahn, D.L., Lester, D., 2013. Efforts to decriminalize
-              suicide in Ghana, India and Singapore. Suicidology 2, 96–104.
-              Kazarian, S.H., Evans, D.R., 2001. Handbook of Cultural Health
-              Psychology. Academic Press. Khan, M.M., Mian, A.I., 2010. The one
-              truly serious philosophical problem: Ethical aspects of suicide.
-              Int. Rev. Psychiatry 22, 288–293. https://doi.org/10.3109/
-              09540261.2010.484017. Majeed, M.H., Ali, S., Sherazi, A., Afzal,
-              M.Y., 2018. Decriminalization of suicide in Pakistan – treatment
-              not punishment. Asian J. Psychiatr. 35, 6–7. https://doi.org/10.
-              1016/j.ajp.2018.04.036. Mental Health Act, 2018. Bangladesh.
-              [Online] [Accessed on 12-12-2018] Available from.
-              https://legislativediv.gov.bd/site/page/3c13bbde-76b4-41fc-89cab738dd04a0bb.
-              Mishara, B.L., Weisstub, D.N., 2005. Ethical Legal Issues Suicide
-              Res. B 28, 23–41. https://doi.org/10.1016/j.ijlp.2004.12.006.
-              Salam, S.S., Alonge, O., Islam, M.I., Hoque, D.M.E., Wadhwaniya,
-              S., Baset, M.K.U., Mashreky, S.R., Arifeen, S.El, 2017. The burden
-              of suicide in rural Bangladesh: magnitude and risk factors. Int.
-              J. Environ. Res. Public Health 14, 1–16. https://doi.
-              https://doi.org/10.1016/j.ajp.2018.12.012 Received 20 December
-              2018 Asian Journal of Psychiatry 39 (2019) 91–92 1876-2018/ © 2018
-              Elsevier B.V. All rights reserved. T org/10.3390/ijerph14091032.
-              [Online] Available from. Suryadevara, U., Tandon, R., 2018.
-              Decriminalization of attempted suicide across Asia- it matters !.
-              Asian J. Psychiatr. 35, A2–A3.
-              https://doi.org/10.1016/j.ajp.2018.06.001. Tandon, R., Nathani,
-              K.M., 2018. Increasing suicide rates across asia- a public health
-              crisis. Asian J. Psychiatr. 36, A2–A4.
-              https://doi.org/10.1016/j.ajp.2018.09.006. World Health
-              Organization, 2014. Preventing Suicide: A Global
-            </p>
-          </div>
-        </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>References</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%- data.references %>
+                    </p>
+                </div>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Authors</p>
-          </div>
-          <div class="content_box_details">
-            <p class="author_name">Tanjir Rashid Soron</p>
-            <p class="author_designation">
-              Telepsychiatry Research and Innovation Network, Mogbazar, 1217,
-              Dhaka, Bangladesh
-            </p>
-            <p class="author_email">Email: tanjirsoron@yahoo.com</p>
-          </div>
-        </div>
-      </section>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Authors</p>
+                </div>
+                <div class="content_box_details">
+                    <%- data.authors %>
+                </div>
+            </div>
+        </section>
     </div>
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+
 </html>

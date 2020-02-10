@@ -16,20 +16,22 @@
             <div class="my-3 divider"></div>
         </header>
 
-        <% if(successMessage != ''){ %>
-            <div class="alert alert-success" role="alert">
-                <%= successMessage %>
-            </div>
-            <% } %>
-                <div id="alert" class="alert alert-danger" role="alert"></div>
-                <div class="contactUs">
-                    <div class="container">
-                        <div class="wrapper">
-                            <div class="contactUs_header text-center">
-                                <p>Contact Us</p>
-                            </div>
-                            <div class="contactUs_form">
-                                <form action="/contactUs" method="POST">
+
+        <div class="contactUs">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="contactUs_header text-center">
+                        <p>Contact Us</p>
+                    </div>
+                    <div class="contactUs_form">
+                        <form action="/contactUs" method="POST">
+                            <div id="alert" class="alert alert-danger" role="alert"></div>
+
+                            <% if(successMessage != ''){ %>
+                                <div class="alert alert-success" role="alert">
+                                    <%= successMessage %>
+                                </div>
+                                <% } %>
                                     <div class="flex-parentt">
                                         <div class="flex-childd">
                                             <p>Name :</p>
@@ -48,11 +50,11 @@
                                     <div class="submit">
                                         <button id="submit-btn">Submit</button>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
 
     <%- include('./partials/footer')%>
@@ -73,22 +75,24 @@
             }
 
             $('#submit-btn').click((e) => {
+                e.preventDefault()
                 console.log('submit')
-                const name = $('#name').val()
-                const email = $('#email').val()
-                const message = $('#message').val()
+                const name = $('#name').val().trim()
+                const email = $('#email').val().trim()
+                const message = $('#message').val().trim()
+                console.log(name, email, message.length);
+
                 let error = false
+                    // name 4 length
                 if (!isAlphaSpace(name)) {
                     error = true
                     $('#alert').show();
                     $('#alert').html('Name supports only alphabets and spaces')
-                }
-                if (message.length < 50) {
+                } else if (message.length < 50) {
                     error = true
                     $('#alert').show();
                     $('#alert').html('Message must at least be 50 characters')
                 }
-
                 if (!error) {
                     $('#form').submit()
                 }

@@ -1,142 +1,162 @@
-const innovationModel = require("../models/innovations");
-const { innovationValidation } = require("./validation");
+const InnovationModel = require('../models/innovations');
+const { pagination } = require('./utils');
+const LIMIT = 2;
 
-const LIMIT = 9;
-module.exports.getSingleInnovation = async(req, res) => {
-    const id = req.params.id
-    const singleInnovation = await innovationModel.findOne({ _id: id })
-    res.render('singleInnovations', {
-        data: singleInnovation
-    })
-}
-module.exports.getInnovations = async(req, res, next) => {
-    const page = +req.query.page || 1;
-    const data = await innovationModel
-        .find()
-        .limit(LIMIT)
-        .skip(LIMIT * page - LIMIT);
-    const totalItems = await innovationModel.countDocuments();
-
-    return res.render("innovations", {
-        data: data,
-        currentPage: page,
-        hasNextPage: page * LIMIT < totalItems,
-        hasPreviousPage: page > 1,
-        nextPage: page + 1,
-        previousPage: page - 1,
-        lastPage: Math.ceil(totalItems / LIMIT)
-    });
+exports.getInnovation = async (req, res) => {
+  const data = await InnovationModel.findById(req.params.id);
+  res.render('singleInnovations', { data });
 };
 
-module.exports.createInnovations = (req, res, next) => {
-    return res.render("createInnovations");
+exports.getInnovations = async (req, res, next) => {
+  const page = req.query.page || 1;
+  const data = await InnovationModel.find()
+    .limit(LIMIT)
+    .skip((LIMIT - 1) * page);
+  const totalItems = await InnovationModel.countDocuments();
+  return res.render('innovations', {
+    data,
+    ...pagination(page, LIMIT, totalItems)
+  });
 };
 
-module.exports.postInnovations = async(req, res, next) => {
-    const {
-        title,
-        BriefDesciption,
-        conflictOfInterest,
-        financialSupport,
-        Acknowlegement,
-        references,
-        authors
-    } = req.body;
+exports.createInnovations = async (req, res, next) => {
+  const {
+    title,
+    BriefDesciption,
+    conflictOfInterest,
+    financialSupport,
+    Acknowlegement,
+    references,
+    authors
+  } = req.body;
 
-    let modifiedDesciption = BriefDesciption;
+  let modifiedDesciption = (x = BriefDesciption);
 
-    if (BriefDesciption.startsWith("<p>") && BriefDesciption.endsWith("</p>")) {
-        modifiedDesciption = BriefDesciption.substring(
-            3,
-            BriefDesciption.length - 4
-        );
-    }
+  if (x.startsWith('<p>') && x.endsWith('</p>')) {
+    modifiedDesciption = x.substring(3, x.length - 4);
+  }
 
-    const newInnovations = new innovationModel({
-        title,
-        BriefDesciption: modifiedDesciption,
-        conflictOfInterest,
-        financialSupport,
-        Acknowlegement,
-        references,
-        authors
-    });
+  const newInnovations = new InnovationModel({
+    title,
+    BriefDesciption: modifiedDesciption,
+    conflictOfInterest,
+    financialSupport,
+    Acknowlegement,
+    references,
+    authors
+  });
 
-    await newInnovations.save();
-    res.redirect("/innovations");
+  await newInnovations.save();
+  res.redirect('/innovations');
 };
 
-module.exports.searchInnovations = async(req, res, next) => {
-    const { search } = req.body;
+module.exports.searchInnovations = async (req, res, next) => {
+  const { search } = req.body;
 
-    const page = +req.query.page || 1;
-    const data = await innovationModel
-        .find({
-            $or: [{
-                    title: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                },
-                {
-                    objective: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                },
-                {
-                    content: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                },
-                {
-                    tags: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                }
-            ]
-        })
-        .limit(LIMIT)
-        .skip(LIMIT * page - LIMIT);
-    const totalItems = await innovationModel
-        .find({
-            $or: [{
-                    title: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                },
-                {
-                    objective: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                },
-                {
-                    content: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                },
-                {
-                    tags: {
-                        $regex: search,
-                        $options: "i"
-                    }
-                }
-            ]
-        })
-        .countDocuments();
+  const page = req.query.page || 1;
+  const data = await InnovationModel.find({
+    $or: [
+      {
+        title: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        BriefDesciption: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        conflictOfInterest: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
 
-    return res.render("innovations", {
-        data: data,
-        currentPage: page,
-        hasNextPage: page * LIMIT < totalItems,
-        hasPreviousPage: page > 1,
-        nextPage: page + 1,
-        previousPage: page - 1,
-        lastPage: Math.ceil(totalItems / LIMIT)
-    });
+      {
+        financialSupport: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+
+      {
+        Acknowlegement: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        references: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        authors: {
+          $regex: search,
+          $options: 'i'
+        }
+      }
+    ]
+  })
+    .limit(LIMIT)
+    .skip(LIMIT * page - LIMIT);
+  const totalItems = await InnovationModel.find({
+    $or: [
+      {
+        title: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        BriefDesciption: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        conflictOfInterest: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+
+      {
+        financialSupport: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+
+      {
+        Acknowlegement: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        references: {
+          $regex: search,
+          $options: 'i'
+        }
+      },
+      {
+        authors: {
+          $regex: search,
+          $options: 'i'
+        }
+      }
+    ]
+  }).countDocuments();
+
+  return res.render('innovations', {
+    data,
+    ...pagination(page, LIMIT, totalItems)
+  });
 };
+// search er por pagination kaj korbe na..
+// pagination universal kora hoy nai..

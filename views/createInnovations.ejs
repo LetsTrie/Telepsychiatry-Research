@@ -2,203 +2,132 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/createInnovations.css" />
-        <title>Create new Innovations | Telepsychiatry Research</title>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/createInnovations.css" />
+  <title>Create new Innovations | Telepsychiatry Research</title>
 </head>
 
 <body>
-    <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-        <div class="createInnovations">
-            <div class="alert alert-danger" id="alert" role="alert"></div>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="my-3 divider"></div>
+    <div class="createInnovations">
+      <div class="alert alert-danger" id="alert" role="alert"></div>
 
-            <div class="createInnovations__header">
-                <p id="submitInnovations">Submit new Innovation</p>
+      <div class="createInnovations__header">
+        <p id="submitInnovations">Submit new Innovations</p>
+      </div>
+      <div class="input_boxes">
+        <form action="/innovations/new" method="POST">
+          <div class="one_box">
+            <div class="box_header">
+              <p>Title:</p>
             </div>
-            <div class="input_boxes">
-                <form id="form" action="/innovations" method="POST">
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>Title:</p>
-                        </div>
-                        <div class="input_box">
-                            <input type="text" name="title" id="title" placeholder="Title" />
-                        </div>
-                    </div>
-
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>Breif Description:</p>
-                        </div>
-                        <div class="input_box">
-                            <textarea name="BriefDesciption" id="BDeditor"> </textarea>
-                        </div>
-                    </div>
-
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>Conflict of Interest:</p>
-                        </div>
-                        <div class="input_box">
-                            <textarea name="conflictOfInterest" cols="30" rows="3"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>Financial Support:</p>
-                        </div>
-                        <div class="input_box">
-                            <textarea name="financialSupport" cols="30" rows="3"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>Acknowlegement:</p>
-                        </div>
-                        <div class="input_box">
-                            <textarea name="Acknowlegement" cols="30" rows="3"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>
-                                References:<span class="smallText"> (Use List Style) </span>
-                            </p>
-                        </div>
-                        <div class="input_box">
-                            <textarea name="references" id="Reditor"> </textarea>
-                        </div>
-                    </div>
-
-                    <div class="one_box">
-                        <div class="box_header">
-                            <p>
-                                Authors:
-                                <span class="smallText"> (Name, Designation, Email) </span>
-                            </p>
-                        </div>
-                        <div class="input_box">
-                            <textarea name="authors" id="Aeditor"> </textarea>
-                        </div>
-                    </div>
-
-                    <div class="createInnovations__submit">
-                        <button id="form-submit">Submit</button>
-                    </div>
-                </form>
+            <div class="input_box">
+              <input type="text" name="title" id="title" placeholder="Title" />
             </div>
-        </div>
-    </section>
+          </div>
+
+          <div class="flex-parent">
+            <div class="flex-child">
+              <div class="form-header">
+                <p>Project Type:</p>
+              </div>
+              <div class="form-selectpicker">
+                <select class="selectpicker" name="projectType" data-width="100%" title="Select Page Types" data-size="6"
+                  required>
+                  <option value="Program">Program</option>
+                  <option value="Research Project">
+                    Research Project
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="flex-child">
+              <div class="form-header">
+                <p>Tag:<span> (Comma Separated) </span></p>
+              </div>
+              <div>
+                <input type="text" name="tags" id="tag" />
+              </div>
+            </div>
+          </div>
+
+          <div class="one_box">
+            <div class="box_header">
+              <p>Objective:</p>
+            </div>
+            <div class="input_box">
+              <textarea name="objective" id="summary" cols="30" rows="5"></textarea>
+            </div>
+          </div>
+
+          <div class="one_box">
+            <div class="box_header">
+              <p>Breif Description:</p>
+            </div>
+            <div class="input_box">
+              <textarea name="description" id="editor"> </textarea>
+            </div>
+          </div>
+          <div class="createInnovations__submit">
+            <button id="form-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </body>
 <%- include('./partials/vendorsBottom')%>
-    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-    <script>
-        $(document).ready(() => {
-            console.log('innovations ready');
+<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+<script>
+  ClassicEditor.create(document.querySelector('#editor'))
+    .then(editor => {
+      console.log(editor);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 
-            let BDeditor
-            let Reditor
-            let Aeditor
-            ClassicEditor.create(document.querySelector('#BDeditor'))
-                .then(editor => {
-                    BDeditor = editor
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+    $(document).ready(() => {
+      console.log("innovations ready");
+      function isAlphaSpace(str) {
+        for (let i=0; i<str.length; i++) {
+          if (!(str[i] >= 'A' && str[i] <= 'Z') && !(str[i] >= 'a' && str[i] <= 'z') && str[i] != ' ' && str[i] != ','){
+            return false
+          }
+        }
+        return true
+      }
+      console.log(isAlphaSpace('is ,alpha'))
 
-            ClassicEditor.create(document.querySelector('#Reditor'))
-                .then(editor => {
-                    Reditor = editor
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-
-            ClassicEditor.create(document.querySelector('#Aeditor'))
-                .then(editor => {
-                    Aeditor = editor
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-
-            function isAlphaSpace(str) {
-                for (let i = 0; i < str.length; i++) {
-                    if (!(str[i] >= 'A' && str[i] <= 'Z') &&
-                        !(str[i] >= 'a' && str[i] <= 'z') &&
-                        str[i] != ' ' &&
-                        str[i] != ','
-                    ) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            console.log(isAlphaSpace('is ,alpha'));
-
-            $('#form-submit').click(e => {
-                e.preventDefault()
-                const title = $('#title').val()
-                const conflictOfInterest = $('#conflictOfInterest').val();
-                const financialSupport = $('#financialSupport')
-                const Acknowlegement = $('#Acknowlegement').val();
-                const Description = BDeditor.getData()
-                const Authors = Aeditor.getData()
-                const References = Reditor.getData()
-                let error = false;
-                if (title.length < 5 || title.length > 50) {
-                    error = true;
-                    $('#alert').show();
-                    $('#alert').html('Adjust the length of title');
-                    window.scrollTo(0, 0);
-                } else if (financialSupport < 5 || financialSupport > 10) {
-                    error = true;
-                    $('#alert').show();
-                    $('#alert').html('Adjust the length of financial support');
-                    window.scrollTo(0, 0);
-                } else if (conflictOfInterest < 5 || conflictOfInterest > 10) {
-                    error = true;
-                    $('#alert').show();
-                    $('#alert').html('Adjust the length of conflict of interest');
-                    window.scrollTo(0, 0);
-                } else if (Acknowlegement < 5 || Acknowlegement > 20) {
-                    error = true;
-                    $('#alert').show()
-                    $('#alert').html('Adjust the length of acknowledgements');
-                    window.scrollTo(0, 0);
-                } else if (Description < 50) {
-                    error = true;
-                    $('#alert').show()
-                    $('#alert').html('Adjust the length of description');
-                    window.scrollTo(0, 0);
-                } else if (References < 5 || References > 100) {
-                    error = true;
-                    $('#alert').show()
-                    $('#alert').html('Adjust the length of references');
-                    window.scrollTo(0, 0);
-                } else if (Authors < 1) {
-                    error = true;
-                    $('#alert').show()
-                    $('#alert').html('Adjust the length of authors');
-                    window.scrollTo(0, 0);
-                }
-                if (!error) {
-                    console.log('submitted');
-                    $('#form').submit();
-                }
-            });
-        });
-    </script>
+      $("#form-submit").click(e => {
+        const title = $("#title").val();
+        const tag = $("#tag").val();
+        const summary = $("#summary").val();
+        let error = false
+        if (title.length < 20) {
+          error = true;
+          $("#alert").show();
+          $("#alert").html("Title must at least be 20 characters long");
+        }
+        if (!isAlphaSpace(tag)) {
+          error = true;
+          $("#alert").show();
+          $("#alert").html("Tags may contain only alphabets and spaces");
+        }
+        if (summary.length < 100) {
+          error = true;
+          $("#alert").show();
+          $("#alert").html("Objective must at least be 100 characters long");
+        }
+        if (!error) {
+          console.log('submitted')
+        }
+      });
+    });
+</script>
 
 </html>

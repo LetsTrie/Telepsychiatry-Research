@@ -1,31 +1,30 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const innovationsSchema = new mongoose.Schema({
     title: {
-        type: String
+      type: String,
+      required: [true, 'Add a title']
     },
-    BriefDesciption: {
-        type: String
+    tags: {
+      type: [String],
+      required: [true, 'Add a tag']
     },
-    conflictOfInterest: {
-        type: String
+    projectType: {
+      type: String,
+      required: [true, 'Select page type']
     },
-    financialSupport: {
-        type: String
+    objective: {
+      type: String,
+      required: [true, 'Add an objective']
     },
-    Acknowlegement: {
-        type: String
-    },
-    references: {
-        type: String
-    },
-    authors: {
-        type: String
+    description: {
+      type: String,
+      required: [true, 'Add a brief description']
     },
     createdAt: {
-        type: Date,
-        default: Date.now()
+      type: Date,
+      default: Date.now()
     }
 });
 
-module.exports = mongoose.model("innovations", innovationsSchema);
+exports.InnovationsModel = mongoose.model('innovations', innovationsSchema);

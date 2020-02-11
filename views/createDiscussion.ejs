@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/createDiscussion.css" />
+    <title>Create new Discussion | Telepsychiatry Research</title>
+  </head>
 
-<head>
-  <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/createDiscussion.css" />
-  <title>Create new Discussion | Telepsychiatry Research</title>
-</head>
-
-<body>
-  <section class="wrapper">
-    <nav>
-      <%- include('./partials/navbar')%>
-    </nav>
-    <div class="my-3 divider"></div>
-    <form action="/forum" method="POST">
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
       <div class="createDiscussion">
         <div class="createDiscussion__header">
           <p>Create new discussion</p>
@@ -51,19 +49,17 @@
           </div>
         </div>
       </div>
-    </form>
-  </section>
-</body>
-<%- include('./partials/vendorsBottom')%>
-<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-<script>
-  ClassicEditor.create(document.querySelector('#editor'))
-    .then(editor => {
-      console.log(editor);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-</script>
-
+    </section>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor.create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
 </html>

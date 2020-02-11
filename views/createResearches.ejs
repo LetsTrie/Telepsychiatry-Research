@@ -1,182 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/createResources.css" />
-    <title>Create new Resources | Telepsychiatry Research</title>
-  </head>
+        <link rel="stylesheet" href="/css/createResources.css" />
+        <title>Create new Resources | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-      <div class="createResources">
-        <div class="alert alert-danger" id="alert" role="alert"></div>
-        <div class="createResources__header">
-          <p id="submitResources">Submit new Resources</p>
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+        <div class="createResources">
+            <div class="alert alert-danger" id="alert" role="alert"></div>
+            <div class="createResources__header">
+                <p id="submitResources">Submit new Research</p>
+            </div>
+            <div class="input_boxes">
+                <form id="form" action="/researches/" method="POST">
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Title:</p>
+                        </div>
+                        <div class="input_box">
+                            <input type="text" name="title" id="title" placeholder="Title" />
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Breif Description:</p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="BriefDesciption" id="BDeditor"> </textarea>
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Conflict of Interest:</p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="conflictOfInterest" id="conflictOfInterest" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Financial Support:</p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="financialSupport" id="financialSupport" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Acknowlegement:</p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="Acknowlegement" id="Acknowlegement" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>
+                                References: <span class="smallText"> (Use List Style) </span>
+                            </p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="references" id="Reditor"> </textarea>
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>
+                                Authors:
+                                <span class="smallText"> (Name, Designation, Email) </span>
+                            </p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="authors" id="Aeditor"> </textarea>
+                        </div>
+                    </div>
+                    <div class="createResources__submit">
+                        <button id="form-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="input_boxes">
-          <form action="/researches/new_research" method="POST">
-            <div class="one_box">
-              <div class="box_header"><p>Title:</p></div>
-              <div class="input_box">
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  placeholder="Title"
-                />
-              </div>
-            </div>
-
-            <div class="one_box">
-              <div class="box_header">
-                <p>Authors: <span> (Comma Separated) </span></p>
-              </div>
-              <div class="input_box">
-                <input
-                  type="text"
-                  name="authors"
-                  id="authors"
-                  placeholder="Authors"
-                />
-              </div>
-            </div>
-
-            <div class="two_box flex-parent">
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>Page Type:</p></div>
-                <div class="form-selectpicker two_box_spicker">
-                  <select
-                    class="selectpicker"
-                    data-width="100%"
-                    title="Select Page Types"
-                    id="pageType"
-                    data-selected-text-format="count > 1"
-                    name="pageType"
-                    data-size="6"
-                    required
-                  >
-                    <option value="Implementation">Implementation</option>
-                    <option value="Policy and Advocacy">
-                      Policy and Advocacy
-                    </option>
-
-                    <option value="Evaluation">Evaluation</option>
-                    <option value="Health Promotion">Health Promotion</option>
-                    <option value="Screening/diagonstic tools">
-                      Screening/diagonstic tools
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Publication year:</p>
-                </div>
-                <div>
-                  <div class="form-selectpicker two_box_spicker">
-                    <select
-                      class="selectpicker"
-                      data-width="100%"
-                      title="Select Publication Year"
-                      data-size="6"
-                      id="publicationYear"
-                      name="publicationYear"
-                      required
-                    >
-                      <% for(let i = (new Date()).getFullYear(); i >= 1940; i--)
-                      { %>
-                      <option value="<%= i %>"><%= i %></option>
-                      <% } %>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="one_box">
-              <div class="box_header"><p>Summary:</p></div>
-              <div class="input_box">
-                <textarea
-                  name="summary"
-                  id="summary"
-                  cols="30"
-                  rows="5"
-                ></textarea>
-              </div>
-            </div>
-
-            <div class="one_box">
-              <div class="box_header"><p>Breif Description:</p></div>
-              <div class="input_box">
-                <textarea name="description" id="editor"> </textarea>
-              </div>
-            </div>
-
-            <div class="createResources__submit">
-              <button id="form-submit">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
     </section>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-  <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    ClassicEditor.create(document.querySelector("#editor"))
-      .then(editor => {
-        console.log(editor);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(() => {
+            console.log('resource ready');
+            let bdeditor;
+            let Reditor;
+            let Aeditor;
+            ClassicEditor.create(document.querySelector('#BDeditor'))
+                .then(editor => {
+                    bdeditor = editor;
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
-    $(document).ready(() => {
-      console.log("resource ready");
-      function isAlphaSpace(str) {
-        for (let i=0; i<str.length; i++) {
-          if (!(str[i] >= 'A' && str[i] <= 'Z') && !(str[i] >= 'a' && str[i] <= 'z') && str[i] != ' ' && str[i] != ','){
-            return false
-          }
-        }
-        return true
-      }
-      console.log(isAlphaSpace('is ,alpha'))
+            ClassicEditor.create(document.querySelector('#Reditor'))
+                .then(editor => {
+                    Reditor = editor;
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
-      $("#form-submit").click(e => {
-        const title = $("#title").val();
-        const authors = $("#authors").val();
-        const summary = $("#summary").val();
-        let error = false
-        if (title.length < 20) {
-          error = true;
-          $("#alert").show();
-          $("#alert").html("Title must at least be 20 characters long");
-        }
-        if (!isAlphaSpace(authors)) {
-          error = true;
-          $("#alert").show();
-          $("#alert").html("Authors may contain only alphabets and spaces");
-        }
-        if (summary.length < 100) {
-          error = true;
-          $("#alert").show();
-          $("#alert").html("Summary must at least be 100 characters long");
-        }
-        if (!error) {
-          console.log('submitted')
-          $("#form").submit();
-        }
-      });
-    });
-  </script>
+            ClassicEditor.create(document.querySelector('#Aeditor'))
+                .then(editor => {
+                    Aeditor = editor;
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            function isAlphaSpace(str) {
+                for (let i = 0; i < str.length; i++) {
+                    if (!(str[i] >= 'A' && str[i] <= 'Z') &&
+                        !(str[i] >= 'a' && str[i] <= 'z') &&
+                        str[i] != ' ' &&
+                        str[i] != ','
+                    ) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            console.log(isAlphaSpace('is ,alpha'));
+
+            $('#form-submit').click(e => {
+                e.preventDefault();
+                const title = $('#title').val();
+                const conflictOfInterest = $('#conflictOfInterest').val();
+                const financialSupport = $('#financialSupport');
+                const Acknowlegement = $('#Acknowlegement').val();
+                const Description = bdeditor.getData();
+                const Authors = Aeditor.getData();
+                const References = Reditor.getData();
+                let error = false;
+                if (title.length < 5 || title.length > 25) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of title');
+                    window.scrollTo(0, 0);
+                } else if (financialSupport < 5 || financialSupport > 10) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of financial support');
+                    window.scrollTo(0, 0);
+                } else if (conflictOfInterest < 5 || conflictOfInterest > 10) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of conflict of interest');
+                    window.scrollTo(0, 0);
+                } else if (Acknowlegement < 5 || Acknowlegement > 20) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of acknowledgements');
+                    window.scrollTo(0, 0);
+                } else if (Description < 50) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of description');
+                    window.scrollTo(0, 0);
+                } else if (References < 5 || References > 100) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of references');
+                    window.scrollTo(0, 0);
+                } else if (Authors < 1) {
+                    error = true;
+                    $('#alert').show();
+                    $('#alert').html('Adjust the length of authors');
+                    window.scrollTo(0, 0);
+                }
+                if (!error) {
+                    console.log('submitted');
+                    $('#form').submit();
+                }
+            });
+        });
+    </script>
+
 </html>

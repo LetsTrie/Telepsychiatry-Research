@@ -1,8 +1,15 @@
 const router = require('express').Router();
-const innovations = require('../controllers/innovations');
+const {
+    getInnovation,
+    getInnovations,
+    getNewInnovations,
+    postInnovations
+} = require('../controllers/innovations');
 
-router.get('/', innovations.getInnovations);
-router.get('/new', innovations.createInnovations);
-router.post('/new', innovations.postInnovations);
+router.get('/', getInnovations);
+router.get('/newInnovation', getNewInnovations);
+router.post('/', postInnovations);
+
+router.get('/:id', getInnovation);
 
 module.exports = router;

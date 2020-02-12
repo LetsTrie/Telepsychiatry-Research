@@ -1,5 +1,6 @@
-const InnovationModel = require('../models/innovations');
+const { InnovationModel } = require('../models/innovations');
 const { pagination } = require('./utils');
+const joi = require('@hapi/joi')
 
 const LIMIT = 9;
 
@@ -31,7 +32,7 @@ exports.getInnovations = async(req, res) => {
             ]
         };
     } else baseUrl += `?page=`;
-
+    console.log(searchKey)
     const data = await InnovationModel.find(searchKey)
         .limit(LIMIT)
         .skip(LIMIT * (page - 1));
@@ -62,16 +63,33 @@ exports.postInnovations = async(req, res) => {
         modifiedDesciption = x.substring(3, x.length - 4);
     }
 
-    const newInnovations = new InnovationModel({
-        title,
-        BriefDesciption: modifiedDesciption,
-        conflictOfInterest,
-        financialSupport,
-        Acknowlegement,
-        references,
-        authors
-    });
+    const schema = joi.object().keys({
+        title: joi.string().required().min(10),
+        BriefDesciption: joi.string().required(),
+        conflictOfInterest: joi.string().required(),
+        financialSupport: joi.string().required(),
+        Acknowlegement: joi.string().required(),
+        references: joi.string().required(),
+        authors: joi.string().required()
+    })
 
-    await newInnovations.save();
-    res.redirect('/innovations');
+    try {
+        await schema.validate(req.body)
+        const newInnovations = new InnovationModel({
+            title,
+            BriefDesciption: modifiedDesciption,
+            conflictOfInterest,
+            financialSupport,
+            Acknowlegement,
+            references,
+            authors
+        });
+
+        await newInnovations.save();
+        res.redirect('/innovations');
+    } catch (err) {
+        console.log(err)
+        req.flash('validationError', err.details)
+    }
+
 };

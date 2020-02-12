@@ -1,238 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
-    <link rel="stylesheet" href="/css/register.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="/css/register.css" />
 
-    <title>Register | General User | Telepsychiatry Research</title>
-  </head>
+        <title>Register | General User | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-      <div class="createResources">
-        <div class="createResources__header">
-          <p id="submitResources">Register General User</p>
-        </div>
-        <div class="input_boxes">
-          <form>
-            <div class="two_box flex-parent">
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>First Name:</p></div>
-                <div class="input_box">
-                  <input type="text" name="authors" placeholder="Authors" />
-                </div>
-              </div>
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Last Name:</p>
-                </div>
-                <div>
-                  <div class="input_box">
-                    <input type="text" name="authors" placeholder="Authors" />
-                  </div>
-                </div>
-              </div>
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+        <div class="createResources">
+            <div id="alert" class="alert alert-danger"></div>
+            <div class="createResources__header">
+                <p id="submitResources">Register General User</p>
             </div>
-            <div class="two_box flex-parent">
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>Email:</p></div>
-                <div class="input_box">
-                  <input type="text" name="email" placeholder="Email" />
-                </div>
-              </div>
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Phone Number:</p>
-                </div>
-                <div>
-                  <div class="input_box">
-                    <input
-                      type="text"
-                      name="phoneNumber"
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="two_box flex-parent">
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>Password:</p></div>
-                <div class="input_box">
-                  <input type="text" name="password" placeholder="password" />
-                </div>
-              </div>
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Confirm Password:</p>
-                </div>
-                <div>
-                  <div class="input_box">
-                    <input
-                      type="text"
-                      name="cPassword"
-                      placeholder="Confirm Password"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="two_box flex-parent">
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Gender:</p>
-                </div>
-                <div class="input_box slct_picker">
-                  <div class="form-selectpicker">
-                    <select
-                      class="selectpicker"
-                      data-width="100%"
-                      title="Gender"
-                      name="gender"
-                      data-size="6"
-                      required
-                    >
+            <div class="input_boxes">
+                <form id="form" action="/auth/register/new/gen" method="POST">
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>First Name:</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" id="fname" name="fname" placeholder="First name" />
+                            </div>
+                        </div>
+                        <div class="two_box_one  flex-child">
+                            <div class="two_box_header  form-header">
+                                <p>Last Name:</p>
+                            </div>
+                            <div>
+                                <div class="input_box">
+                                    <input type="text" name="lname" id="lname" placeholder="Last name" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Email:</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" name="email" id="email" placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="two_box_one  flex-child">
+                            <div class="two_box_header  form-header">
+                                <p>Phone Number:</p>
+                            </div>
+                            <div>
+                                <div class="input_box">
+                                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Password:</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="password" id="password" name="password" placeholder="password" />
+                            </div>
+                        </div>
+                        <div class="two_box_one  flex-child">
+                            <div class="two_box_header  form-header">
+                                <p>Confirm Password:</p>
+                            </div>
+                            <div>
+                                <div class="input_box">
+                                    <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one  flex-child">
+                            <div class="two_box_header  form-header">
+                                <p>Gender:</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                    <input type="hidden" name="gender" id="gender">
+                                    <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" required>
                       <option value="Male">Male</option>
                       <option value="Female"> Female </option>
                     </select>
-                  </div>
-                </div>
-              </div>
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header">
-                  <p>Date of Birth:</p>
-                </div>
-                <div class="input_box">
-                  <input
-                    type="text"
-                    name="dob"
-                    placeholder="Date Of Birth"
-                    autocomplete="off"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="two_box flex-parent">
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header">
-                  <p>Highest Academic Degree:</p>
-                </div>
-                <div class="input_box">
-                  <input
-                    type="text"
-                    name="hADegree"
-                    placeholder="Highest Academic Degree"
-                  />
-                </div>
-              </div>
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Current Affiliation:</p>
-                </div>
-                <div>
-                  <div class="input_box">
-                    <input
-                      type="text"
-                      name="cAffiliation"
-                      placeholder="Current Affiliation"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="two_box flex-parent">
-              <div class="two_box_one  flex-child">
-                <div class="two_box_header  form-header">
-                  <p>Country:</p>
-                </div>
-                <div class="input_box slct_picker">
-                  <div class="form-selectpicker">
-                    <select
-                      class="selectpicker"
-                      data-width="100%"
-                      title="Select Country"
-                      name="country"
-                      data-size="6"
-                      required
-                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Date of Birth:</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" id="dob" name="dob" placeholder="Date Of Birth" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Highest Academic Degree:</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" id="hADegree" name="hADegree" placeholder="Highest Academic Degree" />
+                            </div>
+                        </div>
+                        <div class="two_box_one  flex-child">
+                            <div class="two_box_header  form-header">
+                                <p>Current Affiliation:</p>
+                            </div>
+                            <div>
+                                <div class="input_box">
+                                    <input type="text" id="cAffiliation" name="cAffiliation" placeholder="Current Affiliation" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one  flex-child">
+                            <div class="two_box_header  form-header">
+                                <p>Country:</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                    <input type="hidden" name="country" id="country">
+                                    <select class="selectpicker" id="countryInput" data-width="100%" title="Select Country" data-size="6" required>
                       <% for(let i = 0 ; i < country.length; i++) { %>
                       <option value="<%=i%>"><%=country[i].name%></option>
                       <% } %>
                     </select>
-                  </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="createResources__submit">
+                        <button type="submit" id="sub-btn">Submit</button>
+                    </div>
+                </form>
+                <div class="two_box_one flex-child">
+                    <div class="two_box_header form-header">
+                        <p>Display Picture:</p>
+                    </div>
+                    <form action="/auth/register/new/gen/image" method="POST" id="img-form" enctype="multipart/form-data">
+                        <div class="input_box imageFile">
+                            <input type="file" name="myImage" accept="image/x-png,image/jpg,image/jpeg" />
+                            <button type="button" class="btn btn-secondary" id="sub-img">Set</button>
+                        </div>
+                    </form>
                 </div>
-              </div>
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header">
-                  <p>Display Picture:</p>
-                </div>
-                <div class="input_box imageFile">
-                  <input
-                    type="file"
-                    name="myImage"
-                    accept="image/x-png,image/jpg,image/jpeg"
-                  />
-                </div>
-              </div>
+
+
             </div>
-          </form>
-          <div class="createResources__submit">
-            <button>Submit</button>
-          </div>
         </div>
-      </div>
     </section>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
 
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
-  <script>
-    ClassicEditor.create(document.querySelector('#editor'))
-      .then(editor => {
-        console.log(editor);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        // ClassicEditor.create(document.querySelector('#editor'))
+        //     .then(editor => {
+        //         console.log(editor);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
 
-    $('input[name="dob"]').daterangepicker({
-      autoUpdateInput: false,
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1930,
-      maxYear: parseInt(moment().format('YYYY'), 10),
-      locale: {
-        cancelLabel: 'Clear'
-      }
-    });
+        $('input[name="dob"]').daterangepicker({
+            autoUpdateInput: false,
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1930,
+            maxYear: parseInt(moment().format('YYYY'), 10),
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
 
-    $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
-    });
+        $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY'));
+        });
 
-    $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-    });
-  </script>
+        $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        function showAlert(msg) {
+            $('#alert').show()
+            $('#alert').html(msg)
+        }
+
+        $('#sub-img').click((e) => {
+            $('#img-form').submit()
+        })
+
+
+        $('#sub-btn').click((e) => {
+            e.preventDefault()
+            let error = false
+            const fname = $('#fname').val()
+            const lname = $('#lname').val()
+            const email = $('#email').val()
+            const phoneNumber = $('#phoneNumber').val()
+            const password = $('#password').val()
+            const cPassword = $('#cPassword').val()
+            const gender = $('#genderInput').val()
+            const hADegree = $('#hADegree').val()
+            const country = $('#countryInput').val()
+            const dob = $('#dob').val()
+            const cAffiliation = $('#cAffiliation').val()
+            $('#gender').val(gender)
+            $('#country').val(country)
+
+            const nameRegex = new RegExp("^[a-zA-Z ]+$")
+            const emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+            const dobRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
+            const phoneRegex = /\w+/i
+
+            if (!nameRegex.test(fname)) {
+                error = true
+                showAlert('Invalid first name')
+            } else if (!nameRegex.test(lname)) {
+                error = true
+                showAlert('Invalid last name')
+            } else if (!emailRegex.test(email)) {
+                error = true
+                showAlert('Invalid email')
+            } else if (!dobRegex.test(dob)) {
+                error = true
+                showAlert('Invalid date of birth')
+            } else if (password == '') {
+                error = true
+                showAlert('Enter password')
+            } else if (password.length < 6) {
+                error = true
+                showAlert('Password must contain at least 6 characters')
+            } else if (cPassword == '') {
+                error = true
+                showAlert('Confirm password')
+            } else if (password != cPassword) {
+                error = true
+                showAlert('Passwords do not match')
+            } else if (cAffiliation == '') {
+                error = true
+                showAlert('Enter current affiliation')
+            } else if (hADegree == '') {
+                error = true
+                showAlert('Enter highest academic degree')
+            } else if (!phoneRegex.test(phoneNumber) || phoneNumber.length < 6) {
+                error = true
+                showAlert('Invalid phone number')
+            } else if ($('#gender').val() == '') {
+                error = true
+                showAlert('Confirm gender')
+            } else if ($('#country').val() == '') {
+                error = true
+                showAlert('Confirm country')
+            }
+
+            if (!error) {
+                console.log('submitted')
+                $('#alert').hide()
+                $('#form').submit()
+            }
+        })
+    </script>
+
 </html>

@@ -179,32 +179,32 @@
         const Authors = Aeditor.getData();
         const References = Reditor.getData();
         let error = false;
-        if (title.length < 5 || title.length > 25) {
+        if (title.length < 1) {
           error = true;
           $('#alert').show();
           $('#alert').html('Adjust the length of title');
           window.scrollTo(0, 0);
-        } else if (financialSupport < 5 || financialSupport > 10) {
+        } else if (financialSupport < 1) {
           error = true;
           $('#alert').show();
           $('#alert').html('Adjust the length of financial support');
           window.scrollTo(0, 0);
-        } else if (conflictOfInterest < 5 || conflictOfInterest > 10) {
+        } else if (conflictOfInterest < 1) {
           error = true;
           $('#alert').show();
           $('#alert').html('Adjust the length of conflict of interest');
           window.scrollTo(0, 0);
-        } else if (Acknowlegement < 5 || Acknowlegement > 20) {
+        } else if (Acknowlegement < 1) {
           error = true;
           $('#alert').show();
           $('#alert').html('Adjust the length of acknowledgements');
           window.scrollTo(0, 0);
-        } else if (Description < 50) {
+        } else if (Description < 1) {
           error = true;
           $('#alert').show();
           $('#alert').html('Adjust the length of description');
           window.scrollTo(0, 0);
-        } else if (References < 5 || References > 100) {
+        } else if (References < 1) {
           error = true;
           $('#alert').show();
           $('#alert').html('Adjust the length of references');

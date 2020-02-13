@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const {
-  getInnovation,
-  getInnovations,
-  getNewInnovations,
-  postInnovations
+    getInnovation,
+    getInnovations,
+    getNewInnovations,
+    postInnovations
 } = require('../controllers/innovations');
 
 router.get('/', getInnovations);

@@ -102,7 +102,6 @@
     <script>
         $(document).ready(() => {
             console.log('innovations ready');
-
             let BDeditor
             let Reditor
             let Aeditor
@@ -114,7 +113,6 @@
                 .catch(error => {
                     console.error(error);
                 });
-
             ClassicEditor.create(document.querySelector('#Reditor'))
                 .then(editor => {
                     Reditor = editor
@@ -123,7 +121,6 @@
                 .catch(error => {
                     console.error(error);
                 });
-
             ClassicEditor.create(document.querySelector('#Aeditor'))
                 .then(editor => {
                     Aeditor = editor
@@ -146,7 +143,6 @@
                 return true;
             }
             console.log(isAlphaSpace('is ,alpha'));
-
             $('#form-submit').click(e => {
                 e.preventDefault()
                 const title = $('#title').val()
@@ -157,37 +153,37 @@
                 const Authors = Aeditor.getData()
                 const References = Reditor.getData()
                 let error = false;
-                if (title.length < 5 || title.length > 50) {
+                if (title.length < 10) {
                     error = true;
                     $('#alert').show();
                     $('#alert').html('Adjust the length of title');
                     window.scrollTo(0, 0);
-                } else if (financialSupport < 5 || financialSupport > 10) {
+                } else if (financialSupport == '') {
                     error = true;
                     $('#alert').show();
                     $('#alert').html('Adjust the length of financial support');
                     window.scrollTo(0, 0);
-                } else if (conflictOfInterest < 5 || conflictOfInterest > 10) {
+                } else if (conflictOfInterest == '') {
                     error = true;
                     $('#alert').show();
                     $('#alert').html('Adjust the length of conflict of interest');
                     window.scrollTo(0, 0);
-                } else if (Acknowlegement < 5 || Acknowlegement > 20) {
+                } else if (Acknowlegement == '') {
                     error = true;
                     $('#alert').show()
                     $('#alert').html('Adjust the length of acknowledgements');
                     window.scrollTo(0, 0);
-                } else if (Description < 50) {
+                } else if (Description.length < 50) {
                     error = true;
                     $('#alert').show()
                     $('#alert').html('Adjust the length of description');
                     window.scrollTo(0, 0);
-                } else if (References < 5 || References > 100) {
+                } else if (References == '') {
                     error = true;
                     $('#alert').show()
                     $('#alert').html('Adjust the length of references');
                     window.scrollTo(0, 0);
-                } else if (Authors < 1) {
+                } else if (Authors == '') {
                     error = true;
                     $('#alert').show()
                     $('#alert').html('Adjust the length of authors');

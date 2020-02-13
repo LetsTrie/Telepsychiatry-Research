@@ -32,10 +32,10 @@
             <div class="His_profession">
               <p class="name">Sharmin Afroz</p>
               <p class="degree">BDS, MDS - Oral & Maxillofacial Surgery</p>
-              <!-- <p class="profession">
+              <p class="profession">
                 <i class="fa fa-user"></i>&nbsp;&nbsp;Dentist
-              </p> -->
-              <!-- 
+              </p>
+
               <div class="ratingg">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -43,18 +43,22 @@
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>
                 <span class="ratingNumber">(38)</span>
-              </div> -->
+              </div>
 
-              <p class="aff">
-                <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
-                (CC) & Unit Head, Dept. of Psychiatry
-              </p>
-              <p class="college">
-                <span class="fa fa-university">&nbsp;</span> Sir Salimullah
-                Medical College & Mitford Hospital
+              <p class="location">
+                <span class="fa fa-map-marker">&nbsp;&nbsp;</span
+                >&nbsp;&nbsp;Mirpur, Dhaka &dash;
+                <span class="map_location">
+                  <a
+                    href="https://goo.gl/maps/y7ueXKkTSEQz8DvY8"
+                    target="_blank"
+                  >
+                    Get Directions
+                  </a>
+                </span>
               </p>
               <p class="bill">
-                <span class="fa fa-money">&nbsp;&nbsp;</span> $100 - $400
+                <span class="fa fa-money">&nbsp;</span> $100 - $400
               </p>
 
               <div class="bookingg">
@@ -81,6 +85,15 @@
                       href="#tab1"
                       role="tab"
                       >Overview</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      data-toggle="tab"
+                      href="#tab2"
+                      role="tab"
+                      >Locations</a
                     >
                   </li>
                 </ul>
@@ -149,6 +162,39 @@
                           <p>&rarr;&nbsp;&nbsp;&nbsp;Surgical Extractions</p>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tab2">
+                    <div class="card-text">
+                      <%for(let i = 0 ; i < 2 ; i++) { %>
+                      <div class="locationTimeMoney">
+                        <div class="location">
+                          <p class="ins_nam">Smile Dental Care</p>
+                          <p class="ins_loc">450/A Shewrapara, Mirpur, Dhaka</p>
+                          <p class="ins_dir">
+                            <a
+                              href="https://goo.gl/maps/y7ueXKkTSEQz8DvY8"
+                              target="_blank"
+                              >Get Directions</a
+                            >
+                          </p>
+                        </div>
+                        <div class="timee">
+                          <div class="time_each">
+                            <p class="dayy">Mon-Sat</p>
+                            <p class="tmm">10:00AM-2:00PM</p>
+                            <p class="tmm">4:00PM-9:00PM</p>
+                          </div>
+                          <div class="time_each">
+                            <p class="dayy">Sun</p>
+                            <p class="tmm">10:00AM-2:00PM</p>
+                          </div>
+                        </div>
+                        <div class="moneyy">
+                          <div><p>$250</p></div>
+                        </div>
+                      </div>
+                      <% } %>
                     </div>
                   </div>
                 </div>

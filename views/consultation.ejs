@@ -1,133 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/consultaion.css" />
+    <link
+      rel="stylesheet"
+      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+    />
 
-<head>
-  <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/consultaion.css" />
-  <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
-
-  <title>Psychiatric Consultations | Telepsychiatry Research</title>
-</head>
-
-<body>
-  <section>
-    <header>
-      <nav class="cnav">
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-    </header>
-    <div class="bookDoctor">
-      <div class=" container">
-        <div class="bookDoctorHeader text-center">
-          <p>Book our Doctor</p>
-        </div>
-        <div class="bookDoctorHeader__info">
-          <p>Energistically develop 24/365 outsourcing rather than market positioning sources. Collaboratively iterate
-            bricks-and-clicks relationships with sustainable deliverables. Enthusiastically productivate highly
-            efficient bandwidth for economically sound initiatives. Synergistically enhance top-line.</p>
-        </div>
-        <div class="bookDoctor__showMore text-center">
-          <button>See More</button>
-        </div>
-        <div class="all-items">
-          <div class="owl-carousel owl-theme">
-            <% for(let i = 0 ; i < 9; i++) { %>
-            <div class="item">
-              <div class="m-1 mb-5 card">
-                <img src="/images/doctor.jpg" class="card-img-top" />
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <p class="cardName">
-                      Sharmin Afroz <i class="fa fa-check-circle verified"></i>
-                    </p>
-                    <p class="cardDegree">
-                      MBBS, MD, DNB - Cardiology
-                    </p>
-
-                    <!-- <div>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star"></span>
-                      <span class="ratingCount">(38)</span>
-                    </div> -->
-                  </h5>
-
-                  <p class="card-text">
-                    <p class="aff">
-                      <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
-                      (CC) & Unit Head, Dept. of Psychiatry
-                    </p>
-                    <p class="college">
-                      <span class="fa fa-university">&nbsp;</span> Sir Salimullah
-                      Medical College & Mitford Hospital
-                    </p>
-                    <div class="twoButtons">
-                      <div><button class="doctorsProfile">View Profile</button></div>
-                      <div><button class="bookNow" data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">Book
-                          Now</button></div>
-                    </div>
+    <title>Psychiatric Consultations | Telepsychiatry Research</title>
+  </head>
+  <body>
+    <section>
+      <header>
+        <nav class="cnav">
+          <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
+      <div class="bookDoctor">
+        <div class=" container">
+          <div class="bookDoctorHeader text-center">
+            <p>Book our Doctor</p>
+          </div>
+          <div class="bookDoctorHeader__info">
+            <p>Energistically develop 24/365 outsourcing rather than market positioning sources. Collaboratively iterate bricks-and-clicks relationships with sustainable deliverables. Enthusiastically productivate highly efficient bandwidth for economically sound initiatives. Synergistically enhance top-line.</p>
+          </div>
+          <div class="bookDoctor__showMore text-center">
+            <button>See More</button>
+          </div>
+          <div class="all-items">
+            <div class="owl-carousel owl-theme">
+          <% for(let i = 0 ; i < 9; i++) { %>
+          <div class="item">
+            <div class="m-1 mb-5 card">
+              <img src="/images/doctor.jpg" class="card-img-top" />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <p class="cardName">
+                    Sharmin Afroz <i class="fa fa-check-circle verified"></i>
                   </p>
-                </div>
+                  <p class="cardDegree">
+                    MBBS, MD, DNB - Cardiology
+                  </p>
+
+                  <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>  
+                    <span class="ratingCount">(38)</span>
+                  </div>
+                </h5>
+                <p class="card-text">
+                  <p style="color: #757575"><span class="fa fa-map-marker">&nbsp;&nbsp;</span>&nbsp;&nbsp;Mirpur, Dhaka</p>
+                  <p style="color: #757575"> <span class="fa fa-money">&nbsp;</span> $100 - $400 </p>
+
+                  <div class="twoButtons">
+                    <div><button class="doctorsProfile">View Profile</button></div>
+                    <div><button class="bookNow">Book Now</button></div>
+                  </div>
+                </p>
               </div>
             </div>
-            <% } %>
+          </div>
+          <% } %>
+          </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <%- include('./partials/footer')%>
-  <%- include('./partials/bookAppointment') %>
-</body>
+    <%- include('./partials/footer')%>
+  </body>
 
-<%- include('./partials/vendorsBottom')%>
-<script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-<script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
-<script>
-  var owl = $('.owl-carousel');
-  owl.owlCarousel({
-    loop: true,
-    margin: 10,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      750: {
-        items: 1
-      },
-      960: {
-        items: 2
-      },
-      1000: {
-        items: 3
+  <%- include('./partials/vendorsBottom')%>
+  <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+  <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
+  <script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      loop: true,
+      margin: 10,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        750: {
+          items: 1
+        },
+        960: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
       }
-    }
-  });
-  owl.on('mousewheel', '.owl-stage', function (e) {
-    if (e.deltaY > 0) {
-      owl.trigger('next.owl');
-    } else {
-      owl.trigger('prev.owl');
-    }
-    e.preventDefault();
-  });
+    });
+    owl.on('mousewheel', '.owl-stage', function(e) {
+      if (e.deltaY > 0) {
+        owl.trigger('next.owl');
+      } else {
+        owl.trigger('prev.owl');
+      }
+      e.preventDefault();
+    });
 
-  document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
-    location = '/services/ourDoctors';
-  })
+    document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
+      location = '/services/ourDoctors';
+    })
 
-  $('.twoButtons .doctorsProfile').click(e => {
-    location = '/services/doctor/profile/1';
-  })
-
-</script>
-
+    $('.twoButtons .doctorsProfile').click(e => {
+      location = '/services/doctor/profile/1';
+    })
+    
+  </script>
 </html>

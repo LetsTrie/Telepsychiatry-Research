@@ -242,7 +242,7 @@ button:active {
   border-bottom-left-radius: 6px;
 }
 
-.custom_pagination .myPagination a:hover:not(.active):not(.disabledBTN) {
+.custom_pagination .myPagination a:hover:not(.active) {
   background-color: #c7c5c5;
 }
 
@@ -277,11 +277,6 @@ button:active {
   .custom_pagination .myPagination .arrow {
     font-size: 15px;
   }
-}
-
-.disabledBTN {
-  background: #bdbbbb;
-  pointer-events: none;
 }
 
 .footerr-wrapper {
@@ -395,133 +390,6 @@ p {
   margin-bottom: 8px;
 }
 
-#BOOK_APPOINTMENT_MODAL .input_boxes {
-  padding: 20px 0;
-}
-
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box {
-  padding: 5px 0;
-}
-
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p {
-  font-size: 1.5rem;
-  padding-bottom: 8px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p span {
-  font-size: 1rem;
-  color: #8a5555;
-}
-
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box {
-  width: 100%;
-}
-
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box textarea,
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box input:not([type='file']) {
-  padding: 7px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  border: 1px solid #bdb9b9;
-  width: 100%;
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-parent {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  width: 100%;
-  padding: 5px 0;
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-child {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin-bottom: 0.5rem;
-  width: 49%;
-  margin-right: 0.5rem;
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-child:last-child {
-  margin-right: 0rem;
-}
-
-@media (max-width: 900px) {
-  #BOOK_APPOINTMENT_MODAL .flex-child {
-    margin-right: 0rem;
-    width: 100%;
-  }
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-child .form-header {
-  margin-top: 8px;
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-child .form-header p {
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-child input[type='text'],
-#BOOK_APPOINTMENT_MODAL .flex-child input[type='email'],
-#BOOK_APPOINTMENT_MODAL .flex-child textarea {
-  width: 100%;
-  padding: 0.6rem;
-  margin: 5px 0px;
-  border-radius: 4px;
-  border: 1px solid #bdb9b9;
-}
-
-#BOOK_APPOINTMENT_MODAL .flex-child input[type='text']:focus,
-#BOOK_APPOINTMENT_MODAL .flex-child input[type='email']:focus,
-#BOOK_APPOINTMENT_MODAL .flex-child textarea:focus {
-  outline: none;
-}
-
-#BOOK_APPOINTMENT_MODAL .submit {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-#BOOK_APPOINTMENT_MODAL .submit button {
-  padding: 5px 30px;
-  font-size: 24px;
-  border: none;
-  outline: none;
-  color: white;
-  border-radius: 4px;
-}
-
-#BOOK_APPOINTMENT_MODAL .green-btn {
-  background: #13ce66;
-}
-
-#BOOK_APPOINTMENT_MODAL .red-btn {
-  background: rgba(194, 43, 5, 0.925);
-}
-
-#BOOK_APPOINTMENT_MODAL .form-selectpicker {
-  padding-top: 4.7px;
-  width: 97%;
-}
-
-#BOOK_APPOINTMENT_MODAL .modal-footer.submit button {
-  font-size: 20px;
-  border-radius: 5px;
-}
-
 .nav-link,
 .navbar-brand {
   cursor: pointer;
@@ -535,8 +403,8 @@ p {
   padding: 0px;
 }
 
-.nav-link,
-.dropdown-content a {
+.navbar-nav a,
+.dropdownNAV {
   font-family: 'Open Sans', sans-serif;
   color: #000000;
   line-height: 60px;
@@ -547,16 +415,11 @@ p {
   letter-spacing: 0.5px;
 }
 
-.dropdown-content a {
-  line-height: 45px;
-}
-
-.nav-link:hover,
-.dropdown-content a:hover {
+.navbar-nav a:hover {
   color: #00baff;
 }
 
-.nav-link:after {
+.navbar-nav a:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -576,7 +439,7 @@ p {
   z-index: 1;
 }
 
-.nav-link:hover:after {
+.navbar-nav a:hover:after {
   visibility: visible;
   -webkit-transform: scaleX(1);
       -ms-transform: scaleX(1);
@@ -799,19 +662,4 @@ p {
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.aff,
-.college {
-  color: #696666;
-}
-
-.aff span,
-.college span {
-  color: #3d3c3c;
-}
-
-.college {
-  padding-top: 5px;
-  padding-bottom: 10px;
 }

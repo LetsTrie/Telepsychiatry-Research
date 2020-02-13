@@ -33,7 +33,7 @@
         border-bottom-left-radius: 6px;
       }
 
-      &:hover:not(.active) {
+      &:hover:not(.active):not(.disabledBTN) {
         background-color: #c7c5c5;
       }
     }
@@ -79,4 +79,9 @@
       }
     }
   }
+}
+
+.disabledBTN {
+  background: rgb(189, 187, 187);
+  pointer-events: none;
 }

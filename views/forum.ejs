@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/forum.css" />
     <title>Forum | Telepsychiatry Research</title>
   </head>
+
   <body>
     <div class="whole_wrapper">
       <nav class="cnav">
@@ -60,21 +61,20 @@
         <div class="MAINforumsss">
           <%- include ('./partials/sidebarCategory') %>
           <div class="alldiscussions">
-            <% for(let i = 0 ; i < 6 ; i++ ) { %>
+            <% for(let singleData of data) { %>
             <div
               class="eachDiscussion"
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <div class="discussion__title">
+              <a class="discussion__title" href="/forum/<%= singleData._id %>/">
                 <p>
-                  I have had a feeding tube in my stomach's for around three
-                  months. Does anyone else have one?
+                  <%= singleData.title %>
                 </p>
-              </div>
+              </a>
               <div class="discussion__usernameTime">
                 <div class="discussion__username">
-                  <p><i class="fa fa-user"></i> MD. Sakib Khan</p>
+                  <p><i class="fa fa-user"></i> <%= singleData.username %></p>
                 </div>
                 <div class="discussion__time">
                   <p>
@@ -83,16 +83,13 @@
                       aria-hidden="true"
                       style="font-size: 18px"
                     ></i>
-                    Posted 2 hours ago
+                    <%= singleData.createdAt.toLocaleString() %>
                   </p>
                 </div>
               </div>
               <div class="discussion__desc">
                 <p>
-                  No one gave me any food or equipment or instructions on how to
-                  use it. Ive had it for months and ive never used it. I dont
-                  understand its purpose at this point. Any suggestions and does
-                  anyone have one in that can give me some insight? thanks
+                  <%- singleData.description %>
                 </p>
               </div>
               <div class="discussion__react">
@@ -117,9 +114,6 @@
   <%- include('./partials/vendorsBottom')%>
 
   <script>
-    $('.discussion__title').click(function() {
-      location = '/forum/single';
-    });
     $('.addForum__newDiscussion button').click(function() {
       location = '/forum/new';
     });

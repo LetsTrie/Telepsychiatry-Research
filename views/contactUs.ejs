@@ -1,96 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/contactUs.css" />
-    <title>Forum | Telepsychiatry Research</title>
-  </head>
-  <body>
+        <link rel="stylesheet" href="/css/contactUs.css" />
+        <title>Contact Us | Telepsychiatry Research</title>
+</head>
+
+<body>
     <div style="min-height: 100vh;">
-      <header>
-        <nav class="cnav">
-          <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
+        <header>
+            <nav class="cnav">
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
 
-      <% if(successMessage != ''){ %>
-        <div class="alert alert-success" role="alert"> <%= successMessage %> </div>
-      <% } %> 
-      <div id="alert" class="alert alert-danger" role="alert"></div>
-      <div class="contactUs">
-        <div class="container">
-          <div class="wrapper">
-            <div class="contactUs_header text-center">
-              <p>Contact Us</p>
-            </div>
-            <div class="contactUs_form">
-              <form action="/contactUs" method="POST">
-                <div class="flex-parentt">
-                  <div class="flex-childd">
-                    <p>Name :</p>
-                    <input id="name" type="text" required name="name"/>
-                  </div>
 
-                  <div class="flex-childd">
-                    <p>Email :</p>
-                    <input id="email" type="email" required name="email"/>
-                  </div>
+        <div class="contactUs">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="contactUs_header text-center">
+                        <p>Contact Us</p>
+                    </div>
+                    <div class="contactUs_form">
+                        <form action="/contactUs" method="POST">
+                            <div id="alert" class="alert alert-danger" role="alert"></div>
+
+                            <% if(successMessage != ''){ %>
+                                <div class="alert alert-success" role="alert">
+                                    <%= successMessage %>
+                                </div>
+                                <% } %>
+                                    <div class="flex-parentt">
+                                        <div class="flex-childd">
+                                            <p>Name :</p>
+                                            <input id="name" type="text" required name="name" />
+                                        </div>
+
+                                        <div class="flex-childd">
+                                            <p>Email :</p>
+                                            <input id="email" type="email" required name="email" />
+                                        </div>
+                                    </div>
+                                    <div class="messagee">
+                                        <p>Your message :</p>
+                                        <textarea required id="message" name="message" id="message" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="submit">
+                                        <button id="submit-btn">Submit</button>
+                                    </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="messagee">
-                  <p>Your message :</p>
-                  <textarea 
-                    required
-                    id="message"
-                    name="message"
-                    id="message"
-                    cols="30"
-                    rows="10"
-                  ></textarea>
-                </div>
-                <div class="submit">
-                  <button  id="submit-btn">Submit</button>
-                </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <%- include('./partials/footer')%>
-  </body>
+</body>
 
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $(document).ready(() => {
-      console.log('ready');
-      function isAlphaSpace(str) {
-        for (let i=0; i<str.length; i++) {
-          if (!(str[i] >= 'A' && str[i] <= 'Z') && !(str[i] >= 'a' && str[i] <= 'z') && str[i] != ' '){
-            return false
-          }
-        }
-        return true
-      }
+<%- include('./partials/vendorsBottom')%>
+    <script>
+        $(document).ready(() => {
+            console.log('ready');
 
-      $('#submit-btn').click((e) => {
-        console.log('submit')
-        const name = $('#name').val()
-        const email = $('#email').val()
-        const message = $('#message').val
-        let error = false
-        if (!isAlphaSpace(name)) {
-          error = true
-          $('#alert').show();
-          $('#alert').html('Name supports only alphabets and spaces')
-        }
-        if (message.length < 50) {
-          error = true
-          $('#alert').show();
-          $('#alert').html('Message must at least be 50 characters')
-        }
-      })
-    })
-  </script>
+            function isAlphaSpace(str) {
+                for (let i = 0; i < str.length; i++) {
+                    if (!(str[i] >= 'A' && str[i] <= 'Z') && !(str[i] >= 'a' && str[i] <= 'z') && str[i] != ' ') {
+                        return false
+                    }
+                }
+                return true
+            }
+
+            $('#submit-btn').click((e) => {
+                e.preventDefault()
+                console.log('submit')
+                const name = $('#name').val().trim()
+                const email = $('#email').val().trim()
+                const message = $('#message').val().trim()
+                console.log(name, email, message.length);
+
+                let error = false
+                    // name 4 length
+                if (!isAlphaSpace(name)) {
+                    error = true
+                    $('#alert').show();
+                    $('#alert').html('Name supports only alphabets and spaces')
+                } else if (message.length < 50) {
+                    error = true
+                    $('#alert').show();
+                    $('#alert').html('Message must at least be 50 characters')
+                }
+                if (!error) {
+                    $('#form').submit()
+                }
+            })
+        })
+    </script>
+
 </html>

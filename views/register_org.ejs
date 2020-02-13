@@ -1,186 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <link rel="stylesheet" href="/css/register.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <link rel="stylesheet" href="/css/register.css" />
 
-        <title>Register | organization | Telepsychiatry Research</title>
-</head>
+    <title>Register | organization | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-        <div class="createResources">
-            <div class="createResources__header">
-                <p id="submitResources">Register Organization</p>
-            </div>
-            <div class="input_boxes">
-                <form>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Organization Name:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="text" name="org_name" id="org_name" placeholder="Name" />
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Type of organizations:</p>
-                            </div>
-                            <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                    <input type="hidden" name="org_type" id="org_type">
-                                    <select class="selectpicker" data-width="100%" title="Type of organizations" id="org_typeInput" data-size="6" required>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+      <div class="createResources">
+        <div class="createResources__header">
+          <p id="submitResources">Register Organization</p>
+        </div>
+        <div class="input_boxes">
+          <form>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Organization Name:</p>
+                </div>
+                <div class="input_box">
+                  <input type="text" name="org_name" placeholder="Name" />
+                </div>
+              </div>
+              <div class="two_box_one  flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Type of organizations:</p>
+                </div>
+                <div class="input_box slct_picker">
+                  <div class="form-selectpicker">
+                    <select
+                      class="selectpicker"
+                      data-width="100%"
+                      title="Type of organizations"
+                      name="org_type"
+                      data-size="6"
+                      required
+                    >
                       <option value="Profitable">Profitable</option>
                       <option value="Non-Profitable"> Non-Profitable </option>
                     </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Year of Establishment:</p>
-                            </div>
-                            <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                    <input type="hidden" name="establish_year" id="establish_year">
-                                    <select class="selectpicker" data-width="100%" title="Select Year" id="establish_yearInput" data-size="6" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Year of Establishment:</p>
+                </div>
+                <div class="input_box slct_picker">
+                  <div class="form-selectpicker">
+                    <select
+                      class="selectpicker"
+                      data-width="100%"
+                      title="Select Year"
+                      name="establish_year"
+                      data-size="6"
+                      required
+                    >
                       <% for(let i = new Date().getFullYear() ; i >= 1800; i--)
                       { %>
                       <option value="<%=i%>"><%=i%></option>
                       <% } %>
                     </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Website Link:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="text" name="websiteLink" id="websiteLink" placeholder="Website Link" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Region:</p>
-                            </div>
-                            <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                    <input type="hidden" name="region" id="region">
-                                    <select class="selectpicker" data-width="100%" title="Region" id="regionInput" data-size="6" required>
+                  </div>
+                </div>
+              </div>
+              <div class="two_box_one  flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Website Link:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="websiteLink"
+                      placeholder="Website Link"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one  flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Region:</p>
+                </div>
+                <div class="input_box slct_picker">
+                  <div class="form-selectpicker">
+                    <select
+                      class="selectpicker"
+                      data-width="100%"
+                      title="Region"
+                      name="region"
+                      data-size="6"
+                      required
+                    >
                       <% for(let i = 0 ; i < country.length; i++) { %>
                       <option value="<%=i%>"><%=country[i].name%></option>
                       <% } %>
                     </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Authorized Person Name:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="text" name="authName" id="authName" placeholder="Authorized Person Name" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Authorized Person Email:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="text" name="authEmail" id="authEmail" placeholder="Authorized Person Email" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Contact Mobile Number:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="text" id="authPhoneNumber" name="authPhoneNumber" placeholder="Mobile Number" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Password:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="password" id="password" name="password" placeholder="Password" />
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Confirm Password:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="createResources__submit">
-                        <button id="sub-btn">Submit</button>
-                    </div>
-                </form>
+                  </div>
+                </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Authorized Person Name:</p>
+                </div>
+                <div class="input_box">
+                  <input
+                    type="text"
+                    name="authorized_person_name"
+                    placeholder="Authorized Person Name"
+                  />
+                </div>
+              </div>
             </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Authorized Person Email:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="authorized_person_email"
+                      placeholder="Authorized Person Email"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="two_box_one  flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Contact Mobile Number:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="authorized_person_mobile_number"
+                      placeholder="Mobile Number"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header"><p>Password:</p></div>
+                <div class="input_box">
+                  <input type="text" name="password" placeholder="Password" />
+                </div>
+              </div>
+              <div class="two_box_one  flex-child">
+                <div class="two_box_header  form-header">
+                  <p>Confirm Password:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="cPassword"
+                      placeholder="Confirm Password"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="createResources__submit">
+            <button>Submit</button>
+          </div>
         </div>
+      </div>
     </section>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script>
-        ClassicEditor.create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+  ></script>
+  <script>
+    ClassicEditor.create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
 
-        $('input[name="dob"]').daterangepicker({
-            autoUpdateInput: false,
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1930,
-            maxYear: parseInt(moment().format('YYYY'), 10),
-            locale: {
-                cancelLabel: 'Clear'
-            }
-        });
+    $('input[name="dob"]').daterangepicker({
+      autoUpdateInput: false,
+      singleDatePicker: true,
+      showDropdowns: true,
+      minYear: 1930,
+      maxYear: parseInt(moment().format('YYYY'), 10),
+      locale: {
+        cancelLabel: 'Clear'
+      }
+    });
 
-        $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('DD/MM/YYYY'));
-        });
+    $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('DD/MM/YYYY'));
+    });
 
-        $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-        });
-    </script>
-
+    $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+    });
+  </script>
 </html>

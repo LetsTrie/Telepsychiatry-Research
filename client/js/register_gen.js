@@ -37,6 +37,7 @@ $('#sub-btn').click(e => {
   const dob = $('#dob').val();
   const cAffiliation = $('#cAffiliation').val();
   const imageFile = $('#imageFile');
+
   const nameRegex = /^[a-z A-Z](?!.* {2})[ \w.-]{2,24}$/;
   const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   const dobRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;

@@ -16,18 +16,19 @@
         </nav>
         <div class="my-3 divider"></div>
         <div class="createResources">
+            <div id="alert" class="alert alert-danger"></div>
             <div class="createResources__header">
                 <p id="submitResources">Register Organization</p>
             </div>
             <div class="input_boxes">
-                <form>
+                <form id="form" action="/auth/register/new/org" method="POST">
                     <div class="two_box flex-parent">
                         <div class="two_box_one flex-child">
                             <div class="two_box_header form-header">
                                 <p>Organization Name:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" name="org_name" id="org_name" placeholder="Name" />
+                                <input type="text" name="name" id="name" placeholder="Name" />
                             </div>
                         </div>
                         <div class="two_box_one  flex-child">
@@ -155,14 +156,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
-        ClassicEditor.create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
         $('input[name="dob"]').daterangepicker({
             autoUpdateInput: false,
             singleDatePicker: true,
@@ -181,6 +174,73 @@
         $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
+
+        function showAlert(msg) {
+            $('#alert').show()
+            $('#alert').html(msg)
+        }
+
+        $('#sub-btn').click((e) => {
+            e.preventDefault()
+            let error = false
+            const nameRegex = new RegExp("^[a-zA-Z ]+$")
+            const emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+            const phoneRegex = /\w+/i
+
+            const name = $('#name').val()
+            const authName = $('#authName').val()
+            const authPhoneNumber = $('#authPhoneNumber').val()
+            const authEmail = $('#authEmail').val()
+            const password = $('#password').val()
+            const cPassword = $('#cPassword').val()
+            const websiteLink = $('#websiteLink').val()
+            $('#establish_year').val($('#establish_yearInput').val())
+            $('#region').val($('#regionInput').val())
+            $('#org_type').val($('#org_typeInput').val())
+
+            if (name == '') {
+                error = true
+                showAlert('Invalid organization name')
+            } else if (!emailRegex.test(authEmail)) {
+                error = true
+                showAlert('Invalid authorised person email')
+            } else if (!phoneRegex.test(authPhoneNumber) || authPhoneNumber.length < 6) {
+                error = true
+                showAlert('Invalid authorised person phone number')
+            } else if (!nameRegex.test(authName)) {
+                error = true
+                showAlert('Invalid authorised person name')
+            } else if (password == '') {
+                error = true
+                showAlert('Enter password')
+            } else if (password.length < 6) {
+                error = true
+                showAlert('Password must contain at least 6 characters')
+            } else if (cPassword == '') {
+                error = true
+                showAlert('Confirm password')
+            } else if (password != cPassword) {
+                error = true
+                showAlert('Passwords do not match')
+            } else if ($('#establish_year').val() == '') {
+                error = true
+                showAlert('Select the year of establishment')
+            } else if ($('#region').val() == '') {
+                error = true
+                showAlert('Select the region')
+            } else if ($('#org_type').val() == '') {
+                error = true
+                showAlert('Select the type of organization')
+            } else if (websiteLink == '') {
+                error = true
+                showAlert('Enter the website link')
+            }
+
+            if (!error) {
+                console.log('submitted')
+                $('#form').submit()
+            }
+        })
     </script>
 
 </html>

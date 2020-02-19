@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const {
-    getResearches,
-    postResearches,
-    getNewResearches,
-    getResearch
+  getResearches,
+  postResearches,
+  getNewResearches,
+  getResearch
 } = require('../controllers/researches');
 
 router.get('/', getResearches);

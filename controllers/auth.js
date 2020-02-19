@@ -3,6 +3,7 @@ const multer = require('multer')
 const path = require('path')
 const { gUserModel } = require('../models/generalUser')
 const { eUserModel } = require('../models/expertUser')
+const { orgUserModel } = require('../models/orgUser')
 const joi = require('@hapi/joi')
 const bcrypt = require('bcryptjs')
 
@@ -57,6 +58,7 @@ exports.postRegisterGeneralUser = async(req, res, next) => {
         cAffiliation,
         hADegree
     } = req.body
+    console.log(req)
     try {
         await joi.object().keys({
             fname: joi.string().required().regex(/^[a-zA-Z ]+$/),
@@ -158,6 +160,55 @@ exports.postRegisterExpertUser = async(req, res, next) => {
                     hADegree
                 }).save()
                 console.log('exp user saved')
+                res.redirect('/')
+            });
+        });
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+exports.postRegisterOrgUser = async(req, res, next) => {
+
+    const {
+        name,
+        authName,
+        authPhoneNumber,
+        authEmail,
+        region,
+        org_type,
+        password,
+        establish_year,
+        websiteLink
+    } = req.body
+    console.log(req.body)
+    try {
+        await joi.object().keys({
+            name: joi.string().required(),
+            authName: joi.string().required().regex(/^[a-zA-Z ]+$/),
+            authEmail: joi.string().required().regex(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/),
+            password: joi.string().required().min(6),
+            authPhoneNumber: joi.string().required().regex(/\w+/i).min(6),
+            region: joi.string().required(),
+            org_type: joi.string().required(),
+            websiteLink: joi.string().required(),
+            establish_year: joi.string().required()
+        }).validate(req.body)
+
+        bcrypt.genSalt(10, async function(err, salt) {
+            bcrypt.hash(password, salt, async function(err, hash) {
+                const newOrgUser = await new orgUserModel({
+                    name,
+                    authName,
+                    authPhoneNumber,
+                    authEmail,
+                    region,
+                    org_type,
+                    password,
+                    establish_year,
+                    websiteLink
+                }).save()
+                console.log('org user saved')
                 res.redirect('/')
             });
         });

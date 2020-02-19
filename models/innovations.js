@@ -28,4 +28,4 @@ const innovationsSchema = new mongoose.Schema({
     }
 });
 
-exports.InnovationModel = mongoose.model("innovations", innovationsSchema);
+module.exports = mongoose.model("innovations", innovationsSchema);

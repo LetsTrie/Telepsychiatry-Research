@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/events.css" />
     <title>Forum | Telepsychiatry Research</title>
   </head>
+
   <body>
     <div>
       <header>
@@ -21,7 +22,7 @@
         <div class="add_event_button">
           <button>Create Event</button>
         </div>
-        <% for(let i = 0 ; i < 5; i++) { %>
+        <% for(let i = 0 ; i < posts.length; i++) { %>
         <div class="event " data-aos="fade-up" data-aos-duration="1000">
           <div class="flex-parent">
             <div class="flex-child dateFlex">
@@ -34,28 +35,18 @@
             <div class="flex-child detailsFlex">
               <div class="event_title">
                 <p>
-                  Breaking the silence: promoting action on aid worker mental
-                  health that will be helpful to all.
+                  <%= posts[i].title %>
                 </p>
               </div>
               <div class="event_details">
                 <p>
-                  Humanitarian aid workers are routinely exposed to traumatic
-                  events linked to the cause of mental health issues including
-                  depression, burnout and anxiety. But increasingly, work stress
-                  including extremely heavy workloads, long hours and limited
-                  time for self-care are being highlighted as major causes.
-                  Among volunteers, mental health issues can be even higher
-                  (Dineson, 2018). Often from affected communities, volunteers
-                  experience the same loss and grief as those they are working
-                  to support but without the same training, support or structure
-                  as professional workers.
+                  <%- posts[i].description %>
                 </p>
               </div>
               <div class="event_times">
                 <p>
-                  <i class="fa fa-calendar"> &nbsp; </i> Date: January 18, 2020
-                  - January 20, 2020
+                  <i class="fa fa-calendar"> &nbsp; </i> Date: <%= posts[i].date
+                  %>
                 </p>
               </div>
               <div class="event_times">
@@ -66,7 +57,7 @@
                     style="font-size: 20px"
                   >
                     &nbsp;</i
-                  >Time: 8:00 am - 5:00 pm
+                  >Time: <%= posts[i].time %>
                 </p>
               </div>
               <div class="event_times">
@@ -74,7 +65,7 @@
                   <i class="fa fa-map-marker" style="font-size: 20px">
                     &nbsp;</i
                   >
-                  Address: University of Dhaka
+                  Address: <%= posts[i].location %>
                 </p>
               </div>
             </div>
@@ -82,9 +73,6 @@
         </div>
 
         <% } %>
-        <div class="pt-3">
-          <%- include ('./partials/pagination') %>
-        </div>
       </section>
     </div>
     <%- include('./partials/footer')%>

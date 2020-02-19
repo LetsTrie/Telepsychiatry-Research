@@ -1,85 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop') %>
-    <link rel="stylesheet" href="/css/ourDoctors.css" />
-    <title>Our Doctors | Telepsychiatry Research</title>
-  </head>
 
-  <body>
-    <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
+<head>
+  <%- include('./partials/vendorsTop') %>
+  <link rel="stylesheet" href="/css/ourDoctors.css" />
+  <title>Our Doctors | Telepsychiatry Research</title>
+</head>
 
-      <div class="addResource container my-4">
-        <div class="ourDoctorsHeading mt-5">
-          <p>Our Doctors</p>
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="my-3 divider"></div>
+
+    <div class="addResource container my-4">
+      <div class="ourDoctorsHeading mt-5">
+        <p>Our Doctors</p>
+      </div>
+    </div>
+
+    <div class="searching">
+      <form action="#" method="POST">
+        <div class="searchbox">
+          <input type="text" name="search" required />
+        </div>
+        <div class="searchBtn">
+          <input type="submit" value="search" />
+        </div>
+      </form>
+    </div>
+
+    <div class="allResources container">
+      <% for(let i = 0 ; i < 9; i++) { %>
+      <div class="item">
+        <div class="m-1 mb-5 card" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom"
+          data-aos-duration="1000">
+          <img src="/images/doctor.jpg" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">
+              <p class="cardName"> Sharmin Afroz <i class="fa fa-check-circle verified"></i> </p>
+              <p class="cardDegree"> MBBS, MD, DNB - Cardiology </p>
+
+            </h5>
+            <p class="card-text">
+              <p class="aff">
+                <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
+                (CC) & Unit Head, Dept. of Psychiatry
+              </p>
+              <p class="college">
+                <span class="fa fa-university">&nbsp;</span> Sir Salimullah
+                Medical College & Mitford Hospital
+              </p>
+              <div class="twoButtons">
+                <div><button onclick="go()">View Profile</button></div>
+                <div><button class="BookNow" data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL"> Book Now
+                  </button></div>
+              </div>
+            </p>
+          </div>
         </div>
       </div>
+      <% } %>
+    </div>
 
-      <div class="searching">
-        <form action="#" method="POST">
-          <div class="searchbox">
-            <input type="text" name="search" required />
-          </div>
-          <div class="searchBtn">
-            <input type="submit" value="search" />
-          </div>
-        </form>
-      </div>
+    <%- include('./partials/bookAppointment') %>
+  </section>
 
-      <div class="allResources container">
-        <% for(let i = 0 ; i < 9; i++) { %>
-        <div class="item">
-            <div
-              class="m-1 mb-5 card"
-              data-aos="zoom-in-up"
-              data-aos-anchor-placement="top-bottom"
-              data-aos-duration="1000"
-            >
-              <img src="/images/doctor.jpg" class="card-img-top" />
-              <div class="card-body">
-                <h5 class="card-title">
-                  <p class="cardName"> Sharmin Afroz <i class="fa fa-check-circle verified"></i> </p>
-                  <p class="cardDegree"> MBBS, MD, DNB - Cardiology </p>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.submitResources').on('click', e => {
+    window.location = '/researches/new';
+  });
+  function go() {
+    location = '/services/doctor/profile/1';
+  }
+</script>
 
-                  <div>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>  <span style="font-size: 15px;font-family: 'Lato'">(38)</span>
-                  </div>
-                </h5>
-                <p class="card-text">
-                  <p style="color: #757575"><span class="fa fa-map-marker">&nbsp;&nbsp;</span>&nbsp;&nbsp;Mirpur, Dhaka</p>
-                  <p style="color: #757575"> <span class="fa fa-money">&nbsp;</span> $100 - $400 </p>
-
-                  <div class="twoButtons">
-                    <div><button onclick="go()">View Profile</button></div>
-                    <div><button class="BookNow"> Book Now </button></div>
-                  </div>
-                </p>
-              </div>
-            </div>
-          </div>
-        <% } %>
-      </div>
-
-      <%- include('./partials/pagination.ejs') %>
-    </section>
-
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $('.submitResources').on('click', e => {
-      window.location = '/researches/new';
-    });
-    function go() {
-      location = '/services/doctor/profile/1';
-    }
-  </script>
 </html>

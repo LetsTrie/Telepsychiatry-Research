@@ -616,165 +616,67 @@ p {
   display: block;
 }
 
-.ck-editor__editable {
-  min-height: 300px;
+p {
+  margin-bottom: 8px;
 }
 
-.wrapper {
-  background: #f6f6f2;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.createInnovations {
-  width: 70%;
-  margin: 0 auto;
-  min-height: 100vh;
-  color: #3b372f;
-  padding: 10px;
-  padding-top: 35px;
-  font-family: 'Merriweather', serif;
-}
-
-@media (max-width: 1200px) {
-  .createInnovations {
-    width: 90%;
-  }
-}
-
-@media (max-width: 900px) {
-  .createInnovations {
-    width: 98%;
-  }
-}
-
-.createInnovations__header {
-  font-size: 3.2rem;
-  border-bottom: 2px solid gray;
-}
-
-@media (max-width: 900px) {
-  .createInnovations__header {
-    font-size: 2.7rem;
-  }
-}
-
-@media (max-width: 570px) {
-  .createInnovations__header {
-    font-size: 2.2rem;
-  }
-}
-
-.input_boxes {
-  padding: 20px 0;
-}
-
-.input_boxes .one_box {
-  padding: 5px 0;
-}
-
-.input_boxes .one_box .box_header p {
-  font-size: 1.5rem;
-  padding-bottom: 8px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.input_boxes .one_box .box_header p span {
-  font-size: 1rem;
-  color: #8a5555;
-}
-
-.input_boxes .one_box .input_box {
-  width: 100%;
-}
-
-.input_boxes .one_box .input_box textarea,
-.input_boxes .one_box .input_box input:not([type='file']) {
-  padding: 7px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  border: 1px solid #bdb9b9;
-  width: 100%;
-}
-
-.flex-parent {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  width: 100%;
-  padding: 5px 0;
-}
-
-.flex-child {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin-bottom: 0.5rem;
-  width: 49%;
-  margin-right: 0.5rem;
-}
-
-.flex-child:last-child {
-  margin-right: 0rem;
-}
-
-@media (max-width: 900px) {
-  .flex-child {
-    margin-right: 0rem;
-    width: 100%;
-  }
-}
-
-.flex-child .form-header p {
-  margin: 6px 0;
-  font-size: 1.5rem;
-  padding-bottom: 8px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.flex-child .form-header p span {
-  font-size: 1rem;
-  color: #8a5555;
-}
-
-.flex-child input[type='text'],
-.flex-child input[type='email'],
-.flex-child textarea {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #bdb9b9;
-  border-radius: 4px;
-}
-
-.flex-child input[type='text']:focus,
-.flex-child input[type='email']:focus,
-.flex-child textarea:focus {
-  outline: none;
-}
-
-.createInnovations__submit {
-  width: 100%;
+.adminContactUs .container .adminContactUsHeader {
   text-align: center;
-  padding: 25px 0;
+  margin-bottom: 30px;
 }
 
-.createInnovations__submit button {
+.adminContactUs .container .adminContactUsHeader p {
+  font-family: 'Merriweather', serif;
+  font-size: 50px;
+  color: #272727;
+}
+
+.adminContactUs .container .all_posts {
+  width: 95%;
+  margin: auto;
+}
+
+.adminContactUs .container .all_posts .singlePost {
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+  padding: 20px 25px;
+  margin-bottom: 40px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_name p {
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_email p {
+  color: rgba(93, 88, 88, 0.849);
+  font-size: 15px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_post p {
+  margin-top: 10px;
+  color: #363636;
+  text-align: justify;
+  padding-right: 10px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_reply {
+  width: 100%;
+  text-align: right;
+  padding: 5px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_reply button {
   border: none;
   outline: none;
   background: #ef7c00;
   color: #fff;
   padding: 10px 22px;
-  font-size: 24px;
+  font-size: 18px;
   letter-spacing: 0.5px;
   border-radius: 4px;
 }

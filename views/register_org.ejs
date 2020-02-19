@@ -53,7 +53,8 @@
                             </div>
                             <div class="input_box slct_picker">
                                 <div class="form-selectpicker">
-                                    <select class="selectpicker" data-width="100%" title="Select Year" name="establish_year" data-size="6" required>
+                                    <input type="hidden" name="establish_year" id="establish_year">
+                                    <select class="selectpicker" data-width="100%" title="Select Year" id="establish_yearInput" data-size="6" required>
                       <% for(let i = new Date().getFullYear() ; i >= 1800; i--)
                       { %>
                       <option value="<%=i%>"><%=i%></option>
@@ -68,7 +69,7 @@
                             </div>
                             <div>
                                 <div class="input_box">
-                                    <input type="text" name="websiteLink" placeholder="Website Link" />
+                                    <input type="text" name="websiteLink" id="websiteLink" placeholder="Website Link" />
                                 </div>
                             </div>
                         </div>
@@ -80,7 +81,8 @@
                             </div>
                             <div class="input_box slct_picker">
                                 <div class="form-selectpicker">
-                                    <select class="selectpicker" data-width="100%" title="Region" name="region" data-size="6" required>
+                                    <input type="hidden" name="region" id="region">
+                                    <select class="selectpicker" data-width="100%" title="Region" id="regionInput" data-size="6" required>
                       <% for(let i = 0 ; i < country.length; i++) { %>
                       <option value="<%=i%>"><%=country[i].name%></option>
                       <% } %>
@@ -93,7 +95,7 @@
                                 <p>Authorized Person Name:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" name="authorized_person_name" placeholder="Authorized Person Name" />
+                                <input type="text" name="authName" id="authName" placeholder="Authorized Person Name" />
                             </div>
                         </div>
                     </div>
@@ -104,7 +106,7 @@
                             </div>
                             <div>
                                 <div class="input_box">
-                                    <input type="text" name="authorized_person_email" placeholder="Authorized Person Email" />
+                                    <input type="text" name="authEmail" id="authEmail" placeholder="Authorized Person Email" />
                                 </div>
                             </div>
                         </div>
@@ -114,7 +116,7 @@
                             </div>
                             <div>
                                 <div class="input_box">
-                                    <input type="text" name="authorized_person_mobile_number" placeholder="Mobile Number" />
+                                    <input type="text" id="authPhoneNumber" name="authPhoneNumber" placeholder="Mobile Number" />
                                 </div>
                             </div>
                         </div>
@@ -125,7 +127,7 @@
                                 <p>Password:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" name="password" placeholder="Password" />
+                                <input type="password" id="password" name="password" placeholder="Password" />
                             </div>
                         </div>
                         <div class="two_box_one  flex-child">
@@ -134,15 +136,15 @@
                             </div>
                             <div>
                                 <div class="input_box">
-                                    <input type="text" name="cPassword" placeholder="Confirm Password" />
+                                    <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="createResources__submit">
+                        <button id="sub-btn">Submit</button>
+                    </div>
                 </form>
-                <div class="createResources__submit">
-                    <button>Submit</button>
-                </div>
             </div>
         </div>
     </section>
@@ -165,15 +167,8 @@
             }
         });
 
-        $('input[name="dob"]').daterangepicker({
-            autoUpdateInput: false,
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1930,
-            maxYear: parseInt(moment().format('YYYY'), 10),
-            locale: {
-                cancelLabel: 'Clear'
-            }
+        $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY'));
         });
 
         $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
@@ -246,9 +241,6 @@
                 $('#form').submit()
             }
         })
-    </script>
-
-    $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) { $(this).val(''); });
     </script>
 
 </html>

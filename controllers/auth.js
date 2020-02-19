@@ -58,7 +58,6 @@ exports.postRegisterGeneralUser = async(req, res, next) => {
         cAffiliation,
         hADegree
     } = req.body
-    console.log(req)
     try {
         await joi.object().keys({
             fname: joi.string().required().regex(/^[a-zA-Z ]+$/),

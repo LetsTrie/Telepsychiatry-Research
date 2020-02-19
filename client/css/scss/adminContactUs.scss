@@ -1,73 +1,67 @@
 @import '_main';
 @import '_navbar';
 p {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
+
 .adminContactUs {
-  .container {
-    .adminContactUsHeader {
-      text-align: center;
-      margin-bottom: 30px;
-      p {
-        font-family: 'Merriweather', serif;
-        font-size: 50px;
-        color: #272727;
-      }
+    .container {
+        .adminContactUsHeader {
+            text-align: center;
+            margin-bottom: 30px;
+            p {
+                font-family: 'Merriweather', serif;
+                font-size: 50px;
+                color: #272727;
+            }
+        }
+        .all_posts {
+            width: 95%;
+            margin: auto;
+            .singlePost {
+                box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+                padding: 20px 25px;
+                margin-bottom: 40px;
+                .singlePost_name {
+                    p {
+                        color: black;
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-bottom: 0px;
+                    }
+                }
+                .singlePost_email {
+                    p {
+                        color: rgba(93, 88, 88, 0.849);
+                        font-size: 15px;
+                    }
+                }
+                .singlePost_post {
+                    p {
+                        margin-top: 10px;
+                        color: #363636;
+                        text-align: justify;
+                        padding-right: 10px;
+                        font-size: 18px;
+                        font-family: 'Lato', sans-serif;
+                    }
+                }
+                .singlePost_reply {
+                    width: 100%;
+                    text-align: right;
+                    padding: 5px;
+                    button {
+                        border: none;
+                        outline: none;
+                        background: #ef7c00;
+                        color: #fff;
+                        padding: 10px 22px;
+                        font-size: 18px;
+                        letter-spacing: 0.5px;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
     }
-
-    .all_posts {
-      width: 95%;
-      margin: auto;
-
-      .singlePost {
-        box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px,
-          inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
-        padding: 20px 25px;
-        margin-bottom: 40px;
-        .singlePost_name {
-          p {
-            color: black;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 0px;
-          }
-        }
-        .singlePost_email {
-          p {
-            color: rgba(93, 88, 88, 0.849);
-            font-size: 15px;
-          }
-        }
-        .singlePost_post {
-          p {
-            margin-top: 10px;
-            color: #363636;
-            text-align: justify;
-            padding-right: 10px;
-            font-size: 18px;
-            font-family: 'Lato', sans-serif;
-          }
-        }
-
-        .singlePost_reply {
-          width: 100%;
-          text-align: right;
-          padding: 5px;
-
-          button {
-            border: none;
-            outline: none;
-
-            background: #ef7c00;
-            color: #fff;
-            padding: 10px 22px;
-
-            font-size: 18px;
-            letter-spacing: 0.5px;
-            border-radius: 4px;
-          }
-        }
-      }
-    }
-  }
 }

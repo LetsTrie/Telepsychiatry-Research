@@ -11,10 +11,6 @@
           box-sizing: border-box;
 }
 
-#alert {
-    display: none;
-}
-
 @-webkit-keyframes fromBottom {
   0% {
     opacity: 0;
@@ -628,6 +624,11 @@ p {
   min-height: 300px;
 }
 
+#alertF {
+  display: none;
+  text-align: center;
+}
+
 .wrapper {
   background: #f6f6f2;
   -webkit-box-sizing: border-box;
@@ -674,7 +675,7 @@ p {
 }
 
 .input_boxes {
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
 }
 
 .input_boxes .one_box {
@@ -754,6 +755,7 @@ p {
 
 .flex-child input[type='text'],
 .flex-child input[type='email'],
+.flex-child input[type='password'],
 .flex-child textarea {
   width: 100%;
   padding: 0.6rem;
@@ -764,6 +766,7 @@ p {
 
 .flex-child input[type='text']:focus,
 .flex-child input[type='email']:focus,
+.flex-child input[type='password']:focus,
 .flex-child textarea:focus {
   outline: none;
 }

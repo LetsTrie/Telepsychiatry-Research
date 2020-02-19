@@ -838,7 +838,7 @@ p {
 }
 
 .clinical-color {
-  border: 1px solid gray;
+  border: 1px solid #cacaca;
   cursor: pointer;
   font-family: 'roboto', sans-serif;
   letter-spacing: 1px;

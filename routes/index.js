@@ -8,4 +8,6 @@ router.use('/events', require('./events'));
 router.use('/auth', require('./auth'));
 router.use('/contactUs', require('./contactUs'));
 router.use('/services', require('./services'));
+
+router.use('/admin', require('./admin'));
 module.exports = router;

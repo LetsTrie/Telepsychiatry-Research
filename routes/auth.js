@@ -15,7 +15,6 @@ router.get('/register/new/gen', getRegisterGeneralUser);
 router.get('/register/new/exp', getRegisterExpertUser);
 router.get('/register/new/org', getRegisterOrganizations);
 
-router.post('/register/new/gen', postRegisterGeneralUser)
 router.post('/register/new/gen/image', genUserSaveImage)
 router.post('/register/new/exp', postRegisterExpertUser)
 router.post('/register/new/org', postRegisterOrgUser)

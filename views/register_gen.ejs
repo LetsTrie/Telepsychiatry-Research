@@ -16,19 +16,18 @@
         </nav>
         <div class="my-3 divider"></div>
         <div class="createResources">
-            <div id="alert" class="alert alert-danger"></div>
             <div class="createResources__header">
                 <p id="submitResources">Register General User</p>
             </div>
             <div class="input_boxes">
-                <form id="form" action="/auth/register/new/gen" method="POST" enctype="multipart/form-data">
+                <form>
                     <div class="two_box flex-parent">
                         <div class="two_box_one flex-child">
                             <div class="two_box_header form-header">
                                 <p>First Name:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" id="fname" name="fname" placeholder="First name" />
+                                <input type="text" name="authors" placeholder="Authors" />
                             </div>
                         </div>
                         <div class="two_box_one  flex-child">
@@ -37,128 +36,148 @@
                             </div>
                             <div>
                                 <div class="input_box">
-                                    <input type="text" name="lname" id="lname" placeholder="Last name" />
+                                    <input type="text" name="authors" placeholder="Authors" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Email:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="text" name="email" id="email" placeholder="Email" />
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Phone Number:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+                    <div class="input_boxes">
+                        <form id="form" action="/auth/register/new/gen" method="POST" enctype="multipart/form-data">
+                            <div class="two_box flex-parent">
+                                <div class="two_box_one flex-child">
+                                    <div class="two_box_header form-header">
+                                        <p>First Name:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="text" id="fname" name="fname" placeholder="First name" />
+                                    </div>
+                                </div>
+                                <div class="two_box_one  flex-child">
+                                    <div class="two_box_header  form-header">
+                                        <p>Last Name:</p>
+                                    </div>
+                                    <div>
+                                        <div class="input_box">
+                                            <input type="text" name="lname" id="lname" placeholder="Last name" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Password:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="password" id="password" name="password" placeholder="password" />
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Confirm Password:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" />
+                            <div class="two_box flex-parent">
+                                <div class="two_box_one flex-child">
+                                    <div class="two_box_header form-header">
+                                        <p>Email:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="text" name="email" id="email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="two_box_one  flex-child">
+                                    <div class="two_box_header  form-header">
+                                        <p>Phone Number:</p>
+                                    </div>
+                                    <div>
+                                        <div class="input_box">
+                                            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Gender:</p>
+                            <div class="two_box flex-parent">
+                                <div class="two_box_one flex-child">
+                                    <div class="two_box_header form-header">
+                                        <p>Password:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="password" id="password" name="password" placeholder="password" />
+                                    </div>
+                                </div>
+                                <div class="two_box_one  flex-child">
+                                    <div class="two_box_header  form-header">
+                                        <p>Confirm Password:</p>
+                                    </div>
+                                    <div>
+                                        <div class="input_box">
+                                            <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                    <input type="hidden" name="gender" id="gender" />
-                                    <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" required>
+                            <div class="two_box flex-parent">
+                                <div class="two_box_one  flex-child">
+                                    <div class="two_box_header  form-header">
+                                        <p>Gender:</p>
+                                    </div>
+                                    <div class="input_box slct_picker">
+                                        <div class="form-selectpicker">
+                                            <input type="hidden" name="gender" id="gender" />
+                                            <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" required>
                       <option value="Male">Male</option>
                       <option value="Female"> Female </option>
                     </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="two_box_one flex-child">
+                                    <div class="two_box_header form-header">
+                                        <p>Date of Birth:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="text" id="dob" name="dob" placeholder="Date Of Birth" autocomplete="off" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Date of Birth:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="text" id="dob" name="dob" placeholder="Date Of Birth" autocomplete="off" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Highest Academic Degree:</p>
-                            </div>
-                            <div class="input_box">
-                                <input type="text" id="hADegree" name="hADegree" placeholder="Highest Academic Degree" />
-                            </div>
-                        </div>
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Current Affiliation:</p>
-                            </div>
-                            <div>
-                                <div class="input_box">
-                                    <input type="text" id="cAffiliation" name="cAffiliation" placeholder="Current Affiliation" />
+                            <div class="two_box flex-parent">
+                                <div class="two_box_one flex-child">
+                                    <div class="two_box_header form-header">
+                                        <p>Highest Academic Degree:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="text" id="hADegree" name="hADegree" placeholder="Highest Academic Degree" />
+                                    </div>
+                                </div>
+                                <div class="two_box_one  flex-child">
+                                    <div class="two_box_header  form-header">
+                                        <p>Current Affiliation:</p>
+                                    </div>
+                                    <div>
+                                        <div class="input_box">
+                                            <input type="text" id="cAffiliation" name="cAffiliation" placeholder="Current Affiliation" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one  flex-child">
-                            <div class="two_box_header  form-header">
-                                <p>Country:</p>
-                            </div>
-                            <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                    <input type="hidden" name="country" id="country" />
-                                    <select class="selectpicker" id="countryInput" data-width="100%" title="Select Country" data-size="6" required>
+                            <div class="two_box flex-parent">
+                                <div class="two_box_one  flex-child">
+                                    <div class="two_box_header  form-header">
+                                        <p>Country:</p>
+                                    </div>
+                                    <div class="input_box slct_picker">
+                                        <div class="form-selectpicker">
+                                            <input type="hidden" name="country" id="country" />
+                                            <select class="selectpicker" id="countryInput" data-width="100%" title="Select Country" data-size="6" required>
                       <% for(let i = 0 ; i < country.length; i++) { %>
                       <option value="<%=i%>"><%=country[i].name%></option>
                       <% } %>
                     </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="two_box_one flex-child">
+                                    <div class="two_box_header form-header">
+                                        <p>Display Picture:</p>
+                                    </div>
+                                    <div class="input_box imageFile">
+                                        <input type="file" name="myImage" accept="image/x-png,image/jpg,image/jpeg" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>Display Picture:</p>
-                            </div>
-                            <div class="input_box imageFile">
-                                <input type="file" name="myImage" accept="image/x-png,image/jpg,image/jpeg" />
-                            </div>
+                        </form>
+                        <div class="createResources__submit">
+                            <button>Submit</button>
                         </div>
                     </div>
-
-                    <div class="createResources__submit">
-                        <button type="submit" id="sub-btn">Submit</button>
-                    </div>
-                </form>
-
             </div>
-        </div>
     </section>
 </body>
 <%- include('./partials/vendorsBottom')%>

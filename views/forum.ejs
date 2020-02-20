@@ -81,9 +81,11 @@
             </div>
             <div class="discussion__react">
               <div class="discussion__react_love">
+                <input type="hidden" value="<%= singleData._id %>">
                 <i class="fa fa-heart"></i>
               </div>
               <div class="discussion__react_comment">
+                <input type="hidden" value="<%= singleData._id %>">
                 <i class="fa fa-comment"></i>
               </div>
             </div>
@@ -103,6 +105,24 @@
 <script>
   $('.addForum__newDiscussion button').click(function () {
     location = '/forum/new';
+  });
+  $('.fa-comment').click((e) => {
+    location = '/forum/' + e.target.previousElementSibling.value;
+  });
+  $('.fa-heart').click((e) => {
+    $.ajax({
+      type: 'POST',
+      url: '/forum/react',
+      data: {
+        id: e.target.previousElementSibling.value
+      },
+      success: () => {
+        console.log('successful on sending react');
+      },
+      error: () => {
+        console.log('error on sending react');
+      }
+    });
   });
 </script>
 

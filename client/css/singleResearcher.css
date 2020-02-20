@@ -604,6 +604,11 @@ p {
   outline: none;
 }
 
+#alertF,
+#alert {
+  display: none;
+}
+
 .navbarWrapper {
   margin: auto;
   width: 90%;

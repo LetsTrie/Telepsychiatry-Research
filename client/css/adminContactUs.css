@@ -663,6 +663,7 @@ p {
           box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
   padding: 20px 25px;
   margin-bottom: 40px;
+  border-radius: 8px;
 }
 
 .adminContactUs .container .all_posts .singlePost .singlePost_name p {
@@ -700,5 +701,60 @@ p {
   padding: 10px 22px;
   font-size: 18px;
   letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .reply_box {
+  padding: 5px 10px;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .modal-body {
+  min-height: 180px;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .submit {
+  margin-top: 0.5rem;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .submit button {
+  padding: 5px 30px;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .modal-footer.submit button {
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .green-btn {
+  background: #13ce66;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .red-btn {
+  background: rgba(194, 43, 5, 0.925);
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border-radius: 4px;
+  border: 1px solid #bdb9b9;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL textarea:focus {
+  outline: none;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .submit {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .submit button {
+  padding: 5px 30px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  color: white;
   border-radius: 4px;
 }

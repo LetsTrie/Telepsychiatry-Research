@@ -3,6 +3,8 @@ const { pagination } = require('./utils');
 
 const LIMIT = 9;
 
+exports.login = (req, res, next) => res.render('adminLogin');
+
 exports.contactUs = async (req, res, next) => {
   const page = +req.query.page || 1;
   const data = await contactUsModel

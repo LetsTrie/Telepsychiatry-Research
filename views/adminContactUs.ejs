@@ -3,7 +3,7 @@
   <head>
     <%- include('./partials/vendorsTop')%>
     <link rel="stylesheet" href="/css/adminContactUs.css" />
-    <title>Contact Us| Admin | Telepsychiatry Research</title>
+    <title>Contact Us | Admin | Telepsychiatry Research</title>
   </head>
 
   <body>
@@ -39,8 +39,13 @@
                   <%= data[i].message %>
                 </p>
               </div>
-              <div class="reply">
-                <button class="btn btn-secondary">Reply</button>
+              <div class="singlePost_reply">
+                <button
+                  data-toggle="modal"
+                  data-target="#ADMIN_CONTACTUS_REPLY_MODAL"
+                >
+                  Reply
+                </button>
               </div>
             </div>
             <% } %>
@@ -51,5 +56,6 @@
     </div>
 
     <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+    <%- include('./partials/admin_contactUs_reply')%>
   </body>
 </html>

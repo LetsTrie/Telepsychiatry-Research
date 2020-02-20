@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/authentication.css" />
+    <title>Login | Admin Panel | Telepsychiatry Research</title>
+  </head>
+  <body>
+    <div>
+      <div style="min-height: 100vh;">
+        <header>
+          <nav>
+            <%- include('./partials/navbar')%>
+          </nav>
+          <div class="my-3 divider"></div>
+        </header>
+
+        <section class="auth">
+          <div class="auth_wrapper">
+            <div class="auth_header">
+              <h1>Admin Panel</h1>
+            </div>
+
+            <div class="auth_form">
+              <div class="inputField">
+                <div class="inputField_label">
+                  <p>Email:</p>
+                </div>
+                <div class="inputField_textbox">
+                  <input type="text" name="email" placeholder="Email Address" />
+                </div>
+              </div>
+
+              <div class="inputField">
+                <div class="inputField_label">
+                  <p>Password:</p>
+                </div>
+                <div class="inputField_textbox">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+
+              <div class="submit" style="padding: 30px 0 20px 0;">
+                <button class="green-btn">Login</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+
+  <script></script>
+</html>

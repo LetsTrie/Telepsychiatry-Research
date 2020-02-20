@@ -276,3 +276,83 @@ p {
     }
   }
 }
+
+.ourMODAL {
+  .reply_box {
+    padding: 5px 10px;
+  }
+  .modal-body {
+    min-height: 180px;
+  }
+  .submit {
+    margin-top: 0.5rem;
+    button {
+      padding: 5px 30px;
+    }
+  }
+
+  .modal-footer.submit {
+    button {
+      font-size: 20px;
+      border-radius: 5px;
+    }
+  }
+  .green-btn {
+    background: #13ce66;
+  }
+
+  .red-btn {
+    background: rgba(194, 43, 5, 0.925);
+  }
+
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 5px 0px;
+    border-radius: 4px;
+    border: 1px solid #bdb9b9;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .submit {
+    text-align: center;
+    margin-top: 1rem;
+
+    button {
+      padding: 5px 30px;
+      font-size: 24px;
+      border: none;
+      outline: none;
+      color: white;
+      border-radius: 4px;
+    }
+  }
+
+  .inputField {
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+
+    .inputField_label {
+      padding-left: 2px;
+      p {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+      }
+    }
+    .inputField_textbox {
+      input {
+        width: 97%;
+        padding: 0.6rem;
+        margin: 4px 0px;
+        border: 1px solid black;
+        border-radius: 4px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

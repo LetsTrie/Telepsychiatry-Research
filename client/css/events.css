@@ -522,6 +522,88 @@ p {
   border-radius: 5px;
 }
 
+.ourMODAL .reply_box {
+  padding: 5px 10px;
+}
+
+.ourMODAL .modal-body {
+  min-height: 180px;
+}
+
+.ourMODAL .submit {
+  margin-top: 0.5rem;
+}
+
+.ourMODAL .submit button {
+  padding: 5px 30px;
+}
+
+.ourMODAL .modal-footer.submit button {
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.ourMODAL .green-btn {
+  background: #13ce66;
+}
+
+.ourMODAL .red-btn {
+  background: rgba(194, 43, 5, 0.925);
+}
+
+.ourMODAL textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border-radius: 4px;
+  border: 1px solid #bdb9b9;
+}
+
+.ourMODAL textarea:focus {
+  outline: none;
+}
+
+.ourMODAL .submit {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.ourMODAL .submit button {
+  padding: 5px 30px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 4px;
+}
+
+.ourMODAL .inputField {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.ourMODAL .inputField .inputField_label {
+  padding-left: 2px;
+}
+
+.ourMODAL .inputField .inputField_label p {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.ourMODAL .inputField .inputField_textbox input {
+  width: 97%;
+  padding: 0.6rem;
+  margin: 4px 0px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.ourMODAL .inputField .inputField_textbox input:focus {
+  outline: none;
+}
+
 .navbarWrapper {
   margin: auto;
   width: 90%;
@@ -754,6 +836,8 @@ p {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
+  padding-right: 20px;
 }
 
 .event_title p:hover {
@@ -766,6 +850,8 @@ p {
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
+  padding-right: 20px;
 }
 
 .event {
@@ -844,4 +930,53 @@ p {
   padding-bottom: 8px;
   border-bottom: 2px solid gray;
   color: #413f3f;
+}
+
+.cBtn {
+  width: 100%;
+  text-align: right;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.cBtn button {
+  border: none;
+  outline: none;
+  background: #ef7c00;
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.seeAll {
+  padding-bottom: 0rem;
+  padding: 0.7rem;
+  padding-top: 0;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .seeAll {
+    padding: 0.7rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.seeAll button {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #17b947;
+  border: 2px solid #17b947;
+  cursor: pointer;
+  padding: 5px 20px;
+  font-weight: 700;
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-size: 20px;
+  -webkit-box-shadow: 0px 0px 7px #17b947;
+          box-shadow: 0px 0px 7px #17b947;
 }

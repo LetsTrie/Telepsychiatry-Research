@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/events.css" />
+    <title>Current Workshops | Telepsychiatry Research</title>
+  </head>
+
+  <body>
+    <div>
+      <header>
+        <nav>
+          <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
+
+      <section class="events container">
+        <div class="events_header text-center my-4">
+          <p>Current Workshops</p>
+        </div>
+        <% for(let i = 0 ; i < 5; i++) { %>
+        <div class="event">
+          <div class="flex-parent">
+            <div class="flex-child dateFlex">
+              <div class="DateMonth">
+                <p class="datee">24</p>
+                <p class="timee">MAY</p>
+              </div>
+            </div>
+
+            <div class="flex-child detailsFlex">
+              <div class="event_title">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. A
+                  consequatur sequi id quibusdam recusandae praesentium illo
+                  tenetur, saepe neque eaque. Molestiae a, aperiam aut delectus
+                  incidunt maxime dolore cum natus.
+                </p>
+              </div>
+              <div class="event_details">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Eligendi nesciunt dolorem voluptatibus voluptate dolor amet,
+                  suscipit perferendis quos. Recusandae modi odit natus
+                  accusamus maiores, veniam itaque nam libero laborum quaerat
+                  ullam aperiam magni animi alias! Voluptas consequuntur minus
+                  perferendis necessitatibus est beatae, nisi, exercitationem
+                  quos rem totam incidunt maxime ipsa quia ea ipsum veritatis
+                  dolores assumenda vitae nostrum voluptate odio? Quae velit
+                  recusandae quia qui cumque nostrum enim expedita mollitia, ad
+                  nesciunt unde eaque, facere voluptatum cupiditate. Itaque
+                  perspiciatis quaerat nihil maiores error, accusantium
+                  molestiae velit rerum atque ex, veniam quasi distinctio, ipsum
+                  obcaecati laborum sed! Omnis, reprehenderit atque? Nesciunt.
+                </p>
+              </div>
+              <div class="event_times">
+                <p>
+                  <i class="fa fa-calendar"> &nbsp; </i> Date: 27/12/20 -
+                  30/12/20
+                </p>
+              </div>
+              <div class="event_times">
+                <p>
+                  <i
+                    class="fa fa-clock-o"
+                    aria-hidden="true"
+                    style="font-size: 20px"
+                  >
+                    &nbsp;</i
+                  >Time: 11:30AM.
+                </p>
+              </div>
+              <div class="event_times">
+                <p>
+                  <i class="fa fa-map-marker" style="font-size: 20px">
+                    &nbsp;</i
+                  >
+                  Address: University Of Dhaka %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="cBtn text-center">
+            <button data-toggle="modal" data-target="#WORKSHOP_REG_MODAL">
+              Register
+            </button>
+          </div>
+        </div>
+        <% } %>
+      </section>
+    </div>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%> <%-
+  include('./partials/events_modal')%>
+</html>

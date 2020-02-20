@@ -31,3 +31,6 @@
 
 exports.getWorkshop = (req, res, next) => res.render('listOfWorkshop');
 exports.getTraining = (req, res, next) => res.render('listOfTrainingSession');
+exports.getNewWorkshop = (req, res, next) => res.render('createNewWorkshop');
+exports.getNewTraining = (req, res, next) => res.render('createNewTraining');
+exports.eventsAll = (req, res, next) => res.render('eventShowAll');

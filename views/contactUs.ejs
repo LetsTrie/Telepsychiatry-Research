@@ -22,7 +22,8 @@
               <p>Contact Us</p>
             </div>
             <div class="contactUs_form">
-              <form action="/contactUs" method="POST">
+              <div class="alert alert-danger" id="alert"></div>
+              <form id="form" action="/contactUs" method="POST">
                 <% if(successMessage != ''){ %>
                 <div class="alert alert-success" role="alert">
                   <%= successMessage %>
@@ -64,52 +65,5 @@
   </body>
 
   <%- include('./partials/vendorsBottom')%>
-  <script>
-    $(document).ready(() => {
-      console.log('ready');
-
-      function isAlphaSpace(str) {
-        for (let i = 0; i < str.length; i++) {
-          if (
-            !(str[i] >= 'A' && str[i] <= 'Z') &&
-            !(str[i] >= 'a' && str[i] <= 'z') &&
-            str[i] != ' '
-          ) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      $('#submit-btn').click(e => {
-        e.preventDefault();
-        console.log('submit');
-        const name = $('#name')
-          .val()
-          .trim();
-        const email = $('#email')
-          .val()
-          .trim();
-        const message = $('#message')
-          .val()
-          .trim();
-        console.log(name, email, message.length);
-
-        let error = false;
-        // name 4 length
-        if (!isAlphaSpace(name)) {
-          error = true;
-          $('#alert').show();
-          $('#alert').html('Name supports only alphabets and spaces');
-        } else if (message.length < 50) {
-          error = true;
-          $('#alert').show();
-          $('#alert').html('Message must at least be 50 characters');
-        }
-        if (!error) {
-          $('#form').submit();
-        }
-      });
-    });
-  </script>
+  <script src="/js/contactUs.js"></script>
 </html>

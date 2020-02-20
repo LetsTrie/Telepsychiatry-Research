@@ -1,6 +1,14 @@
 @import '_main';
 @import '_navbar';
 
+#alert {
+  display: none;
+}
+
+.alert {
+  text-align: center;
+}
+
 .contactUs {
   font-family: 'Merriweather', serif;
 

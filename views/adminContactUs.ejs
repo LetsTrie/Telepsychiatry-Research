@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/adminContactUs.css" />
+    <title>Contact Us | Admin | Telepsychiatry Research</title>
+  </head>
+
+  <body>
+    <div style="min-height: 100vh;">
+      <header>
+        <nav class="cnav">
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
+
+      <div class="adminContactUs">
+        <div class="container">
+          <div class="adminContactUsHeader">
+            <p>Contact Us</p>
+          </div>
+          <div class="all_posts">
+            <% for (let i = 0; i < data.length; i++) { %>
+
+            <div class="singlePost">
+              <div class="singlePost_name">
+                <p>
+                  <%= data[i].name %>
+                </p>
+              </div>
+              <div class="singlePost_email">
+                <p>
+                  <%= data[i].email %>
+                </p>
+              </div>
+              <div class="singlePost_post">
+                <p>
+                  <%= data[i].message %>
+                </p>
+              </div>
+              <div class="singlePost_reply">
+                <button
+                  data-toggle="modal"
+                  data-target="#ADMIN_CONTACTUS_REPLY_MODAL"
+                >
+                  Reply
+                </button>
+              </div>
+            </div>
+            <% } %>
+          </div>
+          <%- include('./partials/pagination.ejs') %>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+    <%- include('./partials/admin_contactUs_reply')%>
+  </body>
+</html>

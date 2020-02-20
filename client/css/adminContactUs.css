@@ -638,202 +638,123 @@ p {
   display: block;
 }
 
-.card p {
-  letter-spacing: 0.3px;
-}
-
 p {
   margin-bottom: 8px;
 }
 
-.twoButtons {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.adminContactUs .container .adminContactUsHeader {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.adminContactUs .container .adminContactUsHeader p {
+  font-family: 'Merriweather', serif;
+  font-size: 50px;
+  color: #272727;
+}
+
+.adminContactUs .container .all_posts {
+  width: 95%;
+  margin: auto;
+}
+
+.adminContactUs .container .all_posts .singlePost {
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+  padding: 20px 25px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_name p {
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_email p {
+  color: rgba(93, 88, 88, 0.849);
+  font-size: 15px;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_post p {
+  margin-top: 10px;
+  color: #363636;
+  text-align: justify;
+  padding-right: 10px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+
+.adminContactUs .container .all_posts .singlePost .singlePost_reply {
   width: 100%;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-top: 30px;
+  text-align: right;
+  padding: 5px;
 }
 
-.twoButtons .BookNow {
-  background-color: #0de0fe;
+.adminContactUs .container .all_posts .singlePost .singlePost_reply button {
+  border: none;
+  outline: none;
+  background: #ef7c00;
   color: #fff;
-}
-
-.twoButtons button,
-.bookDoctor__showMore button {
-  color: #0de0fe;
-  font-size: 17px;
-  border: 2px solid #0de0fe;
-  text-align: center;
-  display: block;
-  font-weight: 500;
-  padding: 6px;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-color: transparent;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-}
-
-.twoButtons button:hover,
-.bookDoctor__showMore button:hover {
-  background-color: #0de0fe;
-  color: #fff;
-}
-
-.bookDoctor__showMore {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 30px;
-}
-
-.bookDoctor__showMore button {
-  padding: 10px 20px;
-  background: #0de0fe;
-  color: white;
-}
-
-.checked {
-  color: #f4c150;
-}
-
-.verified {
-  color: #28a745;
-  margin-left: 3px;
-  font-weight: 900;
-}
-
-.ourDoctorsHeading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
-}
-
-.ourDoctorsHeading p {
-  font-size: 40px;
-  font-weight: 500;
-  color: #2a2a2a;
+  padding: 10px 22px;
+  font-size: 18px;
   letter-spacing: 0.5px;
+  border-radius: 4px;
 }
 
-.searching {
-  padding: 0 0 45px 0;
+#ADMIN_CONTACTUS_REPLY_MODAL .reply_box {
+  padding: 5px 10px;
 }
 
-.searching form {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+#ADMIN_CONTACTUS_REPLY_MODAL .modal-body {
+  min-height: 180px;
 }
 
-.searching .searchbox {
-  width: 30%;
+#ADMIN_CONTACTUS_REPLY_MODAL .submit {
+  margin-top: 0.5rem;
 }
 
-@media (max-width: 1000px) {
-  .searching .searchbox {
-    width: 60%;
-  }
+#ADMIN_CONTACTUS_REPLY_MODAL .submit button {
+  padding: 5px 30px;
 }
 
-.searching .searchbox input[type='text'] {
-  padding: 9px;
+#ADMIN_CONTACTUS_REPLY_MODAL .modal-footer.submit button {
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .green-btn {
+  background: #13ce66;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .red-btn {
+  background: rgba(194, 43, 5, 0.925);
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL textarea {
   width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border-radius: 4px;
+  border: 1px solid #bdb9b9;
 }
 
-.searching .searchBtn input[type='submit'] {
+#ADMIN_CONTACTUS_REPLY_MODAL textarea:focus {
+  outline: none;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .submit {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#ADMIN_CONTACTUS_REPLY_MODAL .submit button {
   padding: 5px 30px;
   font-size: 24px;
   border: none;
   outline: none;
   color: white;
-  cursor: pointer;
-  background: #13ce66;
-}
-
-.allResources {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-
-.allResources .item .card {
-  width: 300px;
-  padding: 10px;
-  -webkit-box-shadow: 0px 0px 7px #a7a5a5;
-          box-shadow: 0px 0px 7px #a7a5a5;
-}
-
-.card-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-}
-
-.cardName {
-  font-size: 17px;
-  font-weight: 500;
-  color: #2e3842;
-}
-
-.cardDegree {
-  font-size: 14px;
-  font-weight: 400;
-  color: #757575;
-}
-
-.card-text {
-  color: #696666;
-  display: -webkit-box;
-  -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.aff,
-.college {
-  color: #696666;
-}
-
-.aff span,
-.college span {
-  color: #3d3c3c;
-}
-
-.college {
-  padding-top: 5px;
-  padding-bottom: 10px;
+  border-radius: 4px;
 }

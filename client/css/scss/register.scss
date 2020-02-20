@@ -1,12 +1,16 @@
 @import '_main';
 @import '_navbar';
-
 p {
   margin-bottom: 8px;
 }
 
 .ck-editor__editable {
   min-height: 300px;
+}
+
+#alertF {
+  display: none;
+  text-align: center;
 }
 
 .wrapper {
@@ -28,11 +32,9 @@ p {
   @media (max-width: 900px) {
     width: 98%;
   }
-
   &__header {
     font-size: 3.2rem;
     border-bottom: 2px solid gray;
-
     @media (max-width: 900px) {
       font-size: 2.7rem;
     }
@@ -43,7 +45,7 @@ p {
 }
 
 .input_boxes {
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
   .one_box {
     padding: 5px 0;
     .box_header {
@@ -52,14 +54,12 @@ p {
         padding-bottom: 8px;
         font-weight: 500;
         letter-spacing: 0.5px;
-
         span {
           font-size: 1rem;
           color: #8a5555;
         }
       }
     }
-
     .input_box {
       width: 100%;
       textarea,
@@ -88,7 +88,6 @@ p {
   margin-bottom: 0.5rem;
   width: 49%;
   margin-right: 0.5rem;
-
   &:last-child {
     margin-right: 0rem;
   }
@@ -96,7 +95,6 @@ p {
     margin-right: 0rem;
     width: 100%;
   }
-
   .form-header {
     margin-top: 8px;
     p {
@@ -105,16 +103,15 @@ p {
       letter-spacing: 0.5px;
     }
   }
-
   input[type='text'],
   input[type='email'],
+  input[type='password'],
   textarea {
     width: 100%;
     padding: 0.6rem;
     margin: 5px 0px;
     border-radius: 4px;
     border: 1px solid #bdb9b9;
-
     &:focus {
       outline: none;
     }
@@ -125,15 +122,12 @@ p {
   width: 100%;
   text-align: center;
   padding: 25px 0;
-
   button {
     border: none;
     outline: none;
-
     background: #ef7c00;
     color: #fff;
     padding: 10px 22px;
-
     font-size: 24px;
     letter-spacing: 0.5px;
     border-radius: 4px;
@@ -143,6 +137,7 @@ p {
 .slct_picker {
   padding-top: 4px;
 }
+
 .imageFile {
   padding-top: 10px;
 }

@@ -522,6 +522,17 @@ p {
   border-radius: 5px;
 }
 
+.navbarWrapper {
+  margin: auto;
+  width: 90%;
+}
+
+@media (max-width: 1410px) {
+  .navbarWrapper {
+    width: 95%;
+  }
+}
+
 .nav-link,
 .navbar-brand {
   cursor: pointer;
@@ -529,6 +540,12 @@ p {
 
 .nav-item {
   margin: 8px 12px;
+}
+
+@media (max-width: 1410px) {
+  .nav-item {
+    margin: 4px 4px;
+  }
 }
 
 .nav-link {
@@ -595,17 +612,22 @@ p {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 250px;
+  min-width: 240px;
   -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
+.extraLarge {
+  min-width: 350px;
+}
+
 .dropdown-content a {
   color: black;
-  padding: 10px 12px;
+  padding: 10px 15px;
   text-decoration: none;
   display: block;
+  font-size: 15px;
 }
 
 .dropdown-content a:hover {
@@ -838,7 +860,7 @@ p {
 }
 
 .clinical-color {
-  border: 1px solid gray;
+  border: 1px solid #cacaca;
   cursor: pointer;
   font-family: 'roboto', sans-serif;
   letter-spacing: 1px;

@@ -522,6 +522,17 @@ p {
   border-radius: 5px;
 }
 
+.navbarWrapper {
+  margin: auto;
+  width: 90%;
+}
+
+@media (max-width: 1410px) {
+  .navbarWrapper {
+    width: 95%;
+  }
+}
+
 .nav-link,
 .navbar-brand {
   cursor: pointer;
@@ -529,6 +540,12 @@ p {
 
 .nav-item {
   margin: 8px 12px;
+}
+
+@media (max-width: 1410px) {
+  .nav-item {
+    margin: 4px 4px;
+  }
 }
 
 .nav-link {
@@ -595,17 +612,22 @@ p {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 250px;
+  min-width: 240px;
   -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
+.extraLarge {
+  min-width: 350px;
+}
+
 .dropdown-content a {
   color: black;
-  padding: 10px 12px;
+  padding: 10px 15px;
   text-decoration: none;
   display: block;
+  font-size: 15px;
 }
 
 .dropdown-content a:hover {
@@ -622,6 +644,11 @@ p {
 
 .ck-editor__editable {
   min-height: 300px;
+}
+
+#alertF {
+  display: none;
+  text-align: center;
 }
 
 .wrapper {
@@ -670,7 +697,7 @@ p {
 }
 
 .input_boxes {
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
 }
 
 .input_boxes .one_box {
@@ -750,6 +777,7 @@ p {
 
 .flex-child input[type='text'],
 .flex-child input[type='email'],
+.flex-child input[type='password'],
 .flex-child textarea {
   width: 100%;
   padding: 0.6rem;
@@ -760,6 +788,7 @@ p {
 
 .flex-child input[type='text']:focus,
 .flex-child input[type='email']:focus,
+.flex-child input[type='password']:focus,
 .flex-child textarea:focus {
   outline: none;
 }

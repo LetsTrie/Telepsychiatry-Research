@@ -163,29 +163,42 @@
             <p>Contact Us</p>
           </div>
           <div class="contactUs_form">
-            <form>
+            <div class="alert alert-danger" id="alertF"></div>
+            <form id="form" action="/contactUs" method="POST">
+              <% if(successMessage != ''){ %>
+              <div class="alert alert-success" role="alert">
+                <%= successMessage %>
+              </div>
+              <% } %>
               <div class="flex-parentt">
                 <div class="flex-childd">
                   <p>Name:</p>
-                  <input type="text" />
+                  <input id="homepage_name" type="text" name="name" required />
                 </div>
 
                 <div class="flex-childd">
                   <p>Email:</p>
-                  <input type="email" />
+                  <input
+                    id="homepage_email"
+                    type="email"
+                    name="email"
+                    required
+                  />
                 </div>
               </div>
               <div class="messagee">
                 <p>Your message:</p>
                 <textarea
+                  id="homepage_message"
                   name="message"
                   id="message"
                   cols="30"
                   rows="10"
+                  required
                 ></textarea>
               </div>
               <div class="submit">
-                <button>Submit</button>
+                <button class="homepage_submit">Submit</button>
               </div>
             </form>
           </div>
@@ -193,5 +206,6 @@
       </div>
     </div>
     <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+    <script src="/js/homepage.js"></script>
   </body>
 </html>

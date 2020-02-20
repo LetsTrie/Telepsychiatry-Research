@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/adminContactUs.css" />
-        <title>Contact Us| Admin | Telepsychiatry Research</title>
-</head>
+    <link rel="stylesheet" href="/css/adminContactUs.css" />
+    <title>Contact Us| Admin | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <div style="min-height: 100vh;">
-        <header>
-            <nav class="cnav">
-                <%- include('./partials/navbar')%>
-            </nav>
-            <div class="my-3 divider"></div>
-        </header>
+      <header>
+        <nav class="cnav">
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
 
-        <div class="adminContactUs">
-            <div class="container">
-                <div class="adminContactUsHeader">
-                    <p>Contact Us</p>
-                </div>
-                <div class="all_posts">
-                    <% for (i = 0; i < message.length; i++) { %>
+      <div class="adminContactUs">
+        <div class="container">
+          <div class="adminContactUsHeader">
+            <p>Contact Us</p>
+          </div>
+          <div class="all_posts">
+            <% for (let i = 0; i < data.length; i++) { %>
 
-                        <div class="singlePost">
-                            <div class="singlePost_name">
-                                <p>
-                                    <%= message[i].name %>
-                                </p>
-                            </div>
-                            <div class="singlePost_email">
-                                <p>
-                                    <%= message[i].email %>
-                                </p>
-                            </div>
-                            <div class="singlePost_post">
-                                <p>
-                                    <%= message[i].message %>
-                                </p>
-                            </div>
-                            <div class="reply">
-                                <button class="btn btn-secondary">Reply</button>
-                            </div>
-                        </div>
-
-                        <% } %>
-                </div>
+            <div class="singlePost">
+              <div class="singlePost_name">
+                <p>
+                  <%= data[i].name %>
+                </p>
+              </div>
+              <div class="singlePost_email">
+                <p>
+                  <%= data[i].email %>
+                </p>
+              </div>
+              <div class="singlePost_post">
+                <p>
+                  <%= data[i].message %>
+                </p>
+              </div>
+              <div class="reply">
+                <button class="btn btn-secondary">Reply</button>
+              </div>
             </div>
+            <% } %>
+          </div>
+          <%- include('./partials/pagination.ejs') %>
         </div>
+      </div>
     </div>
 
-    <%- include('./partials/footer')%>
-</body>
-
-<%- include('./partials/vendorsBottom')%>
-
+    <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+  </body>
 </html>

@@ -3,11 +3,6 @@
   <head>
     <%- include('./partials/vendorsTop')%>
     <link rel="stylesheet" href="/css/doctorProfile.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
 
     <title>Profile | Doctor | Telepsychiatry Research</title>
   </head>
@@ -32,18 +27,6 @@
             <div class="His_profession">
               <p class="name">Sharmin Afroz</p>
               <p class="degree">BDS, MDS - Oral & Maxillofacial Surgery</p>
-              <!-- <p class="profession">
-                <i class="fa fa-user"></i>&nbsp;&nbsp;Dentist
-              </p> -->
-              <!-- 
-              <div class="ratingg">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="ratingNumber">(38)</span>
-              </div> -->
 
               <p class="aff">
                 <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
@@ -160,47 +143,6 @@
     </section>
 
     <%- include('./partials/vendorsBottom')%> <%-
-    include('./partials/bookAppointment') %>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-    ></script>
-    <script>
-      $('input[name="meet_date"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: parseInt(moment().format('YYYY'), 10),
-        maxYear: parseInt(moment().format('YYYY'), 10) + 1,
-        autoUpdateInput: false,
-        locale: {
-          cancelLabel: 'Clear'
-        }
-      });
-
-      $('input[name="meet_date"]').on('apply.daterangepicker', function(
-        ev,
-        picker
-      ) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY'));
-      });
-
-      $('input[name="meet_date"]').on('cancel.daterangepicker', function(
-        ev,
-        picker
-      ) {
-        $(this).val('');
-      });
-    </script>
-
-    <%- include('./partials/footer')%>
+    include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
   </body>
 </html>

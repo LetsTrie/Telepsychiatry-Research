@@ -1044,3 +1044,82 @@ p {
 #FORGET_PASSWORD_MODAL .submit button {
   padding: 5px 30px;
 }
+
+#SELECT_CATEGORY_MODAL {
+  /* Customize the label (the container) */
+  font-family: 'Lato', sans-serif;
+  /* Create a custom radio button */
+  /* On mouse-over, add a grey background color */
+  /* When the radio button is checked, add a blue background */
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  /* Show the indicator (dot/circle) when checked */
+  /* Style the indicator (dot/circle) */
+}
+
+#SELECT_CATEGORY_MODAL .modalBodyHeader {
+  font-weight: 700;
+  font-size: 25px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+#SELECT_CATEGORY_MODAL .container {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-bottom: 10px;
+}
+
+#SELECT_CATEGORY_MODAL .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+#SELECT_CATEGORY_MODAL .checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+#SELECT_CATEGORY_MODAL .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+#SELECT_CATEGORY_MODAL .container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+#SELECT_CATEGORY_MODAL .checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+#SELECT_CATEGORY_MODAL .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+#SELECT_CATEGORY_MODAL .container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}

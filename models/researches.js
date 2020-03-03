@@ -22,6 +22,10 @@ const researchSchema = new mongoose.Schema({
     authors: {
         type: String
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
     createdAt: {
         type: Date,
         default: Date.now()

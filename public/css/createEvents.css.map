@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../client/css/scss/createEvents.scss"
+    ],
+    "names": [],
+    "file": "createEvents.css"
+}

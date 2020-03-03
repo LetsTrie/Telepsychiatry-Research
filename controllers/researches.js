@@ -6,13 +6,13 @@ const LIMIT = 9;
 
 exports.getResearch = async (req, res) => {
   const data = await ResearchModel.findById(req.params.id);
-  res.render('singleResearch', { data });
+  res.render('adminSingleResearch', { data });
 };
 
 exports.getResearches = async (req, res) => {
   const page = +req.query.page || 1;
   const search = req.query.search;
-  let searchKey = {};
+  let searchKey = { isVerified: true };
   let baseUrl = req.baseUrl;
   if (search) {
     baseUrl += `?search=${search}&page=`;

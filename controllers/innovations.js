@@ -13,7 +13,7 @@ exports.getInnovation = async (req, res) => {
 exports.getInnovations = async (req, res) => {
   const page = +req.query.page || 1;
   const search = req.query.search;
-  let searchKey = {};
+  let searchKey = { isVerified: true };
   let baseUrl = req.baseUrl;
   if (search) {
     baseUrl += `?search=${search}&page=`;

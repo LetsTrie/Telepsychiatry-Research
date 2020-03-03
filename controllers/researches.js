@@ -1,5 +1,7 @@
 const { ResearchModel } = require('../models/researches');
 const { pagination } = require('./utils');
+const { makeSmallParagraphFromHTML } = require('./utils');
+
 const LIMIT = 9;
 
 exports.getResearch = async (req, res) => {
@@ -36,39 +38,14 @@ exports.getResearches = async (req, res) => {
     .skip(LIMIT * (page - 1));
   const totalItems = await ResearchModel.find(searchKey).countDocuments();
   return res.render('researches', {
-    data,
+    data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
     search,
     ...pagination(page, LIMIT, totalItems, baseUrl)
   });
 };
 
 exports.postResearches = async (req, res) => {
-  const {
-    title,
-    BriefDesciption,
-    conflictOfInterest,
-    financialSupport,
-    Acknowlegement,
-    references,
-    authors
-  } = req.body;
-
-  let modifiedDesciption = (x = BriefDesciption);
-
-  if (x.startsWith('<p>') && x.endsWith('</p>')) {
-    modifiedDesciption = x.substring(3, x.length - 4);
-  }
-
-  const newResearch = new ResearchModel({
-    title,
-    BriefDesciption: modifiedDesciption,
-    conflictOfInterest,
-    financialSupport,
-    Acknowlegement,
-    references,
-    authors
-  });
-
+  const newResearch = new ResearchModel({ ...req.body });
   await newResearch.save();
   res.redirect('/researches');
 };

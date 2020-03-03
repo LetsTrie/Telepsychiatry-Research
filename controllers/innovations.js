@@ -3,6 +3,8 @@ const { pagination } = require('./utils');
 
 const LIMIT = 9;
 
+const { makeSmallParagraphFromHTML } = require('./utils');
+
 exports.getInnovation = async (req, res) => {
   const data = await InnovationModel.findById(req.params.id);
   res.render('singleInnovations', { data });
@@ -36,8 +38,9 @@ exports.getInnovations = async (req, res) => {
     .limit(LIMIT)
     .skip(LIMIT * (page - 1));
   const totalItems = await InnovationModel.find(searchKey).countDocuments();
+
   return res.render('innovations', {
-    data,
+    data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
     search,
     ...pagination(page, LIMIT, totalItems, baseUrl)
   });
@@ -46,32 +49,7 @@ exports.getInnovations = async (req, res) => {
 exports.getNewInnovations = (req, res) => res.render('createInnovations');
 
 exports.postInnovations = async (req, res) => {
-  const {
-    title,
-    BriefDesciption,
-    conflictOfInterest,
-    financialSupport,
-    Acknowlegement,
-    references,
-    authors
-  } = req.body;
-
-  let modifiedDesciption = (x = BriefDesciption);
-
-  if (x.startsWith('<p>') && x.endsWith('</p>')) {
-    modifiedDesciption = x.substring(3, x.length - 4);
-  }
-
-  const newInnovations = new InnovationModel({
-    title,
-    BriefDesciption: modifiedDesciption,
-    conflictOfInterest,
-    financialSupport,
-    Acknowlegement,
-    references,
-    authors
-  });
-
+  const newInnovations = new InnovationModel({ ...req.body });
   await newInnovations.save();
-  res.redirect('/innovations');
+  return res.redirect('/innovations');
 };

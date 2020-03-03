@@ -5,159 +5,214 @@
 
     <link rel="stylesheet" href="/css/homepage.css" />
     <title>Homepage | Telepsychiatry Research</title>
+
+    <style>
+      .ourMainHomepage {
+        position: relative;
+      }
+      .contactUsModal {
+        position: fixed;
+        height: 80px;
+        width: 80px;
+        bottom: 60px;
+        right: 60px;
+        cursor: default;
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        align-items: center;
+        color: #228be6;
+        border-radius: 50%;
+        cursor: pointer;
+
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+
+        border: 45px solid rgb(251, 245, 245);
+        background: white;
+      }
+      @keyframes mymove {
+        50% {
+          outline-offset: 25px;
+        }
+      }
+      .contactUsModal i {
+        font-size: 90px;
+        background: white;
+
+        color: #228be6;
+        border-radius: 50%;
+      }
+      .imgg {
+        outline: 5px solid coral;
+        animation: mymove 2s infinite;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+      }
+    </style>
   </head>
   <body>
-    <div class="intro_page">
-      <header class="intro_page_header">
-        <%- include('./partials/navbar.ejs')%>
-        <div class="wrapper container">
-          <div class="desc">
-            <div class="largeText">
-              <p>
-                <span>We Help You To Live</span> <br />
-                <span>
-                  A <span style="color: #00baff;"> Healthy Life</span>
-                </span>
-              </p>
-            </div>
-            <div class="smallText">
-              <p>
-                We promotes mental health awareness and care about your health.
-                Join our community for all kinds of health supports.
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-    </div>
-
-    <div class="about_this_website">
-      <div class="container">
-        <div class="my-3  py-3">
-          <div class="about_HEADER text-center">
-            <p>About <span>Telepsychiatry</span></p>
-          </div>
-          <section class="aboutThisCompany">
-            <div class="about">
-              <div class="details">
+    <div class="ourMainHomepage">
+      <div
+        class="contactUsModal"
+        data-toggle="modal"
+        data-target="#HOMEPAGE_CONTACTUS_MODAL"
+      >
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </div>
+      <div class="intro_page">
+        <header class="intro_page_header">
+          <%- include('./partials/navbar.ejs')%>
+          <div class="wrapper container">
+            <div class="desc">
+              <div class="largeText">
                 <p>
-                  Rapidiously reintermediate seamless customer service via
-                  installed base outsourcing. Competently exploit prospective
-                  leadership skills via corporate e-services. Assertively
-                  synergize resource maximizing relationships vis-a-vis.
-                  Competently exploit prospective leadership skills via
-                  corporate e-services. Assertively synergize resource
-                  maximizing relationships vis-a-vis.
+                  <span>We Help You To Live</span> <br />
+                  <span>
+                    A <span style="color: #00baff;"> Healthy Life</span>
+                  </span>
                 </p>
               </div>
-              <div class="details">
+              <div class="smallText">
                 <p>
-                  Enthusiastically provide access to competitive collaboration
-                  and idea-sharing after proactive innovation. Phosfluorescently
-                  extend fully tested functionalities for business processes.
-                  Quickly optimize long-term high-impact technologies without
-                  cost effective manufactured products. Rapidiously
-                  reintermediate seamless customer service via installed base
-                  outsourcing. Competently exploit prospective leadership skills
-                  via corporate e-services. Assertively synergize resource
-                  maximizing relationships vis-a-vis. Enthusiastically provide
-                  access to competitive collaboration and idea-sharing after
-                  proactive innovation. Phosfluorescently extend fully tested
-                  functionalities for business processes. Quickly optimize
-                  long-term high-impact technologies without cost effective
-                  manufactured products. Rapidiously reintermediate seamless
-                  customer service via installed base outsourcing. Competently
-                  exploit prospective leadership skills via corporate
-                  e-services.
+                  We promotes mental health awareness and care about your
+                  health. Join our community for all kinds of health supports.
                 </p>
               </div>
             </div>
-            <div class="companyLogo">
-              <img src="/images/logo.png" alt="Logo" />
-            </div>
-          </section>
-        </div>
+          </div>
+        </header>
       </div>
 
-      <div class="customerQuotes text-center">
+      <div class="about_this_website">
         <div class="container">
-          <div class="customerQuotes_header">
-            <p>What Our Customer Says</p>
-          </div>
-          <div class="customerQuotes_header_info">
-            <p>
-              Energistically develop 24/365 outsourcing rather than market
-              positioning sources. Collaboratively iterate bricks-and-clicks
-              relationships with sustainable deliverables. Enthusiastically
-              productivate highly efficient bandwidth for economically sound
-              initiatives. Synergistically enhance top-line.
-            </p>
-          </div>
-          <div class="customers">
-            <div class="customer">
-              <div class="quote">
-                <p>
-                  Rapidiously enhance standardized information through virtual
-                  benefits. Dynamically reintermediate low-risk high-yield
-                  partnerships via intermandated collaboration and idea-sharing.
-                  Efficiently parallel task maintainable portals.
-                </p>
-              </div>
-              <div class="namee"><p>MD. Sakib Khan</p></div>
-              <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
+          <div class="my-3  py-3">
+            <div class="about_HEADER text-center">
+              <p>About <span>Telepsychiatry</span></p>
             </div>
-            <div class="customer">
-              <div class="quote">
-                <p>
-                  Rapidiously enhance standardized information through virtual
-                  benefits. Dynamically reintermediate low-risk high-yield
-                  partnerships via intermandated collaboration and idea-sharing.
-                  Efficiently parallel task maintainable portals.
-                </p>
+            <section class="aboutThisCompany">
+              <div class="about">
+                <div class="details">
+                  <p>
+                    Rapidiously reintermediate seamless customer service via
+                    installed base outsourcing. Competently exploit prospective
+                    leadership skills via corporate e-services. Assertively
+                    synergize resource maximizing relationships vis-a-vis.
+                    Competently exploit prospective leadership skills via
+                    corporate e-services. Assertively synergize resource
+                    maximizing relationships vis-a-vis.
+                  </p>
+                </div>
+                <div class="details">
+                  <p>
+                    Enthusiastically provide access to competitive collaboration
+                    and idea-sharing after proactive innovation.
+                    Phosfluorescently extend fully tested functionalities for
+                    business processes. Quickly optimize long-term high-impact
+                    technologies without cost effective manufactured products.
+                    Rapidiously reintermediate seamless customer service via
+                    installed base outsourcing. Competently exploit prospective
+                    leadership skills via corporate e-services. Assertively
+                    synergize resource maximizing relationships vis-a-vis.
+                    Enthusiastically provide access to competitive collaboration
+                    and idea-sharing after proactive innovation.
+                    Phosfluorescently extend fully tested functionalities for
+                    business processes.
+                  </p>
+                </div>
               </div>
-              <div class="namee"><p>MD. Sakib Khan</p></div>
-              <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
+              <div class="companyLogo">
+                <img src="/images/logo.png" alt="Logo" />
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="customerQuotes text-center">
+          <div class="container">
+            <div class="customerQuotes_header">
+              <p>What Our Customer Says</p>
             </div>
-            <div class="customer">
-              <div class="quote">
-                <p>
-                  Rapidiously enhance standardized information through virtual
-                  benefits. Dynamically reintermediate low-risk high-yield
-                  partnerships via intermandated collaboration and idea-sharing.
-                  Efficiently parallel task maintainable portals.
-                </p>
+            <div class="customerQuotes_header_info">
+              <p>
+                Energistically develop 24/365 outsourcing rather than market
+                positioning sources. Collaboratively iterate bricks-and-clicks
+                relationships with sustainable deliverables. Enthusiastically
+                productivate highly efficient bandwidth for economically sound
+                initiatives. Synergistically enhance top-line.
+              </p>
+            </div>
+            <div class="customers">
+              <div class="customer">
+                <div class="quote">
+                  <p>
+                    Rapidiously enhance standardized information through virtual
+                    benefits. Dynamically reintermediate low-risk high-yield
+                    partnerships via intermandated collaboration and
+                    idea-sharing. Efficiently parallel task maintainable
+                    portals.
+                  </p>
+                </div>
+                <div class="namee"><p>MD. Sakib Khan</p></div>
+                <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
               </div>
-              <div class="namee"><p>MD. Sakib Khan</p></div>
-              <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
+              <div class="customer">
+                <div class="quote">
+                  <p>
+                    Rapidiously enhance standardized information through virtual
+                    benefits. Dynamically reintermediate low-risk high-yield
+                    partnerships via intermandated collaboration and
+                    idea-sharing. Efficiently parallel task maintainable
+                    portals.
+                  </p>
+                </div>
+                <div class="namee"><p>MD. Sakib Khan</p></div>
+                <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
+              </div>
+              <div class="customer">
+                <div class="quote">
+                  <p>
+                    Rapidiously enhance standardized information through virtual
+                    benefits. Dynamically reintermediate low-risk high-yield
+                    partnerships via intermandated collaboration and
+                    idea-sharing. Efficiently parallel task maintainable
+                    portals.
+                  </p>
+                </div>
+                <div class="namee"><p>MD. Sakib Khan</p></div>
+                <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="organizationSupport">
-        <div class="container mb-5">
-          <div class="organizationHeader">
-            <p>Organizations Who Support Us</p>
-          </div>
-          <div class="organizationHeader_info">
-            <p>
-              Energistically develop 24/365 outsourcing rather than market
-              positioning sources. Collaboratively iterate bricks-and-clicks
-              relationships with sustainable deliverables. Enthusiastically
-              productivate highly efficient bandwidth for economically sound
-              initiatives. Synergistically enhance top-line.
-            </p>
-          </div>
+        <div class="organizationSupport">
+          <div class="container mb-5">
+            <div class="organizationHeader">
+              <p>Organizations Who Support Us</p>
+            </div>
+            <div class="organizationHeader_info">
+              <p>
+                Energistically develop 24/365 outsourcing rather than market
+                positioning sources. Collaboratively iterate bricks-and-clicks
+                relationships with sustainable deliverables. Enthusiastically
+                productivate highly efficient bandwidth for economically sound
+                initiatives. Synergistically enhance top-line.
+              </p>
+            </div>
 
-          <div class="organizations">
-            <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-            <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
-            <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
+            <div class="organizations">
+              <div class="org"><img src="/images/org_demo.png" alt="" /></div>
+              <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
+              <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+    <%- include('./partials/footer')%> <%-
+    include('./partials/homepage_contact_us_modal')%> <%-
+    include('./partials/vendorsBottom')%>
     <script src="/js/homepage.js"></script>
   </body>
 </html>

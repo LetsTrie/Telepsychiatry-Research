@@ -575,35 +575,71 @@ p {
 .navbarWrapper {
   margin: auto;
   width: 90%;
+  font-family: 'roboto', sans-serif;
 }
 
 @media (max-width: 1410px) {
   .navbarWrapper {
-    width: 95%;
+    width: 97%;
   }
 }
 
-.nav-link,
-.navbar-brand {
+.navbarWrapper .dropdown-menu {
+  min-width: 10rem;
+  padding: 0 0;
+  margin: 0 0 0;
+  color: #272727;
+  background-color: #f1f1f1;
+  border: 0px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0rem;
+}
+
+.navbarWrapper .dropdown-submenu {
+  position: relative;
+}
+
+.navbarWrapper .dropdown-submenu a::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: 0.8em;
+}
+
+.navbarWrapper .dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+
+.navbarWrapper .dropdown-toggle::after {
+  border: none !important;
+  font: normal normal normal 25px/1 FontAwesome;
+  content: '\f107' !important;
+  vertical-align: 0;
+  margin-right: 10px;
+}
+
+.navbarWrapper .nav-link,
+.navbarWrapper .navbar-brand {
   cursor: pointer;
 }
 
-.nav-item {
+.navbarWrapper .nav-item {
   margin: 8px 12px;
 }
 
 @media (max-width: 1410px) {
-  .nav-item {
-    margin: 4px 4px;
+  .navbarWrapper .nav-item {
+    margin: 5px;
   }
 }
 
-.nav-link {
+.navbarWrapper .nav-link {
   padding: 0px;
 }
 
-.nav-link,
-.dropdown-content a {
+.navbarWrapper .nav-link,
+.navbarWrapper .dropdown-content a {
   font-family: 'Open Sans', sans-serif;
   color: #000000;
   line-height: 60px;
@@ -614,16 +650,16 @@ p {
   letter-spacing: 0.5px;
 }
 
-.dropdown-content a {
+.navbarWrapper .dropdown-content a {
   line-height: 45px;
 }
 
-.nav-link:hover,
-.dropdown-content a:hover {
+.navbarWrapper .nav-link:hover,
+.navbarWrapper .dropdown-content a:hover {
   color: #00baff;
 }
 
-.nav-link:after {
+.navbarWrapper .nav-link:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -640,7 +676,7 @@ p {
   z-index: 1;
 }
 
-.nav-link:hover:after {
+.navbarWrapper .nav-link:hover:after {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
@@ -648,11 +684,11 @@ p {
   transition: all 0.4s ease-out;
 }
 
-.navbar {
+.navbarWrapper .navbar {
   padding-bottom: 10px;
 }
 
-.dropdown-content {
+.navbarWrapper .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -662,11 +698,11 @@ p {
   z-index: 1;
 }
 
-.extraLarge {
+.navbarWrapper .extraLarge {
   min-width: 350px;
 }
 
-.dropdown-content a {
+.navbarWrapper .dropdown-content a {
   color: black;
   padding: 10px 15px;
   text-decoration: none;
@@ -674,12 +710,16 @@ p {
   font-size: 15px;
 }
 
-.dropdown-content a:hover {
+.navbarWrapper .dropdown-content a:hover {
   background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.navbarWrapper .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.navbarWrapper .submenuNavBar {
+  background-color: #f1f1f1;
 }
 
 .ck-editor__editable {

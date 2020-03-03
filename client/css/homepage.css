@@ -1189,38 +1189,35 @@ p {
   }
 }
 
-#HOMEPAGE_CONTACTUS_MODAL #alert {
-  display: none;
-}
-
-#HOMEPAGE_CONTACTUS_MODAL .alert {
-  text-align: center;
-}
-
-#HOMEPAGE_CONTACTUS_MODAL .contactUs {
-  font-family: 'Merriweather', serif;
-  padding: 30px 0 60px 0;
-}
-
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .container .wrapper {
-  width: 85%;
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .wrapper {
+  width: 90%;
   margin: auto;
 }
 
 @media (max-width: 1000px) {
-  #HOMEPAGE_CONTACTUS_MODAL .contactUs .container .wrapper {
+  #HOMEPAGE_CONTACTUS_MODAL .modal-body .wrapper {
     width: 95%;
   }
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_header p {
-  font-size: 45px;
-  margin-bottom: 8px;
-  color: #4d4f53;
-  letter-spacing: 0.5px;
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .submit {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form p {
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .submit button {
+  border: none;
+  outline: none;
+  background: #ef7c00;
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form p {
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
   padding-bottom: 5px;
@@ -1230,9 +1227,9 @@ p {
   color: #363636;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form input[type='text'],
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form input[type='email'],
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form textarea {
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text'],
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email'],
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea {
   width: 100%;
   padding: 0.6rem;
   margin: 5px 0px;
@@ -1240,13 +1237,13 @@ p {
   border-radius: 4px;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form input[type='text']:focus,
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form input[type='email']:focus,
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form textarea:focus {
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text']:focus,
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email']:focus,
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea:focus {
   outline: none;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form .flex-parentt {
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1262,7 +1259,7 @@ p {
   padding: 5px 0;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form .flex-parentt .flex-childd {
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt .flex-childd {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-bottom: 0.5rem;
@@ -1270,30 +1267,24 @@ p {
   margin-right: 0.5rem;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form .flex-parentt .flex-childd:last-child {
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt .flex-childd:last-child {
   margin-right: 0rem;
 }
 
 @media (max-width: 900px) {
-  #HOMEPAGE_CONTACTUS_MODAL .contactUs .contactUs_form form .flex-parentt .flex-childd {
+  #HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt .flex-childd {
     margin-right: 0rem;
     width: 100%;
   }
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .submit {
-  width: 100%;
-  text-align: center;
-  padding: 25px 0;
-}
-
-#HOMEPAGE_CONTACTUS_MODAL .submit #submit-btn {
+#HOMEPAGE_CONTACTUS_MODAL .submit .red-btn {
   border: none;
   outline: none;
-  background: #ef7c00;
+  background: rgba(194, 43, 5, 0.925);
   color: #fff;
-  padding: 10px 22px;
-  font-size: 24px;
+  padding: 10px 20px;
+  font-size: 22px;
   letter-spacing: 0.5px;
   border-radius: 4px;
 }

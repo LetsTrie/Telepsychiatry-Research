@@ -9,52 +9,50 @@
       </div>
 
       <div class="modal-body">
-        <div class="contactUs">
-          <div class="wrapper">
-            <div class="contactUs_form">
-              <div class="alert alert-danger" id="alert"></div>
-              <form id="form" action="/contactUs" method="POST">
-                <% if(successMessage != ''){ %>
-                <div class="alert alert-success" role="alert">
-                  <%= successMessage %>
+        <div class="wrapper">
+          <div class="contactUs_form">
+            <div class="alert alert-danger" id="alert"></div>
+            <form id="form" action="/contactUs" method="POST">
+              <% if(successMessage != ''){ %>
+              <div class="alert alert-success" role="alert">
+                <%= successMessage %>
+              </div>
+              <% } %>
+              <div class="flex-parentt">
+                <div class="flex-childd">
+                  <p>Name :</p>
+                  <input id="name" type="text" required name="name" />
                 </div>
-                <% } %>
-                <div class="flex-parentt">
-                  <div class="flex-childd">
-                    <p>Name :</p>
-                    <input id="name" type="text" required name="name" />
-                  </div>
 
-                  <div class="flex-childd">
-                    <p>Email :</p>
-                    <input id="email" type="email" required name="email" />
-                  </div>
+                <div class="flex-childd">
+                  <p>Email :</p>
+                  <input id="email" type="email" required name="email" />
                 </div>
-                <div class="messagee">
-                  <p>Your message :</p>
-                  <textarea
-                    required
-                    id="message"
-                    name="message"
-                    id="message"
-                    cols="30"
-                    rows="10"
-                  ></textarea>
-                </div>
-                <div class="submit">
-                  <button id="submit-btn">Submit</button>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="messagee">
+                <p>Your message :</p>
+                <textarea
+                  required
+                  id="message"
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+              <div class="submit">
+                <button id="submit-btn">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="modal-footer submit">
-      <button type="button" class="red-btn" data-dismiss="modal">
-        Close
-      </button>
+      <div class="modal-footer submit">
+        <button type="button" class="red-btn" data-dismiss="modal">
+          Close
+        </button>
+      </div>
     </div>
   </div>
 </div>

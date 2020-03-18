@@ -1053,9 +1053,10 @@ p {
 }
 
 input[type=checkbox]+label {
+    margin-top: 10px;
     display: block;
     font-size: 20px;
-    margin: 0.2em;
+    /* margin: 0.2em; */
     cursor: pointer;
     padding: 0.2em;
 }
@@ -1071,6 +1072,7 @@ input[type=checkbox]+label:before {
     display: inline-block;
     width: 1em;
     height: 1em;
+    margin-top: 0.2em;
     margin-right: 0.2em;
     vertical-align: bottom;
     color: transparent;
@@ -1085,4 +1087,15 @@ input[type=checkbox]:checked+label:before {
     background-color: red;
     border-color: red;
     color: #fff;
+}
+
+input[type=checkbox]:disabled+label:before {
+    transform: scale(1);
+    border-color: #aaa;
+}
+
+input[type=checkbox]:checked:disabled+label:before {
+    transform: scale(1);
+    background-color: #bfb;
+    border-color: #bfb;
 }

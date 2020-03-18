@@ -1,314 +1,299 @@
 @import './_main.scss';
 @import './_navbar.scss';
 .intro_page_header {
-    background: url('/images/background-banner.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
+  background: url('/images/background-banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 #alertF {
-    display: none;
+  display: none;
 }
 
 .alert {
-    text-align: center;
+  text-align: center;
 }
 
 .desc {
-    font-family: 'Lato', sans-serif;
-    padding: 20vmin 1vmin;
-    max-width: 600px;
-    @media only screen and (max-width: 500px) {
-        padding: 30vmin 1vmin;
+  font-family: 'Lato', sans-serif;
+  padding: 20vmin 1vmin;
+  max-width: 600px;
+  @media only screen and (max-width: 500px) {
+    padding: 30vmin 1vmin;
+  }
+  padding-bottom: 30vmin;
+  .largeText {
+    font-size: 56px;
+    font-weight: 700;
+    color: rgb(77, 79, 83);
+    animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s
+      backwards;
+    @media (max-width: 700px) {
+      font-size: 35px;
     }
-    padding-bottom: 30vmin;
-    .largeText {
-        font-size: 56px;
-        font-weight: 700;
-        color: rgb(77, 79, 83);
-        animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
-        @media (max-width: 700px) {
-            font-size: 35px;
-        }
-    }
-    .smallText {
-        padding-top: 10px;
-        font-size: 17px;
-        letter-spacing: 0.5px;
-        color: rgb(104, 103, 103);
-        animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
-    }
+  }
+  .smallText {
+    padding-top: 10px;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: rgb(104, 103, 103);
+    animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s
+      backwards;
+  }
 }
 
 .about_this_website {
-    font-family: 'Lato', sans-serif;
-    .aboutThisCompany {
-        margin: 10px 0 20px 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        @media (max-width: 992px) {
-            flex-direction: column-reverse;
-        }
-        .about {
-            width: 60%;
-            padding: 20px;
-            font-family: 'Lato', Helvetica, Arial, sans-serif;
-            color: #2a2a2a;
-            @media (max-width: 992px) {
-                width: 100%;
-            }
-            .details {
-                p {
-                    text-align: justify;
-                    font-size: 18px;
-                    letter-spacing: 0.5px;
-                    color: #626161;
-                }
-            }
-        }
-        .companyLogo {
-            width: 40%;
-            @media (max-width: 992px) {
-                width: 100%;
-            }
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            img {
-                width: 300px;
-                height: 250px;
-            }
-        }
+  font-family: 'Lato', sans-serif;
+  .aboutThisCompany {
+    margin: 10px 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    @media (max-width: 992px) {
+      flex-direction: column-reverse;
     }
-    .customerQuotes {
-        padding: 50px 0;
-        font-family: 'Lato', sans-serif;
-        .customerQuotes_header {
-            p {
-                font-size: 40px;
-                font-weight: 700;
-                color: #2a2a2a;
-                letter-spacing: 0.5px;
-            }
-        }
-        .customerQuotes_header_info {
-            margin: 20px 40px;
-            text-align: center;
-            margin-bottom: 40px;
-            p {
-                color: #626161;
-                font-size: 17px;
-                letter-spacing: 0.6px;
-            }
-        }
-        .customers {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            @media (max-width: 992px) {
-                flex-direction: column;
-            }
-            .customer {
-                width: 30%;
-                @media (max-width: 992px) {
-                    width: 100%;
-                }
-                margin: 10px;
-                text-align: left;
-                font-size: 16px;
-                border: 1px solid rgba(80,
-                74,
-                74,
-                0.1);
-                border-radius: 4px;
-                padding: 25px;
-                background: #fff;
-                border-bottom: 4px solid rgba(80,
-                74,
-                74,
-                0.1);
-                transition: border-bottom 0.3s ease;
-                &:hover {
-                    border-bottom: 4px solid #00baff;
-                }
-                .quote {
-                    p {
-                        color: #626161;
-                    }
-                }
-                .namee {
-                    p {
-                        color: black;
-                        margin-bottom: 5px;
-                        font-weight: 700;
-                    }
-                }
-                .rolee {
-                    p {
-                        color: #626161;
-                    }
-                }
-                .namee,
-                .rolee {
-                    text-align: left;
-                    @media (max-width: 992px) {
-                        text-align: center;
-                    }
-                }
-            }
-        }
-    }
-    .about_HEADER {
-        padding: 20px 0px 0px 0;
-        font-family: 'Lato', sans-serif;
+    .about {
+      width: 60%;
+      padding: 20px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      color: #2a2a2a;
+      @media (max-width: 992px) {
+        width: 100%;
+      }
+      .details {
         p {
-            font-size: 40px;
+          text-align: justify;
+          font-size: 18px;
+          letter-spacing: 0.5px;
+          color: #626161;
+        }
+      }
+    }
+    .companyLogo {
+      width: 40%;
+      @media (max-width: 992px) {
+        width: 100%;
+      }
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 300px;
+        height: 250px;
+      }
+    }
+  }
+  .customerQuotes {
+    padding: 50px 0;
+    font-family: 'Lato', sans-serif;
+    .customerQuotes_header {
+      p {
+        font-size: 40px;
+        font-weight: 700;
+        color: #2a2a2a;
+        letter-spacing: 0.5px;
+      }
+    }
+    .customerQuotes_header_info {
+      margin: 20px 40px;
+      text-align: center;
+      margin-bottom: 40px;
+      p {
+        color: #626161;
+        font-size: 17px;
+        letter-spacing: 0.6px;
+      }
+    }
+    .customers {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
+      .customer {
+        width: 30%;
+        @media (max-width: 992px) {
+          width: 100%;
+        }
+        margin: 10px;
+        text-align: left;
+        font-size: 16px;
+        border: 1px solid rgba(80, 74, 74, 0.1);
+        border-radius: 4px;
+        padding: 25px;
+        background: #fff;
+        border-bottom: 4px solid rgba(80, 74, 74, 0.1);
+        transition: border-bottom 0.3s ease;
+        &:hover {
+          border-bottom: 4px solid #00baff;
+        }
+        .quote {
+          p {
+            color: #626161;
+          }
+        }
+        .namee {
+          p {
+            color: black;
+            margin-bottom: 5px;
             font-weight: 700;
-            color: rgb(77, 79, 83);
-            letter-spacing: 0.5px;
-            span {
-                // color: #f4511e;
-                color: black;
-                text-transform: uppercase;
-            }
+          }
         }
-    }
-    .organizationSupport {
-        background-color: #dbdbdbb9;
-        padding: 50px 0;
-        font-family: 'Lato', sans-serif;
-        .organizationHeader {
+        .rolee {
+          p {
+            color: #626161;
+          }
+        }
+        .namee,
+        .rolee {
+          text-align: left;
+          @media (max-width: 992px) {
             text-align: center;
-            p {
-                font-size: 40px;
-                font-weight: 700;
-                color: #2a2a2a;
-                letter-spacing: 0.5px;
-            }
+          }
         }
-        .organizationHeader_info {
-            margin: 20px 40px;
-            text-align: center;
-            margin-bottom: 40px;
-            p {
-                color: #626161;
-                font-size: 17px;
-                letter-spacing: 0.6px;
-            }
-        }
-        .organizations {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            @media (max-width: 992px) {
-                flex-direction: column;
-            }
-            .org {
-                margin: 10px;
-                text-align: left;
-                @media (max-width: 992px) {
-                    text-align: center;
-                }
-                font-size: 16px;
-                border: 1px solid rgba(80,
-                74,
-                74,
-                0.1);
-                border-radius: 4px;
-                padding: 10px;
-                background: #fff;
-                border-bottom: 4px solid rgba(80,
-                74,
-                74,
-                0.1);
-                box-shadow: rgba(75,
-                74,
-                74,
-                0.8) 0px 2px 2px,
-                inset rgba(117,
-                115,
-                115,
-                0.15) 0px -5px 10px;
-            }
-        }
+      }
     }
-    .contactUs {
-        background-color: #dbdbdbb9;
-        padding: 50px 0;
-        font-family: 'Lato', sans-serif;
-        .contactUs_header {
-            p {
-                font-size: 40px;
-                font-weight: 700;
-                color: #4d4f53;
-                letter-spacing: 0.5px;
-            }
-        }
-        .submit {
-            width: 100%;
-            text-align: center;
-            padding: 25px 0;
-            button {
-                border: none;
-                outline: none;
-                background: #ef7c00;
-                color: #fff;
-                padding: 10px 22px;
-                font-size: 24px;
-                letter-spacing: 0.5px;
-                border-radius: 4px;
-            }
-        }
-        .contactUs_form {
-            form {
-                p {
-                    font-family: 'Roboto', sans-serif;
-                    font-size: 22px;
-                    padding-bottom: 5px;
-                    padding-left: 2px;
-                    letter-spacing: 0.6px;
-                    margin: 0px;
-                    color: #363636;
-                }
-                input[type='text'],
-                input[type='email'],
-                textarea {
-                    width: 100%;
-                    padding: 0.6rem;
-                    margin: 5px 0px;
-                    border: 1px solid rgb(168, 163, 163);
-                    border-radius: 4px;
-                    &:focus {
-                        outline: none;
-                    }
-                }
-                .flex-parentt {
-                    display: flex;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                    width: 100%;
-                    padding: 5px 0;
-                    .flex-childd {
-                        box-sizing: border-box;
-                        margin-bottom: 0.5rem;
-                        width: 49%;
-                        margin-right: 0.5rem;
-                        &:last-child {
-                            margin-right: 0rem;
-                        }
-                        @media (max-width: 900px) {
-                            margin-right: 0rem;
-                            width: 100%;
-                        }
-                    }
-                }
-                .messagee {}
-            }
-        }
+  }
+  .about_HEADER {
+    padding: 20px 0px 0px 0;
+    font-family: 'Lato', sans-serif;
+    p {
+      font-size: 40px;
+      font-weight: 700;
+      color: rgb(77, 79, 83);
+      letter-spacing: 0.5px;
+      span {
+        // color: #f4511e;
+        color: black;
+        text-transform: uppercase;
+      }
     }
+  }
+  .organizationSupport {
+    background-color: #dbdbdbb9;
+    padding: 50px 0;
+    font-family: 'Lato', sans-serif;
+    .organizationHeader {
+      text-align: center;
+      p {
+        font-size: 40px;
+        font-weight: 700;
+        color: #2a2a2a;
+        letter-spacing: 0.5px;
+      }
+    }
+    .organizationHeader_info {
+      margin: 20px 40px;
+      text-align: center;
+      margin-bottom: 40px;
+      p {
+        color: #626161;
+        font-size: 17px;
+        letter-spacing: 0.6px;
+      }
+    }
+    .organizations {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
+      .org {
+        margin: 10px;
+        text-align: left;
+        @media (max-width: 992px) {
+          text-align: center;
+        }
+        font-size: 16px;
+        border: 1px solid rgba(80, 74, 74, 0.1);
+        border-radius: 4px;
+        padding: 10px;
+        background: #fff;
+        border-bottom: 4px solid rgba(80, 74, 74, 0.1);
+        box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px,
+          inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+      }
+    }
+  }
+  .contactUs {
+    background-color: #dbdbdbb9;
+    padding: 50px 0;
+    font-family: 'Lato', sans-serif;
+    .contactUs_header {
+      p {
+        font-size: 40px;
+        font-weight: 700;
+        color: #4d4f53;
+        letter-spacing: 0.5px;
+      }
+    }
+    .submit {
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+      button {
+        border: none;
+        outline: none;
+        background: #ef7c00;
+        color: #fff;
+        padding: 10px 22px;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+        border-radius: 4px;
+      }
+    }
+    .contactUs_form {
+      form {
+        p {
+          font-family: 'Roboto', sans-serif;
+          font-size: 22px;
+          padding-bottom: 5px;
+          padding-left: 2px;
+          letter-spacing: 0.6px;
+          margin: 0px;
+          color: #363636;
+        }
+        input[type='text'],
+        input[type='email'],
+        textarea {
+          width: 100%;
+          padding: 0.6rem;
+          margin: 5px 0px;
+          border: 1px solid rgb(168, 163, 163);
+          border-radius: 4px;
+          &:focus {
+            outline: none;
+          }
+        }
+        .flex-parentt {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          width: 100%;
+          padding: 5px 0;
+          .flex-childd {
+            box-sizing: border-box;
+            margin-bottom: 0.5rem;
+            width: 49%;
+            margin-right: 0.5rem;
+            &:last-child {
+              margin-right: 0rem;
+            }
+            @media (max-width: 900px) {
+              margin-right: 0rem;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
+@import './_homepageContactUs.scss';

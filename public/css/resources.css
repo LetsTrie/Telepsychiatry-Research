@@ -842,4 +842,8 @@ h5:hover {
   cursor: pointer;
   background: #13ce66;
 }
+
+.card-body {
+  min-height: 275px;
+}
 /*# sourceMappingURL=resources.css.map */

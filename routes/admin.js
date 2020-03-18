@@ -16,6 +16,9 @@ const {
 router.get('/login', login);
 router.get('/contactUs', contactUs);
 
+//admin Add Doctors
+router.get('/addDoctors', (req, res) => { res.render('addDoctors') })
+
 //admin research
 router.get('/get_research', adminGetResearch)
 router.get('/single_research/:id', getResearch)

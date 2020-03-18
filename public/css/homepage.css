@@ -1120,4 +1120,101 @@ p {
     width: 100%;
   }
 }
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  #HOMEPAGE_CONTACTUS_MODAL .modal-body .wrapper {
+    width: 95%;
+  }
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .submit {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .submit button {
+  border: none;
+  outline: none;
+  background: #ef7c00;
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  letter-spacing: 0.6px;
+  margin: 0px;
+  color: #363636;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text'],
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email'],
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border: 1px solid #a8a3a3;
+  border-radius: 4px;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text']:focus,
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email']:focus,
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea:focus {
+  outline: none;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding: 5px 0;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt .flex-childd {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  width: 49%;
+  margin-right: 0.5rem;
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt .flex-childd:last-child {
+  margin-right: 0rem;
+}
+
+@media (max-width: 900px) {
+  #HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form .flex-parentt .flex-childd {
+    margin-right: 0rem;
+    width: 100%;
+  }
+}
+
+#HOMEPAGE_CONTACTUS_MODAL .submit .red-btn {
+  border: none;
+  outline: none;
+  background: rgba(194, 43, 5, 0.925);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
 /*# sourceMappingURL=homepage.css.map */

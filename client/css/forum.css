@@ -1189,3 +1189,7 @@ p {
 .alldiscussions .eachDiscussion .discussion__react_comment i:hover {
   color: #f65944;
 }
+
+.card-body {
+  min-height: 275px;
+}

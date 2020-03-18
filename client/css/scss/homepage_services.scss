@@ -1,0 +1,90 @@
+.our_services {
+  padding: 16px 0;
+  margin: 16px 0;
+  background-color: #dbdbdbb9;
+
+  .services {
+    background: #f1f1f1;
+    text-align: center;
+  }
+
+  .services h1 {
+    font-family: 'Lato', sans-serif;
+    display: inline-block;
+    text-transform: uppercase;
+    border-bottom: 4px solid #3498db;
+    padding-bottom: 10px;
+    margin: 20px 0;
+  }
+
+  .cen {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .service {
+    display: inline-block;
+    width: calc(100% / 3);
+    margin: 0 -2px;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-bottom: 10px;
+  }
+
+  .service-header {
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 40px;
+  }
+
+  .service:hover {
+    background: #ddd;
+  }
+
+  .service i {
+    text-align: center;
+    color: #3498db;
+    font-size: 34px;
+    margin-bottom: 30px;
+  }
+
+  .service h2 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .service p {
+    color: #626161;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 800px) {
+    .service {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .service {
+      width: 100%;
+    }
+  }
+
+  .service_p {
+    text-align: justify;
+  }
+
+  .iconn {
+    text-align: center;
+  }
+}

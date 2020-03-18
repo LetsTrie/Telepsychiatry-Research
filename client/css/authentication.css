@@ -1048,54 +1048,81 @@ p {
     padding: 5px 30px;
 }
 
-.head {
+#SELECT_CATEGORY_MODAL {
+    /* Customize the label (the container) */
+    font-family: 'Lato', sans-serif;
+    /* Create a custom radio button */
+    /* On mouse-over, add a grey background color */
+    /* When the radio button is checked, add a blue background */
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    /* Show the indicator (dot/circle) when checked */
+    /* Style the indicator (dot/circle) */
+}
+
+#SELECT_CATEGORY_MODAL .modalBodyHeader {
+    font-weight: 700;
     font-size: 25px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
-input[type=checkbox]+label {
-    margin-top: 10px;
+#SELECT_CATEGORY_MODAL .container {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
     display: block;
-    font-size: 20px;
-    /* margin: 0.2em; */
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
     cursor: pointer;
-    padding: 0.2em;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-bottom: 10px;
 }
 
-input[type=checkbox] {
+#SELECT_CATEGORY_MODAL .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+#SELECT_CATEGORY_MODAL .checkmark {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+#SELECT_CATEGORY_MODAL .container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+#SELECT_CATEGORY_MODAL .container input:checked~.checkmark {
+    background-color: #2196f3;
+}
+
+#SELECT_CATEGORY_MODAL .checkmark:after {
+    content: '';
+    position: absolute;
     display: none;
 }
 
-input[type=checkbox]+label:before {
-    content: "\2714";
-    border: 0.1em solid #000;
-    border-radius: 0.2em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    margin-right: 0.2em;
-    vertical-align: bottom;
-    color: transparent;
-    transition: .2s;
+#SELECT_CATEGORY_MODAL .container input:checked~.checkmark:after {
+    display: block;
 }
 
-input[type=checkbox]+label:active:before {
-    transform: scale(0);
-}
-
-input[type=checkbox]:checked+label:before {
-    background-color: red;
-    border-color: red;
-    color: #fff;
-}
-
-input[type=checkbox]:disabled+label:before {
-    transform: scale(1);
-    border-color: #aaa;
-}
-
-input[type=checkbox]:checked:disabled+label:before {
-    transform: scale(1);
-    background-color: #bfb;
-    border-color: #bfb;
+#SELECT_CATEGORY_MODAL .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
 }

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="/css/addDoctors.css" />
+
+        <title>Add Doctors | Telepsychiatry Research</title>
+</head>
+
+<body>
+    <section class="wrapper">
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+        <div class="createResources">
+            <div id="alert" class="alert alert-danger"></div>
+            <div class="createResources__header">
+                <p id="submitResources">Add New Doctor</p>
+            </div>
+            <div class="input_boxes">
+                <form id="form" action="/auth/register/new/exp" method="POST">
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>About Me</p>
+                            </div>
+                            <div class="input_box">
+                                <textarea id="about_me" rows="5" class="about_me"></textarea>
+                            </div>
+                        </div>
+                        <div class="two_box_one  flex-child" id="education-section">
+                            <div class="two_box_header form-header">
+                                <p>Education</p>
+                            </div>
+                            <div>
+                                <div class="education_input">
+                                    <div class="edu_in"><input type="text" placeholder="Institute" id="institute" class="institute"></div>
+                                    <div class="edu_in"><input type="text" placeholder="Degree" id="degree" class="degree"></div>
+                                    <div class="edu_in"><input type="text" name="datetimes" placeholder="Years" id="years" class="years"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="add-edu" class="add-field"> <span class="plus">+</span> Add Field</a>
+
+                    <div class="two_box_one skill flex-child" id="skill-section">
+                        <div class="two_box_header  form-header">
+                            <p>Skills</p>
+                        </div>
+                        <div>
+                            <div class="skill_input">
+                                <div class="edu_in"><input type="text" placeholder="Skill" id="skill" class="institute"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <a href="#" id="add-skill" class="add-field"> <span class="plus">+</span> Add Field</a>
+
+            <div class="two_box_one skill flex-child" id="exp-section">
+                <div class="two_box_header form-header">
+                    <p>Work and Experiences</p>
+                </div>
+                <div>
+                    <div class="exp_input">
+                        <input type="text" placeholder="Workplace" id="workplace" class="workplace">
+                        <textarea name="" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea>
+                    </div>
+                </div>
+            </div>
+            <a href="#" id="add-exp" class="add-field"> <span class="plus">+</span> Add Field</a>
+
+
+            <div class="createResources__submit">
+                <button id="sub-btn">Submit</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </section>
+</body>
+<%- include('./partials/vendorsBottom')%>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script>
+        $('input[name="datetimes"]').daterangepicker({
+            autoUpdateInput: false,
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datetimes"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datetimes"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    </script>
+
+
+    <script>
+        $(document).on('click', 'input#app_years', function(e) {
+            console.log('year')
+            $(e.target).daterangepicker({
+                autoUpdateInput: false,
+                timePicker: true,
+                startDate: moment().startOf('hour'),
+                endDate: moment().startOf('hour').add(32, 'hour'),
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            })
+            $('input#app_years').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+            });
+
+            $('input#app_years').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+        });
+        $('#add-edu').click((e) => {
+            const edu_field = `<div>
+                                <div class="education_input removable">
+                                    <div class="edu_in"><input type="text" placeholder="Institute" id="institute" class="institute"></div>
+                                    <div class="edu_in"><input type="text" placeholder="Degree" id="degree" class="degree"></div>
+                                    <div class="edu_in"><input type="text" placeholder="Years" id="app_years" name="datetimes" class="years"></div>
+                                    <a href="#" id="cross-edu">[close]</a>
+                                </div>
+                          
+                            </div>`
+
+            $('#education-section').append(edu_field)
+        })
+        $(document).on('click', 'a#cross-edu', (e) => {
+            $(e.target.parentElement).remove()
+        })
+
+        $('#add-skill').click((e) => {
+            const edu_field = `<div>
+                            <div class="skill_input">
+                                <div class="edu_in"><input type="text" placeholder="Skill" id="skill" class="institute"></div>
+                                <a href="#" id="cross-skill">[close]</a>
+                            </div>
+                        </div>`
+
+            $('#skill-section').append(edu_field)
+        })
+        $(document).on('click', 'a#cross-skill', (e) => {
+            $(e.target.parentElement).remove()
+        })
+
+        $('#add-exp').click((e) => {
+            const edu_field = `<div>
+                    <div class="exp_input">
+                        <input type="text" placeholder="Workplace" id="workplace" class="workplace">
+                        <textarea name="" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea>
+                        <a href="#" id="cross-exp">[close]</a>
+                    </div>
+                </div>`
+
+            $('#exp-section').append(edu_field)
+        })
+        $(document).on('click', 'a#cross-exp', (e) => {
+            $(e.target.parentElement).remove()
+        })
+
+        function showAlert(msg) {
+            $('#alert').show()
+            $('#alert').html(msg)
+        }
+    </script>
+
+</html>

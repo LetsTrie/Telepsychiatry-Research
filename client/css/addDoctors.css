@@ -730,14 +730,8 @@ p {
   min-height: 300px;
 }
 
-#cross {
-  font-size: 12px;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
 .add-field {
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 12px;
   color: #fff;
   background-color: #4d4c4c;
@@ -748,8 +742,19 @@ p {
 
 .add-field .plus {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 5px;
   margin-top: 5px;
+}
+
+.delete {
+  margin-left: 10px;
+  margin-top: 12px;
+  font-size: 12px;
+  border: none;
+  background-color: red;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
 }
 
 .add-field:hover {
@@ -771,8 +776,24 @@ p {
   margin-top: 30px;
 }
 
-.skill .skill_input .edu-in {
-  width: 80%;
+.skill .skill_input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.skill .skill_input .edu_in {
+  width: 100%;
+}
+
+.exp_input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.exp_input .work_in {
+  width: 100%;
 }
 
 #alertF {
@@ -787,7 +808,7 @@ p {
 }
 
 .createResources {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   min-height: 100vh;
   color: #3b372f;
@@ -870,12 +891,42 @@ p {
   padding: 5px 0;
 }
 
+.side_by_side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.side_by_side .input_div {
+  width: 40%;
+}
+
+select {
+  margin-top: 5px;
+  padding: 10px 40%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.header {
+  font-size: 35px;
+  margin-left: 25%;
+}
+
+.header hr {
+  width: 70%;
+}
+
 .flex-child {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-bottom: 0.5rem;
-  width: 49%;
+  width: 50%;
   margin-right: 0.5rem;
+  margin: auto;
 }
 
 .flex-child:last-child {

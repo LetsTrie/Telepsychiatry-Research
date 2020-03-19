@@ -18,21 +18,73 @@
         <div class="my-3 divider"></div>
         <div class="createResources">
             <div id="alert" class="alert alert-danger"></div>
-            <div class="createResources__header">
+            <div class="header">
                 <p id="submitResources">Add New Doctor</p>
+                <hr>
             </div>
             <div class="input_boxes">
                 <form id="form" action="/auth/register/new/exp" method="POST">
-                    <div class="two_box flex-parent">
-                        <div class="two_box_one flex-child">
-                            <div class="two_box_header form-header">
-                                <p>About Me</p>
+
+                    <div class="two_box_one flex-child">
+                        <div class="side_by_side">
+                            <div class="input_div">
+                                <div class="two_box_header form-header">
+                                    <p>Name</p>
+                                </div>
+                                <input type="text" placeholder="Name" class="name" id="name">
                             </div>
-                            <div class="input_box">
-                                <textarea id="about_me" rows="5" class="about_me"></textarea>
+                            <div class="input_div">
+                                <div class="two_box_header form-header">
+                                    <p>Gender</p>
+                                </div>
+                                <select name="" id="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="two_box_one  flex-child" id="education-section">
+                    </div>
+
+                    <div class="two_box_one flex-child">
+                        <div class="side_by_side">
+                            <div class="input_div">
+                                <div class="two_box_header form-header">
+                                    <p>Designation</p>
+                                </div>
+                                <input type="text" placeholder="Designation" class="name" id="name">
+                            </div>
+                            <div class="input_div">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two_box_one flex-child">
+                        <div class="side_by_side">
+                            <div class="input_div">
+                                <div class="two_box_header form-header">
+                                    <p>Expert Area</p>
+                                </div>
+                                <input type="text" placeholder="Expert Area" class="name" id="name">
+                            </div>
+                            <div class="input_div">
+                                <div class="two_box_header form-header">
+                                    <p>Institute</p>
+                                </div>
+                                <input type="text" placeholder="Institute" class="institute" id="institute">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two_box_one flex-child">
+                        <div class="two_box_header form-header">
+                            <p>About Me</p>
+                        </div>
+                        <textarea name="" placeholder="Write about yourself" id="about_me" cols="30" rows="5" class="about_me"></textarea>
+                    </div>
+
+                    <div class="two_box_one  flex-child">
+                        <div class="" id="education-section">
                             <div class="two_box_header form-header">
                                 <p>Education</p>
                             </div>
@@ -41,44 +93,56 @@
                                     <div class="edu_in"><input type="text" placeholder="Institute" id="institute" class="institute"></div>
                                     <div class="edu_in"><input type="text" placeholder="Degree" id="degree" class="degree"></div>
                                     <div class="edu_in"><input type="text" name="datetimes" placeholder="Years" id="years" class="years"></div>
+                                    <div class="delete-btn">
+                                        <button class="delete" id="delete-edu">Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <button id="add-edu" class="add-field">Add Field</button>
                     </div>
-                    <a href="#" id="add-edu" class="add-field"> <span class="plus">+</span> Add Field</a>
 
-                    <div class="two_box_one skill flex-child" id="skill-section">
-                        <div class="two_box_header  form-header">
-                            <p>Skills</p>
-                        </div>
-                        <div>
-                            <div class="skill_input">
-                                <div class="edu_in"><input type="text" placeholder="Skill" id="skill" class="institute"></div>
+                    <div class="two_box_one skill flex-child">
+                        <div id="skill-section">
+                            <div class="two_box_header  form-header">
+                                <p>Services</p>
+                            </div>
+                            <div>
+                                <div class="skill_input">
+                                    <div class="edu_in"><input type="text" placeholder="Services" id="skill" class="institute"></div>
+                                    <div class="delete-btn">
+                                        <button class="delete" id="delete-skill">Delete</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <button id="add-skill" class="add-field">  Add Field</button>
                     </div>
-            </div>
-            <a href="#" id="add-skill" class="add-field"> <span class="plus">+</span> Add Field</a>
 
-            <div class="two_box_one skill flex-child" id="exp-section">
-                <div class="two_box_header form-header">
-                    <p>Work and Experiences</p>
-                </div>
-                <div>
-                    <div class="exp_input">
-                        <input type="text" placeholder="Workplace" id="workplace" class="workplace">
-                        <textarea name="" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea>
+
+                    <div class="two_box_one skill flex-child">
+                        <div class="" id="exp-section">
+                            <div class="two_box_header form-header">
+                                <p>Work and Experiences</p>
+                            </div>
+                            <div>
+                                <div class="exp_input">
+                                    <div class="work_in"><input type="text" placeholder="Workplace" id="workplace" class="workplace">
+                                        <textarea name="" placeholder="Tell us a little about the workplace" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea></div>
+                                    <div class="delete-btn">
+                                        <button class="delete" id="delete-exp">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="add-exp" class="add-field">  Add Field</button>
                     </div>
-                </div>
-            </div>
-            <a href="#" id="add-exp" class="add-field"> <span class="plus">+</span> Add Field</a>
 
-
-            <div class="createResources__submit">
-                <button id="sub-btn">Submit</button>
+                    <div class="createResources__submit">
+                        <button id="sub-btn">Submit</button>
+                    </div>
+                </form>
             </div>
-            </form>
-        </div>
         </div>
     </section>
 </body>
@@ -89,6 +153,16 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <script>
+        $('.add-field').click((e) => {
+            e.preventDefault()
+        })
+        $('.delete').click((e) => {
+            e.preventDefault()
+        })
+        $(document).on('click', 'button.delete', (e) => {
+            e.preventDefault()
+        })
+
         $('input[name="datetimes"]').daterangepicker({
             autoUpdateInput: false,
             timePicker: true,
@@ -110,6 +184,10 @@
 
 
     <script>
+        let edu = 1,
+            skill = 1,
+            exp = 1;
+
         $(document).on('click', 'input#app_years', function(e) {
             console.log('year')
             $(e.target).daterangepicker({
@@ -131,48 +209,61 @@
         });
         $('#add-edu').click((e) => {
             const edu_field = `<div>
-                                <div class="education_input removable">
+                                <div class="education_input">
                                     <div class="edu_in"><input type="text" placeholder="Institute" id="institute" class="institute"></div>
                                     <div class="edu_in"><input type="text" placeholder="Degree" id="degree" class="degree"></div>
                                     <div class="edu_in"><input type="text" placeholder="Years" id="app_years" name="datetimes" class="years"></div>
-                                    <a href="#" id="cross-edu">[close]</a>
+                                    <div class="delete-btn">
+                                        <button class="delete" id="delete-edu">Delete</button>
+                                    </div>
                                 </div>
                           
                             </div>`
-
+            edu++
             $('#education-section').append(edu_field)
         })
-        $(document).on('click', 'a#cross-edu', (e) => {
-            $(e.target.parentElement).remove()
+        $(document).on('click', 'button#delete-edu', (e) => {
+            if (edu > 1) {
+                edu--
+                $(e.target.parentElement.parentElement).remove()
+            }
         })
 
         $('#add-skill').click((e) => {
             const edu_field = `<div>
                             <div class="skill_input">
                                 <div class="edu_in"><input type="text" placeholder="Skill" id="skill" class="institute"></div>
-                                <a href="#" id="cross-skill">[close]</a>
+                                <div class="delete-btn">
+                                        <button class="delete" id="delete-skill">Delete</button>
+                                    </div>
                             </div>
                         </div>`
-
+            skill++
             $('#skill-section').append(edu_field)
         })
-        $(document).on('click', 'a#cross-skill', (e) => {
-            $(e.target.parentElement).remove()
+        $(document).on('click', 'button#delete-skill', (e) => {
+            if (skill > 1) {
+                skill--
+                $(e.target.parentElement.parentElement).remove()
+            }
         })
 
         $('#add-exp').click((e) => {
-            const edu_field = `<div>
-                    <div class="exp_input">
-                        <input type="text" placeholder="Workplace" id="workplace" class="workplace">
-                        <textarea name="" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea>
-                        <a href="#" id="cross-exp">[close]</a>
-                    </div>
-                </div>`
-
+            const edu_field = `<div class="exp_input">
+                                    <div class="work_in"><input type="text" placeholder="Workplace" id="workplace" class="workplace">
+                                        <textarea name="" placeholder="Tell us a little about the workplace" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea></div>
+                                    <div class="delete-btn">
+                                        <button class="delete" id="delete-exp">Delete</button>
+                                    </div>
+                                </div>`
+            exp++
             $('#exp-section').append(edu_field)
         })
-        $(document).on('click', 'a#cross-exp', (e) => {
-            $(e.target.parentElement).remove()
+        $(document).on('click', 'button#delete-exp', (e) => {
+            if (exp > 1) {
+                exp--
+                $(e.target.parentElement.parentElement).remove()
+            }
         })
 
         function showAlert(msg) {

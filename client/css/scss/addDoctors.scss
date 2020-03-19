@@ -1,185 +1,77 @@
-@import '_main';
-@import '_navbar';
-p {
-    margin-bottom: 8px;
-}
-
-.ck-editor__editable {
-    min-height: 300px;
-}
-
-#cross {
-    font-size: 12px;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-.add-field {
-    .plus {
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 5px;
-    }
-    margin-top: 30px;
-    font-size: 12px;
-    color: #fff;
-    background-color: rgb(77, 76, 76);
-    border-radius: 20px;
-    border: 1px solid rgb(77, 76, 76);
-    padding: 5px 8px;
-}
-
-.add-field:hover {
-    color: #fff;
-}
-
-.education_input {
-    display: flex;
-    .edu_in {
-        margin-left: 20px;
-        width: 30%;
-    }
-}
-
-.skill {
-    margin-top: 30px;
-    .skill_input {
-        .edu-in {
-            width: 80%;
-        }
-    }
-}
-
-#alertF {
-    display: none;
-    text-align: center;
-}
-
-.wrapper {
-    background: #f6f6f2;
-    box-sizing: border-box;
-}
-
-.createResources {
-    width: 70%;
-    margin: 0 auto;
-    min-height: 100vh;
-    color: #3b372f;
-    padding: 10px;
-    padding-top: 35px;
-    font-family: 'Merriweather', serif;
-    @media (max-width: 1200px) {
-        width: 90%;
-    }
-    @media (max-width: 900px) {
-        width: 98%;
-    }
-    &__header {
-        font-size: 3.2rem;
-        border-bottom: 2px solid gray;
-        @media (max-width: 900px) {
-            font-size: 2.7rem;
-        }
-        @media (max-width: 570px) {
-            font-size: 2.2rem;
-        }
-    }
-}
-
 .input_boxes {
-    padding: 10px 0 20px 0;
-    .one_box {
-        padding: 5px 0;
-        .box_header {
-            p {
-                font-size: 1.5rem;
-                padding-bottom: 8px;
-                font-weight: 500;
-                letter-spacing: 0.5px;
-                span {
-                    font-size: 1rem;
-                    color: #8a5555;
-                }
-            }
+  padding: 10px 0 20px 0;
+  .one_box {
+    padding: 5px 0;
+    .box_header {
+      p {
+        font-size: 1.5rem;
+        padding-bottom: 8px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        span {
+          font-size: 1rem;
+          color: #8a5555;
         }
-        .input_box {
-            width: 100%;
-            textarea,
-            input:not([type='file']) {
-                padding: 7px;
-                border-radius: 5px;
-                outline: none;
-                border: none;
-                border: 1px solid #bdb9b9;
-                width: 100%;
-            }
-        }
+      }
     }
+    .input_box {
+      width: 100%;
+      textarea,
+      input:not([type='file']) {
+        padding: 7px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        border: 1px solid #bdb9b9;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .flex-parent {
-    display: block;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 5px 0;
+  display: block;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 5px 0;
 }
 
-.flex-child {
-    box-sizing: border-box;
-    margin-bottom: 0.5rem;
-    width: 49%;
-    margin-right: 0.5rem;
-    &:last-child {
-        margin-right: 0rem;
-    }
-    @media (max-width: 900px) {
-        margin-right: 0rem;
-        width: 100%;
-    }
-    .form-header {
-        margin-top: 8px;
-        p {
-            font-size: 1.5rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-    }
-    input[type='text'],
-    input[type='email'],
-    input[type='password'],
-    textarea {
-        width: 100%;
-        padding: 0.6rem;
-        margin: 5px 0px;
-        border-radius: 4px;
-        border: 1px solid #bdb9b9;
-        &:focus {
-            outline: none;
-        }
-    }
+select {
+  margin-top: 5px;
+  padding: 10px 40%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.header {
+  font-size: 35px;
+  margin-left: 25%;
+  hr {
+    width: 70%;
+  }
 }
 
 .createResources__submit {
-    width: 100%;
-    text-align: center;
-    padding: 25px 0;
-    button {
-        border: none;
-        outline: none;
-        background: #ef7c00;
-        color: #fff;
-        padding: 10px 22px;
-        font-size: 24px;
-        letter-spacing: 0.5px;
-        border-radius: 4px;
-    }
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  button {
+    border: none;
+    outline: none;
+    background: #ef7c00;
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+  }
 }
 
 .slct_picker {
-    padding-top: 4px;
+  padding-top: 4px;
 }
 
 .imageFile {
-    padding-top: 10px;
+  padding-top: 10px;
 }

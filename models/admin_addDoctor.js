@@ -4,15 +4,15 @@ const addDoctorSchema = new mongoose.Schema({
   name: String,
   gender: String,
   expertizeArea: String,
-  Designation: String,
-  Institute: String,
+  designation: String,
+  institute: String,
   fee: String,
   aboutYourself: String,
   education: [
     {
-      InstituteName: String,
-      Degree: String,
-      year: [Number]
+      instituteName: String,
+      degree: String,
+      year: [String]
     }
   ],
   workExperience: [
@@ -22,6 +22,10 @@ const addDoctorSchema = new mongoose.Schema({
     }
   ],
   services: [String],
+  dob: String,
+  email: String,
+  visitingTime: [String],
+  speciality: String,
   createdAt: {
     type: Date,
     default: Date.now()

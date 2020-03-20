@@ -466,6 +466,7 @@
     $('.addDoctor__submit').on('click', e => {
       const eduInValue = $('.edu_in input');
       const eduArray = [];
+      console.log(eduInValue);
       for (let i = 0; i < eduInValue.length / 3; i++) {
         const education = eduInValue[3 * i + 0].value;
         const degree = eduInValue[3 * i + 1].value;

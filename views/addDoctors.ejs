@@ -95,7 +95,7 @@
                                             <i class="fa fa-arrow-right"></i>
                                         </div>
                                         <div class="edu_in">
-                                            <input type="text" name="edu_institute" placeholder="Institute" id="edu_institute" class="edu_institute" />
+                                            <input type="text" name="institute" placeholder="Institute" id="institute" class="institute" />
                                         </div>
                                         <div class="edu_in">
                                             <input type="text" name="degree" placeholder="Degree" id="degree" class="degree" />
@@ -126,8 +126,8 @@
                                         <div class="arrow_sign" style="margin-right: 20px;">
                                             <i class="fa fa-arrow-right"></i>
                                         </div>
-                                        <div class="edu_in">
-                                            <input type="text" name="services" placeholder="Services" id="services" class="services" />
+                                        <div class="skill_in">
+                                            <input type="text" placeholder="Services" id="skill" class="services" />
                                         </div>
                                         <div class="delete-btn">
                                             <button class="delete delete-skill-class" id="delete-skill">
@@ -183,7 +183,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
     <script>
         $('.add-field').click(e => {
             e.preventDefault();
@@ -225,7 +224,6 @@
             $(this).val('');
         });
     </script>
-
     <script>
         let edu = 1,
             skill = 1,
@@ -383,6 +381,33 @@
             $('#alert').show();
             $('#alert').html(msg);
         }
+    </script>
+    <script>
+        function showAlert(msg) {
+            $('#alert').show();
+            $('#alert').html(msg);
+        }
+    </script>
+
+    <script>
+        $('.addDoctor__submit').on('click', e => {
+            const eduInValue = $('.edu_in');
+            const eduArray = [];
+            for (let i = 0; i < eduInValue.length / 3; i++) {
+                const education = eduInValue[3 * i + 0].value;
+                const degree = eduInValue[3 * i + 1].value;
+                const years = eduInValue[3 * i + 2].value;
+
+                eduArray.push({
+                    education,
+                    degree,
+                    years
+                });
+            }
+            console.log(eduArray);
+            const serviceArray = $('.services')
+            console.log(serviceArray)
+        });
     </script>
 
 </html>

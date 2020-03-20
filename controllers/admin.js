@@ -148,5 +148,16 @@ exports.addDoctor = async(req, res, next) => {
 };
 
 module.exports.postAddDoctor = async(req, res) => {
-    console.log(req.body)
+    const {
+        name,
+        gender,
+        institute,
+        expertise,
+        designation,
+        aboutYourself,
+        education,
+        workExperience,
+        services
+    } = req.body
+    console.log(name, education.length)
 }

@@ -229,20 +229,20 @@
             skill = 1,
             exp = 1;
 
-        $('#sub-btn').click((e) => {
-            const name = $('#name').val()
-            const gender = $('#gender').val()
-            const designation = $('#designation').val()
-            const expertise = $('#expertise').val()
-            const about_me = $('#about_me').val()
-            const edu_institute_array = $('.edu_institute')
-            const degree_array = $('.degree')
-            const years_array = $('.years')
-            const services_array = $('input.services').find('input.services')
-            const workplace_array = $('.workplace')
-            const workplace_details = $('.more_on_wrokplace')
-            console.log(services_array.length)
-        })
+        // $('#sub-btn').click((e) => {
+        //     const name = $('#name').val()
+        //     const gender = $('#gender').val()
+        //     const designation = $('#designation').val()
+        //     const expertise = $('#expertise').val()
+        //     const about_me = $('#about_me').val()
+        //     const edu_institute_array = $('.edu_institute')
+        //     const degree_array = $('.degree')
+        //     const years_array = $('.years')
+        //     const services_array = $('input.services').find('input.services')
+        //     const workplace_array = $('.workplace')
+        //     const workplace_details = $('.more_on_wrokplace')
+        //     console.log(services_array.length)
+        // })
 
         $(document).on('click', 'input#app_years', function(e) {
             console.log('year');
@@ -315,12 +315,12 @@
                     <div class="arrow_sign" style="margin-right: 20px;">
                         <i class="fa fa-arrow-right"></i>
                       </div>
-                            <div class="edu_in">
+                            <div class="skill_in">
                                 <input
                                 type="text"
                                 placeholder="Services"
-                                id="skill"
-                                class="institute"
+                                id="services"
+                                class="services"
                                 />
                             </div>
                             <div class="delete-btn">
@@ -391,22 +391,64 @@
 
     <script>
         $('.addDoctor__submit').on('click', e => {
-            const eduInValue = $('.edu_in');
+
+            const name = $('#name').val()
+            const gender = $('#gender').val()
+            const designation = $('#designation').val()
+            const expertise = $('#expertise').val()
+            const about_me = $('#about_me').val()
+            const institute = $('#institute').val()
+
+            const workExpInput = $('.work_in input')
+            const workExpTextarea = $('.work_in textarea')
+            const serviceInValue = $('.skill_in input')
+            const eduInValue = $('.edu_in input');
             const eduArray = [];
+            const serviceArray = []
+            const workExpArray = []
             for (let i = 0; i < eduInValue.length / 3; i++) {
                 const education = eduInValue[3 * i + 0].value;
                 const degree = eduInValue[3 * i + 1].value;
                 const years = eduInValue[3 * i + 2].value;
-
                 eduArray.push({
                     education,
                     degree,
                     years
                 });
             }
-            console.log(eduArray);
-            const serviceArray = $('.services')
-            console.log(serviceArray)
+            for (let i = 0; i < serviceInValue.length; i++) {
+                const service = serviceInValue[i].value;
+                console.log(service)
+                serviceArray.push(service)
+            }
+            for (let i = 0; i < workExpInput.length; i++) {
+                const work = workExpInput[i].value;
+                const inDetails = workExpTextarea[i].value;
+                workExpArray.push({
+                    work,
+                    inDetails
+                });
+            }
+            console.log(eduArray)
+            postData = {
+                name,
+                gender,
+                institute,
+                expertise,
+                designation,
+                aboutYourself: about_me,
+                education: eduArray,
+                workExperience: workExpArray,
+                services: serviceArray
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/admin/postAddDoctor',
+                data: postData,
+                success: (data) => {
+                    console.log(data)
+                }
+            })
         });
     </script>
 

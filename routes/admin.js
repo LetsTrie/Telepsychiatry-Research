@@ -21,8 +21,7 @@ router.get('/contactUs', contactUs);
 router.get('/addDoctors', (req, res) => {
     res.render('addDoctors');
 });
-router.post('/xx', require('../controllers/admin').addDoctor);
-router.post('/postAddDoctor', postAddDoctor)
+router.post('/addDoctor', require('../controllers/admin').addDoctor);
 
 //admin research
 router.get('/get_research', adminGetResearch);

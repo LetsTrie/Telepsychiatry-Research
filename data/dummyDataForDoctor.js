@@ -1,26 +1,40 @@
 module.exports = {
   name: 'MD. Sakib Khan',
   gender: 'male',
-  expertArea: 'BDS, MDS - Oral & Maxillofacial Surgery',
-  Designation: 'Associate Professor (CC) & Unit Head, Dept. of Psychiatry',
-  Institute: 'Sir Salimullah Medical College & Mitford Hospital',
+  expertizeArea: 'BDS, MDS - Oral & Maxillofacial Surgery',
+  designation: 'Associate Professor (CC) & Unit Head, Dept. of Psychiatry',
+  institute: 'Sir Salimullah Medical College & Mitford Hospital',
   fee: '400',
-  aboutHimself: 'lorem ipsum lorem ipsum loremlorem ipsum lorem ipsum',
+  aboutYourself: 'lorem ipsum lorem ipsum loremlorem ipsum lorem ipsum',
+  visitingTime: [
+    {
+      from: '09:00 AM',
+      to: '12:00 PM'
+    },
+    {
+      from: '03:00 PM',
+      to: '16:00 PM'
+    }
+     {
+      from: '08:00 PM',
+      to: '10:00 PM'
+    },
+  ],
   education: [
     {
-      InstituteName: 'Dhaka Medical College',
-      Degree: 'MBBS',
-      year: [2007, 2012]
+      instituteName: 'Dhaka Medical College',
+      degree: 'MBBS',
+      year: ['10/10/2007', '10/10/2012']
     },
     {
-      InstituteName: 'Dhaka Medical College',
-      Degree: 'MBBS',
-      year: [2007, 2012]
+      instituteName: 'Dhaka Medical College',
+      degree: 'MBBS',
+      year: ['10/10/2007', '10/10/2012']
     },
     {
-      InstituteName: 'Dhaka Medical College',
-      Degree: 'MBBS',
-      year: [2007, 2012]
+      instituteName: 'Dhaka Medical College',
+      degree: 'MBBS',
+      year: ['10/10/2007', '10/10/2012']
     }
   ],
   workExperience: [

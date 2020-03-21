@@ -966,6 +966,8 @@ p {
   padding: 25px;
   background: #fff;
   border-bottom: 4px solid rgba(80, 74, 74, 0.1);
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
   -webkit-transition: border-bottom 0.3s ease;
   -o-transition: border-bottom 0.3s ease;
   transition: border-bottom 0.3s ease;

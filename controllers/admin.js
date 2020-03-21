@@ -5,6 +5,8 @@ const InnovationModel = require('../models/innovations');
 const { addDoctorModel } = require('../models/admin_addDoctor');
 const { addDoctorValidation } = require('../validations/admin_addDoctor');
 
+const { makeSmallParagraphFromHTML } = require('./utils');
+
 const LIMIT = 9;
 
 exports.login = (req, res, next) => res.render('adminLogin');
@@ -53,7 +55,7 @@ exports.adminGetResearch = async (req, res) => {
     .skip(LIMIT * (page - 1));
   const totalItems = await ResearchModel.find(searchKey).countDocuments();
   return res.render('adminResearch', {
-    data,
+    data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
     search,
     ...pagination(page, LIMIT, totalItems, baseUrl)
   });
@@ -116,7 +118,7 @@ exports.getInnovations = async (req, res) => {
     .skip(LIMIT * (page - 1));
   const totalItems = await InnovationModel.find(searchKey).countDocuments();
   return res.render('adminInnovations', {
-    data,
+    data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
     search,
     ...pagination(page, LIMIT, totalItems, baseUrl)
   });

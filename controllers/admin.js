@@ -205,3 +205,18 @@ exports.addDoctor = async (req, res, next) => {
   await doc.save();
   return res.json({ success: true, doc });
 };
+
+module.exports.postAddDoctor = async (req, res) => {
+  const {
+    name,
+    gender,
+    institute,
+    expertise,
+    designation,
+    aboutYourself,
+    education,
+    workExperience,
+    services
+  } = req.body;
+  console.log(name, education.length);
+};

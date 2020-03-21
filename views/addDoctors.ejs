@@ -1,349 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
-    <link rel="stylesheet" href="/css/admin_add_doctor.css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="/css/admin_add_doctor.css" />
 
-    <title>Add Doctors | Telepsychiatry Research</title>
-  </head>
+        <title>Add Doctors | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <section class="admin_addDoctor_wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-      <div class="createResources addDoctor">
-        <div class="container">
-          <div id="alert" class="alert alert-danger"></div>
-          <div class="header addDoctor__header">
-            <p id="submitResources">Add New Doctor</p>
-          </div>
-          <div class="input_boxes">
-            <form id="form" action="/auth/register/new/exp" method="POST">
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Name</p>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      class="name"
-                      id="name"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Gender</p>
-                    </div>
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          id="genderInput"
-                          class="selectpicker"
-                          data-width="100%"
-                          title="Gender"
-                          data-size="6"
-                          name="gender"
-                          required
-                        >
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+        <div class="createResources addDoctor">
+            <div class="container">
+                <div id="alert" class="alert alert-danger"></div>
+                <div class="header addDoctor__header">
+                    <p id="submitResources">Add New Doctor</p>
+                </div>
+                <div class="input_boxes">
+                    <form id="form" action="/admin/postAddDoctor" method="POST">
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Name</p>
+                                    </div>
+                                    <input type="text" name="name" placeholder="Name" class="name" id="name" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Gender</p>
+                                    </div>
+                                    <div class="input_box slct_picker">
+                                        <div class="form-selectpicker">
+                                            <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" name="gender" required>
                           <option value="Male">Male</option>
                           <option value="Female"> Female </option>
                         </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Designation</p>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Designation"
-                      class="name"
-                      id="name"
-                    />
-                  </div>
-                  <div class="input_div"></div>
-                </div>
-              </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Designation</p>
+                                    </div>
+                                    <input name="designation" type="text" placeholder="Designation" class="designation" id="designation" />
+                                </div>
+                                <div class="input_div"></div>
+                            </div>
+                        </div>
 
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Expertize Area</p>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Expert Area"
-                      class="name"
-                      id="name"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Institute</p>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Institute"
-                      class="institute"
-                      id="institute"
-                    />
-                  </div>
-                </div>
-              </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Expertize Area</p>
+                                    </div>
+                                    <input name="expertise" type="text" placeholder="Expert Area" class="expertise" id="expertise" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Institute</p>
+                                    </div>
+                                    <input name="institute" type="text" placeholder="Institute" class="institute" id="institute" />
+                                </div>
+                            </div>
+                        </div>
 
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header">
-                  <p>About Yourself</p>
-                </div>
-                <textarea
-                  name=""
-                  placeholder="Write about yourself"
-                  id="about_me"
-                  cols="30"
-                  rows="5"
-                  class="about_me"
-                ></textarea>
-              </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>About Yourself</p>
+                            </div>
+                            <textarea name="about_me" placeholder="Write about yourself" id="about_me" cols="30" rows="5" class="about_me"></textarea>
+                        </div>
 
-              <div class="two_box_one  flex-child">
-                <div class="" id="education-section">
-                  <div class="two_box_header form-header">
-                    <p>Education</p>
-                  </div>
-                  <div>
-                    <div class="education_input">
-                      <div class="arrow_sign">
-                        <i class="fa fa-arrow-right"></i>
-                      </div>
-                      <div class="edu_in">
-                        <input
-                          type="text"
-                          name="institute"
-                          placeholder="Institute"
-                          id="institute"
-                          class="institute"
-                        />
-                      </div>
-                      <div class="edu_in">
-                        <input
-                          type="text"
-                          name="degree"
-                          placeholder="Degree"
-                          id="degree"
-                          class="degree"
-                        />
-                      </div>
-                      <div class="edu_in">
-                        <input
-                          type="text"
-                          name="datetimes"
-                          placeholder="Years"
-                          id="years"
-                          class="years"
-                        />
-                      </div>
-                      <div class="delete-btn">
-                        <button class="delete delete-edu-class" id="delete-edu">
+                        <div class="two_box_one  flex-child">
+                            <div class="" id="education-section">
+                                <div class="two_box_header form-header">
+                                    <p>Education</p>
+                                </div>
+                                <div>
+                                    <div class="education_input">
+                                        <div class="arrow_sign">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="edu_in">
+                                            <input type="text" name="institute" placeholder="Institute" id="institute" class="institute" />
+                                        </div>
+                                        <div class="edu_in">
+                                            <input type="text" name="degree" placeholder="Degree" id="degree" class="degree" />
+                                        </div>
+                                        <div class="edu_in">
+                                            <input type="text" name="datetimes" placeholder="Years" id="years" class="years" />
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-edu-class" id="delete-edu">
                           <i class="fa fa-minus"></i>
                         </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button id="add-edu" class="add-field">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-edu" class="add-field">
                   <i class="fa fa-plus plus"></i>Add Field
                 </button>
-              </div>
+                        </div>
 
-              <div class="two_box_one skill flex-child">
-                <div id="skill-section">
-                  <div class="two_box_header  form-header">
-                    <p>Services</p>
-                  </div>
-                  <div>
-                    <div class="skill_input">
-                      <div class="arrow_sign" style="margin-right: 20px;">
-                        <i class="fa fa-arrow-right"></i>
-                      </div>
-                      <div class="skill_in">
-                        <input
-                          type="text"
-                          placeholder="Services"
-                          id="skill"
-                          class="institute"
-                        />
-                      </div>
-                      <div class="delete-btn">
-                        <button
-                          class="delete delete-skill-class"
-                          id="delete-skill"
-                        >
+                        <div class="two_box_one skill flex-child">
+                            <div id="skill-section">
+                                <div class="two_box_header  form-header">
+                                    <p>Services</p>
+                                </div>
+                                <div>
+                                    <div class="skill_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="skill_in">
+                                            <input type="text" placeholder="Services" id="skill" class="services" />
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-skill-class" id="delete-skill">
                           <i class="fa fa-minus"></i>
                         </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button id="add-skill" class="add-field">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-skill" class="add-field">
                   <i class="fa fa-plus plus"></i>Add Field
                 </button>
-              </div>
+                        </div>
 
-              <div class="two_box_one skill flex-child">
-                <div class="" id="exp-section">
-                  <div class="two_box_header form-header">
-                    <p>Work and Experiences</p>
-                  </div>
-                  <div>
-                    <div class="exp_input">
-                      <div class="arrow_sign">
-                        <i
-                          class="fa fa-arrow-right"
-                          style="margin-right: 20px;"
-                        ></i>
-                      </div>
-                      <div class="work_in">
-                        <input
-                          type="text"
-                          placeholder="Workplace or Experience"
-                          id="workplace"
-                          class="workplace"
-                        />
-                        <textarea
-                          name="inDetails"
-                          placeholder="Tell us about your work and experience"
-                          id="more_on_workplace"
-                          cols="30"
-                          rows="5"
-                          class="more_on_workplace"
-                        ></textarea>
-                      </div>
-                      <div class="delete-btn">
-                        <button class="delete delete-exp-class" id="delete-exp">
+                        <div class="two_box_one skill flex-child">
+                            <div class="" id="exp-section">
+                                <div class="two_box_header form-header">
+                                    <p>Work and Experiences</p>
+                                </div>
+                                <div>
+                                    <div class="exp_input">
+                                        <div class="arrow_sign">
+                                            <i class="fa fa-arrow-right" style="margin-right: 20px;"></i>
+                                        </div>
+                                        <div class="work_in">
+                                            <input type="text" placeholder="Workplace or Experience" id="workplace" class="workplace" />
+                                            <textarea name="inDetails" placeholder="Tell us about your work and experience" id="more_on_workplace" cols="30" rows="5" class="more_on_workplace"></textarea>
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-exp-class" id="delete-exp">
                           <i class="fa fa-minus"></i>
                         </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button id="add-exp" class="add-field">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-exp" class="add-field">
                   <i class="fa fa-plus plus"></i>Add Field
                 </button>
-              </div>
+                        </div>
 
-              <div class="addDoctor__submit">
-                <button id="sub-btn">Submit</button>
-              </div>
-            </form>
-          </div>
+                        <div class="addDoctor__submit">
+                            <button id="sub-btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
 
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
-  <script>
-    $('.add-field').click(e => {
-      e.preventDefault();
-    });
-    $('.delete').click(e => {
-      e.preventDefault();
-    });
-    $(document).on('click', 'button.delete', e => {
-      e.preventDefault();
-    });
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $('.add-field').click(e => {
+            e.preventDefault();
+        });
+        $('.delete').click(e => {
+            e.preventDefault();
+        });
+        $(document).on('click', 'button.delete', e => {
+            e.preventDefault();
+        });
 
-    $('input[name="datetimes"]').daterangepicker({
-      autoUpdateInput: false,
-      timePicker: true,
-      startDate: moment().startOf('hour'),
-      endDate: moment()
-        .startOf('hour')
-        .add(32, 'hour'),
-      locale: {
-        cancelLabel: 'Clear'
-      }
-    });
+        $('input[name="datetimes"]').daterangepicker({
+            autoUpdateInput: false,
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment()
+                .startOf('hour')
+                .add(32, 'hour'),
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
 
-    $('input[name="datetimes"]').on('apply.daterangepicker', function(
-      ev,
-      picker
-    ) {
-      $(this).val(
-        picker.startDate.format('DD/MM/YYYY') +
-          ' - ' +
-          picker.endDate.format('DD/MM/YYYY')
-      );
-    });
+        $('input[name="datetimes"]').on('apply.daterangepicker', function(
+            ev,
+            picker
+        ) {
+            $(this).val(
+                picker.startDate.format('DD/MM/YYYY') +
+                ' - ' +
+                picker.endDate.format('DD/MM/YYYY')
+            );
+        });
 
-    $('input[name="datetimes"]').on('cancel.daterangepicker', function(
-      ev,
-      picker
-    ) {
-      $(this).val('');
-    });
-  </script>
-  <script>
-    let edu = 1,
-      skill = 1,
-      exp = 1;
+        $('input[name="datetimes"]').on('cancel.daterangepicker', function(
+            ev,
+            picker
+        ) {
+            $(this).val('');
+        });
+    </script>
+    <script>
+        let edu = 1,
+            skill = 1,
+            exp = 1;
 
-    $(document).on('click', 'input#app_years', function(e) {
-      console.log('year');
-      $(e.target).daterangepicker({
-        autoUpdateInput: false,
-        locale: {
-          cancelLabel: 'Clear'
-        }
-      });
-      $('input#app_years').on('apply.daterangepicker', function(ev, picker) {
-        $(this).val(
-          picker.startDate.format('DD/MM/YYYY') +
-            ' - ' +
-            picker.endDate.format('DD/MM/YYYY')
-        );
-      });
+        // $('#sub-btn').click((e) => {
+        //     const name = $('#name').val()
+        //     const gender = $('#gender').val()
+        //     const designation = $('#designation').val()
+        //     const expertise = $('#expertise').val()
+        //     const about_me = $('#about_me').val()
+        //     const edu_institute_array = $('.edu_institute')
+        //     const degree_array = $('.degree')
+        //     const years_array = $('.years')
+        //     const services_array = $('input.services').find('input.services')
+        //     const workplace_array = $('.workplace')
+        //     const workplace_details = $('.more_on_wrokplace')
+        //     console.log(services_array.length)
+        // })
 
-      $('input#app_years').on('cancel.daterangepicker', function(ev, picker) {
-        $(this).val('');
-      });
-    });
-    $('#add-edu').click(e => {
-      const edu_field = `<div class="education_input">
+        $(document).on('click', 'input#app_years', function(e) {
+            console.log('year');
+            $(e.target).daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+            $('input#app_years').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(
+                    picker.startDate.format('DD/MM/YYYY') +
+                    ' - ' +
+                    picker.endDate.format('DD/MM/YYYY')
+                );
+            });
+
+            $('input#app_years').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+        });
+        $('#add-edu').click(e => {
+            const edu_field = `<div class="education_input">
                      <div class="arrow_sign">
                         <i class="fa fa-arrow-right"></i>
                       </div>
@@ -378,18 +300,18 @@
                             </button>
                         </div>
                     </div>`;
-      edu++;
-      $('#education-section').append(edu_field);
-    });
-    $(document).on('click', 'button.delete-edu-class i', e => {
-      if (edu > 1) {
-        edu--;
-        $(e.target.parentElement.parentElement.parentElement).remove();
-      }
-    });
+            edu++;
+            $('#education-section').append(edu_field);
+        });
+        $(document).on('click', 'button.delete-edu-class i', e => {
+            if (edu > 1) {
+                edu--;
+                $(e.target.parentElement.parentElement.parentElement).remove();
+            }
+        });
 
-    $('#add-skill').click(e => {
-      const edu_field = `<div class="skill_input">
+        $('#add-skill').click(e => {
+            const edu_field = `<div class="skill_input">
                     <div class="arrow_sign" style="margin-right: 20px;">
                         <i class="fa fa-arrow-right"></i>
                       </div>
@@ -397,8 +319,8 @@
                                 <input
                                 type="text"
                                 placeholder="Services"
-                                id="skill"
-                                class="institute"
+                                id="services"
+                                class="services"
                                 />
                             </div>
                             <div class="delete-btn">
@@ -407,18 +329,18 @@
                                 </button>
                             </div>
                         </div>`;
-      skill++;
-      $('#skill-section').append(edu_field);
-    });
-    $(document).on('click', 'button.delete-skill-class i', e => {
-      if (skill > 1) {
-        skill--;
-        $(e.target.parentElement.parentElement.parentElement).remove();
-      }
-    });
+            skill++;
+            $('#skill-section').append(edu_field);
+        });
+        $(document).on('click', 'button.delete-skill-class i', e => {
+            if (skill > 1) {
+                skill--;
+                $(e.target.parentElement.parentElement.parentElement).remove();
+            }
+        });
 
-    $('#add-exp').click(e => {
-      const edu_field = `<div class="exp_input">
+        $('#add-exp').click(e => {
+            const edu_field = `<div class="exp_input">
                     <div class="arrow_sign" style="margin-right: 20px;">
                         <i class="fa fa-arrow-right"></i>
                       </div>
@@ -444,37 +366,90 @@
                         </button>
                       </div>
                     </div>`;
-      exp++;
-      $('#exp-section').append(edu_field);
-    });
-    $(document).on('click', 'button.delete-exp-class i', e => {
-      if (exp > 1) {
-        exp--;
-        console.log(exp);
-        $(e.target.parentElement.parentElement.parentElement).remove();
-      }
-    });
+            exp++;
+            $('#exp-section').append(edu_field);
+        });
+        $(document).on('click', 'button.delete-exp-class i', e => {
+            if (exp > 1) {
+                exp--;
+                console.log(exp);
+                $(e.target.parentElement.parentElement.parentElement).remove();
+            }
+        });
 
-    function showAlert(msg) {
-      $('#alert').show();
-      $('#alert').html(msg);
-    }
-  </script>
+        function showAlert(msg) {
+            $('#alert').show();
+            $('#alert').html(msg);
+        }
+    </script>
+    <script>
+        function showAlert(msg) {
+            $('#alert').show();
+            $('#alert').html(msg);
+        }
+    </script>
 
-  <script>
-    console.log($('.edu_in input'));
-    $('.addDoctor__submit').on('click', e => {
-      const eduInValue = $('.edu_in input');
-      const eduArray = [];
-      console.log(eduInValue);
-      for (let i = 0; i < eduInValue.length / 3; i++) {
-        const education = eduInValue[3 * i + 0].value;
-        const degree = eduInValue[3 * i + 1].value;
-        const years = eduInValue[3 * i + 2].value;
+    <script>
+        $('.addDoctor__submit').on('click', e => {
 
-        eduArray.push({ education, degree, years });
-      }
-      console.log(eduArray);
-    });
-  </script>
+            const name = $('#name').val()
+            const gender = $('#gender').val()
+            const designation = $('#designation').val()
+            const expertise = $('#expertise').val()
+            const about_me = $('#about_me').val()
+            const institute = $('#institute').val()
+
+            const workExpInput = $('.work_in input')
+            const workExpTextarea = $('.work_in textarea')
+            const serviceInValue = $('.skill_in input')
+            const eduInValue = $('.edu_in input');
+            const eduArray = [];
+            const serviceArray = []
+            const workExpArray = []
+            for (let i = 0; i < eduInValue.length / 3; i++) {
+                const education = eduInValue[3 * i + 0].value;
+                const degree = eduInValue[3 * i + 1].value;
+                const years = eduInValue[3 * i + 2].value;
+                eduArray.push({
+                    education,
+                    degree,
+                    years
+                });
+            }
+            for (let i = 0; i < serviceInValue.length; i++) {
+                const service = serviceInValue[i].value;
+                console.log(service)
+                serviceArray.push(service)
+            }
+            for (let i = 0; i < workExpInput.length; i++) {
+                const work = workExpInput[i].value;
+                const inDetails = workExpTextarea[i].value;
+                workExpArray.push({
+                    work,
+                    inDetails
+                });
+            }
+            console.log(eduArray)
+            postData = {
+                name,
+                gender,
+                institute,
+                expertise,
+                designation,
+                aboutYourself: about_me,
+                education: eduArray,
+                workExperience: workExpArray,
+                services: serviceArray
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/admin/postAddDoctor',
+                data: postData,
+                success: (data) => {
+                    console.log(data)
+                }
+            })
+        });
+    </script>
+
 </html>

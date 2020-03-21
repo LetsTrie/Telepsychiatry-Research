@@ -1,210 +1,226 @@
 @import '_main';
 @import '_navbar';
-
 p {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .ck-editor__editable {
-  min-height: 300px;
+    min-height: 300px;
+}
+
+.year-selector {
+    margin-top: 5px;
+}
+
+.selector {
+    width: 100%;
+    padding: 10px 0px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.vh-selector {
+    width: 80%;
+    padding: 10px 0px;
+    background-color: #fff;
+    border-radius: 4px;
 }
 
 .admin_addDoctor_wrapper {
-  .addDoctor {
-    min-height: 100vh;
-    color: #3b372f;
-    padding: 10px;
-    padding-top: 35px;
-    font-family: 'Merriweather', serif;
-
-    &__header {
-      font-size: 3rem;
-      border-bottom: 2px solid gray;
-      margin-bottom: 2rem;
-      @media (max-width: 900px) {
-        font-size: 2.7rem;
-      }
-      @media (max-width: 570px) {
-        font-size: 2.2rem;
-      }
+    .addDoctor {
+        min-height: 100vh;
+        color: #3b372f;
+        padding: 10px;
+        padding-top: 35px;
+        font-family: 'Merriweather', serif;
+        &__header {
+            font-size: 3rem;
+            border-bottom: 2px solid gray;
+            margin-bottom: 2rem;
+            @media (max-width: 900px) {
+                font-size: 2.7rem;
+            }
+            @media (max-width: 570px) {
+                font-size: 2.2rem;
+            }
+        }
+        .delete {
+            background-color: rgb(240, 14, 14);
+            border-radius: 50%;
+            border: none;
+            padding: 7px 12px;
+            margin-left: 15px;
+            margin-top: 5px;
+            color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+            transition: background 0.2s ease-in;
+            outline: none;
+            &:hover {
+                background-color: rgb(224, 26, 26);
+            }
+            i {
+                font-size: 28px;
+                padding-top: 3px;
+            }
+        }
+        .add-field {
+            .plus {
+                font-size: 15px;
+                padding-right: 6px;
+            }
+            margin-top: 15px;
+            color: #fff;
+            background-color: rgb(77, 76, 76);
+            border-radius: 7px;
+            font-size: 13.5px;
+            border: 1px solid rgb(77, 76, 76);
+            padding: 5px 20px 5px 12px;
+            outline: none;
+            &:hover {
+                color: #fff;
+            }
+        }
+        .input_boxes {}
     }
+}
 
-    .delete {
-      background-color: rgb(240, 14, 14);
-      border-radius: 50%;
-      border: none;
-      padding: 7px 12px;
-      margin-left: 15px;
-      margin-top: 5px;
-      color: #fff;
-
-      box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px,
-        inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-      transition: background 0.2s ease-in;
-      outline: none;
-
-      &:hover {
-        background-color: rgb(224, 26, 26);
-      }
-      i {
-        font-size: 28px;
-        padding-top: 3px;
-      }
+.visitingHour_input {
+    display: flex;
+    width: 100%;
+    .visitingHour_in {
+        width: 70%;
     }
-
-    .add-field {
-      .plus {
-        font-size: 15px;
-        padding-right: 6px;
-      }
-      margin-top: 15px;
-      color: #fff;
-      background-color: rgb(77, 76, 76);
-      border-radius: 7px;
-      font-size: 13.5px;
-      border: 1px solid rgb(77, 76, 76);
-      padding: 5px 20px 5px 12px;
-      outline: none;
-
-      &:hover {
-        color: #fff;
-      }
-    }
-
-    .input_boxes {
-    }
-  }
 }
 
 .education_input {
-  margin-bottom: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  @media (max-width: 600px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    width: 95%;
-  }
-  .edu_in {
-    &:not(:first-child) {
-      margin-left: 20px;
-      @media (max-width: 600px) {
-        margin-left: 0px;
-      }
-    }
-    width: 32%;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
     @media (max-width: 600px) {
-      flex-direction: column;
-      width: 95%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
     }
-  }
+    .edu_in {
+        &:not(:first-child) {
+            margin-left: 20px;
+            @media (max-width: 600px) {
+                margin-left: 0px;
+            }
+        }
+        width: 32%;
+        @media (max-width: 600px) {
+            flex-direction: column;
+            width: 95%;
+        }
+    }
 }
+
 #delete-edu {
-  @media (max-width: 600px) {
-    text-align: center;
-  }
+    @media (max-width: 600px) {
+        text-align: center;
+    }
 }
 
 .skill {
-  margin-top: 30px;
-  .skill_input {
-    margin-bottom: 5px;
-    display: flex;
-    .skill_in {
-      width: 100%;
+    margin-top: 30px;
+    .skill_input {
+        margin-bottom: 5px;
+        display: flex;
+        .skill_in {
+            width: 100%;
+        }
     }
-  }
 }
 
 .exp_input {
-  margin-bottom: 5px;
-  display: flex;
-  .work_in {
-    width: 100%;
-  }
+    margin-bottom: 5px;
+    display: flex;
+    .work_in {
+        width: 100%;
+    }
 }
 
 #alertF {
-  display: none;
-  text-align: center;
+    display: none;
+    text-align: center;
 }
 
 .side_by_side {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-  margin-bottom: 15px;
-  .input_div {
-    width: 49%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     @media (max-width: 600px) {
-      width: 95%;
+        flex-direction: column;
     }
-  }
+    margin-bottom: 15px;
+    .input_div {
+        width: 49%;
+        @media (max-width: 600px) {
+            width: 95%;
+        }
+    }
 }
 
 .two_box_one {
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
-  &:last-child {
-    margin-right: 0rem;
-  }
-  .form-header {
-    margin-top: 8px;
-    p {
-      font-size: 1.5rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    &:last-child {
+        margin-right: 0rem;
     }
-  }
-  input[type='text'],
-  input[type='email'],
-  input[type='password'],
-  textarea {
-    width: 100%;
-    padding: 0.6rem;
-    margin: 5px 0px;
-    border-radius: 4px;
-    border: 1px solid #bdb9b9;
-    &:focus {
-      outline: none;
+    .form-header {
+        margin-top: 8px;
+        p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
     }
-  }
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    textarea {
+        width: 100%;
+        padding: 0.6rem;
+        margin: 5px 0px;
+        border-radius: 4px;
+        border: 1px solid #bdb9b9;
+        &:focus {
+            outline: none;
+        }
+    }
 }
 
 .slct_picker {
-  padding-top: 4px;
+    padding-top: 4px;
 }
+
 .addDoctor__submit {
-  width: 100%;
-  text-align: center;
-  padding: 25px 0;
-  button {
-    border: none;
-    outline: none;
-    background: #ef7c00;
-    color: #fff;
-    padding: 10px 22px;
-    font-size: 24px;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-  }
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    button {
+        border: none;
+        outline: none;
+        background: #ef7c00;
+        color: #fff;
+        padding: 10px 22px;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+        border-radius: 4px;
+    }
 }
 
 .exp_input,
 .skill_input,
 .education_input {
-  padding-bottom: 6px;
+    padding-bottom: 6px;
 }
 
 .arrow_sign {
-  padding-top: 10px;
-  font-size: 20px;
+    padding-top: 10px;
+    font-size: 20px;
 }

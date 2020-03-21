@@ -52,11 +52,91 @@
                             <div class="side_by_side">
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Designation</p>
+                                        <p>Email</p>
                                     </div>
                                     <input name="designation" type="text" placeholder="Designation" class="designation" id="designation" />
                                 </div>
-                                <div class="input_div"></div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Designation</p>
+                                    </div>
+                                    <input name="email" type="text" placeholder="Email" class="email" id="Email" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Date of Birth</p>
+                                    </div>
+                                    <input name="dob" type="text" placeholder="Date of Birth" class="dob" id="dob" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Visiting Fee</p>
+                                    </div>
+                                    <input name="visitingFee" type="text" placeholder="Visiting Fee" class="visitingFee" id="visitingFee" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="two_box_one skill flex-child">
+                            <div id="visitingHour-section">
+                                <div class="two_box_header  form-header">
+                                    <p>Visiting Hour</p>
+                                </div>
+                                <div>
+                                    <div class="visitingHour_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="visitingHour_in">
+                                            <select name="" title="From" id="vhFrom" class="vh-selector">
+                                                <% for (let i=1; i<12; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %>AM</option>
+                                                    <% } %>
+                                                <% for (let i=1; i<12; i++) { %>
+                                                        <option value="<%= i %>" ><%= i %>PM</option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="visitingHour_in">
+                                            <select name="" title="To" id="vhTo" class="vh-selector">
+                                                <% for (let i=1; i<12; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %>AM</option>
+                                                    <% } %>
+                                                <% for (let i=1; i<12; i++) { %>
+                                                        <option value="<%= i %>" ><%= i %>PM</option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-vh-class" id="delete-vh">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-vh" class="add-field">
+                  <i class="fa fa-plus plus"></i>Add Field
+                </button>
+                        </div>
+
+                        <div class="two_box_one skill flex-child">
+                            <div id="speciality-section">
+                                <div class="two_box_header  form-header">
+                                    <p>Speciality</p>
+                                </div>
+                                <div>
+                                    <div class="skill_input">
+                                        <div class="skill_in">
+                                            <input type="text" placeholder="Speciality" id="speciality" class="speciality" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -101,7 +181,18 @@
                                             <input type="text" name="degree" placeholder="Degree" id="degree" class="degree" />
                                         </div>
                                         <div class="edu_in">
-                                            <input type="text" name="datetimes" placeholder="Years" id="years" class="years" />
+                                            <select id="eduFrom" class="selectpicker year-selector" data-width="100%" title="From" data-size="6" name="eduFrom" required>
+                                                <% for (let i=1950; i<2021; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %></option>
+                                                    <% } %>
+                                              </select>
+                                        </div>
+                                        <div class="edu_in">
+                                            <select id="eduTo" class="selectpicker year-selector" data-width="100%" title="To" data-size="6" name="eduTo" required>
+                                                <% for (let i=1950; i<2021; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %></option>
+                                                    <% } %>
+                                              </select>
                                         </div>
                                         <div class="delete-btn">
                                             <button class="delete delete-edu-class" id="delete-edu">
@@ -228,21 +319,7 @@
         let edu = 1,
             skill = 1,
             exp = 1;
-
-        // $('#sub-btn').click((e) => {
-        //     const name = $('#name').val()
-        //     const gender = $('#gender').val()
-        //     const designation = $('#designation').val()
-        //     const expertise = $('#expertise').val()
-        //     const about_me = $('#about_me').val()
-        //     const edu_institute_array = $('.edu_institute')
-        //     const degree_array = $('.degree')
-        //     const years_array = $('.years')
-        //     const services_array = $('input.services').find('input.services')
-        //     const workplace_array = $('.workplace')
-        //     const workplace_details = $('.more_on_wrokplace')
-        //     console.log(services_array.length)
-        // })
+        vh = 1;
 
         $(document).on('click', 'input#app_years', function(e) {
             console.log('year');
@@ -264,6 +341,50 @@
                 $(this).val('');
             });
         });
+
+        $('#add-vh').click((e) => {
+            console.log('h')
+            const vhField = `<div class="visitingHour_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="visitingHour_in">
+                                            <select name="" title="From" id="vhFrom" class="vh-selector">
+                                                <% for (let i=1; i<12; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %>AM</option>
+                                                    <% } %>
+                                                <% for (let i=1; i<12; i++) { %>
+                                                        <option value="<%= i %>" ><%= i %>PM</option>
+                                                <% } %>
+                                                </select>
+                                        </div>
+                                        <div class="visitingHour_in">
+                                            <select name="" title="To" id="vhTo" class="vh-selector">
+                                                <% for (let i=1; i<12; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %>AM</option>
+                                                    <% } %>
+                                                <% for (let i=1; i<12; i++) { %>
+                                                        <option value="<%= i %>" ><%= i %>PM</option>
+                                                <% } %>
+                                                </select>
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-vh-class" id="delete-vh">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                                        </div>
+                                    </div>`
+            vh++
+            $('#visitingHour-section').append(vhField)
+        })
+        $(document).on('click', 'button.delete-vh-class i', e => {
+            console.log('vh')
+            if (vh > 1) {
+                vh--;
+                $(e.target.parentElement.parentElement.parentElement).remove();
+            }
+        });
+
         $('#add-edu').click(e => {
             const edu_field = `<div class="education_input">
                      <div class="arrow_sign">
@@ -286,14 +407,19 @@
                             />
                         </div>
                         <div class="edu_in">
-                            <input
-                            type="text"
-                            name="datetimes"
-                            placeholder="Years"
-                            id="years"
-                            class="years"
-                            />
-                        </div>
+                            <select id="eduFrom" class="selector year-selector" data-width="100%" title="From" data-size="6" name="eduFrom" required>
+                                                <% for (let i=1950; i<2021; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %></option>
+                                                    <% } %>
+                                              </select>
+                                        </div>
+                        <div class="edu_in">
+                            <select id="eduTo" class="selector year-selector" data-width="100%" title="To" data-size="6" name="eduTo" required>
+                                                <% for (let i=1950; i<2021; i++) { %>
+                                                    <option value="<%= i %>" ><%= i %></option>
+                                                    <% } %>
+                                              </select>
+                                        </div>
                         <div class="delete-btn">
                             <button class="delete delete-edu-class" id="delete-edu">
                             <i class="fa fa-minus"></i>
@@ -390,6 +516,27 @@
     </script>
 
     <script>
+        $('input[name="dob"]').daterangepicker({
+            autoUpdateInput: false,
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1930,
+            maxYear: parseInt(moment().format('YYYY'), 10),
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    </script>
+
+    <script>
         $('.addDoctor__submit').on('click', e => {
 
             const name = $('#name').val()
@@ -398,27 +545,36 @@
             const expertise = $('#expertise').val()
             const about_me = $('#about_me').val()
             const institute = $('#institute').val()
+            const dob = $('#dob').val()
+            const speciality = $('#speciality').val()
+            const visitingFee = $('#visitingFee').val()
+            const email = $('#email').val()
 
+            const vhInput = $('.visitingHour_in select')
             const workExpInput = $('.work_in input')
             const workExpTextarea = $('.work_in textarea')
             const serviceInValue = $('.skill_in input')
-            const eduInValue = $('.edu_in input');
-            const eduArray = [];
+            const eduInValue = $('.edu_in input')
+            const eduInSelect = $('.edu_in select')
+
+            const vhArray = []
+            const eduArray = []
             const serviceArray = []
             const workExpArray = []
-            for (let i = 0; i < eduInValue.length / 3; i++) {
-                const education = eduInValue[3 * i + 0].value;
-                const degree = eduInValue[3 * i + 1].value;
-                const years = eduInValue[3 * i + 2].value;
+            for (let i = 0; i < eduInValue.length / 2; i++) {
+                const education = eduInValue[2 * i + 0].value;
+                const degree = eduInValue[2 * i + 1].value;
+                const eduFrom = eduInSelect[2 * i + 0].value
+                const eduTo = eduInSelect[2 * i + 1].value
                 eduArray.push({
                     education,
                     degree,
-                    years
+                    eduFrom,
+                    eduTo
                 });
             }
             for (let i = 0; i < serviceInValue.length; i++) {
                 const service = serviceInValue[i].value;
-                console.log(service)
                 serviceArray.push(service)
             }
             for (let i = 0; i < workExpInput.length; i++) {
@@ -429,17 +585,30 @@
                     inDetails
                 });
             }
-            console.log(eduArray)
+
+            for (let i = 0; i < vhInput.length / 2; i++) {
+                const vhFrom = vhInput[2 * i].value;
+                const vhTo = vhInput[2 * i + 1].value;
+                vhArray.push({
+                    vhFrom,
+                    vhTo
+                });
+            }
             postData = {
                 name,
                 gender,
                 institute,
                 expertise,
                 designation,
+                speciality,
+                dob,
+                email,
+                fee: visitingFee,
                 aboutYourself: about_me,
-                education: eduArray,
-                workExperience: workExpArray,
-                services: serviceArray
+                visitingHour: JSON.stringify(vhArray),
+                education: JSON.stringify(eduArray),
+                workExperience: JSON.stringify(workExpArray),
+                services: JSON.stringify(serviceArray)
             }
             $.ajax({
                 type: 'POST',
@@ -449,6 +618,7 @@
                     console.log(data)
                 }
             })
+            location.reload()
         });
     </script>
 

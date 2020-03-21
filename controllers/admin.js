@@ -204,9 +204,15 @@ module.exports.postAddDoctor = async(req, res) => {
         expertise,
         designation,
         aboutYourself,
-        education,
-        workExperience,
-        services
+        email,
+        speciality,
+        dob,
+        fee
     } = req.body
-    console.log(name, education.length)
+    const education = JSON.parse(req.body.education)
+    const services = JSON.parse(req.body.services)
+    const workExperience = JSON.parse(req.body.workExperience)
+    const visitingHour = JSON.parse(req.body.visitingHour)
+
+    console.log(req.body)
 }

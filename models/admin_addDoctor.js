@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const addDoctorSchema = new mongoose.Schema({
     name: String,
     gender: String,
-    expertizeArea: String,
+    expertise: String,
     designation: String,
     institute: String,
     fee: String,
@@ -11,16 +11,17 @@ const addDoctorSchema = new mongoose.Schema({
     education: [{
         instituteName: String,
         degree: String,
-        year: [String]
+        eduFrom: String,
+        eduTo: String
     }],
     workExperience: [{
         name: String,
-        details: String
+        inDetails: String
     }],
     services: [String],
     dob: String,
     email: String,
-    visitingTime: [String],
+    visitingHour: [String],
     speciality: String,
     createdAt: {
         type: Date,

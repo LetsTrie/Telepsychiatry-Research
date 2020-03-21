@@ -726,6 +726,12 @@ p {
   margin-bottom: 8px;
 }
 
+.fa-check-circle {
+  font-size: 30px;
+  color: green;
+  margin-top: 5px;
+}
+
 .adminContactUs .container .adminContactUsHeader {
   text-align: center;
   margin-bottom: 30px;
@@ -772,6 +778,12 @@ p {
 }
 
 .adminContactUs .container .all_posts .singlePost .singlePost_reply {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
   text-align: right;
   padding: 5px;

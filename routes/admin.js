@@ -11,11 +11,15 @@ const {
     singleInnoavtion,
     approveInnovation,
     disapproveInnovation,
-    postAddDoctor
+    postAddDoctor,
+    replyEmail
 } = require('../controllers/admin');
 
 router.get('/login', login);
+
+//admin contact us
 router.get('/contactUs', contactUs);
+router.post('/replyEmail', replyEmail)
 
 //admin Add Doctors
 router.get('/addDoctors', (req, res) => {

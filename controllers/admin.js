@@ -5,6 +5,7 @@ const InnovationModel = require('../models/innovations');
 const { addDoctorModel } = require('../models/admin_addDoctor');
 const { addDoctorValidation } = require('../validations/admin_addDoctor');
 
+const nodemailer = require('nodemailer')
 const { makeSmallParagraphFromHTML } = require('./utils');
 
 const LIMIT = 9;
@@ -217,4 +218,44 @@ module.exports.postAddDoctor = async(req, res) => {
     const visitingHour = JSON.parse(req.body.visitingHour)
 
     console.log(req.body)
+}
+
+module.exports.replyEmail = (req, res) => {
+    const reply = req.body.reply
+    const emailID = req.body.emailID
+    const id = req.body.id
+        // sendReply(emailID, reply)
+    contactUsModel.updateOne({ _id: id }, { $set: { isReplied: true } },
+        (err, docs) => {
+            req.flash('successMessage', 'ok')
+            res.redirect('back')
+        }
+    );
+}
+
+function sendReply(emailID, reply) {
+    var Transport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: "safwan.du16@gmail.com",
+            pass: "home761049997"
+        }
+    });
+
+    var mailOptions;
+    let sender = "'/'";
+    mailOptions = {
+        from: sender,
+        to: 'safwan.du16@gmail.com',
+        subject: "Reply from TRIN",
+        html: reply
+    };
+
+    Transport.sendMail(mailOptions, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Message sent");
+        }
+    });
 }

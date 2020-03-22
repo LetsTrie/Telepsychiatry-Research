@@ -361,3 +361,7 @@ p {
 #alert {
   display: none;
 }
+::selection {
+  background: #3396d1;
+  color: #fff;
+}

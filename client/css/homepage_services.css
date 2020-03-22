@@ -34,6 +34,7 @@
           box-sizing: border-box;
   cursor: pointer;
   -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
   transition: 0.4s;
   margin-bottom: 10px;
 }
@@ -90,4 +91,3 @@
 .our_services .iconn {
   text-align: center;
 }
-/*# sourceMappingURL=homepage_services.css.map */

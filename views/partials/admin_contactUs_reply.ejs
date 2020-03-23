@@ -1,28 +1,30 @@
 <div class="modal fade" id="ADMIN_CONTACTUS_REPLY_MODAL">
-  <div
-    class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered"
-  >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Send Mail</h2>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Send Mail</h2>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
 
-      <div class="modal-body">
-        <div class="reply_box">
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-        </div>
+            <div class="modal-body">
+                <form action="/admin/replyEmail" method="POST" id="form">
+                    <div class="reply_box">
+                        <textarea name="reply" id="reply" cols="30" rows="10"></textarea>
+                        <input type="hidden" name="emailID" id="emailID">
+                        <input type="hidden" name="id" id="id">
+                    </div>
+                </form>
 
-        <div class="modal-body-submit submit">
-          <button class="green-btn gotoResetPass">Send</button>
-        </div>
-      </div>
+                <div class="modal-body-submit submit">
+                    <button id="send-btn" class="green-btn gotoResetPass">Send</button>
+                </div>
+            </div>
 
-      <div class="modal-footer submit">
-        <button type="button" class="red-btn" data-dismiss="modal">
+            <div class="modal-footer submit">
+                <button type="button" class="red-btn" data-dismiss="modal">
           Close
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

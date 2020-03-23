@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/adminContactUs.css" />
-    <title>Contact Us | Admin | Telepsychiatry Research</title>
-  </head>
+        <link rel="stylesheet" href="/css/adminContactUs.css" />
+        <title>Contact Us | Admin | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <div style="min-height: 100vh;">
-      <header>
-        <nav class="cnav">
-          <%- include('./partials/adminNavbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
+        <header>
+            <nav class="cnav">
+                <%- include('./partials/adminNavbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
 
-      <div class="adminContactUs">
-        <div class="container">
-          <div class="adminContactUsHeader">
-            <p>Contact Us</p>
-          </div>
-          <div class="all_posts">
-            <% for (let i = 0; i < data.length; i++) { %>
+        <div class="adminContactUs">
+            <div class="container">
+                <div class="adminContactUsHeader">
+                    <p>Contact Us</p>
+                </div>
+                <% if (successMessage.length) {%>
+                    <div class="alert alert-success">Your reply has been mailed to the respective client</div>
+                    <% } %>
+                        <div class="all_posts">
+                            <% for (let i = 0; i < data.length; i++) { %>
+                                <div class="singlePost">
+                                    <div class="singlePost_name">
+                                        <p>
+                                            <%= data[i].name %>
+                                        </p>
+                                    </div>
+                                    <div class="singlePost_email">
+                                        <p>
+                                            <%= data[i].email %>
+                                        </p>
+                                    </div>
+                                    <div class="singlePost_post">
+                                        <p>
+                                            <%= data[i].message %>
+                                        </p>
+                                    </div>
+                                    <div class="singlePost_reply">
+                                        <div class="reply-icon" id="reply-icon">
+                                            <% if (data[i].isReplied) { %>
+                                                <i class="fa fa-check-circle"></i>
+                                                <span style="font-weight: bold; color: gray;">Replied</span>
+                                                <% } %>
 
-            <div class="singlePost">
-              <div class="singlePost_name">
-                <p>
-                  <%= data[i].name %>
-                </p>
-              </div>
-              <div class="singlePost_email">
-                <p>
-                  <%= data[i].email %>
-                </p>
-              </div>
-              <div class="singlePost_post">
-                <p>
-                  <%= data[i].message %>
-                </p>
-              </div>
-              <div class="singlePost_reply">
-                <button
-                  data-toggle="modal"
-                  data-target="#ADMIN_CONTACTUS_REPLY_MODAL"
-                >
-                  Reply
-                </button>
-              </div>
+                                        </div>
+                                        <div class="reply-div">
+                                            <button class="reply-btn" id="<%= data[i].email %>" name="<%= data[i]._id %>" data-toggle="modal" data-target="#ADMIN_CONTACTUS_REPLY_MODAL">Reply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <%- include('./partials/pagination.ejs') %>
             </div>
-            <% } %>
-          </div>
-          <%- include('./partials/pagination.ejs') %>
         </div>
-      </div>
     </div>
 
-    <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
-    <%- include('./partials/admin_contactUs_reply')%>
-  </body>
+    <%- include('./partials/footer')%>
+        <%- include('./partials/vendorsBottom')%>
+            <%- include('./partials/admin_contactUs_reply')%>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(() => {
+        console.log('ready')
+        $('.reply-btn').click((e) => {
+            const email = e.target.id
+            const id = e.target.name
+            $('#emailID').val(email)
+            $('#id').val(id)
+        })
+        $('#send-btn').click((e) => {
+            $('#form').submit()
+        })
+    })
+</script>
+
 </html>

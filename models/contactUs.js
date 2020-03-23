@@ -2,20 +2,24 @@ const mongoose = require('mongoose');
 
 const contactUsSchema = new mongoose.Schema({
     name: {
-      type: String,
-      required: [true, 'Please Enter your name']
+        type: String,
+        required: [true, 'Please Enter your name']
     },
     email: {
-      type: String,
-      required: [true, 'Please Enter your email']
+        type: String,
+        required: [true, 'Please Enter your email']
+    },
+    isReplied: {
+        type: Boolean,
+        default: false
     },
     message: {
-      type: String,
-      required: [true, 'Please Enter your message']
+        type: String,
+        required: [true, 'Please Enter your message']
     },
     createdAt: {
-      type: Date,
-      default: Date.now()
+        type: Date,
+        default: Date.now()
     }
 });
 

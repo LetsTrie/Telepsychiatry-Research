@@ -1,0 +1,40 @@
+.organizationSupport {
+  padding: 45px 0 35px 0;
+  font-family: 'Lato', sans-serif;
+
+  background-image: linear-gradient(to right, #d4fee8a1, #b9f7f980),
+    url('../images/bg10.jpg');
+  background-size: cover;
+  .organizationHeader {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+
+    p {
+      text-align: center;
+      span {
+        color: #00adef;
+      }
+    }
+  }
+
+  .organizations {
+    .org {
+      margin: 10px;
+      img {
+        max-width: 200px;
+      }
+
+      border: 1px solid rgba(80, 74, 74, 0.1);
+      border-radius: 4px;
+      padding: 10px;
+      background: #fff;
+      border-bottom: 4px solid rgba(80, 74, 74, 0.1);
+
+      box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px,
+        inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    }
+  }
+}

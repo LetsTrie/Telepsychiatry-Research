@@ -1028,3 +1028,120 @@ p {
 .imageFile {
   padding-top: 10px;
 }
+
+.visitingHour_input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.visitingHour_input .visitingHour_in {
+  width: 70%;
+}
+
+.two_box_one {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.two_box_one:last-child {
+  margin-right: 0rem;
+}
+
+.two_box_one .form-header {
+  margin-top: 8px;
+}
+
+.two_box_one .form-header p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.two_box_one input[type='text'],
+.two_box_one input[type='email'],
+.two_box_one input[type='password'],
+.two_box_one textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border-radius: 4px;
+  border: 1px solid #bdb9b9;
+}
+
+.two_box_one input[type='text']:focus,
+.two_box_one input[type='email']:focus,
+.two_box_one input[type='password']:focus,
+.two_box_one textarea:focus {
+  outline: none;
+}
+
+.skill {
+  margin-top: 30px;
+}
+
+.skill .skill_input {
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.skill .skill_input .skill_in {
+  width: 100%;
+}
+
+.vh-selector {
+  width: 80%;
+  padding: 10px 0px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.delete {
+  background-color: #f00e0e;
+  border-radius: 50%;
+  border: none;
+  padding: 7px 12px;
+  margin-left: 15px;
+  margin-top: 5px;
+  color: #fff;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+          box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+  -webkit-transition: background 0.2s ease-in;
+  -o-transition: background 0.2s ease-in;
+  transition: background 0.2s ease-in;
+  outline: none;
+}
+
+.delete:hover {
+  background-color: #e01a1a;
+}
+
+.delete i {
+  font-size: 28px;
+  padding-top: 3px;
+}
+
+.add-field {
+  margin-top: 15px;
+  color: #fff;
+  background-color: #4d4c4c;
+  border-radius: 7px;
+  font-size: 13.5px;
+  border: 1px solid #4d4c4c;
+  padding: 5px 20px 5px 12px;
+  outline: none;
+}
+
+.add-field .plus {
+  font-size: 15px;
+  padding-right: 6px;
+}
+
+.add-field:hover {
+  color: #fff;
+}

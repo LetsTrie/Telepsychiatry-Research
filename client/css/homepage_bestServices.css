@@ -11,7 +11,7 @@
 }
 
 .services-section {
-  padding: 3rem 0;
+  padding: 1rem 0 3rem 0;
 }
 
 .services-section .service_header {
@@ -42,7 +42,7 @@
 
 .services-section .service_subheader p {
   line-height: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 }
 
 .services-section .cardspace {

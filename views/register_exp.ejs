@@ -186,6 +186,20 @@
                                                 <% } %>
                                             </select>
                                         </div>
+                                        <div class="visitingHour_in">
+                                            <select name="" title="Days" id="vDay" class="vh-selector">
+                                                <option value="Saturday">Saturday</option>
+                                                <option value="Sunday">Sunday</option>
+                                                <option value="Monday">Monday</option>
+                                                <option value="Tuesday">Tuesday</option>
+                                                <option value="Wednesday">Wednesday</option>
+                                                <option value="Thursday">Thursday</option>
+                                                <option value="Friday">Friday</option>
+                                            </select>
+                                        </div>
+                                        <div class="visitingHour_in">
+                                            <input type="text" placeholder="Visiting Place" id="vPlace" class="">
+                                        </div>
                                         <div class="delete-btn">
                                             <button class="delete delete-vh-class" id="delete-vh">
                           <i class="fa fa-minus"></i>
@@ -442,6 +456,20 @@
                                                 <% } %>
                                                 </select>
                                         </div>
+                                        <div class="visitingHour_in">
+                                            <select name="" title="Days" id="vDay" class="vh-selector">
+                                                <option value="Saturday">Saturday</option>
+                                                <option value="Sunday">Sunday</option>
+                                                <option value="Monday">Monday</option>
+                                                <option value="Tuesday">Tuesday</option>
+                                                <option value="Wednesday">Wednesday</option>
+                                                <option value="Thursday">Thursday</option>
+                                                <option value="Friday">Friday</option>
+                                            </select>
+                                        </div>
+                                        <div class="visitingHour_in">
+                                            <input type="text" placeholder="Visiting Place" id="vPlace" class="">
+                                        </div>
                                         <div class="delete-btn">
                                             <button class="delete delete-vh-class" id="delete-vh">
                           <i class="fa fa-minus"></i>
@@ -630,6 +658,7 @@
             const regno = $('#regno').val()
 
             const vhInput = $('.visitingHour_in select')
+            const vPlaceInput = $('.visitingHour_in input')
             const workExpInput = $('.work_in input')
             const workExpTextarea = $('.work_in textarea')
             const serviceInValue = $('.skill_in input')
@@ -665,14 +694,19 @@
                 });
             }
 
-            for (let i = 0; i < vhInput.length / 2; i++) {
-                const vhFrom = vhInput[2 * i].value;
-                const vhTo = vhInput[2 * i + 1].value;
+            for (let i = 0; i < vhInput.length / 3; i++) {
+                const vhFrom = vhInput[3 * i].value
+                const vhTo = vhInput[3 * i + 1].value
+                const vDay = vhInput[3 * i + 2].value
+                const vPlace = vPlaceInput[i].value
                 vhArray.push({
                     vhFrom,
-                    vhTo
+                    vhTo,
+                    vDay,
+                    vPlace
                 });
             }
+            console.log(vhArray)
             postData = {
                 name,
                 gender,

@@ -25,30 +25,15 @@
   }
 }
 
-@-o-keyframes fromBottom {
-  0% {
-    opacity: 0;
-    -o-transform: translateY(250px);
-       transform: translateY(250px);
-  }
-  100% {
-    opacity: 1;
-    -o-transform: none;
-       transform: none;
-  }
-}
-
 @keyframes fromBottom {
   0% {
     opacity: 0;
     -webkit-transform: translateY(250px);
-         -o-transform: translateY(250px);
             transform: translateY(250px);
   }
   100% {
     opacity: 1;
     -webkit-transform: none;
-         -o-transform: none;
             transform: none;
   }
 }
@@ -100,7 +85,6 @@ h1 {
 
 .bootstrap-select .btn {
   -webkit-transition: none;
-  -o-transition: none;
   transition: none;
   padding: 8px;
   font-size: 18px;
@@ -172,22 +156,16 @@ a:hover {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-       -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 
 button:focus {
   -webkit-transform: translateY(0px);
-      -ms-transform: translateY(0px);
-       -o-transform: translateY(0px);
           transform: translateY(0px);
 }
 
 button:active {
   -webkit-transform: translateY(3px);
-      -ms-transform: translateY(3px);
-       -o-transform: translateY(3px);
           transform: translateY(3px);
 }
 
@@ -204,16 +182,13 @@ button:active {
 
 .custom_pagination .myPagination {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .custom_pagination .myPagination a {
@@ -221,7 +196,6 @@ button:active {
   padding: 8px 16px;
   text-decoration: none;
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
   margin: 0px;
 }
@@ -299,8 +273,7 @@ p {
   background-repeat: no-repeat;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-background-size: auto 100%;
-          background-size: auto 100%;
+  background-size: auto 100%;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -311,15 +284,12 @@ p {
   margin: 0 auto;
   color: white;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 @media (max-width: 1500px) {
@@ -337,7 +307,6 @@ p {
 @media (max-width: 1000px) {
   .footerr_wrapper .footerr {
     -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
@@ -346,7 +315,6 @@ p {
 @media (max-width: 750px) {
   .footerr_wrapper .footerr {
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
@@ -399,7 +367,6 @@ p {
 
 .footerr_wrapper .footerr .footer_flex_child .flex_child_info .flex_single_child {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
@@ -503,16 +470,13 @@ p {
 
 #BOOK_APPOINTMENT_MODAL .flex-parent {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
   padding: 5px 0;
 }
@@ -719,8 +683,6 @@ p {
 
 .navbarWrapper .dropdown-submenu a::after {
   -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-       -o-transform: rotate(-90deg);
           transform: rotate(-90deg);
   position: absolute;
   right: 6px;
@@ -791,11 +753,8 @@ p {
   background-color: #00baff;
   visibility: hidden;
   -webkit-transform: scaleX(0);
-  -ms-transform: scaleX(0);
-   -o-transform: scaleX(0);
-      transform: scaleX(0);
+  transform: scaleX(0);
   -webkit-transition: all 0.3s ease-in;
-  -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   z-index: 1;
 }
@@ -803,11 +762,8 @@ p {
 .navbarWrapper .nav-link:hover:after {
   visibility: visible;
   -webkit-transform: scaleX(1);
-      -ms-transform: scaleX(1);
-       -o-transform: scaleX(1);
           transform: scaleX(1);
   -webkit-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
 
@@ -911,3 +867,4 @@ body {
   text-align: justify;
   line-height: 1.8;
 }
+/*# sourceMappingURL=singleResearcher.css.map */

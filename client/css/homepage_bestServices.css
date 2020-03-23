@@ -6,8 +6,7 @@
   background-repeat: no-repeat;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-background-size: auto 100%;
-          background-size: auto 100%;
+  background-size: auto 100%;
 }
 
 .services-section {
@@ -47,21 +46,17 @@
 
 .services-section .cardspace {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
 }
 
 .services-section .cardspace .single-card {
   -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
   transition: all 0.4s;
   border: 1px solid #eeeeee;
   margin: 10px 10px 20px 10px;
@@ -116,7 +111,6 @@
   position: relative;
   color: #272727;
   -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -153,3 +147,4 @@
 .readMore span {
   padding-left: 3px;
 }
+/*# sourceMappingURL=homepage_bestServices.css.map */

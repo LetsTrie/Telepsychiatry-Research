@@ -2,11 +2,8 @@
   padding: 45px 0 35px 0;
   font-family: 'Lato', sans-serif;
   background-image: -webkit-gradient(linear, left top, right top, from(#d4fee8a1), to(#b9f7f980)), url("../images/bg10.jpg");
-  background-image: -webkit-linear-gradient(left, #d4fee8a1, #b9f7f980), url("../images/bg10.jpg");
-  background-image: -o-linear-gradient(left, #d4fee8a1, #b9f7f980), url("../images/bg10.jpg");
   background-image: linear-gradient(to right, #d4fee8a1, #b9f7f980), url("../images/bg10.jpg");
-  -webkit-background-size: cover;
-          background-size: cover;
+  background-size: cover;
 }
 
 .organizationSupport .organizationHeader {
@@ -39,3 +36,4 @@
 .organizationSupport .organizations .org img {
   max-width: 200px;
 }
+/*# sourceMappingURL=homepage_collaboration.css.map */

@@ -1,13 +1,13 @@
 .services_section_wrapper {
-  background: #001c30;
+  background: whitesmoke;
   padding: 50px 0 20px;
   background-image: url(../images/beuBack1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-background-size: auto 100%;
-          background-size: auto 100%;
+  -webkit-background-size: cover;
+          background-size: cover;
 }
 
 .services-section {

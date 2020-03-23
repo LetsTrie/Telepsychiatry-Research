@@ -424,18 +424,26 @@ p {
   color: #a3b7c6;
 }
 
-.fourIcons span {
+.fourIcons a {
   margin-right: 10px;
   padding: 8px;
-  color: #00adef;
   border-radius: 5px;
   background: transparent;
+  color: #00adef;
   border: 1px solid #00adef;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.fourIcons a:hover {
+  background: #00adef;
+  color: white;
 }
 
 .fourIcons .fa-facebook,
 .fourIcons .fa-linkedin {
-  padding: 8px 12px;
+  padding: 8px 10px;
 }
 
 .inputBox input {

@@ -801,8 +801,13 @@ p {
 .doctor_identity .His_profession .degree {
   font-size: 14px;
   color: #757575;
-  margin-bottom: 15px;
   letter-spacing: 0.5px;
+}
+
+.doctor_identity .His_profession .speciality {
+  color: gray;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .doctor_identity .His_profession .aff,
@@ -898,6 +903,7 @@ p {
 
 .overview_education,
 .overview_exper {
+  margin-top: 20px;
   padding: 10px 40px 20px 40px;
 }
 
@@ -1073,6 +1079,10 @@ p {
   color: #272b41;
 }
 
+.box {
+  min-height: 350px;
+}
+
 .card-tabs-2 .card-header {
   padding-bottom: 0;
 }
@@ -1088,5 +1098,13 @@ p {
 .ratingNumber {
   font-size: 15px;
   font-family: 'Lato';
+}
+
+#education-pane {
+  display: none;
+}
+
+#work-exp-pane {
+  display: none;
 }
 /*# sourceMappingURL=doctorProfile.css.map */

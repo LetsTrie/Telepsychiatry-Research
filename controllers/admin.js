@@ -238,7 +238,7 @@ function sendReply(emailID, reply) {
         service: "Gmail",
         auth: {
             user: "safwan.du16@gmail.com",
-            pass: "home761049997"
+            pass: ""
         }
     });
 

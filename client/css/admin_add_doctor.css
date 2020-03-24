@@ -990,6 +990,26 @@ p {
   width: 100%;
 }
 
+.training_input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.training_input .training_in {
+  width: 100%;
+}
+
+.awards_input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.awards_input .awards_in {
+  width: 100%;
+}
+
 .exp_input {
   margin-bottom: 5px;
   display: -webkit-box;

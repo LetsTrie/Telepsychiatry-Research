@@ -48,6 +48,21 @@
                             </div>
                         </div>
 
+                        <div class="two_box_one skill flex-child">
+                            <div id="speciality-section">
+                                <div class="two_box_header  form-header">
+                                    <p>Professional Degree</p>
+                                </div>
+                                <div>
+                                    <div class="skill_input">
+                                        <div class="skill_in">
+                                            <input type="text" placeholder="Professional Degree" id="prof-degreee" class="prof-degree" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="two_box_one flex-child">
                             <div class="side_by_side">
                                 <div class="input_div">
@@ -322,6 +337,58 @@
                         </div>
 
                         <div class="two_box_one skill flex-child">
+                            <div id="training-section">
+                                <div class="two_box_header  form-header">
+                                    <p>Professional Training</p>
+                                </div>
+                                <div>
+                                    <div class="training_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="training_in">
+                                            <input type="text" placeholder="Professional Training" id="prof-trianing" class="prof-trianing" />
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-training-class" id="delete-training">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-training" class="add-field">
+                  <i class="fa fa-plus plus"></i>Add Field
+                </button>
+                        </div>
+
+                        <div class="two_box_one skill flex-child">
+                            <div id="awards-section">
+                                <div class="two_box_header  form-header">
+                                    <p>Awards and Honors</p>
+                                </div>
+                                <div>
+                                    <div class="awards_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="awards_in">
+                                            <input type="text" placeholder="Awards and Honors" id="awards" class="awards" />
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-awards-class" id="delete-awards">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-awards" class="add-field">
+                  <i class="fa fa-plus plus"></i>Add Field
+                </button>
+                        </div>
+
+                        <div class="two_box_one skill flex-child">
                             <div class="" id="exp-section">
                                 <div class="two_box_header form-header">
                                     <p>Work and Experiences</p>
@@ -408,6 +475,8 @@
             skill = 1,
             exp = 1;
         vh = 1;
+        awards = 1;
+        training = 1;
 
         $(document).on('click', 'input#app_years', function(e) {
             console.log('year');
@@ -430,8 +499,57 @@
             });
         });
 
+        $('#add-training').click((e) => {
+            const trainingField = `<div class="training_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="training_in">
+                                            <input type="text" placeholder="Professional Training" id="prof-trianing" class="prof-trianing" />
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-training-class" id="delete-training">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                                        </div>
+                                    </div>`
+            training++
+            $('#training-section').append(trainingField)
+        })
+        $(document).on('click', 'button.delete-training-class i', e => {
+            if (training > 1) {
+                training--;
+                $(e.target.parentElement.parentElement.parentElement).remove();
+            }
+        });
+
+        $('#add-awards').click((e) => {
+            const awardsField = `
+                                    <div class="awards_input">
+                                        <div class="arrow_sign" style="margin-right: 20px;">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="awards_in">
+                                            <input type="text" placeholder="Awards and Honors" id="awards" class="awards" />
+                                        </div>
+                                        <div class="delete-btn">
+                                            <button class="delete delete-awards-class" id="delete-awards">
+                          <i class="fa fa-minus"></i>
+                        </button>
+                                        </div>
+                                    </div>
+                                `
+            awards++
+            $('#awards-section').append(awardsField)
+        })
+        $(document).on('click', 'button.delete-awards-class i', e => {
+            if (awards > 1) {
+                awards--;
+                $(e.target.parentElement.parentElement.parentElement).remove();
+            }
+        });
+
         $('#add-vh').click((e) => {
-            console.log('h')
             const vhField = `<div class="visitingHour_input">
                                         <div class="arrow_sign" style="margin-right: 20px;">
                                             <i class="fa fa-arrow-right"></i>
@@ -480,7 +598,6 @@
             $('#visitingHour-section').append(vhField)
         })
         $(document).on('click', 'button.delete-vh-class i', e => {
-            console.log('vh')
             if (vh > 1) {
                 vh--;
                 $(e.target.parentElement.parentElement.parentElement).remove();
@@ -664,11 +781,16 @@
             const serviceInValue = $('.skill_in input')
             const eduInValue = $('.edu_in input')
             const eduInSelect = $('.edu_in select')
+            const trainingInput = $('.training_in input')
+            const awardsInput = $('.awards_in input')
 
             const vhArray = []
             const eduArray = []
             const serviceArray = []
             const workExpArray = []
+            const awardsArray = []
+            const trainingArray = []
+
             for (let i = 0; i < eduInValue.length / 2; i++) {
                 const education = eduInValue[2 * i + 0].value;
                 const degree = eduInValue[2 * i + 1].value;
@@ -684,6 +806,14 @@
             for (let i = 0; i < serviceInValue.length; i++) {
                 const service = serviceInValue[i].value;
                 serviceArray.push(service)
+            }
+            for (let i = 0; i < trainingInput.length; i++) {
+                const training = trainingInput[i].value;
+                trainingArray.push(training)
+            }
+            for (let i = 0; i < awardsInput.length; i++) {
+                const award = awardsInput[i].value;
+                awardsArray.push(award)
             }
             for (let i = 0; i < workExpInput.length; i++) {
                 const work = workExpInput[i].value;
@@ -706,7 +836,7 @@
                     vPlace
                 });
             }
-            console.log(vhArray)
+            console.log(awardsArray)
             postData = {
                 name,
                 gender,
@@ -723,6 +853,8 @@
                 country,
                 fee: visitingFee,
                 aboutYourself: about_me,
+                trainingArray: JSON.stringify(trainingArray),
+                awardsArray: JSON.stringify(awardsArray),
                 visitingHour: JSON.stringify(vhArray),
                 education: JSON.stringify(eduArray),
                 workExperience: JSON.stringify(workExpArray),
@@ -730,7 +862,7 @@
             }
             $.ajax({
                 type: 'POST',
-                url: '/admin/postAddDoctor',
+                url: '/auth/register/new/exp',
                 data: postData,
                 success: (data) => {
                     console.log(data)

@@ -81,13 +81,15 @@ exports.postRegisterExpertUser_New = async(req, res, next) => {
         regno,
         affiliation,
         researchArea,
-        country,
+        country
     } = req.body
 
     const education = JSON.parse(req.body.education)
     const services = JSON.parse(req.body.services)
     const workExperience = JSON.parse(req.body.workExperience)
     const visitingHour = JSON.parse(req.body.visitingHour)
+    const training = JSON.parse(req.body.trainingArray)
+    const awards = JSON.parse(req.body.awardsArray)
 
     console.log(req.body)
 }

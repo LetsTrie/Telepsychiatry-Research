@@ -1,170 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/doctorProfile.css" />
+    <link rel="stylesheet" href="/css/doctorProfile.css" />
 
-        <title>Profile | Doctor | Telepsychiatry Research</title>
-</head>
+    <title>Profile | Doctor | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <section>
-        <header>
-            <nav class="cnav">
-                <%- include('./partials/navbar')%>
-            </nav>
-            <div class="my-3 divider"></div>
-        </header>
+      <header>
+        <nav class="cnav">
+          <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
 
-        <section>
-            <div class="doctor_profile_heading my-4">
-                <p>Profile</p>
+      <section>
+        <div class="doctor_profile_heading my-4">
+          <p>Profile</p>
+        </div>
+        <div class="container">
+          <div class="doctor_identity">
+            <div class="his_photo">
+              <img src="/images/doctor.jpg" alt="Doctor" />
             </div>
-            <div class="container">
-                <div class="doctor_identity">
-                    <div class="his_photo">
-                        <img src="/images/doctor.jpg" alt="Doctor" />
-                    </div>
-                    <div class="His_profession">
-                        <p class="name">Sharmin Afroz</p>
-                        <p class="degree">BDS, MDS</p>
-                        <p class="speciality">Oral & Maxillofacial Surgery</p>
+            <div class="His_profession">
+              <p class="name">Sharmin Afroz</p>
+              <p class="degreeNspeciality">
+                BDS, MDS - Oral & Maxillofacial Surgery
+              </p>
 
-                        <p class="aff">
-                            <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor (CC) & Unit Head, Dept. of Psychiatry
-                        </p>
-                        <p class="college">
-                            <span class="fa fa-university">&nbsp;</span> Sir Salimullah Medical College & Mitford Hospital
-                        </p>
-                        <p class="bill">
-                            <span class="fa fa-money">&nbsp;&nbsp;</span> BDT 600
-                        </p>
+              <p class="aff">
+                <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
+                (CC) & Unit Head, Dept. of Psychiatry
+              </p>
+              <p class="college">
+                <span class="fa fa-university">&nbsp;</span> Sir Salimullah
+                Medical College & Mitford Hospital
+              </p>
+              <p class="bill">
+                <span class="fa fa-money">&nbsp;&nbsp;</span>
+                500 BDT
+              </p>
 
-                        <div class="bookingg">
-                            <button data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">
+              <div class="bookingg">
+                <button
+                  data-toggle="modal"
+                  data-target="#BOOK_APPOINTMENT_MODAL"
+                >
                   Book appointment
                 </button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div class="aboutDoctor_wrapper">
-                <div class="container">
-                    <div class="card card-tabs-2 aboutDoctor">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="overview" data-toggle="tab" href="#tab1" role="tab">Overview</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " id="education" data-toggle="tab" href="#tab1" role="tab">Education</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " id="training" data-toggle="tab" href="#tab1" role="tab">Professional Training</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " id="work-exp" data-toggle="tab" href="#tab1" role="tab">Work And Experience</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " id="awards" data-toggle="tab" href="#tab1" role="tab">Awards</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " id="cv" data-toggle="tab" href="#tab1" role="tab">CV</a>
-                                </li>
-                            </ul>
+        <div class="aboutDoctor_wrapper">
+          <div class="container">
+            <div class="card card-tabs-2 aboutDoctor">
+              <div class="card-header">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="overview"
+                      data-toggle="tab"
+                      href="#tab1"
+                      role="tab"
+                      >Overview</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link "
+                      id="training"
+                      data-toggle="tab"
+                      href="#tab2"
+                      role="tab"
+                      >Training and Experiences</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link "
+                      id="awards"
+                      data-toggle="tab"
+                      href="#tab3"
+                      role="tab"
+                      >Awards</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link "
+                      id="cv"
+                      data-toggle="tab"
+                      href="#tab4"
+                      role="tab"
+                      >Business Hours</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="card-block box">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab1">
+                    <div class="card-text">
+                      <div class="overview_aboutMe" id="overview-pane">
+                        <div class="aboutMe">
+                          <p class="overview_aboutMe_header">About me</p>
+                          <p class="overview_aboutMe_info">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Asperiores neque expedita doloribus. Nostrum
+                            harum quae reprehenderit error velit praesentium,
+                            alias nulla eaque tenetur labore consectetur non
+                            asperiores mollitia fugiat eveniet atque consequatur
+                            magni, ipsam adipisci assumenda ea tempora, aperiam
+                            cupiditate. Incidunt sint earum facere. Eos pariatur
+                            molestiae quae aliquam tempora aspernatur, beatae
+                            voluptatum adipisci consequuntur nemo officiis
+                            inventore. Sequi debitis amet voluptatibus
+                            aspernatur voluptate ipsam, odit impedit id dolor?
+                            Fugit placeat velit omnis. Eaque, odio! Perferendis
+                            nesciunt corrupti atque animi dicta ad vero tempora
+                            id. Rem recusandae eius maxime tempora officiis, at
+                            ipsa veniam impedit, earum deleniti tenetur dolores
+                            sed?
+                          </p>
                         </div>
-                        <div class="card-block box">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab1">
-                                    <div class="card-text">
-                                        <div class="overview_aboutMe" id="overview-pane">
-                                            <p class="overview_aboutMe_header">About me</p>
-                                            <p class="overview_aboutMe_info">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores neque expedita doloribus. Nostrum harum quae reprehenderit error velit praesentium, alias nulla eaque tenetur labore consectetur non asperiores mollitia fugiat eveniet atque consequatur
-                                                magni, ipsam adipisci assumenda ea tempora, aperiam cupiditate. Incidunt sint earum facere. Eos pariatur molestiae quae aliquam tempora aspernatur, beatae voluptatum adipisci consequuntur nemo officiis inventore.
-                                                Sequi debitis amet voluptatibus aspernatur voluptate ipsam, odit impedit id dolor? Fugit placeat velit omnis. Eaque, odio! Perferendis nesciunt corrupti atque animi dicta ad vero tempora id. Rem recusandae
-                                                eius maxime tempora officiis, at ipsa veniam impedit, earum deleniti tenetur dolores sed?
-                                            </p>
-                                        </div>
-
-                                        <div class="overview_education" id="education-pane">
-                                            <p class="overview_education_header">Education</p>
-                                            <div class="overview_education_institutes">
-                                                <ul>
-                                                    <% for (let i = 0 ; i < 3 ; i++) { %>
-                                                        <li class="overview_education_institutes_one">
-                                                            <p class="ins">Dhaka Medical College</p>
-                                                            <p class="deg">BDS</p>
-                                                            <p class="yrr">1998-2003</p>
-                                                        </li>
-                                                        <% } %>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="overview_exper" id="work-exp-pane">
-                                            <p class="overview_exper_header">Work & Experience</p>
-                                            <div class="overview_exper_institutes">
-                                                <ul>
-                                                    <% for (let i = 0 ; i < 3 ; i++) { %>
-                                                        <li class="overview_exper_institutes_one">
-                                                            <p class="ins">Comfort Care Dental Clinic</p>
-                                                            <p class="yrr">2010 - Present (5 years)</p>
-                                                        </li>
-                                                        <% } %>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class="overview_services">
-                                            <p class="overview_services_header">Services</p>
-                                            <div class="overview_services_points">
-                                                <p>&rarr;&nbsp;&nbsp;&nbsp;Tooth cleaning</p>
-                                                <p>&rarr;&nbsp;&nbsp;&nbsp;Composite Bonding</p>
-                                                <p>&rarr;&nbsp;&nbsp;&nbsp;Fissure Sealants</p>
-                                                <p>&rarr;&nbsp;&nbsp;&nbsp;Root Canal Therapy</p>
-                                                <p>&rarr;&nbsp;&nbsp;&nbsp;Surgical Extractions</p>
-                                            </div>
-                                        </div> -->
+                        <div class="overview_education" id="education-pane12">
+                          <div class="widget education-widget">
+                            <h4 class="widget-title">Education</h4>
+                            <div class="experience-box">
+                              <ul class="experience-list">
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Bangabandhu Sheikh Mujib Medical
+                                        University</a
+                                      >
+                                      <div>FCPS</div>
+                                      <span class="time">2021-2023</span>
                                     </div>
-                                </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Dhaka Medical College</a
+                                      >
+                                      <div>MBBS</div>
+                                      <span class="time">2016-2021</span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Bir Shrestha Noor Mohammad Public
+                                        College</a
+                                      >
+                                      <div>HSC (GPA 5.00)</div>
+                                      <span class="time">2014 - 2016</span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Monipur High School & College</a
+                                      >
+                                      <div>SSC (GPA 5.00)</div>
+                                      <span class="time">2004-2014</span>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
                             </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="tab-pane fade" id="tab2">
+                    <div class="overview_education" id="WorkNexp">
+                      <div class="widget education-widget">
+                        <h4 class="widget-title">Work & Experience</h4>
+                        <div class="experience-box">
+                          <ul class="experience-list">
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name"
+                                    >Glowing Smiles Family Dental Clinic</a
+                                  >
+                                  <span class="time"
+                                    >2010-Present (5 Years)</span
+                                  >
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name"
+                                    >Comfort Care Dental Clinic</a
+                                  >
+                                  <span class="time">2007-2010 (3 years)</span>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name"
+                                    >Dream Smile Dental Practice</a
+                                  >
+                                  <span class="time">2005-2007 (2 years)</span>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="overview_education" id="education-pane31">
+                      <div class="widget education-widget">
+                        <h4 class="widget-title">Professional Training</h4>
+                        <div class="experience-box">
+                          <ul class="experience-list ProTraining">
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name">
+                                    Training on Mental Health Care</a
+                                  >
+                                  <span class="time">2013</span>
+
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name">
+                                    Training on Mental Health Care</a
+                                  >
+                                  <span class="time">2011</span>
+
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name">
+                                    Training on Mental Health Care</a
+                                  >
+                                  <span class="time">2009</span>
+
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="downloadPDF">
+                      <button>Download CV</button>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tab3">
+                    <div class="overview_education" id="awardss-pane">
+                      <div class="widget education-widget">
+                        <h4 class="widget-title">Awards</h4>
+                        <div class="experience-box">
+                          <ul class="experience-list">
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>July 2019</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >Humanitarian Award</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>January 2019</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >Certificate for International Volunteer
+                                    Service</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>August 2018</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >The Dental Professional of The Year
+                                    Award</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>February 2019</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >Best Psychiatrist Award</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="tab4">
+                    <div class="card-text busiHour">
+                      <%for(let i = 0 ; i < 2 ; i++) { %>
+                      <div class="locationTimeMoney">
+                        <div class="location">
+                          <p class="ins_nam">Smile Dental Care</p>
+                          <p class="ins_loc">450/A Shewrapara, Mirpur, Dhaka</p>
+                          <p class="ins_dir">
+                            <a
+                              href="https://goo.gl/maps/y7ueXKkTSEQz8DvY8"
+                              target="_blank"
+                              >Get Directions</a
+                            >
+                          </p>
+                        </div>
+                        <div class="timee">
+                          <div class="time_each">
+                            <p class="dayy">Mon-Sat</p>
+                            <p class="tmm">10:00AM-2:00PM</p>
+                            <p class="tmm">4:00PM-9:00PM</p>
+                          </div>
+                          <div class="time_each">
+                            <p class="dayy">Sun</p>
+                            <p class="tmm">10:00AM-2:00PM</p>
+                          </div>
+                        </div>
+                        <div class="moneyy">
+                          <div><p>500 BDT</p></div>
+                        </div>
+                      </div>
+                      <% } %>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <%- include('./partials/vendorsBottom')%>
-        <%-
-    include('./partials/bookAppointment') %>
-            <%- include('./partials/footer')%>
-</body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script>
-    $(document).ready((e) => {
-        console.log('ready')
-        $('#education').click((e) => {
-            $('#overview-pane').hide()
-            $('#work-exp-pane').hide()
-            $('#education-pane').show()
-        })
+    <%- include('./partials/vendorsBottom')%> <%-
+    include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
+  </body>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+  ></script>
+  <script>
+    $(document).ready(e => {
+      console.log('ready');
+      $('#education').click(e => {
+        $('#overview-pane').hide();
+        $('#work-exp-pane').hide();
+        $('#education-pane').show();
+      });
 
-        $('#overview').click((e) => {
-            $('#overview-pane').show()
-            $('#work-exp-pane').hide()
-            $('#education-pane').hide()
-        })
+      $('#overview').click(e => {
+        $('#overview-pane').show();
+        $('#work-exp-pane').hide();
+        $('#education-pane').hide();
+      });
 
-        $('#work-exp').click((e) => {
-            $('#overview-pane').hide()
-            $('#work-exp-pane').show()
-            $('#education-pane').hide()
-        })
-    })
-</script>
-
+      $('#work-exp').click(e => {
+        $('#overview-pane').hide();
+        $('#work-exp-pane').show();
+        $('#education-pane').hide();
+      });
+    });
+  </script>
 </html>

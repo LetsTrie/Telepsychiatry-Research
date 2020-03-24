@@ -857,231 +857,98 @@ p {
   background-color: #f1f1f1;
 }
 
-.doctor_profile_heading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
+p {
+  margin-bottom: 8px;
 }
 
-.doctor_profile_heading p {
-  font-size: 40px;
-  font-weight: 500;
-  color: #2a2a2a;
-  letter-spacing: 0.5px;
+.ck-editor__editable {
+  min-height: 300px;
 }
 
-.doctor_identity {
-  background-color: #f8f9fa;
-  border: 1px solid #ffeded;
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.year-selector {
+  margin-top: 5px;
 }
 
-@media (max-width: 768px) {
-  .doctor_identity {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
-.doctor_identity .his_photo {
-  width: 45%;
-  padding: 20px;
-}
-
-@media (max-width: 992px) {
-  .doctor_identity .his_photo {
-    width: 50%;
-  }
-}
-
-@media (max-width: 768px) {
-  .doctor_identity .his_photo {
-    width: 100%;
-  }
-}
-
-.doctor_identity .his_photo img {
+.selector {
   width: 100%;
-  border-radius: 7px;
-}
-
-.doctor_identity .His_profession {
-  width: 46%;
-  font-family: 'Roboto', sans-serif;
-  padding: 20px 20px 20px 20px;
-}
-
-@media (max-width: 992px) {
-  .doctor_identity .His_profession {
-    width: 50%;
-  }
-}
-
-@media (max-width: 768px) {
-  .doctor_identity .His_profession {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .doctor_identity .His_profession {
-    padding: 5px 20px 20px 20px;
-  }
-}
-
-.doctor_identity .His_profession .name {
-  font-size: 20px;
-  margin-bottom: 5px;
-  color: #272b41;
-  letter-spacing: 0.5px;
-  font-weight: 700;
-}
-
-.doctor_identity .His_profession .degreeNspeciality {
-  color: #00adef;
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-
-.doctor_identity .His_profession .aff,
-.doctor_identity .His_profession .college {
-  margin-bottom: 5px;
-  color: #6e6774;
-}
-
-.doctor_identity .His_profession .aff {
-  padding-bottom: 3px;
-  padding-top: 20px;
-}
-
-.doctor_identity .His_profession .college {
-  padding-bottom: 20px;
-}
-
-.doctor_identity .His_profession .bill {
-  margin-bottom: 30px;
-  color: #6e6774;
-}
-
-.doctor_identity .His_profession .map_location a {
-  color: #09e5ab;
-  font-weight: 500;
-}
-
-.doctor_identity .His_profession .ratingg {
-  margin-bottom: 5px;
-}
-
-.doctor_identity .His_profession .ratingg .checked {
-  color: #f4c150;
-}
-
-.doctor_identity .His_profession .bookingg button {
-  border: 2px solid #20c0f3;
+  padding: 10px 0px;
+  background-color: #fff;
   border-radius: 4px;
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  padding: 10px 20px;
-  text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-  background-color: #20c0f3;
+}
+
+.admin_addDoctor_wrapper .addDoctor {
+  min-height: 100vh;
+  color: #3b372f;
+  padding: 10px;
+  padding-top: 35px;
+  font-family: 'Merriweather', serif;
+}
+
+.admin_addDoctor_wrapper .addDoctor__header {
+  font-size: 3rem;
+  border-bottom: 2px solid gray;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .admin_addDoctor_wrapper .addDoctor__header {
+    font-size: 2.7rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .admin_addDoctor_wrapper .addDoctor__header {
+    font-size: 2.2rem;
+  }
+}
+
+.admin_addDoctor_wrapper .addDoctor .delete {
+  background-color: #f00e0e;
+  border-radius: 50%;
+  border: none;
+  padding: 7px 12px;
+  margin-left: 15px;
+  margin-top: 5px;
+  color: #fff;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+          box-shadow: rgba(0, 0, 0, 0.8) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+  -webkit-transition: background 0.2s ease-in;
+  -o-transition: background 0.2s ease-in;
+  transition: background 0.2s ease-in;
+  outline: none;
+}
+
+.admin_addDoctor_wrapper .addDoctor .delete:hover {
+  background-color: #e01a1a;
+}
+
+.admin_addDoctor_wrapper .addDoctor .delete i {
+  font-size: 28px;
+  padding-top: 3px;
+}
+
+.admin_addDoctor_wrapper .addDoctor .add-field {
+  margin-top: 15px;
+  color: #fff;
+  background-color: #4d4c4c;
+  border-radius: 7px;
+  font-size: 13.5px;
+  border: 1px solid #4d4c4c;
+  padding: 5px 20px 5px 12px;
+  outline: none;
+}
+
+.admin_addDoctor_wrapper .addDoctor .add-field .plus {
+  font-size: 15px;
+  padding-right: 6px;
+}
+
+.admin_addDoctor_wrapper .addDoctor .add-field:hover {
   color: #fff;
 }
 
-.aboutDoctor_wrapper {
-  margin: 40px 0 50px 0;
-}
-
-.aboutDoctor_wrapper .aboutDoctor {
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-}
-
-.aboutDoctor_wrapper .card-tabs-2 .card-header {
-  padding-bottom: 0;
-}
-
-.aboutDoctor_wrapper .card-tabs-2 .nav-tabs {
-  margin: -1px;
-}
-
-.aboutDoctor_wrapper .nav-item .nav-link {
-  padding: 10px 30px;
-  font-weight: 500;
-  font-size: 17px;
-  letter-spacing: 0.5px;
-}
-
-.overview_aboutMe {
-  margin: 25px 0 20px 0;
-}
-
-.overview_aboutMe_header {
-  color: #272b41;
-  font-weight: 500;
-  margin-bottom: 15px;
-  line-height: 1.2;
-  font-size: 24px;
-  letter-spacing: 0.5px;
-}
-
-.overview_aboutMe_info {
-  text-align: justify;
-  color: #3a3e53;
-  letter-spacing: 0.3px;
-}
-
-.overview_education,
-.overview_exper {
-  margin-top: 20px;
-  padding: 10px 40px 20px 40px;
-}
-
-.overview_exper_institutes_one {
-  padding-top: 10px;
-}
-
-.overview_exper_institutes_one:first-child {
-  padding-top: 6px;
-}
-
-.overview_services {
-  padding: 10px 40px 50px 40px;
-}
-
-.overview_services_header {
-  color: #272b41;
-  font-weight: 500;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-}
-
-.overview_services_points p {
-  color: #282b3a;
-  font-weight: 500;
-}
-
-.locationTimeMoney {
-  font-family: 'Poppins', sans-serif;
+.visitingHour_input {
+  margin-bottom: 5px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1091,20 +958,183 @@ p {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: 20px 30px;
-  padding: 20px;
-  border: 1px solid #ebebeb;
-  -webkit-box-shadow: 0px 2px 5px #d6d6d6;
-          box-shadow: 0px 2px 5px #d6d6d6;
-  border-radius: 5px;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.locationTimeMoney:last-child {
-  margin-bottom: 50px;
+@media (max-width: 600px) {
+  .visitingHour_input {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 95%;
+  }
 }
 
-@media (max-width: 780px) {
-  .locationTimeMoney {
+.visitingHour_input .visitingHour_in {
+  width: 23%;
+}
+
+.visitingHour_input .visitingHour_in:not(:first-child) {
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .visitingHour_input .visitingHour_in:not(:first-child) {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .visitingHour_input .visitingHour_in {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 95%;
+  }
+}
+
+.education_input {
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .education_input {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 95%;
+  }
+}
+
+.education_input .edu_in {
+  width: 32%;
+}
+
+.education_input .edu_in:not(:first-child) {
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .education_input .edu_in:not(:first-child) {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .education_input .edu_in {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  #delete-edu {
+    text-align: center;
+  }
+}
+
+.skill {
+  margin-top: 30px;
+}
+
+.skill .skill_input {
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.skill .skill_input .skill_in {
+  width: 100%;
+}
+
+.exp_input {
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.exp_input .work_in {
+  width: 100%;
+}
+
+#alertF {
+  display: none;
+  text-align: center;
+}
+
+.side_by_side {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .side_by_side {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -1113,289 +1143,81 @@ p {
   }
 }
 
-.locationTimeMoney .location {
-  width: 45%;
+.side_by_side .input_div {
+  width: 49%;
 }
 
-@media (max-width: 780px) {
-  .locationTimeMoney .location {
-    width: 100%;
+@media (max-width: 600px) {
+  .side_by_side .input_div {
+    width: 95%;
   }
 }
 
-.locationTimeMoney .location .ins_nam {
-  font-size: 18px;
-  color: #2e3842;
+.two_box_one {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.two_box_one:last-child {
+  margin-right: 0rem;
+}
+
+.two_box_one .form-header {
+  margin-top: 8px;
+}
+
+.two_box_one .form-header p {
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
-.locationTimeMoney .location .ins_loc {
-  font-weight: normal;
-  color: #757575;
-  margin-bottom: 25px;
-  font-size: 14px;
+.two_box_one input[type='text'],
+.two_box_one input[type='email'],
+.two_box_one input[type='password'],
+.two_box_one textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 5px 0px;
+  border-radius: 4px;
+  border: 1px solid #bdb9b9;
 }
 
-.locationTimeMoney .location .ins_dir a {
-  font-size: 14px;
-  color: #20c0f3;
-  font-weight: 500;
+.two_box_one input[type='text']:focus,
+.two_box_one input[type='email']:focus,
+.two_box_one input[type='password']:focus,
+.two_box_one textarea:focus {
+  outline: none;
 }
 
-.locationTimeMoney .timee {
-  width: 35%;
-  font-size: 15px;
+.slct_picker {
+  padding-top: 4px;
 }
 
-@media (max-width: 780px) {
-  .locationTimeMoney .timee {
-    width: 100%;
-  }
+.addDoctor__submit {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
 }
 
-.locationTimeMoney .timee .time_each {
-  padding-bottom: 10px;
-}
-
-.locationTimeMoney .timee .dayy {
-  font-weight: bold;
-  color: #272b41;
-}
-
-.locationTimeMoney .moneyy {
-  width: 20%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media (max-width: 780px) {
-  .locationTimeMoney .moneyy {
-    width: 100%;
-  }
-}
-
-.locationTimeMoney .moneyy p {
-  font-size: 20px;
-  font-weight: 500;
-  color: #272b41;
-}
-
-.box {
-  min-height: 350px;
-}
-
-.card-tabs-2 .card-header {
-  padding-bottom: 0;
-}
-
-.card-tabs-2 .nav-tabs {
-  margin: -1px;
-}
-
-.nav-item .nav-link {
-  padding: 10px 30px;
-}
-
-.ratingNumber {
-  font-size: 15px;
-  font-family: 'Lato';
-}
-
-#education-pane {
-  display: none;
-}
-
-#work-exp-pane {
-  display: none;
-}
-
-.aboutMe {
-  margin-top: 20px;
-  padding: 10px 40px 0px 40px;
-}
-
-.widget {
-  margin: 10px 0 30px 0;
-}
-
-.widget-title {
-  margin-bottom: 25px;
-}
-
-.experience-box {
-  position: relative;
-}
-
-.experience-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.experience-list::before {
-  background: #ddd;
-  bottom: 0;
-  content: '';
-  left: 8px;
-  position: absolute;
-  top: 8px;
-  width: 2px;
-}
-
-.experience-list > li {
-  position: relative;
-}
-
-.experience-list > li:last-child .experience-content {
-  margin-bottom: 0;
-}
-
-.experience-user .avatar {
-  height: 32px;
-  line-height: 32px;
-  margin: 0;
-  width: 32px;
-}
-
-.experience-list > li .experience-user {
-  background: #fff;
-  height: 10px;
-  left: 4px;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 4px;
-  width: 10px;
-}
-
-.experience-list > li .experience-content {
-  background-color: #fff;
-  margin: 0 0 20px 40px;
-  padding: 0;
-  position: relative;
-}
-
-.experience-list > li .experience-content .timeline-content {
-  line-height: 23px;
-  color: #626262;
-}
-
-.experience-list > li .experience-content .timeline-content a.name {
-  font-weight: 500;
-}
-
-.experience-list > li .time {
-  color: #626262;
-  display: block;
-  font-size: 13px;
-}
-
-.before-circle {
-  background-color: rgba(32, 192, 243, 0.2);
-  border-radius: 50%;
-  height: 12px;
-  width: 12px;
-  border: 2px solid #20c0f3;
-}
-
-.exp-year {
-  color: #20c0f3;
-  margin-bottom: 2px;
-}
-
-.exp-title {
-  font-size: 16px;
-}
-
-.awardsTab .coloredTime p {
-  color: #00adef;
-  margin-bottom: 2px;
-  font-weight: 500;
-}
-
-.awardsTab a.name {
-  display: inline-block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.awardsTab .someText {
-  width: 75%;
-}
-
-.downloadPDF {
-  margin-top: 0px;
-  padding: 0px 40px 20px 45px;
-  margin-bottom: 40px;
-}
-
-.downloadPDF button {
+.addDoctor__submit button {
   border: none;
   outline: none;
   background: #ef7c00;
   color: #fff;
-  padding: 8px 15px;
-  font-size: 18px;
+  padding: 10px 22px;
+  font-size: 24px;
   letter-spacing: 0.5px;
   border-radius: 4px;
 }
 
-.ProTraining li {
-  margin-bottom: 20px;
+.exp_input,
+.skill_input,
+.education_input {
+  padding-bottom: 6px;
 }
 
-.ProTraining a.name {
-  display: inline-block;
-  margin-bottom: 2px;
-  font-size: 16px;
-  font-weight: 700;
-  color: black;
-}
-
-.ProTraining .time {
-  margin-bottom: 5px;
-  font-size: 15px;
-}
-
-.ProTraining .someText {
-  width: 75%;
-  color: #6e6774;
-}
-
-.busiHour {
-  margin: 40px 0;
-}
-
-#tab2 .time {
-  font-size: 14px;
-}
-
-#WorkNexp {
-  padding-bottom: 0px;
-}
-
-#WorkNexp .time {
-  padding-top: 3px;
-}
-
-#awardss-pane {
-  margin-bottom: 20px;
+.arrow_sign {
+  padding-top: 10px;
+  font-size: 20px;
 }

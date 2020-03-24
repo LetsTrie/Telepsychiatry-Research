@@ -438,7 +438,7 @@
                       <div class="edu_in">
                         <select
                           id="eduFrom"
-                          class="selectpicker year-selector"
+                          class="selectpicker year-selector-from"
                           data-width="100%"
                           title="From"
                           data-size="6"
@@ -453,7 +453,7 @@
                       <div class="edu_in">
                         <select
                           id="eduTo"
-                          class="selectpicker year-selector"
+                          class="selectpicker year-selector-to"
                           data-width="100%"
                           title="To"
                           data-size="6"
@@ -633,10 +633,6 @@
   </body>
   <%- include('./partials/vendorsBottom')%>
 
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-  ></script>
   <script
     type="text/javascript"
     src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
@@ -820,7 +816,7 @@
       }
     });
 
-    $('#add-edu').click(e => {
+    document.getElementById('add-edu').addEventListener('click', e => {
       const edu_field = `<div class="education_input">
                      <div class="arrow_sign">
                         <i class="fa fa-arrow-right"></i>
@@ -842,19 +838,35 @@
                             />
                         </div>
                         <div class="edu_in">
-                            <select id="eduFrom" class="selector year-selector" data-width="100%" title="From" data-size="6" name="eduFrom" required>
-                                                <% for (let i=1950; i<2021; i++) { %>
-                                                    <option value="<%= i %>" ><%= i %></option>
-                                                    <% } %>
-                                              </select>
-                                        </div>
-                        <div class="edu_in">
-                            <select id="eduTo" class="selector year-selector" data-width="100%" title="To" data-size="6" name="eduTo" required>
-                                                <% for (let i=1950; i<2021; i++) { %>
-                                                    <option value="<%= i %>" ><%= i %></option>
-                                                    <% } %>
-                                              </select>
-                                        </div>
+                        <select
+                          id="eduFrom"
+                          class="selectpicker year-selector-from additional-from"
+                          data-width="100%"
+                          title="From"
+                          data-size="6"
+                          name="eduFrom"
+                          required
+                        >
+                          <% for (let i=1950; i<2021; i++) { %>
+                          <option value="<%= i %>"><%= i %></option>
+                          <% } %>
+                        </select>
+                      </div>
+                      <div class="edu_in">
+                        <select
+                          id="eduTo"
+                          class="selectpicker year-selector-to  additional-to"
+                          data-width="100%"
+                          title="To"
+                          data-size="6"
+                          name="eduTo"
+                          required
+                        >
+                          <% for (let i=1950; i<2021; i++) { %>
+                          <option value="<%= i %>"><%= i %></option>
+                          <% } %>
+                        </select>
+                      </div>
                         <div class="delete-btn">
                             <button class="delete delete-edu-class" id="delete-edu">
                             <i class="fa fa-minus"></i>
@@ -863,6 +875,15 @@
                     </div>`;
       edu++;
       $('#education-section').append(edu_field);
+
+      console.log($('.additional-from'));
+      console.log($('.year-selector-to'));
+
+      $('.additional-from').selectpicker('refresh');
+      $('.additional-from').css('width', '100%');
+
+      $('.additional-to').selectpicker('refresh');
+      $('.additional-to').css('width', '100%');
     });
     $(document).on('click', 'button.delete-edu-class i', e => {
       if (edu > 1) {

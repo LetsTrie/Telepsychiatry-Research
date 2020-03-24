@@ -1014,6 +1014,7 @@ p {
 .overview_education_institutes_one p,
 .overview_exper_institutes_one p {
   margin: 0px;
+  margin-top: 10px;
   letter-spacing: 0.5px;
 }
 

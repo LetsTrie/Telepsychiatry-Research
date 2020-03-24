@@ -1,12 +1,13 @@
 .services_section_wrapper {
-  background: #001c30;
+  background: whitesmoke;
   padding: 50px 0 20px;
   background-image: url(../images/beuBack1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   -o-object-fit: cover;
      object-fit: cover;
-  background-size: auto 100%;
+  -webkit-background-size: cover;
+          background-size: cover;
 }
 
 .services-section {
@@ -46,17 +47,21 @@
 
 .services-section .cardspace {
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   width: 100%;
 }
 
 .services-section .cardspace .single-card {
   -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
   transition: all 0.4s;
   border: 1px solid #eeeeee;
   margin: 10px 10px 20px 10px;
@@ -111,6 +116,7 @@
   position: relative;
   color: #272727;
   -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -147,4 +153,3 @@
 .readMore span {
   padding-left: 3px;
 }
-/*# sourceMappingURL=homepage_bestServices.css.map */

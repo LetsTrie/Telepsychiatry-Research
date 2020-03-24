@@ -68,6 +68,7 @@
   background: transparent;
   background: #effbff;
   -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
   transition: all 0.4s;
   font-size: 14px;
 }
@@ -127,4 +128,3 @@
   line-height: 24px;
   margin-bottom: 24px;
 }
-/*# sourceMappingURL=homepage_meetOurDoctors.css.map */

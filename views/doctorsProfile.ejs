@@ -1,63 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/doctorProfile.css" />
+    <link rel="stylesheet" href="/css/doctorProfile.css" />
 
-        <title>Profile | Doctor | Telepsychiatry Research</title>
-</head>
+    <title>Profile | Doctor | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <section>
-        <header>
-            <nav class="cnav">
-                <%- include('./partials/navbar')%>
-            </nav>
-            <div class="my-3 divider"></div>
-        </header>
+      <header>
+        <nav class="cnav">
+          <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
 
-        <section>
-            <div class="doctor_profile_heading my-4">
-                <p>Profile</p>
+      <section>
+        <div class="doctor_profile_heading my-4">
+          <p>Profile</p>
+        </div>
+        <div class="container">
+          <div class="doctor_identity">
+            <div class="his_photo">
+              <img src="/images/doctor.jpg" alt="Doctor" />
             </div>
-            <div class="container">
-                <div class="doctor_identity">
-                    <div class="his_photo">
-                        <img src="/images/doctor.jpg" alt="Doctor" />
-                    </div>
-                    <div class="His_profession">
-                        <p class="name">Sharmin Afroz</p>
-                        <p class="degreeNspeciality">
-                            BDS, MDS - Oral & Maxillofacial Surgery
-                        </p>
+            <div class="His_profession">
+              <p class="name">Sharmin Afroz</p>
+              <p class="degreeNspeciality">
+                BDS, MDS - Oral & Maxillofacial Surgery
+              </p>
 
-                        <p class="aff">
-                            <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor (CC) & Unit Head, Dept. of Psychiatry
-                        </p>
-                        <p class="college">
-                            <span class="fa fa-university">&nbsp;</span> Sir Salimullah Medical College & Mitford Hospital
-                        </p>
-                        <p class="bill">
-                            <span class="fa fa-money">&nbsp;&nbsp;</span> 500 BDT
-                        </p>
+              <p class="aff">
+                <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
+                (CC) & Unit Head, Dept. of Psychiatry
+              </p>
+              <p class="college">
+                <span class="fa fa-university">&nbsp;</span> Sir Salimullah
+                Medical College & Mitford Hospital
+              </p>
+              <p class="bill">
+                <span class="fa fa-money">&nbsp;&nbsp;</span> 500 BDT
+              </p>
 
-                        <div class="bookingg">
-                            <button data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">
+              <div class="bookingg">
+                <button
+                  data-toggle="modal"
+                  data-target="#BOOK_APPOINTMENT_MODAL"
+                >
                   Book appointment
                 </button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div class="aboutDoctor_wrapper">
-                <div class="container">
-                    <div class="card card-tabs-2 aboutDoctor">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="overview" data-toggle="tab" href="#tab1" role="tab">Overview</a
+        <div class="aboutDoctor_wrapper">
+          <div class="container">
+            <div class="card card-tabs-2 aboutDoctor">
+              <div class="card-header">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="overview"
+                      data-toggle="tab"
+                      href="#tab1"
+                      role="tab"
+                      >Overview</a
                     >
                   </li>
                   <li class="nav-item">
@@ -467,30 +477,4 @@
     <%- include('./partials/vendorsBottom')%> <%-
     include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
   </body>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-  ></script>
-  <script>
-    $(document).ready(e => {
-      console.log('ready');
-      $('#education').click(e => {
-        $('#overview-pane').hide();
-        $('#work-exp-pane').hide();
-        $('#education-pane').show();
-      });
-
-      $('#overview').click(e => {
-        $('#overview-pane').show();
-        $('#work-exp-pane').hide();
-        $('#education-pane').hide();
-      });
-
-      $('#work-exp').click(e => {
-        $('#overview-pane').hide();
-        $('#work-exp-pane').show();
-        $('#education-pane').hide();
-      });
-    });
-  </script>
 </html>

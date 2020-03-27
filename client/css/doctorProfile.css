@@ -1054,52 +1054,6 @@ p {
   padding: 10px 40px 20px 40px;
 }
 
-<<<<<<< HEAD
-.overview_education_header,
-.overview_exper_header {
-  color: #272b41;
-  font-weight: 500;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-}
-
-.overview_education li,
-.overview_exper li {
-  list-style: disc;
-}
-
-.overview_education_institutes_one,
-.overview_exper_institutes_one {
-  margin: 10px 20px;
-  padding: 0px 10px;
-}
-
-.overview_education_institutes_one p,
-.overview_exper_institutes_one p {
-  margin: 0px;
-  margin-top: 10px;
-  letter-spacing: 0.5px;
-}
-
-.overview_education_institutes_one .ins,
-.overview_exper_institutes_one .ins {
-  font-weight: 500;
-}
-
-.overview_education_institutes_one .deg,
-.overview_exper_institutes_one .deg {
-  color: #3a3e53;
-}
-
-.overview_education_institutes_one .yrr,
-.overview_exper_institutes_one .yrr {
-  color: #3a3e53;
-}
-
-=======
->>>>>>> 8b4102684761bb93f51a977eab6dfbda970d2bb4
 .overview_exper_institutes_one {
   padding-top: 10px;
 }

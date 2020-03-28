@@ -86,7 +86,7 @@
                     </a>
                     <div class="see-more-btn">
                         <p>
-                            <button>See More</button>
+                            <button class="see-more">See More</button>
                         </p>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                     </a>
                     <div class="see-more-btn">
                         <p>
-                            <button>See More</button>
+                            <button class="see-more">See More</button>
                         </p>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                     </a>
                     <div class="see-more-btn">
                         <p>
-                            <button>See More</button>
+                            <button class="see-more">See More</button>
                         </p>
                     </div>
                 </div>
@@ -197,6 +197,10 @@
             if (e.which == 13) {
                 // $('#form').submit()
             }
+        });
+
+        $('.see-more').click(e => {
+            window.location = '/services/singleInstitution';
         });
     </script>
 

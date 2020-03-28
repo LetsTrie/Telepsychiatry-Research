@@ -1,0 +1,120 @@
+@import '_main';
+@import '_navbar';
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+.content-wrapper {
+    padding: 50px 0px;
+}
+
+.first-row {
+    display: flex;
+    width: 60%;
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+    margin: auto;
+    .image {
+        @media (max-width: 600px) {
+            display: none;
+        }
+        // border: 1px solid #000;
+        width: 30%;
+        max-height: 35%;
+        img {
+            max-width: 100%;
+            height: 50%;
+            max-height: 500px;
+        }
+    }
+    .middle-section {
+        margin-left: 7.5%;
+        font-family: 'Raleway', sans-serif;
+        width: 55%;
+        @media (max-width: 600px) {
+            width: 90%;
+        }
+        padding: 0px 40px;
+        @media (max-width: 600px) {
+            padding: 0px 0px;
+        }
+        color: rgb(77,
+        75,
+        75);
+        .title {
+            color: #000;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .description {
+            // color: gray;
+            font-size: 18px;
+            @media (max-width: 600px) {
+                font-size: 15px;
+            }
+        }
+        .price {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-left: solid 2px blue;
+            @media (max-width: 600px) {
+                font-size: 15px;
+            }
+        }
+        .service-list {
+            .section-header {
+                font-size: 25px;
+                @media (max-width: 600px) {
+                    font-size: 18px;
+                }
+                hr {
+                    background-color: blue;
+                    width: 10%;
+                    border: 1px solid blue;
+                }
+            }
+            padding-left: 25px;
+            margin-top: 40px;
+            font-size: 18px;
+            @media (max-width: 600px) {
+                font-size: 15px;
+            }
+            i {
+                color: rgb(80, 114, 189);
+                padding: 0px 5px;
+            }
+        }
+    }
+}
+
+.see-more-btn {
+    margin-top: 30px;
+    p {
+        font-size: 25px;
+        text-align: center;
+        button {
+            width: 100%;
+            color: #fff;
+            background-color: #28a745;
+            padding: 5px 25px;
+            border-radius: 5px;
+            border: none;
+        }
+    }
+}
+
+.mobile-buy-btn {
+    visibility: hidden;
+    @media (max-width: 600px) {
+        visibility: visible;
+    }
+    button {
+        width: 100%;
+        color: #fff;
+        background-color: #28a745;
+        padding: 5px 25px;
+        border-radius: 5px;
+        border: none;
+    }
+}

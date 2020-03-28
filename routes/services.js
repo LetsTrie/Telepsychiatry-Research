@@ -9,4 +9,7 @@ router.get('/doctor/profile/:id', (req, res, next) => {
 router.get('/institution', (req, res, next) => {
     res.render('institution');
 });
+router.get('/singleInstitution', (req, res, next) => {
+    res.render('singleInstitution');
+});
 module.exports = router;

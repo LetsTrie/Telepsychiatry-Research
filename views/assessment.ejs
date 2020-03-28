@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/assessment.css" />
+
+    <title>
+      Assessment | Innovations | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+      <div class="assessment_wrapper">
+        <div class="container">
+          <div class="assessment">
+            <div class="asHeading">
+              <p>Mental Health and Wellbeing</p>
+            </div>
+            <div class="subHeading">
+              <p>
+                Might you quality for the diagnosis of a mental health issue or
+                mental illness? Is your relationship going well? What’s your
+                mood like? What are the major drivers of your personality? These
+                are all questions people ask themselves, but don’t always have
+                clear answers or means of obtaining them. A psychology test or
+                mental health quiz based upon scientific research may be of
+                help.
+              </p>
+              <p>
+                A psychology quiz — like the kind that we offer here — can help
+                a person determine whether there is a concern in their life that
+                should be addressed, whether it be through learning more about
+                it or through professional help. Our psychology tests are free
+                to take, and are largely based upon scientific studies or
+                medical references in the area they focus on. The mental health
+                quizzes below are instantly and automatically scored once
+                completed, giving you immediate results. No registration is
+                required to take a test.
+              </p>
+              <p>
+                <span> Please note:</span> Our psychology quizzes are not meant
+                to diagnose, but rather to help you understand whether a certain
+                mental health or relationship issue may be of concern to you.
+                It’s sort of like asking for a second opinion from an objective
+                friend (as long as you’ve been truthful in your answers).
+              </p>
+            </div>
+
+            <div class="allQuizes">
+              <div class="allQuizheading">
+                <p>Mental Health Tests</p>
+              </div>
+              <div class="allSections">
+                <% for(let i = 0 ; i < 4; i++) { %>
+                <div class="eachSection">
+                  <div class="eachSectionheading">
+                    <p>Anxiety & Mood Tests</p>
+                  </div>
+                  <div class="allSubsections">
+                    <div class="eachSubsection">
+                      <div class="subsectionHeading">
+                        <a href="/services/assessment/questions">
+                          Anxiety Screening Test
+                        </a>
+                      </div>
+                      <div class="subsectionDesc">
+                        <p>
+                          For helping to determine whether you have symptoms
+                          commonly associated with an anxiety disorder, such as
+                          panic disorder or generalized anxiety disorder.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="eachSubsection">
+                      <div class="subsectionHeading">
+                        <a href="/services/assessment/questions">
+                          Bipolar Screening Test
+                        </a>
+                      </div>
+                      <div class="subsectionDesc">
+                        <p>
+                          Our newest bipolar screening measure, based upon the
+                          DSM-5 diagnostic criteria for possible diagnosis of
+                          bipolar disorder (both Bipolar I and Bipolar II
+                          disorders).
+                        </p>
+                      </div>
+                    </div>
+                    <div class="eachSubsection">
+                      <div class="subsectionHeading">
+                        <a href="/services/assessment/questions">
+                          Mania Test
+                        </a>
+                      </div>
+                      <div class="subsectionDesc">
+                        <p>
+                          For helping to determine whether you have symptoms
+                          commonly associated with a manic episode (or mania, a
+                          part of bipolar disorder), and to track your manic
+                          feelings over time. Also, consider taking the Bipolar
+                          Screening Quiz.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="eachSubsection">
+                      <div class="subsectionHeading">
+                        <a href="/services/assessment/questions">
+                          QUICK Anxiety Test
+                        </a>
+                      </div>
+                      <div class="subsectionDesc">
+                        <p>
+                          For helping to determine whether you have symptoms
+                          commonly associated with an anxiety disorder, such as
+                          panic disorder or generalized anxiety disorder. This
+                          is a quick, 7 question quiz.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="eachSubsection">
+                      <div class="subsectionHeading">
+                        <a href="/services/assessment/questions">
+                          Bipolar Self-Test Mood Questionnaire
+                        </a>
+                      </div>
+                      <div class="subsectionDesc">
+                        <p>
+                          Do you experience mood swings? Take this test to see
+                          if your mood swings may be a sign of something like
+                          bipolar disorder.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+</html>

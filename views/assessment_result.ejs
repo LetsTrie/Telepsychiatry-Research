@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/assessment_result.css" />
+
+    <title>
+      Assessment Result | Innovations | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+
+      <div class="assessment_result">
+        <div class="container">
+          <div class="res">
+            <div class="res_heading">
+              <p>Result of Depression Test</p>
+            </div>
+
+            <div class="res_results">
+              <div class="doc_rand_pic">
+                <img src="/images/as_res.jpg" alt="" />
+              </div>
+              <div class="yourTotScore">
+                <div class="score">
+                  <p>Your Score:&nbsp;&nbsp;<span>Severe Depression</span></p>
+                </div>
+                <div class="our_advice">
+                  <p>
+                    Your answers suggest you are suffering from severe
+                    depression. It is important that you schedule an appointment
+                    with your doctor or a mental health worker now. If you need
+                    help we strongly suggest that you reach out to to a
+                    qualified mental health professional listed in our directory
+                    of
+                    <a href="#"> Psychiatric Consultants </a> and
+                    <a href="#"> Psychologists </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+</html>

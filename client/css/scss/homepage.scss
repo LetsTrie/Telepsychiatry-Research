@@ -303,8 +303,8 @@
 }
 
 .upcomingEvents_wrapper {
-  background: #f8f0ff;
-  background-image: url(../images/Vector-Smart-Object.jpg);
+  background-image: linear-gradient(to right, #d4fee880, #b9f7f94b),
+    url(../images/Vector-Smart-Object.jpg);
   background-position: center;
   background-repeat: no-repeat;
   object-fit: cover;

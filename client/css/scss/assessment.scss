@@ -16,9 +16,10 @@
       }
     }
     .subHeading {
-      font-family: 'open Sans', sans-serif;
-      padding-bottom: 20px;
-      font-size: 17px;
+      font-family: 'ubuntu', sans-serif;
+      padding-bottom: 30px;
+      line-height: 1.8;
+      font-size: 18px;
       p {
         text-align: justify;
         span {
@@ -79,4 +80,106 @@
       }
     }
   }
+}
+
+.quizSelection_wrapper {
+  padding-bottom: 30px;
+  .quizSelection {
+    width: 80%;
+    margin: auto;
+    padding: 30px 0 5px 0;
+    box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
+      inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    border: 1px solid #bdb9b9;
+    background: #f6f6f4;
+  }
+  .quizSelectionHeading {
+    color: #1c82ca;
+    text-align: center;
+    p {
+      font-family: 'Merriweather', sans-serif;
+      font-size: 35px;
+      font-weight: 700;
+    }
+  }
+}
+
+.side_by_side {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  margin-bottom: 15px;
+  .input_div {
+    width: 49%;
+    @media (max-width: 600px) {
+      width: 95%;
+    }
+  }
+}
+
+.two_box_one {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  &:last-child {
+    margin-right: 0rem;
+  }
+  .form-header {
+    margin-top: 8px;
+    p {
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding-left: 3px;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+  }
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 5px 0px;
+    border-radius: 4px;
+    border: 1px solid #bdb9b9;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.slct_picker {
+  padding-top: 4px;
+}
+
+.input_boxes {
+  padding-top: 10px;
+  width: 80%;
+  margin: auto;
+}
+.submit {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  margin-bottom: 30px;
+
+  button {
+    border: none;
+    outline: none;
+    background: #ef7c00;
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 21px;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+  }
+}
+
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+  padding: 0px 0.3rem 0px 0.5rem;
 }

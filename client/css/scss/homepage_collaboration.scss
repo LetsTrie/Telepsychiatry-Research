@@ -2,8 +2,7 @@
   padding: 45px 0 35px 0;
   font-family: 'Lato', sans-serif;
 
-  background-image: linear-gradient(to right, #d4fee880, #b9f7f97a),
-    url('../images/bg10.jpg');
+  background: white;
   background-size: cover;
   .organizationHeader {
     font-family: 'Roboto', sans-serif;
@@ -21,20 +20,23 @@
   }
 
   .organizations {
+    display: flex;
+    flex-wrap: wrap;
     .org {
-      margin: 10px;
+      margin: 7px;
       img {
-        max-width: 200px;
+        max-width: 120px;
       }
 
-      border: 1px solid rgba(80, 74, 74, 0.1);
+      border: 1px solid rgba(61, 52, 52, 0.1);
       border-radius: 4px;
       padding: 10px;
       background: #fff;
-      border-bottom: 4px solid rgba(80, 74, 74, 0.1);
+      box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
+      // border-bottom: 4px solid rgba(80, 74, 74, 0.1);
 
-      box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px,
-        inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+      // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px,
+      //   inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
     }
   }
 }

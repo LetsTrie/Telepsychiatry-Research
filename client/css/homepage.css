@@ -1277,8 +1277,10 @@ p {
 }
 
 .upcomingEvents_wrapper {
-  background: #f8f0ff;
-  background-image: url(../images/Vector-Smart-Object.jpg);
+  background-image: -webkit-gradient(linear, left top, right top, from(#d4fee880), to(#b9f7f94b)), url(../images/Vector-Smart-Object.jpg);
+  background-image: -webkit-linear-gradient(left, #d4fee880, #b9f7f94b), url(../images/Vector-Smart-Object.jpg);
+  background-image: -o-linear-gradient(left, #d4fee880, #b9f7f94b), url(../images/Vector-Smart-Object.jpg);
+  background-image: linear-gradient(to right, #d4fee880, #b9f7f94b), url(../images/Vector-Smart-Object.jpg);
   background-position: center;
   background-repeat: no-repeat;
   -o-object-fit: cover;

@@ -21,15 +21,20 @@
     <div class="bookDoctor">
       <div class=" container">
         <div class="bookDoctorHeader text-center">
-          <p>Book our Doctor</p>
+          <p>Book our Doctors</p>
         </div>
         <div class="bookDoctorHeader__info">
-          <p>Energistically develop 24/365 outsourcing rather than market positioning sources. Collaboratively iterate
-            bricks-and-clicks relationships with sustainable deliverables. Enthusiastically productivate highly
-            efficient bandwidth for economically sound initiatives. Synergistically enhance top-line.</p>
+          <p>Find the right mental health consultants from our list of doctors. You can also search by their name to narrow down the list. You can also see the whole list of doctors.</p>
         </div>
-        <div class="bookDoctor__showMore text-center">
-          <button>See More</button>
+        <div class="searching">
+          <form action="#" method="POST">
+            <div class="searchbox">
+              <input type="text" name="search" placeholder="Search Doctors" required />
+            </div>
+            <div class="searchBtn">
+              <input type="submit" value="search" />
+            </div>
+          </form>
         </div>
         <div class="all-items">
           <div class="owl-carousel owl-theme">
@@ -68,6 +73,10 @@
             <% } %>
           </div>
         </div>
+
+        <div class="bookDoctor__showMore text-center">
+          <button>See all doctors</button>
+        </div>
       </div>
     </div>
   </section>
@@ -87,6 +96,7 @@
     autoplay: true,
     autoplayTimeout: 5000,
     autoplayHoverPause: true,
+    dots: false, 
     responsive: {
       0: {
         items: 1

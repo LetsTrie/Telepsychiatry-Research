@@ -1,10 +1,7 @@
 .organizationSupport {
   padding: 45px 0 35px 0;
   font-family: 'Lato', sans-serif;
-  background-image: -webkit-gradient(linear, left top, right top, from(#d4fee880), to(#b9f7f97a)), url("../images/bg10.jpg");
-  background-image: -webkit-linear-gradient(left, #d4fee880, #b9f7f97a), url("../images/bg10.jpg");
-  background-image: -o-linear-gradient(left, #d4fee880, #b9f7f97a), url("../images/bg10.jpg");
-  background-image: linear-gradient(to right, #d4fee880, #b9f7f97a), url("../images/bg10.jpg");
+  background: white;
   -webkit-background-size: cover;
           background-size: cover;
 }
@@ -25,17 +22,26 @@
   color: #00adef;
 }
 
+.organizationSupport .organizations {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
 .organizationSupport .organizations .org {
-  margin: 10px;
-  border: 1px solid rgba(80, 74, 74, 0.1);
+  margin: 7px;
+  border: 1px solid rgba(61, 52, 52, 0.1);
   border-radius: 4px;
   padding: 10px;
   background: #fff;
-  border-bottom: 4px solid rgba(80, 74, 74, 0.1);
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
+          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
 }
 
 .organizationSupport .organizations .org img {
-  max-width: 200px;
+  max-width: 120px;
 }

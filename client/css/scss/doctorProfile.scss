@@ -182,7 +182,7 @@
 }
 
 .locationTimeMoney {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: row;
   &:last-child {
@@ -448,4 +448,21 @@
 
 #awardss-pane {
   margin-bottom: 20px;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #20c0f3;
+}
+
+.nav-item {
+  a {
+    transition: color 0.2s;
+    &:hover {
+      color: #20c0f3;
+    }
+  }
+}
+
+.aboutDoctor_wrapper .card-tabs-2 .card-header {
+  padding-top: 15px;
 }

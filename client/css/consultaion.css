@@ -858,7 +858,7 @@ p {
 }
 
 .bookDoctor {
-  padding: 50px 0;
+  padding: 20px 0 50px 0;
   font-family: 'Lato', sans-serif;
 }
 
@@ -870,11 +870,25 @@ p {
 }
 
 .bookDoctor .bookDoctorHeader__info {
-  margin: 20px 40px 20px 5px;
+  margin: 12px 40px 25px 5px;
   text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .bookDoctor .bookDoctorHeader__info p {
+  max-width: 800px;
   color: #626161;
   font-size: 17px;
   letter-spacing: 0.6px;
@@ -936,7 +950,7 @@ p {
 
 .twoButtons button:hover,
 .bookDoctor__showMore button:hover {
-  background-color: #0de0fe;
+  background-color: #0f8999;
   color: #fff;
 }
 
@@ -954,8 +968,9 @@ p {
 
 .bookDoctor__showMore button {
   padding: 10px 20px;
-  background: #0de0fe;
+  background: #06bfd8;
   color: white;
+  font-size: 20px;
 }
 
 .checked {
@@ -1021,4 +1036,44 @@ p {
 .college {
   padding-top: 5px;
   padding-bottom: 10px;
+}
+
+.searching {
+  padding: 0 0 50px 0;
+}
+
+.searching form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.searching .searchbox {
+  width: 45%;
+}
+
+@media (max-width: 1000px) {
+  .searching .searchbox {
+    width: 60%;
+  }
+}
+
+.searching .searchbox input[type='text'] {
+  padding: 9px;
+  width: 100%;
+}
+
+.searching .searchBtn input[type='submit'] {
+  padding: 5px 30px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  background: #13ce66;
 }

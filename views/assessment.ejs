@@ -51,7 +51,117 @@
               </p>
             </div>
 
-            <div class="allQuizes">
+            <div class="quizSelection_wrapper">
+              <div class="quizSelection">
+                <div class="quizSelectionHeading">
+                  <p>Mental Health Test</p>
+                </div>
+                <div class="input_boxes">
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Your name</p>
+                        </div>
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Name"
+                          class="name"
+                          id="name"
+                        />
+                      </div>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Age Range</p>
+                        </div>
+                        <div class="input_box slct_picker">
+                          <div class="form-selectpicker">
+                            <select
+                              id="genderInput"
+                              class="selectpicker"
+                              data-width="100%"
+                              title="Select age"
+                              data-size="6"
+                              name="gender"
+                              required
+                            >
+                              <option value="For children">For children</option>
+                              <option value="For young people">
+                                For young people
+                              </option>
+                              <option value="For old people">
+                                For old people
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Disorder</p>
+                        </div>
+                        <div class="input_box slct_picker">
+                          <div class="form-selectpicker">
+                            <select
+                              id="genderInput"
+                              class="selectpicker"
+                              data-width="100%"
+                              title="Select disorder"
+                              data-size="6"
+                              name="gender"
+                              required
+                            >
+                              <option value="Depression">Depression</option>
+                              <option value="Autism"> Autism </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Type of Test</p>
+                        </div>
+                        <div class="input_box slct_picker">
+                          <div class="form-selectpicker">
+                            <select
+                              id="genderInput"
+                              class="selectpicker"
+                              data-width="100%"
+                              title="Select test"
+                              data-size="6"
+                              name="gender"
+                              required
+                            >
+                              <option value="Anxiety Screening Test"
+                                >Anxiety Screening Test</option
+                              >
+                              <option value="Bipolar Screening Test"
+                                >Bipolar Screening Test</option
+                              >
+                              <option
+                                value="Spanish-language Anxiety Screening Test"
+                              >
+                                Spanish-language Anxiety Screening Test
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="submit">
+                    <button id="sub-btn">Start Quiz</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="allQuizes">
               <div class="allQuizheading">
                 <p>Mental Health Tests</p>
               </div>
@@ -140,7 +250,7 @@
                 </div>
                 <% } %>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -148,4 +258,9 @@
     <%- include('./partials/footer')%>
   </body>
   <%- include('./partials/vendorsBottom')%>
+  <script>
+    $(document).on('click', '.submit', e => {
+      location = '/services/assessment/questions';
+    });
+  </script>
 </html>

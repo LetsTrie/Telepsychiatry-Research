@@ -28,11 +28,15 @@
             </div>
 
             <div class="sub-header">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolore consectetur itaque ut nihil, explicabo debitis blanditiis magni, eaque facilis reiciendis incidunt sequi fugit temporibus. Et similique maiores deserunt, voluptatem illum, explicabo
-                ut dolore, optio labore earum dolores aut. Iusto.
+                Regular health exams and tests can help find problems before they start. They also can help find problems early, when your chances for treatment and cure are better. By getting the right health services, screenings, and treatments, you are taking steps
+                that help your chances for living a longer, healthier life.
+                <br />
+                <br /> Some of the diseases can be prevented with healthy lifestyle modifications while on the other hand, some diseases cannot be prevented, but their overall impact can be reduced by detecting them at their early stage. Nowadays, wellness
+                visits and comprehensive exams play a significant role in maintaining your health. Screening tests play an important role in the comprehensive examination and it is the best way to find the disease early. Let us take a look at screening
+                test, its importance in detecting the disease early and some common health screening tests.
             </div>
 
-            <div class="searching">
+            <!-- <div class="searching">
                 <form action="#" method="POST">
                     <div class="searchbox">
                         <input type="text" name="search" required />
@@ -41,149 +45,56 @@
                         <input type="submit" value="Search" />
                     </div>
                 </form>
+            </div> -->
+
+            <div class="search-box">
+                <input id="search-bar" type="text" placeholder="Type to search">
+                <a href="#">
+                    <i class="fa fa-search"></i>
+                </a>
             </div>
 
-            <div class="cards-space">
-                <div class="card-box">
-                    <a href="#">
-                        <div class="upper">
-                            <div class="plan-header">
-                                <p>Blood Test</p>
+            <div class="packages">
+                <% for (let i=0; i<names.length; i++) {%>
+                    <div class="each-package">
+                        <div class="title">
+                            <p>
+                                <%= names[i] %>
+                            </p>
+                        </div>
+                        <div class="about">
+                            Liver function tests check the levels of certain enzymes and proteins in your blood. Levels that are higher or lower than normal can indicate liver problems. Certain foods and medications can affect the results of your liver function tests. Your doctor
+                            will probably ask you to avoid eating food and taking some medications before your blood is drawn.
+                        </div>
+                        <br>
+                        <div class="contents">
+                            <p class="intro">This package includes</p>
+                            <div class="list">
+                                <p><i class="fa fa-chevron-circle-right"></i><strong>Alanine transaminase</strong> ALT levels would rise during the second trimester </p>
+                                <p><i class="fa fa-chevron-circle-right"></i><strong>Aspartate transaminase</strong> An increase in AST levels may indicate liver damage</p>
+                                <p><i class="fa fa-chevron-circle-right"></i><strong>Alkaline phosphatase</strong> Lower-than-normal levels of albumin and total protein may indicate liver damage or disease. </p>
+                                <p><i class="fa fa-chevron-circle-right"></i><strong>Alanine transaminase</strong> ALT levels would rise during the second trimester </p>
+                                <p><i class="fa fa-chevron-circle-right"></i><strong>Albumin and total protein</strong> An increase in AST levels may indicate liver damage</p>
+                                </i>
                             </div>
-                            <hr class="bar" />
-                            <div class="amount">
-                                <p>200 BDT</p>
+                        </div>
+                        <!-- <hr> -->
+                        <div class="footer">
+                            <div class="price">
+                                Price <span>125</span> BDT
                             </div>
-                            <div class="buy-btn">
-                                <p>
+                            <div class="two-buttons">
+                                <div class="see-more-btn">
+                                    <button> More</button>
+                                </div>
+                                <div class="buy-btn">
                                     <button>Buy</button>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="lower">
-                            <div class="lower-head">
-                                <p>Package includes</p>
-                            </div>
-                            <div class="services">
-                                <div class="left">
-                                    <ul>
-                                        <li>Hemoglobin</li>
-                                        <li>Total WBC</li>
-                                        <li>MCV</li>
-                                        <li>ESR</li>
-                                    </ul>
-                                </div>
-                                <div class="right">
-                                    <ul>
-                                        <li>Packed Cell Volume</li>
-                                        <li>Differential Count</li>
-                                        <li>Peripheral Smear</li>
-                                        <li>Platelet Count</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <div class="see-more-btn">
-                        <p>
-                            <button class="see-more">See More</button>
-                        </p>
                     </div>
-                </div>
-                <div class="card-box">
-                    <a href="#">
-                        <div class="upper">
-                            <div class="plan-header">
-                                <p>Lipid Profile</p>
-                            </div>
-                            <hr class="bar" />
-                            <div class="amount">
-                                <p><i class="fa fa-coins"></i> 125 BDT</p>
-                            </div>
-                            <div class="buy-btn">
-                                <p>
-                                    <button>Buy</button>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="lower">
-                            <div class="lower-head">
-                                <p>Package includes</p>
-                            </div>
-                            <div class="services">
-                                <div class="left">
-                                    <ul>
-                                        <li>Total Cholesterol</li>
-                                        <li>LDL Cholesterol</li>
-                                        <li>HDL Ratio</li>
-                                        <li>HDL Cholesterol</li>
-                                    </ul>
-                                </div>
-                                <div class="right">
-                                    <ul>
-                                        <li>Triglycerides</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="see-more-btn">
-                        <p>
-                            <button class="see-more">See More</button>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card-box">
-                    <a href="#">
-                        <div class="upper">
-                            <div class="plan-header">
-                                <p>General Tests</p>
-                            </div>
-                            <hr class="bar" />
-                            <div class="amount">
-                                <p>300 BDT</p>
-                            </div>
-                            <div class="buy-btn">
-                                <p>
-                                    <button>Buy</button>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="lower">
-                            <div class="lower-head">
-                                <p>Package includes</p>
-                            </div>
-                            <div class="services">
-                                <div class="left">
-                                    <ul>
-                                        <li>Urine Routine Analysis</li>
-                                        <li>Stool Test (Optional)</li>
-                                        <li>Ultrasonogram of the Abdomen</li>
-                                    </ul>
-                                </div>
-                                <div class="right">
-                                    <ul>
-                                        <li>Alkaline Phosphatase</li>
-                                        <li>Total Protein</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="see-more-btn">
-                        <p>
-                            <button class="see-more">See More</button>
-                        </p>
-                    </div>
-                </div>
+                    <% } %>
             </div>
-        </div>
-
-        <div class="show-all-btn">
-            <p>
-                <button>Show All Packages</button>
-            </p>
         </div>
 
         <%- include('./partials/vendorsBottom')%>
@@ -199,9 +110,21 @@
             }
         });
 
-        $('.see-more').click(e => {
+        $('.see-more-btn').click(e => {
             window.location = '/services/singleInstitution';
         });
+
+        $('#search-bar').on('keypress', (e) => {
+            $('.each-package').hide()
+            const phrase = $('#search-bar').val()
+            const packages = $('.title p')
+            for (let i = 0; i < packages.length; i++) {
+                const line = packages[i].innerHTML.toLowerCase()
+                if (line.includes(phrase)) {
+                    $(packages[i].parentElement.parentElement).show()
+                }
+            }
+        })
     </script>
 
 </html>

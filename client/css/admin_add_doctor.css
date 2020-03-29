@@ -865,10 +865,6 @@ p {
   min-height: 300px;
 }
 
-.year-selector {
-  margin-top: 5px;
-}
-
 .selector {
   border: 1px solid #bebebe;
   width: 100%;
@@ -879,7 +875,7 @@ p {
 
 .vh-selector {
   width: 80%;
-  padding: 10px 0px;
+  padding: 5px 0px;
   background-color: #fff;
   border-radius: 4px;
 }
@@ -935,24 +931,45 @@ p {
   padding-top: 3px;
 }
 
-.admin_addDoctor_wrapper .addDoctor .add-field {
-  margin-top: 15px;
+.admin_addDoctor_wrapper .addDoctor .add-vh-shift,
+.admin_addDoctor_wrapper .addDoctor .add-edu-field-class,
+.admin_addDoctor_wrapper .addDoctor .add-awards-field,
+.admin_addDoctor_wrapper .addDoctor .add-training-field,
+.admin_addDoctor_wrapper .addDoctor .add-exp-field,
+.admin_addDoctor_wrapper .addDoctor .add-vh-chamber {
+  margin-top: 10px;
   color: #fff;
   background-color: #4d4c4c;
-  border-radius: 7px;
+  border-radius: 3px;
   font-size: 13.5px;
   border: 1px solid #4d4c4c;
-  padding: 5px 20px 5px 12px;
+  padding: 7px 20px 7px 12px;
   outline: none;
 }
 
-.admin_addDoctor_wrapper .addDoctor .add-field .plus {
+.admin_addDoctor_wrapper .addDoctor .add-vh-shift .plus,
+.admin_addDoctor_wrapper .addDoctor .add-edu-field-class .plus,
+.admin_addDoctor_wrapper .addDoctor .add-awards-field .plus,
+.admin_addDoctor_wrapper .addDoctor .add-training-field .plus,
+.admin_addDoctor_wrapper .addDoctor .add-exp-field .plus,
+.admin_addDoctor_wrapper .addDoctor .add-vh-chamber .plus {
   font-size: 15px;
   padding-right: 6px;
 }
 
-.admin_addDoctor_wrapper .addDoctor .add-field:hover {
+.admin_addDoctor_wrapper .addDoctor .add-vh-shift:hover,
+.admin_addDoctor_wrapper .addDoctor .add-edu-field-class:hover,
+.admin_addDoctor_wrapper .addDoctor .add-awards-field:hover,
+.admin_addDoctor_wrapper .addDoctor .add-training-field:hover,
+.admin_addDoctor_wrapper .addDoctor .add-exp-field:hover,
+.admin_addDoctor_wrapper .addDoctor .add-vh-chamber:hover {
   color: #fff;
+}
+
+.admin_addDoctor_wrapper .addDoctor .add-vh-shift {
+  font-size: 13px;
+  padding: 5px 10px;
+  margin-bottom: 14px;
 }
 
 .visitingHour_input {
@@ -1078,21 +1095,6 @@ p {
   width: 100%;
 }
 
-.same_row_inputs {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.same_row_inputs .input_box {
-  width: 48%;
-}
-
 .awards_input {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1211,26 +1213,6 @@ p {
   }
 }
 
-.chamber_day_time {
-  margin-left: 25px;
-}
-
-.free-input {
-  width: 45%;
-}
-
-.free-input input {
-  width: 100%;
-  padding: 0.6rem;
-  margin: 5px 0px;
-  border-radius: 4px;
-  border: 1px solid #bdb9b9;
-}
-
-.free-input input:focus {
-  outline: none;
-}
-
 .two_box_one {
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
@@ -1298,4 +1280,229 @@ p {
 .arrow_sign {
   padding-top: 10px;
   font-size: 20px;
+}
+
+.imageFile {
+  padding-top: 2px;
+  height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.chambers .oneChamber {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.chambers .oneChamber .arrow_sign {
+  padding-right: 20px;
+}
+
+.chambers .oneChamber .chamberInfo {
+  width: 100%;
+}
+
+.chambers .oneChamber .chamberInfo .nameAddress {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@media (max-width: 700px) {
+  .chambers .oneChamber .chamberInfo .nameAddress {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.chambers .oneChamber .chamberInfo .free-input {
+  width: 49%;
+  padding-top: 3px;
+}
+
+@media (max-width: 600px) {
+  .chambers .oneChamber .chamberInfo .free-input {
+    width: 90%;
+  }
+}
+
+.chambers .oneChamber .chamberInfo .free-input:not(:first-child) {
+  padding-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .chambers .oneChamber .chamberInfo .free-input:not(:first-child) {
+    padding-left: 0px;
+  }
+}
+
+.chambers .oneChamber .chamberInfo .free-input input {
+  width: 100%;
+}
+
+.chambers .oneChamber .chamberInfo .delete-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .chambers .oneChamber .chamberInfo .delete-btn {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.dayTime .form-selectpicker {
+  width: 100%;
+}
+
+.dayTime .allRowsDayTime .DayTimeFlexParent {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .dayTime .allRowsDayTime .DayTimeFlexParent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.dayTime .allRowsDayTime .DayTimeFlexParent .free-input {
+  width: 25%;
+  padding-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .dayTime .allRowsDayTime .DayTimeFlexParent .free-input {
+    width: 90%;
+  }
+}
+
+.dayTime .allRowsDayTime .DayTimeFlexParent .free-input:not(:first-child) {
+  padding-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .dayTime .allRowsDayTime .DayTimeFlexParent .free-input:not(:first-child) {
+    padding-left: 0px;
+  }
+}
+
+.dayTime .allRowsDayTime .DayTimeFlexParent .delete-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .dayTime .allRowsDayTime .DayTimeFlexParent .delete-btn {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.same_row_inputs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+  .same_row_inputs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.same_row_inputs .input_box {
+  width: 50%;
+}
+
+.same_row_inputs .input_box:not(:last-child) {
+  padding-right: 12px;
+}
+
+@media (max-width: 700px) {
+  .same_row_inputs .input_box {
+    width: 100%;
+  }
 }

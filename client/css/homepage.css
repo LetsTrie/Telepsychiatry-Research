@@ -700,6 +700,7 @@ p {
 }
 
 .navbarWrapper {
+  background-color: #fff;
   margin: auto;
   width: 90%;
   font-family: 'roboto', sans-serif;
@@ -866,6 +867,10 @@ p {
   min-height: 100vh;
 }
 
+.nav-container {
+  background-color: #fff;
+}
+
 #alertF {
   display: none;
 }
@@ -877,6 +882,10 @@ p {
 .magicc {
   width: 90%;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .desc {
@@ -916,6 +925,45 @@ p {
   -webkit-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
        -o-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
           animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
+}
+
+.images {
+  width: 60%;
+  margin-left: 10%;
+  margin-top: 100px;
+  height: 700px;
+}
+
+.images .img1 img {
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 20%;
+}
+
+.images .img5 img {
+  width: 40%;
+  margin-top: -600px;
+  margin-left: 45%;
+  height: 500px;
+}
+
+.images .img4 img {
+  width: 35%;
+  margin-top: -550px;
+  margin-left: 18%;
+}
+
+.images .img2 img {
+  width: 50%;
+  margin-top: -200px;
+  margin-left: 10%;
+}
+
+.images .img3 img {
+  width: 30%;
+  margin-top: -315px;
+  margin-left: 55%;
+  height: 400px;
 }
 
 .about_this_website {

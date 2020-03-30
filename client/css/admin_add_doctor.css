@@ -700,6 +700,7 @@ p {
 }
 
 .navbarWrapper {
+  background-color: #fff;
   margin: auto;
   width: 90%;
   font-family: 'roboto', sans-serif;

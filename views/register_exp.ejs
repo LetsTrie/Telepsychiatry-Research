@@ -1,385 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
-    <link rel="stylesheet" href="/css/admin_add_doctor.css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="/css/admin_add_doctor.css" />
 
-    <title>Register | Expert User | Telepsychiatry Research</title>
-  </head>
+        <title>Register | Expert User | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <% const yr = (new Date(Date.now())).getFullYear(); %>
-    <section class="admin_addDoctor_wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-      <div class="createResources addDoctor pb-5">
-        <div class="container">
-          <div id="alert" class="alert alert-danger"></div>
-          <div class="header addDoctor__header">
-            <p id="submitResources">Register Expert User</p>
-          </div>
-          <div class="input_boxes">
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Name</p>
-                  </div>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    class="name"
-                    id="name"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Gender</p>
-                  </div>
-                  <div class="input_box slct_picker">
-                    <div class="form-selectpicker">
-                      <select
-                        id="genderInput"
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Gender"
-                        data-size="6"
-                        name="gender"
-                        required
-                      >
+        <section class="admin_addDoctor_wrapper">
+            <nav>
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+            <div class="createResources addDoctor pb-5">
+                <div class="container">
+                    <div id="alert" class="alert alert-danger"></div>
+                    <% if (errorMessage != '') { %>
+                        console.log('error: ', errorMessage)
+                        <% } %>
+                    <div class="header addDoctor__header">
+                        <p id="submitResources">Register Expert User</p>
+                    </div>
+                    <div class="input_boxes">
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Name</p>
+                                    </div>
+                                    <input type="text" name="name" placeholder="Name" class="name" id="name" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Gender</p>
+                                    </div>
+                                    <div class="input_box slct_picker">
+                                        <div class="form-selectpicker">
+                                            <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" name="gender" required>
                         <option value="Male">Male</option>
                         <option value="Female"> Female </option>
                       </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Professional Degree</p>
-                  </div>
-                  <input
-                    name="prof-degree"
-                    type="text"
-                    placeholder="Professional Degree"
-                    class="prof-degree"
-                    id="prof-degree"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Speciality</p>
-                  </div>
-                  <div class="input_box slct_picker">
-                    <div class="form-selectpicker">
-                      <select
-                        id="speciality"
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Speciality"
-                        data-size="6"
-                        name="speciality"
-                        required
-                      >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Professional Degree</p>
+                                    </div>
+                                    <input name="prof-degree" type="text" placeholder="Professional Degree" class="prof-degree" id="prof-degree" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Speciality</p>
+                                    </div>
+                                    <div class="input_box slct_picker">
+                                        <div class="form-selectpicker">
+                                            <select id="speciality" class="selectpicker" data-width="100%" title="Speciality" data-size="6" name="speciality" required>
                         <option value="Psychiatrist">Psychiatrist</option>
                         <option value="Consultant"> Consultant </option>
                       </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Email</p>
-                  </div>
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    class="email"
-                    id="email"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Designation</p>
-                  </div>
-                  <input
-                    name="designation"
-                    type="text"
-                    placeholder="Designation"
-                    class="designation"
-                    id="designation"
-                  />
-                </div>
-              </div>
-            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Email</p>
+                                    </div>
+                                    <input name="email" type="email" placeholder="Email" class="email" id="email" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Designation</p>
+                                    </div>
+                                    <input name="designation" type="text" placeholder="Designation" class="designation" id="designation" />
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Password</p>
-                  </div>
-                  <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    class="password"
-                    id="password"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Confirm Password</p>
-                  </div>
-                  <input
-                    name="cpassword"
-                    type="password"
-                    placeholder="Confirm Password"
-                    class="cpassword"
-                    id="cpassword"
-                  />
-                </div>
-              </div>
-            </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Password</p>
+                                    </div>
+                                    <input name="password" type="password" placeholder="Password" class="password" id="password" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Confirm Password</p>
+                                    </div>
+                                    <input name="cpassword" type="password" placeholder="Confirm Password" class="cpassword" id="cpassword" />
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Current Affiliation</p>
-                  </div>
-                  <input
-                    name="affiliation"
-                    type="text"
-                    placeholder="Current Affiliation"
-                    class="affiliation"
-                    id="affiliation"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Key Research Area</p>
-                  </div>
-                  <input
-                    name="research-area"
-                    type="password"
-                    placeholder="Key Research Area"
-                    class="research-area"
-                    id="research-area"
-                  />
-                </div>
-              </div>
-            </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Current Affiliation</p>
+                                    </div>
+                                    <input name="affiliation" type="text" placeholder="Current Affiliation" class="affiliation" id="affiliation" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Key Research Area</p>
+                                    </div>
+                                    <input name="research-area" type="text" placeholder="Key Research Area" class="research-area" id="research-area" />
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>License / Registration No.</p>
-                  </div>
-                  <input
-                    name="regno"
-                    type="text"
-                    placeholder="License / Registration No."
-                    class="regno"
-                    id="regno"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Country</p>
-                  </div>
-                  <div class="input_box slct_picker">
-                    <div class="form-selectpicker">
-                      <select
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Select Country"
-                        id="countryInput"
-                        data-size="6"
-                        required
-                      >
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>License / Registration No.</p>
+                                    </div>
+                                    <input name="regno" type="text" placeholder="License / Registration No." class="regno" id="regno" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Country</p>
+                                    </div>
+                                    <div class="input_box slct_picker">
+                                        <div class="form-selectpicker">
+                                            <select class="selectpicker" data-width="100%" title="Select Country" id="countryInput" data-size="6" required>
                         <% for(let i = 0 ; i < country.length; i++) { %>
                         <option value="<%=i%>"><%= country[i].name %></option>
                         <% } %>
                       </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Phone Number</p>
-                  </div>
-                  <input
-                    name="phone"
-                    type="text"
-                    placeholder="Phone Number"
-                    class="phone"
-                    id="phone"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Display Picture</p>
-                  </div>
-                  <div class="input_box imageFile">
-                    <input
-                      type="file"
-                      name="exp_user"
-                      accept="image/x-png,image/jpg,image/jpeg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Date of Birth</p>
-                  </div>
-                  <input
-                    name="dob"
-                    type="text"
-                    placeholder="Date of Birth"
-                    class="dob"
-                    id="dob"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Visiting Fee</p>
-                  </div>
-                  <input
-                    name="visitingFee"
-                    type="text"
-                    placeholder="Visiting Fee"
-                    class="visitingFee"
-                    id="visitingFee"
-                  />
-                </div>
-              </div>
-            </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Phone Number</p>
+                                    </div>
+                                    <input name="phone" type="text" placeholder="Phone Number" class="phone" id="phone" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Display Picture</p>
+                                    </div>
+                                    <div class="input_box imageFile">
+                                        <input type="file" name="exp_user" accept="image/x-png,image/jpg,image/jpeg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="side_by_side">
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Date of Birth</p>
+                                    </div>
+                                    <input name="dob" type="text" placeholder="Date of Birth" class="dob" id="dob" />
+                                </div>
+                                <div class="input_div">
+                                    <div class="two_box_header form-header">
+                                        <p>Visiting Fee</p>
+                                    </div>
+                                    <input name="visitingFee" type="text" placeholder="Visiting Fee" class="visitingFee" id="visitingFee" />
+                                </div>
+                            </div>
+                        </div>
 
-            <% let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday',
+                        <% let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday',
             'Wednesday', 'Thursday', 'Friday'] %>
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>Visiting Hours Details</p>
-              </div>
-              <div class="chambers">
-                <div class="oneChamber">
-                  <div class="arrow_sign">
-                    <i class="fa fa-arrow-right"></i>
-                  </div>
-                  <div class="chamberInfo">
-                    <div class="nameAddress">
-                      <div class="free-input">
-                        <input
-                          type="text"
-                          placeholder="Name of the chamber"
-                          name="chamberName"
-                        />
-                      </div>
-                      <div class="free-input">
-                        <input
-                          type="text"
-                          placeholder="Address of the chamber"
-                          name="chamberPlace"
-                        />
-                      </div>
-                      <div class="delete-btn delete-vh-chamber-class-wrapper">
-                        <button
-                          class="delete delete-vh-chamber-class"
-                          id="delete-vh-chamber"
-                        >
+                            <div class="two_box_one flex-child">
+                                <div class="two_box_header form-header">
+                                    <p>Visiting Hours Details</p>
+                                </div>
+                                <div class="chambers">
+                                    <div class="oneChamber">
+                                        <div class="arrow_sign">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="chamberInfo">
+                                            <div class="nameAddress">
+                                                <div class="free-input">
+                                                    <input type="text" placeholder="Name of the chamber" name="chamberName" class="chamberName" />
+                                                </div>
+                                                <div class="free-input">
+                                                    <input type="text" placeholder="Address of the chamber" name="chamberPlace" class="chamberPlace" />
+                                                </div>
+                                                <div class="delete-btn delete-vh-chamber-class-wrapper">
+                                                    <button class="delete delete-vh-chamber-class" id="delete-vh-chamber">
                           <i class="fa fa-minus"></i>
                         </button>
-                      </div>
-                    </div>
-                    <div class="dayTime">
-                      <div class="allRowsDayTime">
-                        <div class="DayTimeFlexParent">
-                          <div class="free-input">
-                            <div class="input_box slct_picker">
-                              <div class="form-selectpicker">
-                                <select
-                                  class="vh-selector selectpicker year-selector"
-                                  data-width="100%"
-                                  title="Day: From"
-                                  id="vhFrom"
-                                  data-size="6"
-                                  name="vh-day-from"
-                                  required
-                                >
+                                                </div>
+                                            </div>
+                                            <div class="dayTime">
+                                                <div class="allRowsDayTime">
+                                                    <div class="DayTimeFlexParent">
+                                                        <div class="free-input">
+                                                            <div class="input_box slct_picker">
+                                                                <div class="form-selectpicker">
+                                                                    <select class="vh-selector selectpicker year-selector" data-width="100%" title="Day: From" id="vhFrom" data-size="6" name="vh-day-from" required>
                                   <% for (let i=0; i < 7; i++) { %>
                                   <option value="<%=days[i] %>">
                                     <%= days[i] %>
                                   </option>
                                   <% } %>
                                 </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="free-input">
-                            <div class="input_box slct_picker">
-                              <div class="form-selectpicker">
-                                <select
-                                  class="vh-selector selectpicker year-selector"
-                                  data-width="100%"
-                                  title="Day: To"
-                                  id="vhFrom"
-                                  data-size="6"
-                                  name="vh-day-to"
-                                  required
-                                >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="free-input">
+                                                            <div class="input_box slct_picker">
+                                                                <div class="form-selectpicker">
+                                                                    <select class="vh-selector selectpicker year-selector" data-width="100%" title="Day: To" id="vhFrom" data-size="6" name="vh-day-to" required>
                                   <% for (let i=0; i < 7; i++) { %>
                                   <option value="<%=days[i] %>">
                                     <%= days[i] %>
                                   </option>
                                   <% } %>
                                 </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="free-input">
-                            <div class="input_box slct_picker">
-                              <div class="form-selectpicker">
-                                <select
-                                  class="vh-selector selectpicker"
-                                  data-width="100%"
-                                  title="Time: From"
-                                  id="vhFrom"
-                                  data-size="6"
-                                  required
-                                >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="free-input">
+                                                            <div class="input_box slct_picker">
+                                                                <div class="form-selectpicker">
+                                                                    <select class="vh-selector selectpicker" data-width="100%" title="Time: From" id="vhFrom" data-size="6" required>
                                   <% for (let i=1; i<=12; i++) { %>
                                   <option value="<%=i %>:00 AM">
                                     <%= i %>:00 AM
@@ -390,20 +252,13 @@
                                   >
                                   <% } %>
                                 </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="free-input">
-                            <div class="input_box slct_picker">
-                              <div class="form-selectpicker ">
-                                <select
-                                  class="vh-selector selectpicker"
-                                  data-width="100%"
-                                  title="Time: To"
-                                  id="vhFrom"
-                                  data-size="6"
-                                  required
-                                >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="free-input">
+                                                            <div class="input_box slct_picker">
+                                                                <div class="form-selectpicker ">
+                                                                    <select class="vh-selector selectpicker" data-width="100%" title="Time: To" id="vhFrom" data-size="6" required>
                                   <% for (let i=1; i<=12; i++) { %>
                                   <option value="<%=i %>:00 AM">
                                     <%= i %>:00 AM
@@ -414,380 +269,247 @@
                                   >
                                   <% } %>
                                 </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="delete-btn">
-                            <button
-                              class="delete delete-vh-shift-class"
-                              id="delete-vh-shift"
-                            >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="delete-btn">
+                                                            <button class="delete delete-vh-shift-class" id="delete-vh-shift">
                               <i class="fa fa-minus"></i>
                             </button>
-                          </div>
-                        </div>
-                      </div>
-                      <button id="add-vh-shift" class="add-vh-shift">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button id="add-vh-shift" class="add-vh-shift">
                         <i class="fa fa-plus plus"></i>Add Shifts
                       </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button id="add-vh-chamber" class="add-vh-chamber">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="add-vh-chamber" class="add-vh-chamber">
                 <i class="fa fa-plus plus"></i>Add Chambers
               </button>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Expertize Area</p>
-                  </div>
-                  <input
-                    name="expertise"
-                    type="text"
-                    placeholder="Expert Area"
-                    class="expertise"
-                    id="expertise"
-                  />
-                </div>
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Institute</p>
-                  </div>
-                  <input
-                    name="institute"
-                    type="text"
-                    placeholder="Institute"
-                    class="institute"
-                    id="institute"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>About Yourself</p>
-              </div>
-              <textarea
-                name="about_me"
-                placeholder="Write about yourself"
-                id="about_me"
-                cols="30"
-                rows="5"
-                class="about_me"
-              ></textarea>
-            </div>
-            <div class="two_box_one  flex-child">
-              <div class="" id="education-section">
-                <div class="two_box_header form-header">
-                  <p>Education</p>
-                </div>
-                <div id="all_edu_inputs">
-                  <div class="education_input">
-                    <div class="arrow_sign">
-                      <i class="fa fa-arrow-right"></i>
-                    </div>
-                    <div class="edu_in">
-                      <input
-                        type="text"
-                        name="institute"
-                        placeholder="Institute"
-                        id="institute"
-                        class="institute"
-                      />
-                    </div>
-                    <div class="edu_in">
-                      <input
-                        type="text"
-                        name="degree"
-                        placeholder="Degree"
-                        id="degree"
-                        class="degree"
-                      />
-                    </div>
-                    <div class="edu_in">
-                      <div class="input_box slct_picker">
-                        <div class="form-selectpicker">
-                          <select
-                            id="eduFrom"
-                            class="selectpicker year-selector"
-                            data-width="100%"
-                            title="From"
-                            data-size="6"
-                            name="eduFrom"
-                            required
-                          >
+                            </div>
+                            <div class="two_box_one flex-child">
+                                <div class="side_by_side">
+                                    <div class="input_div">
+                                        <div class="two_box_header form-header">
+                                            <p>Expertize Area</p>
+                                        </div>
+                                        <input name="expertise" type="text" placeholder="Expert Area" class="expertise" id="expertise" />
+                                    </div>
+                                    <div class="input_div">
+                                        <div class="two_box_header form-header">
+                                            <p>Institute</p>
+                                        </div>
+                                        <input name="institute" type="text" placeholder="Institute" class="institute" id="institute" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="two_box_one flex-child">
+                                <div class="two_box_header form-header">
+                                    <p>About Yourself</p>
+                                </div>
+                                <textarea name="about_me" placeholder="Write about yourself" id="about_me" cols="30" rows="5" class="about_me"></textarea>
+                            </div>
+                            <div class="two_box_one  flex-child">
+                                <div class="" id="education-section">
+                                    <div class="two_box_header form-header">
+                                        <p>Education</p>
+                                    </div>
+                                    <div id="all_edu_inputs">
+                                        <div class="education_input">
+                                            <div class="arrow_sign">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </div>
+                                            <div class="edu_in">
+                                                <input type="text" name="institute" placeholder="Institute" id="institute" class="institute" />
+                                            </div>
+                                            <div class="edu_in">
+                                                <input type="text" name="degree" placeholder="Degree" id="degree" class="degree" />
+                                            </div>
+                                            <div class="edu_in">
+                                                <div class="input_box slct_picker">
+                                                    <div class="form-selectpicker">
+                                                        <select id="eduFrom" class="selectpicker year-selector" data-width="100%" title="From" data-size="6" name="eduFrom" required>
                             <% for (let i= yr; i >= 1950; i--) { %>
                             <option value="<%= i %>"><%= i %></option>
                             <% } %>
                           </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="edu_in">
-                      <div class="input_box slct_picker">
-                        <div class="form-selectpicker">
-                          <select
-                            id="eduTo"
-                            class="selectpicker year-selector"
-                            data-width="100%"
-                            title="To"
-                            data-size="6"
-                            name="eduTo"
-                            required
-                          >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="edu_in">
+                                                <div class="input_box slct_picker">
+                                                    <div class="form-selectpicker">
+                                                        <select id="eduTo" class="selectpicker year-selector" data-width="100%" title="To" data-size="6" name="eduTo" required>
                             <% for (let i= yr; i >= 1950; i--) { %>
                             <option value="<%= i %>"><%= i %></option>
                             <% } %>
                           </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="delete-btn">
-                      <button class="delete delete-edu-class" id="delete-edu">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="delete-btn">
+                                                <button class="delete delete-edu-class" id="delete-edu">
                         <i class="fa fa-minus"></i>
                       </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button id="add-edu-field" class="add-edu-field-class">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="add-edu-field" class="add-edu-field-class">
                 <i class="fa fa-plus plus"></i>Add Field
               </button>
-            </div>
-            <div class="two_box_one skill flex-child">
-              <div class="" id="training-section">
-                <div class="two_box_header form-header">
-                  <p>Professional Training</p>
-                </div>
-                <div id="all_training_inputs">
-                  <div class="training_input">
-                    <div class="arrow_sign">
-                      <i
-                        class="fa fa-arrow-right"
-                        style="margin-right: 20px;"
-                      ></i>
-                    </div>
-                    <div class="training_in">
-                      <div class="same_row_inputs">
-                        <div class="input_box">
-                          <input
-                            type="text"
-                            placeholder="Name of Training"
-                            id="training-name"
-                            class="training-name"
-                          />
-                        </div>
-                        <div class="input_box slct_picker">
-                          <div class="form-selectpicker">
-                            <select
-                              id="trainingFrom"
-                              class="selectpicker year-selector"
-                              data-width="100%"
-                              title="Training Year"
-                              data-size="6"
-                              name="training-year"
-                              required
-                            >
+                            </div>
+                            <div class="two_box_one skill flex-child">
+                                <div class="" id="training-section">
+                                    <div class="two_box_header form-header">
+                                        <p>Professional Training</p>
+                                    </div>
+                                    <div id="all_training_inputs">
+                                        <div class="training_input">
+                                            <div class="arrow_sign">
+                                                <i class="fa fa-arrow-right" style="margin-right: 20px;"></i>
+                                            </div>
+                                            <div class="training_in">
+                                                <div class="same_row_inputs">
+                                                    <div class="input_box">
+                                                        <input type="text" placeholder="Name of Training" id="training-name" class="training-name" />
+                                                    </div>
+                                                    <div class="input_box slct_picker">
+                                                        <div class="form-selectpicker">
+                                                            <select id="trainingFrom" class="selectpicker year-selector" data-width="100%" title="Training Year" data-size="6" name="training-year" required>
                               <% for (let i= yr; i >= 1950; i--) { %>
                               <option value="<%= i %>"><%= i %></option>
                               <% } %>
                             </select>
-                          </div>
-                        </div>
-                      </div>
-                      <textarea
-                        name="training-details"
-                        placeholder="Tell us about your professional training"
-                        id="training-details"
-                        cols="30"
-                        rows="5"
-                        class="more_on_workplace"
-                      ></textarea>
-                    </div>
-                    <div class="delete-btn">
-                      <button
-                        class="delete delete-training-class"
-                        id="delete-training"
-                      >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <textarea name="training-details" placeholder="Tell us about your professional training" id="training-details" cols="30" rows="5" class="more_on_workplace"></textarea>
+                                            </div>
+                                            <div class="delete-btn">
+                                                <button class="delete delete-training-class" id="delete-training">
                         <i class="fa fa-minus"></i>
                       </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button id="add-training-field" class="add-training-field">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="add-training-field" class="add-training-field">
                 <i class="fa fa-plus plus "></i>Add Field
               </button>
-            </div>
-            <div class="two_box_one skill flex-child">
-              <div class="" id="awards-section">
-                <div class="two_box_header form-header">
-                  <p>Awards and Honors</p>
-                </div>
-                <div id="all_awards">
-                  <div class="awards_input">
-                    <div class="arrow_sign">
-                      <i
-                        class="fa fa-arrow-right"
-                        style="margin-right: 20px;"
-                      ></i>
-                    </div>
-                    <div class="awards_in">
-                      <div class="same_row_inputs">
-                        <div class="input_box">
-                          <input
-                            type="text"
-                            placeholder="Name of the award"
-                            id="awards-name"
-                            class="award-name"
-                          />
-                        </div>
-                        <div class="input_box slct_picker">
-                          <div class="form-selectpicker">
-                            <select
-                              id="award-year"
-                              class="selectpicker year-selector"
-                              data-width="100%"
-                              title="Achievement Year"
-                              data-size="6"
-                              name="award-year"
-                              required
-                            >
+                            </div>
+                            <div class="two_box_one skill flex-child">
+                                <div class="" id="awards-section">
+                                    <div class="two_box_header form-header">
+                                        <p>Awards and Honors</p>
+                                    </div>
+                                    <div id="all_awards">
+                                        <div class="awards_input">
+                                            <div class="arrow_sign">
+                                                <i class="fa fa-arrow-right" style="margin-right: 20px;"></i>
+                                            </div>
+                                            <div class="awards_in">
+                                                <div class="same_row_inputs">
+                                                    <div class="input_box">
+                                                        <input type="text" placeholder="Name of the award" id="awards-name" class="award-name" />
+                                                    </div>
+                                                    <div class="input_box slct_picker">
+                                                        <div class="form-selectpicker">
+                                                            <select id="award-year" class="selectpicker year-selector" data-width="100%" title="Achievement Year" data-size="6" name="award-year" required>
                               <% for (let i= yr; i >= 1950; i--) { %>
                               <option value="<%= i %>"><%= i %></option>
                               <% } %>
                             </select>
-                          </div>
-                        </div>
-                      </div>
-                      <textarea
-                        name="award-details"
-                        placeholder="Tell us about your award"
-                        id="award-details"
-                        cols="30"
-                        rows="5"
-                        class="award-details"
-                      ></textarea>
-                    </div>
-                    <div class="delete-btn">
-                      <button
-                        class="delete delete-awards-class"
-                        id="delete-awards"
-                      >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <textarea name="award-details" placeholder="Tell us about your award" id="award-details" cols="30" rows="5" class="award-details"></textarea>
+                                            </div>
+                                            <div class="delete-btn">
+                                                <button class="delete delete-awards-class" id="delete-awards">
                         <i class="fa fa-minus"></i>
                       </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button id="add-awards-field" class="add-awards-field">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="add-awards-field" class="add-awards-field">
                 <i class="fa fa-plus plus "></i> Add Field
               </button>
-            </div>
-            <div class="two_box_one  flex-child mt-3 pt-2">
-              <div class="two_box_header form-header">
-                <p>Works and Experience</p>
-              </div>
-              <div class="" id="exp-section">
-                <div class="exp_input">
-                  <div class="arrow_sign">
-                    <i class="fa fa-arrow-right"></i>
-                  </div>
-                  <div class="exp_in">
-                    <input
-                      type="text"
-                      name="exp-institute"
-                      placeholder="Work Place"
-                      id="exp-institute"
-                      class="exp-institute"
-                    />
-                  </div>
-                  <div class="exp_in">
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          id="expFrom"
-                          class="selectpicker year-selector"
-                          data-width="100%"
-                          title="Year: From"
-                          data-size="6"
-                          name="from"
-                          required
-                        >
+                            </div>
+                            <div class="two_box_one  flex-child mt-3 pt-2">
+                                <div class="two_box_header form-header">
+                                    <p>Works and Experience</p>
+                                </div>
+                                <div class="" id="exp-section">
+                                    <div class="exp_input">
+                                        <div class="arrow_sign">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                        <div class="exp_in">
+                                            <input type="text" name="exp-institute" placeholder="Work Place" id="exp-institute" class="exp-institute" />
+                                        </div>
+                                        <div class="exp_in">
+                                            <div class="input_box slct_picker">
+                                                <div class="form-selectpicker">
+                                                    <select id="expFrom" class="selectpicker year-selector" data-width="100%" title="Year: From" data-size="6" name="from" required>
                           <% for (let i= yr; i >= 1950; i--) { %>
                           <option value="<%= i %>"><%= i %></option>
                           <% } %>
                         </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="exp_in">
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          id="expTo"
-                          class="selectpicker year-selector"
-                          data-width="100%"
-                          title="Year: To"
-                          data-size="6"
-                          name="to"
-                          required
-                        >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="exp_in">
+                                            <div class="input_box slct_picker">
+                                                <div class="form-selectpicker">
+                                                    <select id="expTo" class="selectpicker year-selector" data-width="100%" title="Year: To" data-size="6" name="to" required>
                           <% for (let i= yr; i >= 1950; i--) { %>
                           <option value="<%= i %>"><%= i %></option>
                           <% } %>
                         </select>
-                      </div>
-                    </div>
-                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                  <div class="delete-btn">
-                    <button class="delete delete-exp-class" id="delete-exp">
+                                        <div class="delete-btn">
+                                            <button class="delete delete-exp-class" id="delete-exp">
                       <i class="fa fa-minus"></i>
                     </button>
-                  </div>
-                </div>
-              </div>
-              <button id="add-exp-field" class="add-exp-field">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="add-exp-field" class="add-exp-field">
                 <i class="fa fa-plus plus"></i>Add Field
               </button>
-            </div>
-            <div class="two_box_one flex-child pt-3 mr-2">
-              <div class="side_by_side">
-                <div class="input_div">
-                  <div class="two_box_header form-header">
-                    <p>Your CV</p>
-                  </div>
-                  <div class="input_box imageFile">
-                    <input
-                      type="file"
-                      name="cv_file"
-                      accept="application/pdf"
-                    />
-                  </div>
+                            </div>
+                            <div class="two_box_one flex-child pt-3 mr-2">
+                                <div class="side_by_side">
+                                    <div class="input_div">
+                                        <div class="two_box_header form-header">
+                                            <p>Your CV</p>
+                                        </div>
+                                        <div class="input_box imageFile">
+                                            <input type="file" name="cv_file" accept="application/pdf" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="addDoctor__submit">
+                                <button id="sub-btn">Submit</button>
+                            </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="addDoctor__submit">
-              <button id="sub-btn">Submit</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
-  <script src="/js/register_exp.js"></script>
+        </section>
+        <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="/js/register_exp.js"></script>
+
 </html>

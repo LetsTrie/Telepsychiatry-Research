@@ -5,7 +5,7 @@ const { gUserModel } = require('../models/generalUser');
 const { eUserModel } = require('../models/expertUser');
 const { orgUserModel } = require('../models/orgUser');
 
-const joi = require('@hapi/joi');
+const joi = require('joi');
 const bcrypt = require('bcryptjs');
 
 exports.getRegisterGeneralUser = (req, res, next) => {
@@ -73,8 +73,10 @@ exports.postRegisterExpertUser_New = async(req, res, next) => {
         expertise,
         designation,
         aboutYourself,
+        password,
         email,
         speciality,
+        professionalDegree,
         dob,
         fee,
         phone,
@@ -90,7 +92,365 @@ exports.postRegisterExpertUser_New = async(req, res, next) => {
     const training = JSON.parse(req.body.trainingArray);
     const awards = JSON.parse(req.body.awardsArray);
 
-    console.log(req.body);
+    try {
+        const { error } = await joi
+            .object()
+            .keys({
+                name: joi
+                    .string()
+                    .required()
+                    .regex(/^[a-zA-Z ]+$/)
+                    .error(() => {
+                        return {
+                            message: 'Invalid name'
+                        };
+                    }),
+                email: joi
+                    .string()
+                    .required()
+                    .regex(
+                        /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+                    )
+                    .error(() => {
+                        return {
+                            message: 'Invalid email'
+                        };
+                    }),
+                password: joi
+                    .string()
+                    .required()
+                    .min(6)
+                    .error(() => {
+                        return {
+                            message: 'Password must be 6 characters atleast'
+                        };
+                    }),
+                phoneNumber: joi
+                    .string()
+                    .required()
+                    .regex(/\w+/i)
+                    .min(6)
+                    .error(() => {
+                        return {
+                            message: 'Invalid phone number'
+                        };
+                    }),
+                gender: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Specify gender'
+                        };
+                    }),
+                country: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Specify country'
+                        };
+                    }),
+                dob: joi
+                    .string()
+                    .required()
+                    .regex(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)
+                    .error(() => {
+                        return {
+                            message: 'Invalid date of birth'
+                        };
+                    }),
+                affiliation: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter current affiliation'
+                        };
+                    }),
+                regno: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter license number'
+                        };
+                    }),
+                researchArea: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter research area'
+                        };
+                    }),
+                speciality: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter speciality'
+                        };
+                    }),
+                professionalDegree: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter professional degree'
+                        };
+                    }),
+                fee: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Invalid visiting fee'
+                        };
+                    }),
+                expertise: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter expertise area'
+                        };
+                    }),
+                institute: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter institute'
+                        };
+                    }),
+                aboutYourself: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'About yourself section ca not be left empty'
+                        };
+                    }),
+                education: joi.array().items(
+                    joi.object({
+                        institute: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter educational institute name'
+                                };
+                            }),
+                        degree: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter eduactional degree'
+                                };
+                            }),
+                        eduFrom: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter starting academic year'
+                                };
+                            }),
+                        eduTo: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter ending academic year'
+                                };
+                            })
+                    })
+                ),
+                training: joi.array().items(
+                    joi.object({
+                        name: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the name of the training'
+                                };
+                            }),
+                        year: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the year of the training'
+                                };
+                            }),
+                        description: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter a brief description of the training'
+                                };
+                            })
+                    })
+                ),
+                workExperience: joi.array().items(
+                    joi.object({
+                        institute: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the name of the workplace'
+                                };
+                            }),
+                        from: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the beginning year at work and  experience section'
+                                };
+                            }),
+                        to: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the ending year at work and experience section'
+                                };
+                            })
+                    })
+                ),
+                awards: joi.array().items(
+                    joi.object({
+                        name: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the name of award'
+                                };
+                            }),
+                        year: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the year of achievement at awards and honors section'
+                                };
+                            }),
+                        description: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter brief description of the award'
+                                };
+                            })
+                    })
+                ),
+                visitingHour: joi.array().items(
+                    joi.object({
+                        chamberName: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the name of the chamber'
+                                };
+                            }),
+                        chamberAddress: joi
+                            .string()
+                            .required()
+                            .error(() => {
+                                return {
+                                    message: 'Enter the address of the chamber'
+                                };
+                            }),
+                        chamberTimings: joi.array().items(
+                            joi.object({
+                                dayFrom: joi
+                                    .string()
+                                    .required()
+                                    .error(() => {
+                                        return {
+                                            message: 'Enter beginning day at visiting hours section'
+                                        };
+                                    }),
+                                dayTo: joi
+                                    .string()
+                                    .required()
+                                    .error(() => {
+                                        return {
+                                            message: 'Enter ending day at visiting hours section'
+                                        };
+                                    }),
+                                timeFrom: joi
+                                    .string()
+                                    .required()
+                                    .error(() => {
+                                        return {
+                                            message: 'Enter beginning time at visiting hours section'
+                                        };
+                                    }),
+                                timeTo: joi
+                                    .string()
+                                    .required()
+                                    .error(() => {
+                                        return {
+                                            message: 'Enter ending time at visiting hours section'
+                                        };
+                                    })
+                            })
+                        )
+                    })
+                )
+            })
+            .validate(req.body);
+
+        bcrypt.genSalt(10, async function(err, salt) {
+            bcrypt.hash(password, salt, async function(err, hash) {
+                const newExpUser = await new eUserModel({
+                    name,
+                    email,
+                    password: hash,
+                    phone,
+                    gender,
+                    country,
+                    dob,
+                    regno,
+                    researchArea,
+                    affiliation,
+                    expertise,
+                    speciality,
+                    designation,
+                    fee,
+                    professionalDegree,
+                    aboutYourself,
+                    education,
+                    training,
+                    awards,
+                    workExperience,
+                    visitingHour
+                }).save();
+                console.log('exp user saved');
+            });
+        });
+
+        res.send({
+            status: true,
+            message: 'ok'
+        });
+    } catch (err) {
+        console.log(err.details[0].message);
+        res.send({
+            status: false,
+            message: err.details[0].message
+        });
+    }
 };
 
 exports.postRegisterExpertUser = async(req, res, next) => {

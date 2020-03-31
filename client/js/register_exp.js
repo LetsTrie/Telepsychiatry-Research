@@ -1,66 +1,66 @@
 $('.add-field').click(e => {
-  e.preventDefault();
+    e.preventDefault();
 });
 $('.delete').click(e => {
-  e.preventDefault();
+    e.preventDefault();
 });
 $(document).on('click', 'button.delete', e => {
-  e.preventDefault();
+    e.preventDefault();
 });
 
 $('input[name="datetimes"]').daterangepicker({
-  autoUpdateInput: false,
-  timePicker: true,
-  startDate: moment().startOf('hour'),
-  endDate: moment()
-    .startOf('hour')
-    .add(32, 'hour'),
-  locale: {
-    cancelLabel: 'Clear'
-  }
+    autoUpdateInput: false,
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    endDate: moment()
+        .startOf('hour')
+        .add(32, 'hour'),
+    locale: {
+        cancelLabel: 'Clear'
+    }
 });
 
 $('input[name="datetimes"]').on('apply.daterangepicker', function(ev, picker) {
-  $(this).val(
-    picker.startDate.format('DD/MM/YYYY') +
-      ' - ' +
-      picker.endDate.format('DD/MM/YYYY')
-  );
-});
-
-$('input[name="datetimes"]').on('cancel.daterangepicker', function(ev, picker) {
-  $(this).val('');
-});
-
-let edu = 1,
-  skill = 1,
-  exp = 1,
-  vh = 1,
-  awards = 1,
-  training = 1;
-
-$(document).on('click', 'input#app_years', e => {
-  console.log('year');
-  $(e.target).daterangepicker({
-    autoUpdateInput: false,
-    locale: {
-      cancelLabel: 'Clear'
-    }
-  });
-  $('input#app_years').on('apply.daterangepicker', function(ev, picker) {
     $(this).val(
-      picker.startDate.format('DD/MM/YYYY') +
+        picker.startDate.format('DD/MM/YYYY') +
         ' - ' +
         picker.endDate.format('DD/MM/YYYY')
     );
-  });
+});
 
-  $('input#app_years').on('cancel.daterangepicker', function(ev, picker) {
+$('input[name="datetimes"]').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('');
-  });
+});
+
+let edu = 1,
+    skill = 1,
+    exp = 1,
+    vh = 1,
+    awards = 1,
+    training = 1;
+
+$(document).on('click', 'input#app_years', e => {
+    console.log('year');
+    $(e.target).daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        }
+    });
+    $('input#app_years').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(
+            picker.startDate.format('DD/MM/YYYY') +
+            ' - ' +
+            picker.endDate.format('DD/MM/YYYY')
+        );
+    });
+
+    $('input#app_years').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
 });
 $(document).on('click', '#add-vh-chamber', e => {
-  const chamber = `
+    const chamber = `
         <div class="oneChamber">
                   <div class="arrow_sign">
                     <i class="fa fa-arrow-right"></i>
@@ -200,43 +200,43 @@ $(document).on('click', '#add-vh-chamber', e => {
                   </div>
                 </div>
       `;
-  $('.chambers').append(chamber);
+    $('.chambers').append(chamber);
 
-  $('.sp-1').selectpicker('refresh');
-  $('.sp-1').css('width', '100%');
-  $('.sp-2').selectpicker('refresh');
-  $('.sp-2').css('width', '100%');
-  $('.sp-3').selectpicker('refresh');
-  $('.sp-3').css('width', '100%');
-  $('.sp-4').selectpicker('refresh');
-  $('.sp-4').css('width', '100%');
+    $('.sp-1').selectpicker('refresh');
+    $('.sp-1').css('width', '100%');
+    $('.sp-2').selectpicker('refresh');
+    $('.sp-2').css('width', '100%');
+    $('.sp-3').selectpicker('refresh');
+    $('.sp-3').css('width', '100%');
+    $('.sp-4').selectpicker('refresh');
+    $('.sp-4').css('width', '100%');
 });
 $(document).on('click', '.delete-vh-chamber-class', e => {
-  let fld = e.target;
-  while (true) {
-    let val = $(fld)[0].className;
-    if (val === 'oneChamber') break;
-    fld = fld.parentElement;
-  }
-  const numOfChildren = fld.parentElement.children.length;
-  if (numOfChildren > 1) {
-    $(fld).remove();
-  }
+    let fld = e.target;
+    while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'oneChamber') break;
+        fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+        $(fld).remove();
+    }
 });
 $(document).on('click', '.delete-vh-shift-class', e => {
-  let fld = e.target;
-  while (true) {
-    let val = $(fld)[0].className;
-    if (val === 'DayTimeFlexParent') break;
-    fld = fld.parentElement;
-  }
-  const numOfChildren = fld.parentElement.children.length;
-  if (numOfChildren > 1) {
-    $(fld).remove();
-  }
+    let fld = e.target;
+    while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'DayTimeFlexParent') break;
+        fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+        $(fld).remove();
+    }
 });
 $(document).on('click', '#add-vh-shift', e => {
-  const shift = `
+    const shift = `
       <div class="DayTimeFlexParent">
         <div class="free-input">
           <div class="input_box slct_picker">
@@ -337,19 +337,19 @@ $(document).on('click', '#add-vh-shift', e => {
           </button>
         </div>
       </div>`;
-  $(e.target.parentElement.children[0]).append(shift);
+    $(e.target.parentElement.children[0]).append(shift);
 
-  $('.sp-1').selectpicker('refresh');
-  $('.sp-1').css('width', '100%');
-  $('.sp-2').selectpicker('refresh');
-  $('.sp-2').css('width', '100%');
-  $('.sp-3').selectpicker('refresh');
-  $('.sp-3').css('width', '100%');
-  $('.sp-4').selectpicker('refresh');
-  $('.sp-4').css('width', '100%');
+    $('.sp-1').selectpicker('refresh');
+    $('.sp-1').css('width', '100%');
+    $('.sp-2').selectpicker('refresh');
+    $('.sp-2').css('width', '100%');
+    $('.sp-3').selectpicker('refresh');
+    $('.sp-3').css('width', '100%');
+    $('.sp-4').selectpicker('refresh');
+    $('.sp-4').css('width', '100%');
 });
 $(document).on('click', '#add-training-field', e => {
-  const trainingField = `
+    const trainingField = `
             <div class="training_input">
                     <div class="arrow_sign">
                       <i
@@ -404,27 +404,27 @@ $(document).on('click', '#add-training-field', e => {
                     </div>
                   </div>
               `;
-  training++;
-  $('#training-section').append(trainingField);
+    training++;
+    $('#training-section').append(trainingField);
 
-  $('.additional-select-field').selectpicker('refresh');
-  $('.additional-select-field').css('width', '100%');
+    $('.additional-select-field').selectpicker('refresh');
+    $('.additional-select-field').css('width', '100%');
 });
 $(document).on('click', 'button.delete-training-class', e => {
-  let fld = e.target;
-  while (true) {
-    let val = $(fld)[0].className;
-    if (val === 'training_input') break;
-    fld = fld.parentElement;
-  }
-  const numOfChildren = fld.parentElement.children.length;
-  if (numOfChildren > 1) {
-    $(fld).remove();
-  }
+    let fld = e.target;
+    while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'training_input') break;
+        fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+        $(fld).remove();
+    }
 });
 $(document).on('click', '#add-awards-field', e => {
-  awards++;
-  $('#awards-section').append(`<div class="awards_input">
+    awards++;
+    $('#awards-section').append(`<div class="awards_input">
                     <div class="arrow_sign">
                       <i
                         class="fa fa-arrow-right"
@@ -478,23 +478,23 @@ $(document).on('click', '#add-awards-field', e => {
                     </div>
                   </div>`);
 
-  $('.additional-select-field').selectpicker('refresh');
-  $('.additional-select-field').css('width', '100%');
+    $('.additional-select-field').selectpicker('refresh');
+    $('.additional-select-field').css('width', '100%');
 });
 $(document).on('click', 'button.delete-awards-class', e => {
-  let fld = e.target;
-  while (true) {
-    let val = $(fld)[0].className;
-    if (val === 'awards_input') break;
-    fld = fld.parentElement;
-  }
-  const numOfChildren = fld.parentElement.children.length;
-  if (numOfChildren > 1) {
-    $(fld).remove();
-  }
+    let fld = e.target;
+    while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'awards_input') break;
+        fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+        $(fld).remove();
+    }
 });
 $(document).on('click', '#add-edu-field', e => {
-  const edu_field = ` <div class="education_input">
+    const edu_field = ` <div class="education_input">
                     <div class="arrow_sign">
                       <i class="fa fa-arrow-right"></i>
                     </div>
@@ -560,29 +560,29 @@ $(document).on('click', '#add-edu-field', e => {
                       </button>
                     </div>
                   </div>`;
-  edu++;
-  $('#all_edu_inputs').append(edu_field);
+    edu++;
+    $('#all_edu_inputs').append(edu_field);
 
-  $('.additional-from').selectpicker('refresh');
-  $('.additional-from').css('width', '100%');
+    $('.additional-from').selectpicker('refresh');
+    $('.additional-from').css('width', '100%');
 
-  $('.additional-to').selectpicker('refresh');
-  $('.additional-to').css('width', '100%');
+    $('.additional-to').selectpicker('refresh');
+    $('.additional-to').css('width', '100%');
 });
 $(document).on('click', '.delete-edu-class', e => {
-  let fld = e.target;
-  while (true) {
-    let val = $(fld)[0].className;
-    if (val === 'education_input') break;
-    fld = fld.parentElement;
-  }
-  const numOfChildren = fld.parentElement.children.length;
-  if (numOfChildren > 1) {
-    $(fld).remove();
-  }
+    let fld = e.target;
+    while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'education_input') break;
+        fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+        $(fld).remove();
+    }
 });
 $(document).on('click', '#add-exp-field', e => {
-  const edu_field = `
+    const edu_field = `
               <div class="exp_input">
                   <div class="arrow_sign">
                     <i class="fa fa-arrow-right"></i>
@@ -642,70 +642,69 @@ $(document).on('click', '#add-exp-field', e => {
                   </div>
                 </div>
             `;
-  exp++;
-  $('#exp-section').append(edu_field);
+    exp++;
+    $('#exp-section').append(edu_field);
 
-  $('.additional-select-field1').selectpicker('refresh');
-  $('.additional-select-field1').css('width', '100%');
+    $('.additional-select-field1').selectpicker('refresh');
+    $('.additional-select-field1').css('width', '100%');
 
-  $('.additional-select-field2').selectpicker('refresh');
-  $('.additional-select-field2').css('width', '100%');
+    $('.additional-select-field2').selectpicker('refresh');
+    $('.additional-select-field2').css('width', '100%');
 });
 $(document).on('click', '.delete-exp-class', e => {
-  let fld = e.target;
-  while (true) {
-    let val = $(fld)[0].className;
-    if (val === 'exp_input') break;
-    fld = fld.parentElement;
-  }
-  const numOfChildren = fld.parentElement.children.length;
-  if (numOfChildren > 1) {
-    $(fld).remove();
-  }
+    let fld = e.target;
+    while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'exp_input') break;
+        fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+        $(fld).remove();
+    }
 });
 
 function showAlert(msg) {
-  $('#alert').show();
-  $('#alert').html(msg);
+    console.log(msg);
+    $('#alert').show();
+    $('#alert').html(msg);
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
 }
-function showAlert(msg) {
-  $('#alert').show();
-  $('#alert').html(msg);
-}
+
 $('input[name="dob"]').daterangepicker({
-  autoUpdateInput: false,
-  singleDatePicker: true,
-  showDropdowns: true,
-  minYear: 1930,
-  maxYear: parseInt(moment().format('YYYY'), 10),
-  locale: {
-    cancelLabel: 'Clear'
-  }
+    autoUpdateInput: false,
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1930,
+    maxYear: parseInt(moment().format('YYYY'), 10),
+    locale: {
+        cancelLabel: 'Clear'
+    }
 });
 
 $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
-  $(this).val(picker.startDate.format('DD/MM/YYYY'));
+    $(this).val(picker.startDate.format('DD/MM/YYYY'));
 });
 
 $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
-  $(this).val('');
+    $(this).val('');
 });
 $(document).on('click', '.minusChamber', e => {
-  const len =
-    e.target.parentElement.parentElement.parentElement.children.length;
-  if (len !== 1) {
-    $(e.target.parentElement.parentElement).remove();
-  }
+    const len =
+        e.target.parentElement.parentElement.parentElement.children.length;
+    if (len !== 1) {
+        $(e.target.parentElement.parentElement).remove();
+    }
 });
 $(document).on('click', '.minusDayTime', e => {
-  const len = e.target.parentElement.parentElement.children.length;
-  console.log(len);
-  if (len !== 1) {
-    $(e.target.parentElement).remove();
-  }
+    const len = e.target.parentElement.parentElement.children.length;
+    console.log(len);
+    if (len !== 1) {
+        $(e.target.parentElement).remove();
+    }
 });
 $(document).on('click', '.plusDayTime', e => {
-  $(e.target.parentElement.children[1]).append(`
+    $(e.target.parentElement.children[1]).append(`
         <div class="eachDayTime">
             <input type="text" name="dayFrom" />
             <input type="text" name="dayTo" />
@@ -715,7 +714,7 @@ $(document).on('click', '.plusDayTime', e => {
           </div>`);
 });
 $('.addChamber').on('click', e => {
-  $('.chambers').append(`<div class="oneChamber">
+    $('.chambers').append(`<div class="oneChamber">
         <div class="chamber_name_place">
           <input type="text" name="chamberName" />
           <input type="text" name="chamberPlace" />
@@ -735,126 +734,257 @@ $('.addChamber').on('click', e => {
 });
 
 $('.addDoctor__submit').on('click', e => {
-  const name = $('#name').val();
-  const gender = $('#gender').val();
-  const designation = $('#designation').val();
-  const expertise = $('#expertise').val();
-  const about_me = $('#about_me').val();
-  const institute = $('#institute').val();
-  const dob = $('#dob').val();
-  const speciality = $('#speciality').val();
-  const visitingFee = $('#visitingFee').val();
-  const email = $('#email').val();
-  const phone = $('#phone').val();
-  const affiliation = $('#affiliation').val();
-  const country = $('#country').val();
-  const reserchArea = $('#research-area').val();
-  const regno = $('#regno').val();
+    const name = $('#name').val();
+    const gender = $('#genderInput').val();
+    const designation = $('#designation').val();
+    const expertise = $('#expertise').val();
+    const about_me = $('#about_me').val();
+    const institute = $('#institute').val();
+    const dob = $('#dob').val();
+    const speciality = $('#speciality').val();
+    const visitingFee = $('#visitingFee').val();
+    const email = $('#email').val();
+    const phone = $('#phone').val();
+    const affiliation = $('#affiliation').val();
+    const country = $('#countryInput').val();
+    const researchArea = $('#research-area').val();
+    const regno = $('#regno').val();
+    const password = $('#password').val();
+    const cPassword = $('#cpassword').val();
+    const profDegree = $('#prof-degree').val();
+    let error = false;
+    const nameRegex = new RegExp('^[a-zA-Z ]+$');
+    const emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const dobRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+    const phoneRegex = /^[0-9]*$/;
+    if (!nameRegex.test(name)) {
+        error = true;
+        showAlert('Invalid name');
+    } else if (!emailRegex.test(email)) {
+        error = true;
+        showAlert('Invalid email');
+    } else if (!dobRegex.test(dob)) {
+        error = true;
+        showAlert('Invalid date of birth');
+    } else if (password == '') {
+        error = true;
+        showAlert('Enter password');
+    } else if (password.length < 6) {
+        error = true;
+        showAlert('Password must contain at least 6 characters');
+    } else if (cPassword == '') {
+        error = true;
+        showAlert('Confirm password');
+    } else if (password != cPassword) {
+        error = true;
+        showAlert('Passwords do not match');
+    } else if (affiliation == '') {
+        error = true;
+        showAlert('Enter current affiliation');
+    } else if (expertise == '') {
+        error = true;
+        showAlert('Enter the expertise area');
+    } else if (about_me == '') {
+        error = true;
+        showAlert('Write about yourself');
+    } else if (institute == '') {
+        error = true;
+        showAlert('Enter the institute');
+    } else if (designation == '') {
+        error = true;
+        showAlert('Enter designation');
+    } else if (!phoneRegex.test(phone) || phone.length < 6) {
+        error = true;
+        showAlert('Invalid phone number');
+    } else if (!phoneRegex.test(visitingFee)) {
+        error = true;
+        showAlert('Invalid visiting fee amount');
+    } else if (gender == '') {
+        error = true;
+        showAlert('Confirm gender');
+    } else if (country == '') {
+        error = true;
+        showAlert('Confirm country');
+    } else if (speciality == '') {
+        error = true;
+        showAlert('Confirm speciality');
+    } else if (regno == '') {
+        error = true;
+        showAlert('Enter license number');
+    } else if (researchArea == '') {
+        error = true;
+        showAlert('Enter research area');
+    } else if (profDegree == '') {
+        error = true;
+        showAlert('Enter professional degree');
+    }
 
-  const vhInput = $('.visitingHour_in select');
-  const vPlaceInput = $('.visitingHour_in input');
-  const workInstitutes = $('.exp_in input.exp-institute');
-  const workFrom = $('.exp_in select[name="from"]');
-  const workTo = $('.exp_in select[name="to"]');
-  const eduInValue = $('.edu_in input');
-  const eduInSelect = $('.edu_in select');
-  const trainingNames = $('.training_in input.training-name');
-  const trainingYears = $('.training_in select[name="training-year"]');
-  const trainingDescriptions = $('.training_in textarea');
-  const awardsNames = $('.awards_in input.award-name');
-  const awardsYears = $('.awards_in select[name="award-year"]');
-  const awardsDescriptions = $('.awards_in textarea');
+    const workInstitutes = $('.exp_in input.exp-institute');
+    const workFrom = $('.exp_in select[name="from"]');
+    const workTo = $('.exp_in select[name="to"]');
+    const eduInValue = $('.edu_in input');
+    const eduInSelect = $('.edu_in select');
+    const trainingNames = $('.training_in input.training-name');
+    const trainingYears = $('.training_in select[name="training-year"]');
+    const trainingDescriptions = $('.training_in textarea');
+    const awardsNames = $('.awards_in input.award-name');
+    const awardsYears = $('.awards_in select[name="award-year"]');
+    const awardsDescriptions = $('.awards_in textarea');
 
-  const vhArray = [];
-  const eduArray = [];
-  const workExpArray = [];
-  const awardsArray = [];
-  const trainingArray = [];
-  for (let i = 0; i < eduInValue.length / 2; i++) {
-    const education = eduInValue[2 * i + 0].value;
-    const degree = eduInValue[2 * i + 1].value;
-    const eduFrom = eduInSelect[2 * i + 0].value;
-    const eduTo = eduInSelect[2 * i + 1].value;
-    eduArray.push({
-      education,
-      degree,
-      eduFrom,
-      eduTo
-    });
-  }
-  for (let i = 0; i < trainingNames.length; i++) {
-    const name = trainingNames[i].value;
-    const year = trainingYears[i].value;
-    const description = trainingDescriptions[i].value;
-    trainingArray.push({
-      name,
-      year,
-      description
-    });
-  }
-  for (let i = 0; i < awardsNames.length; i++) {
-    const name = awardsNames[i].value;
-    const year = awardsYears[i].value;
-    const description = awardsDescriptions[i].value;
-    awardsArray.push({
-      name,
-      year,
-      description
-    });
-  }
-  for (let i = 0; i < workInstitutes.length; i++) {
-    const institute = workInstitutes[i].value;
-    const from = workFrom[i].value;
-    const to = workTo[i].value;
-    workExpArray.push({
-      institute,
-      from,
-      to
-    });
-  }
+    if (eduInValue.length == 0) {
+        error = true;
+        showAlert('Enter atleast one educational details');
+    } else if (trainingNames.length == 0) {
+        error = true;
+        showAlert('Enter atleast one professional training details');
+    } else if (workInstitutes.length == 0) {
+        error = true;
+        showAlert('Enter atleast one work experience details');
+    }
 
-  for (let i = 0; i < vhInput.length / 3; i++) {
-    const vhFrom = vhInput[3 * i].value;
-    const vhTo = vhInput[3 * i + 1].value;
-    const vDay = vhInput[3 * i + 2].value;
-    const vPlace = vPlaceInput[i].value;
-    vhArray.push({
-      vhFrom,
-      vhTo,
-      vDay,
-      vPlace
-    });
-  }
-  console.log(workExpArray);
-  postData = {
-    name,
-    gender,
-    institute,
-    expertise,
-    designation,
-    speciality,
-    dob,
-    email,
-    phone,
-    affiliation,
-    regno,
-    reserchArea,
-    country,
-    fee: visitingFee,
-    aboutYourself: about_me,
-    trainingArray: JSON.stringify(trainingArray),
-    awardsArray: JSON.stringify(awardsArray),
-    visitingHour: JSON.stringify(vhArray),
-    education: JSON.stringify(eduArray),
-    workExperience: JSON.stringify(workExpArray)
-  };
-  // $.ajax({
-  //     type: 'POST',
-  //     url: '/auth/register/new/exp',
-  //     data: postData,
-  //     success: data => {
-  //         console.log(data);
-  //     }
-  // });
-  // location.reload();
+    const eduArray = [];
+    const workExpArray = [];
+    const awardsArray = [];
+    const trainingArray = [];
+
+    for (let i = 0; i < eduInValue.length / 2; i++) {
+        const institute = eduInValue[2 * i + 0].value;
+        const degree = eduInValue[2 * i + 1].value;
+        const eduFrom = eduInSelect[2 * i + 0].value;
+        const eduTo = eduInSelect[2 * i + 1].value;
+
+        if (institute == '') {
+            error = true;
+            showAlert('Name of educational institute left empty');
+        } else if (degree == '') {
+            error = true;
+            showAlert('Educational degree left empty');
+        } else if (eduFrom == '') {
+            error = true;
+            showAlert('Beginning year at education section left empty');
+        } else if (eduTo == '') {
+            error = true;
+            showAlert('Ending year at education section left empty');
+        }
+
+        eduArray.push({
+            institute,
+            degree,
+            eduFrom,
+            eduTo
+        });
+    }
+    for (let i = 0; i < trainingNames.length; i++) {
+        const name = trainingNames[i].value;
+        const year = trainingYears[i].value;
+        const description = trainingDescriptions[i].value;
+
+        if (name == '') {
+            error = true;
+            showAlert('Name of training left empty');
+        } else if (year == '') {
+            error = true;
+            showAlert('Year field left empty at training section');
+        } else if (description == '') {
+            error = true;
+            showAlert('Description field left empty at training section');
+        }
+
+        trainingArray.push({
+            name,
+            year,
+            description
+        });
+    }
+    for (let i = 0; i < awardsNames.length; i++) {
+        const name = awardsNames[i].value;
+        const year = awardsYears[i].value;
+        const description = awardsDescriptions[i].value;
+        awardsArray.push({
+            name,
+            year,
+            description
+        });
+    }
+    for (let i = 0; i < workInstitutes.length; i++) {
+        const institute = workInstitutes[i].value;
+        const from = workFrom[i].value;
+        const to = workTo[i].value;
+
+        if (institute == '') {
+            error = true;
+            showAlert('Name of work institute left empty');
+        } else if (from == '') {
+            error = true;
+            showAlert(
+                'Beginning year field at work and experience section left empty'
+            );
+        } else if (to == '') {
+            error = true;
+            showAlert('Ending year field at work and experience section left empty');
+        }
+
+        workExpArray.push({
+            institute,
+            from,
+            to
+        });
+    }
+    const vhArray = [{
+        chamberName: 'Popular Diagonisitc',
+        chamberAddress: 'Shyamoli',
+        chamberTimings: [{
+                dayFrom: 'Saturday',
+                dayTo: 'Monday',
+                timeFrom: '2:00PM',
+                timeTo: '5:00PM'
+            },
+            {
+                dayFrom: 'Thursay',
+                dayTo: 'Sunday',
+                timeFrom: '7:00PM',
+                timeTo: '10:00PM'
+            }
+        ]
+    }];
+    postData = {
+        name,
+        gender,
+        institute,
+        expertise,
+        designation,
+        speciality,
+        dob,
+        email,
+        phone,
+        affiliation,
+        regno,
+        researchArea,
+        country,
+        fee: visitingFee,
+        aboutYourself: about_me,
+        trainingArray: JSON.stringify(trainingArray),
+        awardsArray: JSON.stringify(awardsArray),
+        visitingHour: JSON.stringify(vhArray),
+        education: JSON.stringify(eduArray),
+        workExperience: JSON.stringify(workExpArray)
+    };
+    if (!error) {
+        formSubmit(postData);
+    }
 });
+
+function formSubmit(data) {
+    $.ajax({
+        type: 'POST',
+        url: '/auth/register/new/exp',
+        data,
+        success: data => {
+            if (data.status == false) {
+                showAlert(data.message);
+            } else {
+                location.reload();
+            }
+        }
+    });
+}

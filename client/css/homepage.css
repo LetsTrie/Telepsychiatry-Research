@@ -859,7 +859,7 @@ p {
 }
 
 .intro_page_header {
-  background: url("/images/backBan.jpg");
+  background: url("/images/covid.jpg");
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -880,18 +880,21 @@ p {
 }
 
 .magicc {
-  width: 90%;
-  margin: auto;
+  width: 50%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding: 0px 10%;
+  height: 1000px;
 }
 
 .desc {
   font-family: 'Lato', sans-serif;
   padding: 20vmin 1vmin;
   max-width: 600px;
+  height: 200px;
+  color: #fff;
   padding-bottom: 30vmin;
 }
 
@@ -904,7 +907,6 @@ p {
 .desc .largeText {
   font-size: 56px;
   font-weight: 700;
-  color: #404040;
   -webkit-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
        -o-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
           animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
@@ -921,7 +923,6 @@ p {
   padding-top: 10px;
   font-size: 17px;
   letter-spacing: 0.5px;
-  color: #686767;
   -webkit-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
        -o-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
           animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;

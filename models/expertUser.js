@@ -1,10 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const eUserSchema = new mongoose.Schema({
-    fname: {
-        type: String
-    },
-    lname: {
+    name: {
         type: String
     },
     email: {
@@ -13,16 +10,13 @@ const eUserSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    phoneNumber: {
+    phone: {
         type: String
     },
     dob: {
         type: String
     },
-    cAffiliation: {
-        type: String
-    },
-    hADegree: {
+    affiliation: {
         type: String
     },
     country: {
@@ -31,16 +25,68 @@ const eUserSchema = new mongoose.Schema({
     gender: {
         type: String
     },
-    identifyNo: {
+    regno: {
         type: String
     },
     researchArea: {
         type: String
     },
+    expertise: {
+        type: String
+    },
+    designation: {
+        type: String
+    },
+    speciality: {
+        type: String
+    },
+    visitingFee: {
+        type: String
+    },
+    institute: {
+        type: String
+    },
+    professionalDegree: {
+        type: String
+    },
+    aboutYourself: {
+        type: String
+    },
+    education: [{
+        institute: String,
+        degree: String,
+        eduFrom: String,
+        eduTo: String
+    }],
+    training: [{
+        name: String,
+        year: String,
+        description: String
+    }],
+    awards: [{
+        name: String,
+        year: String,
+        description: String
+    }],
+    workExperience: [{
+        institute: String,
+        from: String,
+        to: String
+    }],
+    visitingHour: [{
+        chamberName: String,
+        chamberAddress: String,
+        chamberTimings: [{
+            dayFrom: String,
+            dayTo: String,
+            timeFrom: String,
+            timeTo: String
+        }]
+    }],
     createdAt: {
         type: Date,
         default: Date.now()
     }
 });
 
-exports.eUserModel = mongoose.model("expertUser", eUserSchema);
+exports.eUserModel = mongoose.model('expertUser', eUserSchema);

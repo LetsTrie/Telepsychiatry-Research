@@ -89,8 +89,8 @@ exports.postRegisterExpertUser_New = async(req, res, next) => {
     const education = JSON.parse(req.body.education);
     const workExperience = JSON.parse(req.body.workExperience);
     const visitingHour = JSON.parse(req.body.visitingHour);
-    const training = JSON.parse(req.body.trainingArray);
-    const awards = JSON.parse(req.body.awardsArray);
+    const training = JSON.parse(req.body.training);
+    const awards = JSON.parse(req.body.awards);
 
     try {
         const { error } = await joi
@@ -125,7 +125,7 @@ exports.postRegisterExpertUser_New = async(req, res, next) => {
                             message: 'Password must be 6 characters atleast'
                         };
                     }),
-                phoneNumber: joi
+                phone: joi
                     .string()
                     .required()
                     .regex(/\w+/i)
@@ -174,6 +174,14 @@ exports.postRegisterExpertUser_New = async(req, res, next) => {
                     .error(() => {
                         return {
                             message: 'Enter license number'
+                        };
+                    }),
+                designation: joi
+                    .string()
+                    .required()
+                    .error(() => {
+                        return {
+                            message: 'Enter designation'
                         };
                     }),
                 researchArea: joi

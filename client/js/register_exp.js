@@ -608,7 +608,7 @@ $(document).on('click', '#add-exp-field', e => {
                           name="from"
                           required
                         >
-                          <% for (let i= yr; i >= 1950; i--) { %>
+                          <% for (let i = yr; i >= 1950; i--) { %>
                           <option value="<%= i %>"><%= i %></option>
                           <% } %>
                         </select>
@@ -956,6 +956,7 @@ $('.addDoctor__submit').on('click', e => {
         speciality,
         dob,
         email,
+        password,
         phone,
         affiliation,
         regno,

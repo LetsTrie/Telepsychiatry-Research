@@ -1,11 +1,14 @@
 const router = require('express').Router();
+const {
+    doctorsProfile,
+    psychoTherapy,
+    consultation
+} = require('../controllers/services');
 
-router.get('/consultation', (req, res, next) => res.render('consultation'));
-router.get('/psychoTherapy', (req, res, next) => res.render('psycho_therapy'));
+router.get('/consultation', consultation);
+router.get('/psychoTherapy', psychoTherapy);
 router.get('/ourDoctors', (req, res, next) => res.render('ourDoctors'));
-router.get('/doctor/profile/:id', (req, res, next) => {
-    return res.render('doctorsProfile');
-});
+router.get('/doctor/profile/:id', doctorsProfile);
 router.get('/institution', (req, res, next) => {
     const names = [
         'Liver Profile',

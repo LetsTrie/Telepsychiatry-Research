@@ -905,11 +905,11 @@ p {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .assessment_wrapper {
-  background: #eaf6fa;
+  background: #ebebeb;
   min-height: 100vh;
 }
 
@@ -986,7 +986,8 @@ body {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 30px 20px;
+  width: 95%;
+  margin: 30px auto;
 }
 
 .twoBigSectionFlex .eachBigSection {
@@ -996,15 +997,16 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child {
   width: 25%;
-  padding: 20px;
+  padding: 20px 25px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange {
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
-  font-size: 16px;
+  font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1016,19 +1018,23 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests {
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
   cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
-  text-decoration: underline;
+  font-weight: 700;
+  font-size: 17px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
-  font-size: 16px;
+  font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1042,10 +1048,7 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all ul li {
   list-style-type: disc;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-see-more {
-  text-decoration: underline;
+  line-height: 1.8;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child {

@@ -905,12 +905,12 @@ p {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .assessment_wrapper {
-  background: #eaf6fa;
-  min-height: 100vh;
+  background: #ebebeb;
+  min-height: 85vh;
 }
 
 .blueDivider {
@@ -986,7 +986,24 @@ body {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 30px 20px;
+  width: 95%;
+  margin: 30px auto 0 auto;
+}
+
+@media (max-width: 1320px) {
+  .twoBigSectionFlex {
+    width: 98%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection {
@@ -996,15 +1013,23 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child {
   width: 25%;
-  padding: 20px;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:first-child {
+    width: 100%;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange {
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
-  font-size: 16px;
+  font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1016,7 +1041,7 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests {
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
@@ -1024,11 +1049,12 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
+  font-weight: 700;
   text-decoration: underline;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
-  font-size: 16px;
+  font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1042,15 +1068,86 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all ul li {
   list-style-type: disc;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-see-more {
-  text-decoration: underline;
+  line-height: 1.8;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child {
   width: 73%;
   padding: 20px 50px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
+    width: 100%;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .bigHeading {
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .bigHeading p {
+  font-size: 2.5rem;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection {
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 25px;
+}
+
+@media (max-width: 1500px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
+    width: 75%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
+    width: 98%;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .submit-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .submit-btn button {
+  max-width: 200px;
+  font-weight: 700;
+  border: 2px solid #20c0f3;
+  border-radius: 4px;
+  display: block;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  background-color: #20c0f3;
+  color: #fff;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .inputSection .card-label > label {
@@ -1094,4 +1191,47 @@ body {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+@media (max-width: 700px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .form-group,
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .slctpkr {
+  width: 50%;
+  padding: 0px 10px 3px 0;
+}
+
+@media (max-width: 700px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .form-group,
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .slctpkr {
+    width: 100%;
+  }
+}
+
+.bootstrap-select .btn {
+  font-size: 14px;
+  padding: 10px;
+  padding-left: 5px;
+}
+
+.bootstrap-select .btn-light {
+  color: #212529;
+  background-color: white;
+  border-color: #dbdbdb;
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show > .btn-light.dropdown-toggle {
+  color: #212529;
+  background-color: white;
+  border-color: #dbdbdb;
 }

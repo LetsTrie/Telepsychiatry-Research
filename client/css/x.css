@@ -905,11 +905,11 @@ p {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .assessment_wrapper {
-  background: #eaf6fa;
+  background: #ebebeb;
   min-height: 100vh;
 }
 
@@ -986,7 +986,24 @@ body {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 30px 20px;
+  width: 95%;
+  margin: 30px auto 0 auto;
+}
+
+@media (max-width: 1320px) {
+  .twoBigSectionFlex {
+    width: 98%;
+  }
+}
+
+@media (max-width: 900px) {
+  .twoBigSectionFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection {
@@ -996,15 +1013,23 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child {
   width: 25%;
-  padding: 20px;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:first-child {
+    width: 100%;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange {
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
-  font-size: 16px;
+  font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1016,7 +1041,7 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests {
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
@@ -1024,11 +1049,12 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
+  font-weight: 700;
   text-decoration: underline;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
-  font-size: 16px;
+  font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1042,15 +1068,19 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all ul li {
   list-style-type: disc;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-see-more {
-  text-decoration: underline;
+  line-height: 1.8;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child {
   width: 73%;
   padding: 20px 50px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
+    width: 100%;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .main-Heading {
@@ -1064,15 +1094,20 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .someWritings {
+  width: 97%;
+  margin: auto;
   padding-bottom: 30px;
   font-size: 17px;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .someWritings p {
   text-align: justify;
+  line-height: 1.7;
+  font-size: 18px;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .someWritings p span {
+  font-size: 19px;
   font-weight: 700;
   font-size: 18px;
 }
@@ -1089,12 +1124,35 @@ body {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 1450px) {
+  .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper {
+    width: 95%;
+  }
+}
+
+@media (max-width: 950px) {
+  .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper {
+    width: 95%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizPic {
   width: 50%;
   margin: 10px;
+}
+
+@media (max-width: 950px) {
+  .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizPic {
+    width: 95%;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizPic img {
@@ -1110,14 +1168,36 @@ body {
           align-self: center;
 }
 
+@media (max-width: 950px) {
+  .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite {
+    width: 95%;
+  }
+}
+
 .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite .quizWritting {
   padding-left: 20px;
   padding-bottom: 10px;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite .quizWritting p {
+  font-size: 20px;
+  font-weight: 500;
   text-align: justify;
-  font-size: 18px;
+}
+
+@media (max-width: 1450px) {
+  .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite .quizWritting p {
+    font-size: 17.5px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 950px) {
+  .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite .quizWritting p {
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite .quizBtn {
@@ -1126,11 +1206,11 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .quiz_wrapper .quizInvite .quizBtn button {
+  font-weight: 700;
   border: 2px solid #20c0f3;
   border-radius: 4px;
   display: block;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 18px;
   letter-spacing: 1px;
   padding: 10px 20px;
   text-align: center;
@@ -1141,16 +1221,19 @@ body {
 }
 
 .mentalHealthTestDesc {
+  width: 97%;
+  margin: auto;
   margin-bottom: 30px;
 }
 
 .mentalHealthTestDesc .mentalHealthTestDescHeading {
   color: #1c82ca;
+  font-family: 'Roboto';
   cursor: pointer;
 }
 
 .mentalHealthTestDesc .mentalHealthTestDescHeading p {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 700;
 }
 
@@ -1159,6 +1242,10 @@ body {
 }
 
 .mentalHealthTestDesc .littleDesc {
-  max-width: 1000px;
   text-align: justify;
+}
+
+.mentalHealthTestDesc .littleDesc p {
+  font-size: 18px;
+  line-height: 1.7;
 }

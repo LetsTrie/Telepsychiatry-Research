@@ -2,10 +2,10 @@
 @import '_navbar';
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .assessment_wrapper {
-  background: #eaf6fa;
+  background: #ebebeb;
   min-height: 100vh;
 }
 .blueDivider {
@@ -59,19 +59,22 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 30px 20px;
+  width: 95%;
+  margin: 30px auto;
 
   .eachBigSection {
     background: white;
     border-radius: 5px;
+
     &:first-child {
       width: 25%;
-      padding: 20px;
+      padding: 20px 25px;
       .ageRange {
         padding-top: 10px;
+        padding-bottom: 20px;
         .ageRangeHeading {
           p {
-            font-size: 16px;
+            font-size: 20px;
             padding-bottom: 7px;
             margin-bottom: 0px;
             font-weight: 700;
@@ -92,14 +95,16 @@ body {
       .nav-tests {
         a {
           cursor: pointer;
+          transition: all 0.3s;
           &:hover {
-            text-decoration: underline;
+            font-weight: 700;
+            font-size: 17px;
           }
         }
-        padding-top: 20px;
+        padding-top: 0px;
         .nav-test-heading {
           p {
-            font-size: 16px;
+            font-size: 20px;
             padding-bottom: 7px;
             margin-bottom: 0px;
             font-weight: 700;
@@ -109,17 +114,14 @@ body {
           padding: 5px;
           padding-right: 20px;
           padding-left: 25px;
+
           ul {
             li {
               list-style-type: disc;
+              line-height: 1.8;
               a {
               }
             }
-          }
-        }
-        .nav-test-see-more {
-          text-decoration: underline;
-          a {
           }
         }
       }

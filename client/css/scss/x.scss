@@ -1,0 +1,218 @@
+@import '_main';
+@import '_navbar';
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.assessment_wrapper {
+  background: #eaf6fa;
+  min-height: 100vh;
+}
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+  p {
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
+}
+.twoBigSectionFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px 20px;
+
+  .eachBigSection {
+    background: white;
+    border-radius: 5px;
+    &:first-child {
+      width: 25%;
+      padding: 20px;
+      .ageRange {
+        padding-top: 10px;
+        .ageRangeHeading {
+          p {
+            font-size: 16px;
+            padding-bottom: 7px;
+            margin-bottom: 0px;
+            font-weight: 700;
+          }
+        }
+        .ageRangeOptions {
+          .custom-control {
+            padding-bottom: 5px;
+            color: rgb(68, 67, 67);
+            input {
+            }
+            label {
+            }
+          }
+        }
+      }
+
+      .nav-tests {
+        a {
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        padding-top: 20px;
+        .nav-test-heading {
+          p {
+            font-size: 16px;
+            padding-bottom: 7px;
+            margin-bottom: 0px;
+            font-weight: 700;
+          }
+        }
+        .nav-test-all {
+          padding: 5px;
+          padding-right: 20px;
+          padding-left: 25px;
+          ul {
+            li {
+              list-style-type: disc;
+              a {
+              }
+            }
+          }
+        }
+        .nav-test-see-more {
+          text-decoration: underline;
+          a {
+          }
+        }
+      }
+    }
+    &:last-child {
+      width: 73%;
+      padding: 20px 50px;
+      .main-Heading {
+        text-align: center;
+        padding-bottom: 10px;
+        font-weight: 500;
+        p {
+          font-size: 2.5rem;
+        }
+      }
+      .someWritings {
+        padding-bottom: 30px;
+        font-size: 17px;
+        p {
+          text-align: justify;
+          span {
+            font-weight: 700;
+            font-size: 18px;
+          }
+        }
+      }
+      .quiz_wrapper {
+        width: 75%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 35px;
+        .quizPic {
+          width: 50%;
+          margin: 10px;
+          img {
+            width: 100%;
+          }
+        }
+        .quizInvite {
+          margin: 20px;
+          width: 50%;
+          align-self: center;
+          .quizWritting {
+            padding-left: 20px;
+            padding-bottom: 10px;
+            p {
+              text-align: justify;
+              font-size: 18px;
+            }
+          }
+          .quizBtn {
+            width: 70%;
+            margin: auto;
+            button {
+              border: 2px solid #20c0f3;
+              border-radius: 4px;
+              display: block;
+              font-size: 14px;
+              font-weight: 500;
+              letter-spacing: 1px;
+              padding: 10px 20px;
+              text-align: center;
+              text-transform: uppercase;
+              width: 100%;
+              background-color: #20c0f3;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.mentalHealthTestDesc {
+  margin-bottom: 30px;
+  .mentalHealthTestDescHeading {
+    color: #1c82ca;
+    p {
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .littleDesc {
+    max-width: 1000px;
+    text-align: justify;
+    p {
+    }
+  }
+}

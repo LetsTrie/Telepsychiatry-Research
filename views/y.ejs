@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/y.css" />
+
+    <title>
+      Assessment | Innovations | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="assessment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Services</a> / Mental Health Assessment</p>
+          </div>
+          <div class="bigText">
+            <p>Registration For Mental Health Test</p>
+          </div>
+        </div>
+
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="ageRange">
+              <div class="ageRangeHeading">
+                <p>Test for different ages</p>
+              </div>
+              <div class="ageRangeOptions">
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio1"
+                    >For children</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio11"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio11"
+                    >For young people</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio111"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio111"
+                    >For old people</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="nav-tests popularTests">
+              <div class="nav-test-heading">
+                <p>Popular tests</p>
+              </div>
+              <div class="nav-test-all">
+                <ul>
+                  <li>
+                    <a href="#"> Major Depression Test </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Persistent Depressive Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Psychotic Depression
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Bipolar Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Schizophrenia Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Anxiety Test
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-tests paidTests">
+              <div class="nav-test-heading">
+                <p>Paid tests</p>
+              </div>
+              <div class="nav-test-all">
+                <ul>
+                  <li>
+                    <a href="#"> Major Depression Test </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Persistent Depressive Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Psychotic Depression
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Bipolar Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Schizophrenia Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Anxiety Test
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <style>
+            .card-label > label {
+              background-color: #fff;
+              color: #777676;
+              display: inline-block;
+              font-size: 13px;
+              font-weight: 500;
+              margin: 6px auto auto 8px;
+              padding: 0 7px;
+            }
+            .card-label > input {
+              background-color: #fff;
+              border: 1px solid #dbdbdb;
+              border-radius: 4px;
+              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+              display: block;
+              height: 50px;
+              margin-top: -13px;
+              padding: 5px 15px 0;
+              transition: border-color 0.3s;
+              width: 100%;
+            }
+          </style>
+          <div class="eachBigSection">
+            <div class="bigHeading">
+              <p>Mental Health Test</p>
+            </div>
+            <div class="inputSection">
+              <div class="personalInfo infoBox">
+                <div class="infoBox_heading">
+                  <p>Personal Information</p>
+                </div>
+                <div class="inSecFlxPrnt">
+                  <div class="form-group card-label">
+                    <label>Name</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                  <div class="form-group card-label">
+                    <label>Age</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+                <div class="inSecFlxPrnt">
+                  <div class="form-group card-label">
+                    <label>Contact Number</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                  <div class="form-group card-label">
+                    <label>Email</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div class="DisorderInfo infoBox">
+                <div class="infoBox_heading">
+                  <p>Select Test</p>
+                </div>
+                <div class="inSecFlxPrnt">
+                  <div class="">
+                    <p>Land Type:</p>
+                    <div class="selectBoxContainer" style="width: 100%;">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        data-live-search="true"
+                        name="landTypex"
+                        required
+                      >
+                        <option selected disabled> Choose Land Type </option>
+                        <option value="High land (উঁচু জমি)">
+                          High land (উঁচু জমি)</option
+                        >
+                        <option value="Medium High land (মাঝারি উঁচু জমি)">
+                          Medium High land (মাঝারি উঁচু জমি)
+                        </option>
+                        <option value="Medium land (মাঝারি জমি)">
+                          Medium land (মাঝারি জমি)
+                        </option>
+                        <option value="Medium Low land (মাঝারি নিচু জমি)">
+                          Medium Low land (মাঝারি নিচু জমি)</option
+                        >
+                        <option value="Low land (নিচু জমি)">
+                          Low land (নিচু জমি)
+                        </option>
+                        <option value="Submerged land (নিমজ্জিত জমি)">
+                          Submerged land <span> (নিমজ্জিত জমি) </span>
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="">
+                    <p>Land Type:</p>
+                    <div
+                      class="selectBoxContainer"
+                      style="width: 100%;"
+                      data-live-search="true"
+                    >
+                      <select
+                        class="selectpicker"
+                        data-live-search="true"
+                        data-width="100%"
+                        name="landTypex"
+                        required
+                      >
+                        <option selected disabled> Choose Land Type </option>
+                        <option value="High land (উঁচু জমি)">
+                          High land (উঁচু জমি)</option
+                        >
+                        <option value="Medium High land (মাঝারি উঁচু জমি)">
+                          Medium High land (মাঝারি উঁচু জমি)
+                        </option>
+                        <option value="Medium land (মাঝারি জমি)">
+                          Medium land (মাঝারি জমি)
+                        </option>
+                        <option value="Medium Low land (মাঝারি নিচু জমি)">
+                          Medium Low land (মাঝারি নিচু জমি)</option
+                        >
+                        <option value="Low land (নিচু জমি)">
+                          Low land (নিচু জমি)
+                        </option>
+                        <option value="Submerged land (নিমজ্জিত জমি)">
+                          Submerged land <span> (নিমজ্জিত জমি) </span>
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="paymentMethod infoBox">
+                <div class="infoBox_heading">
+                  <p>Payment Method</p>
+                </div>
+                <div class="chooseBank">
+                  <div class="custom-control custom-radio">
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      id="customRadio1x"
+                      name="example1x"
+                      value="customEx"
+                    />
+                    <label class="custom-control-label" for="customRadio1x"
+                      >Rocket</label
+                    >
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      id="customRadio11x"
+                      name="example1x"
+                      value="customEx"
+                    />
+                    <label class="custom-control-label" for="customRadio11x"
+                      >Bkash</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="submit-btn">
+                <button>Start Quiz</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $(document).on('click', '.submit', e => {
+      location = '/services/assessment/questions';
+    });
+  </script>
+</html>

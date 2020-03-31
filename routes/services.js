@@ -21,4 +21,15 @@ router.get('/assessment/questions', (req, res, next) => {
 router.get('/assessment/result', (req, res, next) => {
   res.render('assessment_result');
 });
+
+router.get('/x', (req, res, next) => {
+  res.render('x');
+});
+
+router.get('/y', (req, res, next) => {
+  res.render('y');
+});
+router.get('/zz', (req, res, next) => {
+  res.render('zz');
+});
 module.exports = router;

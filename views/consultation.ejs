@@ -2,125 +2,132 @@
 <html lang="en">
 
 <head>
-  <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/consultaion.css" />
-  <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/consultaion.css" />
+        <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
 
-  <title>Psychiatric Consultations | Telepsychiatry Research</title>
+        <title>Psychiatric Consultations | Telepsychiatry Research</title>
 </head>
 
 <body>
-  <section>
-    <header>
-      <nav class="cnav">
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-    </header>
-    <div class="bookDoctor">
-      <div class=" container">
-        <div class="bookDoctorHeader text-center">
-          <p>Book our Doctors</p>
-        </div>
-        <div class="bookDoctorHeader__info">
-          <p>Find the right mental health consultants from our list of doctors. You can also search by their name to narrow down the list. You can also see the whole list of doctors.</p>
-        </div>
-        <div class="searching">
-          <form action="#" method="POST">
-            <div class="searchbox">
-              <input type="text" name="search" placeholder="Search Doctors" required />
-            </div>
-            <div class="searchBtn">
-              <input type="submit" value="search" />
-            </div>
-          </form>
-        </div>
-        <div class="all-items">
-          <div class="owl-carousel owl-theme">
-            <% for(let i = 0 ; i < 9; i++) { %>
-            <div class="item">
-              <div class="m-1 mb-5 card">
-                <img src="/images/doctor.jpg" class="card-img-top" />
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <p class="cardName">
-                      Sharmin Afroz <i class="fa fa-check-circle verified"></i>
-                    </p>
-                    <p class="cardDegree">
-                      MBBS, MD, DNB - Cardiology
-                    </p>
-                  </h5>
-
-                  <p class="card-text">
-                    <p class="aff">
-                      <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
-                      (CC) & Unit Head, Dept. of Psychiatry
-                    </p>
-                    <p class="college">
-                      <span class="fa fa-university">&nbsp;</span> Sir Salimullah
-                      Medical College & Mitford Hospital
-                    </p>
-                    <div class="twoButtons">
-                      <div><button class="doctorsProfile">View Profile</button></div>
-                      <div><button class="bookNow" data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">Book
-                          Now</button></div>
-                    </div>
-                  </p>
+    <section>
+        <header>
+            <nav class="cnav">
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
+        <div class="bookDoctor">
+            <div class=" container">
+                <div class="bookDoctorHeader text-center">
+                    <p>Book our Doctors</p>
                 </div>
-              </div>
+                <div class="bookDoctorHeader__info">
+                    <p>Find the right mental health consultants from our list of doctors. You can also search by their name to narrow down the list. You can also see the whole list of doctors.</p>
+                </div>
+                <div class="searching">
+                    <form action="#" method="POST">
+                        <div class="searchbox">
+                            <input type="text" name="search" placeholder="Search Doctors" required />
+                        </div>
+                        <div class="searchBtn">
+                            <input type="submit" value="search" />
+                        </div>
+                    </form>
+                </div>
+                <div class="all-items">
+                    <div class="owl-carousel owl-theme">
+                        <% for(let i = 0 ; i < doctors.length; i++) { %>
+                            <div class="item">
+                                <div class="m-1 mb-5 card">
+                                    <img src="/images/doctor.jpg" class="card-img-top" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <p class="cardName">
+                                                <%= doctors[i].name %> <i class="fa fa-check-circle verified"></i>
+                                            </p>
+                                            <p class="cardDegree">
+                                                <%= doctors[i].professionalDegree %> -
+                                                    <%= doctors[i].designation %>
+                                            </p>
+                                        </h5>
+
+                                        <p class="card-text">
+                                            <p class="aff">
+                                                <span class="fa fa-user">&nbsp;&nbsp;</span>
+                                                <%= doctors[i].affiliation %>
+                                            </p>
+                                            <p class="college">
+                                                <span class="fa fa-university">&nbsp;</span> Sir Salimullah Medical College & Mitford Hospital
+                                            </p>
+                                            <div class="twoButtons">
+                                                <div><button id="<%= doctors[i]._id %>" class="doctorsProfile">View Profile</button></div>
+                                                <div><button class="bookNow" data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">Book
+                          Now</button></div>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+
+                <div class="bookDoctor__showMore text-center">
+                    <button>See all doctors</button>
+                </div>
             </div>
-            <% } %>
-          </div>
         </div>
+    </section>
 
-        <div class="bookDoctor__showMore text-center">
-          <button>See all doctors</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <%- include('./partials/footer')%>
-  <%- include('./partials/bookAppointment') %>
+    <%- include('./partials/footer')%>
+        <%- include('./partials/bookAppointment') %>
 </body>
 
 <%- include('./partials/vendorsBottom')%>
-<script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-<script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
-<script>
-  var owl = $('.owl-carousel');
-  owl.owlCarousel({
-    loop: true,
-    margin: 10,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    dots: false, 
-    responsive: {
-      0: {
-        items: 1
-      },
-      750: {
-        items: 1
-      },
-      960: {
-        items: 2
-      },
-      1000: {
-        items: 3
-      }
-    }
-  });
+    <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
+    <script>
+        $('button.doctorsProfile').click((e) => {
+            const id = e.target.id
+            console.log('yo')
+            console.log(id)
+            location = '/services/doctor/profile/' + id
+        })
+    </script>
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                750: {
+                    items: 1
+                },
+                960: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
 
-  document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
-    location = '/services/ourDoctors';
-  })
+        document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
+            location = '/services/ourDoctors';
+        })
 
-  $('.twoButtons .doctorsProfile').click(e => {
-    location = '/services/doctor/profile/1';
-  })
-
-</script>
+        $('.twoButtons .doctorsProfile').click(e => {
+            location = '/services/doctor/profile/1';
+        })
+    </script>
 
 </html>

@@ -905,12 +905,16 @@ p {
 }
 
 .intro_page_header {
-  background: url("/images/backBan.jpg");
+  background: url("/images/covid.jpg");
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
           background-size: cover;
   min-height: 100vh;
+}
+
+.nav-container {
+  background-color: #fff;
 }
 
 #alertF {
@@ -922,14 +926,21 @@ p {
 }
 
 .magicc {
-  width: 90%;
-  margin: auto;
+  width: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0px 10%;
+  height: 1000px;
 }
 
 .desc {
   font-family: 'Lato', sans-serif;
   padding: 20vmin 1vmin;
   max-width: 600px;
+  height: 200px;
+  color: #fff;
   padding-bottom: 30vmin;
 }
 
@@ -942,7 +953,6 @@ p {
 .desc .largeText {
   font-size: 56px;
   font-weight: 700;
-  color: #404040;
   -webkit-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
        -o-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
           animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s backwards;
@@ -959,10 +969,48 @@ p {
   padding-top: 10px;
   font-size: 17px;
   letter-spacing: 0.5px;
-  color: #686767;
   -webkit-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
        -o-animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
           animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s backwards;
+}
+
+.images {
+  width: 60%;
+  margin-left: 10%;
+  margin-top: 100px;
+  height: 700px;
+}
+
+.images .img1 img {
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 20%;
+}
+
+.images .img5 img {
+  width: 40%;
+  margin-top: -600px;
+  margin-left: 45%;
+  height: 500px;
+}
+
+.images .img4 img {
+  width: 35%;
+  margin-top: -550px;
+  margin-left: 18%;
+}
+
+.images .img2 img {
+  width: 50%;
+  margin-top: -200px;
+  margin-left: 10%;
+}
+
+.images .img3 img {
+  width: 30%;
+  margin-top: -315px;
+  margin-left: 55%;
+  height: 400px;
 }
 
 .about_this_website {
@@ -1594,8 +1642,7 @@ p {
   color: #363636;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text'],
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email'],
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input,
 #HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea {
   width: 100%;
   padding: 0.6rem;
@@ -1604,8 +1651,7 @@ p {
   border-radius: 4px;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text']:focus,
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email']:focus,
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input:focus,
 #HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea:focus {
   outline: none;
 }
@@ -1653,6 +1699,13 @@ p {
   padding: 10px 20px;
   font-size: 22px;
   letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.selector {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: #fff;
   border-radius: 4px;
 }
 

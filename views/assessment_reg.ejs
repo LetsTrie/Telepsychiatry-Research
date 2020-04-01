@@ -238,7 +238,7 @@
                   </div>
                 </div>
               </div>
-              <div class="submit-btn">
+              <div class="submit-btn startQUIZ">
                 <button>Start Quiz</button>
               </div>
             </div>
@@ -250,7 +250,7 @@
   </body>
   <%- include('./partials/vendorsBottom')%>
   <script>
-    $(document).on('click', '.submit', e => {
+    $(document).on('click', '.startQUIZ', e => {
       location = '/services/assessment/questions';
     });
   </script>

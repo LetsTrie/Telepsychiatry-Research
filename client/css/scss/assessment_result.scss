@@ -1,52 +1,160 @@
 @import '_main';
 @import '_navbar';
 
-.assessment_result {
-  min-height: 60vh;
-  padding-top: 40px;
-  padding-bottom: 40px;
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+.assessment_wrapper {
+  background: #ebebeb;
+  min-height: 100vh;
+}
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+  p {
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
 
-  .res {
-    .res_heading {
-      text-align: center;
-      font-family: 'Merriweather', serif;
-      padding-bottom: 10px;
-      p {
-        font-size: 2.5rem;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
+}
+.twoBigSectionFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+
+  @media (max-width: 1320px) {
+    width: 98%;
+  }
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+  margin: 30px auto 0 auto;
+
+  .eachBigSection {
+    background: white;
+    border-radius: 5px;
+
+    &:first-child {
+      width: 25%;
+      padding: 20px 25px;
+      margin-bottom: 15px;
+
+      @media (max-width: 1100px) {
+        width: 100%;
+      }
+      .ageRange {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        .ageRangeHeading {
+          p {
+            font-size: 20px;
+            padding-bottom: 7px;
+            margin-bottom: 0px;
+            font-weight: 700;
+          }
+        }
+        .ageRangeOptions {
+          .custom-control {
+            padding-bottom: 5px;
+            color: rgb(68, 67, 67);
+            input {
+            }
+            label {
+            }
+          }
+        }
+      }
+
+      .nav-tests {
+        a {
+          cursor: pointer;
+          &:hover {
+            font-weight: 700;
+            text-decoration: underline;
+          }
+        }
+        padding-top: 0px;
+        .nav-test-heading {
+          p {
+            font-size: 20px;
+            padding-bottom: 7px;
+            margin-bottom: 0px;
+            font-weight: 700;
+          }
+        }
+        .nav-test-all {
+          padding: 5px;
+          padding-right: 20px;
+          padding-left: 25px;
+
+          ul {
+            li {
+              list-style-type: disc;
+              line-height: 1.8;
+              a {
+              }
+            }
+          }
+        }
       }
     }
 
-    .res_results {
-      padding-top: 30px;
-      width: 80%;
-      margin: auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      @media (max-width: 992px) {
-        flex-direction: column;
-        justify-content: flex-start;
+    &:last-child {
+      width: 73%;
+      @media (max-width: 1100px) {
+        width: 100%;
       }
-      .doc_rand_pic {
-        width: 40%;
-
-        @media (max-width: 992px) {
-          width: 100%;
-        }
-        padding-right: 20px;
-        img {
-          width: 90%;
+      padding: 20px 50px;
+      margin-bottom: 15px;
+      .bigHeading {
+        text-align: center;
+        padding-bottom: 10px;
+        font-weight: 500;
+        p {
+          font-size: 2.5rem;
         }
       }
-      .yourTotScore {
-        width: 58%;
-        @media (max-width: 992px) {
-          width: 100%;
-        }
-      }
-      .score {
-        padding-top: 30px;
+      .yourScore {
+        padding-top: 20px;
         padding-bottom: 5px;
         font-weight: 700;
         p {
@@ -57,12 +165,12 @@
           }
         }
       }
-      .our_advice {
+      .someDiscussion {
         text-align: justify;
         p {
-          font-size: 18px;
+          font-size: 17.5px;
           color: #333333;
-          line-height: 30px;
+          line-height: 1.6;
           color: rgb(70, 70, 70);
           span {
             font-weight: 700;
@@ -72,6 +180,37 @@
           }
         }
       }
+    }
+  }
+}
+
+.litWidth {
+  width: 65%;
+  margin: auto;
+  border: 1px solid #dbdbdb;
+  margin-top: 12px;
+  padding: 0px 30px 30px 30px;
+
+  .printButton {
+    margin-top: 20px;
+    text-align: end;
+    button {
+      font-weight: 700;
+      border: 2px solid #20c0f3;
+      border-radius: 4px;
+      font-size: 17px;
+      letter-spacing: 1px;
+      padding: 7px 15px;
+      background-color: #20c0f3;
+      color: #fff;
+
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: #1699c5;
+      }
+    }
+    span {
+      font-size: 20px;
     }
   }
 }

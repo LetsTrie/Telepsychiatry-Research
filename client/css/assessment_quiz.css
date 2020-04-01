@@ -1083,155 +1083,133 @@ body {
   }
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .bigHeading {
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx {
+  min-height: 50vh;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx p {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment {
+  padding: 20px 0 0 0;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .assheaders .assessment_heading {
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   font-weight: 500;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .bigHeading p {
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .assheaders .assessment_heading p {
   font-size: 2.5rem;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .inputSection {
-  width: 60%;
-  margin: auto;
-  margin-top: 20px;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 4px;
-  padding: 25px;
-}
-
-@media (max-width: 1500px) {
-  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
-    width: 75%;
-  }
-}
-
-@media (max-width: 1200px) {
-  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
-    width: 90%;
-  }
-}
-
-@media (max-width: 900px) {
-  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
-    width: 98%;
-  }
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .submit-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .submit-btn button {
-  max-width: 200px;
-  font-weight: 700;
-  border: 2px solid #20c0f3;
-  border-radius: 4px;
-  display: block;
-  font-size: 18px;
-  letter-spacing: 1px;
-  padding: 10px 20px;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .assheaders .assessment_sub_heading {
   text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-  background-color: #20c0f3;
-  color: #fff;
+  padding-bottom: 20px;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .card-label > label {
-  background-color: #fff;
-  color: #777676;
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 500;
-  margin: 6px auto auto 8px;
-  padding: 0 7px;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .assheaders .assessment_sub_heading p {
+  font-size: 1.4rem;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .card-label > input {
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  display: block;
-  height: 50px;
-  margin-top: -13px;
-  padding: 5px 15px 0;
-  -webkit-transition: border-color 0.3s;
-  -o-transition: border-color 0.3s;
-  transition: border-color 0.3s;
-  width: 100%;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .someInstructions {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 30px;
+  font-family: sans-serif;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .infoBox_heading p {
-  font-size: 20px;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .someInstructions p {
+  font-size: 17px;
+  font-weight: normal;
+  font-style: normal;
+  text-align: justify;
+  line-height: 1.5em;
+  color: #666;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .someInstructions p span {
+  font-weight: 700;
+  font-size: 19px;
+  font-family: sans-serif;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions {
+  width: 90%;
+  margin: auto;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question {
+  padding-bottom: 10px;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .question_name {
+  font-family: sans-serif;
+  font-size: 21px;
   font-weight: 700;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt {
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .magicc:hover {
+  background-color: #e9e9e9;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .options {
+  padding-left: 5px;
+  font-family: sans-serif;
+  color: #111111;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
-@media (max-width: 700px) {
-  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .options .magicc {
+  width: 48%;
+  margin-right: 10px;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .form-group,
-.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .slctpkr {
-  width: 50%;
-  padding: 0px 10px 3px 0;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .options .custom-control-label {
+  padding-left: 8px;
+  font-size: 17px;
 }
 
-@media (max-width: 700px) {
-  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .form-group,
-  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .slctpkr {
-    width: 100%;
-  }
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .options .custom-control {
+  padding-top: 6px;
+  padding-bottom: 5px;
 }
 
-.bootstrap-select .btn {
-  font-size: 14px;
-  padding: 10px;
-  padding-left: 5px;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .options .custom-control * {
+  cursor: pointer;
 }
 
-.bootstrap-select .btn-light {
-  color: #212529;
-  background-color: white;
-  border-color: #dbdbdb;
+.twoBigSectionFlex .eachBigSection:last-child .assessment_wrapperx .assessment .questions .question .options .custom-control:first-child {
+  padding-top: 10px;
 }
 
-.btn-light:not(:disabled):not(.disabled).active,
-.btn-light:not(:disabled):not(.disabled):active,
-.show > .btn-light.dropdown-toggle {
-  color: #212529;
-  background-color: white;
-  border-color: #dbdbdb;
+.twoBigSectionFlex .eachBigSection:last-child .submit {
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .submit button {
+  border: none;
+  outline: none;
+  background: #ef7c00;
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.ltWidth {
+  width: 95%;
+  margin: auto;
 }

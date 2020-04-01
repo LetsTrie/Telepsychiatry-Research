@@ -31,7 +31,7 @@
                             <div class="side_by_side">
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Name</p>
+                                        <p>Name <span style="color: red;">*</span> </p>
                                     </div>
                                     <input type="text" name="name" placeholder="Name" class="name" id="name" />
                                 </div>
@@ -62,14 +62,15 @@
                                     <div class="two_box_header form-header">
                                         <p>Speciality</p>
                                     </div>
-                                    <div class="input_box slct_picker">
+                                    <!-- <div class="input_box slct_picker">
                                         <div class="form-selectpicker">
                                             <select id="speciality" class="selectpicker" data-width="100%" title="Speciality" data-size="6" name="speciality" required>
                         <option value="Psychiatrist">Psychiatrist</option>
                         <option value="Consultant"> Consultant </option>
                       </select>
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    <input type="text" placeholder="Speciality" id="speciality">
                                 </div>
                             </div>
                         </div>
@@ -77,13 +78,13 @@
                             <div class="side_by_side">
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Email</p>
+                                        <p>Email<span style="color: red;">*</span></p>
                                     </div>
                                     <input name="email" type="email" placeholder="Email" class="email" id="email" />
                                 </div>
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Designation</p>
+                                        <p>Designation<span style="color: red;">*</span></p>
                                     </div>
                                     <input name="designation" type="text" placeholder="Designation" class="designation" id="designation" />
                                 </div>
@@ -94,13 +95,13 @@
                             <div class="side_by_side">
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Password</p>
+                                        <p>Password<span style="color: red;">*</span></p>
                                     </div>
                                     <input name="password" type="password" placeholder="Password" class="password" id="password" />
                                 </div>
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Confirm Password</p>
+                                        <p>Confirm Password<span style="color: red;">*</span></p>
                                     </div>
                                     <input name="cpassword" type="password" placeholder="Confirm Password" class="cpassword" id="cpassword" />
                                 </div>
@@ -111,7 +112,7 @@
                             <div class="side_by_side">
                                 <div class="input_div">
                                     <div class="two_box_header form-header">
-                                        <p>Current Affiliation</p>
+                                        <p>Current Affiliation<span style="color: red;">*</span></p>
                                     </div>
                                     <input name="affiliation" type="text" placeholder="Current Affiliation" class="affiliation" id="affiliation" />
                                 </div>
@@ -315,7 +316,7 @@
                             <div class="two_box_one  flex-child">
                                 <div class="" id="education-section">
                                     <div class="two_box_header form-header">
-                                        <p>Education</p>
+                                        <p>Education<span style="color: red;">*</span></p>
                                     </div>
                                     <div id="all_edu_inputs">
                                         <div class="education_input">
@@ -1295,42 +1296,9 @@ $('.addDoctor__submit').on('click', e => {
     } else if (affiliation == '') {
         error = true;
         showAlert('Enter current affiliation');
-    } else if (expertise == '') {
-        error = true;
-        showAlert('Enter the expertise area');
-    } else if (about_me == '') {
-        error = true;
-        showAlert('Write about yourself');
-    } else if (institute == '') {
-        error = true;
-        showAlert('Enter the institute');
     } else if (designation == '') {
         error = true;
         showAlert('Enter designation');
-    } else if (!phoneRegex.test(phone) || phone.length < 6) {
-        error = true;
-        showAlert('Invalid phone number');
-    } else if (!phoneRegex.test(visitingFee)) {
-        error = true;
-        showAlert('Invalid visiting fee amount');
-    } else if (gender == '') {
-        error = true;
-        showAlert('Confirm gender');
-    } else if (country == '') {
-        error = true;
-        showAlert('Confirm country');
-    } else if (speciality == '') {
-        error = true;
-        showAlert('Confirm speciality');
-    } else if (regno == '') {
-        error = true;
-        showAlert('Enter license number');
-    } else if (researchArea == '') {
-        error = true;
-        showAlert('Enter research area');
-    } else if (profDegree == '') {
-        error = true;
-        showAlert('Enter professional degree');
     }
 
     const workInstitutes = $('.exp_in input.exp-institute');
@@ -1373,12 +1341,6 @@ $('.addDoctor__submit').on('click', e => {
         } else if (degree == '') {
             error = true;
             showAlert('Educational degree left empty');
-        } else if (eduFrom == '') {
-            error = true;
-            showAlert('Beginning year at education section left empty');
-        } else if (eduTo == '') {
-            error = true;
-            showAlert('Ending year at education section left empty');
         }
 
         eduArray.push({
@@ -1392,17 +1354,6 @@ $('.addDoctor__submit').on('click', e => {
         const name = trainingNames[i].value;
         const year = trainingYears[i].value;
         const description = trainingDescriptions[i].value;
-
-        if (name == '') {
-            error = true;
-            showAlert('Name of training left empty');
-        } else if (year == '') {
-            error = true;
-            showAlert('Year field left empty at training section');
-        } else if (description == '') {
-            error = true;
-            showAlert('Description field left empty at training section');
-        }
 
         trainingArray.push({
             name,
@@ -1424,19 +1375,6 @@ $('.addDoctor__submit').on('click', e => {
         const institute = workInstitutes[i].value;
         const from = workFrom[i].value;
         const to = workTo[i].value;
-
-        if (institute == '') {
-            error = true;
-            showAlert('Name of work institute left empty');
-        } else if (from == '') {
-            error = true;
-            showAlert(
-                'Beginning year field at work and experience section left empty'
-            );
-        } else if (to == '') {
-            error = true;
-            showAlert('Ending year field at work and experience section left empty');
-        }
 
         workExpArray.push({
             institute,

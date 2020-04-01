@@ -1,77 +1,84 @@
 <div class="modal fade" id="HOMEPAGE_CONTACTUS_MODAL">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Contact Us</h2>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Contact For Help</h2>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
 
-      <div class="modal-body">
-        <div class="wrapper">
-          <div class="contactUs_form">
-            <div class="alert alert-danger" id="alert"></div>
-            <form id="form" action="/contactUs" method="POST">
-              <% if(successMessage != ''){ %>
-              <div class="alert alert-success" role="alert">
-                <%= successMessage %>
-              </div>
-              <% } %>
-              <div class="flex-parentt">
-                <div class="flex-childd">
-                  <p>Name :</p>
-                  <input id="name" type="text" required name="name" />
+            <div class="modal-body">
+                <div class="wrapper">
+                    <div class="contactUs_form">
+                        <div class="alert alert-danger" id="alert"></div>
+                        <form id="form" action="/contactUs/emergency" method="POST">
+                            <% if(successMessage != ''){ %>
+                                <div class="alert alert-success" role="alert">
+                                    <%= successMessage %>
+                                </div>
+                                <% } %>
+                                    <div class="flex-parentt">
+                                        <div class="flex-childd">
+                                            <p>Name :</p>
+                                            <input id="name" type="text" required name="name" />
+                                        </div>
+
+                                        <div class="flex-childd extend">
+                                            <p>Age :</p>
+                                            <input id="age" type="integer" required name="age" />
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-parentt">
+                                        <div class="flex-childd">
+                                            <p>Gender</p>
+                                            <select class="selector" name="gender" id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
+                                        </div>
+
+                                        <div class="flex-childd">
+                                            <p>Seek help from</p>
+                                            <select class="selector" name="experts" id="seek-from">
+                    <option value="Psychiatric Consultation"
+                      >Psychiatric Consultation</option
+                    >
+                    <option value="Psychology and Counselling"
+                      >Psychology and Counselling</option
+                    >
+                  </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-parentt">
+                                        <div class="flex-childd">
+                                            <p>Email</p>
+                                            <input id="email" type="text" required name="email" />
+                                        </div>
+
+                                        <div class="flex-childd">
+                                            <p>Mobile Number</p>
+                                            <input id="mobile" type="integer" required name="mobile" />
+                                        </div>
+                                    </div>
+                                    <div class="messagee">
+                                        <p>Your message :</p>
+                                        <textarea required id="message" name="message" id="message" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="submit">
+                                        <button id="submit-btn">Submit</button>
+                                    </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
 
-                <div class="flex-childd">
-                  <p>Age :</p>
-                  <input id="age" type="integer" required name="age" />
-                </div>
-
-                <div class="flex-childd">
-                  <p>Gender :</p>
-                  <input type="radio" id="male" name="gender" value="male">
-                  <label for="male">Male</label>
-                  <input type="radio" id="female" name="gender" value="female">
-                  <label for="female">Female</label>
-                  <input type="radio" id="other" name="gender" value="other">
-                  <label for="other">Other</label>
-                  <p>Seek help from :</p>
-                  <input type="radio" id="psychiatric consultation" name="experts" value="psychiatric consultation">
-                  <label for="psychiatric consultation">psychiatric consultation</label><br>
-                  <input type="radio" id="psychology and counselling" name="experts" value="psychology and counselling">
-                  <label for="psychology and counselling">psychology and counselling</label>
-                </div>
-
-
-
-
-                <div class="flex-childd">
-                  <p>Mobile :</p>
-                  <input id="mobile" type="text" required name="mobile" />
-                </div>
-
-                <div class="flex-childd">
-                  <p>Email :</p>
-                  <input id="email" type="email" required name="email" />
-                </div>
-              </div>
-              <div class="messagee">
-                <p>Your message :</p>
-                <textarea required id="message" name="message" id="message" cols="30" rows="10"></textarea>
-              </div>
-              <div class="submit">
-                <button id="submit-btn">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer submit">
-        <button type="button" class="red-btn" data-dismiss="modal">
+            <div class="modal-footer submit">
+                <button type="button" class="red-btn" data-dismiss="modal">
           Close
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

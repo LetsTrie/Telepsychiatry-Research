@@ -2,13 +2,16 @@ const router = require('express').Router();
 const {
     doctorsProfile,
     psychoTherapy,
-    consultation
+    consultation,
+    bookAppointment
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
 router.get('/psychoTherapy', psychoTherapy);
 router.get('/ourDoctors', (req, res, next) => res.render('ourDoctors'));
-router.get('/doctor/profile/:id', doctorsProfile);
+router.get('/doctor/profile/:id', (req, res) => {
+    console.log(req.params.id);
+});
 router.get('/institution', (req, res, next) => {
     const names = [
         'Liver Profile',
@@ -37,4 +40,6 @@ router.get('/assessment/questions', (req, res, next) => {
 router.get('/assessment/result', (req, res, next) => {
     res.render('assessment_result');
 });
+
+router.post('/book', bookAppointment);
 module.exports = router;

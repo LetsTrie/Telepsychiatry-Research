@@ -1596,8 +1596,7 @@ p {
   color: #363636;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text'],
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email'],
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input,
 #HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea {
   width: 100%;
   padding: 0.6rem;
@@ -1606,8 +1605,7 @@ p {
   border-radius: 4px;
 }
 
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='text']:focus,
-#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input[type='email']:focus,
+#HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form input:focus,
 #HOMEPAGE_CONTACTUS_MODAL .modal-body .contactUs_form form textarea:focus {
   outline: none;
 }
@@ -1655,6 +1653,13 @@ p {
   padding: 10px 20px;
   font-size: 22px;
   letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.selector {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: #fff;
   border-radius: 4px;
 }
 

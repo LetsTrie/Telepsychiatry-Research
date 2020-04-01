@@ -7,15 +7,20 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form action="/services/book" method="POST">
                     <div class="two_box_one flex-child">
                         <div class="two_box_header form-header">
-                            <p>Name of Doctor:</p>
+                            <p>Service that you want</p>
                         </div>
                         <div class="input_box slct_picker">
                             <div class="form-selectpicker">
-                                <select class="selectpicker" data-width="100%" title="Select Doctor" required>
-                  <option value="Sharmin Afroz">Sharmin Afroz</option>
+                                <select class="selectpicker" name="service" data-width="100%" title="Select Service" required>
+                  <option value="psychiatric consultation"
+                    >Psychiatric Consultation</option
+                  >
+                  <option value="psychology and counselling"
+                    >Psychology and Counselling</option
+                  >
                 </select>
                             </div>
                         </div>
@@ -27,7 +32,7 @@
                                 <p>Name:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" name="patientName" placeholder="Select Time" />
+                                <input type="text" name="name" placeholder="Select Time" />
                             </div>
                         </div>
                         <div class="two_box_one  flex-child">
@@ -36,7 +41,7 @@
                             </div>
                             <div class="input_box slct_picker">
                                 <div class="input_box">
-                                    <input type="text" class="contact" placeholder="Email or Phone Number" />
+                                    <input type="text" class="contact" name="contact" placeholder="Email or Phone Number" />
                                 </div>
                             </div>
                         </div>
@@ -48,7 +53,7 @@
                                 <p>Age:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" class="contact" placeholder="Age" />
+                                <input type="text" name="age" class="contact" placeholder="Age" />
                             </div>
                         </div>
                         <div class="two_box_one  flex-child">
@@ -57,7 +62,7 @@
                             </div>
                             <div class="input_box slct_picker">
                                 <div class="form-selectpicker">
-                                    <select class="selectpicker" data-width="100%" title="Select Type" required>
+                                    <select class="selectpicker" name="bookType" data-width="100%" title="Select Type" required>
                     <option value="Online">Online</option>
                     <option value="Face to Face"> Face to Face </option>
                   </select>
@@ -72,7 +77,7 @@
                                 <p>Date:</p>
                             </div>
                             <div class="input_box">
-                                <input type="text" name="meet_date" placeholder="Select Time" />
+                                <input type="text" name="date" name="meet_date" placeholder="Select Time" />
                             </div>
                         </div>
                         <div class="two_box_one  flex-child">
@@ -81,7 +86,7 @@
                             </div>
                             <div class="input_box slct_picker">
                                 <div class="form-selectpicker">
-                                    <select class="selectpicker" data-width="100%" title="Select Time" data-size="3" required>
+                                    <select name="time" class="selectpicker" data-width="100%" title="Select Time" data-size="3" required>
                     <option value="10">05:00 PM - 06:00 PM</option>
                     <option value="11">06:00 PM - 07:00 PM</option>
                     <option value="12">07:00 PM - 08:00 PM</option>
@@ -103,15 +108,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal-body-submit submit">
+                        <button class="green-btn gotoResetPass">Submit</button>
+                    </div>
                 </form>
-
-                <div class="modal-body-submit submit">
-                    <button class="green-btn gotoResetPass">Proceed to Pay</button>
-                </div>
             </div>
 
             <div class="modal-footer submit">
-                <button type="button" class="red-btn" data-dismiss="modal">
+                <button type="submit" class="red-btn" data-dismiss="modal">
           Close
         </button>
             </div>
@@ -123,7 +127,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
-    $('input[name="meet_date"]').daterangepicker({
+    $('input[name="date"]').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
         minYear: parseInt(moment().format('YYYY'), 10),
@@ -134,17 +138,11 @@
         }
     });
 
-    $('input[name="meet_date"]').on('apply.daterangepicker', function(
-        ev,
-        picker
-    ) {
+    $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY'));
     });
 
-    $('input[name="meet_date"]').on('cancel.daterangepicker', function(
-        ev,
-        picker
-    ) {
+    $('input[name="date"]').on('cancel.daterangepicker', function(ev, picker) {
         $(this).val('');
     });
 </script>

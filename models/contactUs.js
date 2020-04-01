@@ -13,18 +13,18 @@ const contactUsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please Enter your mobile']
     },
-    Age: {
-        type: Number,
+    age: {
+        type: String,
         required: [true, 'Please Enter your Age']
     },
-    Gender: {
+    gender: {
         type: String,
-        enum: ["male", "female", "other"],
+        enum: ['Male', 'Female', 'Other'],
         required: [true, 'Please Select your Gender']
     },
-    Experts: {
+    experts: {
         type: String,
-        enum: ["psychiatric consultation", "psychology and counselling"],
+        enum: ['Psychiatric Consultation', 'Psychology and Counselling'],
         required: [true, 'Please Select your Experts']
     },
     isReplied: {

@@ -1,33 +1,14 @@
 const router = require('express').Router();
-const {
-  doctorsProfile,
-  psychoTherapy,
-  consultation,
-  bookAppointment
-} = require('../controllers/services');
 
-router.get('/consultation', consultation);
-router.get('/psychoTherapy', psychoTherapy);
+router.get('/consultation', (req, res, next) => res.render('consultation'));
+router.get('/psychoTherapy', (req, res, next) => res.render('psycho_therapy'));
 router.get('/ourDoctors', (req, res, next) => res.render('ourDoctors'));
-router.get('/doctor/profile/:id', (req, res) => {
-  console.log(req.params.id);
+router.get('/doctor/profile/:id', (req, res, next) => {
+  return res.render('doctorsProfile');
 });
 router.get('/institution', (req, res, next) => {
-  const names = [
-    'Liver Profile',
-    'Blood Test',
-    'General Test',
-    'Hepatitis B Test',
-    'COVID-19 Test'
-  ];
-  res.render('institution', {
-    names
-  });
+  res.render('institution');
 });
-router.get('/singleInstitution', (req, res, next) => {
-  res.render('singleInstitution');
-});
-module.exports = router;
 
 router.get('/assessment', (req, res, next) => {
   res.render('assessment');
@@ -54,5 +35,4 @@ router.get('/y', (req, res, next) => {
 router.get('/zz', (req, res, next) => {
   res.render('zz');
 });
-router.post('/book', bookAppointment);
 module.exports = router;

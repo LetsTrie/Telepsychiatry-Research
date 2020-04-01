@@ -1,90 +1,97 @@
 #HOMEPAGE_CONTACTUS_MODAL {
-    .modal-body {
-        .wrapper {
-            width: 90%;
-            margin: auto;
-            @media (max-width: 1000px) {
-                width: 95%;
-            }
-        }
-        .contactUs_form {
-            form {
-                .submit {
-                    width: 100%;
-                    text-align: center;
-                    padding: 15px 0;
-                    button {
-                        border: none;
-                        outline: none;
-                        background: #ef7c00;
-                        color: #fff;
-                        padding: 10px 22px;
-                        font-size: 24px;
-                        letter-spacing: 0.5px;
-                        border-radius: 4px;
-                    }
-                }
-                p {
-                    font-family: 'Roboto', sans-serif;
-                    font-size: 22px;
-                    padding-bottom: 5px;
-                    padding-left: 2px;
-                    letter-spacing: 0.6px;
-                    margin: 0px;
-                    color: #363636;
-                }
-                input,
-                textarea {
-                    width: 100%;
-                    padding: 0.6rem;
-                    margin: 5px 0px;
-                    border: 1px solid rgb(168, 163, 163);
-                    border-radius: 4px;
-                    &:focus {
-                        outline: none;
-                    }
-                }
-                .flex-parentt {
-                    display: flex;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                    width: 100%;
-                    padding: 5px 0;
-                    .flex-childd {
-                        box-sizing: border-box;
-                        margin-bottom: 0.5rem;
-                        width: 49%;
-                        margin-right: 0.5rem;
-                        &:last-child {
-                            margin-right: 0rem;
-                        }
-                        @media (max-width: 900px) {
-                            margin-right: 0rem;
-                            width: 100%;
-                        }
-                    }
-                }
-                .messagee {}
-            }
-        }
+  .modal-body {
+    .wrapper {
+      width: 90%;
+      margin: auto;
+
+      @media (max-width: 1000px) {
+        width: 95%;
+      }
     }
-    .submit {
-        .red-btn {
+    .contactUs_form {
+      form {
+        .submit {
+          width: 100%;
+          text-align: center;
+          padding: 15px 0;
+
+          button {
             border: none;
             outline: none;
-            background: rgba(194, 43, 5, 0.925);
+
+            background: #ef7c00;
             color: #fff;
-            padding: 10px 20px;
-            font-size: 22px;
+            padding: 10px 22px;
+
+            font-size: 24px;
             letter-spacing: 0.5px;
             border-radius: 4px;
+          }
         }
-    }
-}
 
-.selector {
-    width: 100%;
-    padding: 10px 0px;
-    background-color: #fff;
-    border-radius: 4px;
+        p {
+          font-family: 'Roboto', sans-serif;
+          font-size: 22px;
+          padding-bottom: 5px;
+          padding-left: 2px;
+          letter-spacing: 0.6px;
+          margin: 0px;
+          color: #363636;
+        }
+
+        input[type='text'],
+        input[type='email'],
+        textarea {
+          width: 100%;
+          padding: 0.6rem;
+          margin: 5px 0px;
+          border: 1px solid rgb(168, 163, 163);
+          border-radius: 4px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+        .flex-parentt {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          width: 100%;
+          padding: 5px 0;
+
+          .flex-childd {
+            box-sizing: border-box;
+            margin-bottom: 0.5rem;
+            width: 49%;
+            margin-right: 0.5rem;
+
+            &:last-child {
+              margin-right: 0rem;
+            }
+            @media (max-width: 900px) {
+              margin-right: 0rem;
+              width: 100%;
+            }
+          }
+        }
+
+        .messagee {
+        }
+      }
+    }
+  }
+  .submit {
+    .red-btn {
+      border: none;
+      outline: none;
+
+      background: rgba(194, 43, 5, 0.925);
+      color: #fff;
+      padding: 10px 20px;
+
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      border-radius: 4px;
+    }
+  }
 }

@@ -21,6 +21,9 @@ router.get('/assessment/questions', (req, res, next) => {
 router.get('/assessment/result', (req, res, next) => {
   res.render('assessment_result');
 });
+router.get('/assessment/register', (req, res, next) => {
+  res.render('assessment_reg');
+});
 
 router.get('/x', (req, res, next) => {
   res.render('x');

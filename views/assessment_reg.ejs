@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/zz.css" />
+    <link rel="stylesheet" href="/css/assessment_reg.css" />
 
     <title>
       Assessment | Innovations | Telepsychiatry Research
@@ -20,7 +20,7 @@
             <p><a href="#">Services</a> / Mental Health Assessment</p>
           </div>
           <div class="bigText">
-            <p>Result For Mental Health Test</p>
+            <p>Registration For Mental Health Test</p>
           </div>
         </div>
 
@@ -144,24 +144,102 @@
               </div>
             </div>
           </div>
+          <style>
+            .card-label > label {
+              background-color: #fff;
+              color: #777676;
+              display: inline-block;
+              font-size: 13px;
+              font-weight: 500;
+              margin: 6px auto auto 8px;
+              padding: 0 7px;
+            }
+            .card-label > input {
+              background-color: #fff;
+              border: 1px solid #dbdbdb;
+              border-radius: 4px;
+              box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+              display: block;
+              height: 50px;
+              margin-top: -13px;
+              padding: 5px 15px 0;
+              transition: border-color 0.3s;
+              width: 100%;
+            }
+          </style>
           <div class="eachBigSection">
             <div class="bigHeading">
-              <p>Result of Test</p>
+              <p>Registration For Test</p>
             </div>
-            <div class="litWidth">
-              <div class="yourScore">
-                <p>Your Score: <span>Severe Depression</span></p>
+            <div class="inputSection">
+              <div class="personalInfo infoBox">
+                <div class="infoBox_heading">
+                  <p>Personal Information</p>
+                </div>
+                <div class="inSecFlxPrnt">
+                  <div class="form-group card-label">
+                    <label>Name</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                  <div class="form-group card-label">
+                    <label>Age</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
+                <div class="inSecFlxPrnt">
+                  <div class="form-group card-label">
+                    <label>Contact Number</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                  <div class="form-group card-label">
+                    <label>Email</label>
+                    <input class="form-control" type="text" />
+                  </div>
+                </div>
               </div>
-              <div class="someDiscussion">
-                <p>
-                  Your answers suggest you are suffering from severe depression.
-                  It is important that you schedule an appointment with your
-                  doctor or a mental health worker now. If you need help we
-                  strongly suggest that you reach out to to a qualified mental
-                  health professional listed in our directory of
-                  <a href="#"> Psychiatric Consultants </a> and
-                  <a href="#"> Psychologists </a>
-                </p>
+              <div class="DisorderInfo infoBox">
+                <div class="infoBox_heading pt-2 pb-1">
+                  <p>Select Test</p>
+                </div>
+                <div class="inSecFlxPrnt">
+                  <div class="slctpkr">
+                    <div class="selectBoxContainer" style="width: 100%;">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        data-live-search="true"
+                        name="disorder name"
+                        required
+                      >
+                        <option selected disabled> Select Disorder </option>
+                        <option value="A"> A</option>
+                        <option value="B"> B </option>
+                        <option value="C"> C </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="slctpkr">
+                    <div
+                      class="selectBoxContainer"
+                      style="width: 100%;"
+                      data-live-search="true"
+                    >
+                      <select
+                        class="selectpicker"
+                        data-live-search="true"
+                        data-width="100%"
+                        name="landTypex"
+                        required
+                      >
+                        <option selected disabled> Select Test </option>
+                        <option value="A"> A</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="submit-btn">
+                <button>Start Quiz</button>
               </div>
             </div>
           </div>

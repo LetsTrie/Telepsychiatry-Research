@@ -129,6 +129,46 @@ body {
     &:last-child {
       width: 73%;
       padding: 20px 50px;
+      .bigHeading {
+        text-align: center;
+        padding-bottom: 10px;
+        font-weight: 500;
+        p {
+          font-size: 2.5rem;
+        }
+      }
+      .yourScore {
+        padding-top: 30px;
+        padding-bottom: 5px;
+        font-weight: 700;
+        p {
+          color: black;
+          font-size: 30px;
+          span {
+            color: red;
+          }
+        }
+      }
+      .someDiscussion {
+        text-align: justify;
+        p {
+          font-size: 18px;
+          color: #333333;
+          line-height: 30px;
+          color: rgb(70, 70, 70);
+          span {
+            font-weight: 700;
+          }
+          a {
+            color: blue;
+          }
+        }
+      }
     }
   }
+}
+
+.litWidth {
+  width: 70%;
+  margin: auto;
 }

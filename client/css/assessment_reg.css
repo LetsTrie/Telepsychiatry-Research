@@ -910,7 +910,7 @@ body {
 
 .assessment_wrapper {
   background: #ebebeb;
-  min-height: 100vh;
+  min-height: 85vh;
 }
 
 .blueDivider {
@@ -987,7 +987,23 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 95%;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
+}
+
+@media (max-width: 1320px) {
+  .twoBigSectionFlex {
+    width: 98%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection {
@@ -998,6 +1014,13 @@ body {
 .twoBigSectionFlex .eachBigSection:first-child {
   width: 25%;
   padding: 20px 25px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:first-child {
+    width: 100%;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange {
@@ -1023,14 +1046,11 @@ body {
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
   cursor: pointer;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
   font-weight: 700;
-  font-size: 17px;
+  text-decoration: underline;
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
@@ -1054,6 +1074,13 @@ body {
 .twoBigSectionFlex .eachBigSection:last-child {
   width: 73%;
   padding: 20px 50px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
+    width: 100%;
+  }
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .bigHeading {
@@ -1066,41 +1093,145 @@ body {
   font-size: 2.5rem;
 }
 
-.twoBigSectionFlex .eachBigSection:last-child .yourScore {
-  padding-top: 30px;
-  padding-bottom: 5px;
-  font-weight: 700;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .yourScore p {
-  color: black;
-  font-size: 30px;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .yourScore p span {
-  color: red;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .someDiscussion {
-  text-align: justify;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .someDiscussion p {
-  font-size: 18px;
-  color: #333333;
-  line-height: 30px;
-  color: #464646;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .someDiscussion p span {
-  font-weight: 700;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .someDiscussion p a {
-  color: blue;
-}
-
-.litWidth {
-  width: 70%;
+.twoBigSectionFlex .eachBigSection:last-child .inputSection {
+  width: 60%;
   margin: auto;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 25px;
+}
+
+@media (max-width: 1500px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
+    width: 75%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection {
+    width: 98%;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .submit-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .submit-btn button {
+  max-width: 200px;
+  font-weight: 700;
+  border: 2px solid #20c0f3;
+  border-radius: 4px;
+  display: block;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  background-color: #20c0f3;
+  color: #fff;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .card-label > label {
+  background-color: #fff;
+  color: #777676;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 6px auto auto 8px;
+  padding: 0 7px;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .card-label > input {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  display: block;
+  height: 50px;
+  margin-top: -13px;
+  padding: 5px 15px 0;
+  -webkit-transition: border-color 0.3s;
+  -o-transition: border-color 0.3s;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .infoBox_heading p {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@media (max-width: 700px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .form-group,
+.twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .slctpkr {
+  width: 50%;
+  padding: 0px 10px 3px 0;
+}
+
+@media (max-width: 700px) {
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .form-group,
+  .twoBigSectionFlex .eachBigSection:last-child .inputSection .infoBox .inSecFlxPrnt .slctpkr {
+    width: 100%;
+  }
+}
+
+.bootstrap-select .btn {
+  font-size: 14px;
+  padding: 10px;
+  padding-left: 5px;
+}
+
+.bootstrap-select .btn-light {
+  color: #212529;
+  background-color: white;
+  border-color: #dbdbdb;
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show > .btn-light.dropdown-toggle {
+  color: #212529;
+  background-color: white;
+  border-color: #dbdbdb;
 }

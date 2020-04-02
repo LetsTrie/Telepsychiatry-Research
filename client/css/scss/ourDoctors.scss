@@ -1,165 +1,317 @@
 @import '_main';
 @import '_navbar';
+@import '_main';
+@import '_navbar';
 
-.card p {
-  letter-spacing: 0.3px;
+body {
+  font-family: 'Open Sans', sans-serif;
 }
-
-p {
-  margin-bottom: 8px;
+.assessment_wrapper {
+  background: #ebebeb;
+  min-height: 100vh;
 }
-.twoButtons {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-top: 30px;
-
-  .BookNow {
-    background-color: #0de0fe;
-    color: #fff;
-  }
-}
-
-.twoButtons button,
-.bookDoctor__showMore button {
-  color: #0de0fe;
-  font-size: 17px;
-  border: 2px solid #0de0fe;
-  text-align: center;
-  display: block;
-  font-weight: 500;
-  padding: 6px;
-  cursor: pointer;
-  user-select: none;
-  background-color: transparent;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.twoButtons button:hover,
-.bookDoctor__showMore button:hover {
-  background-color: #0de0fe;
-  color: #fff;
-}
-
-.bookDoctor__showMore {
-  display: flex;
-  justify-content: center;
-
-  margin-bottom: 30px;
-}
-
-.bookDoctor__showMore button {
-  padding: 10px 20px;
-  background: #0de0fe;
-  color: white;
-}
-.checked {
-  color: #f4c150;
-}
-
-.verified {
-  color: #28a745;
-  margin-left: 3px;
-  font-weight: 900;
-}
-
-.ourDoctorsHeading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
-
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
   p {
-    font-size: 40px;
-    font-weight: 500;
-    color: #2a2a2a;
-    letter-spacing: 0.5px;
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
+}
+.twoBigSectionFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+
+  @media (max-width: 1320px) {
+    width: 98%;
+  }
+  @media (max-width: 1300px) {
+    flex-direction: column;
+  }
+  margin: 30px auto 0 auto;
+
+  .eachBigSection {
+    background: white;
+    border-radius: 5px;
+
+    &:first-child {
+      width: 25%;
+      margin-bottom: 15px;
+
+      @media (max-width: 1300px) {
+        width: 100%;
+      }
+      .searchFilter {
+        border-bottom: 1px solid #f0f0f0;
+        padding: 16px 10px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        p {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 0px;
+          color: #272b41;
+        }
+      }
+      .searchFields {
+        padding: 10px 40px 10px 22px;
+        .sField {
+          padding-bottom: 5px;
+          .input-group input {
+            border-right: 0px solid #ced4da;
+          }
+          .form-control {
+            padding: 0.375rem 0.75rem;
+            padding-top: 0.4rem;
+            padding-right: 0.75rem;
+            padding-bottom: 0.4rem;
+            padding-left: 0.75rem;
+          }
+          ::placeholder {
+            color: rgb(131, 130, 130);
+          }
+          .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #ced4da;
+            outline: 0;
+            box-shadow: none;
+          }
+          .btn {
+            border-radius: 0px;
+            border-top: 1px solid #ced4da;
+            border-right: 1px solid #ced4da;
+            border-bottom: 1px solid #ced4da;
+            border-top-right-radius: 0.25rem;
+            border-bottom-right-radius: 0.25rem;
+            padding-top: 12px;
+            padding-bottom: 12px;
+          }
+        }
+      }
+      p {
+        margin-bottom: 0px;
+      }
+      .cat {
+        padding-top: 15px;
+        padding-left: 5px;
+        .cat_heading {
+          padding-bottom: 10px;
+          p {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 0px;
+          }
+        }
+        .catOptions {
+          .custom-checkbox {
+            padding-bottom: 4px;
+
+            label {
+              color: rgb(78, 77, 77);
+              padding-bottom: 5px;
+            }
+          }
+        }
+      }
+      .findDocBtn {
+        padding-left: 5px;
+        width: 100%;
+        margin: auto;
+        button {
+          border-radius: 3px;
+          margin-top: 20px;
+          display: block;
+          width: 100%;
+          background-color: #0de0fe;
+          border: 1px solid #0de0fe;
+          color: #fff;
+          height: 46px;
+          font-weight: 500;
+          font-size: 19px;
+        }
+      }
+    }
+
+    &:last-child {
+      width: 73%;
+      @media (max-width: 1300px) {
+        width: 100%;
+      }
+      padding: 20px 50px;
+      margin-bottom: 15px;
+      .bigHeading {
+        text-align: center;
+        padding-bottom: 30px;
+        font-weight: 500;
+        p {
+          font-size: 2.5rem;
+        }
+      }
+    }
   }
 }
 
-.searching {
-  padding: 0 0 45px 0;
+.doctor_identity {
+  // background-color: #f8f9fa;
+  border: 1px solid rgba(19, 19, 19, 0.125);
+  border-radius: 4px;
+  box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
 
-  form {
-    display: flex;
-    justify-content: center;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
-
-  .searchbox {
-    width: 30%;
-    @media (max-width: 1000px) {
-      width: 60%;
+  .his_photo {
+    width: 42%;
+    padding: 20px;
+    @media (max-width: 992px) {
+      width: 50%;
     }
-    input[type='text'] {
-      padding: 9px;
+    @media (max-width: 768px) {
       width: 100%;
     }
+    img {
+      width: 100%;
+      max-height: 300px;
+      border-radius: 7px;
+    }
   }
-  .searchBtn {
-    input[type='submit'] {
-      padding: 5px 30px;
-      font-size: 24px;
-      border: none;
-      outline: none;
-      color: white;
-      cursor: pointer;
-      background: #13ce66;
+  .His_profession {
+    width: 52%;
+    @media (max-width: 992px) {
+      width: 50%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+    font-family: 'Roboto', sans-serif;
+    padding: 20px 20px 20px 20px;
+    @media (max-width: 768px) {
+      padding: 5px 20px 20px 20px;
+    }
+    .name {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #272b41;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+    .degreeNspeciality {
+      color: #00adef;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .aff,
+    .college {
+      margin-bottom: 5px;
+      color: #6e6774;
+    }
+    .aff {
+      padding-bottom: 3px;
+      padding-top: 20px;
+    }
+    .college {
+      padding-bottom: 20px;
+    }
+    .bill {
+      margin-bottom: 30px;
+      color: #6e6774;
+    }
+    .map_location {
+      a {
+        color: #09e5ab;
+        font-weight: 500;
+      }
+    }
+    .ratingg {
+      margin-bottom: 5px;
+      .checked {
+        color: #f4c150;
+      }
+    }
+    .bookingg {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      button {
+        border: 2px solid #0db9f2;
+        border-radius: 4px;
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 10px 20px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 48%;
+        background-color: #0db9f2;
+        color: #fff;
+
+        &:hover {
+          color: white;
+          background-color: #0c99c8;
+          border: 0px solid #0de0fe;
+        }
+      }
+      .viewProfile {
+        color: #0db9f2;
+        background-color: white;
+        border: 2px solid #0de0fe;
+      }
     }
   }
 }
 
-.allResources {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  .item {
-    .card {
-      width: 300px;
-      padding: 10px;
-      box-shadow: 0px 0px 7px rgb(167, 165, 165);
-    }
-  }
-}
-
-.card-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-}
-
-.cardName {
-  font-size: 17px;
-  font-weight: 500;
-  color: #2e3842;
-}
-
-.cardDegree {
-  font-size: 14px;
-  font-weight: 400;
-  color: #757575;
-}
-
-.card-text {
-  color: rgb(105, 102, 102);
-  display: -webkit-box;
-  -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.aff,
-.college {
-  color: rgb(105, 102, 102);
-  span {
-    color: rgb(61, 60, 60);
-  }
-}
-
-.college {
-  padding-top: 5px;
-  padding-bottom: 10px;
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #0de0fe !important;
+  border-color: rgb(128, 128, 128);
+  box-shadow: none;
 }

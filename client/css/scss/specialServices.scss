@@ -1,0 +1,130 @@
+@import '_main';
+@import '_navbar';
+
+// niche margin deya baki..
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+.sp_wrapper {
+  background: #ebebeb;
+  min-height: 100vh;
+}
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+  p {
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
+}
+
+.allSpecialServices_wrapper {
+  background: white;
+  width: 96%;
+  margin: 25px auto 20px auto;
+  border-radius: 5px;
+  padding: 10px;
+  .specialHeading {
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 500;
+    p {
+      font-size: 2.5rem;
+    }
+  }
+  .specialSubHeading {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    font-weight: 500;
+    p {
+      max-width: 800px;
+      font-size: 18px;
+    }
+  }
+  .allSpecialServices {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .eachServices {
+      width: 23%;
+      height: 400px;
+      // padding: 5px;
+      margin: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      .es_img {
+        height: 75%;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          transition: transform 0.5s;
+          &:hover {
+            transform: scale(1.15);
+          }
+        }
+      }
+      .es_name {
+        padding-top: 15px;
+        padding-left: 20px;
+        p {
+          margin-bottom: 0px;
+          font-weight: 500;
+          font-size: 17px;
+          &:first-child {
+            margin-bottom: 6px;
+            font-weight: 700;
+            font-size: 20px;
+          }
+          span {
+          }
+        }
+      }
+    }
+  }
+}

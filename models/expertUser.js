@@ -40,7 +40,7 @@ const eUserSchema = new mongoose.Schema({
     speciality: {
         type: String
     },
-    visitingFee: {
+    fee: {
         type: String
     },
     institute: {
@@ -52,26 +52,32 @@ const eUserSchema = new mongoose.Schema({
     aboutYourself: {
         type: String
     },
+    propicURL: {
+        type: String
+    },
+    cvURL: {
+        type: String
+    },
     education: [{
-        institute: String,
+        eduInstitute: String,
         degree: String,
         eduFrom: String,
         eduTo: String
     }],
     training: [{
-        name: String,
-        year: String,
-        description: String
+        trainingName: String,
+        trainingYear: String,
+        trainingDetails: String
     }],
     awards: [{
-        name: String,
-        year: String,
-        description: String
+        awardsName: String,
+        awardsYear: String,
+        awardsDetails: String
     }],
     workExperience: [{
-        institute: String,
-        from: String,
-        to: String
+        expInstitute: String,
+        expFrom: String,
+        expTto: String
     }],
     visitingHour: [{
         chamberName: String,

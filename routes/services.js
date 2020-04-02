@@ -9,9 +9,7 @@ const {
 router.get('/consultation', consultation);
 router.get('/psychoTherapy', psychoTherapy);
 router.get('/ourDoctors', (req, res, next) => res.render('ourDoctors'));
-router.get('/doctor/profile/:id', (req, res) => {
-    console.log(req.params.id);
-});
+router.get('/doctor/profile/:doc_id', doctorsProfile);
 router.get('/institution', (req, res, next) => {
     const names = [
         'Liver Profile',

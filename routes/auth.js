@@ -1,14 +1,14 @@
 const router = require('express').Router();
-
+const multer = require('multer');
 const {
     getRegisterGeneralUser,
     getRegisterExpertUser,
     getRegisterOrganizations,
     postRegisterGeneralUser,
     postRegisterExpertUser,
-    postRegisterExpertUser_New,
     postRegisterOrgUser,
-    postCheckDuplication
+    postCheckDuplication,
+    saveImage
 } = require('../controllers/auth');
 
 router.get('/login', (req, res, next) => res.render('login'));
@@ -18,7 +18,7 @@ router.post('/register/new/gen', postRegisterGeneralUser);
 router.post('/register/checkDuplicate', postCheckDuplication);
 
 router.get('/register/new/exp', getRegisterExpertUser);
-router.post('/register/new/exp', postRegisterExpertUser_New);
+router.post('/register/new/exp', postRegisterExpertUser);
 
 router.get('/register/new/org', getRegisterOrganizations);
 router.post('/register/new/org', postRegisterOrgUser);

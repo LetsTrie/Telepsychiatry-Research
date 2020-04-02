@@ -90,10 +90,10 @@
     <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
     <script>
         $('button.doctorsProfile').click((e) => {
-            const id = e.target.id
+            const doc_id = e.target.id
             console.log('yo')
-            console.log(id)
-            location = '/services/doctor/profile/' + id
+            console.log(doc_id)
+            location = '/services/doctor/profile/' + doc_id
         })
     </script>
     <script>
@@ -123,10 +123,6 @@
 
         document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
             location = '/services/ourDoctors';
-        })
-
-        $('.twoButtons .doctorsProfile').click(e => {
-            location = '/services/doctor/profile/1';
         })
     </script>
 

@@ -2,13 +2,13 @@ const { eUserModel } = require('../models/expertUser');
 const nodemailer = require('nodemailer');
 
 exports.doctorsProfile = async(req, res, next) => {
-    const id = req.params.id;
+    const id = req.params.doc_id;
     console.log('id :', id);
-    // const doctor = await eUserModel.findOne({ _id: id });
-    // console.log(doctor);
-    // return res.render('doctorsProfile', {
-    //     doctor
-    // });
+    const doctor = await eUserModel.findOne({ _id: id });
+    console.log(doctor);
+    return res.render('doctorsProfile', {
+        doctor
+    });
 };
 
 exports.psychoTherapy = async(req, res, next) => {

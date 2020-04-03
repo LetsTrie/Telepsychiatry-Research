@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="doctor_identity">
                     <div class="his_photo">
-                        <img src="/images/doctor.jpg" alt="Doctor" />
+                        <img src="/uploads/<%= doctor.propicURL %>" alt="Doctor" />
                     </div>
                     <div class="His_profession">
                         <p class="name">
@@ -39,7 +39,8 @@
                             <%= doctor.affiliation %>
                         </p>
                         <p class="college">
-                            <span class="fa fa-university">&nbsp;</span> Sir Salimullah Medical College & Mitford Hospital
+                            <span class="fa fa-university">&nbsp;</span>
+                            <%= doctor.institute %>
                         </p>
                         <p class="bill">
                             <span class="fa fa-money">&nbsp;&nbsp;</span>
@@ -121,7 +122,7 @@
                                   <div class="experience-content">
                                     <div class="timeline-content">
                                       <a href="#/" class="name"
-                                        ><%= doctor.education[i].institute %></a
+                                        ><%= doctor.education[i].eduInstitute %></a
                                       >
                                       <div>
                                         <%= doctor.education[i].degree %>
@@ -156,10 +157,10 @@
                               <div class="experience-content">
                                 <div class="timeline-content">
                                   <a href="#/" class="name"
-                                    ><%= doctor.workExperience[i].institute %></a
+                                    ><%= doctor.workExperience[i].expInstitute %></a
                                   >
                                   <span class="time"
-                                    ><%= doctor.workExperience[i].from %> - <%= doctor.workExperience[i].to %></span
+                                    ><%= doctor.workExperience[i].expFrom %> - <%= doctor.workExperience[i].expTo %></span
                                   >
                                 </div>
                               </div>
@@ -183,13 +184,13 @@
                               <div class="experience-content">
                                 <div class="timeline-content">
                                   <a href="#/" class="name">
-                                    <%= doctor.training[i].name %></a
+                                    <%= doctor.training[i].trainingName %></a
                                   >
-                                  <span class="time"><%= doctor.training[i].year %></span>
+                                  <span class="time"><%= doctor.training[i].trainingYear %></span>
 
                                   <div>
                                     <p class="someText">
-                                      <%= doctor.training[i].description %>
+                                      <%= doctor.training[i].trainingDetails %>
                                     </p>
                                   </div>
                                 </div>
@@ -201,7 +202,7 @@
                       </div>
                     </div>
                     <div class="downloadPDF">
-                      <button>Download CV</button>
+                      <button id="<%= doctor.cvURL %>" class="download">Download CV</button>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab3">
@@ -219,14 +220,14 @@
                               <div class="experience-content awardsTab">
                                 <div class="timeline-content">
                                   <span class="coloredTime"
-                                    ><p><%= doctor.awards[i].name %></p></span
+                                    ><p><%= doctor.awards[i].awardsYear %></p></span
                                   >
                                   <a href="#/" class="name"
-                                    ><%= doctor.awards[i].name %></a
+                                    ><%= doctor.awards[i].awardsName %></a
                                   >
                                   <div>
                                     <p class="someText">
-                                      <%= doctor.awards[i].description %>
+                                      <%= doctor.awards[i].awardsDetails %>
                                     </p>
                                   </div>
                                 </div>
@@ -280,4 +281,15 @@
     <%- include('./partials/vendorsBottom')%> <%-
     include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
   </body>
+
+<script>
+  $(document).ready(() => {
+    $('.download').click((e) => {
+      const name = e.target.id
+      console.log(name)
+      location = '/services/downloadCV/' + name
+    })
+  })
+</script>
+
 </html>

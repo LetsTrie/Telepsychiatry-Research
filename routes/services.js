@@ -3,13 +3,17 @@ const {
     doctorsProfile,
     psychoTherapy,
     consultation,
-    bookAppointment
+    bookAppointment,
+    downloadCV
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
 router.get('/psychoTherapy', psychoTherapy);
 router.get('/ourDoctors', (req, res, next) => res.render('ourDoctors'));
 router.get('/doctor/profile/:doc_id', doctorsProfile);
+router.get('/doctor/profile/:id', (req, res) => {
+    console.log(req.params.id);
+});
 router.get('/institution', (req, res, next) => {
     const names = [
         'Liver Profile',
@@ -38,6 +42,21 @@ router.get('/assessment/questions', (req, res, next) => {
 router.get('/assessment/result', (req, res, next) => {
     res.render('assessment_result');
 });
+router.get('/assessment/register', (req, res, next) => {
+    res.render('assessment_reg');
+});
 
+router.get('/x', (req, res, next) => {
+    res.render('x');
+});
+
+router.get('/y', (req, res, next) => {
+    res.render('y');
+});
+router.get('/zz', (req, res, next) => {
+    res.render('zz');
+});
 router.post('/book', bookAppointment);
+
+router.get('/downloadCV/:name', downloadCV);
 module.exports = router;

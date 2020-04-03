@@ -3,11 +3,8 @@ p {
 }
 
 .footerr_wrapper {
-  padding-top: 0px;
-  padding-bottom: 20px;
-
   background: #001c30;
-  padding: 50px 0 20px;
+  padding: 30px 0 0 0;
   background-image: url(../images/bg2.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -17,7 +14,7 @@ p {
 
   .footerr {
     padding: 10px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     width: 85%;
 
     @media (max-width: 1500px) {

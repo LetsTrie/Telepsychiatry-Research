@@ -41,7 +41,7 @@
                         <% for(let i = 0 ; i < doctors.length; i++) { %>
                             <div class="item">
                                 <div class="m-1 mb-5 card">
-                                    <img src="/images/doctor.jpg" class="card-img-top" />
+                                    <img src="/uploads/<%= doctors[i].propicURL %>" class="card-img-top" />
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <p class="cardName">
@@ -59,7 +59,8 @@
                                                 <%= doctors[i].affiliation %>
                                             </p>
                                             <p class="college">
-                                                <span class="fa fa-university">&nbsp;</span> Sir Salimullah Medical College & Mitford Hospital
+                                                <span class="fa fa-university">&nbsp;</span>
+                                                <%= doctors[i].institute %>
                                             </p>
                                             <div class="twoButtons">
                                                 <div><button id="<%= doctors[i]._id %>" class="doctorsProfile">View Profile</button></div>

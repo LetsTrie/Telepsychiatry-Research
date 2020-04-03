@@ -67,35 +67,86 @@ exports.postCheckDuplication = async(req, res, next) => {
 
 const { regExpUserVal } = require('../validations/auth');
 exports.postRegisterExpertUser = async(req, res, next) => {
-    try {
-        const { error } = regExpUserVal(req.body);
-        console.log(error);
-        if (error) {
-            req.flash('errorMessage', error.details[0].message);
-            return res.redirect('back');
-        }
-        if (req.body.password != req.body.cPassword) {
-            req.flash('errorMessage', 'Password not matching');
-            return res.redirect('back');
-        }
+    console.log('files saved');
+    res.redirect('/');
+};
 
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+exports.saveExpUser = async(req, res, next) => {
+    const {
+        name,
+        gender,
+        institute,
+        expertise,
+        designation,
+        speciality,
+        dob,
+        email,
+        password,
+        phone,
+        professionalDegree: profDegree,
+        affiliation,
+        regno,
+        researchArea,
+        country,
+        fee,
+        aboutYourself,
+        propicURL,
+        cvURL
+    } = req.body;
 
-        userObj = {
-            ...req.body,
-            password: hashedPassword,
-            propicURL: req.files.general_user_propic[0].filename,
-            cvURL: req.files.exp_cv[0].filename
-        };
-        delete userObj['cpassword'];
-        const newExpUser = new eUserModel(userObj);
-        await newExpUser.save();
-        req.flash('successMessage', 'You have successfully been regsitered');
-        return res.redirect('back');
-    } catch (err) {
-        console.log('error :-(', err);
-        return res.status(500).json(err);
+    const education = JSON.parse(req.body.education);
+    const training = JSON.parse(req.body.training);
+    const awards = JSON.parse(req.body.awards);
+    const workExperience = JSON.parse(req.body.workExperience);
+    const visitingHour = JSON.parse(req.body.visitingHour);
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    const userObj = {
+        name,
+        gender,
+        institute,
+        expertise,
+        designation,
+        speciality,
+        dob,
+        email,
+        password: hashedPassword,
+        phone,
+        professionalDegree: profDegree,
+        affiliation,
+        regno,
+        researchArea,
+        country,
+        fee,
+        aboutYourself,
+        propicURL,
+        cvURL,
+        education,
+        training,
+        awards,
+        workExperience,
+        visitingHour
+    };
+
+    const { error } = regExpUserVal(userObj);
+    console.log(error);
+    if (error != null) {
+        req.flash('errorMessage', error.details[0].message);
+        return res.send({
+            status: false,
+            message: error.details[0].message
+        });
     }
+
+    const newExpUser = new eUserModel(userObj);
+    await newExpUser.save();
+    console.log('exp saved');
+    req.flash('successMessage', 'You have successfully been regsitered');
+    return res.send({
+        status: true,
+        message: 'success'
+    });
 };
 
 exports.postRegisterOrgUser = async(req, res, next) => {

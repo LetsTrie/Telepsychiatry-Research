@@ -5,7 +5,6 @@ exports.doctorsProfile = async(req, res, next) => {
     const id = req.params.doc_id;
     console.log('id :', id);
     const doctor = await eUserModel.findOne({ _id: id });
-    console.log(doctor);
     return res.render('doctorsProfile', {
         doctor
     });
@@ -13,7 +12,6 @@ exports.doctorsProfile = async(req, res, next) => {
 
 exports.psychoTherapy = async(req, res, next) => {
     const doctors = await eUserModel.find();
-    console.log(doctors);
     res.render('psycho_therapy');
 };
 
@@ -75,3 +73,10 @@ function sendEmail(emailID, reply) {
         }
     });
 }
+
+exports.downloadCV = async(req, res, next) => {
+    const path =
+        '/home/mah-nigga/Projects/NewTRIN/Telepsychiatry-Research/public/uploads/' +
+        req.params.name;
+    res.download(path);
+};

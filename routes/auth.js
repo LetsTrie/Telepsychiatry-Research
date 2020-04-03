@@ -8,7 +8,7 @@ const {
     postRegisterExpertUser,
     postRegisterOrgUser,
     postCheckDuplication,
-    saveImage
+    saveExpUser
 } = require('../controllers/auth');
 
 router.get('/login', (req, res, next) => res.render('login'));
@@ -19,6 +19,7 @@ router.post('/register/checkDuplicate', postCheckDuplication);
 
 router.get('/register/new/exp', getRegisterExpertUser);
 router.post('/register/new/exp', postRegisterExpertUser);
+router.post('/register/new/exp/save', saveExpUser);
 
 router.get('/register/new/org', getRegisterOrganizations);
 router.post('/register/new/org', postRegisterOrgUser);

@@ -1,468 +1,481 @@
 @import '_main';
 @import '_navbar';
 .doctor_profile_heading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
-  p {
-    font-size: 40px;
-    font-weight: 500;
-    color: #2a2a2a;
-    letter-spacing: 0.5px;
-  }
+    text-align: center;
+    font-family: 'Merriweather', sans-serif;
+    margin-bottom: 30px;
+    p {
+        font-size: 40px;
+        font-weight: 500;
+        color: #2a2a2a;
+        letter-spacing: 0.5px;
+    }
 }
 
 .doctor_identity {
-  background-color: #f8f9fa;
-  border: 1px solid rgb(255, 237, 237);
-  box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
-    inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-  display: flex;
-  flex-direction: row;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-  .his_photo {
-    width: 45%;
-    padding: 20px;
-    @media (max-width: 992px) {
-      width: 50%;
-    }
+    background-color: #f8f9fa;
+    border: 1px solid rgb(255, 237, 237);
+    box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    display: flex;
+    flex-direction: row;
     @media (max-width: 768px) {
-      width: 100%;
+        flex-direction: column;
     }
-    img {
-      width: 100%;
-      border-radius: 7px;
+    .his_photo {
+        width: 45%;
+        padding: 20px;
+        @media (max-width: 992px) {
+            width: 50%;
+        }
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            border-radius: 7px;
+            max-height: 300px;
+        }
     }
-  }
-  .His_profession {
-    width: 46%;
-    @media (max-width: 992px) {
-      width: 50%;
+    .His_profession {
+        width: 46%;
+        @media (max-width: 992px) {
+            width: 50%;
+        }
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+        font-family: 'Roboto',
+        sans-serif;
+        padding: 20px 20px 20px 20px;
+        @media (max-width: 768px) {
+            padding: 5px 20px 20px 20px;
+        }
+        .name {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #272b41;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        .degreeNspeciality {
+            color: #00adef;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .aff,
+        .college {
+            margin-bottom: 5px;
+            color: #6e6774;
+        }
+        .aff {
+            padding-bottom: 3px;
+            padding-top: 20px;
+        }
+        .college {
+            padding-bottom: 20px;
+        }
+        .bill {
+            margin-bottom: 30px;
+            color: #6e6774;
+        }
+        .map_location {
+            a {
+                color: #09e5ab;
+                font-weight: 500;
+            }
+        }
+        .ratingg {
+            margin-bottom: 5px;
+            .checked {
+                color: #f4c150;
+            }
+        }
+        .bookingg {
+            button {
+                border: 2px solid #20c0f3;
+                border-radius: 4px;
+                display: block;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                padding: 10px 20px;
+                text-align: center;
+                text-transform: uppercase;
+                width: 100%;
+                background-color: #20c0f3;
+                color: #fff;
+            }
+        }
     }
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-    font-family: 'Roboto', sans-serif;
-    padding: 20px 20px 20px 20px;
-    @media (max-width: 768px) {
-      padding: 5px 20px 20px 20px;
-    }
-    .name {
-      font-size: 20px;
-      margin-bottom: 5px;
-      color: #272b41;
-      letter-spacing: 0.5px;
-      font-weight: 700;
-    }
-    .degreeNspeciality {
-      color: #00adef;
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 15px;
-    }
-
-    .aff,
-    .college {
-      margin-bottom: 5px;
-      color: #6e6774;
-    }
-    .aff {
-      padding-bottom: 3px;
-      padding-top: 20px;
-    }
-    .college {
-      padding-bottom: 20px;
-    }
-    .bill {
-      margin-bottom: 30px;
-      color: #6e6774;
-    }
-    .map_location {
-      a {
-        color: #09e5ab;
-        font-weight: 500;
-      }
-    }
-    .ratingg {
-      margin-bottom: 5px;
-      .checked {
-        color: #f4c150;
-      }
-    }
-    .bookingg {
-      button {
-        border: 2px solid #20c0f3;
-        border-radius: 4px;
-        display: block;
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        padding: 10px 20px;
-        text-align: center;
-        text-transform: uppercase;
-        width: 100%;
-        background-color: #20c0f3;
-        color: #fff;
-      }
-    }
-  }
 }
 
 .aboutDoctor_wrapper {
-  margin: 40px 0 50px 0;
-  .aboutDoctor {
-    box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
-      inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-  }
-  .card-tabs-2 .card-header {
-    padding-bottom: 0;
-  }
-  .card-tabs-2 .nav-tabs {
-    margin: -1px;
-  }
-  .nav-item {
-    // margin-left: 5px;
-  }
-  .nav-item .nav-link {
-    padding: 10px 30px;
-    font-weight: 500;
-    font-size: 17px;
-    letter-spacing: 0.5px;
-  }
+    margin: 40px 0 50px 0;
+    .aboutDoctor {
+        box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    }
+    .card-tabs-2 .card-header {
+        padding-bottom: 0;
+    }
+    .card-tabs-2 .nav-tabs {
+        margin: -1px;
+    }
+    .nav-item {
+        // margin-left: 5px;
+    }
+    .nav-item .nav-link {
+        padding: 10px 30px;
+        font-weight: 500;
+        font-size: 17px;
+        letter-spacing: 0.5px;
+    }
 }
 
 .overview_aboutMe {
-  margin: 25px 0 20px 0;
-  &_header {
-    color: #272b41;
-    font-weight: 500;
-    margin-bottom: 15px;
-    line-height: 1.2;
-    font-size: 24px;
-    letter-spacing: 0.5px;
-  }
-  &_info {
-    text-align: justify;
-    color: #3a3e53;
-    letter-spacing: 0.3px;
-  }
+    margin: 25px 0 20px 0;
+    &_header {
+        color: #272b41;
+        font-weight: 500;
+        margin-bottom: 15px;
+        line-height: 1.2;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+    &_info {
+        text-align: justify;
+        color: #3a3e53;
+        letter-spacing: 0.3px;
+    }
 }
 
 .overview_education,
 .overview_exper {
-  margin-top: 20px;
-  padding: 10px 40px 20px 40px;
+    margin-top: 20px;
+    padding: 10px 40px 20px 40px;
 }
 
 .overview_exper_institutes_one {
-  padding-top: 10px;
-  &:first-child {
-    padding-top: 6px;
-  }
+    padding-top: 10px;
+    &:first-child {
+        padding-top: 6px;
+    }
 }
 
 .overview_services {
-  padding: 10px 40px 50px 40px;
-  &_header {
-    color: #272b41;
-    font-weight: 500;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    font-size: 22px;
-    letter-spacing: 0.5px;
-  }
-  &_points {
-    p {
-      color: #282b3a;
-      font-weight: 500;
+    padding: 10px 40px 50px 40px;
+    &_header {
+        color: #272b41;
+        font-weight: 500;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        font-size: 22px;
+        letter-spacing: 0.5px;
     }
-  }
+    &_points {
+        p {
+            color: #282b3a;
+            font-weight: 500;
+        }
+    }
 }
 
 .locationTimeMoney {
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  flex-direction: row;
-  &:last-child {
-    margin-bottom: 50px;
-  }
-  @media (max-width: 780px) {
-    flex-direction: column;
-  }
-  margin: 20px 30px;
-  padding: 20px;
-  border: 1px solid rgb(235, 235, 235);
-  box-shadow: 0px 2px 5px rgb(214, 214, 214);
-  border-radius: 5px;
-  .location {
-    width: 45%;
-    @media (max-width: 780px) {
-      width: 100%;
-    }
-    .ins_nam {
-      font-size: 18px;
-      color: #2e3842;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    .ins_loc {
-      font-weight: normal;
-      color: #757575;
-      margin-bottom: 25px;
-      font-size: 14px;
-    }
-    .ins_dir {
-      a {
-        font-size: 14px;
-        color: #20c0f3;
-        font-weight: 500;
-      }
-    }
-  }
-  .timee {
-    width: 35%;
-    @media (max-width: 780px) {
-      width: 100%;
-    }
-    font-size: 15px;
-    .time_each {
-      padding-bottom: 10px;
-    }
-    .dayy {
-      font-weight: bold;
-      color: #272b41;
-    }
-    .tmm {
-    }
-  }
-  .moneyy {
-    width: 20%;
-    @media (max-width: 780px) {
-      width: 100%;
-    }
+    font-family: 'Roboto', sans-serif;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    p {
-      font-size: 20px;
-      font-weight: 500;
-      color: #272b41;
+    flex-direction: row;
+    &:last-child {
+        margin-bottom: 50px;
     }
-  }
+    @media (max-width: 780px) {
+        flex-direction: column;
+    }
+    margin: 20px 30px;
+    padding: 20px;
+    border: 1px solid rgb(235, 235, 235);
+    box-shadow: 0px 2px 5px rgb(214, 214, 214);
+    border-radius: 5px;
+    .location {
+        width: 45%;
+        @media (max-width: 780px) {
+            width: 100%;
+        }
+        .ins_nam {
+            font-size: 18px;
+            color: #2e3842;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .ins_loc {
+            font-weight: normal;
+            color: #757575;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .ins_dir {
+            a {
+                font-size: 14px;
+                color: #20c0f3;
+                font-weight: 500;
+            }
+        }
+    }
+    .timee {
+        width: 35%;
+        @media (max-width: 780px) {
+            width: 100%;
+        }
+        font-size: 15px;
+        .time_each {
+            padding-bottom: 10px;
+        }
+        .dayy {
+            font-weight: bold;
+            color: #272b41;
+        }
+        .tmm {}
+    }
+    .moneyy {
+        width: 20%;
+        @media (max-width: 780px) {
+            width: 100%;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+            font-size: 20px;
+            font-weight: 500;
+            color: #272b41;
+        }
+    }
 }
 
 .box {
-  min-height: 350px;
+    min-height: 350px;
 }
 
 .card-tabs-2 .card-header {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 .card-tabs-2 .nav-tabs {
-  margin: -1px;
+    margin: -1px;
 }
 
 .nav-item .nav-link {
-  padding: 10px 30px;
+    padding: 10px 30px;
 }
 
 .ratingNumber {
-  font-size: 15px;
-  font-family: 'Lato';
+    font-size: 15px;
+    font-family: 'Lato';
 }
 
 #education-pane {
-  display: none;
+    display: none;
 }
 
 #work-exp-pane {
-  display: none;
+    display: none;
 }
 
-.His_profession {
-}
+.His_profession {}
 
 .aboutMe {
-  margin-top: 20px;
-  padding: 10px 40px 0px 40px;
+    margin-top: 20px;
+    padding: 10px 40px 0px 40px;
 }
+
 // ******************************************************************
 // Education
-
 .widget {
-  margin: 10px 0 30px 0;
+    margin: 10px 0 30px 0;
 }
+
 .widget-title {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
+
 .experience-box {
-  position: relative;
+    position: relative;
 }
+
 .experience-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
+
 .experience-list::before {
-  background: #ddd;
-  bottom: 0;
-  content: '';
-  left: 8px;
-  position: absolute;
-  top: 8px;
-  width: 2px;
+    background: #ddd;
+    bottom: 0;
+    content: '';
+    left: 8px;
+    position: absolute;
+    top: 8px;
+    width: 2px;
 }
-.experience-list > li {
-  position: relative;
+
+.experience-list>li {
+    position: relative;
 }
-.experience-list > li:last-child .experience-content {
-  margin-bottom: 0;
+
+.experience-list>li:last-child .experience-content {
+    margin-bottom: 0;
 }
+
 .experience-user .avatar {
-  height: 32px;
-  line-height: 32px;
-  margin: 0;
-  width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0;
+    width: 32px;
 }
-.experience-list > li .experience-user {
-  background: #fff;
-  height: 10px;
-  left: 4px;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 4px;
-  width: 10px;
+
+.experience-list>li .experience-user {
+    background: #fff;
+    height: 10px;
+    left: 4px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 4px;
+    width: 10px;
 }
-.experience-list > li .experience-content {
-  background-color: #fff;
-  margin: 0 0 20px 40px;
-  padding: 0;
-  position: relative;
+
+.experience-list>li .experience-content {
+    background-color: #fff;
+    margin: 0 0 20px 40px;
+    padding: 0;
+    position: relative;
 }
-.experience-list > li .experience-content .timeline-content {
-  line-height: 23px;
-  color: #626262;
+
+.experience-list>li .experience-content .timeline-content {
+    line-height: 23px;
+    color: #626262;
 }
-.experience-list > li .experience-content .timeline-content a.name {
-  font-weight: 500;
+
+.experience-list>li .experience-content .timeline-content a.name {
+    font-weight: 500;
 }
-.experience-list > li .time {
-  color: #626262;
-  display: block;
-  font-size: 13px;
+
+.experience-list>li .time {
+    color: #626262;
+    display: block;
+    font-size: 13px;
 }
+
 .before-circle {
-  background-color: rgba(32, 192, 243, 0.2);
-  border-radius: 50%;
-  height: 12px;
-  width: 12px;
-  border: 2px solid #20c0f3;
+    background-color: rgba(32, 192, 243, 0.2);
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    border: 2px solid #20c0f3;
 }
+
 .exp-year {
-  color: #20c0f3;
-  margin-bottom: 2px;
+    color: #20c0f3;
+    margin-bottom: 2px;
 }
+
 .exp-title {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 // ******************************************************************
 .awardsTab {
-  .coloredTime {
-    p {
-      color: #00adef;
-      margin-bottom: 2px;
-      font-weight: 500;
+    .coloredTime {
+        p {
+            color: #00adef;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
     }
-  }
-  a.name {
-    display: inline-block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: 700;
-  }
-  .someText {
-    width: 75%;
-  }
+    a.name {
+        display: inline-block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .someText {
+        width: 75%;
+    }
 }
 
 .downloadPDF {
-  margin-top: 0px;
-  padding: 0px 40px 20px 45px;
-  margin-bottom: 40px;
-  button {
-    border: none;
-    outline: none;
-    background: #ef7c00;
-    color: #fff;
-    padding: 8px 15px;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    border-radius: 4px;
-  }
+    margin-top: 0px;
+    padding: 0px 40px 20px 45px;
+    margin-bottom: 40px;
+    button {
+        border: none;
+        outline: none;
+        background: #ef7c00;
+        color: #fff;
+        padding: 8px 15px;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+        border-radius: 4px;
+    }
 }
 
 .ProTraining {
-  li {
-    margin-bottom: 20px;
-  }
-  a.name {
-    display: inline-block;
-    margin-bottom: 2px;
-    font-size: 16px;
-    font-weight: 700;
-    color: black;
-  }
-  .time {
-    margin-bottom: 5px;
-    font-size: 15px;
-  }
-  .someText {
-    width: 75%;
-    color: #6e6774;
-  }
+    li {
+        margin-bottom: 20px;
+    }
+    a.name {
+        display: inline-block;
+        margin-bottom: 2px;
+        font-size: 16px;
+        font-weight: 700;
+        color: black;
+    }
+    .time {
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+    .someText {
+        width: 75%;
+        color: #6e6774;
+    }
 }
 
 .busiHour {
-  margin: 40px 0;
+    margin: 40px 0;
 }
 
 #tab2 {
-  .time {
-    font-size: 14px;
-  }
+    .time {
+        font-size: 14px;
+    }
 }
 
 #WorkNexp {
-  padding-bottom: 0px;
-  .time {
-    padding-top: 3px;
-  }
+    padding-bottom: 0px;
+    .time {
+        padding-top: 3px;
+    }
 }
 
 #awardss-pane {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  color: #20c0f3;
+    color: #20c0f3;
 }
 
 .nav-item {
-  a {
-    transition: color 0.2s;
-    &:hover {
-      color: #20c0f3;
+    a {
+        transition: color 0.2s;
+        &:hover {
+            color: #20c0f3;
+        }
     }
-  }
 }
 
 .aboutDoctor_wrapper .card-tabs-2 .card-header {
-  padding-top: 15px;
+    padding-top: 15px;
 }

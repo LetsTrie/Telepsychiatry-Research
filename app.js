@@ -34,7 +34,15 @@ const fileStorage = multer.diskStorage({
         cb(null, 'public/uploads/');
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().toISOString() + '-' + file.originalname);
+        cb(
+            null,
+            new Date()
+            .getMinutes()
+            .toString()
+            .toString(10) +
+            '-' +
+            file.originalname
+        );
     }
 });
 
@@ -42,7 +50,8 @@ const fileFilter = (req, file, cb) => {
     if (
         file.mimetype === 'image/png' ||
         file.mimetype === 'image/jpg' ||
-        file.mimetype === 'image/jpeg'
+        file.mimetype === 'image/jpeg' ||
+        file.mimetype === 'application/pdf'
     ) {
         cb(null, true);
     } else {

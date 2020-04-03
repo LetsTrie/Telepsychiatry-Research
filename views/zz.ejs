@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/zz.css" />
+
+    <title>
+      Assessment | Innovations | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="assessment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Services</a> / Mental Health Assessment</p>
+          </div>
+          <div class="bigText">
+            <p>Result For Mental Health Test</p>
+          </div>
+        </div>
+
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="ageRange">
+              <div class="ageRangeHeading">
+                <p>Test for different ages</p>
+              </div>
+              <div class="ageRangeOptions">
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio1"
+                    >For children</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio11"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio11"
+                    >For young people</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio111"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio111"
+                    >For old people</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="nav-tests popularTests">
+              <div class="nav-test-heading">
+                <p>Popular tests</p>
+              </div>
+              <div class="nav-test-all">
+                <ul>
+                  <li>
+                    <a href="#"> Major Depression Test </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Persistent Depressive Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Psychotic Depression
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Bipolar Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Schizophrenia Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Anxiety Test
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="nav-tests paidTests">
+              <div class="nav-test-heading">
+                <p>Paid tests</p>
+              </div>
+              <div class="nav-test-all">
+                <ul>
+                  <li>
+                    <a href="#"> Major Depression Test </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Persistent Depressive Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Psychotic Depression
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Bipolar Disorder Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Schizophrenia Test
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      Anxiety Test
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="eachBigSection">
+            <div class="bigHeading">
+              <p>Result of Test</p>
+            </div>
+            <div class="litWidth">
+              <div class="yourScore">
+                <p>Your Score: <span>Severe Depression</span></p>
+              </div>
+              <div class="someDiscussion">
+                <p>
+                  Your answers suggest you are suffering from severe depression.
+                  It is important that you schedule an appointment with your
+                  doctor or a mental health worker now. If you need help we
+                  strongly suggest that you reach out to to a qualified mental
+                  health professional listed in our directory of
+                  <a href="#"> Psychiatric Consultants </a> and
+                  <a href="#"> Psychologists </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $(document).on('click', '.submit', e => {
+      location = '/services/assessment/questions';
+    });
+  </script>
+</html>

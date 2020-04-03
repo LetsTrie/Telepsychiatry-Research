@@ -21,18 +21,20 @@
 
   .organizations {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     .org {
       margin: 7px;
+      cursor: pointer;
       img {
         max-width: 120px;
       }
 
-      border: 1px solid rgba(61, 52, 52, 0.1);
+      // border: 1px solid rgba(61, 52, 52, 0.1);
       border-radius: 4px;
       padding: 10px;
       background: #fff;
-      box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
+      // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
       // border-bottom: 4px solid rgba(80, 74, 74, 0.1);
 
       // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px,

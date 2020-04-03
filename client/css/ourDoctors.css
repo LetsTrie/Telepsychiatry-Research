@@ -3,11 +3,15 @@
 @import url("https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Merriweather&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
 *,
 *:after,
 *:before {
@@ -2035,10 +2039,23 @@ body {
   }
 }
 
+@media (max-width: 1600px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
+    padding: 20px 20px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
+    padding: 20px 10px;
+  }
+}
+
 .twoBigSectionFlex .eachBigSection:last-child .bigHeading {
   text-align: center;
-  padding-bottom: 30px;
-  font-weight: 500;
+  padding-bottom: 20px;
+  font-weight: 600;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 .twoBigSectionFlex .eachBigSection:last-child .bigHeading p {
@@ -2128,7 +2145,7 @@ body {
 }
 
 .doctor_identity .His_profession .degreeNspeciality {
-  color: #00adef;
+  color: #20c0f3;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 15px;
@@ -2172,6 +2189,11 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
@@ -2179,6 +2201,16 @@ body {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  .doctor_identity .His_profession .bookingg {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .doctor_identity .His_profession .bookingg button {
@@ -2194,12 +2226,22 @@ body {
   width: 48%;
   background-color: #0db9f2;
   color: #fff;
+  -webkit-transition: color 0.55s, background-color 0.4s, border 0.4s;
+  -o-transition: color 0.55s, background-color 0.4s, border 0.4s;
+  transition: color 0.55s, background-color 0.4s, border 0.4s;
+}
+
+@media (max-width: 500px) {
+  .doctor_identity .His_profession .bookingg button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
 .doctor_identity .His_profession .bookingg button:hover {
   color: white;
   background-color: #0c99c8;
-  border: 0px solid #0de0fe;
+  border: 2px solid #0c99c8;
 }
 
 .doctor_identity .His_profession .bookingg .viewProfile {

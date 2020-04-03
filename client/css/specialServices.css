@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
 *,
 *:after,
 *:before {
@@ -905,7 +907,7 @@ p {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 .sp_wrapper {
@@ -913,61 +915,61 @@ body {
   min-height: 100vh;
 }
 
-.blueDivider {
+.globalBlueDivider {
   padding: 13px 0 10px 0;
   padding-left: 20px;
   background-color: #15558d;
   font-family: 'Poppins', sans-serif;
 }
 
-.blueDivider p a {
+.globalBlueDivider p a {
   color: white;
 }
 
-.blueDivider p a:hover {
+.globalBlueDivider p a:hover {
   text-decoration: underline;
 }
 
-.blueDivider .smallText {
+.globalBlueDivider .smallText {
   margin: auto;
   width: 90%;
   padding-bottom: 3px;
 }
 
 @media (max-width: 1410px) {
-  .blueDivider .smallText {
+  .globalBlueDivider .smallText {
     width: 97%;
   }
 }
 
-.blueDivider .smallText p {
+.globalBlueDivider .smallText p {
   font-size: 13px;
 }
 
-.blueDivider .bigText {
+.globalBlueDivider .bigText {
   margin: auto;
   width: 90%;
   padding-bottom: 3px;
 }
 
 @media (max-width: 1410px) {
-  .blueDivider .bigText {
+  .globalBlueDivider .bigText {
     width: 97%;
   }
 }
 
-.blueDivider .bigText p {
-  font-size: 22px;
+.globalBlueDivider .bigText p {
+  font-size: 22.5px;
   font-weight: 700;
 }
 
 @media (max-width: 550px) {
-  .blueDivider .bigText p {
+  .globalBlueDivider .bigText p {
     font-size: 18px;
   }
 }
 
-.blueDivider p {
+.globalBlueDivider p {
   margin-bottom: 0px;
   color: white;
 }
@@ -982,12 +984,14 @@ body {
 
 .allSpecialServices_wrapper .specialHeading {
   text-align: center;
-  padding-bottom: 10px;
-  font-weight: 500;
+  padding-bottom: 2px;
+  padding-top: 20px;
+  color: #2f337e;
+  font-weight: 600;
 }
 
 .allSpecialServices_wrapper .specialHeading p {
-  font-size: 2.5rem;
+  font-size: 42px;
 }
 
 .allSpecialServices_wrapper .specialSubHeading {
@@ -1001,12 +1005,14 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   padding-bottom: 20px;
-  font-weight: 500;
+  font-weight: 400;
+  color: #2f337e;
+  font-family: 'Scope One', serif;
 }
 
 .allSpecialServices_wrapper .specialSubHeading p {
   max-width: 800px;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .allSpecialServices_wrapper .allSpecialServices {
@@ -1021,24 +1027,61 @@ body {
           flex-wrap: wrap;
 }
 
+@media (max-width: 1500px) {
+  .allSpecialServices_wrapper .allSpecialServices {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .allSpecialServices_wrapper .allSpecialServices {
+    width: 98%;
+  }
+}
+
 .allSpecialServices_wrapper .allSpecialServices .eachServices {
   width: 23%;
-  height: 400px;
+  height: 380px;
   margin: 10px;
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+@media (max-width: 1100px) {
+  .allSpecialServices_wrapper .allSpecialServices .eachServices {
+    width: 30%;
+  }
+}
+
+@media (max-width: 850px) {
+  .allSpecialServices_wrapper .allSpecialServices .eachServices {
+    width: 45%;
+  }
+}
+
+@media (max-width: 650px) {
+  .allSpecialServices_wrapper .allSpecialServices .eachServices {
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .allSpecialServices_wrapper .allSpecialServices .eachServices {
+    width: 96%;
+  }
 }
 
 .allSpecialServices_wrapper .allSpecialServices .eachServices .es_img {
-  height: 75%;
+  height: 77%;
   overflow: hidden;
+  position: relative;
+  background: red;
 }
 
 .allSpecialServices_wrapper .allSpecialServices .eachServices .es_img img {
   width: 100%;
   height: 100%;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   -o-transition: -o-transform 0.5s;
@@ -1053,19 +1096,39 @@ body {
           transform: scale(1.15);
 }
 
+.allSpecialServices_wrapper .allSpecialServices .eachServices .es_img:after {
+  position: absolute;
+  content: 'zz';
+  display: block;
+  background: black;
+  height: 2px;
+  width: 50%;
+}
+
 .allSpecialServices_wrapper .allSpecialServices .eachServices .es_name {
   padding-top: 15px;
-  padding-left: 20px;
+  padding-left: 26.5px;
 }
 
 .allSpecialServices_wrapper .allSpecialServices .eachServices .es_name p {
   margin-bottom: 0px;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 19px;
+  font-family: 'Libre Franklin', Arial, Helvetica, sans-serif;
 }
 
 .allSpecialServices_wrapper .allSpecialServices .eachServices .es_name p:first-child {
-  margin-bottom: 6px;
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: 600;
+  color: #2f337e;
+  cursor: pointer;
+}
+
+.allSpecialServices_wrapper .allSpecialServices .eachServices .es_name p:first-child:hover {
+  text-decoration: underline;
+}
+
+.allSpecialServices_wrapper .allSpecialServices .eachServices .es_name p span {
+  font-size: 15px;
+  color: #3f44a3;
+  padding-left: 1px;
 }

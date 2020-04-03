@@ -27,6 +27,10 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
@@ -34,12 +38,10 @@
 
 .organizationSupport .organizations .org {
   margin: 7px;
-  border: 1px solid rgba(61, 52, 52, 0.1);
+  cursor: pointer;
   border-radius: 4px;
   padding: 10px;
   background: #fff;
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 2px;
 }
 
 .organizationSupport .organizations .org img {

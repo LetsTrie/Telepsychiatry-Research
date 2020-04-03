@@ -34,15 +34,8 @@ const fileStorage = multer.diskStorage({
         cb(null, 'public/uploads/');
     },
     filename: (req, file, cb) => {
-        cb(
-            null,
-            new Date()
-            .getMinutes()
-            .toString()
-            .toString(10) +
-            '-' +
-            file.originalname
-        );
+        const filename = req.body.filename + '-' + file.originalname;
+        cb(null, filename);
     }
 });
 
@@ -63,7 +56,7 @@ app.use(
     multer({
         storage: fileStorage,
         fileFilter: fileFilter
-    }).fields([{ name: 'general_user_propic' }, { name: 'exp_cv' }])
+    }).fields([{ name: 'exp_user_propic' }, { name: 'exp_cv' }])
 );
 
 if (process.env.NODE_ENV === 'development') app.use(logger('dev'));

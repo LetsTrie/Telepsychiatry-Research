@@ -27,6 +27,7 @@
       <div class="my-3 divider"></div>
       <div class="createResources addDoctor pb-5">
         <form action="/auth/register/new/exp" method="POST" enctype="multipart/form-data" id="form">
+          <input type="hidden" name="filename" id="filename">
         <div class="container">
           <div id="alert" class="alert alert-danger"></div>
           <% if (errorMessage != '') { %> 
@@ -247,13 +248,13 @@
                 </div>
                 <div class="input_div">
                   <div class="two_box_header form-header">
-                    <p>Display Picture</p>
+                    <p>Display Picture<span style="color: red;">*</span></p>
                   </div>
                   <div class="input_box imageFile">
                     <input
                       type="file"
                       id="general_user_propic"
-                      name="general_user_propic"
+                      name="exp_user_propic"
                       accept="image/x-png,image/jpg,image/jpeg"
                     />
                   </div>
@@ -264,7 +265,7 @@
               <div class="side_by_side">
                 <div class="input_div">
                   <div class="two_box_header form-header">
-                    <p>Date of Birth</p>
+                    <p>Date of Birth<span style="color: red;">*</span></p>
                   </div>
                   <input
                     name="dob"
@@ -765,7 +766,7 @@
               <div class="side_by_side">
                 <div class="input_div">
                   <div class="two_box_header form-header">
-                    <p>Your CV</p>
+                    <p>Your CV<span style="color: red;">*</span></p>
                   </div>
                   <div class="input_box imageFile">
                     <input
@@ -1572,9 +1573,9 @@
       const emailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       const dobRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
       const phoneRegex = /^[0-9]*$/;
-      if (!nameRegex.test(name)) {
+      if (name == '') {
         error = true;
-        showAlert('Invalid name');
+        showAlert('Enter your name');
       } else if (!emailRegex.test(email)) {
         error = true;
         showAlert('Invalid email');
@@ -1697,9 +1698,10 @@
           ]
         }
       ];
-      const _propic = new Date().getMinutes().toString() + '-' + $("#general_user_propic")[0].files[0].name
-      const _cv = new Date().getMinutes().toString() + '-' + $("#exp_cv")[0].files[0].name
-      
+      const nowInMilSec = Date.parse(new Date().toString())
+      const _propic = nowInMilSec + '-' + $("#general_user_propic")[0].files[0].name
+      const _cv = nowInMilSec + '-' + $("#exp_cv")[0].files[0].name
+      $('#filename').val(nowInMilSec)
       let formData = {
         name,
         gender,
@@ -1726,6 +1728,13 @@
         propicURL: _propic,
         cvURL: _cv
       }
+
+      for (let key in formData) {
+        if (key == null || key.value == '') {
+          console.log(key, 'null')
+        }
+      }
+
       if (!error) {
         formSubmit(formData)
       }

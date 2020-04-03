@@ -21,30 +21,25 @@ exports.getRegisterOrganizations = (req, res, next) => {
 
 const { regGenUserVal } = require('../validations/auth');
 exports.postRegisterGeneralUser = async(req, res, next) => {
-    try {
-        const { error } = regGenUserVal(req.body);
-        if (error) {
-            req.flash('errorMessage', error.details[0].message);
-            return res.redirect('back');
-        }
-        if (req.body.password != req.body.cPassword) {
-            req.flash('errorMessage', 'Password not matching');
-            return res.redirect('back');
-        }
-
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const userObj = {
-            ...req.body,
-            password: hashedPassword,
-            propicURL: req.file.filename
-        };
-        delete userObj['cPassword'];
-        const newGenUser = new gUserModel(userObj);
-        await newGenUser.save();
-        return res.redirect('/');
-    } catch (err) {
-        return res.status(500).json(err);
+    const { error } = regGenUserVal(req.body);
+    if (error) {
+        req.flash('errorMessage', error.details[0].message);
+        return res.redirect('back');
     }
+    if (req.body.password != req.body.cPassword) {
+        req.flash('errorMessage', 'Password not matching');
+        return res.redirect('back');
+    }
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const userObj = {
+        ...req.body,
+        password: hashedPassword,
+        propicURL: req.files.exp_user_propic[0].originalname
+    };
+    delete userObj['cPassword'];
+    const newGenUser = new gUserModel(userObj);
+    await newGenUser.save();
+    return res.redirect('/');
 };
 exports.postCheckDuplication = async(req, res, next) => {
     const { email, phoneNumber } = req.body;

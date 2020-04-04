@@ -62,6 +62,16 @@ p {
                         font-family: 'Lato', sans-serif;
                     }
                 }
+                .service {
+                    p {
+                        color: red;
+                        font-size: 14px;
+                        padding: 2px 5px;
+                        border: 1px solid red;
+                        width: 18%;
+                        border-radius: 5px;
+                    }
+                }
                 .singlePost_reply {
                     display: flex;
                     justify-content: space-between;

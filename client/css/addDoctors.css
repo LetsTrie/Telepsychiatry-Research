@@ -35,12 +35,10 @@
 .flex-parent {
   display: block;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   width: 100%;
   padding: 5px 0;
 }
@@ -90,3 +88,4 @@ select {
 .imageFile {
   padding-top: 10px;
 }
+/*# sourceMappingURL=addDoctors.css.map */

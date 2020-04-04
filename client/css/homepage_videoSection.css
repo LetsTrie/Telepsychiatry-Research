@@ -1,19 +1,15 @@
 .healthCareWithTrin .HC_flex {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
 }
@@ -22,7 +18,6 @@
   .healthCareWithTrin .HC_flex {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
   }
@@ -58,10 +53,9 @@
 }
 
 .healthCareWithTrin .HC_flex .HC_Vid {
-  -webkit-align-self: center;
-      -ms-flex-item-align: center;
-              -ms-grid-row-align: center;
-          align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .healthCareWithTrin .HC_flex .HC_Vid iframe {
@@ -82,3 +76,4 @@
     height: 210px;
   }
 }
+/*# sourceMappingURL=homepage_videoSection.css.map */

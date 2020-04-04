@@ -2,8 +2,7 @@
 @import './_navbar.scss';
 .intro_page_header {
   background: rgb(46, 184, 154);
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1)),
-    url('/images/covid.jpg');
+  background: url('https://lh3.googleusercontent.com/-yK395EQAjxQ/XoiiSZ097rI/AAAAAAAAIfY/GtNd02ztUmAiO3eiV0Xwao8h7xfa2GqzACK8BGAsYHg/s0/coronavirus-covid19.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -416,13 +415,13 @@
 
     .upcomingEvents_flx_chld {
       &:first-child {
-        width: 54%;
+        width: 50%;
         @media (max-width: 1100px) {
           width: 96%;
         }
       }
       &::last-child {
-        width: 44%;
+        width: 48%;
         @media (max-width: 1100px) {
           width: 96%;
         }

@@ -20,7 +20,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   },
   () => console.log('connected to database!')
 );
@@ -36,7 +36,7 @@ const fileStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString() + '-' + file.originalname);
-  }
+  },
 });
 
 const fileFilter = (req, file, cb) => {
@@ -54,7 +54,7 @@ const fileFilter = (req, file, cb) => {
 app.use(
   multer({
     storage: fileStorage,
-    fileFilter: fileFilter
+    fileFilter: fileFilter,
   }).single('image')
 );
 
@@ -65,7 +65,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 app.use(flash());
@@ -83,5 +83,5 @@ app.use(passport.session());
 
 app.use('/', require('./routes'));
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running at port: ${port}`));

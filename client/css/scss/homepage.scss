@@ -1,7 +1,9 @@
 @import './_main.scss';
 @import './_navbar.scss';
 .intro_page_header {
-  background: url('/images/backBan.jpg');
+  background: rgb(46, 184, 154);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1)),
+    url('/images/covid.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -21,33 +23,90 @@
   margin: auto;
 }
 
-.desc {
-  font-family: 'Lato', sans-serif;
-  padding: 20vmin 1vmin;
-  max-width: 600px;
-  @media only screen and (max-width: 500px) {
-    padding: 30vmin 1vmin;
+@keyframes animateLeftToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-10%);
   }
-  padding-bottom: 30vmin;
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes bumm {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.desc {
+  font-family: 'Source Serif Pro', serif;
+  padding: 20px;
+  padding-top: 23px;
+  padding-bottom: 40px;
+  padding-left: 30px;
+  background: white;
+  margin: 25vmin 1vmin;
+  max-width: 600px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  @media only screen and (max-width: 500px) {
+    margin: 30vmin 1vmin;
+  }
+  margin-bottom: 30vmin;
+
+  animation: animateLeftToRight 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s
+    backwards;
+
   .largeText {
-    font-size: 56px;
+    font-size: 58px;
     font-weight: 700;
     color: #404040;
-    animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s
-      backwards;
+    letter-spacing: -1px;
+    font-weight: 700;
+    color: rgb(17, 41, 80);
+    animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s backwards;
     @media (max-width: 700px) {
       font-size: 35px;
     }
   }
   .smallText {
     max-width: 550px;
-    padding-top: 10px;
-    font-size: 17px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     color: rgb(104, 103, 103);
-    animation: fromBottom 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.7s
-      backwards;
+    text-align: justify;
+    font-family: 'Scope One';
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
+    color: rgb(17, 41, 80);
+    animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.1s backwards;
   }
+
+  .btnBook {
+    padding-left: 10px;
+    padding-top: 10px;
+    animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.2s backwards;
+
+    a {
+      color: #ee2a2d;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      display: block;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      background-color: transparent;
+      line-height: 1.5;
+    }
+  }
+
+  border-left: 8px solid #ee2a2d;
 }
 
 .about_this_website {
@@ -480,4 +539,8 @@
 
 .brown {
   background: #f5f6f6;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+  padding: 0px 0.8rem 0px 0.2rem;
 }

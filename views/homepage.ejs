@@ -20,6 +20,7 @@
       .ourMainHomepage {
         position: relative;
       }
+
       .contactUsModal {
         position: fixed;
         height: 80px;
@@ -34,10 +35,7 @@
         color: #228be6;
         border-radius: 50%;
         cursor: pointer;
-
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
-          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
         border: 45px solid rgb(251, 245, 245);
         background: white;
       }
@@ -46,11 +44,8 @@
           outline-offset: 25px;
         }
       }
-      .contactUsModal i {
-        font-size: 90px;
-        background: white;
-
-        color: #228be6;
+      .contactUsModal img {
+        width: 90px;
         border-radius: 50%;
       }
       .imgg {
@@ -62,10 +57,13 @@
     </style>
   </head>
   <body>
+    <%- include('./partials/homepage_contact_us_modal.ejs')%>
+    <%- include('./partials/homepage_bookDoctor.ejs')%>
+
     <div class="ourMainHomepage">
-        <!-- <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
-            <i class="fa fa-question-circle" aria-hidden="true"></i>
-        </div> -->
+        <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
+            <img src="/images/contactUsIcon.png" alt="">
+        </div>
         <div class="intro_page">
             <header class="intro_page_header">
                 <%- include('./partials/navbar.ejs')%>
@@ -73,14 +71,16 @@
                         <div class="desc">
                             <div class="largeText">
                                 <p>
-                                    We Help You To Live <br />
-                                    A  Healthy Life
+                                    We are with <span>you</span>
                                 </p>
                             </div>
                             <div class="smallText">
                                 <p>
-                                    We promotes mental health awareness and care about your health. Join our community for all kinds of health supports.
+                                    TRINN ensure wellbeing and energise mind through innovation, collaboration and care Free Quality care from best experts during the COVID 2019.
                                 </p>
+                            </div>
+                            <div class="btnBook">
+                              <a href="#" data-toggle="modal" data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL">Book Doctors</a>
                             </div>
                         </div>
                     </div>
@@ -88,166 +88,6 @@
         </div>
 
         <div class="about_this_website">
-            <!-- <div class="container">
-                <div class="my-3  py-3">
-                    <div class="about_HEADER text-center">
-                        <p>About <span>Telepsychiatry</span></p>
-                    </div>
-                    <section class="aboutThisCompany">
-                        <div class="about">
-                            <div class="details">
-                                <p>
-                                    Telepsychiatry Research and Innovation Network Ltd started its journey with the dream to touch the life of one billion people within 2025 by designing, developing and implementing innovative technology based mental services, providing evidence based holistic
-                                    mental health care, conducting cutting edge impactful research and providing global platform for interdisciplinary research for mental health care.
-                                    <br><br> We provide the psychiatric consultation from the most reputed psychiatrist in the country having MD or FCPS and other advanced degrees. We provide the corporate health Care for various organizations Next-generation
-                                    wellness service for employer and employee. We treat few but energise all. Child Health care is defined as the medical services that are provided by the medical health professionals to the children having disease or
-                                    infection. The service is dedicated for the kids and adolescents to prepare them for the future world and how to cope with stress and promote their learning and wellbeing from preschool level. To ensure a better future
-                                    this is the core necessiate in our world.
-                                </p>
-                            </div>
-                            <div class="details">
-                            </div>
-                        </div>
-                        <div class="companyLogo">
-                            <img src="/images/logo.png" alt="Logo" />
-                        </div>
-                    </section>
-                </div>
-            </div> -->
-            <!-- <div class="our_services">
-            <p class="service-header">Our Services</p>
-            <div class="cen">
-                <div class="service">
-                   <div class="iconn">
-                      <i class="fa fa-medkit"></i>
-                   </div> 
-                    <h2>Psychiatric Consultations</h2>
-                    <p class="service_p">
-                      We provide the psychiatric consultation from the most
-                      reputed psychiatrist in the country having MD or FCPS 
-                      and other advanced degrees.
-                    </p>
-                </div>
-
-                <div class="service">
-                   <div class="iconn">
-                      <i class="fa fa-user-md"></i>
-                   </div> 
-                    <h2>Corporate Health Care</h2>
-                    <p class="service_p">
-                      We provide the corporate health Care for various organizations
-                      Next-generation wellness service for employer and employee. 
-                      We treat few but energise all.
-                    </p>
-                </div>
-
-                <div class="service">
-                   <div class="iconn">
-                      <i class="fa fa-child"></i>
-                   </div> 
-                    <h2>Child Health Care</h2>
-                    <p class="service_p">
-                      Child Health care is defined as the medical services that are 
-                      provided by the medical health professionals to the children 
-                      having disease or infection.
-                    </p>
-                </div>
-
-                <div class="service">
-                   <div class="iconn">
-                      <i class="fa fa-child"></i>
-                   </div> 
-                    <h2>Care for Future</h2>
-                    <p class="service_p">
-                      The service is dedicated for the kids and adolescents to prepare
-                      them for the future world and how to cope with stress and promote their learning and
-                      wellbeing from preschool level. To ensure a better future this is the core 
-                      necessiate in our world.
-                    </p>
-                </div>
-
-                <div class="service">
-                   <div class="iconn">
-                      <i class="fa fa-user-md"></i>
-                   </div> 
-                    <h2>Caring Relations</h2>
-                    <p class="service_p">
-                      How we can promote healthy and long term caring relations
-                      between with our parents, children, teachers, student, friends, employee , employer,
-                      clients, housemaid and other helping hand. Through our online platform, regular
-                      awareness programs.
-                    </p>
-                </div>
-
-                <div class="service">
-                   <div class="iconn">
-                      <i class="fa fa-medkit"></i>
-                   </div> 
-                    <h2>Behavioral Addiction Centers</h2>
-                    <p class="service_p">
-                      Behavioral Addiction such as mobile phone
-                      addition, Facebook addiction, porn addiction, is increasing and is a major challenge
-                      for our wellbeing. We need appropriate guideline and support to overcome the
-                      problems and from this center we will deliver that care.
-                    </p>
-                </div>
-            </div>
-        </div> -->
-            <!-- <div class="customerQuotes text-center">
-                <div class="container">
-                    <div class="customerQuotes_header">
-                        <p>Our Happy Clients Feedback</p>
-                    </div>
-                    <div class="customerQuotes_header_info">
-                        <p>
-
-                        </p>
-                    </div>
-                    <div class="customers">
-                        <div class="customer">
-                            <div class="quote">
-                                <p>
-                                    Rapidiously enhance standardized information through virtual benefits. Dynamically reintermediate low-risk high-yield partnerships via intermandated collaboration and idea-sharing. Efficiently parallel task maintainable portals.
-                                </p>
-                            </div>
-                            <div class="namee">
-                                <p>MD. Sakib Khan</p>
-                            </div>
-                            <div class="rolee">
-                                <p>FCPS, MBBS, BSMMU</p>
-                            </div>
-                        </div>
-                        <div class="customer">
-                            <div class="quote">
-                                <p>
-                                    Rapidiously enhance standardized information through virtual benefits. Dynamically reintermediate low-risk high-yield partnerships via intermandated collaboration and idea-sharing. Efficiently parallel task maintainable portals.
-                                </p>
-                            </div>
-                            <div class="namee">
-                                <p>MD. Sakib Khan</p>
-                            </div>
-                            <div class="rolee">
-                                <p>FCPS, MBBS, BSMMU</p>
-                            </div>
-                        </div>
-                        <div class="customer">
-                            <div class="quote">
-                                <p>
-                                    Rapidiously enhance standardized information through virtual benefits. Dynamically reintermediate low-risk high-yield partnerships via intermandated collaboration and idea-sharing. Efficiently parallel task maintainable portals.
-                                </p>
-                            </div>
-                            <div class="namee">
-                                <p>MD. Sakib Khan</p>
-                            </div>
-                            <div class="rolee">
-                                <p>FCPS, MBBS, BSMMU</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
-            
             <div class="beautifulDivider">
                 <div class="BeDivFlex">
                     <div class="BeDivIcon"><i class="fa fa-heartbeat"></i></div>
@@ -293,9 +133,6 @@
                     <div class="services-section">
                         <div class="service_header">
                             <p>OUR BEST <span>SERVICES</span></p>
-                        </div>
-                        <div class="service_subheader">
-                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer. </p>
                         </div>
                         <div class="cardspace">
                             <div class="single-card">
@@ -431,11 +268,8 @@
             <div class="meet-doctors-section_wrapper">
                 <div class="container">
                 <div class="meet-doctors-section">
-                    <div class="meet_doctors_header">
+                    <div class="meet_doctors_header mb-3">
                         <p>MEET OUR <span>DOCTORS</span></p>
-                    </div>
-                    <div class="meet_doctors_subheader">
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
                     </div>
                     <div class="cardspace">
                       <div class="owl-carousel owl-theme owl-doctor-list">

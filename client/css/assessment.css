@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap");
 *,
 *:after,
 *:before {
@@ -465,32 +466,39 @@ p {
   margin-bottom: 8px;
 }
 
-#BOOK_APPOINTMENT_MODAL .input_boxes {
+#BOOK_APPOINTMENT_MODAL .input_boxes,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes {
   padding: 20px 0;
 }
 
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box {
+#BOOK_APPOINTMENT_MODAL .input_boxes .one_box,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes .one_box {
   padding: 5px 0;
 }
 
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p {
+#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p {
   font-size: 1.5rem;
   padding-bottom: 8px;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p span {
+#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p span,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes .one_box .box_header p span {
   font-size: 1rem;
   color: #8a5555;
 }
 
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box {
+#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box {
   width: 100%;
 }
 
 #BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box textarea,
-#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box input:not([type='file']) {
+#BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box input:not([type='file']),
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box textarea,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .input_boxes .one_box .input_box input:not([type='file']) {
   padding: 7px;
   border-radius: 5px;
   outline: none;
@@ -499,7 +507,8 @@ p {
   width: 100%;
 }
 
-#BOOK_APPOINTMENT_MODAL .flex-parent {
+#BOOK_APPOINTMENT_MODAL .flex-parent,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-parent {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -515,7 +524,8 @@ p {
   padding: 5px 0;
 }
 
-#BOOK_APPOINTMENT_MODAL .flex-child {
+#BOOK_APPOINTMENT_MODAL .flex-child,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-bottom: 0.5rem;
@@ -523,22 +533,26 @@ p {
   margin-right: 0.5rem;
 }
 
-#BOOK_APPOINTMENT_MODAL .flex-child:last-child {
+#BOOK_APPOINTMENT_MODAL .flex-child:last-child,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child:last-child {
   margin-right: 0rem;
 }
 
 @media (max-width: 900px) {
-  #BOOK_APPOINTMENT_MODAL .flex-child {
+  #BOOK_APPOINTMENT_MODAL .flex-child,
+  #HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child {
     margin-right: 0rem;
     width: 100%;
   }
 }
 
-#BOOK_APPOINTMENT_MODAL .flex-child .form-header {
+#BOOK_APPOINTMENT_MODAL .flex-child .form-header,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child .form-header {
   margin-top: 8px;
 }
 
-#BOOK_APPOINTMENT_MODAL .flex-child .form-header p {
+#BOOK_APPOINTMENT_MODAL .flex-child .form-header p,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child .form-header p {
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -546,7 +560,10 @@ p {
 
 #BOOK_APPOINTMENT_MODAL .flex-child input[type='text'],
 #BOOK_APPOINTMENT_MODAL .flex-child input[type='email'],
-#BOOK_APPOINTMENT_MODAL .flex-child textarea {
+#BOOK_APPOINTMENT_MODAL .flex-child textarea,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child input[type='text'],
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child input[type='email'],
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child textarea {
   width: 100%;
   padding: 0.6rem;
   margin: 5px 0px;
@@ -556,16 +573,21 @@ p {
 
 #BOOK_APPOINTMENT_MODAL .flex-child input[type='text']:focus,
 #BOOK_APPOINTMENT_MODAL .flex-child input[type='email']:focus,
-#BOOK_APPOINTMENT_MODAL .flex-child textarea:focus {
+#BOOK_APPOINTMENT_MODAL .flex-child textarea:focus,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child input[type='text']:focus,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child input[type='email']:focus,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .flex-child textarea:focus {
   outline: none;
 }
 
-#BOOK_APPOINTMENT_MODAL .submit {
+#BOOK_APPOINTMENT_MODAL .submit,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .submit {
   text-align: center;
   margin-top: 1rem;
 }
 
-#BOOK_APPOINTMENT_MODAL .submit button {
+#BOOK_APPOINTMENT_MODAL .submit button,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .submit button {
   padding: 5px 30px;
   font-size: 24px;
   border: none;
@@ -574,20 +596,24 @@ p {
   border-radius: 4px;
 }
 
-#BOOK_APPOINTMENT_MODAL .green-btn {
+#BOOK_APPOINTMENT_MODAL .green-btn,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .green-btn {
   background: #13ce66;
 }
 
-#BOOK_APPOINTMENT_MODAL .red-btn {
+#BOOK_APPOINTMENT_MODAL .red-btn,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .red-btn {
   background: rgba(194, 43, 5, 0.925);
 }
 
-#BOOK_APPOINTMENT_MODAL .form-selectpicker {
+#BOOK_APPOINTMENT_MODAL .form-selectpicker,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .form-selectpicker {
   padding-top: 4.7px;
   width: 97%;
 }
 
-#BOOK_APPOINTMENT_MODAL .modal-footer.submit button {
+#BOOK_APPOINTMENT_MODAL .modal-footer.submit button,
+#HOMEPAGE_BOOK_APPOINTMENT_MODAL .modal-footer.submit button {
   font-size: 20px;
   border-radius: 5px;
 }
@@ -998,7 +1024,7 @@ body {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .twoBigSectionFlex {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1031,6 +1057,7 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
+  font-family: 'Libre Franklin', sans-serif;
   font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;
@@ -1056,6 +1083,7 @@ body {
 }
 
 .twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
+  font-family: 'Libre Franklin', sans-serif;
   font-size: 20px;
   padding-bottom: 7px;
   margin-bottom: 0px;

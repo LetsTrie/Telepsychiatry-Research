@@ -1,22 +1,65 @@
 @import '_main';
 @import '_navbar';
-.doctor_profile_heading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
+
+.docProWrapper {
+  background: #f3f3f3;
+  min-height: 50vh;
+}
+
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
   p {
-    font-size: 40px;
-    font-weight: 500;
-    color: #2a2a2a;
-    letter-spacing: 0.5px;
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
   }
 }
 
 .doctor_identity {
   background-color: #f8f9fa;
   border: 1px solid rgb(255, 237, 237);
-  box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
-    inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+  box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
+  // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
+  // inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
   display: flex;
   flex-direction: row;
   @media (max-width: 768px) {
@@ -33,6 +76,7 @@
     }
     img {
       width: 100%;
+      max-height: 300px;
       border-radius: 7px;
     }
   }
@@ -113,8 +157,9 @@
 .aboutDoctor_wrapper {
   margin: 40px 0 50px 0;
   .aboutDoctor {
-    box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
-      inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
+    // inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
   }
   .card-tabs-2 .card-header {
     padding-bottom: 0;

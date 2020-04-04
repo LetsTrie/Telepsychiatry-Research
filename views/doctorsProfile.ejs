@@ -9,17 +9,19 @@
 
   <body>
     <section>
-      <header>
-        <nav class="cnav">
-          <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
-
-      <section>
-        <div class="doctor_profile_heading my-4">
-          <p>Profile</p>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="/">Doctor</a> / profile</p>
         </div>
+        <div class="bigText">
+          <p>Dr. Sharmin Afroz</p>
+        </div>
+      </div>
+
+      <section class="py-5 mt-1 docProWrapper">
         <div class="container">
           <div class="doctor_identity">
             <div class="his_photo">
@@ -53,10 +55,8 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="aboutDoctor_wrapper">
-          <div class="container">
+          <div class="aboutDoctor_wrapper">
             <div class="card card-tabs-2 aboutDoctor">
               <div class="card-header">
                 <ul class="nav nav-tabs">

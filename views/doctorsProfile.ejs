@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/doctorProfile.css" />
+    <link rel="stylesheet" href="/css/doctorProfile.css" />
 
-        <title>Profile | Doctor | Telepsychiatry Research</title>
-</head>
+    <title>Profile | Doctor | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <section>
-        <header>
-            <nav class="cnav">
-                <%- include('./partials/navbar')%>
-            </nav>
-            <div class="my-3 divider"></div>
-        </header>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="/">Doctor</a> / profile</p>
+        </div>
+        <div class="bigText">
+          <p>Dr. Sharmin Afroz</p>
+        </div>
+      </div>
 
-        <section>
-            <div class="doctor_profile_heading my-4">
-                <p>Profile</p>
+      <section class="py-5 mt-1 docProWrapper">
+        <div class="container">
+          <div class="doctor_identity">
+            <div class="his_photo">
+              <img src="/images/doctor.jpg" alt="Doctor" />
             </div>
-            <div class="container">
-                <div class="doctor_identity">
-                    <div class="his_photo">
-                        <img src="/uploads/<%= doctor.propicURL %>" alt="Doctor" />
-                    </div>
-                    <div class="His_profession">
-                        <p class="name">
-                            <%= doctor.name %>
-                        </p>
-                        <p class="degreeNspeciality">
-                            <%= doctor.designation %>
-                        </p>
+            <div class="His_profession">
+              <p class="name">Sharmin Afroz</p>
+              <p class="degreeNspeciality">
+                BDS, MDS - Oral & Maxillofacial Surgery
+              </p>
 
-                        <p class="aff">
-                            <span class="fa fa-user">&nbsp;&nbsp;</span>
-                            <%= doctor.affiliation %>
-                        </p>
-                        <p class="college">
-                            <span class="fa fa-university">&nbsp;</span>
-                            <%= doctor.institute %>
-                        </p>
-                        <p class="bill">
-                            <span class="fa fa-money">&nbsp;&nbsp;</span>
-                            <%= doctor.fee %>
-                        </p>
+              <p class="aff">
+                <span class="fa fa-user">&nbsp;&nbsp;</span> Associate Professor
+                (CC) & Unit Head, Dept. of Psychiatry
+              </p>
+              <p class="college">
+                <span class="fa fa-university">&nbsp;</span> Sir Salimullah
+                Medical College & Mitford Hospital
+              </p>
+              <p class="bill">
+                <span class="fa fa-money">&nbsp;&nbsp;</span> 500 BDT
+              </p>
 
-                        <div class="bookingg">
-                            <button data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">
+              <div class="bookingg">
+                <button
+                  data-toggle="modal"
+                  data-target="#BOOK_APPOINTMENT_MODAL"
+                >
                   Book appointment
                 </button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
 
-            <div class="aboutDoctor_wrapper">
-                <div class="container">
-                    <div class="card card-tabs-2 aboutDoctor">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="overview" data-toggle="tab" href="#tab1" role="tab">Overview</a
+          <div class="aboutDoctor_wrapper">
+            <div class="card card-tabs-2 aboutDoctor">
+              <div class="card-header">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="overview"
+                      data-toggle="tab"
+                      href="#tab1"
+                      role="tab"
+                      >Overview</a
                     >
                   </li>
                   <li class="nav-item">
@@ -105,7 +110,22 @@
                         <div class="aboutMe">
                           <p class="overview_aboutMe_header">About me</p>
                           <p class="overview_aboutMe_info">
-                            <%= doctor.aboutYourself %>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Asperiores neque expedita doloribus. Nostrum
+                            harum quae reprehenderit error velit praesentium,
+                            alias nulla eaque tenetur labore consectetur non
+                            asperiores mollitia fugiat eveniet atque consequatur
+                            magni, ipsam adipisci assumenda ea tempora, aperiam
+                            cupiditate. Incidunt sint earum facere. Eos pariatur
+                            molestiae quae aliquam tempora aspernatur, beatae
+                            voluptatum adipisci consequuntur nemo officiis
+                            inventore. Sequi debitis amet voluptatibus
+                            aspernatur voluptate ipsam, odit impedit id dolor?
+                            Fugit placeat velit omnis. Eaque, odio! Perferendis
+                            nesciunt corrupti atque animi dicta ad vero tempora
+                            id. Rem recusandae eius maxime tempora officiis, at
+                            ipsa veniam impedit, earum deleniti tenetur dolores
+                            sed?
                           </p>
                         </div>
                         <div class="overview_education" id="education-pane12">
@@ -113,8 +133,6 @@
                             <h4 class="widget-title">Education</h4>
                             <div class="experience-box">
                               <ul class="experience-list">
-                                <% for (let i=0; i< doctor.education.length;
-                                i++) {%>
                                 <li>
                                   <div class="experience-user">
                                     <div class="before-circle"></div>
@@ -122,19 +140,57 @@
                                   <div class="experience-content">
                                     <div class="timeline-content">
                                       <a href="#/" class="name"
-                                        ><%= doctor.education[i].eduInstitute %></a
+                                        >Bangabandhu Sheikh Mujib Medical
+                                        University</a
                                       >
-                                      <div>
-                                        <%= doctor.education[i].degree %>
-                                      </div>
-                                      <span class="time"
-                                        ><%= doctor.education[i].eduFrom %> -
-                                        <%= doctor.education[i].eduTo %></span
-                                      >
+                                      <div>FCPS</div>
+                                      <span class="time">2021-2023</span>
                                     </div>
                                   </div>
                                 </li>
-                                <% } %>
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Dhaka Medical College</a
+                                      >
+                                      <div>MBBS</div>
+                                      <span class="time">2016-2021</span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Bir Shrestha Noor Mohammad Public
+                                        College</a
+                                      >
+                                      <div>HSC (GPA 5.00)</div>
+                                      <span class="time">2014 - 2016</span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                  </div>
+                                  <div class="experience-content">
+                                    <div class="timeline-content">
+                                      <a href="#/" class="name"
+                                        >Monipur High School & College</a
+                                      >
+                                      <div>SSC (GPA 5.00)</div>
+                                      <span class="time">2004-2014</span>
+                                    </div>
+                                  </div>
+                                </li>
                               </ul>
                             </div>
                           </div>
@@ -148,24 +204,47 @@
                         <h4 class="widget-title">Work & Experience</h4>
                         <div class="experience-box">
                           <ul class="experience-list">
-                            
-                            <% for (let i=0; i<doctor.workExperience.length; i++) {%>
-                              <li>
+                            <li>
                               <div class="experience-user">
                                 <div class="before-circle"></div>
                               </div>
                               <div class="experience-content">
                                 <div class="timeline-content">
                                   <a href="#/" class="name"
-                                    ><%= doctor.workExperience[i].expInstitute %></a
+                                    >Glowing Smiles Family Dental Clinic</a
                                   >
                                   <span class="time"
-                                    ><%= doctor.workExperience[i].expFrom %> - <%= doctor.workExperience[i].expTo %></span
+                                    >2010-Present (5 Years)</span
                                   >
                                 </div>
                               </div>
                             </li>
-                              <% } %>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name"
+                                    >Comfort Care Dental Clinic</a
+                                  >
+                                  <span class="time">2007-2010 (3 years)</span>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name"
+                                    >Dream Smile Dental Practice</a
+                                  >
+                                  <span class="time">2005-2007 (2 years)</span>
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                       </div>
@@ -175,34 +254,78 @@
                         <h4 class="widget-title">Professional Training</h4>
                         <div class="experience-box">
                           <ul class="experience-list ProTraining">
-                            
-                            <% for (let i=0; i<doctor.training.length; i++) {%>
-                              <li>
+                            <li>
                               <div class="experience-user">
                                 <div class="before-circle"></div>
                               </div>
                               <div class="experience-content">
                                 <div class="timeline-content">
                                   <a href="#/" class="name">
-                                    <%= doctor.training[i].trainingName %></a
+                                    Training on Mental Health Care</a
                                   >
-                                  <span class="time"><%= doctor.training[i].trainingYear %></span>
+                                  <span class="time">2013</span>
 
                                   <div>
                                     <p class="someText">
-                                      <%= doctor.training[i].trainingDetails %>
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
                                     </p>
                                   </div>
                                 </div>
                               </div>
                             </li>
-                              <% } %>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name">
+                                    Training on Mental Health Care</a
+                                  >
+                                  <span class="time">2011</span>
+
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content">
+                                <div class="timeline-content">
+                                  <a href="#/" class="name">
+                                    Training on Mental Health Care</a
+                                  >
+                                  <span class="time">2009</span>
+
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                       </div>
                     </div>
                     <div class="downloadPDF">
-                      <button id="<%= doctor.cvURL %>" class="download">Download CV</button>
+                      <button>Download CV</button>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab3">
@@ -211,30 +334,100 @@
                         <h4 class="widget-title">Awards</h4>
                         <div class="experience-box">
                           <ul class="experience-list">
-                            
-                            <% for (let i=0; i<doctor.awards.length; i++) {%>
-                                <li>
+                            <li>
                               <div class="experience-user">
                                 <div class="before-circle"></div>
                               </div>
                               <div class="experience-content awardsTab">
                                 <div class="timeline-content">
                                   <span class="coloredTime"
-                                    ><p><%= doctor.awards[i].awardsYear %></p></span
+                                    ><p>July 2019</p></span
                                   >
                                   <a href="#/" class="name"
-                                    ><%= doctor.awards[i].awardsName %></a
+                                    >Humanitarian Award</a
                                   >
                                   <div>
                                     <p class="someText">
-                                      <%= doctor.awards[i].awardsDetails %>
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
                                     </p>
                                   </div>
                                 </div>
                               </div>
                             </li>
-                              <% } %>
-
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>January 2019</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >Certificate for International Volunteer
+                                    Service</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>August 2018</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >The Dental Professional of The Year
+                                    Award</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="experience-user">
+                                <div class="before-circle"></div>
+                              </div>
+                              <div class="experience-content awardsTab">
+                                <div class="timeline-content">
+                                  <span class="coloredTime"
+                                    ><p>February 2019</p></span
+                                  >
+                                  <a href="#/" class="name"
+                                    >Best Psychiatrist Award</a
+                                  >
+                                  <div>
+                                    <p class="someText">
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipiscing elit. Proin a ipsum tellus.
+                                      Interdum et malesuada fames ac ante ipsum
+                                      primis in faucibus.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                       </div>
@@ -281,15 +474,4 @@
     <%- include('./partials/vendorsBottom')%> <%-
     include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
   </body>
-
-<script>
-  $(document).ready(() => {
-    $('.download').click((e) => {
-      const name = e.target.id
-      console.log(name)
-      location = '/services/downloadCV/' + name
-    })
-  })
-</script>
-
 </html>

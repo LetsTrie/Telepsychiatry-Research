@@ -17,113 +17,73 @@
     <title>Homepage | Telepsychiatry Research</title>
 
     <style>
-        .ourMainHomepage {
-            position: relative;
-        }
+      .ourMainHomepage {
+        position: relative;
+      }
+      .contactUsModal {
+        position: fixed;
+        height: 80px;
+        width: 80px;
+        bottom: 60px;
+        right: 60px;
+        cursor: default;
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        align-items: center;
+        color: #228be6;
+        border-radius: 50%;
+        cursor: pointer;
 
-        .contactUsModal {
-            position: fixed;
-            height: 80px;
-            width: 80px;
-            bottom: 60px;
-            right: 60px;
-            cursor: default;
-            display: flex;
-            flex-direction: center;
-            justify-content: center;
-            align-items: center;
-            color: #228be6;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-            border: 45px solid rgb(251, 245, 245);
-            background: white;
-        }
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
 
-        .contactUsModal img {
-            width: 90px;
-            border-radius: 50%;
+        border: 45px solid rgb(251, 245, 245);
+        background: white;
+      }
+      @keyframes mymove {
+        50% {
+          outline-offset: 25px;
         }
+      }
+      .contactUsModal i {
+        font-size: 90px;
+        background: white;
 
-        @keyframes mymove {
-            50% {
-                outline-offset: 25px;
-            }
-        }
-
-        .contactUsModal i {
-            font-size: 90px;
-            background: white;
-            color: #228be6;
-            border-radius: 50%;
-        }
-
-        .imgg {
-            outline: 5px solid coral;
-            animation: mymove 2s infinite;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-        }
+        color: #228be6;
+        border-radius: 50%;
+      }
+      .imgg {
+        outline: 5px solid coral;
+        animation: mymove 2s infinite;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+      }
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="ourMainHomepage">
-        <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
-            <!-- <i class="fa fa-question-circle" aria-hidden="true"></i> -->
-            <img src="https://ps.w.org/corona-virus-data/assets/icon-256x256.png?rev=2248214" alt="">
-        </div>
+        <!-- <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </div> -->
         <div class="intro_page">
             <header class="intro_page_header">
-                <div class="nav-container">
-                    <%- include('./partials/navbar.ejs')%>
-                    <%- include('./partials/bookAppointmentHome.ejs') %>
-                </div>
-                <div class="wrapper magicc">
-                    <!-- <div class="desc">
-                        <div class="largeText">
-                            <p>
-                                We Help You To Live <br /> A Healthy Life
-                            </p>
-                        </div>
-                        <div class="smallText">
-                            <p>
-                                We promotes mental health awareness and care about your health. Join our community for all kinds of health supports.
-                            </p>
-                        </div>
-                    </div> -->
-                    <a href="#" data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">
+                <%- include('./partials/navbar.ejs')%>
+                    <div class="wrapper magicc">
                         <div class="desc">
                             <div class="largeText">
                                 <p>
-                                    We are with <span style="color:rgb(166, 255, 0)">you</span>
+                                    We Help You To Live <br />
+                                    A  Healthy Life
                                 </p>
                             </div>
                             <div class="smallText">
                                 <p>
-                                    TRINN ensure wellbeing and energise mind through innovation, collaboration and care
-                                    Free Quality care from best experts during the COVID 2019 </p>
+                                    We promotes mental health awareness and care about your health. Join our community for all kinds of health supports.
+                                </p>
                             </div>
                         </div>
-                    </a>
-                    <!-- <div class="images">
-                        <div class="img1">
-                            <img src="https://www.northoaks.org/images/blog/coronavirus-thumb.jpg" alt="">
-                        </div>
-                        <div class="img5">
-                            <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                        </div>
-                        <div class="img4">
-                            <img src="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" alt="">
-                        </div>
-                        <div class="img2">
-                            <img src="https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F38d0166c-4471-11ea-a083-1ec392b38124.jpg?crop=1999%2C1125%2C0%2C104&resize=1180" alt="">
-                        </div>
-                        <div class="img3">
-                            <img src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                        </div>
-
-                    </div> -->
-                </div>
+                    </div>
             </header>
         </div>
 
@@ -287,50 +247,27 @@
                 </div>
 
             </div> -->
-
+            
             <div class="beautifulDivider">
                 <div class="BeDivFlex">
-                    <div class="BeDivIcon"><i class="fa fa-clock-o"></i></div>
-                    <div class="BeDivHeader">
-                        <p> <span style="color:rgb(5, 100, 44)"> QUICK CARE CENTER</span></p>
-                    </div>
-                    <div class="BeDivDes">
-                        <p>We Provide 24/7 mental health care, including our full virtual health care <a
-                                href="https://monerdaktar.com/"> <span class="logo" style="color:rgb(0, 0, 0)"> Moner
-                                    Daktar</span> </a> </p>
-                    </div>
+                    <div class="BeDivIcon"><i class="fa fa-heartbeat"></i></div>
+                    <div class="BeDivHeader"><p>Quality and Evidence based</p></div>
+                    <div class="BeDivDes"><p>We provide the best and evidence based psychiatric consultation, Psychotherapy and counseling online and Offline.</p></div>
+                </div>
+                <div class="BeDivFlex">
+                    <div class="BeDivIcon"><i class="fa fa-user-md"></i></div>
+                    <div class="BeDivHeader"><p>Brightest Professionals</p></div>
+                    <div class="BeDivDes"><p>The best and brightest professionals are here to serve you. We care about you and ensures world class treatment</p></div>
                 </div>
                 <div class="BeDivFlex">
                     <div class="BeDivIcon"><i class="fa fa-user"></i></div>
-                    <div class="BeDivHeader">
-                        <p> <span style="color:rgb(5, 100, 44)">PROFESSIONAL STAFF </span></p>
-                    </div>
-                    <div class="BeDivDes">
-                        <p>We Provides a varitey in professionals. We have a family of
-                            psychiatrist, clinical psychology including Computer Scientist
-                        </p>
-                    </div>
-                </div>
-                <div class="BeDivFlex">
-                    <div class="BeDivIcon"><i class="fa fa-pencil"></i></div>
-                    <div class="BeDivHeader">
-                        <p> <span style="color:rgb(5, 100, 44)"> MODERN TECHNOLOGY <span></p>
-                    </div>
-                    <div class="BeDivDes">
-                        <p>We provide our clients the best mental health care
-                            with modern techonology and equipments </p>
-                    </div>
+                    <div class="BeDivHeader"><p> Energize People</p></div>
+                    <div class="BeDivDes"><p>We believe in energizing people and community by sharing knowledge through world class training and workshops.</p></div>
                 </div>
                 <div class="BeDivFlex">
                     <div class="BeDivIcon"><i class="fa fa-file-text"></i></div>
-                    <div class="BeDivHeader">
-                        <p> <span style="color:rgb(5, 100, 44)">ONLINE APPOINTMENT </span></p>
-                    </div>
-                    <div class="BeDivDes">
-                        <p>We have an online appoinment system where patients can
-                            take appoinmnet easily and fastly
-                        </p>
-                    </div>
+                    <div class="BeDivHeader"><p> Research to reach</p></div>
+                    <div class="BeDivDes"><p>We Conduct researches to reach every mind and transform their lives for better tomorrow to lead a healthy life.</p></div>
                 </div>
 
             </div>
@@ -349,6 +286,8 @@
                 </iframe>
                 </div>
             </div>
+            </div>
+            </div>
             <div class="services_section_wrapper">
                 <div class="container">
                     <div class="services-section">
@@ -356,8 +295,7 @@
                             <p>OUR BEST <span>SERVICES</span></p>
                         </div>
                         <div class="service_subheader">
-                            <p>
-                            </p>
+                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer. </p>
                         </div>
                         <div class="cardspace">
                             <div class="single-card">
@@ -368,22 +306,15 @@
                                 </a>
                                 <div class="card-non-image">
                                     <a href="#">
-                                        <div class="cardHeader">
-                                            <p> Psychiatric Consultations </p>
-                                        </div>
+                                        <div class="cardHeader"> <p> Psychiatric Consultations </p></div>
                                     </a>
-
+                                    
                                     <div class="cardBody">
-                                        <p> We provide the psychiatric consultation from the most reputed psychiatrist
-                                            in the country having MD or FCPS and other advanced degrees. They focus on
-                                            people who have mental health issues. Some specialize in behavioral
-                                            problems or personality disorders, while others may specialize in specific
-                                            age groups. Some psychiatric consultants may work directly with patients to
-                                            discuss their treatment options and programs.</p>
+                                        <p> We provide the psychiatric consultation from the most reputed psychiatrist in the country having MD or FCPS and other advanced degrees. They focus on people who have mental health issues. Some specialize in behavioral problems or personality disorders, while others may specialize in specific age groups. Some psychiatric consultants may work directly with patients to discuss their treatment options and programs.</p>
                                     </div>
 
                                     <div class="readMore pt-2">
-                                        <p>Read More <span class="fa fa-long-arrow-right"></span></p>
+                                    <p>Read More <span class="fa fa-long-arrow-right"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -398,21 +329,18 @@
                                     <a href="#">
                                         <div class="cardHeader"> <p>  Psycho Therapy & Counselling </p></div>
                                     </a>
-
+                                    
                                     <div class="cardBody">
-                                        <p> We provide the corporate health Care for various organizations
-                                            Next-generation wellness service for employer and employee. We treat few but
-                                            energise all. General and Medical are here to help you keep you happy and
-                                            healthy with our corporate private health cover plans. </p>
+                                        <p> We provide the corporate health Care for various organizations Next-generation wellness service for employer and employee. We treat few but energise all. General and Medical are here to help you keep you happy and healthy with our corporate private health cover plans.  </p>
                                     </div>
 
                                     <div class="readMore pt-2">
-                                        <p>Read More <span class="fa fa-long-arrow-right"></span></p>
+                                    <p>Read More <span class="fa fa-long-arrow-right"></span></p>
                                     </div>
 
                                 </div>
                             </div>
-
+                            
                             <div class="single-card">
                                 <a href="#">
                                     <div class="card-image">
@@ -423,20 +351,17 @@
                                     <a href="#">
                                         <div class="cardHeader"> <p> Mental Health Assessment </p></div>
                                     </a>
-
+                                    
                                     <div class="cardBody">
-                                        <p> Child Health care is defined as the medical services that are provided by
-                                            the medical health professionals to the children having disease or
-                                            infection. A healthy, balanced diet is not just good for kid's bodies,
-                                            it's good for their brains, too. </p>
+                                        <p> Child Health care is defined as the medical services that are provided by the medical health professionals to the children having disease or infection. A healthy, balanced diet is not just good for kid's bodies, it's good for their brains, too. </p>
                                     </div>
 
                                     <div class="readMore pt-2">
-                                        <p>Read More <span class="fa fa-long-arrow-right"></span></p>
+                                    <p>Read More <span class="fa fa-long-arrow-right"></span></p>
                                     </div>
                                 </div>
                             </div>
-
+                        
                             <div class="single-card">
                                 <a href="#">
                                     <div class="card-image">
@@ -447,16 +372,13 @@
                                     <a href="#">
                                         <div class="cardHeader"> <p> Corporate Health Care </p></div>
                                     </a>
-
+                                    
                                     <div class="cardBody">
-                                        <p> The service is dedicated for the kids and adolescents to prepare them for
-                                            the future world and how to cope with stress and promote their learning and
-                                            wellbeing from preschool level. To ensure a better future this
-                                            is the core necessiate in our world. </p>
+                                        <p> The service is dedicated for the kids and adolescents to prepare them for the future world and how to cope with stress and promote their learning and wellbeing from preschool level. To ensure a better future this is the core necessiate in our world. </p>
                                     </div>
 
                                     <div class="readMore pt-2">
-                                        <p>Read More <span class="fa fa-long-arrow-right"></span></p>
+                                    <p>Read More <span class="fa fa-long-arrow-right"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -471,16 +393,13 @@
                                     <a href="#">
                                         <div class="cardHeader"> <p> Special Services </p></div>
                                     </a>
-
+                                    
                                     <div class="cardBody">
-                                        <p> How we can promote healthy and long term caring relations between with our
-                                            parents, children, teachers, student, friends, employee, employer, clients,
-                                            housemaid and other helping hand. Through our online platform,
-                                            regular awareness programs.</p>
+                                        <p> How we can promote healthy and long term caring relations between with our parents, children, teachers, student, friends, employee, employer, clients, housemaid and other helping hand. Through our online platform, regular awareness programs.</p>
                                     </div>
 
                                     <div class="readMore pt-2">
-                                        <p>Read More <span class="fa fa-long-arrow-right"></span></p>
+                                    <p>Read More <span class="fa fa-long-arrow-right"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -493,20 +412,15 @@
                                 </a>
                                 <div class="card-non-image">
                                     <a href="#">
-                                        <div class="cardHeader">
-                                            <p> Behavioral Addiction Centers </p>
-                                        </div>
+                                        <div class="cardHeader"> <p> Behavioral Addiction Centers </p></div>
                                     </a>
-
+                                    
                                     <div class="cardBody">
-                                        <p> Behavioral Addiction such as mobile phone addition, Facebook addiction, porn
-                                            addiction, is increasing and is a major challenge for our wellbeing. We need
-                                            appropriate guideline and support to overcome the problems
-                                            and from this center we will deliver that care. </p>
+                                        <p> Behavioral Addiction such as mobile phone addition, Facebook addiction, porn addiction, is increasing and is a major challenge for our wellbeing. We need appropriate guideline and support to overcome the problems and from this center we will deliver that care. </p>
                                     </div>
 
                                     <div class="readMore pt-2">
-                                        <p>Read More <span class="fa fa-long-arrow-right"></span></p>
+                                    <p>Read More <span class="fa fa-long-arrow-right"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -516,126 +430,128 @@
             </div>
             <div class="meet-doctors-section_wrapper">
                 <div class="container">
-                    <div class="meet-doctors-section">
-                        <div class="meet_doctors_header">
-                            <p>MEET OUR <span>EXPERTS</span></p>
-                        </div>
-                        <div class="meet_doctors_subheader">
-                            <p>
-                            </p>
-                        </div>
-                        <div class="cardspace">
-                            <div class="owl-carousel owl-theme owl-doctor-list">
-                                <% for(let i = 0 ; i < 6; i++) { %>
-                                <div class="item">
-                                    <div class="m-1 mb-5 card">
-                                        <img src="/images/doctor.jpg" class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <p class="cardName"> Sharmin Afroz </p>
-                                                <p class="cardDegree">CARDIAC SURGERY </p>
+                <div class="meet-doctors-section">
+                    <div class="meet_doctors_header">
+                        <p>MEET OUR <span>DOCTORS</span></p>
+                    </div>
+                    <div class="meet_doctors_subheader">
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
+                    </div>
+                    <div class="cardspace">
+                      <div class="owl-carousel owl-theme owl-doctor-list">
+                        <% for(let i = 0 ; i < 6; i++) { %>
+                        <div class="item">
+                            <div class="m-1 mb-5 card">
+                            <img src="/images/doctor.jpg" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                <p class="cardName"> Sharmin Afroz </p>
+                                <p class="cardDegree">CARDIAC SURGERY </p>
 
-                                            </h5>
-                                            <p class="card-text pb-2">
-                                                We provide the corporate health Care for various organizations
-                                                Next-generation wellness service for employer and employee. We treat few
-                                                but energise all.
-                                            </p>
-                                            <p class="icons">
-                                                <a href="#" class="fa fa-facebook"></a>
-                                                <a href="#" class="fa fa-google-plus"></a>
-                                                <a href="#" class="fa fa-instagram"></a>
-                                                <a href="#" class="fa fa-linkedin"></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <% } %>
+                                </h5>
+                                <p class="card-text pb-2">
+                                    We provide the corporate health Care for various organizations Next-generation wellness service for employer and employee. We treat few but energise all.                             
+                                </p>
+                                <p class="icons">
+                                  <a href="#" class="fa fa-facebook"></a>
+                                  <a href="#" class="fa fa-google-plus"></a>
+                                  <a href="#" class="fa fa-instagram"></a>
+                                  <a href="#" class="fa fa-linkedin"></a>
+                                </p>
+                            </div>
                             </div>
                         </div>
+                        <% } %>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="upcomingEvents_wrapper">
                 <div class="upcomingEvents">
-                    <div class="container">
-                        <div class="upEvHeading">
-                            <p>Upcoming <span>Events</span></p>
+                <div class="container">
+                    <div class="upEvHeading">
+                        <p>Upcoming <span>Events</span></p>
+                    </div>
+                    <div class="upcomingEvents_flx_prnt">
+                        <div class="upcomingEvents_flx_chld chld_one">
+                            <div class="upcomingEvents_flx_chld_img">
+                                <img src="/images/coronaevent1.jpg">
+                            </div>
+                            <div class="upcomingEvents_flx_chld_title">
+                                <p>Stress Management During Corona</p>
+                            </div>
+                            <div class="upcomingEvents_flx_chld_address">
+                                <p>
+                                    <i class="fa fa-map-marker" style="font-size: 20px">
+                                        &nbsp;</i
+                                    > University Of Dhaka
+                                </p>
+                            </div>
+                            <div class="upcomingEvents_flx_chld_date">
+                                <p>
+                                    <i class="fa fa-calendar"> &nbsp; </i> 27/12/20 -
+                                    30/12/20
+                                </p>
+                            </div>
                         </div>
-                        <div class="upcomingEvents_flx_prnt">
-                            <div class="upcomingEvents_flx_chld chld_one">
+                        <div class="upcomingEvents_flx_chld FlxCol">
+                                <div class="upcomingEvents_flx_chld_scnd_one">
                                 <div class="upcomingEvents_flx_chld_img">
-                                    <img src="/images/conf1.jpg">
+                                    <img src="/images/coronaPandemic.png">
                                 </div>
-                                <div class="upcomingEvents_flx_chld_title">
-                                    <p>The Complete Financial Analyst Training & Investing Wokshop</p>
+                                <div class="upcomingEvents_flx_chld_scnd_one_info">
+                                    <div class="upcomingEvents_flx_chld_title">
+                                        <p>Parenting During Corona Pandemic</p>
+                                    </div>
+                                    <div class="upcomingEvents_flx_chld_address">
+                                        <p>
+                                            <i class="fa fa-map-marker" style="font-size: 20px">
+                                                &nbsp;</i
+                                            >
+                                        University Of Dhaka
+                                        </p>
+                                    </div>
+                                    <div class="upcomingEvents_flx_chld_date">
+                                        <p>
+                                            <i class="fa fa-calendar"> &nbsp; </i> 27/12/20 -
+                                            30/12/20
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="upcomingEvents_flx_chld_address">
-                                    <p>
-                                        <i class="fa fa-map-marker" style="font-size: 20px">
-                                            &nbsp;</i>
-                                        Address: University Of Dhaka
-                                    </p>
-                                </div>
-                                <div class="upcomingEvents_flx_chld_date">
-                                    <p>
-                                        <i class="fa fa-calendar"> &nbsp; </i> Date: 27/12/20 - 30/12/20
-                                    </p>
-                                </div>
+                                
                             </div>
-                            <div class="upcomingEvents_flx_chld FlxCol">
-                                <div class="upcomingEvents_flx_chld_scnd_one">
-                                    <div class="upcomingEvents_flx_chld_img">
-                                        <img src="/images/conf2.jpg">
-                                    </div>
-                                    <div class="upcomingEvents_flx_chld_scnd_one_info">
-                                        <div class="upcomingEvents_flx_chld_title">
-                                            <p>The Complete Financial Analyst Training & Investing Wokshop</p>
-                                        </div>
-                                        <div class="upcomingEvents_flx_chld_address">
-                                            <p>
-                                                <i class="fa fa-map-marker" style="font-size: 20px">
-                                                    &nbsp;</i>
-                                                Address: University Of Dhaka
-                                            </p>
-                                        </div>
-                                        <div class="upcomingEvents_flx_chld_date">
-                                            <p>
-                                                <i class="fa fa-calendar"> &nbsp; </i> Date: 27/12/20 - 30/12/20
-                                            </p>
-                                        </div>
-                                    </div>
-
+                            <div class="upcomingEvents_flx_chld_scnd_one">
+                                <div class="upcomingEvents_flx_chld_img">
+                                    <img src="/images/conf3.jpg">
                                 </div>
-                                <div class="upcomingEvents_flx_chld_scnd_one">
-                                    <div class="upcomingEvents_flx_chld_img">
-                                        <img src="/images/conf3.jpg">
+                                <div  class="upcomingEvents_flx_chld_scnd_one_info">
+                                    <div class="upcomingEvents_flx_chld_title">
+                                        <p> The Complete Financial Analyst Training & Investing Wokshop</p>
                                     </div>
-                                    <div class="upcomingEvents_flx_chld_scnd_one_info">
-                                        <div class="upcomingEvents_flx_chld_title">
-                                            <p>The Complete Financial Analyst Training & Investing Wokshop</p>
-                                        </div>
-                                        <div class="upcomingEvents_flx_chld_address">
-                                            <p>
-                                                <i class="fa fa-map-marker" style="font-size: 20px">
-                                                    &nbsp;</i>
-                                                Address: University Of Dhaka
-                                            </p>
-                                        </div>
-                                        <div class="upcomingEvents_flx_chld_date">
-                                            <p>
-                                                <i class="fa fa-calendar"> &nbsp; </i> Date: 27/12/20 - 30/12/20
-                                            </p>
-                                        </div>
+                                    <div class="upcomingEvents_flx_chld_address">
+                                        <p>
+                                            <i class="fa fa-map-marker" style="font-size: 20px">
+                                                &nbsp;</i
+                                            >
+                                        University Of Dhaka
+                                        </p>
+                                    </div>
+                                    <div class="upcomingEvents_flx_chld_date">
+                                        <p>
+                                            <i class="fa fa-calendar"> &nbsp; </i> 27/12/20 -
+                                            30/12/20
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="showMoreBtn">
-                            <button>Show more</button>
                         </div>
                     </div>
+                    <div class="showMoreBtn">
+                        <button>Show more</button>
+                    </div>
                 </div>
+            </div>
             </div>
             <div class="organizationSupport">
                 <div class="container mb-5">
@@ -643,38 +559,23 @@
                         <p>Our <span> Collaborations </span></p>
                     </div>
                     <div class="organizations">
-                        <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-                        <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
+                        <div class="org" onclick="gotoLink('https://www.nih.gov/')"><img src="/images/Logo_NIH.png" alt="" /></div>
+                        <div class="org" onclick="gotoLink('https://www.utoronto.ca/')"><img src="/images/UOT.png" alt="" /></div>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
       
+      <%- include('./partials/footer')%> 
+      <%- include('./partials/vendorsBottom')%>
+      <script src="/js/homepage.js"></script>
 
-    <%- include('./partials/footer')%>
-    <%-
-      include('./partials/homepage_contact_us_modal')%>
-    <%-
-      include('./partials/vendorsBottom')%>
-    <script src="/js/homepage.js"></script>
-    <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-    <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
-    <script>
-        var owldl = $('.owl-doctor-list');
-        owldl.owlCarousel({
+      <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+      <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
+      <script>
+          var owldl = $('.owl-doctor-list');
+          owldl.owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
@@ -682,44 +583,47 @@
             autoplayHoverPause: true,
             dots: false,
             responsive: {
-                0: {
-                    items: 1
-                },
-                750: {
-                    items: 1
-                },
-                960: {
-                    items: 2
-                },
-                1100: {
-                    items: 3
-                }
+              0: {
+                items: 1 
+              },
+              750: {
+                items: 1
+              },
+              960: {
+                items: 2
+              },
+              1100: {
+                items: 3
+              }
             }
-        });
-        let owlorg = $('.owl-organizations');
-        owlorg.owlCarousel({
+          });
+          let owlorg = $('.owl-organizations');
+          owlorg.owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
             autoplayTimeout: 1300,
             autoplayHoverPause: true,
-            dots: false,
+            dots: false, 
             responsive: {
-                0: {
-                    items: 2
-                },
-                750: {
-                    items: 3
-                },
-                960: {
-                    items: 3
-                },
-                1100: {
-                    items: 6
-                }
+              0: {
+                items: 2 
+              },
+              750: {
+                items: 3
+              },
+              960: {
+                items: 3
+              },
+              1100: {
+                items: 6
+              }
             }
-        });
-    </script>
-</body>
+          });
 
+          function gotoLink(url) {
+            window.open(url, '_blank');
+          }
+      </script>
+  </body>
 </html>

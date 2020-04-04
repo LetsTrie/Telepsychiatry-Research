@@ -1,130 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/consultaion.css" />
-        <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
-        <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/css/ourDoctors.css" />
 
-        <title>Psychiatric Consultations | Telepsychiatry Research</title>
-</head>
+    <title>
+      Our Doctors | Telepsychiatry Research
+    </title>
+  </head>
 
-<body>
-    <section>
-        <header>
-            <nav class="cnav">
-                <%- include('./partials/navbar')%>
-            </nav>
-            <div class="my-3 divider"></div>
-        </header>
-        <div class="bookDoctor">
-            <div class=" container">
-                <div class="bookDoctorHeader text-center">
-                    <p>Book our Doctors</p>
-                </div>
-                <div class="bookDoctorHeader__info">
-                    <p>Find the right mental health consultants from our list of doctors. You can also search by their name to narrow down the list. You can also see the whole list of doctors.</p>
-                </div>
-                <div class="searching">
-                    <form action="#" method="POST">
-                        <div class="searchbox">
-                            <input type="text" name="search" placeholder="Search Doctors" required />
-                        </div>
-                        <div class="searchBtn">
-                            <input type="submit" value="search" />
-                        </div>
-                    </form>
-                </div>
-                <div class="all-items">
-                    <div class="owl-carousel owl-theme">
-                        <% for(let i = 0 ; i < doctors.length; i++) { %>
-                            <div class="item">
-                                <div class="m-1 mb-5 card">
-                                    <img src="/uploads/<%= doctors[i].propicURL %>" class="card-img-top" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <p class="cardName">
-                                                <%= doctors[i].name %> <i class="fa fa-check-circle verified"></i>
-                                            </p>
-                                            <p class="cardDegree">
-                                                <%= doctors[i].professionalDegree %> -
-                                                    <%= doctors[i].designation %>
-                                            </p>
-                                        </h5>
-
-                                        <p class="card-text">
-                                            <p class="aff">
-                                                <span class="fa fa-user">&nbsp;&nbsp;</span>
-                                                <%= doctors[i].affiliation %>
-                                            </p>
-                                            <p class="college">
-                                                <span class="fa fa-university">&nbsp;</span>
-                                                <%= doctors[i].institute %>
-                                            </p>
-                                            <div class="twoButtons">
-                                                <div><button id="<%= doctors[i]._id %>" class="doctorsProfile">View Profile</button></div>
-                                                <div><button class="bookNow" data-toggle="modal" data-target="#BOOK_APPOINTMENT_MODAL">Book
-                          Now</button></div>
-                                            </div>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <% } %>
-                    </div>
-                </div>
-
-                <div class="bookDoctor__showMore text-center">
-                    <button>See all doctors</button>
-                </div>
-            </div>
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="assessment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Clinical Services</a> / Psychiatric consultations</p>
+          </div>
+          <div class="bigText">
+            <p>Our Professional Consultants</p>
+          </div>
         </div>
+
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="searchFilter">
+              <p>Search Filter</p>
+            </div>
+            <div class="searchFields">
+              <div class="sField">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control py-4"
+                    placeholder="Search doctors"
+                  />
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="cat">
+                <div class="cat_heading">
+                  <p>Gender</p>
+                </div>
+                <div class="catOptions">
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheck"
+                      name="example1"
+                    />
+                    <label class="custom-control-label" for="customCheck"
+                      >Male doctors</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckw"
+                      name="example1"
+                    />
+                    <label class="custom-control-label" for="customCheckw"
+                      >Female doctors</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="cat">
+                <div class="cat_heading">
+                  <p>Select Specialists</p>
+                </div>
+                <div class="catOptions">
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckx"
+                      name="example1"
+                    />
+                    <label class="custom-control-label" for="customCheckx"
+                      >Urology</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customChecky"
+                      name="example1y"
+                    />
+                    <label class="custom-control-label" for="customChecky"
+                      >Neurologist</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckxx"
+                      name="example1"
+                    />
+                    <label class="custom-control-label" for="customCheckxx"
+                      >Dentists</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckxy"
+                      name="example1y"
+                    />
+                    <label class="custom-control-label" for="customCheckxy"
+                      >Cardiologist</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckqx"
+                      name="example1"
+                    />
+                    <label class="custom-control-label" for="customCheckqx"
+                      >Orthopedics</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckqy"
+                      name="example1y"
+                    />
+                    <label class="custom-control-label" for="customCheckqy"
+                      >Neurologist</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckqxx"
+                      name="example1"
+                    />
+                    <label class="custom-control-label" for="customCheckqxx"
+                      >Dentists</label
+                    >
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheckqxy"
+                      name="example1y"
+                    />
+                    <label class="custom-control-label" for="customCheckqxy"
+                      >Cardiologist</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="findDocBtn">
+                <button>Search</button>
+              </div>
+            </div>
+          </div>
+          <div class="eachBigSection">
+            <div class="bigHeading">
+              <p>Book Our Doctors</p>
+            </div>
+            <div class="allDoctors container">
+              <% for(let i = 0 ; i < 6; i++) { %>
+              <div
+                class="doctor_identity"
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1000"
+              >
+                <div class="his_photo">
+                  <img src="/images/doctor.jpg" alt="Doctor" />
+                </div>
+                <div class="His_profession">
+                  <p class="name">Sharmin Afroz</p>
+                  <p class="degreeNspeciality">
+                    BDS, MDS - Oral & Maxillofacial Surgery
+                  </p>
+
+                  <p class="aff">
+                    <span class="fa fa-user">&nbsp;&nbsp;</span> Associate
+                    Professor (CC) & Unit Head, Dept. of Psychiatry
+                  </p>
+                  <p class="college">
+                    <span class="fa fa-university">&nbsp;</span> Sir Salimullah
+                    Medical College & Mitford Hospital
+                  </p>
+                  <p class="bill">
+                    <span class="fa fa-money">&nbsp;&nbsp;</span> 500 BDT
+                  </p>
+
+                  <div class="bookingg">
+                    <button class="viewProfile" onclick="go()">
+                      View Profile
+                    </button>
+                    <button
+                      class="bookAppointment"
+                      data-toggle="modal"
+                      data-target="#BOOK_APPOINTMENT_MODAL"
+                    >
+                      Book appointment
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
-    <%- include('./partials/footer')%>
-        <%- include('./partials/bookAppointment') %>
-</body>
-
-<%- include('./partials/vendorsBottom')%>
-    <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-    <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
-    <script>
-        $('button.doctorsProfile').click((e) => {
-            const doc_id = e.target.id
-            console.log('yo')
-            console.log(doc_id)
-            location = '/services/doctor/profile/' + doc_id
-        })
-    </script>
-    <script>
-        var owl = $('.owl-carousel');
-        owl.owlCarousel({
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                750: {
-                    items: 1
-                },
-                960: {
-                    items: 2
-                },
-                1000: {
-                    items: 3
-                }
-            }
-        });
-
-        document.getElementsByClassName('bookDoctor__showMore')[0].addEventListener('click', (e) => {
-            location = '/services/ourDoctors';
-        })
-    </script>
-
+    <%- include('./partials/bookAppointment') %> <%-
+    include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    function go() {
+      location = '/services/doctor/profile/1';
+    }
+  </script>
 </html>

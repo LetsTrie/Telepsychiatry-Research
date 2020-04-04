@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
 *,
 *:after,
 *:before {
@@ -910,7 +912,7 @@ body {
 
 .assessment_wrapper {
   background: #ebebeb;
-  min-height: 85vh;
+  min-height: 100vh;
 }
 
 .blueDivider {
@@ -996,7 +998,7 @@ body {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .twoBigSectionFlex {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1098,7 +1100,7 @@ body {
   margin: auto;
   margin-top: 20px;
   background-color: #fff;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #cacaca;
   border-radius: 4px;
   padding: 25px;
 }
@@ -1154,7 +1156,7 @@ body {
   background-color: #fff;
   color: #777676;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14.5px;
   font-weight: 500;
   margin: 6px auto auto 8px;
   padding: 0 7px;

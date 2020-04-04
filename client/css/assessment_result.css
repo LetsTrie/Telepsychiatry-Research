@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
 *,
 *:after,
 *:before {
@@ -904,26 +906,75 @@ p {
   border: 1px solid #ececec;
 }
 
-.assessment_result {
-  min-height: 60vh;
-  padding-top: 40px;
-  padding-bottom: 40px;
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
-.assessment_result .res .res_heading {
-  text-align: center;
-  font-family: 'Merriweather', serif;
-  padding-bottom: 10px;
+.assessment_wrapper {
+  background: #ebebeb;
+  min-height: 100vh;
 }
 
-.assessment_result .res .res_heading p {
-  font-size: 2.5rem;
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
 }
 
-.assessment_result .res .res_results {
-  padding-top: 30px;
-  width: 80%;
+.blueDivider p a {
+  color: white;
+}
+
+.blueDivider p a:hover {
+  text-decoration: underline;
+}
+
+.blueDivider .smallText {
   margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .smallText {
+    width: 97%;
+  }
+}
+
+.blueDivider .smallText p {
+  font-size: 13px;
+}
+
+.blueDivider .bigText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .bigText {
+    width: 97%;
+  }
+}
+
+.blueDivider .bigText p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 550px) {
+  .blueDivider .bigText p {
+    font-size: 18px;
+  }
+}
+
+.blueDivider p {
+  margin-bottom: 0px;
+  color: white;
+}
+
+.twoBigSectionFlex {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -937,77 +988,178 @@ p {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 95%;
+  margin: 30px auto 0 auto;
 }
 
-@media (max-width: 992px) {
-  .assessment_result .res .res_results {
+@media (max-width: 1320px) {
+  .twoBigSectionFlex {
+    width: 98%;
+  }
+}
+
+@media (max-width: 900px) {
+  .twoBigSectionFlex {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
   }
 }
 
-.assessment_result .res .res_results .doc_rand_pic {
-  width: 40%;
+.twoBigSectionFlex .eachBigSection {
+  background: white;
+  border-radius: 5px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child {
+  width: 25%;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:first-child {
+    width: 100%;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .ageRange {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
+  font-size: 20px;
+  padding-bottom: 7px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeOptions .custom-control {
+  padding-bottom: 5px;
+  color: #444343;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests {
+  padding-top: 0px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
+  cursor: pointer;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
+  font-size: 20px;
+  padding-bottom: 7px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all {
+  padding: 5px;
   padding-right: 20px;
+  padding-left: 25px;
 }
 
-@media (max-width: 992px) {
-  .assessment_result .res .res_results .doc_rand_pic {
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all ul li {
+  list-style-type: disc;
+  line-height: 1.8;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child {
+  width: 73%;
+  padding: 20px 50px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
     width: 100%;
   }
 }
 
-.assessment_result .res .res_results .doc_rand_pic img {
-  width: 90%;
+.twoBigSectionFlex .eachBigSection:last-child .bigHeading {
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: 500;
 }
 
-.assessment_result .res .res_results .yourTotScore {
-  width: 58%;
+.twoBigSectionFlex .eachBigSection:last-child .bigHeading p {
+  font-size: 2.5rem;
 }
 
-@media (max-width: 992px) {
-  .assessment_result .res .res_results .yourTotScore {
-    width: 100%;
-  }
-}
-
-.assessment_result .res .res_results .score {
-  padding-top: 30px;
+.twoBigSectionFlex .eachBigSection:last-child .yourScore {
+  padding-top: 20px;
   padding-bottom: 5px;
   font-weight: 700;
 }
 
-.assessment_result .res .res_results .score p {
+.twoBigSectionFlex .eachBigSection:last-child .yourScore p {
   color: black;
   font-size: 30px;
 }
 
-.assessment_result .res .res_results .score p span {
+.twoBigSectionFlex .eachBigSection:last-child .yourScore p span {
   color: red;
 }
 
-.assessment_result .res .res_results .our_advice {
+.twoBigSectionFlex .eachBigSection:last-child .someDiscussion {
   text-align: justify;
 }
 
-.assessment_result .res .res_results .our_advice p {
-  font-size: 18px;
+.twoBigSectionFlex .eachBigSection:last-child .someDiscussion p {
+  font-size: 17.5px;
   color: #333333;
-  line-height: 30px;
+  line-height: 1.6;
   color: #464646;
 }
 
-.assessment_result .res .res_results .our_advice p span {
+.twoBigSectionFlex .eachBigSection:last-child .someDiscussion p span {
   font-weight: 700;
 }
 
-.assessment_result .res .res_results .our_advice p a {
+.twoBigSectionFlex .eachBigSection:last-child .someDiscussion p a {
   color: blue;
+}
+
+.litWidth {
+  width: 65%;
+  margin: auto;
+  border: 1px solid #dbdbdb;
+  margin-top: 12px;
+  padding: 0px 30px 30px 30px;
+}
+
+.litWidth .printButton {
+  margin-top: 20px;
+  text-align: end;
+}
+
+.litWidth .printButton button {
+  font-weight: 700;
+  border: 2px solid #20c0f3;
+  border-radius: 4px;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 7px 15px;
+  background-color: #20c0f3;
+  color: #fff;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.litWidth .printButton button:hover {
+  background-color: #1699c5;
+}
+
+.litWidth .printButton span {
+  font-size: 20px;
 }

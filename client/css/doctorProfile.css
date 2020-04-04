@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css?family=Thasadith:400,700|Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700|&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Scope+One&display=swap");
 *,
 *:after,
 *:before {
@@ -904,24 +906,75 @@ p {
   border: 1px solid #ececec;
 }
 
-.doctor_profile_heading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
+.docProWrapper {
+  background: #f3f3f3;
+  min-height: 50vh;
 }
 
-.doctor_profile_heading p {
-  font-size: 40px;
-  font-weight: 500;
-  color: #2a2a2a;
-  letter-spacing: 0.5px;
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+}
+
+.blueDivider p a {
+  color: white;
+}
+
+.blueDivider p a:hover {
+  text-decoration: underline;
+}
+
+.blueDivider .smallText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .smallText {
+    width: 97%;
+  }
+}
+
+.blueDivider .smallText p {
+  font-size: 13px;
+}
+
+.blueDivider .bigText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .bigText {
+    width: 97%;
+  }
+}
+
+.blueDivider .bigText p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 550px) {
+  .blueDivider .bigText p {
+    font-size: 18px;
+  }
+}
+
+.blueDivider p {
+  margin-bottom: 0px;
+  color: white;
 }
 
 .doctor_identity {
   background-color: #f8f9fa;
   border: 1px solid #ffeded;
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+  -webkit-box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
+          box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -962,8 +1015,8 @@ p {
 
 .doctor_identity .his_photo img {
   width: 100%;
-  border-radius: 7px;
   max-height: 300px;
+  border-radius: 7px;
 }
 
 .doctor_identity .His_profession {
@@ -1058,8 +1111,8 @@ p {
 }
 
 .aboutDoctor_wrapper .aboutDoctor {
-  -webkit-box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-          box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px, inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+  -webkit-box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
+          box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
 }
 
 .aboutDoctor_wrapper .card-tabs-2 .card-header {

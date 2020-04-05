@@ -987,6 +987,15 @@ p {
   font-family: 'Lato', sans-serif;
 }
 
+.adminContactUs .container .all_posts .singlePost .service p {
+  color: red;
+  font-size: 14px;
+  padding: 2px 5px;
+  border: 1px solid red;
+  width: 18%;
+  border-radius: 5px;
+}
+
 .adminContactUs .container .all_posts .singlePost .singlePost_reply {
   display: -webkit-box;
   display: -webkit-flex;

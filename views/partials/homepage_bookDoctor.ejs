@@ -1,27 +1,20 @@
 <div class="modal fade" id="HOMEPAGE_BOOK_APPOINTMENT_MODAL">
-  <div
-    class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered"
-  >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Book your Appointment</h2>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
-
-      <div class="modal-body">
-        <form>
-          <div class="two_box_one flex-child">
-            <div class="two_box_header form-header">
-              <p>Service You want</p>
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Book your Appointment</h2>
+                <button type="button" class="close" data-dismiss="modal">×</button>
             </div>
-            <div class="input_box slct_picker">
-              <div class="form-selectpicker">
-                <select
-                  class="selectpicker"
-                  data-width="100%"
-                  title="Select service"
-                  required
-                >
+
+            <div class="modal-body">
+                <form id="book-form" action="/services/book" method="POST">
+                    <div class="two_box_one flex-child">
+                        <div class="two_box_header form-header">
+                            <p>Service You want</p>
+                        </div>
+                        <div class="input_box slct_picker">
+                            <div class="form-selectpicker">
+                                <select class="selectpicker" data-width="100%" title="Select service" name="service" required>
                   <option value="Psychiatric Consultation"
                     >Psychiatric Consultation</option
                   >
@@ -29,90 +22,71 @@
                     >Psychology and Counselling</option
                   >
                 </select>
-              </div>
-            </div>
-          </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="two_box flex-parent">
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>Name</p>
-              </div>
-              <div class="input_box">
-                <input
-                  type="text"
-                  name="patientName"
-                  placeholder="Select Time"
-                />
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>Contact Info</p>
-              </div>
-              <div class="input_box slct_picker">
-                <div class="input_box">
-                  <input
-                    type="text"
-                    class="contact"
-                    placeholder="Email or Phone Number"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Name</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" name="name" placeholder="Select Time" />
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Contact Info</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="input_box">
+                                    <input type="text" class="contact" name="contact" placeholder="Email or Phone Number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="two_box flex-parent">
-            <div class="two_box_on flex-child">
-              <div class="two_box_header form-header">
-                <p>Age</p>
-              </div>
-              <div class="input_box">
-                <input type="text" class="contact" placeholder="Age" />
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>Booking Type:</p>
-              </div>
-              <div class="input_box slct_picker">
-                <div class="form-selectpicker">
-                  <select
-                    class="selectpicker"
-                    data-width="100%"
-                    title="Select Type"
-                    required
-                  >
+                    <div class="two_box flex-parent">
+                        <div class="two_box_on flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Age</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" name="age" class="contact" placeholder="Age" />
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Booking Type:</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                    <select class="selectpicker" name="bookType" data-width="100%" title="Select Type" required>
                     <option value="Online">Online</option>
                     <option value="Face to Face"> Face to Face </option>
                   </select>
-                </div>
-              </div>
-            </div>
-          </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="two_box flex-parent">
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>Date</p>
-              </div>
-              <div class="input_box">
-                <input type="text" name="meet_date" placeholder="Select Time" />
-              </div>
-            </div>
-            <div class="two_box_one flex-child">
-              <div class="two_box_header form-header">
-                <p>Time</p>
-              </div>
-              <div class="input_box slct_picker">
-                <div class="form-selectpicker">
-                  <select
-                    class="selectpicker"
-                    data-width="100%"
-                    title="Select Time"
-                    data-size="3"
-                    required
-                  >
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Date</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" name="date" placeholder="Select Time" />
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Time</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                    <select class="selectpicker" name="time" data-width="100%" title="Select Time" data-size="3" required>
                     <option value="10">05:00 PM - 06:00 PM</option>
                     <option value="11">06:00 PM - 07:00 PM</option>
                     <option value="12">07:00 PM - 08:00 PM</option>
@@ -130,61 +104,59 @@
                     <option value="8">03:00 PM - 04:00 PM</option>
                     <option value="9">04:00 PM - 05:00 PM</option>
                   </select>
-                </div>
-              </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body-submit submit">
+                        <button id="submit-btn" class="green-btn gotoResetPass">Proceed to Pay</button>
+                    </div>
+                </form>
+
+
             </div>
-          </div>
-        </form>
 
-        <div class="modal-body-submit submit">
-          <button class="green-btn gotoResetPass">Proceed to Pay</button>
-        </div>
-      </div>
-
-      <div class="modal-footer submit">
-        <button type="button" class="red-btn" data-dismiss="modal">
+            <div class="modal-footer submit">
+                <button type="button" class="red-btn" data-dismiss="modal">
           Close
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
-  $('input[name="meet_date"]').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    minYear: parseInt(moment().format('YYYY'), 10),
-    maxYear: parseInt(moment().format('YYYY'), 10) + 1,
-    autoUpdateInput: false,
-    locale: {
-      cancelLabel: 'Clear',
-    },
-  });
+    console.log('ouy')
+    $('.green-btn').click((e) => {
+        console.log('submit')
+        $('#book-form').submit()
+    })
 
-  $('input[name="meet_date"]').on('apply.daterangepicker', function (
-    ev,
-    picker
-  ) {
-    $(this).val(picker.startDate.format('MM/DD/YYYY'));
-  });
+    $('input[name="date"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: parseInt(moment().format('YYYY'), 10),
+        maxYear: parseInt(moment().format('YYYY'), 10) + 1,
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear',
+        },
+    });
 
-  $('input[name="meet_date"]').on('cancel.daterangepicker', function (
-    ev,
-    picker
-  ) {
-    $(this).val('');
-  });
+    $('input[name="date"]').on('apply.daterangepicker', function(
+        ev,
+        picker
+    ) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY'));
+    });
+
+    $('input[name="date"]').on('cancel.daterangepicker', function(
+        ev,
+        picker
+    ) {
+        $(this).val('');
+    });
 </script>

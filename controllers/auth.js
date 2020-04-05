@@ -71,11 +71,6 @@ exports.postRegisterExpertUser = async (req, res, next) => {
   res.redirect('/');
 };
 
-exports.TempFileCollector = async (req, res, next) => {
-  let users = await eUserModel.find({}).select('propicURL cvURL -_id');
-  return res.json({ users });
-};
-
 exports.saveExpUser = async (req, res, next) => {
   const {
     name,
@@ -133,10 +128,9 @@ exports.saveExpUser = async (req, res, next) => {
     workExperience,
     visitingHour,
   };
-  console.log(userObj);
 
   const { error } = regExpUserVal(userObj);
-  console.log(error);
+  // console.log(error);
   if (error != null) {
     req.flash('errorMessage', error.details[0].message);
     return res.send({
@@ -147,6 +141,7 @@ exports.saveExpUser = async (req, res, next) => {
 
   const newExpUser = new eUserModel(userObj);
   await newExpUser.save();
+  console.log(userObj);
   console.log('exp saved');
   req.flash('successMessage', 'You have successfully been regsitered');
   return res.send({

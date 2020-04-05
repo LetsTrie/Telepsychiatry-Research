@@ -9,7 +9,6 @@ const {
   postRegisterOrgUser,
   postCheckDuplication,
   saveExpUser,
-  TempFileCollector,
 } = require('../controllers/auth');
 
 router.get('/login', (req, res, next) => res.render('login'));
@@ -24,7 +23,5 @@ router.post('/register/new/exp/save', saveExpUser);
 
 router.get('/register/new/org', getRegisterOrganizations);
 router.post('/register/new/org', postRegisterOrgUser);
-
-router.get('/getAll212', TempFileCollector);
 
 module.exports = router;

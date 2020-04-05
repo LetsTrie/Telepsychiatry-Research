@@ -65,112 +65,88 @@ exports.postCheckDuplication = async(req, res, next) => {
     return res.json({ success, message });
 };
 
-exports.postRegisterExpertUser_New = async(req, res, next) => {
+const { regExpUserVal } = require('../validations/auth');
+exports.postRegisterExpertUser = async(req, res, next) => {
+    console.log('files saved');
+    res.redirect('/');
+};
+
+exports.saveExpUser = async(req, res, next) => {
     const {
         name,
         gender,
         institute,
         expertise,
         designation,
-        aboutYourself,
-        email,
         speciality,
         dob,
-        fee,
+        email,
+        password,
         phone,
-        regno,
+        professionalDegree: profDegree,
         affiliation,
+        regno,
         researchArea,
-        country
+        country,
+        fee,
+        aboutYourself,
+        propicURL,
+        cvURL
     } = req.body;
 
     const education = JSON.parse(req.body.education);
+    const training = JSON.parse(req.body.training);
+    const awards = JSON.parse(req.body.awards);
     const workExperience = JSON.parse(req.body.workExperience);
     const visitingHour = JSON.parse(req.body.visitingHour);
-    const training = JSON.parse(req.body.trainingArray);
-    const awards = JSON.parse(req.body.awardsArray);
 
-    console.log(req.body);
-};
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-exports.postRegisterExpertUser = async(req, res, next) => {
-    const {
-        fname,
-        lname,
-        email,
-        password,
-        phoneNumber,
+    const userObj = {
+        name,
         gender,
-        country,
+        institute,
+        expertise,
+        designation,
+        speciality,
         dob,
-        cAffiliation,
-        identifyNo,
+        email,
+        password: hashedPassword,
+        phone,
+        professionalDegree: profDegree,
+        affiliation,
+        regno,
         researchArea,
-        hADegree
-    } = req.body;
-    try {
-        await joi
-            .object()
-            .keys({
-                fname: joi
-                    .string()
-                    .required()
-                    .regex(/^[a-zA-Z ]+$/),
-                lname: joi
-                    .string()
-                    .required()
-                    .regex(/^[a-zA-Z ]+$/),
-                email: joi
-                    .string()
-                    .required()
-                    .regex(
-                        /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
-                    ),
-                password: joi
-                    .string()
-                    .required()
-                    .min(6),
-                phoneNumber: joi
-                    .string()
-                    .required()
-                    .regex(/\w+/i)
-                    .min(6),
-                gender: joi.string().required(),
-                country: joi.string().required(),
-                dob: joi
-                    .string()
-                    .required()
-                    .regex(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/),
-                cAffiliation: joi.string().required(),
-                identifyNo: joi.string().required(),
-                researchArea: joi.string().required(),
-                hADegree: joi.string().required()
-            })
-            .validate(req.body);
+        country,
+        fee,
+        aboutYourself,
+        propicURL,
+        cvURL,
+        education,
+        training,
+        awards,
+        workExperience,
+        visitingHour
+    };
 
-        bcrypt.genSalt(10, async function(err, salt) {
-            bcrypt.hash(password, salt, async function(err, hash) {
-                const newExpUser = await new eUserModel({
-                    fname,
-                    lname,
-                    email,
-                    password: hash,
-                    phoneNumber,
-                    gender,
-                    country,
-                    dob,
-                    identifyNo,
-                    researchArea,
-                    cAffiliation,
-                    hADegree
-                }).save();
-                console.log('exp user saved');
-                res.redirect('/');
-            });
+    const { error } = regExpUserVal(userObj);
+    console.log(error);
+    if (error != null) {
+        req.flash('errorMessage', error.details[0].message);
+        return res.send({
+            status: false,
+            message: error.details[0].message
         });
-    } catch (err) {
-        console.log(err);
     }
+
+    const newExpUser = new eUserModel(userObj);
+    await newExpUser.save();
+    console.log('exp saved');
+    req.flash('successMessage', 'You have successfully been regsitered');
+    return res.send({
+        status: true,
+        message: 'success'
+    });
 };
 
 exports.postRegisterOrgUser = async(req, res, next) => {

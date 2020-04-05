@@ -36,7 +36,7 @@ exports.postRegisterGeneralUser = async(req, res, next) => {
         const userObj = {
             ...req.body,
             password: hashedPassword,
-            propicURL: req.file.filename
+            propicURL: req.file.filename,
         };
         delete userObj['cPassword'];
         const newGenUser = new gUserModel(userObj);
@@ -91,7 +91,7 @@ exports.saveExpUser = async(req, res, next) => {
         fee,
         aboutYourself,
         propicURL,
-        cvURL
+        cvURL,
     } = req.body;
 
     const education = JSON.parse(req.body.education);
@@ -126,26 +126,27 @@ exports.saveExpUser = async(req, res, next) => {
         training,
         awards,
         workExperience,
-        visitingHour
+        visitingHour,
     };
 
     const { error } = regExpUserVal(userObj);
-    console.log(error);
+    // console.log(error);
     if (error != null) {
         req.flash('errorMessage', error.details[0].message);
         return res.send({
             status: false,
-            message: error.details[0].message
+            message: error.details[0].message,
         });
     }
 
     const newExpUser = new eUserModel(userObj);
     await newExpUser.save();
+    console.log(userObj);
     console.log('exp saved');
     req.flash('successMessage', 'You have successfully been regsitered');
     return res.send({
         status: true,
-        message: 'success'
+        message: 'success',
     });
 };
 
@@ -159,7 +160,7 @@ exports.postRegisterOrgUser = async(req, res, next) => {
         org_type,
         password,
         establish_year,
-        websiteLink
+        websiteLink,
     } = req.body;
     console.log(req.body);
     try {
@@ -177,19 +178,12 @@ exports.postRegisterOrgUser = async(req, res, next) => {
                     .regex(
                         /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
                     ),
-                password: joi
-                    .string()
-                    .required()
-                    .min(6),
-                authPhoneNumber: joi
-                    .string()
-                    .required()
-                    .regex(/\w+/i)
-                    .min(6),
+                password: joi.string().required().min(6),
+                authPhoneNumber: joi.string().required().regex(/\w+/i).min(6),
                 region: joi.string().required(),
                 org_type: joi.string().required(),
                 websiteLink: joi.string().required(),
-                establish_year: joi.string().required()
+                establish_year: joi.string().required(),
             })
             .validate(req.body);
 
@@ -204,7 +198,7 @@ exports.postRegisterOrgUser = async(req, res, next) => {
                     org_type,
                     password,
                     establish_year,
-                    websiteLink
+                    websiteLink,
                 }).save();
                 console.log('org user saved');
                 res.redirect('/');

@@ -934,7 +934,10 @@ p {
 
 .intro_page_header {
   background: #2eb89a;
-  background: url("https://lh3.googleusercontent.com/-yK395EQAjxQ/XoiiSZ097rI/AAAAAAAAIfY/GtNd02ztUmAiO3eiV0Xwao8h7xfa2GqzACK8BGAsYHg/s0/coronavirus-covid19.jpg");
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.1))), url(/images/covid.jpg);
+  background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/covid.jpg);
+  background: -o-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/covid.jpg);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/covid.jpg);
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -1029,16 +1032,12 @@ p {
   padding-top: 23px;
   padding-bottom: 40px;
   padding-left: 30px;
-  background: white;
+  background: transparent;
   margin: 25vmin 1vmin;
   max-width: 600px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   margin-bottom: 30vmin;
-  -webkit-animation: animateLeftToRight 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s backwards;
-       -o-animation: animateLeftToRight 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s backwards;
-          animation: animateLeftToRight 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s backwards;
-  border-left: 8px solid #ee2a2d;
 }
 
 @media only screen and (max-width: 500px) {
@@ -1053,10 +1052,10 @@ p {
   color: #404040;
   letter-spacing: -1px;
   font-weight: 700;
-  color: #112950;
-  -webkit-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s backwards;
-       -o-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s backwards;
-          animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s backwards;
+  color: white;
+  -webkit-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s backwards;
+       -o-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s backwards;
+          animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.3s backwards;
 }
 
 @media (max-width: 700px) {
@@ -1074,34 +1073,46 @@ p {
   font-size: 20px;
   padding-left: 10px;
   padding-right: 20px;
-  color: #112950;
-  -webkit-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.1s backwards;
-       -o-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.1s backwards;
-          animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.1s backwards;
+  color: white;
+  -webkit-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.6s backwards;
+       -o-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.6s backwards;
+          animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.6s backwards;
 }
 
 .desc .btnBook {
   padding-left: 10px;
   padding-top: 10px;
-  -webkit-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.2s backwards;
-       -o-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.2s backwards;
-          animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1.2s backwards;
+  -webkit-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.9s backwards;
+       -o-animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.9s backwards;
+          animation: bumm 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.9s backwards;
+  margin-top: 20px;
 }
 
 .desc .btnBook a {
-  color: #ee2a2d;
-  font-size: 20px;
+  color: white;
+  font-size: 18px;
   border: none;
   outline: none;
-  display: block;
+  padding: 10px 20px;
   font-weight: 500;
+  -webkit-box-shadow: 1px 1px 5px #3a3939;
+          box-shadow: 1px 1px 5px #3a3939;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: transparent;
+  background-color: #cc1b1d;
   line-height: 1.5;
+  font-family: 'Source Serif Pro', serif;
+  border-radius: 3px;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.desc .btnBook a:hover {
+  background-color: #a0090b;
 }
 
 .about_this_website {

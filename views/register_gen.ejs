@@ -22,13 +22,28 @@
         <div class="createResources__header">
           <p id="submitResources">Register General User</p>
         </div>
+        <%- include('./partials/messages')%>
+        <div id="alertF" class="alert alert-danger"></div>
+
         <div class="input_boxes">
-          <form>
+          <form
+            id="form"
+            action="/auth/register/new/gen"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <div class="two_box flex-parent">
               <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>First Name:</p></div>
+                <div class="two_box_header form-header">
+                  <p>First Name:</p>
+                </div>
                 <div class="input_box">
-                  <input type="text" name="authors" placeholder="Authors" />
+                  <input
+                    type="text"
+                    id="fname"
+                    name="fname"
+                    placeholder="First name"
+                  />
                 </div>
               </div>
               <div class="two_box_one  flex-child">
@@ -37,16 +52,28 @@
                 </div>
                 <div>
                   <div class="input_box">
-                    <input type="text" name="authors" placeholder="Authors" />
+                    <input
+                      type="text"
+                      name="lname"
+                      id="lname"
+                      placeholder="Last name"
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <div class="two_box flex-parent">
               <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>Email:</p></div>
+                <div class="two_box_header form-header">
+                  <p>Email:</p>
+                </div>
                 <div class="input_box">
-                  <input type="text" name="email" placeholder="Email" />
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                  />
                 </div>
               </div>
               <div class="two_box_one  flex-child">
@@ -57,6 +84,7 @@
                   <div class="input_box">
                     <input
                       type="text"
+                      id="phoneNumber"
                       name="phoneNumber"
                       placeholder="Phone Number"
                     />
@@ -66,9 +94,16 @@
             </div>
             <div class="two_box flex-parent">
               <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>Password:</p></div>
+                <div class="two_box_header form-header">
+                  <p>Password:</p>
+                </div>
                 <div class="input_box">
-                  <input type="text" name="password" placeholder="password" />
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                  />
                 </div>
               </div>
               <div class="two_box_one  flex-child">
@@ -78,7 +113,8 @@
                 <div>
                   <div class="input_box">
                     <input
-                      type="text"
+                      type="password"
+                      id="cPassword"
                       name="cPassword"
                       placeholder="Confirm Password"
                     />
@@ -94,11 +130,12 @@
                 <div class="input_box slct_picker">
                   <div class="form-selectpicker">
                     <select
+                      id="genderInput"
                       class="selectpicker"
                       data-width="100%"
                       title="Gender"
-                      name="gender"
                       data-size="6"
+                      name="gender"
                       required
                     >
                       <option value="Male">Male</option>
@@ -114,6 +151,7 @@
                 <div class="input_box">
                   <input
                     type="text"
+                    id="dob"
                     name="dob"
                     placeholder="Date Of Birth"
                     autocomplete="off"
@@ -129,6 +167,7 @@
                 <div class="input_box">
                   <input
                     type="text"
+                    id="hADegree"
                     name="hADegree"
                     placeholder="Highest Academic Degree"
                   />
@@ -142,6 +181,7 @@
                   <div class="input_box">
                     <input
                       type="text"
+                      id="cAffiliation"
                       name="cAffiliation"
                       placeholder="Current Affiliation"
                     />
@@ -158,14 +198,17 @@
                   <div class="form-selectpicker">
                     <select
                       class="selectpicker"
+                      id="countryInput"
                       data-width="100%"
                       title="Select Country"
-                      name="country"
                       data-size="6"
+                      name="country"
                       required
                     >
                       <% for(let i = 0 ; i < country.length; i++) { %>
-                      <option value="<%=i%>"><%=country[i].name%></option>
+                      <option value="<%=country[i].name%>"
+                        ><%=country[i].name%></option
+                      >
                       <% } %>
                     </select>
                   </div>
@@ -177,17 +220,18 @@
                 </div>
                 <div class="input_box imageFile">
                   <input
+                    id="imageFile"
                     type="file"
-                    name="myImage"
+                    name="image"
                     accept="image/x-png,image/jpg,image/jpeg"
                   />
                 </div>
               </div>
             </div>
+            <div class="createResources__submit">
+              <button type="submit" id="sub-btn">Submit</button>
+            </div>
           </form>
-          <div class="createResources__submit">
-            <button>Submit</button>
-          </div>
         </div>
       </div>
     </section>
@@ -207,32 +251,6 @@
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
   ></script>
-  <script>
-    ClassicEditor.create(document.querySelector('#editor'))
-      .then(editor => {
-        console.log(editor);
-      })
-      .catch(error => {
-        console.error(error);
-      });
 
-    $('input[name="dob"]').daterangepicker({
-      autoUpdateInput: false,
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1930,
-      maxYear: parseInt(moment().format('YYYY'), 10),
-      locale: {
-        cancelLabel: 'Clear'
-      }
-    });
-
-    $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
-    });
-
-    $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-    });
-  </script>
+  <script src="/js/register_gen.js"></script>
 </html>

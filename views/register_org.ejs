@@ -22,15 +22,18 @@
         <div class="createResources__header">
           <p id="submitResources">Register Organization</p>
         </div>
+        <%- include('./partials/messages')%>
+        <div id="alertF" class="alert alert-danger"></div>
+
         <div class="input_boxes">
-          <form>
+          <form id="form" action="/auth/register/new/org" method="POST">
             <div class="two_box flex-parent">
               <div class="two_box_one flex-child">
                 <div class="two_box_header form-header">
                   <p>Organization Name:</p>
                 </div>
                 <div class="input_box">
-                  <input type="text" name="org_name" placeholder="Name" />
+                  <input type="text" name="name" id="name" placeholder="Name" />
                 </div>
               </div>
               <div class="two_box_one  flex-child">
@@ -43,6 +46,7 @@
                       class="selectpicker"
                       data-width="100%"
                       title="Type of organizations"
+                      id="org_typeInput"
                       name="org_type"
                       data-size="6"
                       required
@@ -65,6 +69,7 @@
                       class="selectpicker"
                       data-width="100%"
                       title="Select Year"
+                      id="establish_yearInput"
                       name="establish_year"
                       data-size="6"
                       required
@@ -86,6 +91,7 @@
                     <input
                       type="text"
                       name="websiteLink"
+                      id="websiteLink"
                       placeholder="Website Link"
                     />
                   </div>
@@ -103,12 +109,15 @@
                       class="selectpicker"
                       data-width="100%"
                       title="Region"
+                      id="regionInput"
                       name="region"
                       data-size="6"
                       required
                     >
                       <% for(let i = 0 ; i < country.length; i++) { %>
-                      <option value="<%=i%>"><%=country[i].name%></option>
+                      <option value="<%=country[i].name%>"
+                        ><%=country[i].name%></option
+                      >
                       <% } %>
                     </select>
                   </div>
@@ -121,7 +130,8 @@
                 <div class="input_box">
                   <input
                     type="text"
-                    name="authorized_person_name"
+                    name="authName"
+                    id="authName"
                     placeholder="Authorized Person Name"
                   />
                 </div>
@@ -136,7 +146,8 @@
                   <div class="input_box">
                     <input
                       type="text"
-                      name="authorized_person_email"
+                      name="authEmail"
+                      id="authEmail"
                       placeholder="Authorized Person Email"
                     />
                   </div>
@@ -150,7 +161,8 @@
                   <div class="input_box">
                     <input
                       type="text"
-                      name="authorized_person_mobile_number"
+                      id="authPhoneNumber"
+                      name="authPhoneNumber"
                       placeholder="Mobile Number"
                     />
                   </div>
@@ -159,9 +171,16 @@
             </div>
             <div class="two_box flex-parent">
               <div class="two_box_one flex-child">
-                <div class="two_box_header form-header"><p>Password:</p></div>
+                <div class="two_box_header form-header">
+                  <p>Password:</p>
+                </div>
                 <div class="input_box">
-                  <input type="text" name="password" placeholder="Password" />
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                  />
                 </div>
               </div>
               <div class="two_box_one  flex-child">
@@ -171,7 +190,8 @@
                 <div>
                   <div class="input_box">
                     <input
-                      type="text"
+                      type="password"
+                      id="cPassword"
                       name="cPassword"
                       placeholder="Confirm Password"
                     />
@@ -179,10 +199,10 @@
                 </div>
               </div>
             </div>
+            <div class="createResources__submit">
+              <button id="sub-btn">Submit</button>
+            </div>
           </form>
-          <div class="createResources__submit">
-            <button>Submit</button>
-          </div>
         </div>
       </div>
     </section>
@@ -202,32 +222,5 @@
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
   ></script>
-  <script>
-    ClassicEditor.create(document.querySelector('#editor'))
-      .then(editor => {
-        console.log(editor);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-
-    $('input[name="dob"]').daterangepicker({
-      autoUpdateInput: false,
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1930,
-      maxYear: parseInt(moment().format('YYYY'), 10),
-      locale: {
-        cancelLabel: 'Clear'
-      }
-    });
-
-    $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
-    });
-
-    $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-    });
-  </script>
+  <script src="/js/register_org.js"></script>
 </html>

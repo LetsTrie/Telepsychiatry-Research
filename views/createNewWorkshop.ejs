@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop') %>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="/css/createResources.css" />
+        <title>New Workshop | Telepsychiatry Research</title>
+</head>
+
+<body>
+    <section class="wrapper">
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+
+        <div class="my-3 divider"></div>
+        <div class="createResources">
+            <div id="alertF" class="alert alert-danger" role="alert">
+            </div>
+            <div class="createResources__header">
+                <p id="submitResources">Create new Workshop</p>
+            </div>
+            <div class="input_boxes">
+                <form>
+                    <div class="one_box pb-3">
+                        <div class="box_header">
+                            <p>Title :</p>
+                        </div>
+                        <div class="input_box">
+                            <input type="text" required id="title" name="title" placeholder="Title" />
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Brief Description :</p>
+                        </div>
+                        <div class="input_box">
+                            <textarea name="description" id="editor"> </textarea>
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Event Location :</span>
+                            </p>
+                        </div>
+                        <div class="input_box">
+                            <input id="location" required type="text" name="location" placeholder="Address" />
+                        </div>
+                    </div>
+
+                    <div class="one_box">
+                        <div class="box_header">
+                            <p>Event Time :</span>
+                            </p>
+                        </div>
+                        <div class="input_box">
+                            <input id="datetime" required type="text" name="datetimes" placeholder="Time && Date" />
+                            <input type="hidden" name="date" id="date">
+                            <input type="hidden" name="time" id="time">
+                        </div>
+                    </div>
+                    <div class="createResources__submit">
+                        <button id="form-submit">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log('ok: ', editor);
+            })
+            .catch(error => {
+                console.error('error: ', error);
+            });
+
+        $('input[name="datetimes"]').daterangepicker({
+            autoUpdateInput: false,
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datetimes"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY hh:mm A') + ' - ' + picker.endDate.format('DD/MM/YYYY hh:mm A'));
+        });
+
+        $('input[name="datetimes"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        let error = false
+
+        function showAlert(str) {
+            error = true
+            $('#alert').show()
+            $('#alert').html(str)
+        }
+
+        function checkTime(dt) {
+            if (dt == '') {
+                console.log(0)
+                return false
+            }
+            pieces = dt.split('/')
+            pieces2 = pieces[2].split(' ')
+            time1 = pieces2[1].split(':')
+            pieces3 = pieces[4].split(' ')
+            time2 = pieces3[1].split(':')
+            pieces4 = pieces[2].split('-')
+
+            if (dt[2] != '/' || dt[5] != '/' || dt[24] != '/' || dt[27] != '/') {
+                console.log(1)
+                return false
+            }
+            if (dt[10] != ' ' || dt[16] != ' ' || dt[19] != ' ' || dt[21] != ' ' || dt[32] != ' ' && dt[38] != ' ') {
+                console.log(2)
+
+                return false
+
+            }
+            if (dt[13] != ':' || dt[35] != ':') {
+                console.log(3)
+
+                return false
+            }
+            if (dt[17] != 'A' && dt[17] != 'P' || dt[18] != 'M' || dt[39] != 'A' && dt[39] != 'P' || dt[40] != 'M') {
+                console.log(4)
+
+                return false
+            }
+
+            if (dt.includes('AM')) {
+                dt = dt.replace('AM', '')
+            }
+            if (dt.includes('PM')) {
+                dt = dt.replace('PM', '')
+
+                date1 = parseInt(pieces[0])
+                month1 = parseInt(pieces[1])
+
+                date2 = parseInt(pieces4[1])
+                month2 = parseInt(pieces[3])
+
+                h1 = parseInt(time1[0])
+                m1 = parseInt(time1[1])
+
+                h2 = parseInt(time2[0])
+                m2 = parseInt(time2[1])
+            }
+            // console.log(date1, month1, h1, m1, " -- ", date2, month2, h2, m2)
+            if (date1 == null || month1 == null || h1 == null || m1 == null || date2 == null || month2 == null || h2 == null || m2 == null) {
+                console.log(5)
+
+                return false
+            }
+            if (date1 > 31 || month1 > 12 || h1 > 12 || m1 > 59 || date2 > 31 || month2 > 12 || h2 > 12 || m2 > 59) {
+                console.log(6)
+
+                return false
+            }
+            for (let i = 0; i < dt.length; i++) {
+                if (!(dt[i] >= '0' && dt[i] <= '9') && dt[i] != ' ' && dt[i] != '/' && dt[i] != ':' && dt[i] != '-') {
+                    console.log(7)
+                    return false
+                }
+            }
+
+            return true
+        }
+
+        function getDate(dt) {
+            return (dt.substring(0, 10) + dt.substring(19, 30))
+        }
+
+        function getTime(dt) {
+            return (dt.substring(11, 19) + ' - ' + dt.substring(33, 41))
+        }
+
+        $('#form-submit').click((e) => {
+            e.preventDefault()
+            const title = $('#title').val()
+            const description = $('#description').val()
+            const Location = $('#location').val()
+            const datetime = $('#datetime').val()
+            if (title.length > 100) {
+                showAlert('Error in title')
+            }
+            if (!checkTime(datetime)) {
+                showAlert('Invalid date time')
+            }
+            if (Location.length == 0) {
+                showAlert('Error in location')
+            }
+            if (!error) {
+                const date = getDate(datetime)
+                const time = getTime(datetime)
+                $('#date').val(date)
+                $('#time').val(time)
+                $('#form').submit()
+            }
+
+        })
+    </script>
+
+</html>

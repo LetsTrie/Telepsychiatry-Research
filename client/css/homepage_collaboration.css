@@ -1,0 +1,49 @@
+.organizationSupport {
+  padding: 45px 0 35px 0;
+  font-family: 'Lato', sans-serif;
+  background: white;
+  -webkit-background-size: cover;
+          background-size: cover;
+}
+
+.organizationSupport .organizationHeader {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.organizationSupport .organizationHeader p {
+  text-align: center;
+}
+
+.organizationSupport .organizationHeader p span {
+  color: #00adef;
+}
+
+.organizationSupport .organizations {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.organizationSupport .organizations .org {
+  margin: 7px;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  background: #fff;
+}
+
+.organizationSupport .organizations .org img {
+  max-width: 120px;
+}

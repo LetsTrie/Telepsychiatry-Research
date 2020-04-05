@@ -1,0 +1,247 @@
+<div class="modal fade" id="HOMEPAGE_BOOK_APPOINTMENT_MODAL">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Book your Appointment</h2>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="book-form" action="/services/book" method="POST">
+                    <div class="alert alert-danger" style="display: none;" id="alert-book">hi</div>
+                    <div class="alert alert-success" style="display: none;" id="alert-success-book"></div>
+                    <div class="two_box_one flex-child">
+                        <div class="two_box_header form-header">
+                            <p>Service You want</p>
+                        </div>
+                        <div class="input_box slct_picker">
+                            <div class="form-selectpicker">
+                                <select class="selectpicker" id="book-service" data-width="100%" title="Select service" name="service" required>
+                  <option value="Psychiatric Consultation"
+                    >Psychiatric Consultation</option
+                  >
+                  <option value="Psychology and Counselling"
+                    >Psychology and Counselling</option
+                  >
+                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Name</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" id="book-name" name="name" placeholder="Select Time" />
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Contact Info</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="input_box">
+                                    <input type="text" id="book-contact" class="contact" name="contact" placeholder="Email or Phone Number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two_box flex-parent">
+                        <div class="two_box_on flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Age</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" id="book-age" name="age" class="contact" placeholder="Age" />
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Booking Type:</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                    <select id="book-bookType" class="selectpicker" name="bookType" data-width="100%" title="Select Type" required>
+                    <option value="Online">Online</option>
+                    <option value="Face to Face"> Face to Face </option>
+                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two_box flex-parent">
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Date</p>
+                            </div>
+                            <div class="input_box">
+                                <input type="text" id="book-date" name="date" placeholder="Select Time" />
+                            </div>
+                        </div>
+                        <div class="two_box_one flex-child">
+                            <div class="two_box_header form-header">
+                                <p>Time</p>
+                            </div>
+                            <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                    <select id="book-time" class="selectpicker" name="time" data-width="100%" title="Select Time" data-size="3" required>
+                    <option value="10">05:00 PM - 06:00 PM</option>
+                    <option value="11">06:00 PM - 07:00 PM</option>
+                    <option value="12">07:00 PM - 08:00 PM</option>
+                    <option value="13">08:00 PM - 09:00 PM</option>
+                    <option value="14">09:00 PM - 10:00 PM</option>
+                    <option value="15">10:00 PM - 11:00 PM</option>
+                    <option value="0">07:00 AM - 08:00 AM</option>
+                    <option value="1">08:00 AM - 09:00 AM</option>
+                    <option value="2">09:00 AM - 10:00 AM</option>
+                    <option value="3">10:00 AM - 11:00 AM</option>
+                    <option value="4">11:00 AM - 12:00 AM</option>
+                    <option value="5">12:00 AM - 01:00 PM</option>
+                    <option value="6">01:00 PM - 02:00 PM</option>
+                    <option value="7">02:00 PM - 03:00 PM</option>
+                    <option value="8">03:00 PM - 04:00 PM</option>
+                    <option value="9">04:00 PM - 05:00 PM</option>
+                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body-submit submit">
+                        <button id="book-submit-btn" class="green-btn gotoResetPass">Proceed to Pay</button>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer submit">
+                <button type="button" class="red-btn" data-dismiss="modal">
+          Close
+        </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    console.log('ouy')
+
+    function showAlert(text) {
+        console.log('yo 2')
+        $('#alert-book').show()
+        $('#alert-book').html(text)
+    }
+
+    function successBook(text) {
+        $('#alert-book').hide()
+        $('#alert-success-book').show()
+        $('#alert-success-book').html(text)
+    }
+
+    function clearBook() {
+        $('#book-service').val('')
+        $('#book-name').val('')
+        $('#book-contact').val('')
+        $('#book-age').val('')
+        $('#book-bookType').val('')
+        $('#book-date').val('')
+        $('#book-time').val('')
+    }
+
+    function formSubmitBook(data) {
+        $.ajax({
+            type: 'POST',
+            url: '/services/book',
+            data,
+            success: () => {
+                clearBook()
+                successBook('Your booking has been reserved. Thanks for your concern')
+            }
+        })
+    }
+
+    $('#book-submit-btn').click((e) => {
+        e.preventDefault()
+
+        const service = $('#book-service').val()
+        const name = $('#book-name').val()
+        const contact = $('#book-contact').val()
+        const age = $('#book-age').val()
+        const bookType = $('#book-bookType').val()
+        const date = $('#book-date').val()
+        const time = $('#book-time').val()
+        let error = false
+
+        if (service == '') {
+
+            error = true
+            showAlert('Enter the service you want')
+        } else if (name == '') {
+            error = true
+            showAlert('Enter your name')
+        } else if (contact == '') {
+            error = true
+            showAlert('Enter your contact info')
+        } else if (age == '') {
+            error = true
+            showAlert('Enter your age')
+        } else if (bookType == '') {
+            error = true
+            showAlert('Enter your booking type')
+        } else if (date == '') {
+            error = true
+            showAlert('Enter the date of visit')
+        } else if (time == '') {
+            error = true
+            showAlert('Enter the time of visit')
+        }
+
+        const data = {
+            service,
+            name,
+            contact,
+            age,
+            bookType,
+            date,
+            time
+        }
+
+        console.log(data)
+
+        if (!error) {
+            formSubmitBook(data)
+        }
+    })
+
+    $('input[name="date"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: parseInt(moment().format('YYYY'), 10),
+        maxYear: parseInt(moment().format('YYYY'), 10) + 1,
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear',
+        },
+    });
+
+    $('input[name="date"]').on('apply.daterangepicker', function(
+        ev,
+        picker
+    ) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY'));
+    });
+
+    $('input[name="date"]').on('cancel.daterangepicker', function(
+        ev,
+        picker
+    ) {
+        $(this).val('');
+    });
+</script>

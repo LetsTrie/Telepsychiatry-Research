@@ -1,0 +1,12 @@
+<div
+  class="alerts"
+  style="text-align: center; font-size: 20px; margin-top: 10px"
+>
+  <% if(typeof errors != 'undefined'){ %>
+  <div class="alert alert-danger" role="alert"><%= errors %></div>
+  <% } %> <% if(successMessage != ''){ %>
+  <div class="alert alert-success" role="alert"><%= successMessage %></div>
+  <% } %> <% if(errorMessage != ''){ %>
+  <div class="alert alert-danger" role="alert"><%= errorMessage %></div>
+  <% } %>
+</div>

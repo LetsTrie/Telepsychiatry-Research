@@ -1,0 +1,56 @@
+.healthCareWithTrin {
+  .HC_flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1202px) {
+      flex-direction: column;
+    }
+
+    .HC_Des {
+      max-width: 500px;
+      text-align: justify;
+      margin-right: 50px;
+      margin-bottom: 30px;
+      .Des_Header {
+        font-family: 'Roboto', sans-serif;
+        font-size: 35px;
+        margin-bottom: 15px;
+        color: #333232;
+        font-weight: 700;
+        line-height: 50px;
+        p {
+          span {
+            color: #00adef;
+          }
+        }
+      }
+      .Des_text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #7c7c7c;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+    .HC_Vid {
+      align-self: center;
+
+      iframe {
+        width: 520px;
+        height: 340px;
+
+        @media (max-width: 600px) {
+          width: 420px;
+          height: 280px;
+        }
+        @media (max-width: 490px) {
+          width: 320px;
+          height: 210px;
+        }
+      }
+    }
+  }
+}

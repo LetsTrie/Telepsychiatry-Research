@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/events.css" />
+    <title>Workshop | Telepsychiatry Research</title>
+  </head>
+
+  <body>
+    <div>
+      <header>
+        <nav>
+          <%- include('./partials/navbar')%>
+        </nav>
+        <div class="my-3 divider"></div>
+      </header>
+
+      <section class="events container">
+        <div class="events_header text-center">
+          <p>Workshop</p>
+        </div>
+        <div class="add_event_button">
+          <button>Add Workshop</button>
+        </div>
+
+        <div class="events_list_wrapper">
+          <div class="bigHeading">
+            <p>Current Workshops</p>
+          </div>
+          <div class="events_list">
+            <% for(let i = 0 ; i < 1; i++) { %>
+            <div class="event">
+              <div class="flex-parent">
+                <div class="flex-child dateFlex">
+                  <div class="DateMonth">
+                    <p class="datee">28</p>
+                    <p class="timee">March</p>
+                  </div>
+                </div>
+
+                <div class="flex-child detailsFlex">
+                  <div class="event_title">
+                    <p>
+                      Workshop postponed due to Coronavirus outbreak
+                    </p>
+                  </div>
+                  <div class="event_details">
+                    <p>
+                      Due to the recent Corona outbreak, we are forced to
+                      postpone the "Parenting During Corona Pandemic" workshop.
+                      We sincerely apologise for the inconvenience. The workshop
+                      will be held on Friday the 27th of March, 2020 at 3:30PM.
+                      For more information, please call +880 1552 525252
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p><i class="fa fa-calendar"> &nbsp; </i> Date: 28/03/20</p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i
+                        class="fa fa-clock-o"
+                        aria-hidden="true"
+                        style="font-size: 20px;"
+                      >
+                        &nbsp;</i
+                      >Time: 10:00AM - 12.30PM.
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i class="fa fa-map-marker" style="font-size: 20px;">
+                        &nbsp;</i
+                      >
+                      Address: Rupayan Trade Center, Banglamotor
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="cBtn text-center">
+                <button data-toggle="modal" data-target="#WORKSHOP_REG_MODAL">
+                  Register
+                </button>
+              </div>
+            </div>
+            <% } %>
+            <div class="seeAll text-center p-2">
+              <button>See all</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="events_list_wrapper">
+          <div class="bigHeading">
+            <p>Upcoming Workshops</p>
+          </div>
+          <div class="events_list">
+            <% for(let i = 0 ; i < 3; i++) { %>
+            <div class="event">
+              <div class="flex-parent">
+                <div class="flex-child dateFlex">
+                  <div class="DateMonth">
+                    <p class="datee">24</p>
+                    <p class="timee">MAY</p>
+                  </div>
+                </div>
+
+                <div class="flex-child detailsFlex">
+                  <div class="event_title">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. A
+                      consequatur sequi id quibusdam recusandae praesentium illo
+                      tenetur, saepe neque eaque. Molestiae a, aperiam aut
+                      delectus incidunt maxime dolore cum natus.
+                    </p>
+                  </div>
+                  <div class="event_details">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Eligendi nesciunt dolorem voluptatibus voluptate dolor
+                      amet, suscipit perferendis quos. Recusandae modi odit
+                      natus accusamus maiores, veniam itaque nam libero laborum
+                      quaerat ullam aperiam magni animi alias! Voluptas
+                      consequuntur minus perferendis necessitatibus est beatae,
+                      nisi, exercitationem quos rem totam incidunt maxime ipsa
+                      quia ea ipsum veritatis dolores assumenda vitae nostrum
+                      voluptate odio? Quae velit recusandae quia qui cumque
+                      nostrum enim expedita mollitia, ad nesciunt unde eaque,
+                      facere voluptatum cupiditate. Itaque perspiciatis quaerat
+                      nihil maiores error, accusantium molestiae velit rerum
+                      atque ex, veniam quasi distinctio, ipsum obcaecati laborum
+                      sed! Omnis, reprehenderit atque? Nesciunt.
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i class="fa fa-calendar"> &nbsp; </i> Date: 27/12/20 -
+                      30/12/20
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i
+                        class="fa fa-clock-o"
+                        aria-hidden="true"
+                        style="font-size: 20px"
+                      >
+                        &nbsp;</i
+                      >Time: 11:30AM.
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i class="fa fa-map-marker" style="font-size: 20px">
+                        &nbsp;</i
+                      >
+                      Address: University Of Dhaka %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="cBtn text-center">
+                <button data-toggle="modal" data-target="#WORKSHOP_REG_MODAL">
+                  Register
+                </button>
+              </div>
+            </div>
+            <% } %>
+
+            <div class="seeAll text-center p-2">
+              <button>See all</button>
+            </div>
+          </div>
+        </div>
+        <div class="events_list_wrapper">
+          <div class="bigHeading">
+            <p>Past Workshops</p>
+          </div>
+          <div class="events_list">
+            <% for(let i = 0 ; i < 3; i++) { %>
+            <div class="event">
+              <div class="flex-parent">
+                <div class="flex-child dateFlex">
+                  <div class="DateMonth">
+                    <p class="datee">24</p>
+                    <p class="timee">MAY</p>
+                  </div>
+                </div>
+
+                <div class="flex-child detailsFlex">
+                  <div class="event_title">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. A
+                      consequatur sequi id quibusdam recusandae praesentium illo
+                      tenetur, saepe neque eaque. Molestiae a, aperiam aut
+                      delectus incidunt maxime dolore cum natus.
+                    </p>
+                  </div>
+                  <div class="event_details">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Eligendi nesciunt dolorem voluptatibus voluptate dolor
+                      amet, suscipit perferendis quos. Recusandae modi odit
+                      natus accusamus maiores, veniam itaque nam libero laborum
+                      quaerat ullam aperiam magni animi alias! Voluptas
+                      consequuntur minus perferendis necessitatibus est beatae,
+                      nisi, exercitationem quos rem totam incidunt maxime ipsa
+                      quia ea ipsum veritatis dolores assumenda vitae nostrum
+                      voluptate odio? Quae velit recusandae quia qui cumque
+                      nostrum enim expedita mollitia, ad nesciunt unde eaque,
+                      facere voluptatum cupiditate. Itaque perspiciatis quaerat
+                      nihil maiores error, accusantium molestiae velit rerum
+                      atque ex, veniam quasi distinctio, ipsum obcaecati laborum
+                      sed! Omnis, reprehenderit atque? Nesciunt.
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i class="fa fa-calendar"> &nbsp; </i> Date: 27/12/20 -
+                      30/12/20
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i
+                        class="fa fa-clock-o"
+                        aria-hidden="true"
+                        style="font-size: 20px"
+                      >
+                        &nbsp;</i
+                      >Time: 11:30AM.
+                    </p>
+                  </div>
+                  <div class="event_times">
+                    <p>
+                      <i class="fa fa-map-marker" style="font-size: 20px">
+                        &nbsp;</i
+                      >
+                      Address: University Of Dhaka %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+
+            <div class="seeAll text-center p-2">
+              <button>See all</button>
+            </div>
+          </div>
+        </div> -->
+      </section>
+    </div>
+    <%- include('./partials/events_modal')%> <%- include('./partials/footer')%>
+    <%- include('./partials/vendorsBottom')%>
+
+    <script>
+      document
+        .getElementsByClassName('add_event_button')[0]
+        .addEventListener('click', (e) => {
+          window.location = '/events/workshop/new';
+        });
+      $('.seeAll').on('click', (e) => {
+        location = '/events/showAll';
+      });
+    </script>
+  </body>
+</html>

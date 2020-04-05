@@ -1,31 +1,70 @@
 @import '_main';
 @import '_navbar';
 
-.doctor_profile_heading {
-  text-align: center;
-  font-family: 'Merriweather', sans-serif;
-  margin-bottom: 30px;
+.docProWrapper {
+  background: #f3f3f3;
+  min-height: 50vh;
+}
 
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
   p {
-    font-size: 40px;
-    font-weight: 500;
-    color: #2a2a2a;
-    letter-spacing: 0.5px;
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
   }
 }
 
 .doctor_identity {
   background-color: #f8f9fa;
-  box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
-    inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
-
+  border: 1px solid rgb(255, 237, 237);
+  box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
+  // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
+  // inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
   display: flex;
   flex-direction: row;
-
   @media (max-width: 768px) {
     flex-direction: column;
   }
-
   .his_photo {
     width: 45%;
     padding: 20px;
@@ -37,61 +76,51 @@
     }
     img {
       width: 100%;
+      max-height: 300px;
       border-radius: 7px;
     }
   }
-
   .His_profession {
-    font-family: 'Poppins', sans-serif;
+    width: 46%;
+    @media (max-width: 992px) {
+      width: 50%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+    font-family: 'Roboto', sans-serif;
     padding: 20px 20px 20px 20px;
-
     @media (max-width: 768px) {
       padding: 5px 20px 20px 20px;
     }
-
     .name {
       font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
       color: #272b41;
       letter-spacing: 0.5px;
+      font-weight: 700;
     }
-    .degree {
-      font-size: 14px;
-      color: #757575;
+    .degreeNspeciality {
+      color: #00adef;
+      font-size: 18px;
+      font-weight: 500;
       margin-bottom: 15px;
-      letter-spacing: 0.5px;
     }
-    // .profession {
-    //   color: #20c0f3;
-    //   font-size: 15px;
-    //   margin-bottom: 20px;
-    //   letter-spacing: 0.3px;
-    //   cursor: pointer;
 
-    //   i {
-    //     color: #20c0f3;
-    //     font-size: 17px;
-    //   }
-    // }
     .aff,
     .college {
       margin-bottom: 5px;
-
       color: #6e6774;
     }
-
     .aff {
       padding-bottom: 3px;
       padding-top: 20px;
     }
-
     .college {
       padding-bottom: 20px;
     }
     .bill {
-      margin-bottom: 25px;
-
+      margin-bottom: 30px;
       color: #6e6774;
     }
     .map_location {
@@ -102,12 +131,10 @@
     }
     .ratingg {
       margin-bottom: 5px;
-
       .checked {
         color: #f4c150;
       }
     }
-
     .bookingg {
       button {
         border: 2px solid #20c0f3;
@@ -130,17 +157,19 @@
 .aboutDoctor_wrapper {
   margin: 40px 0 50px 0;
   .aboutDoctor {
-    box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
-      inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
+    // inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
+    box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
   }
   .card-tabs-2 .card-header {
     padding-bottom: 0;
   }
-
   .card-tabs-2 .nav-tabs {
     margin: -1px;
   }
-
+  .nav-item {
+    // margin-left: 5px;
+  }
   .nav-item .nav-link {
     padding: 10px 30px;
     font-weight: 500;
@@ -150,17 +179,15 @@
 }
 
 .overview_aboutMe {
-  padding: 25px 40px;
-
+  margin: 25px 0 20px 0;
   &_header {
     color: #272b41;
     font-weight: 500;
     margin-bottom: 15px;
     line-height: 1.2;
-    font-size: 22px;
+    font-size: 24px;
     letter-spacing: 0.5px;
   }
-
   &_info {
     text-align: justify;
     color: #3a3e53;
@@ -170,40 +197,8 @@
 
 .overview_education,
 .overview_exper {
+  margin-top: 20px;
   padding: 10px 40px 20px 40px;
-
-  &_header {
-    color: #272b41;
-    font-weight: 500;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    font-size: 22px;
-    letter-spacing: 0.5px;
-  }
-
-  li {
-    list-style: disc;
-  }
-
-  &_institutes {
-    &_one {
-      margin: 10px 20px;
-      padding: 0px 10px;
-      p {
-        margin: 0px;
-        letter-spacing: 0.5px;
-      }
-      .ins {
-        font-weight: 500;
-      }
-      .deg {
-        color: #3a3e53;
-      }
-      .yrr {
-        color: #3a3e53;
-      }
-    }
-  }
 }
 
 .overview_exper_institutes_one {
@@ -215,7 +210,6 @@
 
 .overview_services {
   padding: 10px 40px 50px 40px;
-
   &_header {
     color: #272b41;
     font-weight: 500;
@@ -233,25 +227,25 @@
 }
 
 .locationTimeMoney {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: row;
-
+  &:last-child {
+    margin-bottom: 50px;
+  }
   @media (max-width: 780px) {
     flex-direction: column;
   }
-
   margin: 20px 30px;
   padding: 20px;
-
-  box-shadow: 2px 2px 10px gray;
+  border: 1px solid rgb(235, 235, 235);
+  box-shadow: 0px 2px 5px rgb(214, 214, 214);
   border-radius: 5px;
   .location {
     width: 45%;
     @media (max-width: 780px) {
       width: 100%;
     }
-
     .ins_nam {
       font-size: 18px;
       color: #2e3842;
@@ -267,7 +261,7 @@
     .ins_dir {
       a {
         font-size: 14px;
-        color: #09e5ab;
+        color: #20c0f3;
         font-weight: 500;
       }
     }
@@ -281,7 +275,6 @@
     .time_each {
       padding-bottom: 10px;
     }
-
     .dayy {
       font-weight: bold;
       color: #272b41;
@@ -306,6 +299,10 @@
   }
 }
 
+.box {
+  min-height: 350px;
+}
+
 .card-tabs-2 .card-header {
   padding-bottom: 0;
 }
@@ -321,4 +318,196 @@
 .ratingNumber {
   font-size: 15px;
   font-family: 'Lato';
+}
+
+#education-pane {
+  display: none;
+}
+
+#work-exp-pane {
+  display: none;
+}
+
+.His_profession {
+}
+
+.aboutMe {
+  margin-top: 20px;
+  padding: 10px 40px 0px 40px;
+}
+// ******************************************************************
+// Education
+
+.widget {
+  margin: 10px 0 30px 0;
+}
+.widget-title {
+  margin-bottom: 25px;
+}
+.experience-box {
+  position: relative;
+}
+.experience-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.experience-list::before {
+  background: #ddd;
+  bottom: 0;
+  content: '';
+  left: 8px;
+  position: absolute;
+  top: 8px;
+  width: 2px;
+}
+.experience-list > li {
+  position: relative;
+}
+.experience-list > li:last-child .experience-content {
+  margin-bottom: 0;
+}
+.experience-user .avatar {
+  height: 32px;
+  line-height: 32px;
+  margin: 0;
+  width: 32px;
+}
+.experience-list > li .experience-user {
+  background: #fff;
+  height: 10px;
+  left: 4px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 4px;
+  width: 10px;
+}
+.experience-list > li .experience-content {
+  background-color: #fff;
+  margin: 0 0 20px 40px;
+  padding: 0;
+  position: relative;
+}
+.experience-list > li .experience-content .timeline-content {
+  line-height: 23px;
+  color: #626262;
+}
+.experience-list > li .experience-content .timeline-content a.name {
+  font-weight: 500;
+}
+.experience-list > li .time {
+  color: #626262;
+  display: block;
+  font-size: 13px;
+}
+.before-circle {
+  background-color: rgba(32, 192, 243, 0.2);
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  border: 2px solid #20c0f3;
+}
+.exp-year {
+  color: #20c0f3;
+  margin-bottom: 2px;
+}
+.exp-title {
+  font-size: 16px;
+}
+
+// ******************************************************************
+.awardsTab {
+  .coloredTime {
+    p {
+      color: #00adef;
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+  }
+  a.name {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .someText {
+    width: 75%;
+  }
+}
+
+.downloadPDF {
+  margin-top: 0px;
+  padding: 0px 40px 20px 45px;
+  margin-bottom: 40px;
+  button {
+    border: none;
+    outline: none;
+    background: #ef7c00;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+  }
+}
+
+.ProTraining {
+  li {
+    margin-bottom: 20px;
+  }
+  a.name {
+    display: inline-block;
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+  }
+  .time {
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  .someText {
+    width: 75%;
+    color: #6e6774;
+  }
+}
+
+.busiHour {
+  margin: 40px 0;
+}
+
+#tab2 {
+  .time {
+    font-size: 14px;
+  }
+}
+
+#WorkNexp {
+  padding-bottom: 0px;
+  .time {
+    padding-top: 3px;
+  }
+}
+
+#awardss-pane {
+  margin-bottom: 20px;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #20c0f3;
+}
+
+.nav-item {
+  a {
+    transition: color 0.2s;
+    &:hover {
+      color: #20c0f3;
+    }
+  }
+}
+
+.aboutDoctor_wrapper .card-tabs-2 .card-header {
+  padding-top: 15px;
 }

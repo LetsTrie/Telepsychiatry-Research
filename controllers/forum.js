@@ -1,5 +1,7 @@
 const { forumModel } = require('../models/forum');
+const { commentModel } = require('../models/forum');
 const { discussionValidation } = require('./validation');
+const { makeSmallParagraphFromHTML } = require('./utils');
 
 const LIMIT = 6;
 
@@ -16,7 +18,7 @@ exports.getForums = async (req, res, next) => {
   const totalItems = await forumModel.countDocuments();
 
   return res.render('forum', {
-    data: data,
+    data: makeSmallParagraphFromHTML(data, 'description'),
     currentPage: page,
     hasNextPage: page * LIMIT < totalItems,
     hasPreviousPage: page > 1,
@@ -30,7 +32,8 @@ exports.getForums = async (req, res, next) => {
 exports.singleForum = async (req, res, next) => {
   const data = await forumModel.findById(req.params.id);
   data.username = 'Pial';
-  return res.render('singleDiscussion', { data });
+  const comments = await commentModel.find({ postId: req.params.id });
+  return res.render('singleDiscussion', { data, comments });
 };
 
 exports.createForum = (req, res, next) => {
@@ -39,23 +42,40 @@ exports.createForum = (req, res, next) => {
 
 module.exports.postDiscussion = async (req, res, next) => {
   const { error } = discussionValidation(req.body);
-  if (error) {
-    return res.send(error.details[0].message);
-  }
-  let { content } = req.body;
-  let modifiedContent = content;
-
-  if (content.startsWith('<p>') && content.endsWith('</p>')) {
-    modifiedContent = content.substring(3, content.length - 4);
-  }
-
+  if (error) return res.json({ message: error.details[0].message });
+  const { title, tag, content } = req.body;
   const data = new forumModel({
-    title: req.body.title,
-    tags: req.body.tag.split(', '),
-    description: modifiedContent
+    title: title,
+    tags: tag.split(', '),
+    description: content
   });
-
   await data.save();
-
   return res.redirect('forum');
+};
+
+module.exports.postReact = async (req, res, next) => {
+  const postId = req.body.id;
+  const userId = 'abcdef123456';
+
+  const post = await forumModel.findById(postId);
+  if (post.upvotes.includes(userId)) {
+    for (let i = 0; i < post.upvotes.length; i++) {
+      if (post.upvotes[i] == userId) {
+        post.upvotes.splice(i, 1);
+        break;
+      }
+    }
+  } else {
+    post.upvotes.push(userId);
+  }
+  await post.save();
+};
+
+module.exports.postComment = async (req, res, next) => {
+  const data = new commentModel({
+    postId: req.body.id,
+    userId: '123456',
+    content: req.body.comment
+  });
+  await data.save();
 };

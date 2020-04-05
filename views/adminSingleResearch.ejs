@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/singleResearcher.css" />
+        <title>
+            <%= data.title %> | Telepsychiatry Research
+        </title>
+</head>
+
+<body>
+    <div>
+        <header>
+            <nav>
+                <%- include('./partials/adminNavbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
+        <!-- NEXT -->
+        <section class="containerr">
+            <div class="contentTitle">
+                <p>
+                    <%= data.title %>
+                </p>
+            </div>
+            <div class="contentDescription">
+                <p>
+                    <%- data.BriefDesciption %>
+                </p>
+            </div>
+
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Financial support</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.financialSupport %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Conflict of interest</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.conflictOfInterest %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>
+                        Acknowledgement
+                    </p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%- data.Acknowlegement %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>References</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%- data.references %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Authors</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%- data.authors %>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="approve">
+        <input type="hidden" name="id" id="id" value="<%= data._id %>">
+        <input type="hidden" name="id" id="verified" value="<%= data.isVerified %>">
+        <button id="approve-btn" class="btn btn-secondary">Approve</button class="btn btn-secondary">
+    </div>
+    <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+
+<script>
+  $(document).ready(() => {
+      const verified = $('#verified').val()
+      if (verified == 'true') {
+        $('#approve-btn').html('Disapprove')
+      }
+      $('#approve-btn').click((e) => {
+        const id = $('#id').val()
+        if (verified === 'false') {
+          location = '/admin/research/approve/' + id
+        }
+
+        else if(verified === 'true') {
+          location = '/admin/research/disapprove/' + id
+        }
+      })
+  })
+</script>
+
+</html>

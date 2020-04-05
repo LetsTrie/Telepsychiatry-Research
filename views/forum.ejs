@@ -1,121 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/forum.css" />
-    <title>Forum | Telepsychiatry Research</title>
-  </head>
 
-  <body>
-    <div class="whole_wrapper">
-      <nav class="cnav">
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="my-3 divider"></div>
-      <section class="forum">
-        <div class="addForum">
-          <div class="addForum__header">
-            <p>Community Forums</p>
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/forum.css" />
+  <title>Forum | Telepsychiatry Research</title>
+</head>
+
+<body>
+  <div class="whole_wrapper">
+    <nav class="cnav">
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="my-3 divider"></div>
+    <section class="forum">
+      <div class="addForum">
+        <div class="addForum__header">
+          <p>Community Forums</p>
+        </div>
+        <div class="addForum__newDiscussion">
+          <button>New discussion</button>
+        </div>
+      </div>
+
+      <div class="Discussions">
+        <div class="Discussions__heading">
+          <div class="Discussions__heading_header">
+            <p>Discussions</p>
           </div>
-          <div class="addForum__newDiscussion">
-            <button>New discussion</button>
+          <div class="Discussions__heading_order">
+            <div class="flexCenter">
+              <select class="selectOrganization" data-width="100%" title="Sort by" data-size="6" required>
+                <option value="Most Recent">Most Recent</option>
+                <option value="Number of views">Number of views</option>
+                <option value="Last Updated">Last Updated</option>
+                <option value="Most Liked">Most Liked</option>
+                <option value="Most Commented">Most Commented</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <div class="Discussions">
-          <div class="Discussions__heading">
-            <div class="Discussions__heading_header">
-              <p>Discussions</p>
+        <div class="Discussions__searching">
+          <form action="#" method="POST">
+            <div class="Discussions__searching_searchbox">
+              <input type="text" name="searchForum" required />
             </div>
-            <div class="Discussions__heading_order">
-              <div class="flexCenter">
-                <select
-                  class="selectOrganization"
-                  data-width="100%"
-                  title="Sort by"
-                  data-size="6"
-                  required
-                >
-                  <option value="Most Recent">Most Recent</option>
-                  <option value="Number of views">Number of views</option>
-                  <option value="Last Updated">Last Updated</option>
-                  <option value="Most Liked">Most Liked</option>
-                  <option value="Most Commented">Most Commented</option>
-                </select>
-              </div>
+            <div class="Discussions__searching_searchBtn">
+              <input type="submit" value="search" />
             </div>
-          </div>
-
-          <div class="Discussions__searching">
-            <form action="#" method="POST">
-              <div class="Discussions__searching_searchbox">
-                <input type="text" name="searchForum" required />
-              </div>
-              <div class="Discussions__searching_searchBtn">
-                <input type="submit" value="search" />
-              </div>
-            </form>
-          </div>
+          </form>
         </div>
+      </div>
 
-        <div class="MAINforumsss">
-          <%- include ('./partials/sidebarCategory') %>
-          <div class="alldiscussions">
-            <% for(let singleData of data) { %>
-            <div
-              class="eachDiscussion"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
-              <a class="discussion__title" href="/forum/<%= singleData._id %>/">
-                <p>
-                  <%= singleData.title %>
-                </p>
-              </a>
-              <div class="discussion__usernameTime">
-                <div class="discussion__username">
-                  <p><i class="fa fa-user"></i> <%= singleData.username %></p>
-                </div>
-                <div class="discussion__time">
-                  <p>
-                    <i
-                      class="fa fa-clock-o"
-                      aria-hidden="true"
-                      style="font-size: 18px"
-                    ></i>
-                    <%= singleData.createdAt.toLocaleString() %>
-                  </p>
-                </div>
+      <div class="MAINforumsss">
+        <%- include ('./partials/sidebarCategory') %>
+        <div class="alldiscussions">
+          <% for(let singleData of data) { %>
+          <div class="eachDiscussion" data-aos="fade-up" data-aos-duration="1000">
+            <a class="discussion__title" href="/forum/<%= singleData._id %>/">
+              <p>
+                <%= singleData.title %>
+              </p>
+            </a>
+            <div class="discussion__usernameTime">
+              <div class="discussion__username">
+                <p><i class="fa fa-user"></i> <%= singleData.username %></p>
               </div>
-              <div class="discussion__desc">
+              <div class="discussion__time">
                 <p>
-                  <%- singleData.description %>
+                  <i class="fa fa-clock-o" aria-hidden="true" style="font-size: 18px"></i>
+                  <%= singleData.createdAt.toLocaleString() %>
                 </p>
               </div>
-              <div class="discussion__react">
-                <div class="discussion__react_love">
-                  <i class="fa fa-heart"></i>
-                </div>
-                <div class="discussion__react_comment">
-                  <i class="fa fa-comment"></i>
-                </div>
+            </div>
+            <div class="discussion__desc">
+              <p>
+                <%- singleData.description %>
+              </p>
+            </div>
+            <div class="discussion__react">
+              <div class="discussion__react_love">
+                <input type="hidden" value="<%= singleData._id %>">
+                <i class="fa fa-heart"></i>
+              </div>
+              <div class="discussion__react_comment">
+                <input type="hidden" value="<%= singleData._id %>">
+                <i class="fa fa-comment"></i>
               </div>
             </div>
-            <% } %>
-            <div class="pt-5">
-              <%- include ('./partials/pagination') %>
-            </div>
+          </div>
+          <% } %>
+          <div class="pt-5">
+            <%- include ('./partials/pagination') %>
           </div>
         </div>
-      </section>
-    </div>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+      </div>
+    </section>
+  </div>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
 
-  <script>
-    $('.addForum__newDiscussion button').click(function() {
-      location = '/forum/new';
+<script>
+  $('.addForum__newDiscussion button').click(function () {
+    location = '/forum/new';
+  });
+  $('.fa-comment').click((e) => {
+    location = '/forum/' + e.target.previousElementSibling.value;
+  });
+  $('.fa-heart').click((e) => {
+    $.ajax({
+      type: 'POST',
+      url: '/forum/react',
+      data: {
+        id: e.target.previousElementSibling.value
+      },
+      success: () => {
+        console.log('successful on sending react');
+      },
+      error: () => {
+        console.log('error on sending react');
+      }
     });
-  </script>
+  });
+</script>
+
 </html>

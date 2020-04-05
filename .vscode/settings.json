@@ -1,0 +1,60 @@
+{
+  "editor.tabSize": 2,
+  "editor.fontSize": 18,
+  "editor.formatOnPaste": true,
+  "liveSassCompile.settings.autoprefix": [
+    "> 1%",
+    "last 3 version",
+    "Chrome >= 35",
+    "Firefox >= 38",
+    "Edge >= 10",
+    "Explorer >= 10",
+    "ie >= 10",
+    "iOS >= 8",
+    "Safari >= 8",
+    "Android 2.3",
+    "Android >= 4",
+    "Opera >= 12"
+  ],
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "~/../"
+    }
+  ],
+  "liveServer.settings.port": 5503,
+  "liveSassCompile.settings.generateMap": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.iconTheme": "material-icon-theme",
+  "window.zoomLevel": 1,
+  "explorer.confirmDelete": false,
+  "eslint.autoFixOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.jediEnabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "turboConsoleLog.quote": "'",
+  "editor.wordWrap": "off",
+  "terminal.integrated.rendererType": "dom",
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "terminal.integrated.inheritEnv": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

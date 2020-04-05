@@ -20,7 +20,30 @@ const forumSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    upvotes: {
+        type: [String]
+    }
+});
+
+const commentSchema = new mongoose.Schema({
+    postId: {
+        type: String,
+        required: true
+    },
+    userId: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
     }
 });
 
 module.exports.forumModel = mongoose.model('forum', forumSchema);
+module.exports.commentModel = mongoose.model('comment', commentSchema);

@@ -10,50 +10,69 @@
 
       <div class="modal-body">
         <div class="SELECT_CATEGORY_MODAL_wrapper">
-          <div class="users">
-            <div class="general_expert">
-              <div
-                class="flex-user text-center p-3 clinical-color"
-                id="general_user"
-              >
-                <p><span>General</span><br /><span>User</span></p>
-              </div>
-              <div
-                class="flex-user text-center p-3 clinical-color"
-                id="expert_user"
-              >
-                <p><span>Expert</span><br /><span>User</span></p>
-              </div>
-            </div>
+          <p class="modalBodyHeader">Select Category for Registration</p>
+          <form>
+            <label class="container"
+              >General User
+              <input type="checkbox" checked="checked" id="gen" value="gen" />
+              <span class="checkmark"></span>
+            </label>
 
-            <div
-              class="org_user  text-center p-5 clinical-color"
-              id="organizations"
-            >
-              <p>Organizations</p>
-            </div>
-          </div>
+            <label class="container"
+              >Expert User
+              <input type="checkbox" id="exp" value="exp" />
+              <span class="checkmark"></span>
+            </label>
+
+            <label class="container"
+              >Organization
+              <input type="checkbox" id="org" value="org" />
+              <span class="checkmark"></span>
+            </label>
+          </form>
         </div>
       </div>
 
       <div class="modal-footer submit">
-        <button type="button" class="red-btn" data-dismiss="modal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
+        </button>
+        <button type="button" class="red-btn" id="continue-btn">
+          Continue
         </button>
       </div>
     </div>
   </div>
 </div>
 
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"
+></script>
 <script>
-  document.getElementById('general_user').addEventListener('click', e => {
-    console.log('hi');
-    window.location = '/auth/register/new/gen';
-  });
-  document.getElementById('expert_user').addEventListener('click', e => {
-    window.location = '/auth/register/new/exp';
-  });
-  document.getElementById('organizations').addEventListener('click', e => {
-    window.location = '/auth/register/new/org';
+  $(document).ready(function() {
+    $('input:checkbox').click(function() {
+      $('input:checkbox')
+        .not(this)
+        .prop('checked', false);
+    });
+
+    $('#continue-btn').click(e => {
+      const gen = $('#gen').is(':checked');
+      const exp = $('#exp').is(':checked');
+      const org = $('#org').is(':checked');
+
+      if (gen) {
+        console.log('gen');
+        window.location = '/auth/register/new/gen';
+      } else if (exp) {
+        console.log('exp');
+        window.location = '/auth/register/new/exp';
+      } else if (org) {
+        console.log('org');
+        window.location = '/auth/register/new/org';
+      }
+    });
   });
 </script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/specialServices.css" />
+
+    <title>
+      Assessment | Innovations | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="sp_wrapper">
+        <div class="globalBlueDivider">
+          <div class="smallText">
+            <p><a href="/">Home</a> / Special services</p>
+          </div>
+          <div class="bigText">
+            <p>Our Special Services</p>
+          </div>
+        </div>
+        <div class="allSpecialServices_wrapper">
+          <div class="specialHeading">
+            <p>Our Special Services</p>
+          </div>
+          <div class="specialSubHeading">
+            <p>
+              Click on each services to see more info and timetable
+            </p>
+          </div>
+          <div class="allSpecialServices">
+            <% for(let i = 0 ; i < 3; i++) { %>
+            <div class="eachServices">
+              <div class="es_img">
+                <img src="/images/sp_services.jpg" alt="" />
+              </div>
+              <div class="es_name">
+                <p>Ophthalmology</p>
+                <p><span>Clinical Treatment</span></p>
+              </div>
+            </div>
+
+            <div class="eachServices">
+              <div class="es_img">
+                <img
+                  src="http://longlife.webique-themes.com/medical-center/wp-content/uploads/sites/10/2018/11/service-14-580x456.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="es_name">
+                <p>Vaccination</p>
+                <p><span>Family Medicine</span></p>
+              </div>
+            </div>
+
+            <div class="eachServices">
+              <div class="es_img">
+                <img
+                  src="http://longlife.webique-themes.com/medical-center/wp-content/uploads/sites/10/2018/11/service-11-580x456.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="es_name">
+                <p>Pediatrics</p>
+                <p><span>Family Medicine</span></p>
+              </div>
+            </div>
+
+            <div class="eachServices">
+              <div class="es_img">
+                <img
+                  src="http://longlife.webique-themes.com/medical-center/wp-content/uploads/sites/10/2018/11/service-10-580x456.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="es_name">
+                <p>Surgery</p>
+                <p><span>Clinical Treatment</span></p>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+</html>

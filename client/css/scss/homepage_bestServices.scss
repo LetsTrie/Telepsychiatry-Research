@@ -1,0 +1,116 @@
+.services_section_wrapper {
+  background: whitesmoke;
+  padding: 50px 0 20px;
+  background-image: url(../images/beuBack1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: cover;
+}
+.services-section {
+  padding: 1rem 0 3rem 0;
+
+  .service_header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+    p {
+      text-align: center;
+      span {
+        color: #00adef;
+      }
+    }
+  }
+
+  .cardspace {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .single-card {
+      transition: all 0.4s;
+      border: 1px solid rgb(238, 238, 238);
+      &:hover {
+        box-shadow: 0px 0px 7px rgb(167, 165, 165);
+      }
+      margin: 10px 10px 20px 10px;
+      width: 30%;
+      background: white;
+
+      @media (max-width: 1200px) {
+        width: 48%;
+      }
+
+      @media (max-width: 600px) {
+        width: 97%;
+      }
+
+      border: 1px solid #e2e2e2b9;
+      border-radius: 5px;
+      height: 470px;
+
+      .card-image {
+        height: 50%;
+        padding: 10px 10px 0px 10px;
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+      .card-non-image {
+        padding: 10px 20px 10px 20px;
+        margin-top: 10px;
+        .cardHeader {
+          margin-bottom: 2rem;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 700;
+
+          p {
+            font-size: 17px;
+            position: relative;
+            color: #272727;
+            transition: all 0.4s;
+            &:hover {
+              color: #00adef;
+            }
+          }
+
+          &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            background: #00adef;
+            height: 3px;
+            width: 100px;
+          }
+        }
+
+        .cardBody {
+          p {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: justify;
+            color: #7c7c7c;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.readMore {
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  span {
+    padding-left: 3px;
+  }
+}

@@ -4,194 +4,571 @@
     <%- include('./partials/vendorsTop')%>
 
     <link rel="stylesheet" href="/css/homepage.css" />
+    <link rel="stylesheet" href="/css/homepage_services.css" />
+    <link rel="stylesheet" href="/css/homepage_videoSection.css" />
+    <link rel="stylesheet" href="/css/homepage_meetOurDoctors.css" />
+    <link rel="stylesheet" href="/css/homepage_bestServices.css" />
+    <link rel="stylesheet" href="/css/homepage_collaboration.css" />
+    <link
+      rel="stylesheet"
+      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+    />
+
     <title>Homepage | Telepsychiatry Research</title>
+
+    <style>
+      .ourMainHomepage {
+        position: relative;
+      }
+      .contactUsModal {
+        position: fixed;
+        height: 80px;
+        width: 80px;
+        bottom: 60px;
+        right: 60px;
+        cursor: default;
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        align-items: center;
+        color: #228be6;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+        border: 45px solid rgb(251, 245, 245);
+        background: white;
+      }
+      @keyframes mymove {
+        50% {
+          outline-offset: 25px;
+        }
+      }
+      .contactUsModal img {
+        width: 90px;
+        border-radius: 50%;
+      }
+      .imgg {
+        outline: 5px solid coral;
+        animation: mymove 2s infinite;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+      }
+    </style>
   </head>
   <body>
-    <div class="intro_page">
-      <header class="intro_page_header">
-        <%- include('./partials/navbar.ejs')%>
-        <div class="wrapper container">
-          <div class="desc">
-            <div class="largeText">
+    <%- include('./partials/homepage_contact_us_modal.ejs')%> <%-
+    include('./partials/homepage_bookDoctor.ejs')%>
+
+    <div class="ourMainHomepage">
+      <div
+        class="contactUsModal"
+        data-toggle="modal"
+        data-target="#HOMEPAGE_CONTACTUS_MODAL"
+      >
+        <img src="/images/contactUsIcon.png" alt="" />
+      </div>
+      <div class="intro_page">
+        <header class="intro_page_header">
+          <%- include('./partials/navbar.ejs')%>
+          <div class="wrapper magicc">
+            <div class="desc">
+              <div class="largeText">
+                <p>We are with <span>you</span></p>
+              </div>
+              <div class="smallText">
+                <p>
+                  TRINN ensure wellbeing and energise mind through innovation,
+                  collaboration and care Free Quality care from best experts
+                  during the COVID 2019.
+                </p>
+              </div>
+              <div class="btnBook">
+                <a
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL"
+                  >Book Experts</a
+                >
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <div class="about_this_website">
+        <div class="beautifulDivider">
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-heartbeat"></i></div>
+            <div class="BeDivHeader"><p>Quality and Evidence based</p></div>
+            <div class="BeDivDes">
               <p>
-                <span>We Help You To Live</span> <br />
-                <span>
-                  A <span style="color: #00baff;"> Healthy Life</span>
-                </span>
+                We provide the best and evidence based psychiatric consultation,
+                Psychotherapy and counseling online and Offline.
               </p>
             </div>
-            <div class="smallText">
+          </div>
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-user-md"></i></div>
+            <div class="BeDivHeader"><p>Brightest Professionals</p></div>
+            <div class="BeDivDes">
               <p>
-                We promotes mental health awareness and care about your health.
-                Join our community for all kinds of health supports.
+                The best and brightest professionals are here to serve you. We
+                care about you and ensures world class treatment
+              </p>
+            </div>
+          </div>
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-user"></i></div>
+            <div class="BeDivHeader"><p>Energize People</p></div>
+            <div class="BeDivDes">
+              <p>
+                We believe in energizing people and community by sharing
+                knowledge through world class training and workshops.
+              </p>
+            </div>
+          </div>
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-file-text"></i></div>
+            <div class="BeDivHeader"><p>Research to reach</p></div>
+            <div class="BeDivDes">
+              <p>
+                We Conduct researches to reach every mind and transform their
+                lives for better tomorrow to lead a healthy life.
               </p>
             </div>
           </div>
         </div>
-      </header>
-    </div>
-
-    <div class="about_this_website">
-      <div class="container">
-        <div class="my-3  py-3">
-          <div class="about_HEADER text-center">
-            <p>About <span>Telepsychiatry</span></p>
-          </div>
-          <section class="aboutThisCompany">
-            <div class="about">
-              <div class="details">
-                <p>
-                  Rapidiously reintermediate seamless customer service via
-                  installed base outsourcing. Competently exploit prospective
-                  leadership skills via corporate e-services. Assertively
-                  synergize resource maximizing relationships vis-a-vis.
-                  Competently exploit prospective leadership skills via
-                  corporate e-services. Assertively synergize resource
-                  maximizing relationships vis-a-vis.
-                </p>
-              </div>
-              <div class="details">
-                <p>
-                  Enthusiastically provide access to competitive collaboration
-                  and idea-sharing after proactive innovation. Phosfluorescently
-                  extend fully tested functionalities for business processes.
-                  Quickly optimize long-term high-impact technologies without
-                  cost effective manufactured products. Rapidiously
-                  reintermediate seamless customer service via installed base
-                  outsourcing. Competently exploit prospective leadership skills
-                  via corporate e-services. Assertively synergize resource
-                  maximizing relationships vis-a-vis. Enthusiastically provide
-                  access to competitive collaboration and idea-sharing after
-                  proactive innovation. Phosfluorescently extend fully tested
-                  functionalities for business processes. Quickly optimize
-                  long-term high-impact technologies without cost effective
-                  manufactured products. Rapidiously reintermediate seamless
-                  customer service via installed base outsourcing. Competently
-                  exploit prospective leadership skills via corporate
-                  e-services.
-                </p>
-              </div>
-            </div>
-            <div class="companyLogo">
-              <img src="/images/logo.png" alt="Logo" />
-            </div>
-          </section>
-        </div>
-      </div>
-
-      <div class="customerQuotes text-center">
-        <div class="container">
-          <div class="customerQuotes_header">
-            <p>What Our Customer Says</p>
-          </div>
-          <div class="customerQuotes_header_info">
-            <p>
-              Energistically develop 24/365 outsourcing rather than market
-              positioning sources. Collaboratively iterate bricks-and-clicks
-              relationships with sustainable deliverables. Enthusiastically
-              productivate highly efficient bandwidth for economically sound
-              initiatives. Synergistically enhance top-line.
-            </p>
-          </div>
-          <div class="customers">
-            <div class="customer">
-              <div class="quote">
-                <p>
-                  Rapidiously enhance standardized information through virtual
-                  benefits. Dynamically reintermediate low-risk high-yield
-                  partnerships via intermandated collaboration and idea-sharing.
-                  Efficiently parallel task maintainable portals.
-                </p>
-              </div>
-              <div class="namee"><p>MD. Sakib Khan</p></div>
-              <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
-            </div>
-            <div class="customer">
-              <div class="quote">
-                <p>
-                  Rapidiously enhance standardized information through virtual
-                  benefits. Dynamically reintermediate low-risk high-yield
-                  partnerships via intermandated collaboration and idea-sharing.
-                  Efficiently parallel task maintainable portals.
-                </p>
-              </div>
-              <div class="namee"><p>MD. Sakib Khan</p></div>
-              <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
-            </div>
-            <div class="customer">
-              <div class="quote">
-                <p>
-                  Rapidiously enhance standardized information through virtual
-                  benefits. Dynamically reintermediate low-risk high-yield
-                  partnerships via intermandated collaboration and idea-sharing.
-                  Efficiently parallel task maintainable portals.
-                </p>
-              </div>
-              <div class="namee"><p>MD. Sakib Khan</p></div>
-              <div class="rolee"><p>FCPS, MBBS, BSMMU</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="organizationSupport">
-        <div class="container mb-5">
-          <div class="organizationHeader">
-            <p>Organizations Who Support Us</p>
-          </div>
-          <div class="organizationHeader_info">
-            <p>
-              Energistically develop 24/365 outsourcing rather than market
-              positioning sources. Collaboratively iterate bricks-and-clicks
-              relationships with sustainable deliverables. Enthusiastically
-              productivate highly efficient bandwidth for economically sound
-              initiatives. Synergistically enhance top-line.
-            </p>
-          </div>
-
-          <div class="organizations">
-            <div class="org"><img src="/images/org_demo.png" alt="" /></div>
-            <div class="org"><img src="/images/org_demoo.png" alt="" /></div>
-            <div class="org"><img src="/images/org_demooo.png" alt="" /></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contactUs">
-        <div class="container">
-          <div class="contactUs_header text-center">
-            <p>Contact Us</p>
-          </div>
-          <div class="contactUs_form">
-            <form>
-              <div class="flex-parentt">
-                <div class="flex-childd">
-                  <p>Name:</p>
-                  <input type="text" />
+        <div class="healthCareWithTrin my-5">
+          <div class="container">
+            <div class="HC_flex">
+              <div class="HC_Des">
+                <div class="Des_Header mb-4">
+                  <p>About <span>TRIN</span></p>
                 </div>
-
-                <div class="flex-childd">
-                  <p>Email:</p>
-                  <input type="email" />
+                <div class="Des_text">
+                  <p>
+                    Telepsychiatry Research and Innovation Network Ltd started
+                    its journey with the dream to touch the life of one billion
+                    people within 2025 by designing, developing and implementing
+                    innovative technology based mental services, providing
+                    evidence based holistic mental health care, conducting
+                    cutting edge impactful research and providing global
+                    platform for interdisciplinary research for mental health
+                    care.
+                  </p>
+                  <p>
+                    We promotes mental health awareness and care about your
+                    health. Join our community for all kinds of health supports.
+                    We provides different mental health care supports.
+                  </p>
                 </div>
               </div>
-              <div class="messagee">
-                <p>Your message:</p>
-                <textarea
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="10"
-                ></textarea>
+              <div class="HC_Vid">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/jkkTsMYAY_A"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
-              <div class="submit">
-                <button>Submit</button>
+            </div>
+          </div>
+        </div>
+        <div class="services_section_wrapper">
+          <div class="container">
+            <div class="services-section">
+              <div class="service_header">
+                <p>OUR BEST <span>SERVICES</span></p>
               </div>
-            </form>
+              <div class="cardspace">
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/consultants.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Psychiatric Consultations</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        We provide the psychiatric consultation from the most
+                        reputed psychiatrist in the country having MD or FCPS
+                        and other advanced degrees. They focus on people who
+                        have mental health issues. Some specialize in behavioral
+                        problems or personality disorders, while others may
+                        specialize in specific age groups. Some psychiatric
+                        consultants may work directly with patients to discuss
+                        their treatment options and programs.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/corporate.png" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Psycho Therapy & Counselling</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        We provide the corporate health Care for various
+                        organizations Next-generation wellness service for
+                        employer and employee. We treat few but energise all.
+                        General and Medical are here to help you keep you happy
+                        and healthy with our corporate private health cover
+                        plans.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/childCare.jpg" alt="" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Mental Health Assessment</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        Child Health care is defined as the medical services
+                        that are provided by the medical health professionals to
+                        the children having disease or infection. A healthy,
+                        balanced diet is not just good for kid's bodies, it's
+                        good for their brains, too.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/careForFuture.jpg" alt="" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader"><p>Corporate Health Care</p></div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        The service is dedicated for the kids and adolescents to
+                        prepare them for the future world and how to cope with
+                        stress and promote their learning and wellbeing from
+                        preschool level. To ensure a better future this is the
+                        core necessiate in our world.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img
+                        src="/images/caringRelation.jpg"
+                        alt=""
+                        class="image"
+                      />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader"><p>Special Services</p></div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        How we can promote healthy and long term caring
+                        relations between with our parents, children, teachers,
+                        student, friends, employee, employer, clients, housemaid
+                        and other helping hand. Through our online platform,
+                        regular awareness programs.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/trust.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Behavioral Addiction Centers</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        Behavioral Addiction such as mobile phone addition,
+                        Facebook addiction, porn addiction, is increasing and is
+                        a major challenge for our wellbeing. We need appropriate
+                        guideline and support to overcome the problems and from
+                        this center we will deliver that care.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="meet-doctors-section_wrapper">
+          <div class="container">
+            <div class="meet-doctors-section">
+              <div class="meet_doctors_header mb-3">
+                <p>MEET OUR <span>EXPERTS</span></p>
+              </div>
+              <div class="cardspace">
+                <div class="owl-carousel owl-theme owl-doctor-list">
+                  <% for(let i = 0 ; i < 6; i++) { %>
+                  <div class="item">
+                    <div class="m-1 mb-5 card">
+                      <img src="/images/doctor.jpg" class="card-img-top" />
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <p class="cardName">Sharmin Afroz</p>
+                          <p class="cardDegree">CARDIAC SURGERY</p>
+                        </h5>
+                        <p class="card-text pb-2">
+                          We provide the corporate health Care for various
+                          organizations Next-generation wellness service for
+                          employer and employee. We treat few but energise all.
+                        </p>
+                        <p class="icons">
+                          <a href="#" class="fa fa-facebook"></a>
+                          <a href="#" class="fa fa-google-plus"></a>
+                          <a href="#" class="fa fa-instagram"></a>
+                          <a href="#" class="fa fa-linkedin"></a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="upcomingEvents_wrapper">
+          <div class="upcomingEvents">
+            <div class="container">
+              <div class="upEvHeading">
+                <p>Upcoming <span>Events</span></p>
+              </div>
+              <div class="upcomingEvents_flx_prnt">
+                <div class="upcomingEvents_flx_chld chld_one">
+                  <div class="upcomingEvents_flx_chld_img">
+                    <img src="/images/coronaevent1.jpg" />
+                  </div>
+                  <div class="upcomingEvents_flx_chld_title">
+                    <p>Stress Management During Corona</p>
+                  </div>
+                  <div class="upcomingEvents_flx_chld_address">
+                    <p>
+                      <i class="fa fa-map-marker" style="font-size: 20px;">
+                        &nbsp;</i
+                      >
+                      Rupayan Trade Center, Banglamotor
+                    </p>
+                  </div>
+                  <div class="upcomingEvents_flx_chld_date">
+                    <p><i class="fa fa-calendar"> &nbsp; </i> 07/03/2020</p>
+                  </div>
+                </div>
+                <div class="upcomingEvents_flx_chld FlxCol">
+                  <div class="upcomingEvents_flx_chld_scnd_one">
+                    <div class="upcomingEvents_flx_chld_img">
+                      <img src="/images/coronaPandemic.png" />
+                    </div>
+                    <div class="upcomingEvents_flx_chld_scnd_one_info">
+                      <div class="upcomingEvents_flx_chld_title">
+                        <p>Parenting During Corona Pandemic</p>
+                      </div>
+                      <div class="upcomingEvents_flx_chld_address">
+                        <p>
+                          <i class="fa fa-map-marker" style="font-size: 20px;">
+                            &nbsp;</i
+                          >
+                          Rupayan Trade Center, Banglamotor
+                        </p>
+                      </div>
+                      <div class="upcomingEvents_flx_chld_date">
+                        <p><i class="fa fa-calendar"> &nbsp; </i> 10/03/2020</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="upcomingEvents_flx_chld_scnd_one">
+                    <div class="upcomingEvents_flx_chld_img">
+                      <img src="/images/conf3.jpg" />
+                    </div>
+                    <div class="upcomingEvents_flx_chld_scnd_one_info">
+                      <div class="upcomingEvents_flx_chld_title">
+                        <p>TRIN Training & Workshops</p>
+                      </div>
+                      <div class="upcomingEvents_flx_chld_address">
+                        <p>
+                          <i class="fa fa-map-marker" style="font-size: 20px;">
+                            &nbsp;</i
+                          >
+                          Rupayan Trade Center, Banglamotor
+                        </p>
+                      </div>
+                      <div class="upcomingEvents_flx_chld_date">
+                        <p><i class="fa fa-calendar"> &nbsp; </i> 13/03/2020</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="showMoreBtn">
+                <button>Show more</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="organizationSupport">
+          <div class="container mb-5">
+            <div class="organizationHeader">
+              <p>Our <span> Collaborations </span></p>
+            </div>
+            <div class="organizations">
+              <div class="org" onclick="gotoLink('https://www.nih.gov/')">
+                <img src="/images/Logo_NIH.png" alt="" />
+              </div>
+              <div class="org" onclick="gotoLink('https://www.utoronto.ca/')">
+                <img src="/images/UOT.png" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+    <script src="/js/homepage.js"></script>
+
+    <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
+    <script>
+      var owldl = $('.owl-doctor-list');
+      owldl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        dots: false,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          750: {
+            items: 1,
+          },
+          960: {
+            items: 2,
+          },
+          1100: {
+            items: 3,
+          },
+        },
+      });
+      let owlorg = $('.owl-organizations');
+      owlorg.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 1300,
+        autoplayHoverPause: true,
+        dots: false,
+        responsive: {
+          0: {
+            items: 2,
+          },
+          750: {
+            items: 3,
+          },
+          960: {
+            items: 3,
+          },
+          1100: {
+            items: 6,
+          },
+        },
+      });
+
+      function gotoLink(url) {
+        window.open(url, '_blank');
+      }
+    </script>
   </body>
 </html>

@@ -114,7 +114,7 @@ exports.regExpUserVal = data => {
             joi.object({
                 chamberName: joi.string().allow('', null),
                 chamberAddress: joi.string().allow('', null),
-                chamberTimings: joi.array().items(
+                shifts: joi.array().items(
                     joi.object({
                         dayFrom: joi.string().allow('', null),
                         dayTo: joi.string().allow('', null),

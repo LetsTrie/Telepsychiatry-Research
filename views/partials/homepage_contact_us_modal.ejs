@@ -9,7 +9,8 @@
             <div class="modal-body">
                 <div class="wrapper">
                     <div class="contactUs_form">
-                        <div class="alert alert-danger" id="alert"></div>
+                        <div class="alert alert-danger" style="display: none;" id="alert-contact"></div>
+                        <div class="alert alert-success" style="display: none;" id="alert-success"></div>
                         <form id="form" action="/contactUs" method="POST">
                             <% if(successMessage != ''){ %>
                                 <div class="alert alert-success" role="alert">
@@ -35,14 +36,14 @@
                                         </div>
                                         <div class="flex-childd">
                                             <p>Phone Number</p>
-                                            <input id="text" type="text" required name="mobile" placeholder="Your phone number" />
+                                            <input id="mobile" type="text" required name="mobile" placeholder="Your phone number" />
                                         </div>
                                     </div>
                                     <div class="flex-parentt">
                                         <div class="flex-childd">
                                             <p>Gender</p>
                                             <div class="form-selectpicker">
-                                                <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" name="gender" required>
+                                                <select id="gender" class="selectpicker" data-width="100%" title="Gender" data-size="6" name="gender" required>
                       <option value="Male">Male</option>
                       <option value="Female"> Female </option>
                     </select>
@@ -52,7 +53,7 @@
                                         <div class="flex-childd">
                                             <p>Seek Help from</p>
                                             <div class="form-selectpicker">
-                                                <select id="genderInput" class="selectpicker" data-width="100%" title="Select experts" data-size="6" name="experts" required>
+                                                <select id="experts" class="selectpicker" data-width="100%" title="Select experts" data-size="6" name="experts" required>
                       <option value="Psychiatric Consultation">Psychiatric Consultation</option>
                       <option value="Psychology and Counselling">
                         Psychology and Counselling
@@ -66,7 +67,7 @@
                                         <textarea required id="message" name="message" id="message" cols="30" rows="5"></textarea>
                                     </div>
                                     <div class="submit">
-                                        <button id="submit-btn">Submit</button>
+                                        <button class="submit-btn" id="submit-btn">Submit</button>
                                     </div>
                         </form>
                     </div>
@@ -81,3 +82,88 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+<script>
+    function showAlertCon(text) {
+        console.log('hi')
+        $('#alert-contact').show()
+        $('#alert-contact').html(text)
+    }
+
+    function successCon(text) {
+        $('#alert-contact').hide()
+        $('#alert-success').show()
+        $('#alert-success').html(text)
+    }
+
+    function clearCon() {
+        $('#name').val('')
+        $('#age').val('')
+        $('#mobile').val('')
+        $('#email').val('')
+        $('#gender').val('')
+        $('#experts').val('')
+        $('#message').val('')
+    }
+
+    $('#submit-btn').click((e) => {
+        console.log('yo')
+        e.preventDefault()
+        const name = $('#name').val()
+        const age = $('#age').val()
+        const mobile = $('#mobile').val()
+        const email = $('#email').val()
+        const message = $('#message').val()
+        const gender = $('#gender').val()
+        const experts = $('#experts').val()
+        let error = false
+        if (name == '') {
+            error = true
+            showAlertCon('Enter your name')
+        } else if (age == '') {
+            error = true
+            showAlertCon('Enter your age')
+        } else if (email == '') {
+            error = true
+            showAlertCon('Enter your email')
+        } else if (gender == '') {
+            error = true
+            showAlertCon('Enter your gender')
+        } else if (experts == '') {
+            error = true
+            showAlertCon('Enter the service you want')
+        } else if (message == '') {
+            error = true
+            showAlertCon('Enter your query')
+        } else if (mobile == '') {
+            error = true
+            showAlertCon('Enter your contact number')
+        }
+        const data = {
+            name,
+            email,
+            mobile,
+            gender,
+            age,
+            experts,
+            message
+        }
+        if (!error) {
+            formSubmitCon(data)
+        }
+    })
+
+    function formSubmitCon(data) {
+        $.ajax({
+            type: 'POST',
+            url: '/contactUs',
+            data,
+            success: () => {
+                clearCon()
+                successCon('Your query has been recorded. Thanks for your concern')
+            }
+        })
+    }
+</script>

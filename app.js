@@ -15,14 +15,13 @@ const app = express();
 app.set('view engine', 'ejs');
 
 mongoose.connect(
-  process.env.mongoURI,
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  },
-  () => console.log('connected to database!')
+    process.env.mongoURI, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true,
+    },
+    () => console.log('connected to database!')
 );
 
 app.use(express.static('client'));
@@ -31,49 +30,51 @@ app.use(express.static('public'));
 
 const multer = require('multer');
 const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + '-' + file.originalname);
-  },
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads/');
+    },
+    filename: (req, file, cb) => {
+        const filename = req.body.filename + '-' + file.originalname;
+        cb(null, filename);
+    }
 });
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/png' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/jpeg'
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
+    if (
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg' ||
+        file.mimetype === 'application/pdf'
+    ) {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
 };
 
 app.use(
-  multer({
-    storage: fileStorage,
-    fileFilter: fileFilter,
-  }).single('image')
+    multer({
+        storage: fileStorage,
+        fileFilter: fileFilter,
+    }).fields([{ name: 'exp_user_propic' }, { name: 'exp_cv' }])
 );
 
 if (process.env.NODE_ENV === 'development') app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-  })
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: true,
+    })
 );
 app.use(flash());
 app.use((req, res, next) => {
-  res.locals.successMessage = req.flash('successMessage');
-  res.locals.errorMessage = req.flash('errorMessage');
-  res.locals.alertMessage = req.flash('alertMessage');
-  next();
+    res.locals.successMessage = req.flash('successMessage');
+    res.locals.errorMessage = req.flash('errorMessage');
+    res.locals.alertMessage = req.flash('alertMessage');
+    next();
 });
 app.use(compress());
 app.use(helmet());

@@ -206,7 +206,7 @@
                                                                 <input type="text" placeholder="Name of the chamber" name="chamberName" class="chamberName" />
                                                             </div>
                                                             <div class="free-input">
-                                                                <input type="text" placeholder="Address of the chamber" name="chamberAddress" class="chamberPlace" />
+                                                                <input type="text" placeholder="Address of the chamber" name="chamberAddress" class="chamberAddress" />
                                                             </div>
                                                             <div class="delete-btn delete-vh-chamber-class-wrapper">
                                                                 <button class="delete delete-vh-chamber-class" id="delete-vh-chamber">
@@ -598,6 +598,7 @@
                           type="text"
                           placeholder="Name of the chamber"
                           name="chamberName"
+                          class="chamberName"
                         />
                       </div>
                       <div class="free-input">
@@ -605,6 +606,7 @@
                           type="text"
                           placeholder="Address of the chamber"
                           name="chamberAddress"
+                          class="chamberAddress"
                         />
                       </div>
                       <div class="delete-btn delete-vh-chamber-class-wrapper">
@@ -895,7 +897,8 @@
                             type="text"
                             placeholder="Name of Training"
                             id="training-name"
-                            class="trainingName"
+                            class="training-name"
+                            name="trainingName"
                           />
                         </div>
                         <div class="input_box slct_picker">
@@ -969,7 +972,8 @@
                             type="text"
                             placeholder="Name of the award"
                             id="awards-name"
-                            class="awardsName"
+                            class="award-name"
+                            name="awardsName"
                           />
                         </div>
                         <div class="input_box slct_picker">
@@ -1398,21 +1402,57 @@
                     expTo
                 });
             }
-            const vhArray = [{
-                chamberName: 'Popular Diagonisitc',
-                chamberAddress: 'Shyamoli',
-                chamberTimings: [{
-                    dayFrom: 'Saturday',
-                    dayTo: 'Monday',
-                    timeFrom: '2:00PM',
-                    timeTo: '5:00PM'
-                }, {
-                    dayFrom: 'Thursay',
-                    dayTo: 'Sunday',
-                    timeFrom: '7:00PM',
-                    timeTo: '10:00PM'
-                }]
-            }];
+            // const vhArray = [{
+            //     chamberName: 'Popular Diagonisitc',
+            //     chamberAddress: 'Shyamoli',
+            //     chamberTimings: [{
+            //         dayFrom: 'Saturday',
+            //         dayTo: 'Monday',
+            //         timeFrom: '2:00PM',
+            //         timeTo: '5:00PM'
+            //     }, {
+            //         dayFrom: 'Thursay',
+            //         dayTo: 'Sunday',
+            //         timeFrom: '7:00PM',
+            //         timeTo: '10:00PM'
+            //     }]
+            // }];
+
+            const vhArray = []
+            const chambers = $('.oneChamber')
+            const chamberNames = $('.oneChamber').find('.chamberName')
+            const chamberAddresses = $('.oneChamber').find('.chamberAddress')
+            const len = chambers.length
+            for(let i=0; i<len; i++) {
+              const chamberName = $(chambers[i]).find('.chamberName').val()
+              const chamberAddress = $(chambers[i]).find('.chamberAddress').val()
+              console.log(chamberName, chamberAddress)
+
+              shifts = []
+              const shiftsArray = $(chambers[i]).find('.DayTimeFlexParent')
+              for (let i=0; i<shiftsArray.length; i++) {
+                const dayFrom = $(shiftsArray[i]).find('select[name="dayFrom"]').val()
+                const dayTo = $(shiftsArray[i]).find('select[name="dayTo"]').val()
+                const timeFrom = $(shiftsArray[i]).find('select[name="timeFrom"]').val()
+                const timeTo = $(shiftsArray[i]).find('select[name="timeTo"]').val()
+                
+                shifts.push({
+                  dayFrom,
+                  dayTo,
+                  timeFrom,
+                  timeTo
+                })
+              }
+              vhArray.push({
+                chamberName,
+                chamberAddress,
+                shifts
+              })
+              console.log(vhArray)
+            }
+            // console.log(chamberNames, chamberAddresses)
+
+
             const nowInMilSec = Date.parse(new Date().toString())
             const _propic = nowInMilSec + '-' + $("#general_user_propic")[0].files[0].name
             const _cv = nowInMilSec + '-' + $("#exp_cv")[0].files[0].name
@@ -1449,7 +1489,6 @@
                     console.log(key, 'null')
                 }
             }
-
             if (!error) {
                 formSubmit(formData)
             }

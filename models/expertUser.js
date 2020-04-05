@@ -1,46 +1,98 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const eUserSchema = new mongoose.Schema({
-    fname: {
-        type: String
-    },
-    lname: {
-        type: String
+    name: {
+        type: String,
     },
     email: {
-        type: String
+        type: String,
     },
     password: {
-        type: String
+        type: String,
     },
-    phoneNumber: {
-        type: String
+    phone: {
+        type: String,
     },
     dob: {
-        type: String
+        type: String,
     },
-    cAffiliation: {
-        type: String
-    },
-    hADegree: {
-        type: String
+    affiliation: {
+        type: String,
     },
     country: {
-        type: String
+        type: String,
     },
     gender: {
-        type: String
+        type: String,
     },
-    identifyNo: {
-        type: String
+    regno: {
+        type: String,
     },
     researchArea: {
-        type: String
+        type: String,
     },
+    expertise: {
+        type: String,
+    },
+    designation: {
+        type: String,
+    },
+    speciality: {
+        type: String,
+    },
+    fee: {
+        type: String,
+    },
+    institute: {
+        type: String,
+    },
+    professionalDegree: {
+        type: String,
+    },
+    aboutYourself: {
+        type: String,
+    },
+    propicURL: {
+        type: String,
+    },
+    cvURL: {
+        type: String,
+    },
+    education: [{
+        eduInstitute: String,
+        degree: String,
+        eduFrom: String,
+        eduTo: String,
+    }, ],
+    training: [{
+        trainingName: String,
+        trainingYear: String,
+        trainingDetails: String,
+    }, ],
+    awards: [{
+        awardsName: String,
+        awardsYear: String,
+        awardsDetails: String,
+    }, ],
+    workExperience: [{
+        expInstitute: String,
+        expFrom: String,
+        expTto: String,
+    }, ],
+    visitingHour: [{
+        chamberName: String,
+        chamberAddress: String,
+        shifts: [{
+            dayFrom: String,
+            dayTo: String,
+            timeFrom: String,
+            timeTo: String,
+        }, ],
+    }, ],
     createdAt: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now(),
+    },
 });
 
-exports.eUserModel = mongoose.model("expertUser", eUserSchema);
+exports.eUserModel = mongoose.model('expertUser', eUserSchema);

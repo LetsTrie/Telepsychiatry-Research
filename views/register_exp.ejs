@@ -1213,12 +1213,27 @@
         }
 
         function checkYears (from, to) {
-          if (check(from) && check(to)){
               if (parseInt(from) > parseInt(to)) {
               return true
             }
             return false
+        }
+
+        function checkTimes (from, to) {
+          arr1 = from.split(':')
+          from = arr1[0]
+          arr2 = to.split(':')
+          to = arr2[0]
+          if (arr1[1][2] == 'P') {
+            from = (parseInt(from) + 12).toString()
           }
+          if (arr2[1][2] == 'P') {
+            to = (parseInt(to) + 12).toString()
+          }
+          if(parseInt(from) > parseInt(to)) {
+            return true
+          }
+          return false
         }
 
         $('input[name="dob"]').daterangepicker({
@@ -1425,7 +1440,10 @@
                 const expInstitute = workInstitutes[i].value;
                 const expFrom = workFrom[i].value;
                 const expTo = workTo[i].value;
-
+                if (checkYears(expFrom, expTo)) {
+                    error = true
+                    showAlert('Enter a valid range of years in the work and experience section')  
+                }
                 workExpArray.push({
                     expInstitute,
                     expFrom,
@@ -1449,7 +1467,10 @@
                 const dayTo = $(shiftsArray[i]).find('select[name="dayTo"]').val()
                 const timeFrom = $(shiftsArray[i]).find('select[name="timeFrom"]').val()
                 const timeTo = $(shiftsArray[i]).find('select[name="timeTo"]').val()
-                
+                if (checkTimes(timeFrom, timeTo)) {
+                  error = true
+                  showAlert('Enter a valid range of time in the visiting hours section')
+                }
                 shifts.push({
                   dayFrom,
                   dayTo,
@@ -1497,7 +1518,8 @@
             }
             
             if (!error) {
-              // formSubmit(formData)
+              formSubmit(formData)
+              console.log('submit')
             }
 
         });

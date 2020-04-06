@@ -2,11 +2,13 @@ const router = require('express').Router();
 
 const { bookAppointment } = require('../controllers/services');
 
-router.get('/consultation', (req, res, next) => res.render('consultation'));
+const { showAllDoctosConsultation } = require('../controllers/services');
+const { singleDoctorConsultation } = require('../controllers/services');
+
+router.get('/consultation', showAllDoctosConsultation);
 router.get('/psychoTherapy', (req, res, next) => res.render('psycho_therapy'));
-router.get('/doctor/profile/:id', (req, res, next) => {
-  return res.render('doctorsProfile');
-});
+router.get('/doctor/profile/:id', singleDoctorConsultation);
+
 router.get('/institution', (req, res, next) => {
   res.render('institution');
 });

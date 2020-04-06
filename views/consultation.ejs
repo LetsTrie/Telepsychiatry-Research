@@ -178,7 +178,8 @@
               <p>Book Our Experts</p>
             </div>
             <div class="allDoctors container">
-              <% for(let i = 0 ; i < 6; i++) { %>
+              <% for(let i = 0 ; i < doctors.length; i++) { let dct =
+              doctors[i]; %>
               <div
                 class="doctor_identity"
                 data-aos="zoom-in-up"
@@ -186,28 +187,33 @@
                 data-aos-duration="1000"
               >
                 <div class="his_photo">
-                  <img src="/images/doctor.jpg" alt="Doctor" />
+                  <img
+                    src="http://trin-innovation.com/uploads/<%=dct.propicURL%>"
+                    alt="Doctor"
+                  />
                 </div>
                 <div class="His_profession">
-                  <p class="name">Sharmin Afroz</p>
+                  <p class="name"><%=dct.name%></p>
                   <p class="degreeNspeciality">
-                    BDS, MDS - Oral & Maxillofacial Surgery
+                    <%=dct.professionalDegree%> <%=dct.expertize%>
                   </p>
 
                   <p class="aff">
-                    <span class="fa fa-user">&nbsp;&nbsp;</span> Associate
-                    Professor (CC) & Unit Head, Dept. of Psychiatry
+                    <span class="fa fa-user">&nbsp;&nbsp;</span>
+                    <%=dct.designation%>
                   </p>
                   <p class="college">
-                    <span class="fa fa-university">&nbsp;</span> Sir Salimullah
-                    Medical College & Mitford Hospital
+                    <span class="fa fa-university">&nbsp;</span>
+                    <%=dct.institute%>
                   </p>
                   <p class="bill">
-                    <span class="fa fa-money">&nbsp;&nbsp;</span> 500 BDT
+                    <span class="fa fa-money">&nbsp;&nbsp;</span> <%=dct.fee%>
+                    BDT
                   </p>
 
                   <div class="bookingg">
-                    <button class="viewProfile" onclick="go()">
+                    <input type="hidden" name="docID" value="<%=dct._id%>" />
+                    <button class="viewProfile">
                       View Profile
                     </button>
                     <button
@@ -231,8 +237,9 @@
   </body>
   <%- include('./partials/vendorsBottom')%>
   <script>
-    function go() {
-      location = '/services/doctor/profile/1';
-    }
+    $('.viewProfile').on('click', (e) => {
+      const ID = $(e.target.parentNode.children[0]).val();
+      location = '/services/doctor/profile/' + ID;
+    });
   </script>
 </html>

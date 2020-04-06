@@ -50,14 +50,14 @@
   padding-bottom: 40px;
   padding-left: 30px;
   background: transparent;
-  margin: 25vmin 1vmin;
+  padding: 25vmin 1vmin;
   max-width: 600px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   @media only screen and (max-width: 500px) {
-    margin: 30vmin 1vmin;
+    padding: 30vmin 1vmin;
   }
-  margin-bottom: 30vmin;
+  padding-bottom: 30vmin;
 
   // animation: animateLeftToRight 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s
   //   backwards;
@@ -321,10 +321,10 @@
     width: 25%;
 
     @media (max-width: 1200px) {
-      width: 49%;
+      width: 50%;
     }
     @media (max-width: 700px) {
-      width: 98%;
+      width: 100%;
     }
     font-size: 16px;
     padding: 40px;

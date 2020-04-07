@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
 const {
-    getRegisterGeneralUser,
-    getRegisterExpertUser,
-    getRegisterOrganizations,
-    postRegisterGeneralUser,
-    postRegisterExpertUser,
-    postRegisterOrgUser,
-    postCheckDuplication,
-    saveExpUser
+  getRegisterGeneralUser,
+  getRegisterExpertUser,
+  getRegisterOrganizations,
+  postRegisterGeneralUser,
+  postRegisterExpertUser,
+  postRegisterOrgUser,
+  postCheckDuplication,
+  saveExpUser,
 } = require('../controllers/auth');
 
 router.get('/login', (req, res, next) => res.render('login'));

@@ -1,8 +1,14 @@
 const router = require('express').Router();
 
-const { bookAppointment } = require('../controllers/services')
+const {
+    bookAppointment,
+    consultation,
+    searchConsultation,
+} = require('../controllers/services');
 
-router.get('/consultation', (req, res, next) => res.render('consultation'));
+router.get('/consultation', consultation);
+router.get('/consultation/search', searchConsultation);
+
 router.get('/psychoTherapy', (req, res, next) => res.render('psycho_therapy'));
 router.get('/doctor/profile/:id', (req, res, next) => {
     return res.render('doctorsProfile');
@@ -30,6 +36,6 @@ router.get('/special_services', (req, res, next) => {
     res.render('specialServices');
 });
 
-router.post('/book', bookAppointment)
+router.post('/book', bookAppointment);
 
 module.exports = router;

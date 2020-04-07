@@ -68,7 +68,7 @@
                                                 </div>
                                                 <!-- <div class="input_box slct_picker">
                                         <div class="form-selectpicker">
-                                            <select id="speciality" class="selectpicker" data-width="100%" title="Speciality" data-size="6" name="speciality" required>
+                                            <select id="speciality" class="selectpicker" data-width="100%" title="Speciality" data-size="6" name="speciality" >
                         <option value="Psychiatrist">Psychiatrist</option>
                         <option value="Consultant"> Consultant </option>
                       </select>
@@ -336,7 +336,7 @@
                                                         <div class="edu_in">
                                                             <div class="input_box slct_picker">
                                                                 <div class="form-selectpicker">
-                                                                    <select id="eduFrom" class="selectpicker year-selector" data-width="100%" title="From" data-size="6" name="eduFrom" required>
+                                                                    <select id="eduFrom" class="selectpicker year-selector" data-width="100%" title="From" data-size="6" name="eduFrom" >
                             <% for (let i= yr; i >= 1950; i--) { %>
                             <option value="<%= i %>"><%= i %></option>
                             <% } %>
@@ -347,7 +347,7 @@
                                                         <div class="edu_in">
                                                             <div class="input_box slct_picker">
                                                                 <div class="form-selectpicker">
-                                                                    <select id="eduTo" class="selectpicker year-selector" data-width="100%" title="To" data-size="6" name="eduTo" required>
+                                                                    <select id="eduTo" class="selectpicker year-selector" data-width="100%" title="To" data-size="6" name="eduTo" >
                             <% for (let i= yr; i >= 1950; i--) { %>
                             <option value="<%= i %>"><%= i %></option>
                             <% } %>
@@ -1321,8 +1321,19 @@
             const image = $('#general_user_propic')
             const cv = $('#exp_cv')
 
-            const imageSize = image[0].files[0].size/1024/1024
-            const cvSize = cv[0].files[0].size/1024/1024
+            const nowInMilSec = Date.parse(new Date().toString())
+            let _propic = ''
+            let _cv = ''
+            let cvSize = 0
+            let imageSize = 0
+            if (image[0].files.length) {
+              _propic = nowInMilSec + '-' + $("#general_user_propic")[0].files[0].name
+              imageSize = image[0].files[0].size/1024
+            }
+            if (cv[0].files.length) {
+              cvSize = cv[0].files[0].size/1024/1024
+              _cv = nowInMilSec + '-' + $("#exp_cv")[0].files[0].name
+            }
 
             let error = false;
             const nameRegex = new RegExp('^[a-zA-Z ]+$');
@@ -1362,12 +1373,9 @@
             } else if (!image[0].files.length) {
                 error = true;
                 showAlert('Upload your display picture');
-            } else if (!cv[0].files.length) {
+            } else if (imageSize > 250) {
                 error = true;
-                showAlert('Upload your CV');
-            } else if (imageSize > 2) {
-                error = true;
-                showAlert('Display image must be within 2MB');
+                showAlert('Display image must be within 250KB');
             } else if (cvSize > 5) {
                 error = true;
                 showAlert('CV file must be within 5MB');
@@ -1403,7 +1411,7 @@
                 } else if (check(degree)) {
                     error = true;
                     showAlert('Enter the name of the degree');
-                } else if (checkYears(eduFrom, eduTo)) {
+                } else if (eduFrom.lenth && eduTo.length && checkYears(eduFrom, eduTo)) {
                     error = true
                     showAlert('Enter a valid range of years in the education section')  
                 }
@@ -1467,7 +1475,7 @@
                 const dayTo = $(shiftsArray[i]).find('select[name="dayTo"]').val()
                 const timeFrom = $(shiftsArray[i]).find('select[name="timeFrom"]').val()
                 const timeTo = $(shiftsArray[i]).find('select[name="timeTo"]').val()
-                if (checkTimes(timeFrom, timeTo)) {
+                if (timeFrom.length && timeTo.length && checkTimes(timeFrom, timeTo)) {
                   error = true
                   showAlert('Enter a valid range of time in the visiting hours section')
                 }
@@ -1485,10 +1493,6 @@
               })
             }
 
-
-            const nowInMilSec = Date.parse(new Date().toString())
-            const _propic = nowInMilSec + '-' + $("#general_user_propic")[0].files[0].name
-            const _cv = nowInMilSec + '-' + $("#exp_cv")[0].files[0].name
             $('#filename').val(nowInMilSec)
             let formData = {
                 name,
@@ -1524,6 +1528,10 @@
 
         });
 
+        $('#form').submit((e) => {
+          e.preventDefault()
+        })
+        
         function formSubmit(data) {
             $.ajax({
                 type: 'POST',

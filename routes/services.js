@@ -1,35 +1,39 @@
 const router = require('express').Router();
 
-const { bookAppointment } = require('../controllers/services');
+const {
+    bookAppointment,
+    consultation,
+    searchConsultation,
+} = require('../controllers/services');
 
-const { showAllDoctosConsultation } = require('../controllers/services');
-const { singleDoctorConsultation } = require('../controllers/services');
+router.get('/consultation', consultation);
+router.get('/consultation/search', searchConsultation);
 
-router.get('/consultation', showAllDoctosConsultation);
 router.get('/psychoTherapy', (req, res, next) => res.render('psycho_therapy'));
-router.get('/doctor/profile/:id', singleDoctorConsultation);
-
+router.get('/doctor/profile/:id', (req, res, next) => {
+    return res.render('doctorsProfile');
+});
 router.get('/institution', (req, res, next) => {
-  res.render('institution');
+    res.render('institution');
 });
 
 router.get('/assessment', (req, res, next) => {
-  res.render('assessment');
+    res.render('assessment');
 });
 
 router.get('/assessment/result', (req, res, next) => {
-  res.render('assessment_result');
+    res.render('assessment_result');
 });
 router.get('/assessment/quiz', (req, res, next) => {
-  res.render('assessment_quiz');
+    res.render('assessment_quiz');
 });
 
 router.get('/assessment/register', (req, res, next) => {
-  res.render('assessment_reg');
+    res.render('assessment_reg');
 });
 
 router.get('/special_services', (req, res, next) => {
-  res.render('specialServices');
+    res.render('specialServices');
 });
 
 router.post('/book', bookAppointment);

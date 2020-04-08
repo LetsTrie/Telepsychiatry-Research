@@ -1033,16 +1033,16 @@ p {
   padding-bottom: 40px;
   padding-left: 30px;
   background: transparent;
-  margin: 25vmin 1vmin;
+  padding: 25vmin 1vmin;
   max-width: 600px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  margin-bottom: 30vmin;
+  padding-bottom: 30vmin;
 }
 
 @media only screen and (max-width: 500px) {
   .desc {
-    margin: 30vmin 1vmin;
+    padding: 30vmin 1vmin;
   }
 }
 
@@ -1418,13 +1418,13 @@ p {
 
 @media (max-width: 1200px) {
   .beautifulDivider .BeDivFlex {
-    width: 49%;
+    width: 50%;
   }
 }
 
 @media (max-width: 700px) {
   .beautifulDivider .BeDivFlex {
-    width: 98%;
+    width: 100%;
   }
 }
 

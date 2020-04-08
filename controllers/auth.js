@@ -68,7 +68,7 @@ exports.postCheckDuplication = async (req, res, next) => {
 const { regExpUserVal } = require('../validations/auth');
 exports.postRegisterExpertUser = async (req, res, next) => {
   console.log('files saved');
-  res.redirect('/');
+  res.redirect('/services/consultation');
 };
 
 exports.saveExpUser = async (req, res, next) => {

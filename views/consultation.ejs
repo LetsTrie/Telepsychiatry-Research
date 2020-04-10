@@ -1,57 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/ourDoctors.css" />
+    <link rel="stylesheet" href="/css/ourDoctors.css" />
 
-        <title>
-            Our Doctors | Telepsychiatry Research
-        </title>
-</head>
+    <title>
+      Our Doctors | Telepsychiatry Research
+    </title>
+  </head>
 
-<body>
+  <body>
     <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="assessment_wrapper">
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Clinical Services</a> / Psychiatric consultations</p>
-                </div>
-                <div class="bigText">
-                    <p>Our Professional Psychiatrists</p>
-                </div>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="assessment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Clinical Services</a> / Psychiatric consultations</p>
+          </div>
+          <div class="bigText">
+            <p>Our Professional Psychiatrists</p>
+          </div>
+        </div>
+
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="searchFilter">
+              <p>Search Filter</p>
             </div>
-
-            <div class="twoBigSectionFlex">
-
-                <div class="eachBigSection">
-                    <div class="searchFilter">
-                        <p>Search Filter</p>
-                    </div>
-                    <form action="/services/consultation/search" method="GET" id="search-form">
-                        <div class="searchFields">
-                            <div class="sField">
-                                <div class="input-group">
-                                    <input type="text" class="form-control py-4" id="search-input" name="searchInput" placeholder="Search doctors" />
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" id="" type="submit" disabled>
+            <form
+              action="/services/consultation/search"
+              method="GET"
+              id="search-form"
+            >
+              <div class="searchFields">
+                <div class="sField">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control py-4"
+                      id="search-input"
+                      name="searchInput"
+                      placeholder="Search doctors"
+                    />
+                    <div class="input-group-btn">
+                      <button
+                        class="btn btn-default"
+                        id=""
+                        type="submit"
+                        disabled
+                      >
                         <i class="fa fa-search"></i>
                       </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat">
-                                <div class="cat_heading">
-                                    <p>Gender</p>
-                                </div>
-                                <div class="catOptions">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="gender" value="Male" />
-                                        <label class="custom-control-label" for="customCheck">Male doctors</label
-                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="cat">
+                  <div class="cat_heading">
+                    <p>Gender</p>
+                  </div>
+                  <div class="catOptions">
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck"
+                        name="gender"
+                        value="Male"
+                      />
+                      <label class="custom-control-label" for="customCheck"
+                        >Male doctors
+                      </label>
                     </div>
                     <div class="custom-control custom-checkbox">
                       <input
@@ -62,38 +82,39 @@
                         value="Female"
                       />
                       <label class="custom-control-label" for="customCheckw"
-                        >Female doctors</label
-                      >
+                        >Female doctors
+                      </label>
                     </div>
                   </div>
                 </div>
                 <div class="findDocBtn">
                   <button id="search-btn">Search</button>
                 </div>
-              </form>
               </div>
-            </div>
-          
+            </form>
+          </div>
+
           <div class="eachBigSection">
             <div class="bigHeading">
               <p>Book Our Experts</p>
             </div>
             <div class="allDoctors container">
               <% for(let i = 0 ; i < experts.length; i++) { %>
-              <div
-                class="doctor_identity"
-              >
+              <div class="doctor_identity">
                 <div class="his_photo">
-                  <img src="http://trin-innovation.com/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
+                  <img src="/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
                 </div>
                 <div class="His_profession">
-                  <p class="name"><%= experts[i].name %></p>
+                  <p class="name">
+                    <%= experts[i].fname %> <%= experts[i].lname %>
+                  </p>
                   <p class="degreeNspeciality">
-                    <%= experts[i].professionalDegree %> - <%= experts[i].affiliation %>
+                    <%= experts[i].profHighestDegree %> - <%=
+                    experts[i].profDegreeArea %>
                   </p>
 
                   <p class="aff">
-                    <span class="fa fa-user">&nbsp;&nbsp;</span> 
+                    <span class="fa fa-user">&nbsp;&nbsp;</span>
                     <%= experts[i].designation %>
                   </p>
                   <p class="college">
@@ -101,11 +122,16 @@
                     <%= experts[i].affiliation %>
                   </p>
                   <p class="bill">
-                    <span class="fa fa-money">&nbsp;&nbsp;</span> <%= experts[i].fee %> BDT
+                    <span class="fa fa-money">&nbsp;&nbsp;</span> <%=
+                    experts[i].fee %> BDT
                   </p>
 
                   <div class="bookingg">
-                    <input type="hidden" name="docID" value="<%=experts[i]._id%>" />
+                    <input
+                      type="hidden"
+                      name="docID"
+                      value="<%=experts[i]._id%>"
+                    />
                     <button class="viewProfile">
                       View Profile
                     </button>

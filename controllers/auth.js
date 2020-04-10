@@ -1,4 +1,6 @@
-const country = require('../data/country');
+const conCity = require('../data/country');
+const country = conCity.map((x) => x.country);
+console.log(country);
 const multer = require('multer');
 const path = require('path');
 const { gUserModel } = require('../models/generalUser');
@@ -70,6 +72,8 @@ exports.eUserCheckDuplication = async (req, res, next) => {
 
   if (phone) {
     let user2 = await eUserModel.findOne({ phone: phone });
+    console.log('PHONE: ');
+    console.log(user2);
     if (user2) {
       success = false;
       message = 'PHONE';
@@ -77,6 +81,8 @@ exports.eUserCheckDuplication = async (req, res, next) => {
   }
   if (email) {
     let user1 = await eUserModel.findOne({ email: email });
+    console.log('EMAIL: ');
+    console.log(user1);
     if (user1) {
       success = false;
       message = 'EMAIL';
@@ -93,6 +99,9 @@ exports.postRegisterExpertUser = async (req, res, next) => {
 };
 
 exports.saveExpUser = async (req, res, next) => {
+  console.log('I am in');
+  console.log(req.body);
+
   const {
     fname,
     lname,
@@ -117,41 +126,39 @@ exports.saveExpUser = async (req, res, next) => {
     speciality,
   } = req.body;
 
-  console.log(req.body);
   const education = JSON.parse(req.body.education);
   const training = JSON.parse(req.body.training);
   const awards = JSON.parse(req.body.awards);
   const workExperience = JSON.parse(req.body.workExperience);
   const visitingHour = JSON.parse(req.body.visitingHour);
-
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const userObj = {
-    name,
+    fname,
+    lname,
     gender,
-    institute,
-    expertise,
-    designation,
-    speciality,
-    dob,
     email,
-    password: hashedPassword,
+    dob,
     phone,
+    country,
+    city,
+    regno,
+    propicURL,
+    aboutYourself,
+    designation,
+    affiliation,
+    researchArea,
+    expertise,
     profHighestDegree,
     profDegreeArea,
-    affiliation,
-    regno,
-    researchArea,
-    country,
     fee,
-    aboutYourself,
-    propicURL,
-    cvURL,
+    speciality,
+    password: hashedPassword,
     education,
     training,
-    awards,
     workExperience,
     visitingHour,
+    awards,
   };
 
   const { error } = regExpUserVal(userObj);

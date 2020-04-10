@@ -40,7 +40,6 @@ exports.regExpUserVal = (data) => {
     dob: joi.string().required(),
     phone: joi.string().required(),
     password: joi.string().required().min(6),
-    cpassword: joi.string().required().min(6),
     country: joi.string().required(),
     city: joi.string().required(),
     regno: joi.string().allow('', null),

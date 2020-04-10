@@ -25,15 +25,12 @@
         <div class="container">
           <div class="doctor_identity">
             <div class="his_photo">
-              <img
-                src="http://trin-innovation.com/uploads/<%=doc.propicURL%>"
-                alt="Doctor"
-              />
+              <img src="/uploads/<%=doc.propicURL%>" alt="Doctor" />
             </div>
             <div class="His_profession">
-              <p class="name"><%=doc.name%></p>
+              <p class="name"><%=doc.fname%> <%=doc.lname%></p>
               <p class="degreeNspeciality">
-                <%=doc.professionalDegree%> <%=doc.expertize%>
+                <%= doc.profHighestDegree %> - <%= doc.profDegreeArea %>
               </p>
 
               <p class="aff">

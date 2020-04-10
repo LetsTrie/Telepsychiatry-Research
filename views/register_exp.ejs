@@ -188,9 +188,6 @@
                           id="countryInput"
                           data-size="6"
                         >
-                          <% for(let i = 0 ; i < country.length; i++) { %>
-                          <option value="<%=i%>"><%= country[i].name %></option>
-                          <% } %>
                         </select>
                       </div>
                     </div>
@@ -209,9 +206,6 @@
                           id="cityInput"
                           data-size="6"
                         >
-                          <option value="x">x</option>
-                          <option value="x">x</option>
-                          <option value="x">x</option>
                         </select>
                       </div>
                     </div>
@@ -1542,7 +1536,7 @@
 
   <!-- FORM SUBMIT -->
   <script>
-    $('#DocRegform').on('submit', (e) => {
+    $('.addDoctor__submit').on('click', (e) => {
       e.preventDefault();
       console.log('Clicking submit button');
 
@@ -1684,12 +1678,11 @@
               };
               $('#filename').val(nowInMilSec);
               console.log(formData);
-              /*
+
               $.ajax({
                 type: 'POST',
                 url: '/auth/register/new/exp/save',
-                contentType: 'application/json',
-                formData,
+                data: formData,
                 success: (data) => {
                   console.log(data);
                   if (!data.status) {
@@ -1699,8 +1692,6 @@
                   }
                 },
               });
-
-              */
             }
           }
         });
@@ -1858,5 +1849,26 @@
         vhArray,
       };
     }
+  </script>
+
+  <script src="/js/countrySelector.js"></script>
+  <script>
+    const country = countryArray.map((x) => x.country);
+
+    for (let i = 0; i < country.length; i++) {
+      $('#countryInput').append(`<option value="${i}">${country[i]}</option>`);
+    }
+    const citySelector = $('#cityInput');
+    $(document).on('change', '#countryInput', (e) => {
+      const selectedIndex = e.target.value;
+      citySelector.empty();
+      for (let i = 0; i < countryArray[selectedIndex].states.length; i++) {
+        const city = countryArray[selectedIndex].states[i];
+        citySelector.append(
+          `<option value="${selectedIndex}-${i}">${city}</option>`
+        );
+      }
+      citySelector.selectpicker('refresh');
+    });
   </script>
 </html>

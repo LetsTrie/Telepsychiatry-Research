@@ -1,6 +1,5 @@
 const conCity = require('../data/country');
 const country = conCity.map((x) => x.country);
-console.log(country);
 const multer = require('multer');
 const path = require('path');
 const { gUserModel } = require('../models/generalUser');

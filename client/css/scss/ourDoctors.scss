@@ -334,3 +334,8 @@ body {
   border-color: rgb(128, 128, 128);
   box-shadow: none;
 }
+
+.btn.disabled,
+.btn:disabled {
+  opacity: 1;
+}

@@ -1,88 +1,92 @@
 const nodemailer = require('nodemailer');
 const { eUserModel } = require('../models/expertUser');
 
-exports.consultation = async(req, res) => {
-    const experts = await eUserModel.find();
-    res.render('consultation', {
-        experts,
-    });
+exports.consultation = async (req, res) => {
+  const experts = await eUserModel.find().sort({ _id: -1 });
+  res.render('consultation', {
+    experts,
+  });
 };
 
-exports.searchConsultation = async(req, res) => {
-    let search = req.query.searchInput;
-    const male = req.query.male;
-    const female = req.query.female;
-    let baseUrl = req.baseUrl;
-
-    let searchedExperts = [];
-    let maleExperts = [];
-    let femaleExperts = [];
-
-    if (search != '') {
-        search = search.trim();
-        let searchOptions = {
-            $regex: search,
-            $options: 'i',
-        };
-        let searchKey = {
-            $or: [
-                { name: searchOptions },
-                { gender: searchOptions },
-                { speciality: searchOptions },
-                { designation: searchOptions },
-                { affiliation: searchOptions },
-                { dob: searchOptions },
-                { email: searchOptions },
-                { phone: searchOptions },
-                { aboutYourself: searchOptions },
-                { institution: searchOptions },
-                { researchArea: searchOptions },
-                { regno: searchOptions },
-                { country: searchOptions },
-                { fee: searchOptions },
-                { expertise: searchOptions },
-            ],
-        };
-        searchedExperts = await eUserModel.find(searchKey);
-    }
-
-    if (male == 'on') {
-        searchKey = {
-            $or: [{ gender: 'Male' }],
-        };
-        maleExperts = await eUserModel.find(searchKey);
-    }
-    if (female == 'on') {
-        searchKey = {
-            $or: [{ gender: 'Female' }],
-        };
-        femaleExperts = await eUserModel.find(searchKey);
-    }
-    let mergedExperts = searchedExperts.concat(maleExperts, femaleExperts);
-    let final = Array.from(new Set(mergedExperts.map((item) => item._id))).map(
-        (_id) => {
-            return {
-                _id: _id,
-                name: mergedExperts.find((exp) => exp._id === _id).name,
-                designation: mergedExperts.find((exp) => exp._id === _id).designation,
-                institute: mergedExperts.find((exp) => exp._id === _id).institute,
-                fee: mergedExperts.find((exp) => exp._id === _id).fee,
-                professionalDegree: mergedExperts.find((exp) => exp._id === _id)
-                    .professionalDegree,
-                affiliation: mergedExperts.find((exp) => exp._id === _id).affiliation,
-                gender: mergedExperts.find((exp) => exp._id === _id).gender,
-            };
-        }
-    );
-    res.render('consultation', {
-        experts: final,
-    });
+const getTheArray = (data) => {
+  return typeof data === 'string' ? [data] : data;
 };
 
-exports.bookAppointment = async(req, res) => {
-    const { service, name, contact, age, bookType, date, time } = req.body;
-    console.log(req.body);
-    const reply = `Person with following details is in need of emergency <strong>${service}</strong> service. 
+exports.searchConsultation = async (req, res) => {
+  let search = req.query.searchInput;
+  let gender = getTheArray(req.query.gender);
+  if (search === '') search = undefined;
+  if (search === undefined && gender === undefined) {
+    const experts = await eUserModel.find().sort({ _id: -1 });
+    return res.render('consultation', { experts });
+  }
+  let searchedExperts = [];
+  let genderExperts = [];
+  if (search) {
+    search = search.trim();
+    let searchOptions = {
+      $regex: search,
+      $options: 'i',
+    };
+    let searchKey = {
+      $or: [
+        { name: searchOptions },
+        { gender: searchOptions },
+        { speciality: searchOptions },
+        { designation: searchOptions },
+        { affiliation: searchOptions },
+        { dob: searchOptions },
+        { email: searchOptions },
+        { phone: searchOptions },
+        { aboutYourself: searchOptions },
+        { institute: searchOptions },
+        { researchArea: searchOptions },
+        { regno: searchOptions },
+        { country: searchOptions },
+        { fee: searchOptions },
+        { expertise: searchOptions },
+        { professionalDegree: searchOptions },
+        // // { education: searchOptions },
+        // // { training: searchOptions },
+        // // { awards: searchOptions },
+        // // { workExperience: searchOptions },
+        // // { visitingHour: searchOptions },
+      ],
+    };
+    searchedExperts = await eUserModel.find(searchKey);
+  }
+  if (gender) {
+    for (let i = 0; i < gender.length; i++) {
+      searchKey = { $or: [{ gender: gender[i] }] };
+      let docs = await eUserModel.find(searchKey);
+      genderExperts.push(...docs);
+    }
+  }
+  const map = new Map();
+  const container = [];
+  for (let i = 0; i < searchedExperts.length; i++) {
+    const id = searchedExperts[i]._id.toString().trim();
+    if (map.has(id)) continue;
+    map.set(id, true);
+    container.push(searchedExperts[i]);
+  }
+
+  for (let i = 0; i < genderExperts.length; i++) {
+    const id = genderExperts[i]._id.toString().trim();
+    if (map.has(id)) continue;
+    map.set(id, true);
+    container.push(genderExperts[i]);
+  }
+
+  return res.render('consultation', {
+    experts: container.sort((a, b) => (a._id > b._id ? -1 : 1)),
+  });
+};
+
+exports.bookAppointment = async (req, res) => {
+  const { service, name, contact, age, bookType, date, time } = req.body;
+  console.log(req.body);
+  const reply = `Person with following details is in need of emergency <strong>${service}</strong> service. 
       <br> 
       <hr>
       Name: <strong>${name} </strong> 
@@ -98,36 +102,41 @@ exports.bookAppointment = async(req, res) => {
       Time: <strong>${time} </strong>
       <br> 
           - Thank you. TRIN`;
-    const email1 = 'safwan.du16@gmail.com';
-    const email2 = 'inzimunna@gmail.com';
-    sendEmail(email1, reply);
-    sendEmail(email2, reply);
-    res.redirect('back');
+  const email1 = 'safwan.du16@gmail.com';
+  const email2 = 'inzimunna@gmail.com';
+  sendEmail(email1, reply);
+  sendEmail(email2, reply);
+  res.redirect('back');
 };
 
 function sendEmail(emailID, reply) {
-    var Transport = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'safwan.du16@gmail.com',
-            pass: '',
-        },
-    });
+  var Transport = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'safwan.du16@gmail.com',
+      pass: '',
+    },
+  });
 
-    var mailOptions;
-    let sender = "'/'";
-    mailOptions = {
-        from: sender,
-        to: 'safwan.du16@gmail.com',
-        subject: 'Reply from TRIN',
-        html: reply,
-    };
+  var mailOptions;
+  let sender = "'/'";
+  mailOptions = {
+    from: sender,
+    to: 'safwan.du16@gmail.com',
+    subject: 'Reply from TRIN',
+    html: reply,
+  };
 
-    Transport.sendMail(mailOptions, function(error, response) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Message sent');
-        }
-    });
+  Transport.sendMail(mailOptions, function (error, response) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Message sent');
+    }
+  });
 }
+exports.singleDoctorConsultation = async (req, res, next) => {
+  const doc = await eUserModel.findById(req.params.id);
+  console.log(doc);
+  return res.render('doctorsProfile', { doc });
+};

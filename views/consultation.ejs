@@ -37,7 +37,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control py-4" id="search-input" name="searchInput" placeholder="Search doctors" />
                                     <div class="input-group-btn">
-                                        <button class="btn btn-default" id="" type="submit">
+                                        <button class="btn btn-default" id="" type="submit" disabled>
                         <i class="fa fa-search"></i>
                       </button>
                                     </div>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="catOptions">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="male" />
+                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="gender" value="Male" />
                                         <label class="custom-control-label" for="customCheck">Male doctors</label
                       >
                     </div>
@@ -58,105 +58,11 @@
                         type="checkbox"
                         class="custom-control-input"
                         id="customCheckw"
-                        name="female"
+                        name="gender"
+                        value="Female"
                       />
                       <label class="custom-control-label" for="customCheckw"
                         >Female doctors</label
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="cat">
-                  <div class="cat_heading">
-                    <p>Select Specialists</p>
-                  </div>
-                  <div class="catOptions">
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckx"
-                        name="example1"
-                      />
-                      <label class="custom-control-label" for="customCheckx"
-                        >Urology</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customChecky"
-                        name="example1y"
-                      />
-                      <label class="custom-control-label" for="customChecky"
-                        >Neurologist</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckxx"
-                        name="example1"
-                      />
-                      <label class="custom-control-label" for="customCheckxx"
-                        >Dentists</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckxy"
-                        name="example1y"
-                      />
-                      <label class="custom-control-label" for="customCheckxy"
-                        >Cardiologist</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckqx"
-                        name="example1"
-                      />
-                      <label class="custom-control-label" for="customCheckqx"
-                        >Orthopedics</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckqy"
-                        name="example1y"
-                      />
-                      <label class="custom-control-label" for="customCheckqy"
-                        >Neurologist</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckqxx"
-                        name="example1"
-                      />
-                      <label class="custom-control-label" for="customCheckqxx"
-                        >Dentists</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckqxy"
-                        name="example1y"
-                      />
-                      <label class="custom-control-label" for="customCheckqxy"
-                        >Cardiologist</label
                       >
                     </div>
                   </div>
@@ -176,12 +82,9 @@
               <% for(let i = 0 ; i < experts.length; i++) { %>
               <div
                 class="doctor_identity"
-                data-aos="zoom-in-up"
-                data-aos-anchor-placement="top-bottom"
-                data-aos-duration="1000"
               >
                 <div class="his_photo">
-                  <img src="/images/doctor.jpg" alt="Doctor" />
+                  <img src="http://trin-innovation.com/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
                 </div>
                 <div class="His_profession">
                   <p class="name"><%= experts[i].name %></p>
@@ -195,14 +98,15 @@
                   </p>
                   <p class="college">
                     <span class="fa fa-university">&nbsp;</span>
-                    <%= experts[i].instittute %>
+                    <%= experts[i].affiliation %>
                   </p>
                   <p class="bill">
-                    <span class="fa fa-money">&nbsp;&nbsp;</span> 500 BDT
+                    <span class="fa fa-money">&nbsp;&nbsp;</span> <%= experts[i].fee %> BDT
                   </p>
 
                   <div class="bookingg">
-                    <button class="viewProfile" onclick="go()">
+                    <input type="hidden" name="docID" value="<%=experts[i]._id%>" />
+                    <button class="viewProfile">
                       View Profile
                     </button>
                     <button
@@ -226,9 +130,10 @@
   </body>
   <%- include('./partials/vendorsBottom')%>
   <script>
-    function go() {
-      location = '/services/doctor/profile/1';
-    }
+    $('.viewProfile').on('click', (e) => {
+      const ID = $(e.target.parentNode.children[0]).val();
+      location = '/services/doctor/profile/' + ID;
+    });
     $('.search-btn').click((e) => {
       $('#form').submit();
     });

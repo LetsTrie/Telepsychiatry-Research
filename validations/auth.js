@@ -33,37 +33,34 @@ exports.regGenUserVal = (data) => {
 
 exports.regExpUserVal = (data) => {
   const compareWith = joi.object({
-    name: joi.string().required(),
-    email: joi
-      .string()
-      .regex(
-        /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-      )
-      .required(),
-    gender: joi.string().allow('', null),
-    dob: joi.string().allow('', null),
-    speciality: joi.string().allow('', null),
+    fname: joi.string().required(),
+    lname: joi.string().required(),
+    gender: joi.string().required(),
+    email: joi.string().email().required(),
+    dob: joi.string().required(),
+    phone: joi.string().required(),
+    password: joi.string().required().min(6),
+    cpassword: joi.string().required().min(6),
+    country: joi.string().required(),
+    city: joi.string().required(),
+    regno: joi.string().allow('', null),
     propicURL: joi.string().required(),
-    cvURL: joi.string().required(),
-    institute: joi.string().allow('', null),
-    expertise: joi.string().allow('', null),
-    phone: joi.string().allow('', null).min(6).regex(/\w+/i),
+    aboutYourself: joi.string().required(),
+    designation: joi.string().required(),
     affiliation: joi.string().required(),
     researchArea: joi.string().allow('', null),
-    professionalDegree: joi.string().allow('', null),
-    regno: joi.string().allow('', null),
-    country: joi.string().allow('', null),
-    fee: joi.string().regex(/\w+/i).allow('', null),
-    aboutYourself: joi.string().allow('', null),
-    designation: joi.string().required(),
-    password: joi.string().required().min(6),
-    cpassword: joi.string().allow('', null).min(6),
+    expertise: joi.string().allow('', null),
+    profHighestDegree: joi.string().required(),
+    profDegreeArea: joi.string().required(),
+    fee: joi.string().required(),
+    speciality: joi.string().required(),
+
     education: joi.array().items(
       joi.object({
         eduInstitute: joi.string().required(),
         degree: joi.string().required(),
-        eduFrom: joi.string().allow('', null),
-        eduTo: joi.string().allow('', null),
+        eduFrom: joi.string().required(),
+        eduTo: joi.string().required(),
       })
     ),
     training: joi.array().items(

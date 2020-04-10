@@ -14,7 +14,6 @@ exports.getRegisterGeneralUser = (req, res, next) => {
 exports.getRegisterExpertUser = (req, res, next) => {
   return res.render('register_exp', { country });
 };
-
 exports.getRegisterOrganizations = (req, res, next) => {
   return res.render('register_org', { country });
 };
@@ -64,6 +63,28 @@ exports.postCheckDuplication = async (req, res, next) => {
   }
   return res.json({ success, message });
 };
+exports.eUserCheckDuplication = async (req, res, next) => {
+  const { email, phone } = req.body;
+  let success = true;
+  let message = 'OKAY';
+
+  if (phone) {
+    let user2 = await eUserModel.findOne({ phone: phone });
+    if (user2) {
+      success = false;
+      message = 'PHONE';
+    }
+  }
+  if (email) {
+    let user1 = await eUserModel.findOne({ email: email });
+    if (user1) {
+      success = false;
+      message = 'EMAIL';
+    }
+  }
+  console.log({ success, message });
+  return res.json({ success, message });
+};
 
 const { regExpUserVal } = require('../validations/auth');
 exports.postRegisterExpertUser = async (req, res, next) => {
@@ -73,34 +94,37 @@ exports.postRegisterExpertUser = async (req, res, next) => {
 
 exports.saveExpUser = async (req, res, next) => {
   const {
-    name,
+    fname,
+    lname,
     gender,
-    institute,
-    expertise,
-    designation,
-    speciality,
-    dob,
     email,
-    password,
+    dob,
     phone,
-    professionalDegree: profDegree,
-    affiliation,
-    regno,
-    researchArea,
+    password,
+    cPassword,
     country,
-    fee,
-    aboutYourself,
+    city,
+    regno,
     propicURL,
-    cvURL,
+    aboutYourself,
+    designation,
+    affiliation,
+    researchArea,
+    expertise,
+    profHighestDegree,
+    profDegreeArea,
+    fee,
+    speciality,
   } = req.body;
 
+  console.log(req.body);
   const education = JSON.parse(req.body.education);
   const training = JSON.parse(req.body.training);
   const awards = JSON.parse(req.body.awards);
   const workExperience = JSON.parse(req.body.workExperience);
   const visitingHour = JSON.parse(req.body.visitingHour);
 
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   const userObj = {
     name,
@@ -113,7 +137,8 @@ exports.saveExpUser = async (req, res, next) => {
     email,
     password: hashedPassword,
     phone,
-    professionalDegree: profDegree,
+    profHighestDegree,
+    profDegreeArea,
     affiliation,
     regno,
     researchArea,
@@ -130,7 +155,6 @@ exports.saveExpUser = async (req, res, next) => {
   };
 
   const { error } = regExpUserVal(userObj);
-  // console.log(error);
   if (error != null) {
     req.flash('errorMessage', error.details[0].message);
     return res.send({
@@ -142,7 +166,6 @@ exports.saveExpUser = async (req, res, next) => {
   const newExpUser = new eUserModel(userObj);
   await newExpUser.save();
   console.log(userObj);
-  console.log('exp saved');
   req.flash('successMessage', 'You have successfully been regsitered');
   return res.send({
     status: true,

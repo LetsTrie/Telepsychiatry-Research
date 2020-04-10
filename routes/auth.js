@@ -9,6 +9,7 @@ const {
   postRegisterOrgUser,
   postCheckDuplication,
   saveExpUser,
+  eUserCheckDuplication,
 } = require('../controllers/auth');
 
 router.get('/login', (req, res, next) => res.render('login'));
@@ -16,6 +17,7 @@ router.get('/login', (req, res, next) => res.render('login'));
 router.get('/register/new/gen', getRegisterGeneralUser);
 router.post('/register/new/gen', postRegisterGeneralUser);
 router.post('/register/checkDuplicate', postCheckDuplication);
+router.post('/register/eUserCheckDuplicate', eUserCheckDuplication);
 
 router.get('/register/new/exp', getRegisterExpertUser);
 router.post('/register/new/exp', postRegisterExpertUser);

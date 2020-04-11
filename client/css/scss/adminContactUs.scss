@@ -1,144 +1,137 @@
 @import '_main';
 @import '_navbar';
-// <div class="singlePost_reply">
-// <div class="reply-icon" id="reply-icon">
-// <i class="fa fa-check-circle"></i>
-// <span style="font-weight: bold; color: gray;">Replied</span>
-// </div>
-// <div class="reply-div">
-// <button class="reply-btn" id="<%= data[i].email %>" name="<%= data[i]._id %>" data-toggle="modal" data-target="#ADMIN_CONTACTUS_REPLY_MODAL">Reply</button>
-// </div>
-// </div>
+
 p {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .fa-check-circle {
-    font-size: 30px;
-    color: green;
-    margin-top: 5px;
+  font-size: 30px;
+  color: green;
+  margin-top: 5px;
 }
 
 .adminContactUs {
-    .container {
-        .adminContactUsHeader {
-            text-align: center;
-            margin-bottom: 30px;
-            p {
-                font-family: 'Merriweather', serif;
-                font-size: 50px;
-                color: #272727;
-            }
-        }
-        .all_posts {
-            width: 95%;
-            margin: auto;
-            .singlePost {
-                box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px, inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
-                padding: 20px 25px;
-                margin-bottom: 40px;
-                border-radius: 8px;
-                .singlePost_name {
-                    p {
-                        color: black;
-                        font-size: 20px;
-                        font-weight: 700;
-                        margin-bottom: 0px;
-                    }
-                }
-                .singlePost_email {
-                    p {
-                        color: rgba(93, 88, 88, 0.849);
-                        font-size: 15px;
-                    }
-                }
-                .singlePost_post {
-                    p {
-                        margin-top: 10px;
-                        color: #363636;
-                        text-align: justify;
-                        padding-right: 10px;
-                        font-size: 18px;
-                        font-family: 'Lato', sans-serif;
-                    }
-                }
-                .service {
-                    p {
-                        color: red;
-                        font-size: 14px;
-                        padding: 2px 5px;
-                        border: 1px solid red;
-                        width: 18%;
-                        border-radius: 5px;
-                    }
-                }
-                .singlePost_reply {
-                    display: flex;
-                    justify-content: space-between;
-                    width: 100%;
-                    text-align: right;
-                    padding: 5px;
-                    button {
-                        border: none;
-                        outline: none;
-                        background: #ef7c00;
-                        color: #fff;
-                        padding: 10px 22px;
-                        font-size: 18px;
-                        letter-spacing: 0.5px;
-                        border-radius: 4px;
-                    }
-                }
-            }
-        }
+  .container {
+    .adminContactUsHeader {
+      text-align: center;
+      margin-bottom: 30px;
+      p {
+        font-family: 'Merriweather', serif;
+        font-size: 50px;
+        color: #272727;
+      }
     }
+    .all_posts {
+      width: 95%;
+      margin: auto;
+      .singlePost {
+        box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 15px,
+          inset rgba(117, 115, 115, 0.15) 0px -5px 15px;
+        padding: 20px 25px;
+        margin-bottom: 40px;
+        border-radius: 8px;
+        .singlePost_name {
+          p {
+            color: black;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 0px;
+          }
+        }
+        .singlePost_email {
+          p {
+            color: rgba(93, 88, 88, 0.849);
+            font-size: 15px;
+          }
+        }
+        .singlePost_post {
+          p {
+            margin-top: 10px;
+            color: #363636;
+            text-align: justify;
+            padding-right: 10px;
+            font-size: 18px;
+            font-family: 'Lato', sans-serif;
+          }
+        }
+        .service {
+          p {
+            color: red;
+            font-size: 14px;
+            padding: 2px 5px;
+            border: 1px solid red;
+            width: 18%;
+            border-radius: 5px;
+          }
+        }
+        .singlePost_reply {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          text-align: right;
+          padding: 5px;
+          button {
+            border: none;
+            outline: none;
+            background: #ef7c00;
+            color: #fff;
+            padding: 10px 22px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
 }
 
 #ADMIN_CONTACTUS_REPLY_MODAL {
-    .reply_box {
-        padding: 5px 10px;
+  .reply_box {
+    padding: 5px 10px;
+  }
+  .modal-body {
+    min-height: 180px;
+  }
+  .submit {
+    margin-top: 0.5rem;
+    button {
+      padding: 5px 30px;
     }
-    .modal-body {
-        min-height: 180px;
+  }
+  .modal-footer.submit {
+    button {
+      font-size: 20px;
+      border-radius: 5px;
     }
-    .submit {
-        margin-top: 0.5rem;
-        button {
-            padding: 5px 30px;
-        }
+  }
+  .green-btn {
+    background: #13ce66;
+  }
+  .red-btn {
+    background: rgba(194, 43, 5, 0.925);
+  }
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 5px 0px;
+    border-radius: 4px;
+    border: 1px solid #bdb9b9;
+    &:focus {
+      outline: none;
     }
-    .modal-footer.submit {
-        button {
-            font-size: 20px;
-            border-radius: 5px;
-        }
+  }
+  .submit {
+    text-align: center;
+    margin-top: 1rem;
+    button {
+      padding: 5px 30px;
+      font-size: 24px;
+      border: none;
+      outline: none;
+      color: white;
+      border-radius: 4px;
     }
-    .green-btn {
-        background: #13ce66;
-    }
-    .red-btn {
-        background: rgba(194, 43, 5, 0.925);
-    }
-    textarea {
-        width: 100%;
-        padding: 0.6rem;
-        margin: 5px 0px;
-        border-radius: 4px;
-        border: 1px solid #bdb9b9;
-        &:focus {
-            outline: none;
-        }
-    }
-    .submit {
-        text-align: center;
-        margin-top: 1rem;
-        button {
-            padding: 5px 30px;
-            font-size: 24px;
-            border: none;
-            outline: none;
-            color: white;
-            border-radius: 4px;
-        }
-    }
+  }
 }

@@ -17,7 +17,7 @@
           <p><a href="/">Doctor</a> / profile</p>
         </div>
         <div class="bigText">
-          <p><%=doc.fname%> <%=doc.lname%></p>
+          <p><%=doc.name%></p>
         </div>
       </div>
 
@@ -28,7 +28,7 @@
               <img src="/uploads/<%=doc.propicURL%>" alt="Doctor" />
             </div>
             <div class="His_profession">
-              <p class="name"><%=doc.fname%> <%=doc.lname%></p>
+              <p class="name"><%=doc.name%></p>
               <p class="degreeNspeciality">
                 <%= doc.profHighestDegree %> - <%= doc.profDegreeArea %>
               </p>
@@ -240,7 +240,7 @@
                                   >
                                   <div>
                                     <p class="someText">
-                                      <%= doc.awards[ii].awardsDetailsW%>
+                                      <%= doc.awards[ii].awardsDetails%>
                                     </p>
                                   </div>
                                 </div>

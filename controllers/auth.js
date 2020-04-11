@@ -132,9 +132,9 @@ exports.saveExpUser = async (req, res, next) => {
   const visitingHour = JSON.parse(req.body.visitingHour);
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  const myname = fname + ' ' + lname;
   const userObj = {
-    fname,
-    lname,
+    name: myname,
     gender,
     email,
     dob,

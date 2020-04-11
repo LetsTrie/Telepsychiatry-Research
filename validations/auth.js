@@ -33,8 +33,7 @@ exports.regGenUserVal = (data) => {
 
 exports.regExpUserVal = (data) => {
   const compareWith = joi.object({
-    fname: joi.string().required(),
-    lname: joi.string().required(),
+    name: joi.string().required(),
     gender: joi.string().required(),
     email: joi.string().email().required(),
     dob: joi.string().required(),

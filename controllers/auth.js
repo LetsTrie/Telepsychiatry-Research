@@ -109,149 +109,138 @@ exports.postRegisterExpertUser = async(req, res, next) => {
 };
 
 exports.saveExpUser = async(req, res, next) => {
-    console.log('I am in');
-    console.log(req.body);
+        console.log('I am in');
+        console.log(req.body);
 
-    const {
-        fname,
-        lname,
-        gender,
-        email,
-        dob,
-        phone,
-        password,
-        cPassword,
-        country,
-        city,
-        regno,
-        propicURL,
-        aboutYourself,
-        designation,
-        affiliation,
-        researchArea,
-        expertise,
-        profHighestDegree,
-        profDegreeArea,
-        fee,
-        speciality,
-    } = req.body;
+        const {
+            fname,
+            lname,
+            gender,
+            email,
+            dob,
+            phone,
+            password,
+            cPassword,
+            country,
+            city,
+            regno,
+            propicURL,
+            aboutYourself,
+            designation,
+            affiliation,
+            researchArea,
+            expertise,
+            profHighestDegree,
+            profDegreeArea,
+            fee,
+            speciality,
+        } = req.body;
 
-    const education = JSON.parse(req.body.education);
-    const training = JSON.parse(req.body.training);
-    const awards = JSON.parse(req.body.awards);
-    const workExperience = JSON.parse(req.body.workExperience);
-    const visitingHour = JSON.parse(req.body.visitingHour);
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log('hashed: ', hashedPassword);
+        const education = JSON.parse(req.body.education);
+        const training = JSON.parse(req.body.training);
+        const awards = JSON.parse(req.body.awards);
+        const workExperience = JSON.parse(req.body.workExperience);
+        const visitingHour = JSON.parse(req.body.visitingHour);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-    const userObj = {
-        fname,
-        lname,
-        gender,
-        email,
-        dob,
-        phone,
-        country,
-        city,
-        regno,
-        propicURL,
-        aboutYourself,
-        designation,
-        affiliation,
-        researchArea,
-        expertise,
-        profHighestDegree,
-        profDegreeArea,
-        fee,
-        speciality,
-        password: hashedPassword,
-        education,
-        training,
-        workExperience,
-        visitingHour,
-        awards,
-    };
+        const myname = fname + ' ' + lname;
+        const userObj = {
+            name: myname,
+            gender,
+            email,
+            dob,
+            phone,
+            country,
+            city,
+            regno,
+            propicURL,
+            aboutYourself,
+            designation,
+            affiliation,
+            researchArea,
+            expertise,
+            profHighestDegree,
+            profDegreeArea,
+            fee,
+            speciality,
+            password: hashedPassword,
+            education,
+            training,
+            workExperience,
+            visitingHour,
+            awards,
+        };
 
-    const { error } = regExpUserVal(userObj);
-    if (error != null) {
-        req.flash('errorMessage', error.details[0].message);
-        return res.send({
-            status: false,
-            message: error.details[0].message,
-        });
-    }
-
-    const newExpUser = new eUserModel(userObj);
-    await newExpUser.save();
-    console.log(userObj);
-    req.flash('successMessage', 'You have successfully been regsitered');
-    return res.send({
-        status: true,
-        message: 'success',
-    });
-};
-
-exports.postRegisterOrgUser = async(req, res, next) => {
-    const {
-        name,
-        authName,
-        authPhoneNumber,
-        authEmail,
-        region,
-        org_type,
-        password,
-        establish_year,
-        websiteLink,
-    } = req.body;
-    console.log(req.body);
-    try {
-        await joi
-            .object()
-            .keys({
-                name: joi.string().required(),
-                authName: joi
-                    .string()
-                    .required()
-                    .regex(/^[a-zA-Z ]+$/),
-                authEmail: joi
-                    .string()
-                    .required()
-                    .regex(
-                        /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
-                    ),
-                password: joi.string().required().min(6),
-                authPhoneNumber: joi.string().required().regex(/\w+/i).min(6),
-                region: joi.string().required(),
-                org_type: joi.string().required(),
-                websiteLink: joi.string().required(),
-                establish_year: joi.string().required(),
-            })
-            .validate(req.body);
-
-        bcrypt.genSalt(10, async function(err, salt) {
-            bcrypt.hash(password, salt, async function(err, hash) {
-                const newOrgUser = await new orgUserModel({
-                    name,
-                    authName,
-                    authPhoneNumber,
-                    authEmail,
-                    region,
-                    org_type,
-                    password,
-                    establish_year,
-                    websiteLink,
-                }).save();
-                console.log('org user saved');
-                res.redirect('/');
+        const { error } = regExpUserVal(userObj);
+        if (error != null) {
+            req.flash('errorMessage', error.details[0].message);
+            return res.send({
+                status: true,
+                message: 'success',
             });
-        });
-    } catch (err) {
-        console.log(err);
-    }
-};
+        };
 
-exports.expProfile = async(req, res, next) => {
-    const id = req.params.id;
-    const expert = await eUserModel.findOne({ _id: id });
-    res.send(expert);
-};
+        exports.postRegisterOrgUser = async(req, res, next) => {
+            const {
+                name,
+                authName,
+                authPhoneNumber,
+                authEmail,
+                region,
+                org_type,
+                password,
+                establish_year,
+                websiteLink,
+            } = req.body;
+            console.log(req.body);
+            try {
+                await joi
+                    .object()
+                    .keys({
+                        name: joi.string().required(),
+                        authName: joi
+                            .string()
+                            .required()
+                            .regex(/^[a-zA-Z ]+$/),
+                        authEmail: joi
+                            .string()
+                            .required()
+                            .regex(
+                                /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+                            ),
+                        password: joi.string().required().min(6),
+                        authPhoneNumber: joi.string().required().regex(/\w+/i).min(6),
+                        region: joi.string().required(),
+                        org_type: joi.string().required(),
+                        websiteLink: joi.string().required(),
+                        establish_year: joi.string().required(),
+                    })
+                    .validate(req.body);
+
+                bcrypt.genSalt(10, async function(err, salt) {
+                    bcrypt.hash(password, salt, async function(err, hash) {
+                        const newOrgUser = await new orgUserModel({
+                            name,
+                            authName,
+                            authPhoneNumber,
+                            authEmail,
+                            region,
+                            org_type,
+                            password,
+                            establish_year,
+                            websiteLink,
+                        }).save();
+                        console.log('org user saved');
+                        res.redirect('/');
+                    });
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        exports.expProfile = async(req, res, next) => {
+            const id = req.params.id;
+            const expert = await eUserModel.findOne({ _id: id });
+            res.send(expert);
+        };

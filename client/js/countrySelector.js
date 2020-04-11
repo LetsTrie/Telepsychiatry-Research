@@ -344,7 +344,16 @@ const countryArray = [
   },
   {
     country: 'Bangladesh',
-    states: ['Barisal', 'Chittagong', 'Dhaka', 'Khulna', 'Rajshahi', 'Sylhet'],
+    states: [
+      'Barishal',
+      'Chattogram',
+      'Dhaka',
+      'Khulna',
+      'Rajshahi',
+      'Sylhet',
+      'Rangpur',
+      'Mymensingh',
+    ],
   },
   {
     country: 'Barbados',

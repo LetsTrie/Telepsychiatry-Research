@@ -87,6 +87,29 @@
                     </div>
                   </div>
                 </div>
+                <% let city = ['Barishal', 'Chattogram', 'Dhaka', 'Khulna',
+                'Rajshahi', 'Sylhet', 'Rangpur', 'Mymensingh'] %>
+                <div class="cat">
+                  <div class="cat_heading">
+                    <p>Select Divisions</p>
+                  </div>
+                  <div class="catOptions">
+                    <% for(let i = 0 ; i < 8; i++) { %>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="14-<%=i%>"
+                        name="city"
+                        value="14-<%=i%>"
+                      />
+                      <label class="custom-control-label" for="14-<%=i%>">
+                        <%= city[i]%>
+                      </label>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
                 <div class="findDocBtn">
                   <button id="search-btn">Search</button>
                 </div>

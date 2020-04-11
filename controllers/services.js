@@ -12,16 +12,24 @@ const getTheArray = (data) => {
   return typeof data === 'string' ? [data] : data;
 };
 
+const nullCheck = (data) => {
+  return data === '' || data === null || data === undefined;
+};
+
 exports.searchConsultation = async (req, res) => {
   let search = req.query.searchInput;
   let gender = getTheArray(req.query.gender);
+  let city = getTheArray(req.query.city);
+
   if (search === '') search = undefined;
-  if (search === undefined && gender === undefined) {
+  if (nullCheck(search) && nullCheck(gender) && nullCheck(city)) {
     const experts = await eUserModel.find().sort({ _id: -1 });
     return res.render('consultation', { experts });
   }
+
   let searchedExperts = [];
   let genderExperts = [];
+  let cityExperts = [];
   if (search) {
     search = search.trim();
     let searchOptions = {
@@ -73,6 +81,14 @@ exports.searchConsultation = async (req, res) => {
       genderExperts.push(...docs);
     }
   }
+  if (city) {
+    console.log(city);
+    for (let i = 0; i < city.length; i++) {
+      searchKey = { $or: [{ city: city[i] }] };
+      let docs = await eUserModel.find(searchKey);
+      cityExperts.push(...docs);
+    }
+  }
   const map = new Map();
   const container = [];
   for (let i = 0; i < searchedExperts.length; i++) {
@@ -87,6 +103,13 @@ exports.searchConsultation = async (req, res) => {
     if (map.has(id)) continue;
     map.set(id, true);
     container.push(genderExperts[i]);
+  }
+
+  for (let i = 0; i < cityExperts.length; i++) {
+    const id = cityExperts[i]._id.toString().trim();
+    if (map.has(id)) continue;
+    map.set(id, true);
+    container.push(cityExperts[i]);
   }
 
   return res.render('consultation', {

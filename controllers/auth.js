@@ -2,12 +2,23 @@ const conCity = require('../data/country');
 const country = conCity.map((x) => x.country);
 const multer = require('multer');
 const path = require('path');
+const passport = require('passport');
+
 const { gUserModel } = require('../models/generalUser');
 const { eUserModel } = require('../models/expertUser');
 const { orgUserModel } = require('../models/orgUser');
 
 const joi = require('@hapi/joi');
 const bcrypt = require('bcryptjs');
+
+module.exports.postLogin = (req, res, next) => {
+  console.log('controller');
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login',
+    failureFlash: true,
+  })(req, res, next);
+};
 
 exports.getRegisterGeneralUser = (req, res, next) => {
   return res.render('register_gen', { country });
@@ -164,21 +175,11 @@ exports.saveExpUser = async (req, res, next) => {
   if (error != null) {
     req.flash('errorMessage', error.details[0].message);
     return res.send({
-      status: false,
-      message: error.details[0].message,
+      status: true,
+      message: 'success',
     });
   }
-
-  const newExpUser = new eUserModel(userObj);
-  await newExpUser.save();
-  console.log(userObj);
-  req.flash('successMessage', 'You have successfully been regsitered');
-  return res.send({
-    status: true,
-    message: 'success',
-  });
 };
-
 exports.postRegisterOrgUser = async (req, res, next) => {
   const {
     name,
@@ -236,4 +237,10 @@ exports.postRegisterOrgUser = async (req, res, next) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+exports.expProfile = async (req, res, next) => {
+  const id = req.params.id;
+  const expert = await eUserModel.findOne({ _id: id });
+  res.send(expert);
 };

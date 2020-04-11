@@ -82,6 +82,7 @@ app.use(helmet());
 
 app.use(passport.initialize());
 app.use(passport.session());
+require('./config/passport')(passport);
 
 app.use('/', require('./routes'));
 

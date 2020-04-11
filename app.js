@@ -87,6 +87,3 @@ app.use('/', require('./routes'));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running at port: ${port}`));
-
-// ClientID: 501935314157-nvttut507jaktvgl8b74g3jipa0vpia8.apps.googleusercontent.com
-// ClientSecret: 8MDPS36C8heW_chrLxGSEFta

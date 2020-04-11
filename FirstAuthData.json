@@ -1,0 +1,1180 @@
+[
+  {
+    "createdAt": "2020-04-03T10:18:43.057Z",
+    "_id": "5e87111ceb2f42514ecbc93c",
+    "name": "Aminul Islam",
+    "gender": "Male",
+    "institute": "",
+    "expertise": "",
+    "designation": "Clinical Psychologist and Clinical Research Associate",
+    "speciality": "",
+    "dob": "07/04/2020",
+    "email": "safwan.du16@gmail.com",
+    "password": "$2a$10$K2.f8Kh2OYVGxl1guAXvl.72Xmv8uL9f/dU4qmKqJmkaqq0VDGUy2",
+    "phone": "",
+    "professionalDegree": "MPhil scholar",
+    "affiliation": "Telepsychiatry Research and Innovation Network Ltd",
+    "regno": "",
+    "researchArea": "",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "I cherish to work in the field of mental health and research as a responsible team\nmember in a challenging environment, interacting with the best to develop my\npotential, add value to the organization and adopt with the real work\nenvironment for the organizations on various development sectors and activities.\nI am a behavioral scientist and working in the mental health sector for a long\nperiod of time. Primarily, a mental health professional, I love to work with\nadolescents and adults. Working with the students has always been a great\npleasure for him. I have been working with different disorders, and I deliver\ncognitive behavioral therapy (CBT), Dialectical behavior therapy (DBT) and other\nevidence-based treatments to adult and adolescent with a wide range of\nemotional, behavioral, and adjustment issues.",
+    "propicURL": "34-a.jpg",
+    "cvURL": "34-HussainMdSafwan_Resume.pdf",
+    "education": [
+      {
+        "_id": "5e87111ceb2f42514ecbc93d",
+        "eduInstitute": "DU",
+        "degree": "MPhil (part-1) in Clinical Psychology",
+        "eduFrom": "",
+        "eduTo": ""
+      },
+      {
+        "_id": "5e87111ceb2f42514ecbc93e",
+        "eduInstitute": "DU",
+        "degree": "M.S in Clinical Psychology",
+        "eduFrom": "",
+        "eduTo": ""
+      },
+      {
+        "_id": "5e87111ceb2f42514ecbc93f",
+        "eduInstitute": "DU",
+        "degree": "Masters of Science (M.S)",
+        "eduFrom": "2018",
+        "eduTo": "2018"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e87111ceb2f42514ecbc940",
+        "trainingName": "‘Cognitive Behavioral Therapy (CBT)",
+        "trainingYear": "",
+        "trainingDetails": "Received 14 Days Extensive training on ‘Cognitive Behavioral Therapy (CBT)\norganized by the Department of Clinical Psychology, University of Dhaka."
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e87111ceb2f42514ecbc941",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e87111ceb2f42514ecbc942",
+        "expInstitute": "Consultant Clinical Psychologist and Research Associate at Telepsychiatry Research and Innovation Network (TRIN) Ltd.",
+        "expFrom": "2019"
+      },
+      {
+        "_id": "5e87111ceb2f42514ecbc943",
+        "expInstitute": "Organizing Workshop and Training",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [],
+        "_id": "5e87111ceb2f42514ecbc944",
+        "chamberName": "Popular Diagonisitc",
+        "chamberAddress": "Shyamoli",
+        "chamberTimings": [
+          {
+            "_id": "5e87111ceb2f42514ecbc945",
+            "dayFrom": "Saturday",
+            "dayTo": "Monday",
+            "timeFrom": "2:00PM",
+            "timeTo": "5:00PM"
+          },
+          {
+            "_id": "5e87111ceb2f42514ecbc946",
+            "dayFrom": "Thursay",
+            "dayTo": "Sunday",
+            "timeFrom": "7:00PM",
+            "timeTo": "10:00PM"
+          }
+        ]
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-03T10:18:43.057Z",
+    "_id": "5e871314eb2f42514ecbc947",
+    "name": "Ananna Firoz",
+    "gender": "Female",
+    "institute": "",
+    "expertise": "",
+    "designation": "Counselling psychologist",
+    "speciality": "",
+    "dob": "07/04/2020",
+    "email": "safwan.du16@gmail.com",
+    "password": "$2a$10$VuJ/kTKRYc2FTLlXc0HzHOp6o8Q6RQxI83271tps43CSEzGQRqZc6",
+    "phone": "",
+    "professionalDegree": "B.Sc, M.Sc(counselling psychology)",
+    "affiliation": "Telepsychiatry Research &amp; Innovation Network",
+    "regno": "",
+    "researchArea": "",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "I want cognitive growth in my career keeping intuitive &amp;amp; satisfactory\nperformance level all the way. I am committed in integrating myself with the\nfamily of the employer company &amp;amp; aim at the benefit of the employer as the\nwhole, utilizing my skills, intellect &amp;amp; commitment.",
+    "propicURL": "42-b.jpg",
+    "cvURL": "42-HussainMdSafwan_Resume.pdf",
+    "education": [
+      {
+        "_id": "5e871314eb2f42514ecbc948",
+        "eduInstitute": "University of Dhaka",
+        "degree": "M.Sc in Counselling Psychology",
+        "eduFrom": "2015",
+        "eduTo": "2015"
+      },
+      {
+        "_id": "5e871314eb2f42514ecbc949",
+        "eduInstitute": "University of Dhaka",
+        "degree": "B.Sc (Hon’s) Bachelor of Science",
+        "eduFrom": "2009",
+        "eduTo": "2012"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e871314eb2f42514ecbc94a",
+        "trainingName": "Transactional Analysis (TA 101)",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e871314eb2f42514ecbc94b",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e871314eb2f42514ecbc94c",
+        "expInstitute": "Psychologist at Mind Tale (Synesis IT Ltd.)",
+        "expFrom": "2016"
+      },
+      {
+        "_id": "5e871314eb2f42514ecbc94d",
+        "expInstitute": "Student Counselling &amp;amp; Guidance Center, TSC, University of Dhaka",
+        "expFrom": "2014"
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [],
+        "_id": "5e871314eb2f42514ecbc94e",
+        "chamberName": "Popular Diagonisitc",
+        "chamberAddress": "Shyamoli",
+        "chamberTimings": [
+          {
+            "_id": "5e871314eb2f42514ecbc94f",
+            "dayFrom": "Saturday",
+            "dayTo": "Monday",
+            "timeFrom": "2:00PM",
+            "timeTo": "5:00PM"
+          },
+          {
+            "_id": "5e871314eb2f42514ecbc950",
+            "dayFrom": "Thursay",
+            "dayTo": "Sunday",
+            "timeFrom": "7:00PM",
+            "timeTo": "10:00PM"
+          }
+        ]
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-03T10:18:43.057Z",
+    "_id": "5e87150deb2f42514ecbc951",
+    "name": "CHAYON KUMAR DAS",
+    "gender": "Male",
+    "institute": "University of Dhaka",
+    "expertise": "",
+    "designation": "Clinical Psychologist",
+    "speciality": "",
+    "dob": "07/04/2020",
+    "email": "safwan.du16@gmail.com",
+    "password": "$2a$10$hC0zY5YUr9J1K/ew1.R2lu2mQZoSO6Iv8gx5DXgr0pZlS9Q9ohGRa",
+    "phone": "",
+    "professionalDegree": "M.PHIL, M.Sc, B.Sc(Clinical Psychology)",
+    "affiliation": "Telepsychiatry Research &amp; Innovation Network",
+    "regno": "",
+    "researchArea": "",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "Building up my career in an organization where I would be able to explore my\ncreativity and merit so that I can achieve my career aspiration, as well as the goal\nof the organization.",
+    "propicURL": "50-c.jpg",
+    "cvURL": "50-HussainMdSafwan_Resume.pdf",
+    "education": [
+      {
+        "_id": "5e87150deb2f42514ecbc952",
+        "eduInstitute": "University of Dhaka",
+        "degree": "Masters of Philosophy Part-1 (Clinical Psychology)",
+        "eduFrom": "2019",
+        "eduTo": "2020"
+      },
+      {
+        "_id": "5e87150deb2f42514ecbc953",
+        "eduInstitute": "University of Dhaka",
+        "degree": "M.Sc in Clinical Psychology",
+        "eduFrom": "2018",
+        "eduTo": "2019"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e87150deb2f42514ecbc954",
+        "trainingName": "Cognitive Behavior Therapy (CBT).",
+        "trainingYear": "",
+        "trainingDetails": "Trained on Cognitive Behavior Therapy (CBT). To be more specific, the\ntraining module encompasses basic training along with the specialized or\nadvanced training on different mental disorders."
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e87150deb2f42514ecbc955",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e87150deb2f42514ecbc956",
+        "expInstitute": "Centre for the Rehabilitation of the Paralyzed (CRP)",
+        "expFrom": "2019"
+      },
+      {
+        "_id": "5e87150deb2f42514ecbc957",
+        "expInstitute": "Psychologist at Synesis IT.",
+        "expFrom": "2019"
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [],
+        "_id": "5e87150deb2f42514ecbc958",
+        "chamberName": "Popular Diagonisitc",
+        "chamberAddress": "Shyamoli",
+        "chamberTimings": [
+          {
+            "_id": "5e87150deb2f42514ecbc959",
+            "dayFrom": "Saturday",
+            "dayTo": "Monday",
+            "timeFrom": "2:00PM",
+            "timeTo": "5:00PM"
+          },
+          {
+            "_id": "5e87150deb2f42514ecbc95a",
+            "dayFrom": "Thursay",
+            "dayTo": "Sunday",
+            "timeFrom": "7:00PM",
+            "timeTo": "10:00PM"
+          }
+        ]
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8af08cb056591bfacf4d8d",
+    "name": "Sarzam Arobi",
+    "gender": "Female",
+    "institute": "",
+    "expertise": "",
+    "designation": "Psychologist ",
+    "speciality": "Psychologist ",
+    "dob": "27/10/1988",
+    "email": "sarzamarobi@gmail.com",
+    "password": "$2a$10$dV7sY67JHH4zUmZAM.p/hu4RVGMsXarY2VS3NmAwM4.R8e2R92aCi",
+    "phone": "01779869670",
+    "professionalDegree": "",
+    "affiliation": "Nitol-Niloy Group ",
+    "regno": "",
+    "researchArea": "",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586163850000-Sarzam _ Arobi.jpg",
+    "cvURL": "1586163850000-AROBI.pdf",
+    "education": [
+      {
+        "_id": "5e8af08cb056591bfacf4d8e",
+        "eduInstitute": "University of Dhaka ",
+        "degree": "MDM (Disaster Management & Vulnerability Studies)",
+        "eduFrom": "2014",
+        "eduTo": "2015"
+      },
+      {
+        "_id": "5e8af08cb056591bfacf4d8f",
+        "eduInstitute": "University of Dhaka ",
+        "degree": "MS (Psychology)",
+        "eduFrom": "2012",
+        "eduTo": "2013"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8af08cb056591bfacf4d90",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8af08cb056591bfacf4d91",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8af08cb056591bfacf4d92",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8af08cb056591bfacf4d94",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8af08cb056591bfacf4d93",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8af46db056591bfacf4d95",
+    "name": "Marzia Al-Hakeem",
+    "gender": "Female",
+    "institute": "University of Dhaka",
+    "expertise": "Clinical Psychology; Child and Adolescent Mental Health",
+    "designation": "Clinical Psychologist",
+    "speciality": "Clinical Psychology",
+    "dob": "14/08/1992",
+    "email": "mrz.al.hakeem@gmail.com",
+    "password": "$2a$10$UGkYUyG9acLUVI0jDqzuIu70voKtHV41tasYF/V.MUmtptBsyaOQS",
+    "phone": "01923852813",
+    "professionalDegree": "MPhil ",
+    "affiliation": "Brain Injury Clinic, Department of Clinical Psychology, University of Dhaka ",
+    "regno": "",
+    "researchArea": "Neuropsychology",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586164852000-LinkedIn.jpg",
+    "cvURL": "1586164852000-Marzia Al-Hakeem.pdf",
+    "education": [
+      {
+        "_id": "5e8af46db056591bfacf4d96",
+        "eduInstitute": "University of Dhaka",
+        "degree": "MPhil",
+        "eduFrom": "2018",
+        "eduTo": ""
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8af46db056591bfacf4d97",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8af46db056591bfacf4d98",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8af46db056591bfacf4d99",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8af46db056591bfacf4d9b",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8af46db056591bfacf4d9a",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8af640b056591bfacf4d9c",
+    "name": "Dr-Thrina Islam",
+    "gender": "Female",
+    "institute": "",
+    "expertise": "",
+    "designation": "Research co-ordinator",
+    "speciality": "",
+    "dob": "24/08/1990",
+    "email": "thrina.islam@gmail.com",
+    "password": "$2a$10$EMdsqOFj/c54gGSQG17Lz.LkLs/9dcpZ5MaSrWxi1TxD/v14Vwkvq",
+    "phone": "01939008000",
+    "professionalDegree": "MBBS, MPH",
+    "affiliation": "Telepsychiatry Research and Innovation Network",
+    "regno": "74464",
+    "researchArea": "Mental Health",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586165312000-56262459_2136037276490823_3270262006971629568_n.jpg",
+    "cvURL": "1586165312000-thrina slam CV.pdf",
+    "education": [
+      {
+        "_id": "5e8af640b056591bfacf4d9d",
+        "eduInstitute": "Mymensingh Medical College",
+        "degree": "MBBS",
+        "eduFrom": "2009",
+        "eduTo": "2014"
+      },
+      {
+        "_id": "5e8af640b056591bfacf4d9e",
+        "eduInstitute": "North South University",
+        "degree": "MPH",
+        "eduFrom": "2016",
+        "eduTo": "2018"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8af640b056591bfacf4d9f",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8af640b056591bfacf4da0",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8af640b056591bfacf4da1",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8af640b056591bfacf4da3",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8af640b056591bfacf4da2",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8af961b056591bfacf4da4",
+    "name": "Md Zayeed Bin Alam",
+    "gender": "",
+    "institute": "",
+    "expertise": "",
+    "designation": "Assistant Clinical Psychologist",
+    "speciality": "",
+    "dob": "30/12/1989",
+    "email": "shafiul.alam066@gmail.com",
+    "password": "$2a$10$C58h/FhC8hW7OTt066rLteVEhtkTKf5GlVGr/.ItS9/c3tEmJz20W",
+    "phone": "01673371539",
+    "professionalDegree": "Master in Science in Clinical Psychology ",
+    "affiliation": "Telepsychiatry Research and Innovation Network",
+    "regno": "",
+    "researchArea": "Neuropsychology ",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586166112000-58895166_2415456298499760_5840975954272321536_o.jpg",
+    "cvURL": "1586166112000-CV_Md Zayeed Bin Alam_1.pdf",
+    "education": [
+      {
+        "_id": "5e8af961b056591bfacf4da5",
+        "eduInstitute": "University of Dhaka",
+        "degree": "MSc",
+        "eduFrom": "2015",
+        "eduTo": "2016"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8af961b056591bfacf4da6",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8af961b056591bfacf4da7",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8af961b056591bfacf4da8",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8af961b056591bfacf4daa",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8af961b056591bfacf4da9",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8afc12b056591bfacf4dab",
+    "name": "Md. Ashiquir Rahaman",
+    "gender": "Male",
+    "institute": "University of Dhaka",
+    "expertise": "CBT, Anxiety, Depression, Chronic Pain, Trauma, Addiction, Neurodevelopmental Disorder",
+    "designation": "Clinical Psychologist",
+    "speciality": "Cognitive Behavior Therapy, Neurodevelopmental Disorder, Pain",
+    "dob": "09/12/1991",
+    "email": "ashiquir1001rahaman@gmail.com",
+    "password": "$2a$10$9kNEgPkhHzATe7u2uuA98O0fRcwB46JsDpwgI91Biy7d.rlEoSwLe",
+    "phone": "01681502808",
+    "professionalDegree": "M.Phil in Clinical Psychology",
+    "affiliation": "Clinical Psychologist",
+    "regno": "",
+    "researchArea": "Pain, Neurodevelopmental Diaorder, Autism, Personality",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "Md. Ashiquir Rahaman is an enthusiastic researcher-practitioner in the field of clinical psychology who divides his time between clinical practice, training, consultation, and research. In his clinical practice, he delivers cognitive behavioral therapy (CBT) and other evidence-based treatments to adult and adolescent clients with a wide range of emotional, behavioral, adjustment, and chronic health related problems such as anxiety, stress, depression, trauma, chronic pain, drug addiction, and relationship problems. Mr. Ashique is also a certified ADOS-2 administrator who has conducted more than 500 ADOS-2 tests. In his consulting work, he has provided intensive supervision to trainee clinical psychologists as they acquired skills to deliver CBT in their own practice. \nMr. Ashique is passionate about changing the mental health service scenario in Bangladesh by conveying evidence based services to people and generating a positive impact on their life through quality care. Mr. Ashique is eager to apply his experience and compassion with clients as they begin to address issues that will help them to improve their quality of life and attain a sense of fulfillment. \nMr. Ashique has always been involved with extra-curricular activities since his college days. He has been a volunteer and organizing member of different national and international conferences organized by Department of Clinical Psychology, University of Dhaka. Mr. Ashique also facilitated different workshops and seminars on different mental health related issues such as stress management, anger management, assertiveness training, parenting training, chronic pain management, psychological first aid, mindfulness etc.     \nMr. Ashique received his B.S. with honors in psychology and M.S. in clinical psychology from University of Dhaka. He completed his clinical psychology internship from National Institute of Mental Health and Hospital and Dhaka Medical College and Hospital. Mr. Ashique has recently submitted his M.Phil thesis dissertation entitled effectiveness of CBT in the management of pain among cancer patients. Currently he is a general member of Bangladesh Clinical Psychology Society. He can be contacted at ashiquir1001rahaman@gmail.com     \n",
+    "propicURL": "1586166800000-IMG_0157.JPG",
+    "cvURL": "1586166800000-Ashik-CV.pdf",
+    "education": [
+      {
+        "_id": "5e8afc12b056591bfacf4dac",
+        "eduInstitute": "M.Phil in Clinical Psychology",
+        "degree": "M.Phil",
+        "eduFrom": "2017",
+        "eduTo": "2020"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8afc12b056591bfacf4dad",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8afc12b056591bfacf4dae",
+        "awardsName": "Begum Azizun Nesa Memorial Gold Medal Award",
+        "awardsYear": "2016",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8afc12b056591bfacf4daf",
+        "expInstitute": "National Institute of Mental Health & Hospital",
+        "expFrom": "2015"
+      },
+      {
+        "_id": "5e8afc12b056591bfacf4db0",
+        "expInstitute": "Dhaka Medical College & Hospital",
+        "expFrom": "2016"
+      },
+      {
+        "_id": "5e8afc12b056591bfacf4db1",
+        "expInstitute": "National Institute of Mental Health & Hospital",
+        "expFrom": "2018"
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8afc12b056591bfacf4db3",
+            "dayFrom": "Sunday",
+            "dayTo": "Thursday",
+            "timeFrom": "11:00 AM",
+            "timeTo": "7:00 AM"
+          }
+        ],
+        "_id": "5e8afc12b056591bfacf4db2",
+        "chamberName": " Telepsychiatry Research and Innovation Network",
+        "chamberAddress": "Rupayan Trade Center, Banglamotor 1215 Dhaka, Bangladesh"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8afdbdb056591bfacf4db4",
+    "name": " Fahrija sabrina kamal ",
+    "gender": "",
+    "institute": "",
+    "expertise": "",
+    "designation": "Clinical care coordinator ",
+    "speciality": "",
+    "dob": "06/08/1995",
+    "email": "Fahrija.maisha06@gmail.com",
+    "password": "$2a$10$D8f/HMHJgdt2t6J97w8PjONXNdZzpQZKphmTjdfjEMn9CXnrtLl4O",
+    "phone": "01860407577",
+    "professionalDegree": "MBBS",
+    "affiliation": "Telepsychiatry research and innovation network ",
+    "regno": "100065",
+    "researchArea": "",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586167228000-FC60C447-07DB-42F2-B801-52CE64E14219.jpeg",
+    "cvURL": "1586167228000-maisha.pdf",
+    "education": [
+      {
+        "_id": "5e8afdbdb056591bfacf4db5",
+        "eduInstitute": "Anwer khan modern medical college and hospital ",
+        "degree": "MBBS",
+        "eduFrom": "",
+        "eduTo": ""
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8afdbdb056591bfacf4db6",
+        "trainingName": "MBBS",
+        "trainingYear": "",
+        "trainingDetails": "I have done 1 year internship on gynae, surgery and medicine"
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8afdbdb056591bfacf4db7",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8afdbdb056591bfacf4db8",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8afdbdb056591bfacf4dba",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8afdbdb056591bfacf4db9",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8affbcb056591bfacf4dbb",
+    "name": "Md. Aminul Islam",
+    "gender": "Male",
+    "institute": "",
+    "expertise": "",
+    "designation": "Clinical Psychologist ",
+    "speciality": "Adult and Child mental health",
+    "dob": "06/11/1992",
+    "email": "aminulrashed77@gmail.com",
+    "password": "$2a$10$msmLbu.d3pbYKAOxQTsOYuuSv7AfCemexYVvNC4OotpSRi0KiYHRm",
+    "phone": "01710295100",
+    "professionalDegree": "MSc, MPhil ",
+    "affiliation": "Clinical Psychologist and Research Associate ",
+    "regno": "-",
+    "researchArea": "Abuse and Neglect, developmental psychopathology ",
+    "country": "18",
+    "fee": "0",
+    "aboutYourself": "",
+    "propicURL": "1586167736000-pappu.JPG",
+    "cvURL": "1586167736000-CV of MD Aminul Islam_01710295100.pdf",
+    "education": [
+      {
+        "_id": "5e8affbcb056591bfacf4dbc",
+        "eduInstitute": "-",
+        "degree": "-",
+        "eduFrom": "",
+        "eduTo": ""
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8affbcb056591bfacf4dbd",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8affbcb056591bfacf4dbe",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8affbcb056591bfacf4dbf",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8affbcb056591bfacf4dc1",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8affbcb056591bfacf4dc0",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8b2219b056591bfacf4dc2",
+    "name": "CHAYON KUMAR DAS",
+    "gender": "Male",
+    "institute": "",
+    "expertise": "",
+    "designation": "Clinical Psychologist",
+    "speciality": "Mental Health Expert",
+    "dob": "22/02/1994",
+    "email": "chayon_das@yahoo.com",
+    "password": "$2a$10$WWhGWPlR9CKtb9y/UxSB/uzAEAalkq/qloWHm9ZUmNGuhDfOpb.7.",
+    "phone": "01733862462",
+    "professionalDegree": "MPhil (Ongoing)",
+    "affiliation": "Department of Clinical Psychology",
+    "regno": "",
+    "researchArea": "Clinical Psychology in Bangladesh",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586176536000-IMG_0239.JPG",
+    "cvURL": "1586176536000-Trin CV.pdf",
+    "education": [
+      {
+        "_id": "5e8b2219b056591bfacf4dc3",
+        "eduInstitute": "University of Dhaka",
+        "degree": "MS",
+        "eduFrom": "2018",
+        "eduTo": "2019"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8b2219b056591bfacf4dc4",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8b2219b056591bfacf4dc5",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8b2219b056591bfacf4dc6",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8b2219b056591bfacf4dc8",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8b2219b056591bfacf4dc7",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8b3f34b056591bfacf4dc9",
+    "name": "Ananna Firoz",
+    "gender": "Female",
+    "institute": "",
+    "expertise": "",
+    "designation": "Counseling Psychologist",
+    "speciality": "",
+    "dob": "03/03/1991",
+    "email": "firozananna@gmail.com",
+    "password": "$2a$10$kRXZhSO2gSwhIHia014Wn.I8SE5mCM.1TL7f4zVooU8zB4OJrhhTG",
+    "phone": "",
+    "professionalDegree": "M.Sc (Hon's)",
+    "affiliation": "Mind Tale",
+    "regno": "",
+    "researchArea": "",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586183985000-01.JPG",
+    "cvURL": "1586183985000-Resume Ananna .doc",
+    "education": [
+      {
+        "_id": "5e8b3f34b056591bfacf4dca",
+        "eduInstitute": "University of Dhaka",
+        "degree": "M.Sc (Hon's) in Counselling Psychology",
+        "eduFrom": "2014",
+        "eduTo": "2015"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8b3f34b056591bfacf4dcb",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8b3f34b056591bfacf4dcc",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8b3f34b056591bfacf4dcd",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8b3f34b056591bfacf4dcf",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8b3f34b056591bfacf4dce",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8b3ffab056591bfacf4dd0",
+    "name": "Ananna Firoz",
+    "gender": "",
+    "institute": "",
+    "expertise": "",
+    "designation": "Counseling Psychologist",
+    "speciality": "",
+    "dob": "03/03/1991",
+    "email": "firozananna@gmail.com",
+    "password": "$2a$10$vSDBouVIZPdy3VKvvF0vNO2FmtQzlKNqB3.ZEAw4023dhsZEyagGS",
+    "phone": "",
+    "professionalDegree": "M.Sc (Hon's)",
+    "affiliation": "Mind Tale",
+    "regno": "",
+    "researchArea": "",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586184185000-01.JPG",
+    "cvURL": "1586184185000-Resume Ananna .doc",
+    "education": [
+      {
+        "_id": "5e8b3ffab056591bfacf4dd1",
+        "eduInstitute": "University of Dhaka",
+        "degree": "M.Sc (Hon's) in Counselling Psychology",
+        "eduFrom": "",
+        "eduTo": ""
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8b3ffab056591bfacf4dd2",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8b3ffab056591bfacf4dd3",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8b3ffab056591bfacf4dd4",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8b3ffab056591bfacf4dd6",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8b3ffab056591bfacf4dd5",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8b406bb056591bfacf4dd7",
+    "name": "Ananna Firoz",
+    "gender": "Female",
+    "institute": "",
+    "expertise": "",
+    "designation": "Counseling Psychologist",
+    "speciality": "",
+    "dob": "03/03/1991",
+    "email": "firozananna@gmail.com",
+    "password": "$2a$10$93rkxV4JPdFcFbJeTzIeRutfUHWgogzyOFia.y8NGY71MX0A5eq0C",
+    "phone": "",
+    "professionalDegree": "M.Sc (Hon's)",
+    "affiliation": "Mind Tale",
+    "regno": "",
+    "researchArea": "",
+    "country": "18",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586184298000-01.JPG",
+    "cvURL": "1586184298000-Resume Ananna .doc",
+    "education": [
+      {
+        "_id": "5e8b406bb056591bfacf4dd8",
+        "eduInstitute": "University of Dhaka",
+        "degree": "M.Sc (Hon's) in Counselling Psychology",
+        "eduFrom": "2014",
+        "eduTo": "2015"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8b406bb056591bfacf4dd9",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8b406bb056591bfacf4dda",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8b406bb056591bfacf4ddb",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8b406bb056591bfacf4ddd",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8b406bb056591bfacf4ddc",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "createdAt": "2020-04-05T18:35:30.366Z",
+    "_id": "5e8b43e8b056591bfacf4dde",
+    "name": "Mahady Hasan",
+    "gender": "Male",
+    "institute": "",
+    "expertise": "",
+    "designation": "Industrial Psychologist",
+    "speciality": "",
+    "dob": "03/11/1993",
+    "email": "mahadyhasanasif@gmail.com",
+    "password": "$2a$10$D1o0huPI4lqNgQoWS8babOO8RBQK./48qnQnCXp1ojS8h2eKNdoji",
+    "phone": "",
+    "professionalDegree": "",
+    "affiliation": "Psychologist, Mind Tale, Synesis IT",
+    "regno": "",
+    "researchArea": "",
+    "country": "",
+    "fee": "",
+    "aboutYourself": "",
+    "propicURL": "1586185195000-ILN_7546.jpg",
+    "cvURL": "1586185195000-CV Mahady Hasan.pdf",
+    "education": [
+      {
+        "_id": "5e8b43e8b056591bfacf4ddf",
+        "eduInstitute": "University of Dhaka",
+        "degree": "MS",
+        "eduFrom": "2016",
+        "eduTo": "2016"
+      },
+      {
+        "_id": "5e8b43e8b056591bfacf4de0",
+        "eduInstitute": "University of Dhaka",
+        "degree": "BS Hons.",
+        "eduFrom": "2012",
+        "eduTo": "2015"
+      }
+    ],
+    "training": [
+      {
+        "_id": "5e8b43e8b056591bfacf4de1",
+        "trainingName": "",
+        "trainingYear": "",
+        "trainingDetails": ""
+      }
+    ],
+    "awards": [
+      {
+        "_id": "5e8b43e8b056591bfacf4de2",
+        "awardsName": "",
+        "awardsYear": "",
+        "awardsDetails": ""
+      }
+    ],
+    "workExperience": [
+      {
+        "_id": "5e8b43e8b056591bfacf4de3",
+        "expInstitute": "",
+        "expFrom": ""
+      }
+    ],
+    "visitingHour": [
+      {
+        "shifts": [
+          {
+            "_id": "5e8b43e8b056591bfacf4de5",
+            "dayFrom": "",
+            "dayTo": "",
+            "timeFrom": "",
+            "timeTo": ""
+          }
+        ],
+        "_id": "5e8b43e8b056591bfacf4de4",
+        "chamberName": "",
+        "chamberAddress": ""
+      }
+    ],
+    "__v": 0
+  }
+]

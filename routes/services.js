@@ -4,13 +4,20 @@ const {
   bookAppointment,
   consultation,
   searchConsultation,
+  psychoTherapy,
+  searchPsychoTherapy,
   singleDoctorConsultation,
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
 router.get('/consultation/search', searchConsultation);
 
-router.get('/psychoTherapy', (req, res, next) => res.render('psycho_therapy'));
+router.get('/psychoTherapy', psychoTherapy);
+router.get('/psychoTherapy/search', searchPsychoTherapy);
+// (req, res, next) =>
+//   res.render('psycho_therapy')
+// );
+
 router.get('/doctor/profile/:id', singleDoctorConsultation);
 
 router.get('/institution', (req, res, next) => {

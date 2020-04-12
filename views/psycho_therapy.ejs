@@ -124,6 +124,9 @@
               <p>Book Appointment</p>
             </div>
             <div class="allDoctors container">
+            <% if (successMessage != '') { %> 
+                <div class="alert alert-success"><%= successMessage %></div>
+              <% } %>
               <% for(let i = 0 ; i < experts.length; i++) { %>
               <div class="doctor_identity">
                 <div class="his_photo">

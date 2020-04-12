@@ -55,6 +55,10 @@ const eUserSchema = new mongoose.Schema({
   aboutYourself: {
     type: String,
   },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
   propicURL: {
     type: String,
   },

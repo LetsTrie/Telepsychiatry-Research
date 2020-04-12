@@ -1,37 +1,37 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const orgUserSchema = new mongoose.Schema({
     name: {
-        type: String
+        type: String,
     },
-    authEmail: {
-        type: String
+    email: {
+        type: String,
     },
     authPhoneNumber: {
-        type: String
+        type: String,
     },
     authName: {
-        type: String
+        type: String,
     },
     region: {
-        type: String
+        type: String,
     },
     password: {
-        type: String
+        type: String,
     },
     org_type: {
-        type: String
+        type: String,
     },
     websiteLink: {
-        type: String
+        type: String,
     },
     establish_year: {
-        type: String
+        type: String,
     },
     createdAt: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now(),
+    },
 });
 
-exports.orgUserModel = mongoose.model("orgUser", orgUserSchema);
+exports.orgUserModel = mongoose.model('orgUser', orgUserSchema);

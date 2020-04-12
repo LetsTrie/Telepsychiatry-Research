@@ -12,6 +12,7 @@ const {
     eUserCheckDuplication,
     postLogin,
     expProfile,
+    verify
 } = require('../controllers/auth');
 
 router.get('/login', (req, res, next) => res.render('login'));
@@ -33,5 +34,6 @@ router.post('/register/new/exp/save', saveExpUser);
 router.get('/register/new/org', getRegisterOrganizations);
 router.post('/register/new/org', postRegisterOrgUser);
 
-router.get('/expert/profile/:id', expProfile);
+router.get('/user/profile/:id', expProfile);
+router.get('/verify/:id', verify)
 module.exports = router;

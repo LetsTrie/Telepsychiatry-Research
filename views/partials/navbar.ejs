@@ -89,7 +89,7 @@
 <script>
     $.get('/getUser', (data) => {
         if (data) {
-            const profileLink = '/auth/expert/profile/' + data._id
+            const profileLink = '/auth/user/profile/' + data._id
             console.log(data._id)
             $('#profile').show()
             $('#profile_link').attr('href', profileLink)

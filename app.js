@@ -86,5 +86,12 @@ require('./config/passport')(passport);
 
 app.use('/', require('./routes'));
 
+app.get('/admin/test', (req, res, next) => {
+  res.render('admin__test');
+});
+app.get('/admin/test/new', (req, res, next) => {
+  res.render('admin__createtest');
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running at port: ${port}`));

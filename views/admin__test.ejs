@@ -7,97 +7,108 @@
     <title>Document</title>
   </head>
   <body>
-    <section class="adminDashboard" style="min-height: 100vh;">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">TRIN</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <div style="margin: auto;"></div>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Doctor</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Test</a>
-            </li>
-          </ul>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Services</p>
+          </div>
+          <div class="bigText">
+            <p>Mental Health and Wellbeing Assessment</p>
+          </div>
         </div>
-      </nav>
-      <div class="container">
-        <section class="healthTest m-5 p-3 border border-primary">
-          <div class="healthTest__heading text-center pb-3">
-            <h1>Mental Health Test</h1>
+      </header>
+      <div class="twoBigSectionFlex">
+        <div class="eachBigSection">
+          <div class="imageee py-2 pb-4">
+            <img src="/images/adminTest.jpg" alt="" />
           </div>
-          <div class="healthTest__add_test text-right">
-            <button class="btn btn-dark px-4 py-2" onclick="go()">
-              <strong>Add Test</strong>
-            </button>
+          <div class="addNewTestBtn">
+            <button onclick="go()">Add New Test</button>
           </div>
-          <div class="healthTest__searching px-3">
-            <div class="row">
-              <div class="inputbox col-sm">
-                <div class="form-selectpicker">
-                  <select
-                    class="selectpicker"
-                    data-width="100%"
-                    title="Select Disorder"
-                    name="disorder"
-                    id="disorderInput"
-                    data-size="6"
-                  >
-                    <option value="x">x</option>
-                    <option value="x">x</option>
-                    <option value="x">x</option>
-                  </select>
+        </div>
+        <div class="eachBigSection">
+          <div class="container">
+            <section class="healthAllTest p-1">
+              <div class="healthTest__heading text-center">
+                <h1>Mental Health Test</h1>
+              </div>
+              <div class="healthTest__add_test text-right"></div>
+              <div class="healthTest__searching px-3">
+                  <div class="inputbox">
+                    <div class="form-selectpicker">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        title="Select Disorder"
+                        name="disorder"
+                        id="disorderInput"
+                        data-size="6"
+                      >
+                        <option value="x">x</option>
+                        <option value="x">x</option>
+                        <option value="x">x</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="inputbox">
+                    <div class="form-selectpicker">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        title="Select Test"
+                        name="test"
+                        id="testInput"
+                        data-size="6"
+                      >
+                        <option value="x">x</option>
+                        <option value="x">x</option>
+                        <option value="x">x</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="inputbox">
+                    <div class="form-selectpicker">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        title="Paid or not"
+                        name="paidOrNot"
+                        id="paidInput"
+                        data-size="6"
+                      >
+                        <option value="x">x</option>
+                        <option value="x">x</option>
+                        <option value="x">x</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="inputbox">
+                    <button type="submit" class="btn btn-success">
+                      Search
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div class="inputbox col-sm">
-                <div class="form-selectpicker">
-                  <select
-                    class="selectpicker"
-                    data-width="100%"
-                    title="Select Test"
-                    name="test"
-                    id="testInput"
-                    data-size="6"
-                  >
-                    <option value="x">x</option>
-                    <option value="x">x</option>
-                    <option value="x">x</option>
-                  </select>
+              <div class="healthTest_allDisorders py-5">
+                <div class="eachDisorder py-3">
+                  <div class="eachDisorder_heading">
+                    <h6>Depression</h6>
+                  </div>
+                  <div class="eachDisorder_eachTest">
+                    <% for(let j = 0 ; j < 10; j++) { %>
+                    <a href="#" style="text-decoration: underline;">
+                      test<%= j+1 %> </a
+                    >, <% } %>
+                  </div>
                 </div>
               </div>
-              <div class="inputbox col-sm">
-                <button type="submit" class="btn btn-success">Search</button>
-              </div>
-            </div>
+            </section>
           </div>
-          <div class="healthTest_allDisorders py-5">
-            <% for(let i = 0 ; i < 10; i++) { %>
-            <div class="eachDisorder py-3">
-              <div class="eachDisorder_heading">
-                <h6>Depression</h6>
-              </div>
-              <div class="eachDisorder_eachTest">
-                <% for(let j = 0 ; j < 10; j++) { %>
-                <a href="#" style="text-decoration: underline;">
-                  test<%= j+1 %> </a
-                >, <% } %>
-              </div>
-            </div>
-            <% } %>
-          </div>
-        </section>
+        </div>
       </div>
     </section>
     <%- include('./partials/footer')%>

@@ -931,3 +931,258 @@ p {
 .navbarWrapper .dropdown-menu {
   border: 1px solid #ececec;
 }
+
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+}
+
+.blueDivider p a {
+  color: white;
+}
+
+.blueDivider p a:hover {
+  text-decoration: underline;
+}
+
+.blueDivider .smallText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .smallText {
+    width: 97%;
+  }
+}
+
+.blueDivider .smallText p {
+  font-size: 13px;
+}
+
+.blueDivider .bigText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .bigText {
+    width: 97%;
+  }
+}
+
+.blueDivider .bigText p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 550px) {
+  .blueDivider .bigText p {
+    font-size: 18px;
+  }
+}
+
+.blueDivider p {
+  margin-bottom: 0px;
+  color: white;
+}
+
+.twoBigSectionFlex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 95%;
+  margin: 30px auto 0 auto;
+}
+
+@media (max-width: 1320px) {
+  .twoBigSectionFlex {
+    width: 98%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection {
+  background: white;
+  border-radius: 5px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child {
+  width: 25%;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:first-child {
+    width: 100%;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .ageRange {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  padding-bottom: 7px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeOptions .custom-control {
+  padding-bottom: 5px;
+  color: #444343;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests {
+  padding-top: 0px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
+  cursor: pointer;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  padding-bottom: 7px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all {
+  padding: 5px;
+  padding-right: 20px;
+  padding-left: 25px;
+}
+
+.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all ul li {
+  list-style-type: disc;
+  line-height: 1.8;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child {
+  width: 73%;
+  padding: 20px 50px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1100px) {
+  .twoBigSectionFlex .eachBigSection:last-child {
+    width: 100%;
+  }
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .main-Heading {
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+
+.twoBigSectionFlex .eachBigSection:last-child .main-Heading p {
+  font-size: 2.5rem;
+}
+
+.addNewTestBtn {
+  width: 100%;
+  padding: 10px;
+}
+
+.addNewTestBtn button {
+  width: 100%;
+  padding: 16px 5px;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  border: none;
+  background: #2193b0;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4ab0c7, #2193b0);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#4ab0c7), to(#2193b0));
+  background: -webkit-linear-gradient(left, #4ab0c7, #2193b0);
+  background: -o-linear-gradient(left, #4ab0c7, #2193b0);
+  background: linear-gradient(to right, #4ab0c7, #2193b0);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.imageee {
+  width: 100%;
+}
+
+.imageee img {
+  width: 100%;
+}
+
+.healthAllTest .healthTest__heading {
+  font-size: 2.5rem;
+  color: #2c2923;
+  padding: 20px 5px 30px 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.healthAllTest .healthTest__searching {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.healthAllTest .healthTest__searching .inputbox {
+  width: 25%;
+  margin: 10px;
+}
+
+.healthAllTest .healthTest__searching .inputbox button[type='submit'] {
+  border: 1px solid #0db9f2;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: #0db9f2;
+  color: #fff;
+  padding: 9px 35px;
+  font-size: 18px;
+  border-radius: 3px;
+}

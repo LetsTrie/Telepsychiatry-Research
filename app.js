@@ -55,5 +55,30 @@ require('./config/passport')(passport);
 
 app.use('/', require('./routes'));
 
+app.get('/checkmail', async (req, res, next) => {
+  const nodemailer = require('nodemailer');
+  const Transport = nodemailer.createTransport({
+    pool: true,
+    host: 'mail.trin-innovation.com.netsolmail.net.',
+    port: 587,
+    secure: false,
+    logger: true,
+    debug: true,
+    auth: {
+      user: 'manager@trin-innovation.com',
+      pass: 'Mwjwy45@trin',
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+  const x = await Transport.sendMail({
+    from: 'manager@trin-innovation.com',
+    to: 'sakibkhan111296@gmail.com',
+    subject: 'TRIN account verification',
+    html: 'xbody',
+  });
+  return res.json(x);
+});
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running at port: ${port}`));

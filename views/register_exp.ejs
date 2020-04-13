@@ -29,7 +29,7 @@
       <div class="my-3 divider"></div>
       <div class="createResources addDoctor pb-5">
         <form
-          action="/auth/register/new/exp"
+          action="/auth/register/new/exp/file"
           method="POST"
           enctype="multipart/form-data"
           id="DocRegform"
@@ -1681,7 +1681,7 @@
 
               $.ajax({
                 type: 'POST',
-                url: '/auth/register/new/exp/save',
+                url: '/auth/register/new/exp/data',
                 data: formData,
                 success: (data) => {
                   console.log(data);
@@ -1770,7 +1770,11 @@
         const trainingYear = trainingYears[i].value;
         const trainingDetails = trainingDes[i].value;
 
-        if (check(trainingName) && check(trainingYear) && check(trainingDes))
+        if (
+          check(trainingName) &&
+          check(trainingYear) &&
+          check(trainingDetails)
+        )
           continue;
 
         trainingArray.push({ trainingName, trainingYear, trainingDetails });

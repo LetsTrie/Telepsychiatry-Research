@@ -150,6 +150,10 @@
                     <div class="overview_education" id="WorkNexp">
                       <div class="widget education-widget">
                         <h4 class="widget-title">Work & Experience</h4>
+                        <% if(!doc.workExperience || doc.workExperience.length
+                        === 0) { %>
+                        <p class="m-5"></p>
+                        <% } else { %>
                         <div class="experience-box">
                           <ul class="experience-list">
                             <% for(let ii = 0 ; ii < doc.workExperience.length;
@@ -173,11 +177,15 @@
                             <% } %>
                           </ul>
                         </div>
+                        <% } %>
                       </div>
                     </div>
                     <div class="overview_education" id="education-pane31">
                       <div class="widget education-widget">
                         <h4 class="widget-title">Professional Training</h4>
+                        <% if(!doc.training || doc.training.length === 0) { %>
+                        <p class="m-5"></p>
+                        <% } else { %>
                         <div class="experience-box">
                           <ul class="experience-list ProTraining">
                             <% for(let ii = 0 ; ii < doc.training.length; ii++)
@@ -205,21 +213,17 @@
                             <% } %>
                           </ul>
                         </div>
+                        <% } %>
                       </div>
-                    </div>
-                    <div class="downloadPDF">
-                      <input
-                        type="hidden"
-                        name="cvLink"
-                        value="http://trin-innovation.com/uploads/<%=doc.cvURL%>"
-                      />
-                      <button>Download CV</button>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tab3">
                     <div class="overview_education" id="awardss-pane">
                       <div class="widget education-widget">
                         <h4 class="widget-title">Awards</h4>
+                        <% if(!doc.awards || doc.awards.length === 0) { %>
+                        <p class="m-5"></p>
+                        <% } else { %>
                         <div class="experience-box">
                           <ul class="experience-list">
                             <% for(let ii = 0 ; ii < doc.awards.length; ii++) {
@@ -249,6 +253,7 @@
                             <% } %>
                           </ul>
                         </div>
+                        <% } %>
                       </div>
                     </div>
                   </div>
@@ -292,12 +297,5 @@
 
     <%- include('./partials/vendorsBottom')%> <%-
     include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
-
-    <script>
-      $('.downloadPDF button').on('click', (e) => {
-        console.log();
-        window.open($(e.target.parentElement.children[0]).val(), '_blank');
-      });
-    </script>
   </body>
 </html>

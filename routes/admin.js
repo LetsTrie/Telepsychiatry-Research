@@ -1,23 +1,26 @@
 const router = require('express').Router();
 
 const {
-  login,
-  contactUs,
-  adminGetResearch,
-  getResearch,
-  approveResearch,
-  disapproveResearch,
-  getInnovations,
-  singleInnoavtion,
-  approveInnovation,
-  disapproveInnovation,
-  postAddDoctor,
-  replyEmail,
-  allTests,
-  newTest,
+    login,
+    contactUs,
+    adminGetResearch,
+    getResearch,
+    approveResearch,
+    disapproveResearch,
+    getInnovations,
+    singleInnoavtion,
+    approveInnovation,
+    disapproveInnovation,
+    postAddDoctor,
+    replyEmail,
+    allTests,
+    newTest,
+    createTest,
+    postLogin,
 } = require('../controllers/admin');
 
 router.get('/login', login);
+router.post('/login', postLogin);
 
 //admin contact us
 router.get('/contactUs', contactUs);
@@ -25,7 +28,7 @@ router.post('/replyEmail', replyEmail);
 
 //admin Add Doctors
 router.get('/addDoctors', (req, res) => {
-  res.render('addDoctors');
+    res.render('addDoctors');
 });
 router.post('/postAddDoctor', postAddDoctor);
 
@@ -43,4 +46,5 @@ router.get('/innovation/disapprove/:id', disapproveInnovation);
 
 router.get('/test', allTests);
 router.get('/test/new', newTest);
+router.post('/test/new', createTest);
 module.exports = router;

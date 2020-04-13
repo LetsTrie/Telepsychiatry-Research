@@ -1,8 +1,8 @@
 const nodemailer = require('nodemailer');
 
 let cred = {
-  user: 'safwan.du16@gmail.com',
-  pass: 'home761049997',
+    user: 'safwan.du16@gmail.com',
+    pass: '',
 };
 
 // const Transport = nodemailer.createTransport({
@@ -19,8 +19,8 @@ let cred = {
 // });
 
 const Transport = nodemailer.createTransport({
-  service: 'gmail',
-  auth: cred,
+    service: 'gmail',
+    auth: cred,
 });
 
 const host = `http://localhost:3000`;
@@ -36,14 +36,14 @@ const host = `http://localhost:3000`;
 //   });
 // };
 
-module.exports.AccountVerifyMail = async (email, userID) => {
-  const mailBody = `Click <a href="${host}/auth/verify/${userID}">here</a> to verify your email.`;
-  let mailOptions = {
-    from: cred.user,
-    to: email,
-    subject: 'TRIN account verification',
-    html: mailBody,
-  };
+module.exports.AccountVerifyMail = async(email, userID) => {
+    const mailBody = `Click <a href="${host}/auth/verify/${userID}">here</a> to verify your email.`;
+    let mailOptions = {
+        from: cred.user,
+        to: email,
+        subject: 'TRIN account verification',
+        html: mailBody,
+    };
 
-  return Transport.sendMail(mailOptions);
+    return Transport.sendMail(mailOptions);
 };

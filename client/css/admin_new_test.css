@@ -991,171 +991,47 @@ p {
   color: white;
 }
 
-.twoBigSectionFlex {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.BigSectionFlex {
   width: 95%;
   margin: 30px auto 0 auto;
+  background: gray;
 }
 
 @media (max-width: 1320px) {
-  .twoBigSectionFlex {
+  .BigSectionFlex {
     width: 98%;
   }
 }
 
-@media (max-width: 1100px) {
-  .twoBigSectionFlex {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
-.twoBigSectionFlex .eachBigSection {
+.BigSectionFlex .testAdd {
   background: white;
   border-radius: 5px;
+  padding-top: 40px;
 }
 
-.twoBigSectionFlex .eachBigSection:first-child {
-  width: 25%;
-  padding: 20px 25px;
-  margin-bottom: 15px;
+.BigSectionFlex .testAdd .add_test_wrapper .bootstrap-select .btn {
+  font-size: 16px;
 }
 
-@media (max-width: 1100px) {
-  .twoBigSectionFlex .eachBigSection:first-child {
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_Header {
+  font-size: 40px;
+  font-family: 'Roboto', sans-serif;
+  color: #3b372f;
+  padding-bottom: 25px;
+}
+
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form {
+  width: 85%;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .BigSectionFlex .testAdd .add_test_wrapper .add_test_form {
     width: 100%;
   }
 }
 
-.twoBigSectionFlex .eachBigSection:first-child .ageRange {
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeHeading p {
-  font-family: 'Libre Franklin', sans-serif;
-  font-size: 20px;
-  padding-bottom: 7px;
-  margin-bottom: 0px;
-  font-weight: 700;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .ageRange .ageRangeOptions .custom-control {
-  padding-bottom: 5px;
-  color: #444343;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests {
-  padding-top: 0px;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests a {
-  cursor: pointer;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests a:hover {
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-heading p {
-  font-family: 'Libre Franklin', sans-serif;
-  font-size: 20px;
-  padding-bottom: 7px;
-  margin-bottom: 0px;
-  font-weight: 700;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all {
-  padding: 5px;
-  padding-right: 20px;
-  padding-left: 25px;
-}
-
-.twoBigSectionFlex .eachBigSection:first-child .nav-tests .nav-test-all ul li {
-  list-style-type: disc;
-  line-height: 1.8;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child {
-  width: 73%;
-  padding: 20px 50px;
-  margin-bottom: 15px;
-}
-
-@media (max-width: 1100px) {
-  .twoBigSectionFlex .eachBigSection:last-child {
-    width: 100%;
-  }
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .main-Heading {
-  text-align: center;
-  padding-bottom: 10px;
-  font-weight: 500;
-}
-
-.twoBigSectionFlex .eachBigSection:last-child .main-Heading p {
-  font-size: 2.5rem;
-}
-
-.addNewTestBtn {
-  width: 100%;
-  padding: 10px;
-}
-
-.addNewTestBtn button {
-  width: 100%;
-  padding: 16px 5px;
-  font-size: 25px;
-  font-family: 'Roboto', sans-serif;
-  outline: none;
-  border: none;
-  background: #2193b0;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4ab0c7, #2193b0);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#4ab0c7), to(#2193b0));
-  background: -webkit-linear-gradient(left, #4ab0c7, #2193b0);
-  background: -o-linear-gradient(left, #4ab0c7, #2193b0);
-  background: linear-gradient(to right, #4ab0c7, #2193b0);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
-  font-weight: 700;
-  border-radius: 4px;
-}
-
-.imageee {
-  width: 100%;
-}
-
-.imageee img {
-  width: 100%;
-}
-
-.healthAllTest .healthTest__heading {
-  font-size: 2.5rem;
-  color: #2c2923;
-  padding: 20px 5px 30px 5px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.healthAllTest .healthTest__searching {
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1165,14 +1041,10 @@ p {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
 }
 
-@media (max-width: 1000px) {
-  .healthAllTest .healthTest__searching {
+@media (max-width: 768px) {
+  .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -1181,89 +1053,90 @@ p {
   }
 }
 
-.healthAllTest .healthTest__searching .inputbox {
-  width: 25%;
-  margin: 10px;
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .fa-arrow-right {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+          align-self: center;
+  padding-right: 10px;
 }
 
-@media (max-width: 1000px) {
-  .healthAllTest .healthTest__searching .inputbox {
-    width: 100%;
-  }
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld {
+  padding: 5px;
+  width: 100%;
 }
 
-.healthAllTest .healthTest__searching .inputbox button[type='submit'] {
-  border: 1px solid #0db9f2;
-  font-weight: 500;
-  letter-spacing: 1px;
-  background-color: #0db9f2;
-  color: #fff;
-  padding: 9px 35px;
-  font-size: 18px;
-  border-radius: 3px;
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld input[type='text'] {
+  padding: 20px 12px;
+  border-color: #bdb9b9;
 }
 
-.eachDisorderTestAll {
-  margin-left: 2rem;
-  padding-top: 30px;
-}
-
-.eachDisorderTestAll .eachDisorder_heading h6 {
-  font-size: 1.6em;
-  font-family: 'Roboto', sans-serif;
-}
-
-.eachDisorderTestAll .eachDisorder_eachTest ul {
-  list-style: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-
-.eachDisorderTestAll .eachDisorder_eachTest ul li {
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_q_box {
   width: 45%;
-  margin-left: 15px;
-  font-size: 15px;
 }
 
-@media (max-width: 850px) {
-  .eachDisorderTestAll .eachDisorder_eachTest ul li {
+@media (max-width: 768px) {
+  .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_q_box {
     width: 100%;
   }
 }
 
-.eachDisorderTestAll .eachDisorder_eachTest ul li a {
-  padding-left: 8px;
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_q_box input {
+  width: 100%;
 }
 
-.eachDisorderTestAll .eachDisorder_eachTest ul li:before {
-  content: '';
-  height: 0;
-  width: 0;
-  border-color: transparent #20c0f3;
-  border-style: solid;
-  border-width: 0.4em 0 0.4em 0.4em;
-  position: relative;
-  display: block;
-  left: -1em;
-  top: 1.25em;
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_btn {
+  width: 10%;
 }
 
-.eachDisorderTestAll .eachDisorder_eachTest a {
-  font-size: 1.05rem;
-  color: #312424;
-  font-family: 'Open Sans', sans-serif;
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_o_box {
+  width: 30%;
 }
 
-.eachDisorderTestAll .eachDisorder_eachTest a:hover {
-  font-weight: 700;
+@media (max-width: 768px) {
+  .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_o_box {
+    width: 100%;
+  }
+}
+
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_o_box input {
+  width: 100%;
+}
+
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .drct-flx {
+  padding: 5px;
+  width: 100%;
+}
+
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .Ques_heading {
+  padding: 5px;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+.allQuestionsWrapper {
+  padding-left: 10px;
+}
+
+.addBtn {
+  background: #0db9f2;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 6px 15px;
+  border-radius: 3px;
+  font-weight: 500;
+  border: 1px solid #0db9f2;
+}
+
+.finalSubmit {
+  padding: 12px 35px;
+  font-size: 20px;
+}
+
+.btn-dark.deleteBtn {
+  color: #fff;
+  background-color: #d82912;
+  border-color: #d82912;
+  font-weight: 500;
 }

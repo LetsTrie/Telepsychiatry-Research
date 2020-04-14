@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+
+    <link rel="stylesheet" href="/css/admin_new_test.css" />
+    <title>Add New Test | Mental Health and Wellbeing Assessment</title>
+  </head>
+  <body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Services</p>
+          </div>
+          <div class="bigText">
+            <p>Mental Health and Wellbeing Assessment</p>
+          </div>
+        </div>
+      </header>
+      <div class="BigSectionFlex">
+        <div class="testAdd">
+          <div class="container">
+            <div class="add_test_wrapper">
+              <div class="add_test_Header text-center">
+                <h1>Add New Test</h1>
+              </div>
+              <div class="add_test_form">
+                <form action="#">
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="disorderNameInEng"
+                        class="form-control"
+                        placeholder="Disorder name (In English)"
+                      />
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="disorderNameInBangla"
+                        class="form-control"
+                        placeholder="Disorder name (In Bangla)"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="testNameInEng"
+                        class="form-control"
+                        placeholder="Test Name (In English)"
+                      />
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="testNameInBangla"
+                        class="form-control"
+                        placeholder="Test Name (In Bangla)"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="form-selectpicker drct-flx">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        title="Age range"
+                        name="age"
+                        id="AgeRangeInput"
+                        data-size="6"
+                      >
+                        <option value="child">child</option>
+                        <option value="young">young</option>
+                        <option value="old">old</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Paid or not"
+                          name="paid"
+                          id="paidInput"
+                          data-size="6"
+                        >
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        placeholder="Pay amount"
+                        class="form-control"
+                        id="payAmount"
+                        style="visibility: hidden;"
+                      />
+                    </div>
+                  </div>
+
+                  <h5 class="Ques_heading">Questions</h5>
+
+                  <div class="allQuestionsWrapper">
+                    <div class="allQuestions">
+                      <div class="eachQuestions">
+                        <div class="quesInfo">
+                          <div class="flx-prnt">
+                            <span class="fa fa-arrow-right"></span>
+                            <div class="flx-chld inp_q_box">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Question (In English)"
+                              />
+                            </div>
+                            <div class="flx-chld inp_q_box">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Question (In Bangla)"
+                              />
+                            </div>
+                            <div class="flx-chld inp_btn">
+                              <input
+                                type="button"
+                                value="Delete"
+                                class="btn btn-dark deleteBtn QuestionDelete"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="optionInfo">
+                          <div class="allOptions">
+                            <div class="eachOptions flx-prnt pl-5 pt-1">
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Option (In English)"
+                                />
+                              </div>
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Option (In Bangla)"
+                                />
+                              </div>
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Scale"
+                                />
+                              </div>
+                              <div class="flx-chld inp_btn">
+                                <input
+                                  type="button"
+                                  value="Delete"
+                                  class="btn btn-dark deleteBtn optionDelete"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="addoption ml-1 pl-5 pt-2 py-2">
+                            <input
+                              type="button"
+                              value="Add option"
+                              class="addBtn addOptions"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="newQuestion ml-2 pl-3 py-2">
+                      <input
+                        type="button"
+                        value="Add question"
+                        class="addBtn"
+                        id="addQuestion"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="pt-3 text-center pt-2 pb-5">
+                    <button type="submit" class="addBtn finalSubmit">
+                      SUBMIT
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    function go() {
+      location = '/admin/test/new';
+    }
+
+    $('#paidInput').on('change', (e) => {
+      if (e.target.value === 'Yes') {
+        $('#payAmount').css('visibility', 'visible');
+      }
+    });
+
+    $(document).on('click', '.newQuestion', (e) => {
+      $('.allQuestions').append(`
+       <div class="eachQuestions pt-3">
+        <div class="quesInfo">
+          <div class="flx-prnt">
+            <span class="fa fa-arrow-right"></span>
+            <div class="flx-chld inp_q_box">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Question (In English)"
+              />
+            </div>
+            <div class="flx-chld inp_q_box">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Question (In Bangla)"
+              />
+            </div>
+            <div class="flx-chld inp_btn">
+              <input
+                type="button"
+                value="Delete"
+                class="btn btn-dark deleteBtn QuestionDelete"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="optionInfo">
+          <div class="allOptions">
+            <div class="eachOptions flx-prnt pl-5 pt-1">
+              <div class="flx-chld inp_o_box">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Option (In English)"
+                />
+              </div>
+              <div class="flx-chld inp_o_box">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Option (In Bangla)"
+                />
+              </div>
+              <div class="flx-chld inp_o_box">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Scale"
+                />
+              </div>
+              <div class="flx-chld inp_btn">
+                <input
+                  type="button"
+                  value="Delete"
+                  class="btn btn-dark deleteBtn optionDelete"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="addoption ml-1 pl-5 pt-2 py-2">
+            <input
+              type="button"
+              value="Add option"
+              class="addBtn addOptions"
+            />
+          </div>
+        </div>
+      </div>
+      `);
+    });
+    $(document).on('click', '.addOptions', (e) => {
+      $(e.target.parentElement.parentElement.children[0]).append(`
+        <div class="eachOptions flx-prnt pl-5 pt-1">
+          <div class="flx-chld inp_o_box">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Option (In English)"
+            />
+          </div>
+          <div class="flx-chld inp_o_box">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Option (In Bangla)"
+            />
+          </div>
+          <div class="flx-chld inp_o_box">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Scale"
+            />
+          </div>
+          <div class="flx-chld inp_btn">
+            <input
+              type="button"
+              value="Delete"
+              class="btn btn-dark deleteBtn optionDelete"
+            />
+          </div>
+        </div>
+      `);
+    });
+    $(document).on('click', '.optionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        console.log(val);
+        if (val.includes('eachOptions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+    $(document).on('click', '.QuestionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        if (val.includes('eachQuestions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+  </script>
+</html>

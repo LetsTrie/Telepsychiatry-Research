@@ -4,7 +4,7 @@
     <%- include('./partials/vendorsTop')%>
 
     <link rel="stylesheet" href="/css/admin.css" />
-    <title>Document</title>
+    <title>Mental Health and Wellbeing Assessment</title>
   </head>
   <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
@@ -37,7 +37,7 @@
                 <h1>Mental Health Test</h1>
               </div>
               <div class="healthTest__add_test text-right"></div>
-              <div class="healthTest__searching px-3">
+              <div class="healthTest__searching px-3 pb-3">
                   <div class="inputbox">
                     <div class="form-selectpicker">
                       <select
@@ -93,16 +93,41 @@
                   </div>
                 </div>
               </div>
-              <div class="healthTest_allDisorders py-5">
-                <div class="eachDisorder py-3">
+              <div class="healthTest_allDisorders">
+                <div class="eachDisorderTestAll">
                   <div class="eachDisorder_heading">
                     <h6>Depression</h6>
                   </div>
                   <div class="eachDisorder_eachTest">
+                    <ul>
                     <% for(let j = 0 ; j < 10; j++) { %>
-                    <a href="#" style="text-decoration: underline;">
-                      test<%= j+1 %> </a
-                    >, <% } %>
+                    <li><a href="#"> Persistent Depressive Disorder Test </a></li>
+                    <% } %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="eachDisorderTestAll">
+                  <div class="eachDisorder_heading">
+                    <h6>Depression</h6>
+                  </div>
+                  <div class="eachDisorder_eachTest">
+                    <ul>
+                    <% for(let j = 0 ; j < 10; j++) { %>
+                    <li><a href="#"> Persistent Depressive Disorder Test </a></li>
+                    <% } %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="eachDisorderTestAll">
+                  <div class="eachDisorder_heading">
+                    <h6>Depression</h6>
+                  </div>
+                  <div class="eachDisorder_eachTest">
+                    <ul>
+                    <% for(let j = 0 ; j < 10; j++) { %>
+                    <li><a href="#"> Persistent Depressive Disorder Test </a></li>
+                    <% } %>
+                    </ul>
                   </div>
                 </div>
               </div>

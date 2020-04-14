@@ -13,9 +13,6 @@ const LIMIT = 9;
 exports.allTests = (req, res, next) => {
   res.render('admin__test');
 };
-exports.newTest = (req, res, next) => {
-  res.render('admin__createtest');
-};
 
 exports.login = (req, res, next) => res.render('adminLogin');
 

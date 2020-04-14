@@ -41,6 +41,8 @@ router.get('/single_innovation/:id', singleInnoavtion);
 router.get('/innovation/approve/:id', approveInnovation);
 router.get('/innovation/disapprove/:id', disapproveInnovation);
 
-router.get('/test', allTests);
-router.get('/test/new', newTest);
+router.get('/tests', allTests);
+router.get('/test/new', (req, res, next) => {
+  return res.render('admin_test_new');
+});
 module.exports = router;

@@ -1,0 +1,165 @@
+@import '_main';
+@import '_navbar';
+
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+  p {
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
+}
+
+.BigSectionFlex {
+  width: 95%;
+
+  @media (max-width: 1320px) {
+    width: 98%;
+  }
+  margin: 30px auto 0 auto;
+
+  background: gray;
+  .testAdd {
+    background: white;
+    border-radius: 5px;
+
+    padding-top: 40px;
+    .add_test_wrapper {
+      .bootstrap-select .btn {
+        font-size: 16px;
+      }
+      .add_test_Header {
+        font-size: 40px;
+        font-family: 'Roboto', sans-serif;
+        color: #3b372f;
+        padding-bottom: 25px;
+        h1 {
+        }
+      }
+      .add_test_form {
+        width: 85%;
+        @media (max-width: 1000px) {
+          width: 100%;
+        }
+        margin: auto;
+        form {
+          .flx-prnt {
+            display: flex;
+            flex-direction: row;
+            @media (max-width: 768px) {
+              flex-direction: column;
+            }
+            .fa-arrow-right {
+              align-self: center;
+              padding-right: 10px;
+            }
+            .flx-chld {
+              padding: 5px;
+              width: 100%;
+              input[type='text'] {
+                padding: 20px 12px;
+                border-color: #bdb9b9;
+              }
+              &.inp_q_box {
+                width: 45%;
+                @media (max-width: 768px) {
+                  width: 100%;
+                }
+                input {
+                  width: 100%;
+                }
+              }
+              &.inp_btn {
+                width: 10%;
+              }
+              &.inp_o_box {
+                width: 30%;
+                @media (max-width: 768px) {
+                  width: 100%;
+                }
+                input {
+                  width: 100%;
+                }
+              }
+            }
+            .drct-flx {
+              padding: 5px;
+              width: 100%;
+            }
+          }
+          .Ques_heading {
+            padding: 5px;
+            padding-top: 25px;
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.allQuestionsWrapper {
+  padding-left: 10px;
+}
+
+.addBtn {
+  background: #0db9f2;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 6px 15px;
+  border-radius: 3px;
+  font-weight: 500;
+  border: 1px solid #0db9f2;
+}
+
+.finalSubmit {
+  padding: 12px 35px;
+  font-size: 20px;
+}
+
+.btn-dark.deleteBtn {
+  color: #fff;
+  background-color: #d82912;
+  border-color: #d82912;
+  font-weight: 500;
+}

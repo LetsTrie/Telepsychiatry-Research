@@ -56,5 +56,6 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "python.pythonPath": "/usr/bin/python3"
 }

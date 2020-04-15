@@ -87,9 +87,10 @@
                                 <ul>
                                     <% for(let j = 0 ; j < tests[i].relatedTests.length; j++) { %>
                                         <li>
-                                            <a href="#">
-                                                <%= tests[i].relatedTests[j].testEng %>
-                                            </a>
+                                            <% console.log(tests[i].relatedTests[j]._id) %>
+                                                <a href="/admin/test/single/<%= tests[i].relatedTests[j]._id %>">
+                                                    <%= tests[i].relatedTests[j].testEng %>
+                                                </a>
                                         </li>
                                         <% } %>
                                 </ul>

@@ -17,6 +17,9 @@ const {
     newTest,
     postLogin,
     createTest,
+    singleTest,
+    updateTest,
+    postUpdateTest,
 } = require('../controllers/admin');
 
 router.get('/login', login);
@@ -49,4 +52,7 @@ router.get('/test/new', (req, res, next) => {
     return res.render('admin_test_new');
 });
 router.post('/test/new', createTest);
+router.get('/test/single/:id', singleTest);
+router.get('/test/update/:id', updateTest);
+router.post('/test/update', postUpdateTest);
 module.exports = router;

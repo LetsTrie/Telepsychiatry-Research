@@ -20,10 +20,10 @@ const checker = async(req, res) => {
     if (req.user) {
         const logged = JSON.stringify(admin) == JSON.stringify(req.user);
         if (!logged) {
-            res.redirect('/admin/login');
+            return res.redirect('/admin/login');
         }
     } else {
-        res.redirect('/admin/login');
+        return res.redirect('/admin/login');
     }
 };
 
@@ -83,6 +83,41 @@ exports.allTests = async(req, res, next) => {
     // console.log(final);
     res.render('admin__test', { tests: final });
 };
+
+exports.singleTest = async(req, res) => {
+    checker(req, res);
+    const id = req.params.id;
+    console.log(id);
+    const test = await testModel.findOne({ _id: id });
+    console.log(test);
+    res.render('singleTest', { test });
+};
+
+exports.updateTest = async(req, res) => {
+    checker(req, res);
+    const id = req.params.id;
+    const test = await testModel.findOne({ _id: id });
+    res.render('updateTest', { test });
+};
+
+exports.postUpdateTest = async(req, res) => {
+    checker(req, res);
+    const id = req.body.id;
+    const Questions = JSON.parse(req.body.questions);
+    await testModel.update({ _id: id }, {
+        $set: {
+            testEng: req.body.testEng,
+            testBan: req.body.testBan,
+            nameEng: req.body.nameEng,
+            nameBan: req.body.nameBan,
+            age: req.body.age,
+            paidInput: req.body.paidInput,
+            payAmount: req.body.payAmount,
+            questions: Questions,
+        },
+    });
+};
+
 exports.createTest = async(req, res, next) => {
     checker(req, res);
     const {

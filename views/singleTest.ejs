@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+
+        <link rel="stylesheet" href="/css/admin.css" />
+        <title>
+            <%= test.nameEng %>
+        </title>
+</head>
+
+<body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+        <header>
+            <nav>
+                <%- include('./partials/adminNavbar')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Admin Panel</a> / Services</p>
+                </div>
+                <div class="bigText">
+                    <p>
+                        <%= test.nameEng %>
+                    </p>
+                </div>
+            </div>
+        </header>
+        <div class="contents" style="margin-left: 10%; margin-top: 100px;">
+            <p>
+                Name:
+                <%= test.nameEng %>
+            </p>
+            <p>
+                Name(Bengali):
+                <%= test.nameBan %>
+            </p>
+            <p>
+                Disorder:
+                <%= test.testEng %>
+            </p>
+            <p>
+                Age Limits:
+                <%= test.age %>
+            </p>
+            <p>
+                Payment Details:
+                <%= test.paidInput %>
+                    <%= test.payAmount %>
+            </p>
+            <input type="hidden" name="" value="<%= test._id %>" id="id">
+            <button id="update-btn" class="btn btn-success">Update</button>
+        </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+<script>
+    $('#update-btn').click((e) => {
+        const id = $('#id').val()
+        location = '/admin/test/update/' + id
+    })
+</script>
+
+</html>

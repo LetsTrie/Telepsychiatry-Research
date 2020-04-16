@@ -58,6 +58,26 @@
         box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
           inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
       }
+      .magicc {
+        position: relative;
+      }
+      .c-alert {
+        margin-top: 20px;
+        position: absolute;
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        width: 100%;
+        text-align: center;
+      }
+      .c-alert p {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
     </style>
   </head>
   <body>
@@ -72,14 +92,17 @@
       >
         <img src="/images/contactUsIcon.png" alt="" />
       </div>
-      
+
       <div class="intro_page">
         <header class="intro_page_header">
           <%- include('./partials/navbar.ejs')%>
           <div class="wrapper magicc">
-          <% if (successMessage != '') { %>
-            <div class="alert alert-success" style="margin-top: 50px;"><%= successMessage %></div>
-            <%  } %>
+            <% if(successMessage!='') { %>
+            <div class="c-alert">
+              <p><%=successMessage%></p>
+            </div>
+            <% } %>
+
             <div class="desc">
               <div class="largeText">
                 <p>We are with <span>you</span></p>

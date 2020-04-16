@@ -715,6 +715,65 @@ p {
   color: #fff;
 }
 
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+}
+
+.blueDivider p a {
+  color: white;
+}
+
+.blueDivider p a:hover {
+  text-decoration: underline;
+}
+
+.blueDivider .smallText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .smallText {
+    width: 97%;
+  }
+}
+
+.blueDivider .smallText p {
+  font-size: 13px;
+}
+
+.blueDivider .bigText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .bigText {
+    width: 97%;
+  }
+}
+
+.blueDivider .bigText p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 550px) {
+  .blueDivider .bigText p {
+    font-size: 18px;
+  }
+}
+
+.blueDivider p {
+  margin-bottom: 0px;
+  color: white;
+}
+
 .navbarWrapper {
   margin: auto;
   width: 90%;
@@ -936,6 +995,65 @@ p {
   margin-bottom: 8px;
 }
 
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+}
+
+.blueDivider p a {
+  color: white;
+}
+
+.blueDivider p a:hover {
+  text-decoration: underline;
+}
+
+.blueDivider .smallText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .smallText {
+    width: 97%;
+  }
+}
+
+.blueDivider .smallText p {
+  font-size: 13px;
+}
+
+.blueDivider .bigText {
+  margin: auto;
+  width: 90%;
+  padding-bottom: 3px;
+}
+
+@media (max-width: 1410px) {
+  .blueDivider .bigText {
+    width: 97%;
+  }
+}
+
+.blueDivider .bigText p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 550px) {
+  .blueDivider .bigText p {
+    font-size: 18px;
+  }
+}
+
+.blueDivider p {
+  margin-bottom: 0px;
+  color: white;
+}
+
 .ck-editor__editable {
   min-height: 300px;
 }
@@ -959,7 +1077,7 @@ p {
   min-height: 100vh;
   color: #3b372f;
   padding: 10px;
-  padding-top: 35px;
+  padding-top: 45px;
   font-family: 'Merriweather', serif;
 }
 
@@ -1082,7 +1200,7 @@ p {
           align-items: flex-start;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .education_input {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1109,13 +1227,13 @@ p {
   margin-left: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .education_input .edu_in:not(:first-child) {
     margin-left: 0px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .education_input .edu_in {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1126,7 +1244,7 @@ p {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   #delete-edu {
     text-align: center;
   }
@@ -1204,7 +1322,7 @@ p {
           align-items: flex-start;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .exp_input {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1231,13 +1349,13 @@ p {
   margin-left: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .exp_input .exp_in:not(:first-child) {
     margin-left: 0px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .exp_input .exp_in {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1270,7 +1388,7 @@ p {
   margin-bottom: 15px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .side_by_side {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1284,7 +1402,7 @@ p {
   width: 49%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .side_by_side .input_div {
     width: 95%;
   }
@@ -1404,7 +1522,7 @@ p {
           flex-direction: row;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .chambers .oneChamber .chamberInfo .nameAddress {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1419,7 +1537,7 @@ p {
   padding-top: 3px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .chambers .oneChamber .chamberInfo .free-input {
     width: 90%;
   }
@@ -1429,7 +1547,7 @@ p {
   padding-left: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .chambers .oneChamber .chamberInfo .free-input:not(:first-child) {
     padding-left: 0px;
   }
@@ -1456,7 +1574,7 @@ p {
   padding-left: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .chambers .oneChamber .chamberInfo .delete-btn {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -1486,7 +1604,7 @@ p {
           justify-content: space-between;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .dayTime .allRowsDayTime .DayTimeFlexParent {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1501,7 +1619,7 @@ p {
   padding-top: 5px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .dayTime .allRowsDayTime .DayTimeFlexParent .free-input {
     width: 90%;
   }
@@ -1511,7 +1629,7 @@ p {
   padding-left: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .dayTime .allRowsDayTime .DayTimeFlexParent .free-input:not(:first-child) {
     padding-left: 0px;
   }
@@ -1534,7 +1652,7 @@ p {
   padding-left: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .dayTime .allRowsDayTime .DayTimeFlexParent .delete-btn {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -1560,7 +1678,7 @@ p {
           justify-content: space-between;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .same_row_inputs {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1578,8 +1696,37 @@ p {
   padding-right: 12px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .same_row_inputs .input_box {
     width: 100%;
+  }
+}
+
+.doMagicWrapper {
+  padding-bottom: 30px;
+}
+
+.doMagic {
+  width: 70%;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 5px;
+}
+
+@media (max-width: 1400px) {
+  .doMagic {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .doMagic {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .doMagic {
+    width: 96%;
   }
 }

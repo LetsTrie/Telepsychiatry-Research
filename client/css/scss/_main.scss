@@ -359,3 +359,50 @@ p {
   background: #3396d1;
   color: #fff;
 }
+.blueDivider {
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+  p {
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
+}

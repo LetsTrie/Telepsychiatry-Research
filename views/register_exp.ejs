@@ -22,452 +22,531 @@
     <% let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
     'Thursday', 'Friday'] %> <% const yr = (new Date(Date.now())).getFullYear();
     %>
-    <section class="admin_addDoctor_wrapper">
+    <section class="admin_addDoctor_wrapper" style="background-color: #ebebeb;">
       <nav>
         <%- include('./partials/navbar')%>
       </nav>
-      <div class="my-3 divider"></div>
-      <div class="createResources addDoctor pb-5">
-        <form
-          action="/auth/register/new/exp/file"
-          method="POST"
-          enctype="multipart/form-data"
-          id="DocRegform"
-        >
-          <input type="hidden" name="filename" id="filename" />
-          <div class="container">
-            <div id="alert" class="alert alert-danger"></div>
-            <% if (errorMessage != '') { %>
-            <div id="alert" class="alert alert-danger">
-              <%= errorMessage %>
-            </div>
-            <% } %>
-            <div class="header addDoctor__header">
-              <p id="submitResources">Register Expert User</p>
-            </div>
-            <div class="input_boxes">
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>First name <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      type="text"
-                      name="fname"
-                      placeholder="First name"
-                      class="fname"
-                      id="fname"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Last name <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      type="text"
-                      name="lname"
-                      placeholder="Last name"
-                      class="lname"
-                      id="lname"
-                    />
-                  </div>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Authentication</a> / Register</p>
+        </div>
+        <div class="bigText">
+          <p>Expert User Registration</p>
+        </div>
+      </div>
+      <div class="doMagicWrapper">
+        <div class="doMagic">
+          <div class="createResources addDoctor pb-5">
+            <form
+              action="/auth/register/new/exp/file"
+              method="POST"
+              enctype="multipart/form-data"
+              id="DocRegform"
+            >
+              <input type="hidden" name="filename" id="filename" />
+              <div class="container">
+                <div id="alert" class="alert alert-danger"></div>
+                <% if (errorMessage != '') { %>
+                <div id="alert" class="alert alert-danger">
+                  <%= errorMessage %>
                 </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Gender <span style="color: red;">*</span></p>
-                    </div>
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          id="genderInput"
-                          class="selectpicker"
-                          data-width="100%"
-                          title="Gender"
-                          data-size="6"
-                          name="gender"
-                        >
-                          <option value="Male">Male</option>
-                          <option value="Female"> Female </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Email <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="email"
-                      type="email"
-                      placeholder="Email"
-                      class="email"
-                      id="email"
-                    />
-                  </div>
+                <% } %>
+                <div class="header addDoctor__header">
+                  <p id="submitResources">Register Expert User</p>
                 </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Date of birth <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="dob"
-                      type="text"
-                      placeholder="Date of Birth"
-                      class="dob"
-                      id="dob"
-                      autocomplete="off"
-                    />
-                  </div>
-
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Phone number <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="phone"
-                      type="text"
-                      placeholder="Phone Number"
-                      class="phone"
-                      id="phone"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Password <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="password"
-                      type="password"
-                      placeholder="Password"
-                      class="password"
-                      id="password"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Confirm Password <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="cpassword"
-                      type="password"
-                      placeholder="Confirm Password"
-                      class="cpassword"
-                      id="cpassword"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Country <span style="color: red;">*</span></p>
-                    </div>
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          class="selectpicker"
-                          data-width="100%"
-                          title="Select Country"
-                          name="country"
-                          id="countryInput"
-                          data-size="6"
-                        >
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>City <span style="color: red;">*</span></p>
-                    </div>
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          class="selectpicker"
-                          data-width="100%"
-                          title="Select City"
-                          name="city"
-                          id="cityInput"
-                          data-size="6"
-                        >
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>License / Registration No.</p>
-                    </div>
-                    <input
-                      name="regno"
-                      type="text"
-                      placeholder="License / Registration No."
-                      class="regno"
-                      id="regno"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Display Picture <span style="color: red;">*</span></p>
-                    </div>
-                    <div class="input_box imageFile">
-                      <input
-                        type="file"
-                        id="exp_user_propic"
-                        name="exp_user_propic"
-                        accept="image/x-png,image/jpg,image/jpeg"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header">
-                  <p>About Yourself <span style="color: red;">*</span></p>
-                </div>
-                <textarea
-                  name="aboutYourself"
-                  placeholder="Write about yourself"
-                  id="about_me"
-                  cols="30"
-                  rows="5"
-                  class="about_me"
-                ></textarea>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Designation <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="designation"
-                      type="text"
-                      placeholder="Designation"
-                      class="designation"
-                      id="designation"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>
-                        Current Affiliation <span style="color: red;">*</span>
-                      </p>
-                    </div>
-                    <input
-                      name="affiliation"
-                      type="text"
-                      placeholder="Current Affiliation"
-                      class="affiliation"
-                      id="affiliation"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Key Research Area</p>
-                    </div>
-                    <input
-                      name="researchArea"
-                      type="text"
-                      placeholder="Key Research Area"
-                      class="research-area"
-                      id="research-area"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Expertise Area</p>
-                    </div>
-                    <input
-                      name="expertise"
-                      type="text"
-                      placeholder="Expert Area"
-                      class="expertise"
-                      id="expertise"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- ** EDUCATION ** -->
-              <div class="two_box_one flex-child">
-                <div class="" id="education-section">
-                  <div class="two_box_header form-header">
-                    <p>Education <span style="color: red;">*</span></p>
-                  </div>
-                  <div id="all_edu_inputs">
-                    <div class="education_input">
-                      <div class="arrow_sign">
-                        <i class="fa fa-arrow-right"></i>
-                      </div>
-                      <div class="edu_in">
+                <div class="input_boxes">
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>First name <span style="color: red;">*</span></p>
+                        </div>
                         <input
                           type="text"
-                          name="eduInstitute"
-                          placeholder="Institute"
-                          id="institute"
-                          class="institute"
+                          name="fname"
+                          placeholder="First name"
+                          class="fname"
+                          id="fname"
                         />
                       </div>
-                      <div class="edu_in">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Last name <span style="color: red;">*</span></p>
+                        </div>
                         <input
                           type="text"
-                          name="degree"
-                          placeholder="Degree"
-                          id="degree"
-                          class="degree"
+                          name="lname"
+                          placeholder="Last name"
+                          class="lname"
+                          id="lname"
                         />
                       </div>
-                      <div class="edu_in">
+                    </div>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Gender <span style="color: red;">*</span></p>
+                        </div>
                         <div class="input_box slct_picker">
                           <div class="form-selectpicker">
                             <select
-                              id="eduFrom"
-                              class="selectpicker year-selector"
+                              id="genderInput"
+                              class="selectpicker"
                               data-width="100%"
-                              title="From"
+                              title="Gender"
                               data-size="6"
-                              name="eduFrom"
+                              name="gender"
                             >
-                              <% for (let i= yr; i >= 1950; i--) { %>
-                              <option value="<%= i %>"><%= i %></option>
-                              <% } %>
+                              <option value="Male">Male</option>
+                              <option value="Female"> Female </option>
                             </select>
                           </div>
                         </div>
                       </div>
-                      <div class="edu_in">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Email <span style="color: red;">*</span></p>
+                        </div>
+                        <input
+                          name="email"
+                          type="email"
+                          placeholder="Email"
+                          class="email"
+                          id="email"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>
+                            Date of birth <span style="color: red;">*</span>
+                          </p>
+                        </div>
+                        <input
+                          name="dob"
+                          type="text"
+                          placeholder="Date of Birth"
+                          class="dob"
+                          id="dob"
+                          autocomplete="off"
+                        />
+                      </div>
+
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Phone number <span style="color: red;">*</span></p>
+                        </div>
+                        <input
+                          name="phone"
+                          type="text"
+                          placeholder="Phone Number"
+                          class="phone"
+                          id="phone"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Password <span style="color: red;">*</span></p>
+                        </div>
+                        <input
+                          name="password"
+                          type="password"
+                          placeholder="Password"
+                          class="password"
+                          id="password"
+                        />
+                      </div>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>
+                            Confirm Password <span style="color: red;">*</span>
+                          </p>
+                        </div>
+                        <input
+                          name="cpassword"
+                          type="password"
+                          placeholder="Confirm Password"
+                          class="cpassword"
+                          id="cpassword"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Country <span style="color: red;">*</span></p>
+                        </div>
                         <div class="input_box slct_picker">
                           <div class="form-selectpicker">
                             <select
-                              id="eduTo"
-                              class="selectpicker year-selector"
+                              class="selectpicker"
                               data-width="100%"
-                              title="To"
+                              title="Select Country"
+                              name="country"
+                              id="countryInput"
                               data-size="6"
-                              name="eduTo"
                             >
-                              <% for (let i= yr; i >= 1950; i--) { %>
-                              <option value="<%= i %>"><%= i %></option>
-                              <% } %>
                             </select>
                           </div>
                         </div>
                       </div>
-                      <div class="delete-btn">
-                        <div
-                          class="delete delete-edu-class"
-                          type="button"
-                          id="delete-edu"
-                        >
-                          <i class="fa fa-minus"></i>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>City <span style="color: red;">*</span></p>
+                        </div>
+                        <div class="input_box slct_picker">
+                          <div class="form-selectpicker">
+                            <select
+                              class="selectpicker"
+                              data-width="100%"
+                              title="Select City"
+                              name="city"
+                              id="cityInput"
+                              data-size="6"
+                            >
+                            </select>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div id="add-edu-field" class="add-edu-field-class">
-                  <i class="fa fa-plus plus"></i>Add Field
-                </div>
-              </div>
 
-              <!-- ** PROFESSIONAL DEGREE ** -->
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>
-                        Professional Degree <span style="color: red;">*</span>
-                      </p>
-                    </div>
-                    <input
-                      name="professionalDegree"
-                      type="text"
-                      placeholder="Name of highest achieved Degree"
-                      class="prof-degree"
-                      id="prof-high-degree"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div
-                      class="two_box_header form-header"
-                      style="visibility: hidden;"
-                    >
-                      <p>Professional Degree</p>
-                    </div>
-                    <input
-                      name="professionalDegree"
-                      type="text"
-                      placeholder="Name of the field"
-                      class="prof-degree"
-                      id="prof-degree-area"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- ** PROFESSIONAL TRAINING ** -->
-              <div class="two_box_one skill flex-child">
-                <div class="" id="training-section">
-                  <div class="two_box_header form-header">
-                    <p>Professional Training</p>
-                  </div>
-                  <div id="all_training_inputs">
-                    <div class="training_input">
-                      <div class="arrow_sign">
-                        <i
-                          class="fa fa-arrow-right"
-                          style="margin-right: 20px;"
-                        ></i>
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>License / Registration No.</p>
+                        </div>
+                        <input
+                          name="regno"
+                          type="text"
+                          placeholder="License / Registration No."
+                          class="regno"
+                          id="regno"
+                        />
                       </div>
-                      <div class="training_in">
-                        <div class="same_row_inputs">
-                          <div class="input_box">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>
+                            Display Picture <span style="color: red;">*</span>
+                          </p>
+                        </div>
+                        <div class="input_box imageFile">
+                          <input
+                            type="file"
+                            id="exp_user_propic"
+                            name="exp_user_propic"
+                            accept="image/x-png,image/jpg,image/jpeg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="two_box_header form-header">
+                      <p>About Yourself <span style="color: red;">*</span></p>
+                    </div>
+                    <textarea
+                      name="aboutYourself"
+                      placeholder="Write about yourself"
+                      id="about_me"
+                      cols="30"
+                      rows="5"
+                      class="about_me"
+                    ></textarea>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Designation <span style="color: red;">*</span></p>
+                        </div>
+                        <input
+                          name="designation"
+                          type="text"
+                          placeholder="Designation"
+                          class="designation"
+                          id="designation"
+                        />
+                      </div>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>
+                            Current Affiliation
+                            <span style="color: red;">*</span>
+                          </p>
+                        </div>
+                        <input
+                          name="affiliation"
+                          type="text"
+                          placeholder="Current Affiliation"
+                          class="affiliation"
+                          id="affiliation"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Key Research Area</p>
+                        </div>
+                        <input
+                          name="researchArea"
+                          type="text"
+                          placeholder="Key Research Area"
+                          class="research-area"
+                          id="research-area"
+                        />
+                      </div>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Expertise Area</p>
+                        </div>
+                        <input
+                          name="expertise"
+                          type="text"
+                          placeholder="Expert Area"
+                          class="expertise"
+                          id="expertise"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ** EDUCATION ** -->
+                  <div class="two_box_one flex-child">
+                    <div class="" id="education-section">
+                      <div class="two_box_header form-header">
+                        <p>Education <span style="color: red;">*</span></p>
+                      </div>
+                      <div id="all_edu_inputs">
+                        <div class="education_input">
+                          <div class="arrow_sign">
+                            <i class="fa fa-arrow-right"></i>
+                          </div>
+                          <div class="edu_in">
                             <input
                               type="text"
-                              placeholder="Name of Training"
-                              name="trainingName"
-                              id="training-name"
-                              class="training-name"
+                              name="eduInstitute"
+                              placeholder="Institute"
+                              id="institute"
+                              class="institute"
                             />
                           </div>
+                          <div class="edu_in">
+                            <input
+                              type="text"
+                              name="degree"
+                              placeholder="Degree"
+                              id="degree"
+                              class="degree"
+                            />
+                          </div>
+                          <div class="edu_in">
+                            <div class="input_box slct_picker">
+                              <div class="form-selectpicker">
+                                <select
+                                  id="eduFrom"
+                                  class="selectpicker year-selector"
+                                  data-width="100%"
+                                  title="From"
+                                  data-size="6"
+                                  name="eduFrom"
+                                >
+                                  <% for (let i= yr; i >= 1950; i--) { %>
+                                  <option value="<%= i %>"><%= i %></option>
+                                  <% } %>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="edu_in">
+                            <div class="input_box slct_picker">
+                              <div class="form-selectpicker">
+                                <select
+                                  id="eduTo"
+                                  class="selectpicker year-selector"
+                                  data-width="100%"
+                                  title="To"
+                                  data-size="6"
+                                  name="eduTo"
+                                >
+                                  <% for (let i= yr; i >= 1950; i--) { %>
+                                  <option value="<%= i %>"><%= i %></option>
+                                  <% } %>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="delete-btn">
+                            <div
+                              class="delete delete-edu-class"
+                              type="button"
+                              id="delete-edu"
+                            >
+                              <i class="fa fa-minus"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="add-edu-field" class="add-edu-field-class">
+                      <i class="fa fa-plus plus"></i>Add Field
+                    </div>
+                  </div>
+
+                  <!-- ** PROFESSIONAL DEGREE ** -->
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>
+                            Professional Degree
+                            <span style="color: red;">*</span>
+                          </p>
+                        </div>
+                        <input
+                          name="professionalDegree"
+                          type="text"
+                          placeholder="Name of highest achieved Degree"
+                          class="prof-degree"
+                          id="prof-high-degree"
+                        />
+                      </div>
+                      <div class="input_div">
+                        <div
+                          class="two_box_header form-header"
+                          style="visibility: hidden;"
+                        >
+                          <p>Professional Degree</p>
+                        </div>
+                        <input
+                          name="professionalDegree"
+                          type="text"
+                          placeholder="Name of the field"
+                          class="prof-degree"
+                          id="prof-degree-area"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ** PROFESSIONAL TRAINING ** -->
+                  <div class="two_box_one skill flex-child">
+                    <div class="" id="training-section">
+                      <div class="two_box_header form-header">
+                        <p>Professional Training</p>
+                      </div>
+                      <div id="all_training_inputs">
+                        <div class="training_input">
+                          <div class="arrow_sign">
+                            <i
+                              class="fa fa-arrow-right"
+                              style="margin-right: 20px;"
+                            ></i>
+                          </div>
+                          <div class="training_in">
+                            <div class="same_row_inputs">
+                              <div class="input_box">
+                                <input
+                                  type="text"
+                                  placeholder="Name of Training"
+                                  name="trainingName"
+                                  id="training-name"
+                                  class="training-name"
+                                />
+                              </div>
+                              <div class="input_box slct_picker">
+                                <div class="form-selectpicker">
+                                  <select
+                                    id="trainingFrom"
+                                    class="selectpicker year-selector"
+                                    data-width="100%"
+                                    title="Training Year"
+                                    data-size="6"
+                                    name="trainingYear"
+                                  >
+                                    <% for (let i= yr; i >= 1950; i--) { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                    <% } %>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <textarea
+                              name="trainingDetails"
+                              placeholder="Tell us about your professional training"
+                              id="training-details"
+                              cols="30"
+                              rows="5"
+                              class="more_on_workplace"
+                            ></textarea>
+                          </div>
+                          <div class="delete-btn">
+                            <div
+                              class="delete delete-training-class"
+                              id="delete-training"
+                            >
+                              <i class="fa fa-minus"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="add-training-field" class="add-training-field">
+                      <i class="fa fa-plus plus"></i>Add Field
+                    </div>
+                  </div>
+
+                  <!-- ** WORK AND EXPERIENCE ** -->
+                  <div class="two_box_one flex-child mt-3 pt-2">
+                    <div class="two_box_header form-header">
+                      <p>Works and Experience</p>
+                    </div>
+                    <div class="" id="exp-section">
+                      <div class="exp_input">
+                        <div class="arrow_sign">
+                          <i class="fa fa-arrow-right"></i>
+                        </div>
+                        <div class="exp_in">
+                          <input
+                            type="text"
+                            name="expInstitute"
+                            placeholder="Work Place"
+                            id="exp-institute"
+                            class="exp-institute"
+                          />
+                        </div>
+                        <div class="exp_in">
                           <div class="input_box slct_picker">
                             <div class="form-selectpicker">
                               <select
-                                id="trainingFrom"
+                                id="expFrom"
                                 class="selectpicker year-selector"
                                 data-width="100%"
-                                title="Training Year"
+                                title="Year: From"
                                 data-size="6"
-                                name="trainingYear"
+                                name="expFrom"
                               >
                                 <% for (let i= yr; i >= 1950; i--) { %>
                                 <option value="<%= i %>"><%= i %></option>
@@ -476,132 +555,16 @@
                             </div>
                           </div>
                         </div>
-                        <textarea
-                          name="trainingDetails"
-                          placeholder="Tell us about your professional training"
-                          id="training-details"
-                          cols="30"
-                          rows="5"
-                          class="more_on_workplace"
-                        ></textarea>
-                      </div>
-                      <div class="delete-btn">
-                        <div
-                          class="delete delete-training-class"
-                          id="delete-training"
-                        >
-                          <i class="fa fa-minus"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="add-training-field" class="add-training-field">
-                  <i class="fa fa-plus plus"></i>Add Field
-                </div>
-              </div>
-
-              <!-- ** WORK AND EXPERIENCE ** -->
-              <div class="two_box_one flex-child mt-3 pt-2">
-                <div class="two_box_header form-header">
-                  <p>Works and Experience</p>
-                </div>
-                <div class="" id="exp-section">
-                  <div class="exp_input">
-                    <div class="arrow_sign">
-                      <i class="fa fa-arrow-right"></i>
-                    </div>
-                    <div class="exp_in">
-                      <input
-                        type="text"
-                        name="expInstitute"
-                        placeholder="Work Place"
-                        id="exp-institute"
-                        class="exp-institute"
-                      />
-                    </div>
-                    <div class="exp_in">
-                      <div class="input_box slct_picker">
-                        <div class="form-selectpicker">
-                          <select
-                            id="expFrom"
-                            class="selectpicker year-selector"
-                            data-width="100%"
-                            title="Year: From"
-                            data-size="6"
-                            name="expFrom"
-                          >
-                            <% for (let i= yr; i >= 1950; i--) { %>
-                            <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="exp_in">
-                      <div class="input_box slct_picker">
-                        <div class="form-selectpicker">
-                          <select
-                            id="expTo"
-                            class="selectpicker year-selector"
-                            data-width="100%"
-                            title="Year: To"
-                            data-size="6"
-                            name="expTo"
-                          >
-                            <% for (let i= yr; i >= 1950; i--) { %>
-                            <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="delete-btn">
-                      <div class="delete delete-exp-class" id="delete-exp">
-                        <i class="fa fa-minus"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="add-exp-field" class="add-exp-field">
-                  <i class="fa fa-plus plus"></i>Add Field
-                </div>
-              </div>
-
-              <!-- ** AWARDS AND HONORS ** -->
-              <div class="two_box_one skill flex-child">
-                <div class="" id="awards-section">
-                  <div class="two_box_header form-header">
-                    <p>Awards and Honors</p>
-                  </div>
-                  <div id="all_awards">
-                    <div class="awards_input">
-                      <div class="arrow_sign">
-                        <i
-                          class="fa fa-arrow-right"
-                          style="margin-right: 20px;"
-                        ></i>
-                      </div>
-                      <div class="awards_in">
-                        <div class="same_row_inputs">
-                          <div class="input_box">
-                            <input
-                              type="text"
-                              placeholder="Name of the award"
-                              id="awardsName"
-                              class="award-name"
-                            />
-                          </div>
+                        <div class="exp_in">
                           <div class="input_box slct_picker">
                             <div class="form-selectpicker">
                               <select
-                                id="award-year"
+                                id="expTo"
                                 class="selectpicker year-selector"
                                 data-width="100%"
-                                title="Achievement Year"
+                                title="Year: To"
                                 data-size="6"
-                                name="awardsYear"
+                                name="expTo"
                               >
                                 <% for (let i= yr; i >= 1950; i--) { %>
                                 <option value="<%= i %>"><%= i %></option>
@@ -610,229 +573,289 @@
                             </div>
                           </div>
                         </div>
-                        <textarea
-                          name="awardsDetails"
-                          placeholder="Tell us about your award"
-                          id="award-details"
-                          cols="30"
-                          rows="5"
-                          class="award-details"
-                        ></textarea>
-                      </div>
-                      <div class="delete-btn">
-                        <div
-                          class="delete delete-awards-class"
-                          type="button"
-                          id="delete-awards"
-                        >
-                          <i class="fa fa-minus"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="add-awards-field" class="add-awards-field">
-                  <i class="fa fa-plus plus"></i> Add Field
-                </div>
-              </div>
 
-              <!-- ** CHAMBER DETAILS ** -->
-              <div class="two_box_one flex-child">
-                <div class="two_box_header form-header">
-                  <p>Visiting Hours Details</p>
-                </div>
-                <div class="chambers">
-                  <div class="oneChamber">
-                    <div class="arrow_sign">
-                      <i class="fa fa-arrow-right"></i>
-                    </div>
-                    <div class="chamberInfo">
-                      <div class="nameAddress">
-                        <div class="free-input">
-                          <input
-                            type="text"
-                            placeholder="Name of the chamber"
-                            name="chamberName"
-                            class="chamberName"
-                          />
-                        </div>
-                        <div class="free-input">
-                          <input
-                            type="text"
-                            placeholder="Address of the chamber"
-                            name="chamberAddress"
-                            class="chamberAddress"
-                          />
-                        </div>
-                        <div class="delete-btn delete-vh-chamber-class-wrapper">
-                          <div
-                            class="delete delete-vh-chamber-class"
-                            id="delete-vh-chamber"
-                          >
+                        <div class="delete-btn">
+                          <div class="delete delete-exp-class" id="delete-exp">
                             <i class="fa fa-minus"></i>
                           </div>
                         </div>
                       </div>
-                      <div class="dayTime">
-                        <div class="allRowsDayTime">
-                          <div class="DayTimeFlexParent">
-                            <div class="free-input">
+                    </div>
+                    <div id="add-exp-field" class="add-exp-field">
+                      <i class="fa fa-plus plus"></i>Add Field
+                    </div>
+                  </div>
+
+                  <!-- ** AWARDS AND HONORS ** -->
+                  <div class="two_box_one skill flex-child">
+                    <div class="" id="awards-section">
+                      <div class="two_box_header form-header">
+                        <p>Awards and Honors</p>
+                      </div>
+                      <div id="all_awards">
+                        <div class="awards_input">
+                          <div class="arrow_sign">
+                            <i
+                              class="fa fa-arrow-right"
+                              style="margin-right: 20px;"
+                            ></i>
+                          </div>
+                          <div class="awards_in">
+                            <div class="same_row_inputs">
+                              <div class="input_box">
+                                <input
+                                  type="text"
+                                  placeholder="Name of the award"
+                                  id="awardsName"
+                                  class="award-name"
+                                />
+                              </div>
                               <div class="input_box slct_picker">
                                 <div class="form-selectpicker">
                                   <select
-                                    class="vh-selector selectpicker year-selector"
+                                    id="award-year"
+                                    class="selectpicker year-selector"
                                     data-width="100%"
-                                    title="Day: From"
-                                    id="vhFrom"
+                                    title="Achievement Year"
                                     data-size="6"
-                                    name="dayFrom"
+                                    name="awardsYear"
                                   >
-                                    <% for (let i=0; i < 7; i++) { %>
-                                    <option value="<%=days[i] %>">
-                                      <%= days[i] %>
-                                    </option>
+                                    <% for (let i= yr; i >= 1950; i--) { %>
+                                    <option value="<%= i %>"><%= i %></option>
                                     <% } %>
                                   </select>
                                 </div>
                               </div>
                             </div>
+                            <textarea
+                              name="awardsDetails"
+                              placeholder="Tell us about your award"
+                              id="award-details"
+                              cols="30"
+                              rows="5"
+                              class="award-details"
+                            ></textarea>
+                          </div>
+                          <div class="delete-btn">
+                            <div
+                              class="delete delete-awards-class"
+                              type="button"
+                              id="delete-awards"
+                            >
+                              <i class="fa fa-minus"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="add-awards-field" class="add-awards-field">
+                      <i class="fa fa-plus plus"></i> Add Field
+                    </div>
+                  </div>
+
+                  <!-- ** CHAMBER DETAILS ** -->
+                  <div class="two_box_one flex-child">
+                    <div class="two_box_header form-header">
+                      <p>Visiting Hours Details</p>
+                    </div>
+                    <div class="chambers">
+                      <div class="oneChamber">
+                        <div class="arrow_sign">
+                          <i class="fa fa-arrow-right"></i>
+                        </div>
+                        <div class="chamberInfo">
+                          <div class="nameAddress">
                             <div class="free-input">
-                              <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                  <select
-                                    class="vh-selector selectpicker year-selector"
-                                    data-width="100%"
-                                    title="Day: To"
-                                    id="vhFrom"
-                                    data-size="6"
-                                    name="dayTo"
-                                  >
-                                    <% for (let i=0; i < 7; i++) { %>
-                                    <option value="<%=days[i] %>">
-                                      <%= days[i] %>
-                                    </option>
-                                    <% } %>
-                                  </select>
-                                </div>
-                              </div>
+                              <input
+                                type="text"
+                                placeholder="Name of the chamber"
+                                name="chamberName"
+                                class="chamberName"
+                              />
                             </div>
                             <div class="free-input">
-                              <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                  <select
-                                    class="vh-selector selectpicker"
-                                    data-width="100%"
-                                    title="Time: From"
-                                    id="vhFrom"
-                                    data-size="6"
-                                    name="timeFrom"
-                                  >
-                                    <% for (let i=1; i<=12; i++) { %>
-                                    <option value="<%=i %>:00 AM">
-                                      <%= i %>:00 AM
-                                    </option>
-                                    <% } %> <% for (let i=1; i<=12; i++) { %>
-                                    <option value="<%= i %>:00PM">
-                                      <%= i %>:00PM</option
-                                    >
-                                    <% } %>
-                                  </select>
-                                </div>
-                              </div>
+                              <input
+                                type="text"
+                                placeholder="Address of the chamber"
+                                name="chamberAddress"
+                                class="chamberAddress"
+                              />
                             </div>
-                            <div class="free-input">
-                              <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                  <select
-                                    class="vh-selector selectpicker"
-                                    data-width="100%"
-                                    title="Time: To"
-                                    id="vhFrom"
-                                    name="timeTo"
-                                    data-size="6"
-                                  >
-                                    <% for (let i=1; i<=12; i++) { %>
-                                    <option value="<%=i %>:00 AM">
-                                      <%= i %>:00 AM
-                                    </option>
-                                    <% } %> <% for (let i=1; i<=12; i++) { %>
-                                    <option value="<%= i %>:00PM">
-                                      <%= i %>:00PM</option
-                                    >
-                                    <% } %>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="delete-btn">
+                            <div
+                              class="delete-btn delete-vh-chamber-class-wrapper"
+                            >
                               <div
-                                class="delete delete-vh-shift-class"
-                                id="delete-vh-shift"
+                                class="delete delete-vh-chamber-class"
+                                id="delete-vh-chamber"
                               >
                                 <i class="fa fa-minus"></i>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div id="add-vh-shift" class="add-vh-shift">
-                          <i class="fa fa-plus plus"></i>Add Shifts
+                          <div class="dayTime">
+                            <div class="allRowsDayTime">
+                              <div class="DayTimeFlexParent">
+                                <div class="free-input">
+                                  <div class="input_box slct_picker">
+                                    <div class="form-selectpicker">
+                                      <select
+                                        class="vh-selector selectpicker year-selector"
+                                        data-width="100%"
+                                        title="Day: From"
+                                        id="vhFrom"
+                                        data-size="6"
+                                        name="dayFrom"
+                                      >
+                                        <% for (let i=0; i < 7; i++) { %>
+                                        <option value="<%=days[i] %>">
+                                          <%= days[i] %>
+                                        </option>
+                                        <% } %>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="free-input">
+                                  <div class="input_box slct_picker">
+                                    <div class="form-selectpicker">
+                                      <select
+                                        class="vh-selector selectpicker year-selector"
+                                        data-width="100%"
+                                        title="Day: To"
+                                        id="vhFrom"
+                                        data-size="6"
+                                        name="dayTo"
+                                      >
+                                        <% for (let i=0; i < 7; i++) { %>
+                                        <option value="<%=days[i] %>">
+                                          <%= days[i] %>
+                                        </option>
+                                        <% } %>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="free-input">
+                                  <div class="input_box slct_picker">
+                                    <div class="form-selectpicker">
+                                      <select
+                                        class="vh-selector selectpicker"
+                                        data-width="100%"
+                                        title="Time: From"
+                                        id="vhFrom"
+                                        data-size="6"
+                                        name="timeFrom"
+                                      >
+                                        <% for (let i=1; i<=12; i++) { %>
+                                        <option value="<%=i %>:00 AM">
+                                          <%= i %>:00 AM
+                                        </option>
+                                        <% } %> <% for (let i=1; i<=12; i++) {
+                                        %>
+                                        <option value="<%= i %>:00PM">
+                                          <%= i %>:00PM</option
+                                        >
+                                        <% } %>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="free-input">
+                                  <div class="input_box slct_picker">
+                                    <div class="form-selectpicker">
+                                      <select
+                                        class="vh-selector selectpicker"
+                                        data-width="100%"
+                                        title="Time: To"
+                                        id="vhFrom"
+                                        name="timeTo"
+                                        data-size="6"
+                                      >
+                                        <% for (let i=1; i<=12; i++) { %>
+                                        <option value="<%=i %>:00 AM">
+                                          <%= i %>:00 AM
+                                        </option>
+                                        <% } %> <% for (let i=1; i<=12; i++) {
+                                        %>
+                                        <option value="<%= i %>:00PM">
+                                          <%= i %>:00PM</option
+                                        >
+                                        <% } %>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="delete-btn">
+                                  <div
+                                    class="delete delete-vh-shift-class"
+                                    id="delete-vh-shift"
+                                  >
+                                    <i class="fa fa-minus"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="add-vh-shift" class="add-vh-shift">
+                              <i class="fa fa-plus plus"></i>Add Shifts
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <div id="add-vh-chamber" class="add-vh-chamber">
+                      <i class="fa fa-plus plus"></i>Add Chambers
+                    </div>
                   </div>
-                </div>
-                <div id="add-vh-chamber" class="add-vh-chamber">
-                  <i class="fa fa-plus plus"></i>Add Chambers
-                </div>
-              </div>
 
-              <!-- ** VISITING FEE ** SPECIALITY ** -->
-              <div class="two_box_one flex-child">
-                <div class="side_by_side">
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Visiting Fee <span style="color: red;">*</span></p>
-                    </div>
-                    <input
-                      name="fee"
-                      type="text"
-                      placeholder="Visiting Fee"
-                      class="visitingFee"
-                      id="visitingFee"
-                    />
-                  </div>
-                  <div class="input_div">
-                    <div class="two_box_header form-header">
-                      <p>Speciality <span style="color: red;">*</span></p>
-                    </div>
-                    <div class="input_box slct_picker">
-                      <div class="form-selectpicker">
-                        <select
-                          id="speciality"
-                          class="selectpicker"
-                          data-width="100%"
-                          title="Speciality"
-                          data-size="6"
-                          name="speciality"
-                        >
-                          <option value="Psychiatric Consultations">
-                            Psychiatric Consultations</option
-                          >
-                          <option value="Psycho Therapy & Counselling">
-                            Psycho Therapy & Counselling
-                          </option>
-                        </select>
+                  <!-- ** VISITING FEE ** SPECIALITY ** -->
+                  <div class="two_box_one flex-child">
+                    <div class="side_by_side">
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Visiting Fee <span style="color: red;">*</span></p>
+                        </div>
+                        <input
+                          name="fee"
+                          type="text"
+                          placeholder="Visiting Fee"
+                          class="visitingFee"
+                          id="visitingFee"
+                        />
+                      </div>
+                      <div class="input_div">
+                        <div class="two_box_header form-header">
+                          <p>Speciality <span style="color: red;">*</span></p>
+                        </div>
+                        <div class="input_box slct_picker">
+                          <div class="form-selectpicker">
+                            <select
+                              id="speciality"
+                              class="selectpicker"
+                              data-width="100%"
+                              title="Speciality"
+                              data-size="6"
+                              name="speciality"
+                            >
+                              <option value="Psychiatric Consultations">
+                                Psychiatric Consultations</option
+                              >
+                              <option value="Psycho Therapy & Counselling">
+                                Psycho Therapy & Counselling
+                              </option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="addDoctor__submit">
+                  <button id="sub-btn" type="submit">Submit</button>
+                </div>
               </div>
-            </div>
-            <div class="addDoctor__submit">
-              <button id="sub-btn" type="submit">Submit</button>
-            </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </section>
     <%- include('./partials/footer')%>
@@ -1534,6 +1557,12 @@
     });
   </script>
 
+  <script>
+    const submitBtn = $('.addDoctor__submit button');
+    submitBtn.prop('disabled', false);
+    submitBtn.text('Submit');
+  </script>
+
   <!-- FORM SUBMIT -->
   <script>
     $('.addDoctor__submit').on('click', (e) => {
@@ -1678,15 +1707,19 @@
               };
               $('#filename').val(nowInMilSec);
               console.log(formData);
-
+              submitBtn.text('Submitting...');
+              submitBtn.prop('disabled', true);
+              console.log('Ajax inserting');
               $.ajax({
                 type: 'POST',
                 url: '/auth/register/new/exp/data',
                 data: formData,
                 success: (data) => {
-                  console.log(data);
+                  console.log('File Started');
                   if (!data.status) {
                     showAlert(data.message);
+                    submitBtn.text('Submit');
+                    submitBtn.prop('disabled', false);
                   } else if (data.status) {
                     $('#DocRegform').submit();
                   }
@@ -1696,6 +1729,12 @@
           }
         });
       }
+    });
+  </script>
+
+  <script>
+    $('#DocRegform').bind('ajax:complete', function () {
+      console.log('The End');
     });
   </script>
 

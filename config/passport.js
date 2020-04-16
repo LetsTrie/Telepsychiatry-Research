@@ -22,7 +22,8 @@ module.exports = function(passport) {
             },
             async(req, email, password, done) => {
                 // check for admin
-                console.log(email);
+                const Email = email.trim();
+                console.log('email: ', req.body.email);
                 if (req.body.email == admin.email) {
                     console.log('admin');
                     if (req.body.password == admin.password) {
@@ -33,7 +34,8 @@ module.exports = function(passport) {
                     }
                 }
 
-                const eUser = await eUserModel.findOne({ email: req.body.email });
+                const eUser = await eUserModel.findOne({ email: Email });
+                console.log(eUser);
                 // 3 user niye kaj korte hobe...
                 let user;
                 if (eUser) {
@@ -53,6 +55,7 @@ module.exports = function(passport) {
                     }
                 } else {
                     req.flash('errorMessage', 'Email not found');
+                    done(null, false);
                 }
             }
         )

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Document*</title>
+  </head>
+
+  <body>
+    <section class="adminDashboard" style="min-height: 100vh;">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">TRIN</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div style="margin: auto;"></div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Doctor</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Test</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <section class="healthTest m-5 p-3">
+          <div class="healthTest__heading text-center pb-3">
+            <h1>Add New Test</h1>
+          </div>
+          <div class="healthTest__form">
+            <div class="row py-3">
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="disorderNameInEng"
+                  class="form-control"
+                  placeholder="Disorder name In English"
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="disorderNameInBangla"
+                  class="form-control"
+                  placeholder="Disorder name In Bangla"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="testNameInEng"
+                  class="form-control"
+                  placeholder="Test Name In English"
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="testNameInBangla"
+                  class="form-control"
+                  placeholder="Test Name In Bangla"
+                />
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col">
+                <div class="form-selectpicker">
+                  <select
+                    class="selectpicker"
+                    data-width="100%"
+                    title="Age range"
+                    name="age"
+                    id="AgeRangeInput"
+                    data-size="6"
+                  >
+                    <option value="For Children">For Children</option>
+                    <option value="For Young People">For Young People</option>
+                    <option value="For Old People">For Old People</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-sm">
+                <div class="form-selectpicker">
+                  <select
+                    class="selectpicker"
+                    data-width="100%"
+                    title="Paid or not"
+                    name="paid"
+                    id="paidInput"
+                    data-size="6"
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  placeholder="Pay amount"
+                  class="form-control"
+                  id="payAmount"
+                  style="visibility: hidden;"
+                />
+              </div>
+            </div>
+
+            <h5 class="px-1 py-3">Questions</h5>
+
+            <div class="allQuestionsWrapper">
+              <div class="allQuestions">
+                <div class="eachQuestions">
+                  <div class="quesInfo">
+                    <div class="row pl-3">
+                      <div class="col-sm">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="questionEng"
+                          placeholder="Question (In English)"
+                        />
+                      </div>
+                      <div class="col-sm">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="questionBan"
+                          placeholder="Question (In Bangla)"
+                        />
+                      </div>
+                      <div class="col-sm">
+                        <input
+                          type="button"
+                          value="delete"
+                          class="btn btn-dark QuestionDelete"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="optionInfo">
+                    <div class="allOptions">
+                      <div class="eachOptions row pl-5 pt-2">
+                        <div class="col-sm">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="optionEng"
+                            placeholder="Option (In English)"
+                          />
+                        </div>
+                        <div class="col-sm">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="optionBan"
+                            placeholder="Option (In Bangla)"
+                          />
+                        </div>
+                        <div class="col-sm">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="scale"
+                            placeholder="Scale"
+                          />
+                        </div>
+                        <div class="col-sm">
+                          <input
+                            type="button"
+                            value="delete"
+                            class="btn btn-dark optionDelete"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="addoption pl-5 pt-2 py-2">
+                      <input
+                        type="button"
+                        value="add option"
+                        class="btn btn-dark addOptions"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="newQuestion pl-3 py-2">
+                <input
+                  type="button"
+                  value="add question"
+                  class="btn btn-dark"
+                  id="addQuestion"
+                />
+              </div>
+            </div>
+
+            <div class="pt-3 text-center">
+              <button id="submit-btn" class="btn btn-dark">SUBMIT</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    function go() {
+      location = '/admin/test/new';
+    }
+
+    $('#paidInput').on('change', (e) => {
+      if (e.target.value === 'Yes') {
+        console.log('OKAY');
+        $('#payAmount').css('visibility', 'visible');
+      }
+    });
+
+    $(document).on('click', '.newQuestion', (e) => {
+      $('.allQuestions').append(`
+        <div class="eachQuestions">
+          <div class="quesInfo">
+            <div class="row pl-3">
+              <div class="col-sm">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="questionEng"
+                  placeholder="Question (In English)"
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="questionBan"
+                  placeholder="Question (In Bangla)"
+                />
+              </div>
+              <div class="col-sm">
+                <input
+                  type="button"
+                  value="delete"
+                  class="btn btn-dark QuestionDelete"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="optionInfo">
+            <div class="allOptions">
+              <div class="eachOptions row pl-5 pt-2">
+                <div class="col-sm">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="optionEng"
+                    placeholder="Option (In English)"
+                  />
+                </div>
+                <div class="col-sm">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="optionBan"
+                    placeholder="Option (In Bangla)"
+                  />
+                </div>
+                <div class="col-sm">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="scale"
+                    placeholder="Scale"
+                  />
+                </div>
+                <div class="col-sm">
+                  <input
+                    type="button"
+                    value="delete"
+                    class="btn btn-dark optionDelete"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="addoption pl-5 pt-2 py-2">
+              <input
+                type="button"
+                value="add option"
+                class="btn btn-dark addOptions"
+              />
+            </div>
+          </div>
+        </div>
+      `);
+    });
+
+    $(document).on('click', '.addOptions', (e) => {
+      $(e.target.parentElement.parentElement.children[0]).append(`
+        <div class="eachOptions row pl-5 pt-2">
+          <div class="col-sm">
+            <input
+              type="text"
+              class="form-control"
+              id="optionEng"
+              placeholder="Option (In English)"
+            />
+          </div>
+          <div class="col-sm">
+            <input
+              type="text"
+              class="form-control"
+              id="optionBan"
+              placeholder="Option (In Bangla)"
+            />
+          </div>
+          <div class="col-sm">
+            <input
+              type="text"
+              id="scale"
+              class="form-control"
+              placeholder="Scale"
+            />
+          </div>
+          <div class="col-sm">
+            <input
+              type="button"
+              value="delete"
+              class="btn btn-dark optionDelete"
+            />
+          </div>
+        </div>
+      `);
+    });
+
+    $(document).on('click', '.optionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        console.log(val);
+        if (val.includes('eachOptions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+    $(document).on('click', '.QuestionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        if (val.includes('eachQuestions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+
+    const check = (str) => {
+      const res = str == '' || str == null || str == undefined;
+      return res;
+    };
+
+    const showAlert = (msg) => {
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate(
+        {
+          scrollTop: 0,
+        },
+        'slow'
+      );
+    };
+
+    const Submit = (data) => {
+      $.ajax({
+        type: 'POST',
+        url: '/admin/test/new',
+        data,
+        success: (data) => {
+          console.log(data.status);
+          if (data.status) {
+            $('#alert-success').show();
+            $('#alert-success').html('The test has succesfully been added');
+            setTimeout(() => {
+              location.reload();
+            }, 2000);
+          } else {
+            showAlert(data.msg);
+          }
+        },
+      });
+    };
+  </script>
+</html>

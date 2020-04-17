@@ -12,6 +12,8 @@ const { testModel } = require('../models/test');
 const LIMIT = 9;
 
 // ################## OKAY [START] ########################
+const trnsfrm = (x) => x.charAt(0).toUpperCase() + x.substr(1);
+
 const admin = require('../config/credentials').adminCredentials;
 exports.getDashboard = (req, res, next) => res.render('admin_dashboard');
 exports.getLogin = (req, res, next) => res.render('adminLogin');
@@ -29,61 +31,11 @@ exports.postLogin = (req, res, next) => {
     });
   }
 };
-// ################## OKAY [THE END] ########################
-
-function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach((item) => {
-    const key = keyGetter(item).toLowerCase();
-    // console.log(key);
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
-    } else {
-      collection.push(item);
-    }
-  });
-  return map;
-}
-
-function nullChk(data) {
-  return data === undefined || data === null || data === '';
-}
-
-exports.getAllTests = async (req, res, next) => {
-  let searchKey = {};
-  const { disorder, test, paid } = req.query;
-  if (!nullChk(disorder)) searchKey['nameEng'] = disorder;
-  if (!nullChk(test)) searchKey['testEng'] = test;
-  if (!nullChk(paid)) searchKey['paidInput'] = paid;
-
-  let tests = await testModel.find(searchKey);
-
-  let disorders = new Set();
-  for (let i = 0; i < tests.length; i++)
-    disorders.add(tests[i].nameEng.toLowerCase());
-  disorders = Array.from(disorders);
-
-  const groupedTests = groupBy(tests, (tests) => tests.nameEng);
-
-  // make a function, if i give a disorder name, it will return all its test (In the same process. Distinct name)
-  const final = [];
-  for (let i = 0; i < disorders.length; i++) {
-    const disorderName = disorders[i];
-    const relatedTests = [];
-    const testMap = groupedTests.get(disorderName.toLowerCase());
-    for (let j = 0; j < testMap.length; j++) relatedTests.push(testMap[j]);
-    final.push({ disorderName, relatedTests });
-  }
-  return res.render('admin__test', { tests: final });
-};
-
 exports.getSingleTest = async (req, res) => {
   let test = await testModel.findById(req.params.id);
   let { lang } = req.query;
   if (nullChk(lang)) lang = 'eng';
   let data = {};
-  console.log(lang);
   if (lang === 'eng') {
     data['testName'] = test.testEng;
     data['disorderName'] = test.nameEng;
@@ -115,29 +67,91 @@ exports.getSingleTest = async (req, res) => {
       let obj = {};
       obj['QuesName'] = test.questions[i].questionBan;
       let arr = [];
+
       for (let j = 0; j < test.questions[i].Options.length; j++) {
         arr.push({
           optionName: test.questions[i].Options[j].optionBan,
           optionScale: test.questions[i].Options[j].scale,
         });
       }
+
       obj['options'] = arr;
+      console.log(obj['options']);
       data['questions'].push(obj);
     }
   }
   data['_id'] = test._id;
   res.render('singleTest', { test: data, lang });
 };
-
+function nullChk(data) {
+  return data === undefined || data === null || data === '';
+}
 exports.updateTest = async (req, res) => {
-  checker(req, res);
-  const id = req.params.id;
-  const test = await testModel.findOne({ _id: id });
+  const test = await testModel.findById(req.params.id);
   res.render('updateTest', { test });
 };
 
+// ################## OKAY [THE END] ########################
+
+exports.findTestbyDisorder = async (req, res) => {
+  const { value } = req.body;
+  const tests = await testModel.find({ nameEng: value });
+  const arr = [];
+  for (let i = 0; i < tests.length; i++) arr.push(tests[i].testEng);
+  return res.json({ test: arr });
+};
+
+function groupBy(list, keyGetter) {
+  const map = new Map();
+  list.forEach((item) => {
+    const key = keyGetter(item).toLowerCase();
+    const collection = map.get(key);
+    if (!collection) {
+      map.set(key, [item]);
+    } else {
+      collection.push(item);
+    }
+  });
+  return map;
+}
+
+exports.getAllTests = async (req, res, next) => {
+  let searchKey = {};
+  const { disorder, test, paid } = req.query;
+  if (!nullChk(disorder)) searchKey['nameEng'] = disorder;
+  if (!nullChk(test)) searchKey['testEng'] = test;
+  if (!nullChk(paid)) searchKey['paidInput'] = paid;
+
+  let tests = await testModel.find(searchKey);
+  let AllTestForSearch = await testModel.find({});
+
+  let fs_disorders = new Set();
+  for (let i = 0; i < AllTestForSearch.length; i++)
+    fs_disorders.add(trnsfrm(AllTestForSearch[i].nameEng.toLowerCase()));
+  fs_disorders = Array.from(fs_disorders);
+
+  let disorders = new Set();
+  for (let i = 0; i < tests.length; i++)
+    disorders.add(tests[i].nameEng.toLowerCase());
+  disorders = Array.from(disorders);
+
+  const groupedTests = groupBy(tests, (tests) => tests.nameEng);
+
+  let final = [];
+  for (let i = 0; i < disorders.length; i++) {
+    let disorderName = disorders[i];
+    let relatedTests = [];
+    let testMap = groupedTests.get(disorderName.toLowerCase());
+    for (let j = 0; j < testMap.length; j++) relatedTests.push(testMap[j]);
+    final.push({ disorderName, relatedTests });
+  }
+  return res.render('admin__test', {
+    tests: final,
+    searchDisorder: fs_disorders,
+  });
+};
+
 exports.postUpdateTest = async (req, res) => {
-  checker(req, res);
   const id = req.body.id;
   const Questions = JSON.parse(req.body.questions);
   await testModel.update(
@@ -146,7 +160,7 @@ exports.postUpdateTest = async (req, res) => {
       $set: {
         testEng: req.body.testEng,
         testBan: req.body.testBan,
-        nameEng: req.body.nameEng,
+        nameEng: trnsfrm(req.body.nameEng),
         nameBan: req.body.nameBan,
         age: req.body.age,
         paidInput: req.body.paidInput,
@@ -163,7 +177,6 @@ exports.postUpdateTest = async (req, res) => {
 };
 
 exports.createTest = async (req, res, next) => {
-  checker(req, res);
   const {
     testEng,
     testBan,
@@ -177,29 +190,19 @@ exports.createTest = async (req, res, next) => {
   const test = {
     testEng,
     testBan,
-    nameEng,
+    nameEng: trnsfrm(nameEng),
     nameBan,
     age,
     paidInput,
     payAmount,
     questions,
   };
-  console.log(req.body);
   const { validateTestData } = require('../validations/test');
   const { error } = validateTestData(test);
-  if (error) {
-    res.send({
-      status: false,
-      msg: error.details[0].message,
-    });
-  }
+  if (error) return res.send({ status: false, msg: error.details[0].message });
   const newTest = new testModel(test);
   await newTest.save();
-  console.log('test saved');
-  res.send({
-    status: true,
-    msg: 'okay',
-  });
+  return res.send({ status: true, msg: 'okay', id: newTest._id });
 };
 
 exports.contactUs = async (req, res, next) => {

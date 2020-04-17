@@ -50,9 +50,9 @@
                         id="disorderInput"
                         data-size="6"
                       >
-                        <% for(let i = 0 ; i < tests.length; i++) { %>
-                        <option value="<%=tests[i].disorderName%>"
-                          ><%=tests[i].disorderName%></option
+                        <% for(let i = 0 ; i < searchDisorder.length; i++) { %>
+                        <option value="<%=searchDisorder[i]%>"
+                          ><%=searchDisorder[i]%></option
                         >
                         <% } %>
                       </select>
@@ -68,9 +68,6 @@
                         id="testInput"
                         data-size="6"
                       >
-                        <option value="bipolar-1">Bipolar-1</option>
-                        <option value="an-2">An-2</option>
-                        <option value="trauma-1">Trauma-1</option>
                       </select>
                     </div>
                   </div>
@@ -98,12 +95,13 @@
               </section>
             </div>
           </form>
+          <% const x = d => d.charAt(0).toUpperCase() + d.substr(1); %>
           <div class="healthTest_allDisorders">
             <% for (let i=0; i < tests.length; i++) { %>
             <div class="eachDisorderTestAll">
               <div class="eachDisorder_heading">
                 <h6>
-                  <%= tests[i].disorderName %>
+                  <%= x(tests[i].disorderName) %>
                 </h6>
               </div>
               <div class="eachDisorder_eachTest">
@@ -113,7 +111,7 @@
                     <a
                       href="/admin/test/single/<%= tests[i].relatedTests[j]._id %>"
                     >
-                      <%= tests[i].relatedTests[j].testEng %>
+                      <%= x(tests[i].relatedTests[j].testEng) %>
                     </a>
                   </li>
                   <% } %>
@@ -132,5 +130,25 @@
     function go() {
       location = '/admin/test/new';
     }
+    document.getElementById('disorderInput').addEventListener('change', (e) => {
+      const { value } = e.target;
+
+      $('#testInput').empty();
+
+      $.ajax({
+        type: 'POST',
+        url: '/admin/findTestbyDisorder',
+        contentType: 'application/json',
+        data: JSON.stringify({ value }),
+      }).done((response) => {
+        for (let i = 0; i < response.test.length; i++) {
+          console.log(response.test[i]);
+          $('#testInput').append(`
+            <option value="${response.test[i]}">${response.test[i]}</option>
+          `);
+        }
+        $('#testInput').selectpicker('refresh');
+      });
+    });
   </script>
 </html>

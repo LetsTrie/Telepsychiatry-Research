@@ -50,16 +50,14 @@
                 <% if(test.paidInput === 'No') { %>
                 <td>Free</td>
                 <% } else { %>
-                <td><%= test.payAmount %></td>
+                <td><%= test.payAmount %> BDT</td>
                 <% } %>
               </tr>
               <tr>
                 <td>Available Language</td>
                 <td>
                   <% if(lang === 'eng') { %>
-                  <a href="#" class="notColor">
-                    English
-                  </a>
+                  <a href="#" class="notColor"> English</a>
                   ,
                   <a href="/admin/test/single/<%=test._id%>?lang=ban">
                     <!-- ekhane link hobe -->
@@ -68,8 +66,8 @@
                   <% } else { %>
                   <a href="/admin/test/single/<%=test._id%>?lang=eng">
                     <!-- ekhane link hobe -->
-                    English
-                  </a>
+                    English</a
+                  >
                   ,
                   <a href="#" class="notColor">
                     Bangla
@@ -80,20 +78,27 @@
             </tbody>
           </table>
         </div>
+        <div
+          class="updateBtn text-right"
+          style="margin-right: 30px; padding-right: 30px;"
+        >
+          <button id="update-btn" class="">Update</button>
+        </div>
         <div class="test_header text-center">
           <h2>Questions</h2>
         </div>
         <div class="allQuestions">
           <div class="questions">
-            <% for(let i = 0; i < 5; i++) { %>
+            <% for(let i = 0; i < test.questions.length; i++) { %>
             <div class="question">
               <div class="question_name">
                 <p>
-                  <%=i + 1%>. Feeling down, depressed, or hopeless?
+                  <%=i + 1%>. <%= test.questions[i].QuesName %>
                 </p>
               </div>
               <div class="options">
-                <% for(let j = 0 ; j < 4 ; j++) { %>
+                <% for(let j = 0 ; j < test.questions[i].options.length ; j++) {
+                %>
                 <div class="pl-2 magicc">
                   <div class="custom-control custom-radio">
                     <input
@@ -104,8 +109,9 @@
                       value="<%=i%>-<%=j%>"
                     />
                     <label class="custom-control-label" for="Radio<%=i%><%=j%>"
-                      >Not at all</label
-                    >
+                      ><%= test.questions[i].options[j].optionName %> (<%=
+                      test.questions[i].options[j].optionScale %>%)
+                    </label>
                   </div>
                 </div>
                 <% } %>
@@ -116,7 +122,6 @@
         </div>
       </div>
       <input type="hidden" name="" value="<%= test._id %>" id="id" />
-      <button id="update-btn" class="btn btn-success">Update</button>
     </section>
   </body>
   <script

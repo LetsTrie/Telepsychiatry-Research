@@ -21,6 +21,7 @@ const {
   updateTest,
   postUpdateTest,
   getDashboard,
+  findTestbyDisorder,
 } = require('../controllers/admin');
 
 const {
@@ -40,6 +41,11 @@ router.post('/test/new', createTest);
 router.get('/test/single/:id', getSingleTest);
 router.get('/test/update/:id', updateTest);
 router.post('/test/update', postUpdateTest);
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/admin/login');
+});
+router.post('/findTestbyDisorder', findTestbyDisorder);
 
 //admin contact us
 router.get('/contactUs', contactUs);

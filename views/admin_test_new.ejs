@@ -1,154 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
 
-        <link rel="stylesheet" href="/css/admin_new_test.css" />
-        <title>Add New Test | Mental Health and Wellbeing Assessment</title>
-</head>
+    <link rel="stylesheet" href="/css/admin_new_test.css" />
+    <title>Add New Test | Mental Health and Wellbeing Assessment</title>
+  </head>
 
-<body>
+  <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Services</p>
-                </div>
-                <div class="bigText">
-                    <p>Mental Health and Wellbeing Assessment</p>
-                </div>
-            </div>
-        </header>
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Services</p>
+          </div>
+          <div class="bigText">
+            <p>Mental Health and Wellbeing Assessment</p>
+          </div>
+        </div>
+      </header>
 
-        <div class="BigSectionFlex">
-            <div class="testAdd">
-                <div class="container">
-                    <div class="add_test_wrapper">
-                        <div class="add_test_Header text-center">
-                            <h1>Add New Test</h1>
-                        </div>
-                        <div class="add_test_form">
-                            <div class="alert alert-danger" id="alert"></div>
-                            <div class="alert alert-success" id="alert-success" style="display: none;"></div>
-                            <form action="#">
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <input type="text" id="disorderNameInEng" class="form-control" placeholder="Disorder name (In English)" />
-                                    </div>
-                                    <div class="flx-chld">
-                                        <input type="text" id="disorderNameInBangla" class="form-control" placeholder="Disorder name (In Bangla)" />
-                                    </div>
-                                </div>
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <input type="text" id="testNameInEng" class="form-control" placeholder="Test Name (In English)" />
-                                    </div>
-                                    <div class="flx-chld">
-                                        <input type="text" id="testNameInBangla" class="form-control" placeholder="Test Name (In Bangla)" />
-                                    </div>
-                                </div>
-                                <div class="flx-prnt">
-                                    <div class="form-selectpicker drct-flx">
-                                        <select class="selectpicker" data-width="100%" title="Age range" name="age" id="ageRangeInput" data-size="6">
-                        <option value="child">child</option>
-                        <option value="young">young</option>
-                        <option value="old">old</option>
+      <div class="BigSectionFlex">
+        <div class="testAdd">
+          <div class="container">
+            <div class="add_test_wrapper">
+              <div class="add_test_Header text-center">
+                <h1>Add New Test</h1>
+              </div>
+              <div class="add_test_form">
+                <div class="alert alert-danger" id="alert"></div>
+                <div
+                  class="alert alert-success"
+                  id="alert-success"
+                  style="display: none;"
+                ></div>
+                <form action="#">
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="disorderNameInEng"
+                        class="form-control"
+                        placeholder="Disorder name (In English)"
+                      />
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="disorderNameInBangla"
+                        class="form-control"
+                        placeholder="Disorder name (In Bangla)"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="testNameInEng"
+                        class="form-control"
+                        placeholder="Test Name (In English)"
+                      />
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="testNameInBangla"
+                        class="form-control"
+                        placeholder="Test Name (In Bangla)"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="form-selectpicker drct-flx">
+                      <select
+                        class="selectpicker"
+                        data-width="100%"
+                        title="Age range"
+                        name="age"
+                        id="ageRangeInput"
+                        data-size="6"
+                      >
+                        <option value="For Children">For Children</option>
+                        <option value="For Young People"
+                          >For Young People</option
+                        >
+                        <option value="For Old People">For Old People</option>
                       </select>
-                                    </div>
-                                </div>
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <div class="form-selectpicker">
-                                            <select class="selectpicker" data-width="100%" title="Paid or not" name="paid" id="paidInput" data-size="6">
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Paid or not"
+                          name="paid"
+                          id="paidInput"
+                          data-size="6"
+                        >
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
                         </select>
-                                        </div>
-                                    </div>
-                                    <div class="flx-chld">
-                                        <input type="text" placeholder="Pay amount" class="form-control" id="payAmount" style="visibility: hidden;" />
-                                    </div>
-                                </div>
+                      </div>
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        placeholder="Pay amount"
+                        class="form-control"
+                        id="payAmount"
+                        style="visibility: hidden;"
+                      />
+                    </div>
+                  </div>
 
-                                <h5 class="Ques_heading">Questions</h5>
+                  <h5 class="Ques_heading">Questions</h5>
 
-                                <div class="allQuestionsWrapper">
-                                    <div class="allQuestions">
-                                        <div class="eachQuestions">
-                                            <div class="quesInfo">
-                                                <div class="flx-prnt">
-                                                    <span class="fa fa-arrow-right"></span>
-                                                    <div class="flx-chld inp_q_box">
-                                                        <input type="text" class="form-control" id="questionEng" placeholder="Question (In English)" />
-                                                    </div>
-                                                    <div class="flx-chld inp_q_box">
-                                                        <input type="text" class="form-control" id="questionBan" placeholder="Question (In Bangla)" />
-                                                    </div>
-                                                    <div class="flx-chld inp_btn">
-                                                        <input type="button" value="Delete" class="btn btn-dark deleteBtn QuestionDelete" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="optionInfo">
-                                                <div class="allOptions">
-                                                    <div class="eachOptions flx-prnt pl-5 pt-1">
-                                                        <div class="flx-chld inp_o_box">
-                                                            <input type="text" class="form-control" id="optionEng" placeholder="Option (In English)" />
-                                                        </div>
-                                                        <div class="flx-chld inp_o_box">
-                                                            <input type="text" class="form-control" id="optionBan" placeholder="Option (In Bangla)" />
-                                                        </div>
-                                                        <div class="flx-chld inp_o_box">
-                                                            <input type="text" class="form-control" id="scale" placeholder="Scale" />
-                                                        </div>
-                                                        <div class="flx-chld inp_btn">
-                                                            <input type="button" value="Delete" class="btn btn-dark deleteBtn optionDelete" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="addoption ml-1 pl-5 pt-2 py-2">
-                                                    <input type="button" value="Add option" class="addBtn addOptions" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="newQuestion ml-2 pl-3 py-2">
-                                        <input type="button" value="Add question" class="addBtn" id="addQuestion" />
-                                    </div>
-                                </div>
+                  <div class="allQuestionsWrapper">
+                    <div class="allQuestions">
+                      <div class="eachQuestions">
+                        <div class="quesInfo">
+                          <div class="flx-prnt">
+                            <span class="fa fa-arrow-right"></span>
+                            <div class="flx-chld inp_q_box">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="questionEng"
+                                placeholder="Question (In English)"
+                              />
+                            </div>
+                            <div class="flx-chld inp_q_box">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="questionBan"
+                                placeholder="Question (In Bangla)"
+                              />
+                            </div>
+                            <div class="flx-chld inp_btn">
+                              <input
+                                type="button"
+                                value="Delete"
+                                class="btn btn-dark deleteBtn QuestionDelete"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="optionInfo">
+                          <div class="allOptions">
+                            <div class="eachOptions flx-prnt pl-5 pt-1">
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="optionEng"
+                                  placeholder="Option (In English)"
+                                />
+                              </div>
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="optionBan"
+                                  placeholder="Option (In Bangla)"
+                                />
+                              </div>
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="scale"
+                                  placeholder="Scale"
+                                />
+                              </div>
+                              <div class="flx-chld inp_btn">
+                                <input
+                                  type="button"
+                                  value="Delete"
+                                  class="btn btn-dark deleteBtn optionDelete"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="addoption ml-1 pl-5 pt-2 py-2">
+                            <input
+                              type="button"
+                              value="Add option"
+                              class="addBtn addOptions"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="newQuestion ml-2 pl-3 py-2">
+                      <input
+                        type="button"
+                        value="Add question"
+                        class="addBtn"
+                        id="addQuestion"
+                      />
+                    </div>
+                  </div>
 
-                                <div class="pt-3 text-center pt-2 pb-5">
-                                    <button id="submit-btn" class="addBtn finalSubmit">
+                  <div class="pt-3 text-center pt-2 pb-5">
+                    <button id="submit-btn" class="addBtn finalSubmit">
                       SUBMIT
                     </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
     <%- include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script>
-        function go() {
-            location = '/admin/test/new';
-        }
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    function go() {
+      location = '/admin/test/new';
+    }
 
-        $('#paidInput').on('change', (e) => {
-            if (e.target.value === 'Yes') {
-                $('#payAmount').css('visibility', 'visible');
-            }
-        });
+    $('#paidInput').on('change', (e) => {
+      if (e.target.value === 'Yes') {
+        $('#payAmount').css('visibility', 'visible');
+      }
+    });
 
-        $(document).on('click', '.newQuestion', (e) => {
-            $('.allQuestions').append(`
+    $(document).on('click', '.newQuestion', (e) => {
+      $('.allQuestions').append(`
        <div class="eachQuestions pt-3">
         <div class="quesInfo">
           <div class="flx-prnt">
@@ -224,9 +311,9 @@
         </div>
       </div>
       `);
-        });
-        $(document).on('click', '.addOptions', (e) => {
-            $(e.target.parentElement.parentElement.children[0]).append(`
+    });
+    $(document).on('click', '.addOptions', (e) => {
+      $(e.target.parentElement.parentElement.children[0]).append(`
         <div class="eachOptions flx-prnt pl-5 pt-1">
           <div class="flx-chld inp_o_box">
             <input
@@ -261,164 +348,161 @@
           </div>
         </div>
       `);
-        });
-        $(document).on('click', '.optionDelete', (e) => {
-            let fld = e.target;
-            while (true) {
-                let val = $(fld)[0].className;
-                console.log(val);
-                if (val.includes('eachOptions')) break;
-                fld = fld.parentElement;
-            }
-            const numOfChildren = fld.parentElement.children.length;
-            if (numOfChildren > 1) {
-                $(fld).remove();
-            }
-        });
-        $(document).on('click', '.QuestionDelete', (e) => {
-            let fld = e.target;
-            while (true) {
-                let val = $(fld)[0].className;
-                if (val.includes('eachQuestions')) break;
-                fld = fld.parentElement;
-            }
-            const numOfChildren = fld.parentElement.children.length;
-            if (numOfChildren > 1) {
-                $(fld).remove();
-            }
-        });
-    </script>
+    });
+    $(document).on('click', '.optionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        console.log(val);
+        if (val.includes('eachOptions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+    $(document).on('click', '.QuestionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        if (val.includes('eachQuestions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+  </script>
 
-    <script>
-        const check = (str) => {
-            const res = str == '' || str == null || str == undefined;
-            return res;
-        };
+  <script>
+    const check = (str) => {
+      const res = str == '' || str == null || str == undefined;
+      return res;
+    };
 
-        const showAlert = (msg) => {
-            $('#alert').show();
-            $('#alert').html(msg);
-            $('html, body').animate({
-                    scrollTop: 0,
-                },
-                'slow'
-            );
-        };
+    const showAlert = (msg) => {
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate(
+        {
+          scrollTop: 0,
+        },
+        'slow'
+      );
+    };
 
-        const Submit = (data) => {
-            $.ajax({
-                type: 'POST',
-                url: '/admin/test/new',
-                data,
-                success: (data) => {
-                    console.log(data.status);
-                    if (data.status) {
-                        $('#alert-success').show();
-                        $('#alert-success').html('The test has succesfully been added');
-                        setTimeout(() => {
-                            location.reload();
-                        }, 2000);
-                    } else {
-                        showAlert(data.msg);
-                    }
-                },
-            });
-        };
-        $(document).on('click', '#submit-btn', (e) => {
-            e.preventDefault();
-            const nameEng = $('#disorderNameInEng').val();
-            const nameBan = $('#disorderNameInBangla').val();
-            const testEng = $('#testNameInEng').val();
-            const testBan = $('#testNameInBangla').val();
-            const age = $('#ageRangeInput').val();
-            const paidInput = $('#paidInput').val();
-            const payAmount = $('#payAmount').val();
-            let error = false;
+    const Submit = (data) => {
+      $.ajax({
+        type: 'POST',
+        url: '/admin/test/new',
+        data,
+        success: (response) => {
+          if (response.status) {
+            location = '/admin/test/single/' + response.id;
+          } else {
+            showAlert(response.msg);
+          }
+        },
+      });
+    };
+    $(document).on('click', '#submit-btn', (e) => {
+      e.preventDefault();
+      const nameEng = $('#disorderNameInEng').val();
+      const nameBan = $('#disorderNameInBangla').val();
+      const testEng = $('#testNameInEng').val();
+      const testBan = $('#testNameInBangla').val();
+      const age = $('#ageRangeInput').val();
+      const paidInput = $('#paidInput').val();
+      const payAmount = $('#payAmount').val();
+      let error = false;
 
-            if (check(nameEng)) {
+      if (check(nameEng)) {
+        error = true;
+        showAlert('Enter the name of disorder in English');
+      } else if (check(nameBan)) {
+        error = true;
+        showAlert('Enter the name of disorder in Bengali');
+      } else if (check(testEng)) {
+        error = true;
+        showAlert('Enter the name of test in English');
+      } else if (check(testBan)) {
+        error = true;
+        showAlert('Enter the name of test in Bengali');
+      } else if (check(age)) {
+        error = true;
+        showAlert('Enter the age range');
+      } else if (check(paidInput)) {
+        error = true;
+        showAlert('Specify Test is Paid or not');
+      } else if (paidInput == 'Yes' && check(payAmount)) {
+        error = true;
+        showAlert('Enter the amount of payment');
+      } else {
+        let Questions = [];
+        const questions = $('.eachQuestions');
+        for (let i = 0; i < questions.length; i++) {
+          const questionEng = $(questions[i]).find('#questionEng').val();
+          const questionBan = $(questions[i]).find('#questionBan').val();
+
+          if (check(questionEng)) {
+            error = true;
+            showAlert('Enter the question in English');
+          } else if (check(questionBan)) {
+            error = true;
+            showAlert('Enter the question in Bengali');
+          } else {
+            const options = $(questions[i]).find('.eachOptions');
+            const Options = [];
+            for (let j = 0; j < options.length; j++) {
+              const optionEng = $(options[j]).find('#optionEng').val();
+              const optionBan = $(options[j]).find('#optionBan').val();
+              const scale = $(options[j]).find('#scale').val();
+
+              if (check(optionEng)) {
                 error = true;
-                showAlert('Enter the name of disorder in English');
-            } else if (check(nameBan)) {
+                showAlert('Enter the option in English');
+              } else if (check(optionBan)) {
                 error = true;
-                showAlert('Enter the name of disorder in Bengali');
-            } else if (check(testEng)) {
+                showAlert('Enter the option in Bengali');
+              } else if (check(scale)) {
                 error = true;
-                showAlert('Enter the name of test in English');
-            } else if (check(testBan)) {
-                error = true;
-                showAlert('Enter the name of test in Bengali');
-            } else if (check(age)) {
-                error = true;
-                showAlert('Enter the age range');
-            } else if (check(paidInput)) {
-                error = true;
-                showAlert('Spicify whether the test is going to be paid');
-            } else if (paidInput == 'Yes' && check(payAmount)) {
-                error = true;
-                showAlert('Enter the amount of payment');
-            }
-
-            let Questions = [];
-            const questions = $('.eachQuestions');
-            for (let i = 0; i < questions.length; i++) {
-                const questionEng = $(questions[i]).find('#questionEng').val();
-                const questionBan = $(questions[i]).find('#questionBan').val();
-
-                if (check(questionEng)) {
-                    error = true;
-                    showAlert('Enter the question in English');
-                } else if (check(questionBan)) {
-                    error = true;
-                    showAlert('Enter the question in Bengali');
-                }
-
-                const options = $(questions[i]).find('.eachOptions');
-                const Options = [];
-                for (let i = 0; i < options.length; i++) {
-                    const optionEng = $(options[i]).find('#optionEng').val();
-                    const optionBan = $(options[i]).find('#optionBan').val();
-                    const scale = $(options[i]).find('#scale').val();
-
-                    if (check(optionEng)) {
-                        error = true;
-                        showAlert('Enter the option in English');
-                    } else if (check(optionBan)) {
-                        error = true;
-                        showAlert('Enter the option in Bengali');
-                    } else if (check(scale)) {
-                        error = true;
-                        showAlert('Enter the scale');
-                    }
-
-                    Options.push({
-                        optionEng,
-                        optionBan,
-                        scale,
-                    });
-                }
-                Questions.push({
-                    questionEng,
-                    questionBan,
-                    Options,
+                showAlert('Enter the scale');
+              } else {
+                Options.push({
+                  optionEng,
+                  optionBan,
+                  scale,
                 });
+              }
+              if (error) break;
             }
-            const postData = {
-                nameEng,
-                nameBan,
-                testEng,
-                testBan,
-                age,
-                paidInput,
-                payAmount,
-                questions: JSON.stringify(Questions),
-            };
+            if (error) break;
 
-            if (!error) {
-                console.log('submit');
-                $('#alert').hide();
-                Submit(postData);
-            }
-        });
-    </script>
+            Questions.push({
+              questionEng,
+              questionBan,
+              Options,
+            });
+          }
+        }
+        const postData = {
+          nameEng,
+          nameBan,
+          testEng,
+          testBan,
+          age,
+          paidInput,
+          payAmount,
+          questions: JSON.stringify(Questions),
+        };
 
+        if (!error) {
+          $('#alert').hide();
+          Submit(postData);
+        }
+      }
+    });
+  </script>
 </html>

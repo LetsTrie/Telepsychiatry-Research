@@ -287,9 +287,22 @@
   margin: 50px auto;
   padding: 30px;
   background: white;
+
+  .updateBtn button {
+    background: #0db9f2;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 17px;
+    border: 1px solid #0db9f2;
+  }
+
   .testInfo {
-    margin: 20px 30px;
-    padding: 20px 30px;
+    margin: 20px 30px 5px 30px;
+    padding: 20px 30px 5px 30px;
     @media (max-width: 600px) {
       margin: 10px 10px;
       padding: 10px 10px;

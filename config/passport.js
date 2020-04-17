@@ -1,10 +1,8 @@
+// OKAY
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 
-// Load User model
 const { eUserModel } = require('../models/expertUser');
-const { gUserModel } = require('../models/generalUser');
-const { orgUserModel } = require('../models/orgUser');
 
 const admin = {
   id: 'admin123',
@@ -24,7 +22,7 @@ module.exports = function (passport) {
       async (req, email, password, done) => {
         const Email = email.trim();
 
-        if (req.body.email == admin.email) {
+        if (Email == admin.email) {
           if (req.body.password == admin.password) {
             done(null, admin);
           } else {
@@ -33,18 +31,13 @@ module.exports = function (passport) {
           }
         } else {
           const eUser = await eUserModel.findOne({ email: Email });
-          console.log(eUser);
-          let user;
           if (eUser) {
-            user = eUser;
-            console.log(eUser);
+            let user = eUser;
             const matched = await bcrypt.compare(
               req.body.password,
               user.password
             );
-            console.log(matched);
             if (matched) {
-              console.log(user);
               return done(null, user);
             } else if (!matched) {
               req.flash('errorMessage', 'Incorrect password');
@@ -63,30 +56,13 @@ module.exports = function (passport) {
     done(null, user.id);
   });
 
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser((id, done) => {
     if (id == admin.id) {
-      //deserialize admin
       done(null, admin);
     } else {
-      //otherwise check for others
-      gUserModel.findById(id, (err, guser) => {
-        if (guser) {
-          done(err, guser);
-        } else {
-          eUserModel.findById(id, (err, euser) => {
-            if (euser) {
-              done(err, euser);
-            } else {
-              orgUserModel.findById(id, (err, ouser) => {
-                if (ouser) {
-                  done(err, ouser);
-                } else {
-                  done(err);
-                }
-              });
-            }
-          });
-        }
+      eUserModel.findById(id, (err, euser) => {
+        if (euser) done(err, euser);
+        else done(err);
       });
     }
   });

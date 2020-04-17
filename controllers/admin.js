@@ -12,16 +12,11 @@ const { testModel } = require('../models/test');
 const LIMIT = 9;
 
 // ################## OKAY [START] ########################
-const admin = {
-  id: 'admin123',
-  name: 'admin',
-  email: 'manager@trin-innovation.com',
-  password: 'trin123admin@',
-};
+const admin = require('../config/credentials').adminCredentials;
 exports.getDashboard = (req, res, next) => res.render('admin_dashboard');
 exports.getLogin = (req, res, next) => res.render('adminLogin');
 exports.postLogin = (req, res, next) => {
-  if (req.body.email == admin.email && req.body.password) {
+  if (req.body.email == admin.email && req.body.password === admin.password) {
     passport.authenticate('local', {
       successRedirect: '/admin/',
       failureRedirect: '/admin/login',
@@ -36,16 +31,23 @@ exports.postLogin = (req, res, next) => {
 };
 // ################## OKAY [THE END] ########################
 
-const checker = async (req, res) => {
-  if (req.user) {
-    const logged = JSON.stringify(admin) == JSON.stringify(req.user);
-    if (!logged) {
-      return res.redirect('/admin/login');
+function groupBy(list, keyGetter) {
+  const map = new Map();
+  list.forEach((item) => {
+    const key = keyGetter(item);
+    const collection = map.get(key);
+    if (!collection) {
+      map.set(key, [item]);
+    } else {
+      collection.push(item);
     }
-  } else {
-    return res.redirect('/admin/login');
-  }
-};
+  });
+  return map;
+}
+
+function nullChk(data) {
+  return data === undefined || data === null || data === '';
+}
 
 exports.getAllTests = async (req, res, next) => {
   let searchKey = {};
@@ -56,13 +58,13 @@ exports.getAllTests = async (req, res, next) => {
 
   let tests = await testModel.find(searchKey);
 
-  // take small hand letters
   let disorders = new Set();
   for (let i = 0; i < tests.length; i++) disorders.add(tests[i].nameEng);
   disorders = Array.from(disorders);
 
   const groupedTests = groupBy(tests, (tests) => tests.nameEng);
 
+  // make a function, if i give a disorder name, it will return all its test (In the same process. Distinct name)
   const final = [];
   for (let i = 0; i < disorders.length; i++) {
     const disorderName = disorders[i];
@@ -74,12 +76,8 @@ exports.getAllTests = async (req, res, next) => {
   return res.render('admin__test', { tests: final });
 };
 
-exports.singleTest = async (req, res) => {
-  checker(req, res);
-  const id = req.params.id;
-  console.log(id);
-  const test = await testModel.findOne({ _id: id });
-  console.log(test);
+exports.getSingleTest = async (req, res) => {
+  const test = await testModel.findById(req.params.id);
   res.render('singleTest', { test });
 };
 
@@ -424,20 +422,14 @@ function sendReply(emailID, reply) {
 }
 
 // ################## Utils #######################
-function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach((item) => {
-    const key = keyGetter(item);
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
-    } else {
-      collection.push(item);
-    }
-  });
-  return map;
-}
 
-function nullChk(data) {
-  return data === undefined || data === null || data === '';
+async function checker(req, res) {
+  if (req.user) {
+    const logged = JSON.stringify(admin) == JSON.stringify(req.user);
+    if (!logged) {
+      return res.redirect('/admin/login');
+    }
+  } else {
+    return res.redirect('/admin/login');
+  }
 }

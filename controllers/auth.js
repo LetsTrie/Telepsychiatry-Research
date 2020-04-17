@@ -77,7 +77,8 @@ const admin = {
 
 module.exports.postLogin = (req, res, next) => {
   if (req.body.email == admin.email && req.body.password === admin.password) {
-    res.send('User Not Found');
+    req.flash('errorMessage', 'User not found');
+    res.redirect('/auth/login');
   } else {
     // agei sob kore nite hobe...
     passport.authenticate('local', {

@@ -1,0 +1,4 @@
+1) ./config/sendMail.js => ekhane HOST ta thik kore dite hobe
+2) ./config/sendMail.js => ekhaner PORT r app.js er PORT same kina dekhte hobe
+3) ./app.js => PORT ta thik korte hobe "3000"
+4) ./.env => mongo address e "trin" boshate hobe

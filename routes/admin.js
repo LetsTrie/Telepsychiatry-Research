@@ -17,7 +17,7 @@ const {
   newTest,
   postLogin,
   createTest,
-  singleTest,
+  getSingleTest,
   updateTest,
   postUpdateTest,
   getDashboard,
@@ -36,6 +36,10 @@ router.get('/tests', getAllTests);
 router.get('/test/new', adminAccess, (req, res, next) =>
   res.render('admin_test_new')
 );
+router.post('/test/new', createTest);
+router.get('/test/single/:id', getSingleTest);
+router.get('/test/update/:id', updateTest);
+router.post('/test/update', postUpdateTest);
 
 //admin contact us
 router.get('/contactUs', contactUs);
@@ -58,10 +62,5 @@ router.get('/get_innovation', getInnovations);
 router.get('/single_innovation/:id', singleInnoavtion);
 router.get('/innovation/approve/:id', approveInnovation);
 router.get('/innovation/disapprove/:id', disapproveInnovation);
-
-router.post('/test/new', createTest);
-router.get('/test/single/:id', singleTest);
-router.get('/test/update/:id', updateTest);
-router.post('/test/update', postUpdateTest);
 
 module.exports = router;

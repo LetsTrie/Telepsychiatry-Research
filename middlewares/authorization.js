@@ -1,9 +1,5 @@
-const admin = {
-  id: 'admin123',
-  name: 'admin',
-  email: 'manager@trin-innovation.com',
-  password: 'trin123admin@',
-};
+// OKAY
+const admin = require('../config/credentials').adminCredentials;
 
 exports.adminAccess = (req, res, next) => {
   if (
@@ -13,7 +9,7 @@ exports.adminAccess = (req, res, next) => {
   ) {
     next();
   } else {
-    return res.send('No Access Persmission');
+    return res.redirect('/admin/login');
   }
 };
 

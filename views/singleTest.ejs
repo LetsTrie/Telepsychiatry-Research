@@ -1,66 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
 
-        <link rel="stylesheet" href="/css/admin.css" />
-        <title>
-            <%= test.nameEng %>
-        </title>
-</head>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>
+      <%= test.nameEng %>
+    </title>
+  </head>
 
-<body>
+  <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Services</p>
-                </div>
-                <div class="bigText">
-                    <p>
-                        <%= test.nameEng %>
-                    </p>
-                </div>
-            </div>
-        </header>
-        <div class="contents" style="margin-left: 10%; margin-top: 100px;">
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Services</p>
+          </div>
+          <div class="bigText">
             <p>
-                Name:
-                <%= test.nameEng %>
+              <%= test.nameEng %>
             </p>
-            <p>
-                Name(Bengali):
-                <%= test.nameBan %>
-            </p>
-            <p>
-                Disorder:
-                <%= test.testEng %>
-            </p>
-            <p>
-                Age Limits:
-                <%= test.age %>
-            </p>
-            <p>
-                Payment Details:
-                <%= test.paidInput %>
-                    <%= test.payAmount %>
-            </p>
-            <input type="hidden" name="" value="<%= test._id %>" id="id">
-            <button id="update-btn" class="btn btn-success">Update</button>
+          </div>
         </div>
+      </header>
+      <div class="contents" style="margin-left: 10%; margin-top: 100px;">
+        <p>
+          Name: <%= test.nameEng %>
+        </p>
+        <p>
+          Name(Bengali): <%= test.nameBan %>
+        </p>
+        <p>
+          Disorder: <%= test.testEng %>
+        </p>
+        <p>
+          Age Limits: <%= test.age %>
+        </p>
+        <p>
+          Payment Details: <%= test.paidInput %> <%= test.payAmount %>
+        </p>
 
-</body>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <% for(let i = 0 ; i < test.questions.length; i++) { %>
+        <div class="py-4">
+          <h3>Questions</h3>
+          <div>
+            Question Name: (eng)
+            <p><%= test.questions[i].questionEng %></p>
+          </div>
+          <div>
+            Question Name: (ban)
+            <p><%= test.questions[i].questionBan %></p>
+          </div>
+          <div>
+            <h4>Options</h4>
+            <% console.log(test); for(let j = 0 ; j <
+            test.questions[i].Options.length; j++) { %>
+            <div>
+              Option Name: (eng)
+              <p><%= test.questions[i].Options[j].optionEng %></p>
+            </div>
+            <div>
+              Option Name: (ban)
+              <p><%= test.questions[i].Options[j].optionBan %></p>
+            </div>
+            <div>
+              Option Scale:
+              <p><%= test.questions[i].Options[j].scale %></p>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+        <input type="hidden" name="" value="<%= test._id %>" id="id" />
+        <button id="update-btn" class="btn btn-success">Update</button>
+      </div>
+    </section>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"
+  ></script>
 
-<script>
+  <script>
     $('#update-btn').click((e) => {
-        const id = $('#id').val()
-        location = '/admin/test/update/' + id
-    })
-</script>
-
+      const id = $('#id').val();
+      location = '/admin/test/update/' + id;
+    });
+  </script>
 </html>

@@ -5,7 +5,7 @@
     <%- include('./partials/vendorsTop')%>
 
         <link rel="stylesheet" href="/css/admin_new_test.css" />
-        <title>Add New Test | Mental Health and Wellbeing Assessment</title>
+        <title>Update Test | Mental Health and Wellbeing Assessment</title>
 </head>
 
 <body>
@@ -24,17 +24,18 @@
             </div>
         </header>
 
-        <input type="hidden" value="<%= test.age %>" id="ageLimits">
-        <input type="hidden" value="<%= test.paidInput %>" id="paid">
-        <input type="hidden" value="<%= test.payAmount %>" id="amounts">
-        <input type="hidden" value="<%= test._id %>" id="id">
+        <!-- select value setters -->
+        <input type="hidden" value="<%= test.age %>" id="ageRange" />
+        <input type="hidden" value="<%= test.paidInput %>" id="paid" />
+        <input type="hidden" value="<%= test.payAmount %>" id="amount" />
+        <input type="hidden" value="<%= test._id %>" id="id" />
 
         <div class="BigSectionFlex">
             <div class="testAdd">
                 <div class="container">
                     <div class="add_test_wrapper">
                         <div class="add_test_Header text-center">
-                            <h1>Add New Test</h1>
+                            <h1>Update Test</h1>
                         </div>
                         <div class="add_test_form">
                             <div class="alert alert-danger" id="alert"></div>
@@ -75,7 +76,7 @@
                                         </div>
                                     </div>
                                     <div class="flx-chld">
-                                        <input type="text" value="<%= test.payAmount %>" placeholder="Pay amount" class="form-control" id="payAmount" style="visibility: hidden;" />
+                                        <input type="text" placeholder="Pay amount" class="form-control" id="payAmount" style="visibility: hidden;" />
                                     </div>
                                 </div>
 
@@ -83,16 +84,16 @@
 
                                 <div class="allQuestionsWrapper">
                                     <div class="allQuestions">
-                                        <% for (let i=0; i<test.questions.length; i++) { %>
+                                        <% test.questions.forEach ((item) => { %>
                                             <div class="eachQuestions">
                                                 <div class="quesInfo">
                                                     <div class="flx-prnt">
                                                         <span class="fa fa-arrow-right"></span>
                                                         <div class="flx-chld inp_q_box">
-                                                            <input type="text" value="<%= test.questions[i].questionEng %>" class="form-control" id="questionEng" placeholder="Question (In English)" />
+                                                            <input type="text" value="<%= item.questionEng %>" class="form-control" id="questionEng" placeholder="Question (In English)" />
                                                         </div>
                                                         <div class="flx-chld inp_q_box">
-                                                            <input type="text" value="<%= test.questions[i].questionBan %>" class="form-control" id="questionBan" placeholder="Question (In Bangla)" />
+                                                            <input type="text" value="<%= item.questionBan %>" class="form-control" id="questionBan" placeholder="Question (In Bangla)" />
                                                         </div>
                                                         <div class="flx-chld inp_btn">
                                                             <input type="button" value="Delete" class="btn btn-dark deleteBtn QuestionDelete" />
@@ -101,30 +102,31 @@
                                                 </div>
                                                 <div class="optionInfo">
                                                     <div class="allOptions">
-                                                        <% for (let j=0; j<test.questions[i].Options.length; j++) { %>
+                                                        <% item.Options.forEach((op) => {%>
                                                             <div class="eachOptions flx-prnt pl-5 pt-1">
                                                                 <div class="flx-chld inp_o_box">
-                                                                    <input type="text" value="<%= test.questions[i].Options[j].optionEng %>" class="form-control" id="optionEng" placeholder="Option (In English)" />
+                                                                    <input type="text" value="<%= op.optionEng %>" class="form-control" id="optionEng" placeholder="Option (In English)" />
                                                                 </div>
                                                                 <div class="flx-chld inp_o_box">
-                                                                    <input type="text" value="<%= test.questions[i].Options[j].optionBan %>" class="form-control" id="optionBan" placeholder="Option (In Bangla)" />
+                                                                    <input type="text" value="<%= op.optionBan %>" class="form-control" id="optionBan" placeholder="Option (In Bangla)" />
                                                                 </div>
                                                                 <div class="flx-chld inp_o_box">
-                                                                    <input type="text" value="<%= test.questions[i].Options[j].scale %>" class="form-control" id="scale" placeholder="Scale" />
+                                                                    <input type="text" value="<%= op.scale %>" class="form-control" id="scale" placeholder="Scale" />
                                                                 </div>
                                                                 <div class="flx-chld inp_btn">
                                                                     <input type="button" value="Delete" class="btn btn-dark deleteBtn optionDelete" />
                                                                 </div>
                                                             </div>
-                                                            <% } %>
+                                                            <%})%>
                                                     </div>
                                                     <div class="addoption ml-1 pl-5 pt-2 py-2">
                                                         <input type="button" value="Add option" class="addBtn addOptions" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <% } %>
+                                            <% }) %>
                                     </div>
+
                                     <div class="newQuestion ml-2 pl-3 py-2">
                                         <input type="button" value="Add question" class="addBtn" id="addQuestion" />
                                     </div>
@@ -152,109 +154,108 @@
 
         $('#paidInput').on('change', (e) => {
             if (e.target.value === 'Yes') {
-                console.log('OKAY');
                 $('#payAmount').css('visibility', 'visible');
             }
         });
 
         $(document).on('click', '.newQuestion', (e) => {
             $('.allQuestions').append(`
-        <div class="eachQuestions">
-          <div class="quesInfo">
-            <div class="row pl-3">
-              <div class="col-sm">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="questionEng"
-                  placeholder="Question (In English)"
-                />
-              </div>
-              <div class="col-sm">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="questionBan"
-                  placeholder="Question (In Bangla)"
-                />
-              </div>
-              <div class="col-sm">
-                <input
-                  type="button"
-                  value="delete"
-                  class="btn btn-dark QuestionDelete"
-                />
-              </div>
+       <div class="eachQuestions pt-3">
+        <div class="quesInfo">
+          <div class="flx-prnt">
+            <span class="fa fa-arrow-right"></span>
+            <div class="flx-chld inp_q_box">
+              <input
+                type="text"
+                id="questionEng"
+                class="form-control"
+                placeholder="Question (In English)"
+              />
             </div>
-          </div>
-          <div class="optionInfo">
-            <div class="allOptions">
-              <div class="eachOptions row pl-5 pt-2">
-                <div class="col-sm">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="optionEng"
-                    placeholder="Option (In English)"
-                  />
-                </div>
-                <div class="col-sm">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="optionBan"
-                    placeholder="Option (In Bangla)"
-                  />
-                </div>
-                <div class="col-sm">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="scale"
-                    placeholder="Scale"
-                  />
-                </div>
-                <div class="col-sm">
-                  <input
-                    type="button"
-                    value="delete"
-                    class="btn btn-dark optionDelete"
-                  />
-                </div>
-              </div>
+            <div class="flx-chld inp_q_box">
+              <input
+                type="text"
+                id="questionBan"
+                class="form-control"
+                placeholder="Question (In Bangla)"
+              />
             </div>
-            <div class="addoption pl-5 pt-2 py-2">
+            <div class="flx-chld inp_btn">
               <input
                 type="button"
-                value="add option"
-                class="btn btn-dark addOptions"
+                value="Delete"
+                class="btn btn-dark deleteBtn QuestionDelete"
               />
             </div>
           </div>
         </div>
+        <div class="optionInfo">
+          <div class="allOptions">
+            <div class="eachOptions flx-prnt pl-5 pt-1">
+              <div class="flx-chld inp_o_box">
+                <input
+                  type="text"
+                  id="optionEng"
+                  class="form-control"
+                  placeholder="Option (In English)"
+                />
+              </div>
+              <div class="flx-chld inp_o_box">
+                <input
+                  type="text"
+                  id="optionBan"
+                  class="form-control"
+                  placeholder="Option (In Bangla)"
+                />
+              </div>
+              <div class="flx-chld inp_o_box">
+                <input
+                  type="text"
+                  id="scale"
+                  class="form-control"
+                  placeholder="Scale"
+                />
+              </div>
+              <div class="flx-chld inp_btn">
+                <input
+                  type="button"
+                  value="Delete"
+                  class="btn btn-dark deleteBtn optionDelete"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="addoption ml-1 pl-5 pt-2 py-2">
+            <input
+              type="button"
+              value="Add option"
+              class="addBtn addOptions"
+            />
+          </div>
+        </div>
+      </div>
       `);
         });
-
         $(document).on('click', '.addOptions', (e) => {
             $(e.target.parentElement.parentElement.children[0]).append(`
-        <div class="eachOptions row pl-5 pt-2">
-          <div class="col-sm">
+        <div class="eachOptions flx-prnt pl-5 pt-1">
+          <div class="flx-chld inp_o_box">
             <input
               type="text"
-              class="form-control"
               id="optionEng"
+              class="form-control"
               placeholder="Option (In English)"
             />
           </div>
-          <div class="col-sm">
+          <div class="flx-chld inp_o_box">
             <input
               type="text"
-              class="form-control"
               id="optionBan"
+              class="form-control"
               placeholder="Option (In Bangla)"
             />
           </div>
-          <div class="col-sm">
+          <div class="flx-chld inp_o_box">
             <input
               type="text"
               id="scale"
@@ -262,17 +263,16 @@
               placeholder="Scale"
             />
           </div>
-          <div class="col-sm">
+          <div class="flx-chld inp_btn">
             <input
               type="button"
-              value="delete"
-              class="btn btn-dark optionDelete"
+              value="Delete"
+              class="btn btn-dark deleteBtn optionDelete"
             />
           </div>
         </div>
       `);
         });
-
         $(document).on('click', '.optionDelete', (e) => {
             let fld = e.target;
             while (true) {
@@ -298,7 +298,9 @@
                 $(fld).remove();
             }
         });
+    </script>
 
+    <script>
         const check = (str) => {
             const res = str == '' || str == null || str == undefined;
             return res;
@@ -319,7 +321,8 @@
                 type: 'POST',
                 url: '/admin/test/update',
                 data,
-                success: () => {
+                success: (data) => {
+                    console.log(data);
                     $('#alert-success').show();
                     $('#alert-success').html('The test has succesfully been updated');
                     $('html, body').animate({
@@ -328,12 +331,11 @@
                         'slow'
                     );
                     setTimeout(() => {
-                        location = '/admin/tests'
+                        location = '/admin/tests';
                     }, 2000);
                 },
             });
         };
-
         $(document).on('click', '#submit-btn', (e) => {
             e.preventDefault();
             const nameEng = $('#disorderNameInEng').val();
@@ -343,7 +345,6 @@
             const age = $('#ageRangeInput').val();
             const paidInput = $('#paidInput').val();
             const payAmount = $('#payAmount').val();
-            const id = $('#id').val()
             let error = false;
 
             if (check(nameEng)) {
@@ -413,6 +414,7 @@
                     Options,
                 });
             }
+            const id = $('#id').val();
             const postData = {
                 id,
                 nameEng,
@@ -434,10 +436,11 @@
     </script>
 
     <script>
-        $('#ageRangeInput').val($('#ageLimits').val())
-        $('#paidInput').val($('#paid').val())
+        $('#ageRangeInput').val($('#ageRange').val());
+        $('#paidInput').val($('#paid').val());
         if ($('#paid').val() == 'Yes') {
-            $('#payAmount').css('visibility', 'visible')
+            $('#payAmount').css('visibility', 'visible');
+            $('#payAmount').val($('#amount').val());
         }
     </script>
 

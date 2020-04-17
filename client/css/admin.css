@@ -1326,3 +1326,120 @@ p {
 .eachDisorderTestAll .eachDisorder_eachTest a:hover {
   font-weight: 700;
 }
+
+.questionListWithDetails {
+  width: 88%;
+  min-height: 100vh;
+  border-radius: 5px;
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+}
+
+.questionListWithDetails .testInfo {
+  margin: 20px 30px;
+  padding: 20px 30px;
+}
+
+@media (max-width: 600px) {
+  .questionListWithDetails .testInfo {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    margin-left: 10px;
+  }
+}
+
+.questionListWithDetails .testInfo tbody tr td {
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+}
+
+.questionListWithDetails .testInfo tbody tr td:first-child {
+  width: 35%;
+  text-align: center;
+  font-weight: 700;
+}
+
+.questionListWithDetails .testInfo tbody tr td:last-child {
+  font-family: sans-serif;
+  width: 75%;
+  text-align: center;
+}
+
+.questionListWithDetails .testInfo tbody tr td a.notColor {
+  cursor: default;
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.questionListWithDetails .testInfo tbody tr td a:not(.notColor) {
+  color: #094e8f;
+}
+
+.questionListWithDetails .testInfo tbody tr td a:not(.notColor):hover {
+  text-decoration: underline;
+}
+
+.questionListWithDetails .questions {
+  margin: 20px 30px;
+  padding: 20px 30px;
+  margin-left: 50px;
+}
+
+@media (max-width: 600px) {
+  .questionListWithDetails .questions {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    margin-left: 10px;
+  }
+}
+
+.questionListWithDetails .questions .question {
+  padding-bottom: 10px;
+}
+
+.questionListWithDetails .questions .question .question_name {
+  font-family: sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.questionListWithDetails .questions .question .magicc:hover {
+  background-color: #e9e9e9;
+}
+
+.questionListWithDetails .questions .question .options {
+  padding-left: 5px;
+  font-family: sans-serif;
+  color: #111111;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.questionListWithDetails .questions .question .options .magicc {
+  width: 48%;
+  margin-right: 10px;
+}
+
+.questionListWithDetails .questions .question .options .custom-control-label {
+  padding-left: 8px;
+  font-size: 17px;
+}
+
+.questionListWithDetails .questions .question .options .custom-control {
+  padding-top: 6px;
+  padding-bottom: 5px;
+}
+
+.questionListWithDetails .questions .question .options .custom-control * {
+  cursor: pointer;
+}
+
+.questionListWithDetails .questions .question .options .custom-control:first-child {
+  padding-top: 10px;
+}

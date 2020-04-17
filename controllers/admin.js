@@ -77,8 +77,54 @@ exports.getAllTests = async (req, res, next) => {
 };
 
 exports.getSingleTest = async (req, res) => {
-  const test = await testModel.findById(req.params.id);
-  res.render('singleTest', { test });
+  let test = await testModel.findById(req.params.id);
+  let { lang } = req.query;
+  if (nullChk(lang)) lang = 'eng';
+  let data = {};
+  console.log(lang);
+  if (lang === 'eng') {
+    data['testName'] = test.testEng;
+    data['disorderName'] = test.nameEng;
+    data['ageRange'] = test.age;
+    data['paidInput'] = test.paidInput;
+    data['payAmount'] = test.payAmount;
+    data['questions'] = [];
+    for (let i = 0; i < test.questions.length; i++) {
+      let obj = {};
+      obj['QuesName'] = test.questions[i].questionEng;
+      let arr = [];
+      for (let j = 0; j < test.questions[i].Options.length; j++) {
+        arr.push({
+          optionName: test.questions[i].Options[j].optionEng,
+          optionScale: test.questions[i].Options[j].scale,
+        });
+      }
+      obj['options'] = arr;
+      data['questions'].push(obj);
+    }
+  } else {
+    data['testName'] = test.testBan;
+    data['disorderName'] = test.nameBan;
+    data['ageRange'] = test.age;
+    data['paidInput'] = test.paidInput;
+    data['payAmount'] = test.payAmount;
+    data['questions'] = [];
+    for (let i = 0; i < test.questions.length; i++) {
+      let obj = {};
+      obj['QuesName'] = test.questions[i].questionBan;
+      let arr = [];
+      for (let j = 0; j < test.questions[i].Options.length; j++) {
+        arr.push({
+          optionName: test.questions[i].Options[j].optionBan,
+          optionScale: test.questions[i].Options[j].scale,
+        });
+      }
+      obj['options'] = arr;
+      data['questions'].push(obj);
+    }
+  }
+  data['_id'] = test._id;
+  res.render('singleTest', { test: data, lang });
 };
 
 exports.updateTest = async (req, res) => {

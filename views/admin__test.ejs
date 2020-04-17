@@ -80,7 +80,7 @@
                         class="selectpicker"
                         data-width="100%"
                         title="Paid or not"
-                        name="paidOrNot"
+                        name="paid"
                         id="paidInput"
                         data-size="6"
                       >
@@ -110,9 +110,8 @@
                 <ul>
                   <% for(let j = 0 ; j < tests[i].relatedTests.length; j++) { %>
                   <li>
-                    <% console.log(tests[i].relatedTests[j]._id) %>
                     <a
-                      href="/admin/test/single/<%= tests[i].relatedTests[j]._id%>?lang=eng "
+                      href="/admin/test/single/<%= tests[i].relatedTests[j]._id %>"
                     >
                       <%= tests[i].relatedTests[j].testEng %>
                     </a>

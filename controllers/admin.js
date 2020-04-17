@@ -34,7 +34,8 @@ exports.postLogin = (req, res, next) => {
 function groupBy(list, keyGetter) {
   const map = new Map();
   list.forEach((item) => {
-    const key = keyGetter(item);
+    const key = keyGetter(item).toLowerCase();
+    // console.log(key);
     const collection = map.get(key);
     if (!collection) {
       map.set(key, [item]);
@@ -59,7 +60,8 @@ exports.getAllTests = async (req, res, next) => {
   let tests = await testModel.find(searchKey);
 
   let disorders = new Set();
-  for (let i = 0; i < tests.length; i++) disorders.add(tests[i].nameEng);
+  for (let i = 0; i < tests.length; i++)
+    disorders.add(tests[i].nameEng.toLowerCase());
   disorders = Array.from(disorders);
 
   const groupedTests = groupBy(tests, (tests) => tests.nameEng);
@@ -69,7 +71,7 @@ exports.getAllTests = async (req, res, next) => {
   for (let i = 0; i < disorders.length; i++) {
     const disorderName = disorders[i];
     const relatedTests = [];
-    const testMap = groupedTests.get(disorderName);
+    const testMap = groupedTests.get(disorderName.toLowerCase());
     for (let j = 0; j < testMap.length; j++) relatedTests.push(testMap[j]);
     final.push({ disorderName, relatedTests });
   }
@@ -153,6 +155,11 @@ exports.postUpdateTest = async (req, res) => {
       },
     }
   );
+
+  res.send({
+    staus: true,
+    msg: 'okay',
+  });
 };
 
 exports.createTest = async (req, res, next) => {

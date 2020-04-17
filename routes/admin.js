@@ -1,29 +1,41 @@
 const router = require('express').Router();
 
 const {
-    login,
-    contactUs,
-    adminGetResearch,
-    getResearch,
-    approveResearch,
-    disapproveResearch,
-    getInnovations,
-    singleInnoavtion,
-    approveInnovation,
-    disapproveInnovation,
-    postAddDoctor,
-    replyEmail,
-    allTests,
-    newTest,
-    postLogin,
-    createTest,
-    singleTest,
-    updateTest,
-    postUpdateTest,
+  getLogin,
+  contactUs,
+  adminGetResearch,
+  getResearch,
+  approveResearch,
+  disapproveResearch,
+  getInnovations,
+  singleInnoavtion,
+  approveInnovation,
+  disapproveInnovation,
+  postAddDoctor,
+  replyEmail,
+  getAllTests,
+  newTest,
+  postLogin,
+  createTest,
+  singleTest,
+  updateTest,
+  postUpdateTest,
+  getDashboard,
 } = require('../controllers/admin');
 
-router.get('/login', login);
-router.post('/login', postLogin);
+const {
+  adminAccess,
+  canNotBeAuthenticated,
+} = require('../middlewares/authorization');
+
+// OKAY
+router.get('/', adminAccess, getDashboard);
+router.get('/login', canNotBeAuthenticated, getLogin);
+router.post('/login', canNotBeAuthenticated, postLogin);
+router.get('/tests', getAllTests);
+router.get('/test/new', adminAccess, (req, res, next) =>
+  res.render('admin_test_new')
+);
 
 //admin contact us
 router.get('/contactUs', contactUs);
@@ -31,7 +43,7 @@ router.post('/replyEmail', replyEmail);
 
 //admin Add Doctors
 router.get('/addDoctors', (req, res) => {
-    res.render('addDoctors');
+  res.render('addDoctors');
 });
 router.post('/postAddDoctor', postAddDoctor);
 
@@ -47,12 +59,9 @@ router.get('/single_innovation/:id', singleInnoavtion);
 router.get('/innovation/approve/:id', approveInnovation);
 router.get('/innovation/disapprove/:id', disapproveInnovation);
 
-router.get('/tests', allTests);
-router.get('/test/new', (req, res, next) => {
-    return res.render('admin_test_new');
-});
 router.post('/test/new', createTest);
 router.get('/test/single/:id', singleTest);
 router.get('/test/update/:id', updateTest);
 router.post('/test/update', postUpdateTest);
+
 module.exports = router;

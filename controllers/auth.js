@@ -64,12 +64,28 @@ exports.postCheckDuplication = async (req, res, next) => {
   return res.json({ success, message });
 };
 
+const admin = {
+  id: 'admin123',
+  name: 'admin',
+  email: 'manager@trin-innovation.com',
+  password: 'trin123admin@',
+};
+
+// admin jeno eta diye dhukte na pare...
+// admin er login er upor homepage er kuno effect porbe na...
+// admin logged in thakle homapage e authentication related kisui show korbe na..
+
 module.exports.postLogin = (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/auth/login',
-    failureFlash: true,
-  })(req, res, next);
+  if (req.body.email == admin.email && req.body.password === admin.password) {
+    res.send('User Not Found');
+  } else {
+    // agei sob kore nite hobe...
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/auth/login',
+      failureFlash: true,
+    })(req, res, next);
+  }
 };
 
 exports.getRegisterExpertUser = (req, res, next) => {

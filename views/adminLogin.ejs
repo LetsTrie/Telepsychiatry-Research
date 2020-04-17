@@ -1,64 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/authentication.css" />
-        <title>Login | Admin Panel | Telepsychiatry Research</title>
-</head>
+    <link rel="stylesheet" href="/css/authentication.css" />
+    <title>Login | Admin Panel | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <div>
-        <div style="min-height: 100vh;">
-            <header>
-                <nav>
-                    <%- include('./partials/emptyNavbarAdmin')%>
-                </nav>
-                <div class="blueDivider">
-                    <div class="smallText p-2">
-                        <!-- <p><a href="#">Admin Panel</a> / Login</p> -->
-                    </div>
-                    <div class="bigText p-3">
-                        <!-- <p>Authentication</p> -->
-                    </div>
+      <div style="min-height: 100vh;">
+        <header>
+          <nav>
+            <%- include('./partials/emptyNavbarAdmin')%>
+          </nav>
+          <div class="blueDivider">
+            <div class="smallText p-2">
+              <!-- <p><a href="#">Admin Panel</a> / Login</p> -->
+            </div>
+            <div class="bigText p-3">
+              <!-- <p>Authentication</p> -->
+            </div>
+          </div>
+        </header>
+
+        <section class="auth">
+          <div class="auth_wrapper">
+            <div class="auth_header">
+              <h1>Admin Panel</h1>
+            </div>
+            <form class="adminLoginClass">
+              <div id="alert" class="alert alert-danger"></div>
+              <% if (errorMessage != '') { %>
+              <div id="alert" class="alert alert-danger">
+                <%= errorMessage %>
+              </div>
+              <% } %>
+              <div class="auth_form">
+                <div class="inputField">
+                  <div class="inputField_label">
+                    <p>Email:</p>
+                  </div>
+                  <div class="inputField_textbox">
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder="Email Address"
+                    />
+                  </div>
                 </div>
-            </header>
 
-            <section class="auth">
-                <div class="auth_wrapper">
-                    <div class="auth_header">
-                        <h1>Admin Panel</h1>
-                    </div>
-                    <form action="/admin/login" method="POST">
-                        <div class="auth_form">
-                            <div class="inputField">
-                                <div class="inputField_label">
-                                    <p>Email:</p>
-                                </div>
-                                <div class="inputField_textbox">
-                                    <input type="text" name="email" placeholder="Email Address" />
-                                </div>
-                            </div>
-
-                            <div class="inputField">
-                                <div class="inputField_label">
-                                    <p>Password:</p>
-                                </div>
-                                <div class="inputField_textbox">
-                                    <input type="password" name="password" placeholder="Password" />
-                                </div>
-                            </div>
-
-                            <div class="submit" style="padding: 30px 0 20px 0;">
-                                <button class="green-btn">Login</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="inputField">
+                  <div class="inputField_label">
+                    <p>Password:</p>
+                  </div>
+                  <div class="inputField_textbox">
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                    />
+                  </div>
                 </div>
-            </section>
-        </div>
+
+                <div class="submit" style="padding: 30px 0 20px 0;">
+                  <button class="green-btn">Login</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
     </div>
-</body>
-<%- include('./partials/vendorsBottom')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
 
+  <script>
+    function showAlert(msg) {
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
+    }
+    $('.adminLoginClass').on('submit', (e) => {
+      e.preventDefault();
+      const email = $('input[name="email"]').val();
+      const password = $('input[name="password"]').val();
+      if (!email) showAlert('"Email" is required');
+      else if (!password) showAlert('"Password" is required');
+      else {
+        $.ajax({
+          type: 'POST',
+          url: '/admin/login',
+          contentType: 'application/json',
+          data: JSON.stringify({ email, password }),
+        }).done((response) => {
+          if (response.gotError) showAlert(response.message);
+          else location = '/admin';
+        });
+      }
+    });
+  </script>
 </html>

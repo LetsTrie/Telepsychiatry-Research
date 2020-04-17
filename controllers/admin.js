@@ -10,12 +10,32 @@ const { makeSmallParagraphFromHTML } = require('./utils');
 const { testModel } = require('../models/test');
 
 const LIMIT = 9;
+
+// ################## OKAY [START] ########################
 const admin = {
   id: 'admin123',
   name: 'admin',
-  email: 'admin@trin',
-  password: '123456',
+  email: 'manager@trin-innovation.com',
+  password: 'trin123admin@',
 };
+exports.getDashboard = (req, res, next) => res.render('admin_dashboard');
+exports.getLogin = (req, res, next) => res.render('adminLogin');
+exports.postLogin = (req, res, next) => {
+  if (req.body.email == admin.email && req.body.password) {
+    passport.authenticate('local', {
+      successRedirect: '/admin/',
+      failureRedirect: '/admin/login',
+      failureFlash: true,
+    })(req, res, next);
+  } else {
+    return res.json({
+      gotError: true,
+      message: 'Incorrect Email or Password',
+    });
+  }
+};
+// ################## OKAY [THE END] ########################
+
 const checker = async (req, res) => {
   if (req.user) {
     const logged = JSON.stringify(admin) == JSON.stringify(req.user);
@@ -27,60 +47,31 @@ const checker = async (req, res) => {
   }
 };
 
-function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach((item) => {
-    const key = keyGetter(item);
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
-    } else {
-      collection.push(item);
-    }
-  });
-  return map;
-}
-
-exports.allTests = async (req, res, next) => {
-  checker(req, res);
+exports.getAllTests = async (req, res, next) => {
   let searchKey = {};
-  if (req.query.disorder != '') {
-    searchKey['nameEng'] = req.query.disorder;
-  }
-  if (req.query.test) {
-    searchKey['testEng'] = req.query.test;
-  }
-  if (req.query.paid) {
-    searchKey['paidInput'] = req.query.paid;
-  }
-  let tests;
-  const empty = JSON.stringify(searchKey) == JSON.stringify({});
-  if (empty) {
-    tests = await testModel.find();
-  } else {
-    tests = await testModel.find(searchKey);
-  }
-  const groupedTests = groupBy(tests, (tests) => tests.nameEng);
+  const { disorder, test, paid } = req.query;
+  if (!nullChk(disorder)) searchKey['nameEng'] = disorder;
+  if (!nullChk(test)) searchKey['testEng'] = test;
+  if (!nullChk(paid)) searchKey['paidInput'] = paid;
+
+  let tests = await testModel.find(searchKey);
+
+  // take small hand letters
   let disorders = new Set();
-  for (let i = 0; i < tests.length; i++) {
-    disorders.add(tests[i].nameEng);
-  }
+  for (let i = 0; i < tests.length; i++) disorders.add(tests[i].nameEng);
   disorders = Array.from(disorders);
+
+  const groupedTests = groupBy(tests, (tests) => tests.nameEng);
 
   const final = [];
   for (let i = 0; i < disorders.length; i++) {
     const disorderName = disorders[i];
     const relatedTests = [];
     const testMap = groupedTests.get(disorderName);
-    for (let i = 0; i < testMap.length; i++) {
-      relatedTests.push(testMap[i]);
-    }
-    final.push({
-      disorderName,
-      relatedTests,
-    });
+    for (let j = 0; j < testMap.length; j++) relatedTests.push(testMap[j]);
+    final.push({ disorderName, relatedTests });
   }
-  res.render('admin__test', { tests: final });
+  return res.render('admin__test', { tests: final });
 };
 
 exports.singleTest = async (req, res) => {
@@ -158,15 +149,6 @@ exports.createTest = async (req, res, next) => {
     status: true,
     msg: 'okay',
   });
-};
-
-exports.login = (req, res, next) => res.render('adminLogin');
-exports.postLogin = (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/admin/login',
-    failureFlash: true,
-  })(req, res, next);
 };
 
 exports.contactUs = async (req, res, next) => {
@@ -439,4 +421,23 @@ function sendReply(emailID, reply) {
       console.log('Message sent');
     }
   });
+}
+
+// ################## Utils #######################
+function groupBy(list, keyGetter) {
+  const map = new Map();
+  list.forEach((item) => {
+    const key = keyGetter(item);
+    const collection = map.get(key);
+    if (!collection) {
+      map.set(key, [item]);
+    } else {
+      collection.push(item);
+    }
+  });
+  return map;
+}
+
+function nullChk(data) {
+  return data === undefined || data === null || data === '';
 }

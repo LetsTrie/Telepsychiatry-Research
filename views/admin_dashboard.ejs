@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Dashboard | Admin Panel</title>
+  </head>
+
+  <body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Dashboard</p>
+          </div>
+          <div class="bigText">
+            <p>Dashboard</p>
+          </div>
+        </div>
+      </header>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+</html>

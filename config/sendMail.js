@@ -17,8 +17,8 @@ const Transport = nodemailer.createTransport({
   },
 });
 
-const host = `http://localhost:3000`;
-// const host = `http://trin-innovation.com`;
+// const host = `http://localhost:3000`;
+const host = `http://trin-innovation.com`;
 
 module.exports.AccountVerifyMail = async (email, userID) => {
   const mailBody = `Click <a href="${host}/auth/verify/${userID}">here</a> to verify your email.`;

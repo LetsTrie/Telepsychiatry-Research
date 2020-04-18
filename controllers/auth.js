@@ -64,12 +64,7 @@ exports.postCheckDuplication = async (req, res, next) => {
   return res.json({ success, message });
 };
 
-const admin = {
-  id: 'admin123',
-  name: 'admin',
-  email: 'manager@trin-innovation.com',
-  password: 'trin123admin@',
-};
+const admin = require('../config/credentials').adminCredentials;
 
 // admin jeno eta diye dhukte na pare...
 // admin er login er upor homepage er kuno effect porbe na...

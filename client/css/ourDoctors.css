@@ -2324,18 +2324,22 @@ body {
 }
 
 .doctor_identity .His_profession .aff,
-.doctor_identity .His_profession .college {
+.doctor_identity .His_profession .college,
+.doctor_identity .His_profession .expertize {
   margin-bottom: 5px;
   color: #6e6774;
 }
 
 .doctor_identity .His_profession .aff {
   padding-bottom: 3px;
-  padding-top: 20px;
 }
 
 .doctor_identity .His_profession .college {
   padding-bottom: 20px;
+}
+
+.doctor_identity .His_profession .expertize {
+  padding-top: 10px;
 }
 
 .doctor_identity .His_profession .bill {
@@ -2357,6 +2361,7 @@ body {
 }
 
 .doctor_identity .His_profession .bookingg {
+  margin-top: 25px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

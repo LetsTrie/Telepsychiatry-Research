@@ -1144,18 +1144,22 @@ p {
 }
 
 .doctor_identity .His_profession .aff,
-.doctor_identity .His_profession .college {
+.doctor_identity .His_profession .college,
+.doctor_identity .His_profession .expertize {
   margin-bottom: 5px;
   color: #6e6774;
 }
 
 .doctor_identity .His_profession .aff {
   padding-bottom: 3px;
-  padding-top: 20px;
 }
 
 .doctor_identity .His_profession .college {
   padding-bottom: 20px;
+}
+
+.doctor_identity .His_profession .expertize {
+  padding-top: 10px;
 }
 
 .doctor_identity .His_profession .bill {
@@ -1174,6 +1178,10 @@ p {
 
 .doctor_identity .His_profession .ratingg .checked {
   color: #f4c150;
+}
+
+.doctor_identity .His_profession .bookingg {
+  margin-top: 25px;
 }
 
 .doctor_identity .His_profession .bookingg button {

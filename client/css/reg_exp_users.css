@@ -1730,3 +1730,8 @@ p {
     width: 96%;
   }
 }
+
+.littleText {
+  font-size: 14px;
+  color: #7e7d7d;
+}

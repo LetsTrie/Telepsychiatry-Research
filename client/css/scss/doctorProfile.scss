@@ -108,16 +108,19 @@
     }
 
     .aff,
-    .college {
+    .college,
+    .expertize {
       margin-bottom: 5px;
       color: #6e6774;
     }
     .aff {
       padding-bottom: 3px;
-      padding-top: 20px;
     }
     .college {
       padding-bottom: 20px;
+    }
+    .expertize {
+      padding-top: 10px;
     }
     .bill {
       margin-bottom: 30px;
@@ -136,6 +139,7 @@
       }
     }
     .bookingg {
+      margin-top: 25px;
       button {
         border: 2px solid #20c0f3;
         border-radius: 4px;

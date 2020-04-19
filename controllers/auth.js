@@ -144,8 +144,6 @@ exports.postRegisterExpertUserData = async (req, res, next) => {
     affiliation,
     researchArea,
     expertise,
-    profHighestDegree,
-    profDegreeArea,
     fee,
     speciality,
   } = req.body;
@@ -172,8 +170,6 @@ exports.postRegisterExpertUserData = async (req, res, next) => {
     affiliation,
     researchArea,
     expertise,
-    profHighestDegree,
-    profDegreeArea,
     fee,
     speciality,
     password: hashedPassword,

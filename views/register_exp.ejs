@@ -260,7 +260,7 @@
 
                   <div class="two_box_one flex-child">
                     <div class="two_box_header form-header">
-                      <p>About Yourself <span style="color: red;">*</span></p>
+                      <p>About Yourself</p>
                     </div>
                     <textarea
                       name="aboutYourself"
@@ -320,7 +320,9 @@
                       </div>
                       <div class="input_div">
                         <div class="two_box_header form-header">
-                          <p>Expertise Area</p>
+                          <p>
+                            Expertise Area <span style="color: red;">*</span>
+                          </p>
                         </div>
                         <input
                           name="expertise"
@@ -337,7 +339,13 @@
                   <div class="two_box_one flex-child">
                     <div class="" id="education-section">
                       <div class="two_box_header form-header">
-                        <p>Education <span style="color: red;">*</span></p>
+                        <p>
+                          Education <span style="color: red;">*</span>
+                          <span class="littleText"
+                            >(Give your highest achieved degree details in first
+                            row. It will be highlighted in your profile)</span
+                          >
+                        </p>
                       </div>
                       <div id="all_edu_inputs">
                         <div class="education_input">
@@ -357,28 +365,19 @@
                             <input
                               type="text"
                               name="degree"
-                              placeholder="Degree"
+                              placeholder="Degree (Highest achieved)"
                               id="degree"
                               class="degree"
                             />
                           </div>
                           <div class="edu_in">
-                            <div class="input_box slct_picker">
-                              <div class="form-selectpicker">
-                                <select
-                                  id="eduFrom"
-                                  class="selectpicker year-selector"
-                                  data-width="100%"
-                                  title="From"
-                                  data-size="6"
-                                  name="eduFrom"
-                                >
-                                  <% for (let i= yr; i >= 1950; i--) { %>
-                                  <option value="<%= i %>"><%= i %></option>
-                                  <% } %>
-                                </select>
-                              </div>
-                            </div>
+                            <input
+                              type="text"
+                              name="subject"
+                              placeholder="Subject/Field"
+                              id="edu_subject"
+                              class="subject"
+                            />
                           </div>
                           <div class="edu_in">
                             <div class="input_box slct_picker">
@@ -387,7 +386,7 @@
                                   id="eduTo"
                                   class="selectpicker year-selector"
                                   data-width="100%"
-                                  title="To"
+                                  title="Passing year"
                                   data-size="6"
                                   name="eduTo"
                                 >
@@ -412,42 +411,6 @@
                     </div>
                     <div id="add-edu-field" class="add-edu-field-class">
                       <i class="fa fa-plus plus"></i>Add Field
-                    </div>
-                  </div>
-
-                  <!-- ** PROFESSIONAL DEGREE ** -->
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>
-                            Professional Degree
-                            <span style="color: red;">*</span>
-                          </p>
-                        </div>
-                        <input
-                          name="professionalDegree"
-                          type="text"
-                          placeholder="Name of highest achieved Degree"
-                          class="prof-degree"
-                          id="prof-high-degree"
-                        />
-                      </div>
-                      <div class="input_div">
-                        <div
-                          class="two_box_header form-header"
-                          style="visibility: hidden;"
-                        >
-                          <p>Professional Degree</p>
-                        </div>
-                        <input
-                          name="professionalDegree"
-                          type="text"
-                          placeholder="Name of the field"
-                          class="prof-degree"
-                          id="prof-degree-area"
-                        />
-                      </div>
                     </div>
                   </div>
 
@@ -967,31 +930,22 @@
           />
         </div>
         <div class="edu_in">
-          <div class="input_box slct_picker">
-            <div class="form-selectpicker">
-              <select
-                id="eduFrom"
-                class="selectpicker year-selector additional-from"
-                data-width="100%"
-                title="From"
-                data-size="6"
-                name="eduFrom"
-              >
-                <% for (let i= yr; i >= 1950; i--) { %>
-                <option value="<%= i %>"><%= i %></option>
-                <% } %>
-              </select>
-            </div>
-          </div>
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject/Field"
+            id="edu_subject"
+            class="subject"
+          />
         </div>
         <div class="edu_in">
           <div class="input_box slct_picker">
             <div class="form-selectpicker">
               <select
                 id="eduTo"
-                class="selectpicker year-selector additional-to"
+                class="selectpicker year-selector additional"
                 data-width="100%"
-                title="To"
+                title="Passing year"
                 data-size="6"
                 name="eduTo"
               >
@@ -1003,7 +957,11 @@
           </div>
         </div>
         <div class="delete-btn">
-          <div class="delete delete-edu-class" id="delete-edu">
+          <div
+            class="delete delete-edu-class"
+            type="button"
+            id="delete-edu"
+          >
             <i class="fa fa-minus"></i>
           </div>
         </div>
@@ -1011,11 +969,8 @@
       `;
       $('#all_edu_inputs').append(edu_field);
 
-      $('.additional-from').selectpicker('refresh');
-      $('.additional-from').css('width', '100%');
-
-      $('.additional-to').selectpicker('refresh');
-      $('.additional-to').css('width', '100%');
+      $('.additional').selectpicker('refresh');
+      $('.additional').css('width', '100%');
     });
     $(document).on('click', '.delete-edu-class', (e) => {
       let fld = e.target;
@@ -1589,8 +1544,6 @@
       const expertise = $('#expertise').val();
       const speciality = $('#speciality').val();
       const visitingFee = $('#visitingFee').val();
-      const profHighestDegree = $('#prof-high-degree').val();
-      const profDegreeArea = $('#prof-degree-area').val();
 
       const workInstitutes = $('.exp_in input.exp-institute');
       const workFrom = $('.exp_in select[name="expFrom"]');
@@ -1657,20 +1610,17 @@
               $('#exp_user_propic')[0].files[0].size / 1024 > 250
             )
               showAlert('"Display Picture" must be within 250KB');
-            else if (check(about_me)) showAlert('"About Yourself" is required');
             else if (check(designation)) showAlert('"Designation" is required');
             else if (check(affiliation))
               showAlert('"Current Affiliation" is required');
+            else if (check(expertise))
+              showAlert('"Expertise Area" is required');
             else if (check(visitingFee))
               showAlert('"Visiting Fee" is required');
             else if (check(speciality)) showAlert('"Speciality" is required');
             else if (!phoneRegex.test(visitingFee))
               showAlert('"Visiting Fee" must only contain numbers');
             else if (education.errMsg) showAlert(education.errMsg);
-            else if (check(profHighestDegree))
-              showAlert('"Professional Degree Name" is required');
-            else if (check(profDegreeArea))
-              showAlert('"Professional Degree Field Name" is required');
             else if (WorkNexp.errMsg) showAlert(WorkNexp.errMsg);
             else if (visitingTimes.errMsg) showAlert(visitingTimes.errMsg);
             else {
@@ -1696,8 +1646,6 @@
                 researchArea,
                 expertise,
                 education: JSON.stringify(education.eduArray),
-                profHighestDegree,
-                profDegreeArea,
                 training: JSON.stringify(proTrain),
                 workExperience: JSON.stringify(WorkNexp.workExpArray),
                 awards: JSON.stringify(awardData),
@@ -1710,6 +1658,7 @@
               submitBtn.text('Submitting...');
               submitBtn.prop('disabled', true);
               console.log('Ajax inserting');
+              console.log(formData);
               $.ajax({
                 type: 'POST',
                 url: '/auth/register/new/exp/data',
@@ -1732,12 +1681,6 @@
     });
   </script>
 
-  <script>
-    $('#DocRegform').bind('ajax:complete', function () {
-      console.log('The End');
-    });
-  </script>
-
   <!-- FUNCTIONS -->
   <script>
     // 1. EDUCATION
@@ -1745,28 +1688,29 @@
       const eduArray = [];
       let error = false;
       let errMsg = '';
+      console.log(eduInValue, eduInSelect);
 
-      for (let i = 0; i < eduInValue.length / 2; i++) {
-        const eduInstitute = eduInValue[2 * i + 0].value;
-        const degree = eduInValue[2 * i + 1].value;
-        const eduFrom = eduInSelect[2 * i + 0].value;
-        const eduTo = eduInSelect[2 * i + 1].value;
+      for (let i = 0; i < eduInValue.length / 3; i++) {
+        const eduInstitute = eduInValue[3 * i + 0].value;
+        const degree = eduInValue[3 * i + 1].value;
+        const field = eduInValue[3 * i + 2].value;
+        const passingYear = eduInSelect[i + 0].value;
 
         if (check(eduInstitute)) {
           error = true;
-          errMsg = 'Name of educational institute is required';
+          errMsg = 'Provide Institute name in Eduction Section';
         } else if (check(degree)) {
           error = true;
-          errMsg = 'Educational degree is required';
-        } else if (check(eduFrom) || check(eduTo)) {
+          errMsg = 'Provide Degree name in Eduction Section';
+        } else if (check(field)) {
           error = true;
-          errMsg = 'Provide Time in Education section';
-        } else if (checkYears(eduFrom, eduTo)) {
+          errMsg = 'Provide field name in Eduction Section';
+        } else if (check(passingYear)) {
           error = true;
-          errMsg = 'Enter a valid range of years at education section';
+          errMsg = 'Provide Passing Year in Education section';
         }
         if (error) return { errMsg, eduArray: null };
-        eduArray.push({ eduInstitute, degree, eduFrom, eduTo });
+        eduArray.push({ eduInstitute, degree, field, passingYear });
       }
       return { errMsg: null, eduArray };
     }

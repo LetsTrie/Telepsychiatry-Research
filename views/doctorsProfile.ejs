@@ -28,21 +28,24 @@
               <img src="/uploads/<%=doc.propicURL%>" alt="Doctor" />
             </div>
             <div class="His_profession">
-              <p class="name"><%=doc.name%></p>
+              <p class="name">
+                <%= doc.name %>
+              </p>
               <p class="degreeNspeciality">
-                <%= doc.profHighestDegree %> - <%= doc.profDegreeArea %>
+                <%= doc.education[0].degree %> in <%= doc.education[0].field %>
               </p>
 
+              <p class="expertize">
+                <span class="fa fa-user-md">&nbsp;&nbsp;</span>
+                Experts in <%= doc.expertise %>
+              </p>
               <p class="aff">
                 <span class="fa fa-user">&nbsp;&nbsp;</span>
-                <%=doc.designation%>
+                <%= doc.designation %>
               </p>
               <p class="college">
                 <span class="fa fa-university">&nbsp;</span>
-                <%=doc.affiliation%>
-              </p>
-              <p class="bill">
-                <span class="fa fa-money">&nbsp;&nbsp;</span> <%=doc.fee%> BDT
+                <%= doc.affiliation %>
               </p>
 
               <div class="bookingg">
@@ -130,11 +133,12 @@
                                         ><%=doc.education[ii].eduInstitute%></a
                                       >
                                       <div>
-                                        <%=doc.education[ii].degree%>
+                                        <%=doc.education[ii].degree%> in
+                                        <%=doc.education[ii].field%>
                                       </div>
-                                      <span class="time"
-                                        ><%=doc.education[ii].eduFrom%>-<%=doc.education[ii].eduTo%></span
-                                      >
+                                      <span class="time">
+                                        <%=doc.education[ii].passingYear%>
+                                      </span>
                                     </div>
                                   </div>
                                 </li>

@@ -259,16 +259,19 @@ body {
     }
 
     .aff,
-    .college {
+    .college,
+    .expertize {
       margin-bottom: 5px;
       color: #6e6774;
     }
     .aff {
       padding-bottom: 3px;
-      padding-top: 20px;
     }
     .college {
       padding-bottom: 20px;
+    }
+    .expertize {
+      padding-top: 10px;
     }
     .bill {
       margin-bottom: 30px;
@@ -287,6 +290,7 @@ body {
       }
     }
     .bookingg {
+      margin-top: 25px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;

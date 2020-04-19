@@ -137,10 +137,14 @@
                     <%= experts[i].name %>
                   </p>
                   <p class="degreeNspeciality">
-                    <%= experts[i].profHighestDegree %> - <%=
-                    experts[i].profDegreeArea %>
+                    <%= experts[i].education[0].degree %> in <%=
+                    experts[i].education[0].field %>
                   </p>
 
+                  <p class="expertize">
+                    <span class="fa fa-user-md">&nbsp;&nbsp;</span>
+                    Experts in <%= experts[i].expertise %>
+                  </p>
                   <p class="aff">
                     <span class="fa fa-user">&nbsp;&nbsp;</span>
                     <%= experts[i].designation %>
@@ -148,10 +152,6 @@
                   <p class="college">
                     <span class="fa fa-university">&nbsp;</span>
                     <%= experts[i].affiliation %>
-                  </p>
-                  <p class="bill">
-                    <span class="fa fa-money">&nbsp;&nbsp;</span> <%=
-                    experts[i].fee %> BDT
                   </p>
 
                   <div class="bookingg">

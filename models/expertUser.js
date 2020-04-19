@@ -46,18 +46,12 @@ const eUserSchema = new mongoose.Schema({
   fee: {
     type: String,
   },
-  profHighestDegree: {
-    type: String,
-  },
-  profDegreeArea: {
-    type: String,
-  },
   aboutYourself: {
     type: String,
   },
   isVerified: {
     type: Boolean,
-    default: false
+    default: false,
   },
   propicURL: {
     type: String,
@@ -66,8 +60,8 @@ const eUserSchema = new mongoose.Schema({
     {
       eduInstitute: String,
       degree: String,
-      eduFrom: String,
-      eduTo: String,
+      field: String,
+      passingYear: String,
     },
   ],
   training: [

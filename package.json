@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
+    "fs": "0.0.1-security",
     "helmet": "^3.21.2",
     "mongoose": "^5.8.7",
     "morgan": "^1.9.1",

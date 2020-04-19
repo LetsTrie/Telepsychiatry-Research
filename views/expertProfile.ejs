@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/ourDoctors.css" />
+
+        <title>
+            Profile | Telepsychiatry Research
+        </title>
+</head>
+
+<body>
+    <section class="wrapper">
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="assessment_wrapper">
+            <div class="blueDivider">
+                <div class="bigText">
+                    <p>
+                        <%= user.name %>
+                    </p>
+                </div>
+            </div>
+            <div class="contents" style="margin: auto; margin-top: 100px; width: 50%;">
+                <% if (successMessage != '') { %>
+                    <div class="alert alert-success">
+                        <%= successMessage %>
+                    </div>
+                    <% } %>
+                        <div class="alert alert-danger" id="alert" style="display: none;"></div>
+                        <img src="/uploads/<%= user.propicURL %>" alt="">
+                        <form action="/auth/update/exp/file" id="image-form" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="filename" id="filename">
+                            <input type="file" id="exp_user_propic" name="exp_user_propic" accept="image/x-png,image/jpg,image/jpeg" />
+                        </form>
+                        <p style="margin-top: 50px;">Name:
+                            <%= user.name %>
+                        </p>
+                        <p>Email:
+                            <%= user.email %>
+                        </p>
+                        <p>Designation:
+                            <%= user.designation %>
+                        </p>
+                        <p>Phone Number:
+                            <%= user.phone %>
+                        </p>
+                        <p>Date of birth:
+                            <%= user.dob %>
+                        </p>
+                        <p>Current Affiliation:
+                            <%= user.affiliation %>
+                        </p>
+                        <p>Professional Degree:
+                            <%= user.profDegree %>
+                        </p>
+                        <p>Education:
+                            <ul>
+                                <% user.education.forEach((item) => { %>
+                                    <li>
+                                        <%= item.degree %>,
+                                            <%= item.eduInstitute %>
+                                                <br>
+                                                <%= item.eduFrom %> -
+                                                    <%= item.eduTo %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </p>
+                        <button id="update-btn" class="btn btn-success">Update</button>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+<script>
+    function showAlert(msg) {
+        console.log(msg);
+        $('#alert').show();
+        $('#alert').html(msg);
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'slow');
+    }
+    $('#exp_user_propic').change((e) => {
+        const name = Date.parse(new Date().toString());
+        $('#filename').val(name)
+        if ($('#exp_user_propic')[0].files[0].size / 1024 > 250) {
+            showAlert('Display image must be within 250KB')
+        } else {
+            $('#image-form').submit()
+        }
+    })
+    $('#update-btn').click((e) => {
+        location = '/auth/update/exp/profile'
+    })
+</script>
+
+</html>

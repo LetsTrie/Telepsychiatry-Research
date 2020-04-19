@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" href="/css/reg_exp_users.css" />
 
-    <title>Register | Expert User | Telepsychiatry Research</title>
+    <title>Update | Expert User | Telepsychiatry Research</title>
   </head>
 
   <body>
@@ -28,10 +28,10 @@
       </nav>
       <div class="blueDivider">
         <div class="smallText">
-          <p><a href="#">Authentication</a> / Register</p>
+          <p><a href="#">Authentication</a> / Update</p>
         </div>
         <div class="bigText">
-          <p>Expert User Registration</p>
+          <p>Expert User Update Profile</p>
         </div>
       </div>
       <div class="doMagicWrapper">
@@ -52,8 +52,13 @@
                 </div>
                 <% } %>
                 <div class="header addDoctor__header">
-                  <p id="submitResources">Register Expert User</p>
+                  <p id="submitResources">Update Expert User</p>
                 </div>
+                <%
+                  const name = user.name.split(' ')
+                  const fname = name[0]
+                  const lname = name[1]
+                %>
                 <div class="input_boxes">
                   <div class="two_box_one flex-child">
                     <div class="side_by_side">
@@ -65,6 +70,7 @@
                           type="text"
                           name="fname"
                           placeholder="First name"
+                          value="<%= fname %>"
                           class="fname"
                           id="fname"
                         />
@@ -77,6 +83,7 @@
                           type="text"
                           name="lname"
                           placeholder="Last name"
+                          value="<%= lname %>"
                           class="lname"
                           id="lname"
                         />
@@ -114,6 +121,7 @@
                           name="email"
                           type="email"
                           placeholder="Email"
+                          value="<%= user.email %>"
                           class="email"
                           id="email"
                         />
@@ -133,6 +141,7 @@
                           name="dob"
                           type="text"
                           placeholder="Date of Birth"
+                          value="<%= user.dob %>"
                           class="dob"
                           id="dob"
                           autocomplete="off"
@@ -147,6 +156,7 @@
                           name="phone"
                           type="text"
                           placeholder="Phone Number"
+                          value="<%= user.phone %>"
                           class="phone"
                           id="phone"
                         />
@@ -219,6 +229,7 @@
                               id="cityInput"
                               data-size="6"
                             >
+                            <option value="Dhaka">Dhaka</option>
                             </select>
                           </div>
                         </div>
@@ -236,11 +247,12 @@
                           name="regno"
                           type="text"
                           placeholder="License / Registration No."
+                          value="<%= user.regno %>"
                           class="regno"
                           id="regno"
                         />
                       </div>
-                      <div class="input_div">
+                      <!-- <div class="input_div">
                         <div class="two_box_header form-header">
                           <p>
                             Display Picture <span style="color: red;">*</span>
@@ -254,7 +266,7 @@
                             accept="image/x-png,image/jpg,image/jpeg"
                           />
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
 
@@ -269,7 +281,7 @@
                       cols="30"
                       rows="5"
                       class="about_me"
-                    ></textarea>
+                    ><%= user.aboutYourself%></textarea>
                   </div>
 
                   <div class="two_box_one flex-child">
@@ -281,6 +293,7 @@
                         <input
                           name="designation"
                           type="text"
+                          value="<%= user.designation %>"
                           placeholder="Designation"
                           class="designation"
                           id="designation"
@@ -297,6 +310,7 @@
                           name="affiliation"
                           type="text"
                           placeholder="Current Affiliation"
+                          value="<%= user.affiliation %>"
                           class="affiliation"
                           id="affiliation"
                         />
@@ -313,6 +327,7 @@
                         <input
                           name="researchArea"
                           type="text"
+                          value="<%= user.researchArea%>"
                           placeholder="Key Research Area"
                           class="research-area"
                           id="research-area"
@@ -327,6 +342,7 @@
                         <input
                           name="expertise"
                           type="text"
+                          value="<%= user.expertise %>"
                           placeholder="Expert Area"
                           class="expertise"
                           id="expertise"
@@ -348,8 +364,9 @@
                         </p>
                       </div>
                       <div id="all_edu_inputs">
+                        <% user.education.forEach( item => { %>
                         <div class="education_input">
-                          <div class="arrow_sign">
+                            <div class="arrow_sign">
                             <i class="fa fa-arrow-right"></i>
                           </div>
                           <div class="edu_in">
@@ -357,6 +374,7 @@
                               type="text"
                               name="eduInstitute"
                               placeholder="Institute"
+                              value="<%= item.eduInstitute %>"
                               id="institute"
                               class="institute"
                             />
@@ -366,6 +384,7 @@
                               type="text"
                               name="degree"
                               placeholder="Degree (Highest achieved)"
+                              value="<%= item.degree %>"
                               id="degree"
                               class="degree"
                             />
@@ -375,6 +394,7 @@
                               type="text"
                               name="subject"
                               placeholder="Subject/Field"
+                              value="<%= item.field %>"
                               id="edu_subject"
                               class="subject"
                             />
@@ -383,7 +403,7 @@
                             <div class="input_box slct_picker">
                               <div class="form-selectpicker">
                                 <select
-                                  id="eduTo"
+                                  id="passingYear"
                                   class="selectpicker year-selector"
                                   data-width="100%"
                                   title="Passing year"
@@ -407,6 +427,7 @@
                             </div>
                           </div>
                         </div>
+                          <% }) %>
                       </div>
                     </div>
                     <div id="add-edu-field" class="add-edu-field-class">
@@ -421,7 +442,8 @@
                         <p>Professional Training</p>
                       </div>
                       <div id="all_training_inputs">
-                        <div class="training_input">
+                        <% user.training.forEach(item => { %>
+                            <div class="training_input">
                           <div class="arrow_sign">
                             <i
                               class="fa fa-arrow-right"
@@ -436,6 +458,7 @@
                                   placeholder="Name of Training"
                                   name="trainingName"
                                   id="training-name"
+                                  value="<%= item.trainingName %>"
                                   class="training-name"
                                 />
                               </div>
@@ -463,7 +486,7 @@
                               cols="30"
                               rows="5"
                               class="more_on_workplace"
-                            ></textarea>
+                            ><%= item.trainingDetails %></textarea>
                           </div>
                           <div class="delete-btn">
                             <div
@@ -474,6 +497,7 @@
                             </div>
                           </div>
                         </div>
+                          <% }) %>
                       </div>
                     </div>
                     <div id="add-training-field" class="add-training-field">
@@ -487,7 +511,8 @@
                       <p>Works and Experience</p>
                     </div>
                     <div class="" id="exp-section">
-                      <div class="exp_input">
+                      <% user.workExperience.forEach(item => { %>
+                          <div class="exp_input">
                         <div class="arrow_sign">
                           <i class="fa fa-arrow-right"></i>
                         </div>
@@ -496,6 +521,7 @@
                             type="text"
                             name="expInstitute"
                             placeholder="Work Place"
+                            value="<%= item.expInstitute %>"
                             id="exp-institute"
                             class="exp-institute"
                           />
@@ -543,6 +569,7 @@
                           </div>
                         </div>
                       </div>
+                        <% }) %>
                     </div>
                     <div id="add-exp-field" class="add-exp-field">
                       <i class="fa fa-plus plus"></i>Add Field
@@ -556,7 +583,8 @@
                         <p>Awards and Honors</p>
                       </div>
                       <div id="all_awards">
-                        <div class="awards_input">
+                        <% user.awards.forEach(item => {%>
+                            <div class="awards_input">
                           <div class="arrow_sign">
                             <i
                               class="fa fa-arrow-right"
@@ -569,6 +597,7 @@
                                 <input
                                   type="text"
                                   placeholder="Name of the award"
+                                  value="<%= item.awardsName %>"
                                   id="awardsName"
                                   class="award-name"
                                 />
@@ -597,7 +626,7 @@
                               cols="30"
                               rows="5"
                               class="award-details"
-                            ></textarea>
+                            ><%= item.awardsDetails %></textarea>
                           </div>
                           <div class="delete-btn">
                             <div
@@ -609,6 +638,7 @@
                             </div>
                           </div>
                         </div>
+                          <%})%>
                       </div>
                     </div>
                     <div id="add-awards-field" class="add-awards-field">
@@ -622,7 +652,8 @@
                       <p>Visiting Hours Details</p>
                     </div>
                     <div class="chambers">
-                      <div class="oneChamber">
+                      <% user.visitingHour.forEach(item => {%> 
+                          <div class="oneChamber">
                         <div class="arrow_sign">
                           <i class="fa fa-arrow-right"></i>
                         </div>
@@ -632,6 +663,7 @@
                               <input
                                 type="text"
                                 placeholder="Name of the chamber"
+                                value="<%= item.chamberName %>"
                                 name="chamberName"
                                 class="chamberName"
                               />
@@ -640,6 +672,7 @@
                               <input
                                 type="text"
                                 placeholder="Address of the chamber"
+                                value="<%= item.chamberAddress %>"
                                 name="chamberAddress"
                                 class="chamberAddress"
                               />
@@ -657,7 +690,8 @@
                           </div>
                           <div class="dayTime">
                             <div class="allRowsDayTime">
-                              <div class="DayTimeFlexParent">
+                              <% item.shifts.forEach(shift => { %> 
+                                  <div class="DayTimeFlexParent">
                                 <div class="free-input">
                                   <div class="input_box slct_picker">
                                     <div class="form-selectpicker">
@@ -757,6 +791,7 @@
                                   </div>
                                 </div>
                               </div>
+                                <% }) %>
                             </div>
                             <div id="add-vh-shift" class="add-vh-shift">
                               <i class="fa fa-plus plus"></i>Add Shifts
@@ -764,6 +799,7 @@
                           </div>
                         </div>
                       </div>
+                        <% }) %>
                     </div>
                     <div id="add-vh-chamber" class="add-vh-chamber">
                       <i class="fa fa-plus plus"></i>Add Chambers
@@ -781,6 +817,7 @@
                           name="fee"
                           type="text"
                           placeholder="Visiting Fee"
+                          value="<%= user.fee%>"
                           class="visitingFee"
                           id="visitingFee"
                         />
@@ -968,6 +1005,7 @@
       </div>
       `;
       $('#all_edu_inputs').append(edu_field);
+
       $('.additional').selectpicker('refresh');
       $('.additional').css('width', '100%');
     });
@@ -1039,6 +1077,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="delete-btn">
                       <div class="delete delete-exp-class" id="delete-exp">
                         <i class="fa fa-minus"></i>
@@ -1047,8 +1086,10 @@
                   </div>
             `;
       $('#exp-section').append(edu_field);
+
       $('.additional-select-field1').selectpicker('refresh');
       $('.additional-select-field1').css('width', '100%');
+
       $('.additional-select-field2').selectpicker('refresh');
       $('.additional-select-field2').css('width', '100%');
     });
@@ -1126,6 +1167,7 @@
             </div>
               `;
       $('#all_training_inputs').append(trainingField);
+
       $('.additional-select-field').selectpicker('refresh');
       $('.additional-select-field').css('width', '100%');
     });
@@ -1199,6 +1241,7 @@
           </div>
         </div>
       </div>`);
+
       $('.additional-select-field').selectpicker('refresh');
       $('.additional-select-field').css('width', '100%');
     });
@@ -1359,6 +1402,7 @@
                   </div>
       `;
       $('.chambers').append(chamber);
+
       $('.sp-1').selectpicker('refresh');
       $('.sp-1').css('width', '100%');
       $('.sp-2').selectpicker('refresh');
@@ -1493,6 +1537,7 @@
         </div>
       </div>`;
       $(e.target.parentElement.children[0]).append(shift);
+
       $('.sp-1').selectpicker('refresh');
       $('.sp-1').css('width', '100%');
       $('.sp-2').selectpicker('refresh');
@@ -1515,6 +1560,7 @@
     $('.addDoctor__submit').on('click', (e) => {
       e.preventDefault();
       console.log('Clicking submit button');
+
       const fname = $('#fname').val();
       const lname = $('#lname').val();
       const gender = $('#genderInput').val();
@@ -1523,6 +1569,7 @@
       const phone = $('#phone').val();
       const password = $('#password').val();
       const cPassword = $('#cpassword').val();
+
       const country = $('#countryInput').val();
       const city = $('#cityInput').val();
       const regno = $('#regno').val();
@@ -1534,24 +1581,31 @@
       const expertise = $('#expertise').val();
       const speciality = $('#speciality').val();
       const visitingFee = $('#visitingFee').val();
+
       const workInstitutes = $('.exp_in input.exp-institute');
       const workFrom = $('.exp_in select[name="expFrom"]');
       const workTo = $('.exp_in select[name="expTo"]');
+
       const eduInValue = $('.edu_in input');
       const eduInSelect = $('.edu_in select');
+
       const trainingNames = $('.training_in input.training-name');
       const trainingYears = $('.training_in select[name="trainingYear"]');
       const trainingDes = $('.training_in textarea');
+
       const awardsNames = $('.awards_in input.award-name');
       const awardsYears = $('.awards_in select[name="awardsYear"]');
       const awardsDes = $('.awards_in textarea');
+
       let education = getEducationData(eduInValue, eduInSelect);
       let WorkNexp = getWorkNexpData(workInstitutes, workFrom, workTo);
       let proTrain = getProTrainData(trainingNames, trainingYears, trainingDes);
       let awardData = getAwardData(awardsNames, awardsYears, awardsDes);
       let visitingTimes = getVisitingTimeData();
+
       const dobRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
       const phoneRegex = /^[0-9]*$/;
+
       if (check(fname)) showAlert('"First name" is required');
       else if (check(lname)) showAlert('"Last name" is required');
       else if (check(gender)) showAlert('"Gender" is required');
@@ -1564,10 +1618,10 @@
           data: JSON.stringify({ email, phone }),
         }).done((res) => {
           console.log(res);
-          if (res.message === 'EMAIL') showAlert('Email is already used!!');
-          else if (res.message === 'PHONE')
-            showAlert('Phone number is already used!!');
-          else {
+          // if (res.message === 'EMAIL') showAlert('Email is already used!!');
+          // else if (res.message === 'PHONE')
+          //   showAlert('Phone number is already used!!');
+          // else {
             if (check(dob)) showAlert('"Date of birth" is required');
             else if (!dobRegex.test(dob))
               showAlert('"Date of birth" is not valid');
@@ -1586,13 +1640,6 @@
               showAlert('Passwords are not matching');
             else if (check(country)) showAlert('"Country" is required');
             else if (check(city)) showAlert('"City" is required');
-            else if (!image[0].files.length)
-              showAlert('Upload your display picture');
-            else if (
-              image[0].files.length &&
-              $('#exp_user_propic')[0].files[0].size / 1024 > 250
-            )
-              showAlert('"Display Picture" must be within 250KB');
             else if (check(designation)) showAlert('"Designation" is required');
             else if (check(affiliation))
               showAlert('"Current Affiliation" is required');
@@ -1607,9 +1654,6 @@
             else if (WorkNexp.errMsg) showAlert(WorkNexp.errMsg);
             else if (visitingTimes.errMsg) showAlert(visitingTimes.errMsg);
             else {
-              let nowInMilSec = Date.parse(new Date().toString());
-              let _propic =
-                nowInMilSec + '-' + $('#exp_user_propic')[0].files[0].name;
               let formData = {
                 fname,
                 lname,
@@ -1622,7 +1666,6 @@
                 country,
                 city,
                 regno,
-                propicURL: _propic,
                 aboutYourself: about_me,
                 designation,
                 affiliation,
@@ -1636,7 +1679,6 @@
                 fee: visitingFee,
                 speciality,
               };
-              $('#filename').val(nowInMilSec);
               console.log(formData);
               submitBtn.text('Submitting...');
               submitBtn.prop('disabled', true);
@@ -1644,21 +1686,15 @@
               console.log(formData);
               $.ajax({
                 type: 'POST',
-                url: '/auth/register/new/exp/data',
+                url: '/auth/update/exp/profile',
                 data: formData,
                 success: (data) => {
-                  console.log('File Started');
-                  if (!data.status) {
-                    showAlert(data.message);
-                    submitBtn.text('Submit');
-                    submitBtn.prop('disabled', false);
-                  } else if (data.status) {
-                    $('#DocRegform').submit();
-                  }
+                  console.log('updated')
+                  location = '/auth/user/profile'
                 },
               });
             }
-          }
+          // }
         });
       }
     });
@@ -1672,11 +1708,13 @@
       let error = false;
       let errMsg = '';
       console.log(eduInValue, eduInSelect);
+
       for (let i = 0; i < eduInValue.length / 3; i++) {
         const eduInstitute = eduInValue[3 * i + 0].value;
         const degree = eduInValue[3 * i + 1].value;
         const field = eduInValue[3 * i + 2].value;
         const passingYear = eduInSelect[i + 0].value;
+
         if (check(eduInstitute)) {
           error = true;
           errMsg = 'Provide Institute name in Eduction Section';
@@ -1695,6 +1733,7 @@
       }
       return { errMsg: null, eduArray };
     }
+
     // 2. WORK AND EXPERIENCE
     function getWorkNexpData(workInstitutes, workFrom, workTo) {
       let error = false;
@@ -1724,6 +1763,7 @@
       }
       return { errMsg: null, workExpArray };
     }
+
     // 3. PROFESSIONAL TRAINING
     function getProTrainData(trainingNames, trainingYears, trainingDes) {
       let trainingArray = [];
@@ -1731,16 +1771,19 @@
         const trainingName = trainingNames[i].value;
         const trainingYear = trainingYears[i].value;
         const trainingDetails = trainingDes[i].value;
+
         if (
           check(trainingName) &&
           check(trainingYear) &&
           check(trainingDetails)
         )
           continue;
+
         trainingArray.push({ trainingName, trainingYear, trainingDetails });
       }
       return trainingArray;
     }
+
     // 4. AWARDS AND HONORS
     function getAwardData(awardsNames, awardsYears, awardsDes) {
       let awardsArray = [];
@@ -1748,12 +1791,15 @@
         const awardsName = awardsNames[i].value;
         const awardsYear = awardsYears[i].value;
         const awardsDetails = awardsDes[i].value;
+
         if (check(awardsName) && check(awardsYear) && check(awardsDetails))
           continue;
+
         awardsArray.push({ awardsName, awardsYear, awardsDetails });
       }
       return awardsArray;
     }
+
     // 5. CLINICAL INFORMATION
     function getVisitingTimeData() {
       const vhArray = [];
@@ -1791,16 +1837,19 @@
             };
           }
         }
+
         if ((check(chamberName) || check(chamberAddress)) && providedTime) {
           return {
             errMsg: 'Please provide correct chamber information',
             vhArray: null,
           };
         }
+
         if (!check(chamberName) && !check(chamberAddress)) {
           vhArray.push({ chamberName, chamberAddress, shifts });
         }
       }
+
       return {
         errMsg: null,
         vhArray,
@@ -1811,6 +1860,7 @@
   <script src="/js/countrySelector.js"></script>
   <script>
     const country = countryArray.map((x) => x.country);
+
     for (let i = 0; i < country.length; i++) {
       $('#countryInput').append(`<option value="${i}">${country[i]}</option>`);
     }
@@ -1827,4 +1877,49 @@
       citySelector.selectpicker('refresh');
     });
   </script>
+
+    <!-- Select box value setters -->
+  <script>
+    $.get('/auth/getExpUser', (user) => {
+      console.log(user)
+      $('#genderInput').val(user.gender)
+      $('#countryInput').val(user.country)
+      $('#cityInput').val(user.city)
+      $('#speciality').val(user.speciality)
+
+      const education = $('.education_input')
+      for (let i=0; i<education.length; i++) {
+        $(education[i]).find('#passingYear').val(user.education[i].passingYear)
+      }
+
+      const training = $('.training_input')
+      for (let i=0; i<training.length; i++) {
+        $(training[i]).find('#trainingFrom').val(user.training[i].trainingYear)
+      }
+
+      const awards = $('.awards_input')
+      for (let i=0; i<awards.length; i++) {
+        $(awards[i]).find('#award-year').val(user.awards[i].awardsYear)
+      }
+
+      const work = $('.exp_input')
+      for (let i=0; i<work.length; i++) {
+        $(work[i]).find('#expFrom').val(user.workExperience[i].expFrom)
+        $(work[i]).find('#expTo').val(user.workExperience[i].expTo)
+      }
+
+      const chambers = $('.oneChamber')
+      for (let i=0; i<chambers.length; i++) {
+        const vh = $(chambers[i]).find('.DayTimeFlexParent')
+        for (let j=0; j<vh.length; j++) {
+          $(vh[j]).find('select[name="dayFrom"]').val(user.visitingHour[i].shifts[j].dayFrom)
+          $(vh[j]).find('select[name="dayTo"]').val(user.visitingHour[i].shifts[j].dayTo)
+          $(vh[j]).find('select[name="timeFrom"]').val(user.visitingHour[i].shifts[j].timeFrom)
+          $(vh[j]).find('select[name="timeTo"]').val(user.visitingHour[i].shifts[j].timeTo)
+        }
+      }
+    })
+  </script>
 </html>
+
+

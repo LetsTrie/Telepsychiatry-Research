@@ -14,6 +14,9 @@ const {
     expProfile,
     verifyAccount,
     mail,
+    updateExpertFile,
+    getUpdateExpertProfile,
+    postUpdateExpUser,
 } = require('../controllers/auth');
 
 const multer = require('multer');
@@ -63,7 +66,16 @@ router.post('/register/new/exp/data', postRegisterExpertUserData);
 router.get('/register/new/org', getRegisterOrganizations);
 router.post('/register/new/org', postRegisterOrgUser);
 
-router.get('/user/profile/:id', expProfile);
+router.get('/user/profile', expProfile);
 router.get('/verify/:id', verifyAccount);
 router.get('/mail', mail);
+
+//update routes
+router.post('/update/exp/file', uploadPhoto, updateExpertFile);
+router.get('/update/exp/profile', getUpdateExpertProfile);
+router.get('/getExpUser', (req, res) => {
+    console.log('returning exp user');
+    res.send(req.user);
+});
+router.post('/update/exp/profile', postUpdateExpUser);
 module.exports = router;

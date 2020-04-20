@@ -45,7 +45,7 @@
     margin: 8px 12px;
     border-radius: 5px;
     @media (max-width: 1410px) {
-      margin: 5px;
+      margin: 0px;
     }
   }
 
@@ -105,6 +105,9 @@
     position: absolute;
     background-color: white;
     min-width: 240px;
+    &.profileeDcontent {
+      min-width: 170px;
+    }
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     border: 1px solid rgb(236, 236, 236);

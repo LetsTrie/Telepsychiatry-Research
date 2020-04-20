@@ -1,3 +1,4 @@
+const path = require('path');
 const conCity = require('../data/country');
 const country = conCity.map((x) => x.country);
 const nodemailer = require('nodemailer');
@@ -17,6 +18,12 @@ exports.getRegisterGeneralUser = (req, res, next) => {
 exports.getRegisterOrganizations = (req, res, next) => {
   return res.render('register_org', { country });
 };
+
+exports.postUpdateExpertPassword = (req, res, next) =>
+  res.render('updateExpertPassword');
+exports.postUpdateExpertPicture = (req, res, next) =>
+  res.render('updateExpertPhoto');
+
 const { regGenUserVal } = require('../validations/auth');
 exports.postRegisterGeneralUser = async (req, res, next) => {
   try {
@@ -396,7 +403,6 @@ exports.postUpdateExpUser = async (req, res, next) => {
   const _workExperience = JSON.parse(req.body.workExperience);
   const _visitingHour = JSON.parse(req.body.visitingHour);
   const fullName = req.body.fname + ' ' + req.body.lname;
-  const hashed = await bcrypt.hash(req.body.password, 10);
   await eUserModel.findOneAndUpdate(
     { _id: req.user._id },
     {
@@ -417,7 +423,6 @@ exports.postUpdateExpUser = async (req, res, next) => {
         researchArea: req.body.researchArea,
         fee: req.body.fee,
         speciality: req.body.speciality,
-        password: hashed,
         education: _education,
         training: _training,
         awards: _awards,

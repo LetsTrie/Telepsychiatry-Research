@@ -18,6 +18,8 @@ const {
   getUpdateExpertProfile,
   postUpdateExpUser,
   getExpUser,
+  postUpdateExpertPassword,
+  postUpdateExpertPicture,
 } = require('../controllers/auth');
 
 const multer = require('multer');
@@ -78,5 +80,6 @@ router.post('/update/exp/file', [privateRoute, uploadPhoto], updateExpertFile);
 router.get('/update/exp/profile', privateRoute, getUpdateExpertProfile);
 router.get('/getExpUser', privateRoute, getExpUser);
 router.post('/update/exp/profile', privateRoute, postUpdateExpUser);
-
+router.get('/update/exp/password', privateRoute, postUpdateExpertPassword);
+router.get('/update/exp/profilePicture', privateRoute, postUpdateExpertPicture);
 module.exports = router;

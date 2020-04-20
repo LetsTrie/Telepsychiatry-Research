@@ -833,7 +833,7 @@ p {
 
 @media (max-width: 1410px) {
   .navbarWrapper .nav-item {
-    margin: 5px;
+    margin: 0px;
   }
 }
 
@@ -909,6 +909,10 @@ p {
   border-radius: 4px;
   border: 1px solid #ececec;
   z-index: 1;
+}
+
+.navbarWrapper .dropdown-content.profileeDcontent {
+  min-width: 170px;
 }
 
 .navbarWrapper .extraLarge {

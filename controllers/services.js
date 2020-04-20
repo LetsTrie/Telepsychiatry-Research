@@ -11,7 +11,7 @@ const nullCheck = (data) => {
 
 exports.consultation = async (req, res) => {
   const experts = await eUserModel
-    .find({ speciality: 'Psychiatric Consultations' })
+    .find({ speciality: 'Psychiatric Consultation' })
     .sort({ _id: -1 });
   res.render('consultation', { experts });
 };
@@ -19,7 +19,7 @@ exports.searchConsultation = async (req, res) => {
   let search = req.query.searchInput;
   let gender = getTheArray(req.query.gender);
   let city = getTheArray(req.query.city);
-  const keyword = { speciality: 'Psychiatric Consultations' };
+  const keyword = { speciality: 'Psychiatric Consultation' };
 
   if (search === '') search = undefined;
   if (nullCheck(search) && nullCheck(gender) && nullCheck(city)) {

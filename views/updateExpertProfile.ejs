@@ -31,7 +31,7 @@
           <p><a href="#">Authentication</a> / Update</p>
         </div>
         <div class="bigText">
-          <p>Expert User Update Profile</p>
+          <p>Update Profile</p>
         </div>
       </div>
       <div class="doMagicWrapper">
@@ -54,11 +54,9 @@
                 <div class="header addDoctor__header">
                   <p id="submitResources">Update Expert User</p>
                 </div>
-                <%
-                  const name = user.name.split(' ')
-                  const fname = name[0]
-                  const lname = name[1]
-                %>
+                <% const lastIdx = user.name.lastIndexOf(' '); const fname =
+                user.name.substr(0, lastIdx).trim(); const lname =
+                user.name.substr(lastIdx).trim(); %>
                 <div class="input_boxes">
                   <div class="two_box_one flex-child">
                     <div class="side_by_side">
@@ -114,6 +112,12 @@
                         </div>
                       </div>
                       <div class="input_div">
+                        <input
+                          type="hidden"
+                          name="prevEmail"
+                          id="prevEmail"
+                          value="<%= user.email %>"
+                        />
                         <div class="two_box_header form-header">
                           <p>Email <span style="color: red;">*</span></p>
                         </div>
@@ -149,6 +153,12 @@
                       </div>
 
                       <div class="input_div">
+                        <input
+                          type="hidden"
+                          name="prevPhnNumber"
+                          id="prevPhnNumber"
+                          value="<%= user.phone %>"
+                        />
                         <div class="two_box_header form-header">
                           <p>Phone number <span style="color: red;">*</span></p>
                         </div>
@@ -164,7 +174,7 @@
                     </div>
                   </div>
 
-                  <div class="two_box_one flex-child">
+                  <!-- <div class="two_box_one flex-child">
                     <div class="side_by_side">
                       <div class="input_div">
                         <div class="two_box_header form-header">
@@ -193,7 +203,7 @@
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="two_box_one flex-child">
                     <div class="side_by_side">
@@ -215,6 +225,12 @@
                           </div>
                         </div>
                       </div>
+                      <input
+                        type="hidden"
+                        name="getPrevCity"
+                        id="getPrevCity"
+                        value="<%= user.city %>"
+                      />
                       <div class="input_div">
                         <div class="two_box_header form-header">
                           <p>City <span style="color: red;">*</span></p>
@@ -229,7 +245,6 @@
                               id="cityInput"
                               data-size="6"
                             >
-                            <option value="Dhaka">Dhaka</option>
                             </select>
                           </div>
                         </div>
@@ -281,7 +296,10 @@
                       cols="30"
                       rows="5"
                       class="about_me"
-                    ><%= user.aboutYourself%></textarea>
+                    >
+                      <%= user.aboutYourself%>
+                      </textarea
+                    >
                   </div>
 
                   <div class="two_box_one flex-child">
@@ -366,7 +384,7 @@
                       <div id="all_edu_inputs">
                         <% user.education.forEach( item => { %>
                         <div class="education_input">
-                            <div class="arrow_sign">
+                          <div class="arrow_sign">
                             <i class="fa fa-arrow-right"></i>
                           </div>
                           <div class="edu_in">
@@ -427,7 +445,7 @@
                             </div>
                           </div>
                         </div>
-                          <% }) %>
+                        <% }) %>
                       </div>
                     </div>
                     <div id="add-edu-field" class="add-edu-field-class">
@@ -443,7 +461,7 @@
                       </div>
                       <div id="all_training_inputs">
                         <% user.training.forEach(item => { %>
-                            <div class="training_input">
+                        <div class="training_input">
                           <div class="arrow_sign">
                             <i
                               class="fa fa-arrow-right"
@@ -486,7 +504,9 @@
                               cols="30"
                               rows="5"
                               class="more_on_workplace"
-                            ><%= item.trainingDetails %></textarea>
+                            >
+<%= item.trainingDetails %></textarea
+                            >
                           </div>
                           <div class="delete-btn">
                             <div
@@ -497,7 +517,7 @@
                             </div>
                           </div>
                         </div>
-                          <% }) %>
+                        <% }) %>
                       </div>
                     </div>
                     <div id="add-training-field" class="add-training-field">
@@ -512,7 +532,7 @@
                     </div>
                     <div class="" id="exp-section">
                       <% user.workExperience.forEach(item => { %>
-                          <div class="exp_input">
+                      <div class="exp_input">
                         <div class="arrow_sign">
                           <i class="fa fa-arrow-right"></i>
                         </div>
@@ -569,7 +589,7 @@
                           </div>
                         </div>
                       </div>
-                        <% }) %>
+                      <% }) %>
                     </div>
                     <div id="add-exp-field" class="add-exp-field">
                       <i class="fa fa-plus plus"></i>Add Field
@@ -584,7 +604,7 @@
                       </div>
                       <div id="all_awards">
                         <% user.awards.forEach(item => {%>
-                            <div class="awards_input">
+                        <div class="awards_input">
                           <div class="arrow_sign">
                             <i
                               class="fa fa-arrow-right"
@@ -626,7 +646,9 @@
                               cols="30"
                               rows="5"
                               class="award-details"
-                            ><%= item.awardsDetails %></textarea>
+                            >
+<%= item.awardsDetails %></textarea
+                            >
                           </div>
                           <div class="delete-btn">
                             <div
@@ -638,7 +660,7 @@
                             </div>
                           </div>
                         </div>
-                          <%})%>
+                        <%})%>
                       </div>
                     </div>
                     <div id="add-awards-field" class="add-awards-field">
@@ -652,8 +674,8 @@
                       <p>Visiting Hours Details</p>
                     </div>
                     <div class="chambers">
-                      <% user.visitingHour.forEach(item => {%> 
-                          <div class="oneChamber">
+                      <% user.visitingHour.forEach(item => { %>
+                      <div class="oneChamber">
                         <div class="arrow_sign">
                           <i class="fa fa-arrow-right"></i>
                         </div>
@@ -690,8 +712,8 @@
                           </div>
                           <div class="dayTime">
                             <div class="allRowsDayTime">
-                              <% item.shifts.forEach(shift => { %> 
-                                  <div class="DayTimeFlexParent">
+                              <% item.shifts.forEach(shift => { %>
+                              <div class="DayTimeFlexParent">
                                 <div class="free-input">
                                   <div class="input_box slct_picker">
                                     <div class="form-selectpicker">
@@ -791,7 +813,7 @@
                                   </div>
                                 </div>
                               </div>
-                                <% }) %>
+                              <% }) %>
                             </div>
                             <div id="add-vh-shift" class="add-vh-shift">
                               <i class="fa fa-plus plus"></i>Add Shifts
@@ -799,7 +821,7 @@
                           </div>
                         </div>
                       </div>
-                        <% }) %>
+                      <% }) %>
                     </div>
                     <div id="add-vh-chamber" class="add-vh-chamber">
                       <i class="fa fa-plus plus"></i>Add Chambers
@@ -836,11 +858,14 @@
                               data-size="6"
                               name="speciality"
                             >
-                              <option value="Psychiatric Consultations">
-                                Psychiatric Consultations</option
-                              >
+                              <option value="Psychiatric Consultation">
+                                Psychiatric Consultations
+                              </option>
                               <option value="Psycho Therapy & Counselling">
                                 Psycho Therapy & Counselling
+                              </option>
+                              <option value="Researcher">
+                                Researcher
                               </option>
                             </select>
                           </div>
@@ -1582,6 +1607,9 @@
       const speciality = $('#speciality').val();
       const visitingFee = $('#visitingFee').val();
 
+      const prevPhnNumber = $('#prevPhnNumber').val();
+      const prevEmail = $('$prevEmail').val();
+
       const workInstitutes = $('.exp_in input.exp-institute');
       const workFrom = $('.exp_in select[name="expFrom"]');
       const workTo = $('.exp_in select[name="expTo"]');
@@ -1610,28 +1638,26 @@
       else if (check(lname)) showAlert('"Last name" is required');
       else if (check(gender)) showAlert('"Gender" is required');
       else if (check(email)) showAlert('"Email" is required');
+      else if (check(dob)) showAlert('"Date of birth" is required');
+      else if (!dobRegex.test(dob)) showAlert('"Date of birth" is not valid');
+      else if (check(phone) || !phoneRegex.test(phone) || phone.length !== 11)
+        showAlert('"Phone number" must be 11 characters long');
       else {
+        let sndData = {};
+        if (email !== prevEmail) sndData.email = email;
+        if (phone !== prevPhnNumber) sndData.phone = phone;
         $.ajax({
           type: 'POST',
           url: '/auth/register/eUserCheckDuplicate',
           contentType: 'application/json',
-          data: JSON.stringify({ email, phone }),
+          data: JSON.stringify(sndData),
         }).done((res) => {
           console.log(res);
-          // if (res.message === 'EMAIL') showAlert('Email is already used!!');
-          // else if (res.message === 'PHONE')
-          //   showAlert('Phone number is already used!!');
-          // else {
-            if (check(dob)) showAlert('"Date of birth" is required');
-            else if (!dobRegex.test(dob))
-              showAlert('"Date of birth" is not valid');
-            else if (
-              check(phone) ||
-              !phoneRegex.test(phone) ||
-              phone.length !== 11
-            )
-              showAlert('"Phone number" must be 11 characters long');
-            else if (check(password)) showAlert('"Password" is required');
+          if (res.message === 'EMAIL') showAlert('Email is already used!!');
+          else if (res.message === 'PHONE')
+            showAlert('Phone number is already used!!');
+          else {
+            if (check(password)) showAlert('"Password" is required');
             else if (password.length < 6)
               showAlert('Password must contain at least 6 characters');
             else if (check(cPassword))
@@ -1689,12 +1715,12 @@
                 url: '/auth/update/exp/profile',
                 data: formData,
                 success: (data) => {
-                  console.log('updated')
-                  location = '/auth/user/profile'
+                  console.log('updated');
+                  location = '/auth/user/profile';
                 },
               });
             }
-          // }
+          }
         });
       }
     });
@@ -1868,58 +1894,73 @@
     $(document).on('change', '#countryInput', (e) => {
       const selectedIndex = e.target.value;
       citySelector.empty();
+      const getCity = $('#getPrevCity').val();
+      console.log(getCity);
       for (let i = 0; i < countryArray[selectedIndex].states.length; i++) {
         const city = countryArray[selectedIndex].states[i];
-        citySelector.append(
-          `<option value="${selectedIndex}-${i}">${city}</option>`
-        );
+        const idx = `${selectedIndex}-${i}`;
+        if (idx === getCity) {
+          citySelector.append(
+            `<option value="${selectedIndex}-${i}" selected>${city}</option>`
+          );
+        } else {
+          citySelector.append(
+            `<option value="${selectedIndex}-${i}">${city}</option>`
+          );
+        }
       }
       citySelector.selectpicker('refresh');
     });
   </script>
 
-    <!-- Select box value setters -->
+  <!-- Select box value setters -->
   <script>
     $.get('/auth/getExpUser', (user) => {
-      console.log(user)
-      $('#genderInput').val(user.gender)
-      $('#countryInput').val(user.country)
-      $('#cityInput').val(user.city)
-      $('#speciality').val(user.speciality)
+      $('#genderInput').val(user.gender);
+      $('#countryInput').val(user.country);
+      $('#countryInput').trigger('change');
+      $('#cityInput').val(user.city);
+      $('#speciality').val(user.speciality);
 
-      const education = $('.education_input')
-      for (let i=0; i<education.length; i++) {
-        $(education[i]).find('#passingYear').val(user.education[i].passingYear)
+      const education = $('.education_input');
+      for (let i = 0; i < education.length; i++) {
+        $(education[i]).find('#passingYear').val(user.education[i].passingYear);
       }
 
-      const training = $('.training_input')
-      for (let i=0; i<training.length; i++) {
-        $(training[i]).find('#trainingFrom').val(user.training[i].trainingYear)
+      const training = $('.training_input');
+      for (let i = 0; i < training.length; i++) {
+        $(training[i]).find('#trainingFrom').val(user.training[i].trainingYear);
       }
 
-      const awards = $('.awards_input')
-      for (let i=0; i<awards.length; i++) {
-        $(awards[i]).find('#award-year').val(user.awards[i].awardsYear)
+      const awards = $('.awards_input');
+      for (let i = 0; i < awards.length; i++) {
+        $(awards[i]).find('#award-year').val(user.awards[i].awardsYear);
       }
 
-      const work = $('.exp_input')
-      for (let i=0; i<work.length; i++) {
-        $(work[i]).find('#expFrom').val(user.workExperience[i].expFrom)
-        $(work[i]).find('#expTo').val(user.workExperience[i].expTo)
+      const work = $('.exp_input');
+      for (let i = 0; i < work.length; i++) {
+        $(work[i]).find('#expFrom').val(user.workExperience[i].expFrom);
+        $(work[i]).find('#expTo').val(user.workExperience[i].expTo);
       }
 
-      const chambers = $('.oneChamber')
-      for (let i=0; i<chambers.length; i++) {
-        const vh = $(chambers[i]).find('.DayTimeFlexParent')
-        for (let j=0; j<vh.length; j++) {
-          $(vh[j]).find('select[name="dayFrom"]').val(user.visitingHour[i].shifts[j].dayFrom)
-          $(vh[j]).find('select[name="dayTo"]').val(user.visitingHour[i].shifts[j].dayTo)
-          $(vh[j]).find('select[name="timeFrom"]').val(user.visitingHour[i].shifts[j].timeFrom)
-          $(vh[j]).find('select[name="timeTo"]').val(user.visitingHour[i].shifts[j].timeTo)
+      const chambers = $('.oneChamber');
+      for (let i = 0; i < chambers.length; i++) {
+        const vh = $(chambers[i]).find('.DayTimeFlexParent');
+        for (let j = 0; j < vh.length; j++) {
+          $(vh[j])
+            .find('select[name="dayFrom"]')
+            .val(user.visitingHour[i].shifts[j].dayFrom);
+          $(vh[j])
+            .find('select[name="dayTo"]')
+            .val(user.visitingHour[i].shifts[j].dayTo);
+          $(vh[j])
+            .find('select[name="timeFrom"]')
+            .val(user.visitingHour[i].shifts[j].timeFrom);
+          $(vh[j])
+            .find('select[name="timeTo"]')
+            .val(user.visitingHour[i].shifts[j].timeTo);
         }
       }
-    })
+    });
   </script>
 </html>
-
-

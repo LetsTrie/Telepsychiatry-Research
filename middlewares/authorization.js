@@ -13,6 +13,11 @@ exports.adminAccess = (req, res, next) => {
   }
 };
 
+exports.privateRoute = (req, res, next) => {
+  if (req.user) next();
+  else res.redirect('/auth/login');
+};
+
 exports.canNotBeAuthenticated = (req, res, next) => {
   if (req.user) {
     return res.send('No Access Persmission');

@@ -1,57 +1,60 @@
 const router = require('express').Router();
 
 const {
-    getRegisterGeneralUser,
-    getRegisterExpertUser,
-    getRegisterOrganizations,
-    postRegisterGeneralUser,
-    postRegisterExpertUserData,
-    postRegisterExpertUserFile,
-    postRegisterOrgUser,
-    postCheckDuplication,
-    eUserCheckDuplication,
-    postLogin,
-    expProfile,
-    verifyAccount,
-    mail,
-    updateExpertFile,
-    getUpdateExpertProfile,
-    postUpdateExpUser,
+  getRegisterGeneralUser,
+  getRegisterExpertUser,
+  getRegisterOrganizations,
+  postRegisterGeneralUser,
+  postRegisterExpertUserData,
+  postRegisterExpertUserFile,
+  postRegisterOrgUser,
+  postCheckDuplication,
+  eUserCheckDuplication,
+  postLogin,
+  expProfile,
+  verifyAccount,
+  mail,
+  updateExpertFile,
+  getUpdateExpertProfile,
+  postUpdateExpUser,
+  getExpUser,
 } = require('../controllers/auth');
 
 const multer = require('multer');
 const fileStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/uploads/');
-    },
-    filename: (req, file, cb) => {
-        const filename = req.body.filename + '-' + file.originalname;
-        cb(null, filename);
-    },
+  destination: (req, file, cb) => {
+    cb(null, 'public/uploads/');
+  },
+  filename: (req, file, cb) => {
+    const filename = req.body.filename + '-' + file.originalname;
+    cb(null, filename);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-    if (
-        file.mimetype === 'image/png' ||
-        file.mimetype === 'image/jpg' ||
-        file.mimetype === 'image/jpeg'
-    ) {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
 };
 
 const uploadPhoto = multer({
-    storage: fileStorage,
-    fileFilter: fileFilter,
+  storage: fileStorage,
+  fileFilter: fileFilter,
 }).single('exp_user_propic');
+
+const { privateRoute } = require('../middlewares/authorization');
 
 router.get('/login', (req, res, next) => res.render('login'));
 router.post('/login', postLogin);
 router.get('/logout', (req, res, next) => {
-    req.logout();
-    res.redirect('/auth/login');
+  req.logout();
+  res.redirect('/auth/login');
 });
 
 router.get('/register/new/gen', getRegisterGeneralUser);
@@ -71,11 +74,9 @@ router.get('/verify/:id', verifyAccount);
 router.get('/mail', mail);
 
 //update routes
-router.post('/update/exp/file', uploadPhoto, updateExpertFile);
-router.get('/update/exp/profile', getUpdateExpertProfile);
-router.get('/getExpUser', (req, res) => {
-    console.log('returning exp user');
-    res.send(req.user);
-});
-router.post('/update/exp/profile', postUpdateExpUser);
+router.post('/update/exp/file', [privateRoute, uploadPhoto], updateExpertFile);
+router.get('/update/exp/profile', privateRoute, getUpdateExpertProfile);
+router.get('/getExpUser', privateRoute, getExpUser);
+router.post('/update/exp/profile', privateRoute, postUpdateExpUser);
+
 module.exports = router;

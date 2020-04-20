@@ -1,53 +1,54 @@
 const router = require('express').Router();
 
 const {
-  getRegisterGeneralUser,
-  getRegisterExpertUser,
-  getRegisterOrganizations,
-  postRegisterGeneralUser,
-  postRegisterExpertUserData,
-  postRegisterExpertUserFile,
-  postRegisterOrgUser,
-  postCheckDuplication,
-  eUserCheckDuplication,
-  postLogin,
-  expProfile,
-  verifyAccount,
-  mail,
-  updateExpertFile,
-  getUpdateExpertProfile,
-  postUpdateExpUser,
-  getExpUser,
-  postUpdateExpertPassword,
-  postUpdateExpertPicture,
+    getRegisterGeneralUser,
+    getRegisterExpertUser,
+    getRegisterOrganizations,
+    postRegisterGeneralUser,
+    postRegisterExpertUserData,
+    postRegisterExpertUserFile,
+    postRegisterOrgUser,
+    postCheckDuplication,
+    eUserCheckDuplication,
+    postLogin,
+    expProfile,
+    verifyAccount,
+    mail,
+    updateExpertFile,
+    getUpdateExpertProfile,
+    postUpdateExpUser,
+    getExpUser,
+    postUpdateExpertPassword,
+    postUpdateExpertPicture,
+    changePassword,
 } = require('../controllers/auth');
 
 const multer = require('multer');
 const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads/');
-  },
-  filename: (req, file, cb) => {
-    const filename = req.body.filename + '-' + file.originalname;
-    cb(null, filename);
-  },
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads/');
+    },
+    filename: (req, file, cb) => {
+        const filename = req.body.filename + '-' + file.originalname;
+        cb(null, filename);
+    },
 });
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/png' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/jpeg'
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
+    if (
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg'
+    ) {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
 };
 
 const uploadPhoto = multer({
-  storage: fileStorage,
-  fileFilter: fileFilter,
+    storage: fileStorage,
+    fileFilter: fileFilter,
 }).single('exp_user_propic');
 
 const { privateRoute } = require('../middlewares/authorization');
@@ -55,8 +56,8 @@ const { privateRoute } = require('../middlewares/authorization');
 router.get('/login', (req, res, next) => res.render('login'));
 router.post('/login', postLogin);
 router.get('/logout', (req, res, next) => {
-  req.logout();
-  res.redirect('/auth/login');
+    req.logout();
+    res.redirect('/auth/login');
 });
 
 router.get('/register/new/gen', getRegisterGeneralUser);
@@ -77,6 +78,7 @@ router.get('/mail', mail);
 
 //update routes
 router.post('/update/exp/file', [privateRoute, uploadPhoto], updateExpertFile);
+router.post('/update/exp/password', changePassword);
 router.get('/update/exp/profile', privateRoute, getUpdateExpertProfile);
 router.get('/getExpUser', privateRoute, getExpUser);
 router.post('/update/exp/profile', privateRoute, postUpdateExpUser);

@@ -1,116 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
-    <link rel="stylesheet" href="/css/reg_exp_users_update.css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" href="/css/reg_exp_users_update.css" />
 
-    <title>Update | Expert User | Telepsychiatry Research</title>
-  </head>
+        <title>Update | Expert User | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <% let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
-    'Thursday', 'Friday'] %> <% const yr = (new Date(Date.now())).getFullYear();
+    'Thursday', 'Friday'] %>
+        <% const yr = (new Date(Date.now())).getFullYear();
     %>
-    <section class="admin_addDoctor_wrapper" style="background-color: #ebebeb;">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="blueDivider">
-        <div class="smallText">
-          <p><a href="#">Authentication</a> / Update</p>
-        </div>
-        <div class="bigText">
-          <p>Update Profile</p>
-        </div>
-      </div>
-      <div class="twoBigSectionFlex">
-        <div class="eachBigSection">
-          <div class="threeBtn editProfileCls">
-            <button>Edit Profile</button>
-          </div>
-          <div class="threeBtn changePassword">
-            <button>Change Password</button>
-          </div>
-          <div class="threeBtn changeProfilePicture">
-            <button>Change Display Picture</button>
-          </div>
-        </div>
-        <div class="eachBigSection">
-          <div class="doMagicWrapper">
-            <div class="doMagic">
-              <div class="createResources addDoctor pb-5">
-                <form
-                  action="/auth/register/new/exp/file"
-                  method="POST"
-                  enctype="multipart/form-data"
-                  id="DocRegform"
-                >
-                  <input type="hidden" name="filename" id="filename" />
-                  <div class="container">
-                    <div id="alert" class="alert alert-danger"></div>
-                    <% if (errorMessage != '') { %>
-                    <div id="alert" class="alert alert-danger">
-                      <%= errorMessage %>
+            <section class="admin_addDoctor_wrapper" style="background-color: #ebebeb;">
+                <nav>
+                    <%- include('./partials/navbar')%>
+                </nav>
+                <div class="blueDivider">
+                    <div class="smallText">
+                        <p><a href="#">Authentication</a> / Update</p>
                     </div>
-                    <% } %>
-                    <div class="header addDoctor__header">
-                      <p id="submitResources">Update Display Picture</p>
+                    <div class="bigText">
+                        <p>Update Profile</p>
                     </div>
-                    <div class="imageWrapper">
-                      <div class="theImage text-center">
-                        <img src="/images/careForFuture.jpg" alt="" />
-                      </div>
-                      <div class="form_wrapper text-center pt-3 mt-2">
-                        <input
-                          type="file"
-                          id="exp_user_propic"
-                          name="exp_user_propic"
-                          accept="image/x-png,image/jpg,image/jpeg"
-                        />
-                      </div>
+                </div>
+                <div class="twoBigSectionFlex">
+                    <div class="eachBigSection">
+                        <div class="threeBtn editProfileCls">
+                            <button>Edit Profile</button>
+                        </div>
+                        <div class="threeBtn changePassword">
+                            <button>Change Password</button>
+                        </div>
+                        <div class="threeBtn changeProfilePicture">
+                            <button>Change Display Picture</button>
+                        </div>
                     </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
+                    <div class="eachBigSection">
+                        <div class="doMagicWrapper">
+                            <div class="doMagic">
+                                <div class="createResources addDoctor pb-5">
+                                    <form action="/auth/update/exp/file" method="POST" enctype="multipart/form-data" id="DocRegform">
+                                        <input type="hidden" name="filename" id="filename" />
+                                        <div class="container">
+                                            <div id="alert" class="alert alert-danger"></div>
+                                            <% if (errorMessage != '') { %>
+                                                <div id="alert" class="alert alert-danger">
+                                                    <%= errorMessage %>
+                                                </div>
+                                                <% } %>
+                                                    <div class="header addDoctor__header">
+                                                        <p id="submitResources">Update Display Picture</p>
+                                                    </div>
+                                                    <div class="imageWrapper">
+                                                        <div class="theImage text-center">
+                                                            <img src="/uploads/<%= user.propicURL %>" alt="" />
+                                                        </div>
+                                                        <div class="form_wrapper text-center pt-3 mt-2">
+                                                            <input type="file" id="exp_user_propic" name="exp_user_propic" accept="image/x-png,image/jpg,image/jpeg" />
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        function showAlert(msg) {
+            console.log(msg);
+            $('#alert').show();
+            $('#alert').html(msg);
+            $('html, body').animate({
+                    scrollTop: 0,
+                },
+                'slow'
+            );
+        }
+        $('#exp_user_propic').change((e) => {
+            const name = Date.parse(new Date().toString());
+            $('#filename').val(name);
+            if ($('#exp_user_propic')[0].files[0].size / 1024 > 250) {
+                showAlert('Display image must be within 250KB');
+            } else {
+                $('#DocRegform').submit();
+            }
+        });
+    </script>
+    <script>
+        $('.editProfileCls').on('click', (e) => {
+            location = '/auth/update/exp/profile';
+        });
 
-  <script>
-    $('.editProfileCls').on('click', (e) => {
-      location = '/auth/update/exp/profile';
-    });
+        $('.changePassword').on('click', (e) => {
+            location = '/auth/update/exp/password';
+        });
 
-    $('.changePassword').on('click', (e) => {
-      location = '/auth/update/exp/password';
-    });
+        $('.changeProfilePicture').on('click', (e) => {
+            location = '/auth/update/exp/profilePicture';
+        });
+    </script>
 
-    $('.changeProfilePicture').on('click', (e) => {
-      location = '/auth/update/exp/profilePicture';
-    });
-  </script>
 </html>

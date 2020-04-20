@@ -964,6 +964,7 @@
       const ch4 = check(data4) ? 0 : 1;
       return ch1 + ch2 + ch3 + ch4;
     }
+
     $('input[name="dob"]').daterangepicker({
       autoUpdateInput: false,
       singleDatePicker: true,
@@ -972,6 +973,7 @@
       maxYear: parseInt(moment().format('YYYY'), 10),
       locale: {
         cancelLabel: 'Clear',
+        format: 'DD/MM/YYYY',
       },
     });
     $('input[name="dob"]').on('apply.daterangepicker', function (ev, picker) {

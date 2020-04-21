@@ -176,6 +176,7 @@ body {
 
     &:last-child {
       width: 73%;
+      min-height: 60vh;
       @media (max-width: 1300px) {
         width: 100%;
       }

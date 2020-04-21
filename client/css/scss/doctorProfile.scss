@@ -61,6 +61,7 @@
   // box-shadow: rgba(75, 74, 74, 0.8) 0px 2px 7px,
   // inset rgba(117, 115, 115, 0.15) 0px -5px 10px;
   display: flex;
+  min-height: 285px;
   flex-direction: row;
   @media (max-width: 768px) {
     flex-direction: column;

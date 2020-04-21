@@ -47,7 +47,7 @@
                 <span class="fa fa-university">&nbsp;</span>
                 <%= doc.affiliation %>
               </p>
-
+              <% if(doc.speciality !== 'Researcher') { %>
               <div class="bookingg">
                 <button
                   data-toggle="modal"
@@ -56,6 +56,7 @@
                   Book appointment
                 </button>
               </div>
+              <% } %>
             </div>
           </div>
 

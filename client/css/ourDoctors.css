@@ -2207,6 +2207,7 @@ body {
 
 .twoBigSectionFlex .eachBigSection:last-child {
   width: 73%;
+  min-height: 60vh;
   padding: 20px 50px;
   margin-bottom: 15px;
 }

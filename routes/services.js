@@ -7,6 +7,7 @@ const {
   psychoTherapy,
   searchPsychoTherapy,
   singleDoctorConsultation,
+  getAllResearchers,
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
@@ -44,5 +45,7 @@ router.get('/special_services', (req, res, next) => {
 });
 
 router.post('/book', bookAppointment);
+
+router.get('/researchers', getAllResearchers);
 
 module.exports = router;

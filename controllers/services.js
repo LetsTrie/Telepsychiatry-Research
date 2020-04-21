@@ -9,6 +9,13 @@ const nullCheck = (data) => {
   return data === '' || data === null || data === undefined;
 };
 
+exports.getAllResearchers = async (req, res, next) => {
+  const experts = await eUserModel
+    .find({ speciality: 'Researcher' })
+    .sort({ _id: -1 });
+  res.render('researcherList', { experts });
+};
+
 exports.consultation = async (req, res) => {
   const experts = await eUserModel
     .find({ speciality: 'Psychiatric Consultation' })

@@ -36,6 +36,7 @@ exports.postLogin = (req, res, next) => {
 exports.getSingleTest = async(req, res) => {
     let test = await testModel.findById(req.params.id);
     let { lang } = req.query;
+    // console.log(lang);
     if (nullChk(lang)) lang = 'eng';
     let data = {};
     if (lang === 'eng') {
@@ -45,14 +46,15 @@ exports.getSingleTest = async(req, res) => {
         data['paidInput'] = test.isPaid;
         data['payAmount'] = test.payAmount;
         data['questions'] = [];
-        for (let i = 0; i < test.questions.length; i++) {
+        let questions = test.questionSet.Questions;
+        for (let i = 0; i < questions.length; i++) {
             let obj = {};
-            obj['QuesName'] = test.questions[i].questionEng;
+            obj['QuesName'] = questions[i].question;
             let arr = [];
-            for (let j = 0; j < test.questions[i].Options.length; j++) {
+            for (let j = 0; j < questions[i].Options.length; j++) {
                 arr.push({
-                    optionName: test.questions[i].Options[j].optionEng,
-                    optionScale: test.questions[i].Options[j].scale,
+                    optionName: questions[i].Options[j].option,
+                    optionScale: test.questions[i].Options[j].optionScale,
                 });
             }
             obj['options'] = arr;
@@ -65,20 +67,21 @@ exports.getSingleTest = async(req, res) => {
         data['paidInput'] = test.paidInput;
         data['payAmount'] = test.payAmount;
         data['questions'] = [];
-        for (let i = 0; i < test.questions.length; i++) {
+        let questions = test.questionSet.Questions;
+        for (let i = 0; i < questions; i++) {
             let obj = {};
-            obj['QuesName'] = test.questions[i].questionBan;
+            obj['QuesName'] = questions[i].question;
             let arr = [];
 
-            for (let j = 0; j < test.questions[i].Options.length; j++) {
+            for (let j = 0; j < questions[i].Options.length; j++) {
                 arr.push({
-                    optionName: test.questions[i].Options[j].optionBan,
-                    optionScale: test.questions[i].Options[j].scale,
+                    optionName: questions[i].Options[j].option,
+                    optionScale: questions[i].Options[j].optionScale,
                 });
             }
 
             obj['options'] = arr;
-            console.log(obj['options']);
+            // console.log(obj['options']);
             data['questions'].push(obj);
         }
     }
@@ -147,7 +150,19 @@ exports.getAllTests = async(req, res, next) => {
         let disorderName = disorders[i];
         let relatedTests = [];
         let testMap = groupedTests.get(disorderName.toLowerCase());
-        for (let j = 0; j < testMap.length; j++) relatedTests.push(testMap[j]);
+        for (let j = 0; j < testMap.length; j++) {
+            let lang;
+            if (testMap[j].language.length == 1) {
+                lang = testMap[j].language[0];
+            } else {
+                lang = 'English';
+            }
+            relatedTests.push({
+                test: testMap[j],
+                language: lang,
+            });
+            // console.log(lang);
+        }
         final.push({ disorderName, relatedTests });
     }
     // console.log(final);
@@ -190,7 +205,7 @@ exports.createTest = async(req, res, next) => {
         isPaid,
         payAmount,
     } = req.body;
-    const languages = JSON.parse(req.body.languages);
+    const language = JSON.parse(req.body.languages);
     const questionSet = JSON.parse(req.body.questionSet);
     const test = {
         testEng,
@@ -200,7 +215,7 @@ exports.createTest = async(req, res, next) => {
         age,
         isPaid,
         payAmount,
-        languages,
+        language,
         questionSet,
     };
     const { validateTestData } = require('../validations/test');

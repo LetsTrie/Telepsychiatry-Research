@@ -88,10 +88,10 @@
                                     <ul>
                                         <% for(let j = 0 ; j < tests[i].relatedTests.length; j++) { %>
                                             <li>
-                                                <a href="/admin/test/single/<%= tests[i].relatedTests[j]._id %>">
-                                                    <%= tests[i].relatedTests[j].testEng %> (
+                                                <a href="/admin/test/single/<%= tests[i].relatedTests[j].test._id %>?lang=<%= tests[i].relatedTests[j].language %>">
+                                                    <%= tests[i].relatedTests[j].test.testEng %> (
                                                         <%=
-                      tests[i].relatedTests[j].disorderNameBan %>)
+                      tests[i].relatedTests[j].test.disorderNameBan %>)
                                                 </a>
                                             </li>
                                             <% } %>

@@ -9,7 +9,7 @@ exports.validateTestData = (data) => {
         age: joi.string().required(),
         isPaid: joi.string().required(),
         payAmount: joi.string().allow(null, ''),
-        languages: joi.array().items(joi.string()),
+        language: joi.array().items(joi.string()),
         questionSet: joi.array().items(
             joi.object({
                 language: joi.string().required(),

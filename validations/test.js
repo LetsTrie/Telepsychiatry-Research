@@ -4,20 +4,25 @@ exports.validateTestData = (data) => {
     const compareWith = joi.object({
         testEng: joi.string().required(),
         testBan: joi.string().required(),
-        nameEng: joi.string().required(),
-        nameBan: joi.string().required(),
+        disorderNameEng: joi.string().required(),
+        disorderNameBan: joi.string().required(),
         age: joi.string().required(),
-        paidInput: joi.string().required(),
+        isPaid: joi.string().required(),
         payAmount: joi.string().allow(null, ''),
-        questions: joi.array().items(
+        languages: joi.array().items(joi.string()),
+        questionSet: joi.array().items(
             joi.object({
-                questionEng: joi.string().required(),
-                questionBan: joi.string().required(),
-                Options: joi.array().items(
+                language: joi.string().required(),
+                Questions: joi.array().items(
                     joi.object({
-                        optionEng: joi.string().required(),
-                        optionBan: joi.string().required(),
-                        scale: joi.string().required(),
+                        question: joi.string().required(),
+                        questionScale: joi.string().allow(null, ''),
+                        Options: joi.array().items(
+                            joi.object({
+                                option: joi.string().required(),
+                                optionScale: joi.string().allow(null, ''),
+                            })
+                        ),
                     })
                 ),
             })

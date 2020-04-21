@@ -10,28 +10,39 @@ const testModel = new mongoose.Schema({
     testEng: {
         type: String,
     },
-    nameEng: {
+    disorderNameEng: {
         type: String,
     },
-    nameBan: {
+    disorderNameBan: {
         type: String,
     },
     age: {
         type: String,
     },
-    paidInput: {
+    isPaid: {
         type: String,
     },
     payAmount: {
         type: String,
     },
-    questions: [{
-        questionEng: String,
-        questionBan: String,
-        Options: [{
-            optionEng: String,
-            optionBan: String,
-            scale: String,
+    language: {
+        type: [String],
+    },
+    questionSet: [{
+        language: String,
+        Questions: [{
+            question: String,
+            scale: {
+                type: String,
+                default: '0',
+            },
+            Options: [{
+                option: String,
+                scale: {
+                    type: Number,
+                    default: '0',
+                },
+            }, ],
         }, ],
     }, ],
 });

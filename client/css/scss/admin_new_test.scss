@@ -100,7 +100,7 @@
                 border-color: #bdb9b9;
               }
               &.inp_q_box {
-                width: 45%;
+                width: 100%;
                 @media (max-width: 768px) {
                   width: 100%;
                 }
@@ -111,8 +111,20 @@
               &.inp_btn {
                 width: 10%;
               }
+              &.inp_sc_box {
+                width: 35%;
+                @media (max-width: 768px) {
+                  width: 100%;
+                }
+              }
+              &.inp_sco_box {
+                width: 36.5%;
+                @media (max-width: 768px) {
+                  width: 100%;
+                }
+              }
               &.inp_o_box {
-                width: 30%;
+                width: 100%;
                 @media (max-width: 768px) {
                   width: 100%;
                 }

@@ -101,17 +101,17 @@
             <div class="eachDisorderTestAll">
               <div class="eachDisorder_heading">
                 <h6>
-                  <%= x(tests[i].disorderName) %>
+                  Disorder Name In English
                 </h6>
               </div>
               <div class="eachDisorder_eachTest">
                 <ul>
-                  <% for(let j = 0 ; j < tests[i].relatedTests.length; j++) { %>
+                  <% for(let j = 0 ; j < 3; j++) { %>
                   <li>
                     <a
-                      href="/admin/test/single/<%= tests[i].relatedTests[j]._id %>"
+                      href="/admin/test/single/<%= tests[0].relatedTests[0]._id %>"
                     >
-                      <%= x(tests[i].relatedTests[j].testEng) %>
+                      Test Name In English (Test Name In Bangla)
                     </a>
                   </li>
                   <% } %>

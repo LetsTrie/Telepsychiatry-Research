@@ -52,7 +52,7 @@
                         type="text"
                         id="disorderNameInBangla"
                         class="form-control"
-                        placeholder="Disorder name (In Bangla)"
+                        placeholder="Disorder name (In Bengali)"
                       />
                     </div>
                   </div>
@@ -70,26 +70,41 @@
                         type="text"
                         id="testNameInBangla"
                         class="form-control"
-                        placeholder="Test Name (In Bangla)"
+                        placeholder="Test Name (In Bengali)"
                       />
                     </div>
                   </div>
                   <div class="flx-prnt">
-                    <div class="form-selectpicker drct-flx">
-                      <select
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Age range"
-                        name="age"
-                        id="ageRangeInput"
-                        data-size="6"
-                      >
-                        <option value="For Children">For Children</option>
-                        <option value="For Young People"
-                          >For Young People</option
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Age range"
+                          name="age"
+                          id="ageRangeInput"
+                          data-size="6"
                         >
-                        <option value="For Old People">For Old People</option>
-                      </select>
+                          <option value="For Children">For Children</option>
+                          <option value="For Adults">For Adults</option>
+                          <option value="For Old People">For Old People</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Select Language"
+                          name="lang"
+                          id="langInput"
+                          data-size="6"
+                        >
+                          <option value="Bengali">Bengali</option>
+                          <option value="English">English</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                   <div class="flx-prnt">
@@ -111,7 +126,7 @@
                     <div class="flx-chld">
                       <input
                         type="text"
-                        placeholder="Pay amount"
+                        placeholder="Pay amount (Only Numbers)"
                         class="form-control"
                         id="payAmount"
                         style="visibility: hidden;"
@@ -131,16 +146,16 @@
                               <input
                                 type="text"
                                 class="form-control"
-                                id="questionEng"
-                                placeholder="Question (In English)"
+                                id="questionId"
+                                placeholder="Write question here.."
                               />
                             </div>
-                            <div class="flx-chld inp_q_box">
+                            <div class="flx-chld inp_sc_box">
                               <input
                                 type="text"
                                 class="form-control"
-                                id="questionBan"
-                                placeholder="Question (In Bangla)"
+                                id="questionScale"
+                                placeholder="Scale (By Default 1)"
                               />
                             </div>
                             <div class="flx-chld inp_btn">
@@ -159,24 +174,16 @@
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="optionEng"
-                                  placeholder="Option (In English)"
+                                  id="optionId"
+                                  placeholder="Write option here.."
                                 />
                               </div>
-                              <div class="flx-chld inp_o_box">
+                              <div class="flx-chld inp_sc_box inp_sco_box">
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="optionBan"
-                                  placeholder="Option (In Bangla)"
-                                />
-                              </div>
-                              <div class="flx-chld inp_o_box">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="scale"
-                                  placeholder="Scale"
+                                  id="optionScale"
+                                  placeholder="Scale (By Default 1)"
                                 />
                               </div>
                               <div class="flx-chld inp_btn">
@@ -236,80 +243,72 @@
 
     $(document).on('click', '.newQuestion', (e) => {
       $('.allQuestions').append(`
-       <div class="eachQuestions pt-3">
-        <div class="quesInfo">
-          <div class="flx-prnt">
-            <span class="fa fa-arrow-right"></span>
-            <div class="flx-chld inp_q_box">
-              <input
-                type="text"
-                id="questionEng"
-                class="form-control"
-                placeholder="Question (In English)"
-              />
-            </div>
-            <div class="flx-chld inp_q_box">
-              <input
-                type="text"
-                id="questionBan"
-                class="form-control"
-                placeholder="Question (In Bangla)"
-              />
-            </div>
-            <div class="flx-chld inp_btn">
-              <input
-                type="button"
-                value="Delete"
-                class="btn btn-dark deleteBtn QuestionDelete"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="optionInfo">
-          <div class="allOptions">
-            <div class="eachOptions flx-prnt pl-5 pt-1">
-              <div class="flx-chld inp_o_box">
+        <div class="eachQuestions pt-3">
+          <div class="quesInfo">
+            <div class="flx-prnt">
+              <span class="fa fa-arrow-right"></span>
+              <div class="flx-chld inp_q_box">
                 <input
                   type="text"
-                  id="optionEng"
                   class="form-control"
-                  placeholder="Option (In English)"
+                  id="questionId"
+                  placeholder="Write question here.."
                 />
               </div>
-              <div class="flx-chld inp_o_box">
+              <div class="flx-chld inp_sc_box">
                 <input
                   type="text"
-                  id="optionBan"
                   class="form-control"
-                  placeholder="Option (In Bangla)"
-                />
-              </div>
-              <div class="flx-chld inp_o_box">
-                <input
-                  type="text"
-                  id="scale"
-                  class="form-control"
-                  placeholder="Scale"
+                  id="questionScale"
+                  placeholder="Scale (By Default 1)"
                 />
               </div>
               <div class="flx-chld inp_btn">
                 <input
                   type="button"
                   value="Delete"
-                  class="btn btn-dark deleteBtn optionDelete"
+                  class="btn btn-dark deleteBtn QuestionDelete"
                 />
               </div>
             </div>
           </div>
-          <div class="addoption ml-1 pl-5 pt-2 py-2">
-            <input
-              type="button"
-              value="Add option"
-              class="addBtn addOptions"
-            />
+          <div class="optionInfo">
+            <div class="allOptions">
+              <div class="eachOptions flx-prnt pl-5 pt-1">
+                <div class="flx-chld inp_o_box">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="optionId"
+                    placeholder="Write option here.."
+                  />
+                </div>
+                <div class="flx-chld inp_sc_box inp_sco_box">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="optionScale"
+                    placeholder="Scale (By Default 1)"
+                  />
+                </div>
+                <div class="flx-chld inp_btn">
+                  <input
+                    type="button"
+                    value="Delete"
+                    class="btn btn-dark deleteBtn optionDelete"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="addoption ml-1 pl-5 pt-2 py-2">
+              <input
+                type="button"
+                value="Add option"
+                class="addBtn addOptions"
+              />
+            </div>
           </div>
         </div>
-      </div>
       `);
     });
     $(document).on('click', '.addOptions', (e) => {
@@ -318,25 +317,17 @@
           <div class="flx-chld inp_o_box">
             <input
               type="text"
-              id="optionEng"
               class="form-control"
-              placeholder="Option (In English)"
+              id="optionId"
+              placeholder="Write option here.."
             />
           </div>
-          <div class="flx-chld inp_o_box">
+          <div class="flx-chld inp_sc_box inp_sco_box">
             <input
               type="text"
-              id="optionBan"
               class="form-control"
-              placeholder="Option (In Bangla)"
-            />
-          </div>
-          <div class="flx-chld inp_o_box">
-            <input
-              type="text"
-              id="scale"
-              class="form-control"
-              placeholder="Scale"
+              id="optionScale"
+              placeholder="Scale (By Default 1)"
             />
           </div>
           <div class="flx-chld inp_btn">

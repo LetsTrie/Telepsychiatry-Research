@@ -12,6 +12,7 @@ const { testModel } = require('../models/test');
 const LIMIT = 9;
 
 // ################## OKAY [START] ########################
+// makes First letter Capital...
 const trnsfrm = (x) => x.charAt(0).toUpperCase() + x.substr(1);
 
 const admin = require('../config/credentials').adminCredentials;

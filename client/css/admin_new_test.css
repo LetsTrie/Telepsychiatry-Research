@@ -1135,7 +1135,7 @@ p {
 }
 
 .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_q_box {
-  width: 45%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1152,8 +1152,28 @@ p {
   width: 10%;
 }
 
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_sc_box {
+  width: 35%;
+}
+
+@media (max-width: 768px) {
+  .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_sc_box {
+    width: 100%;
+  }
+}
+
+.BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_sco_box {
+  width: 36.5%;
+}
+
+@media (max-width: 768px) {
+  .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_sco_box {
+    width: 100%;
+  }
+}
+
 .BigSectionFlex .testAdd .add_test_wrapper .add_test_form form .flx-prnt .flx-chld.inp_o_box {
-  width: 30%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {

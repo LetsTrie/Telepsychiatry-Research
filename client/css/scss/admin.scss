@@ -235,36 +235,14 @@
   }
   .eachDisorder_eachTest {
     ul {
-      list-style: none;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
       li {
-        width: 45%;
-
-        @media (max-width: 850px) {
-          width: 100%;
-        }
-        margin-left: 15px;
-        font-size: 15px;
-
+        padding-top: 7px;
+        list-style: disc;
+        font-size: 17px;
         a {
-          padding-left: 8px;
+          // padding-left: 8px;
         }
       }
-    }
-
-    ul li:before {
-      content: '';
-      height: 0;
-      width: 0;
-      border-color: transparent #20c0f3;
-      border-style: solid;
-      border-width: 0.4em 0 0.4em 0.4em;
-      position: relative;
-      display: block;
-      left: -1em;
-      top: 1.25em;
     }
 
     a {

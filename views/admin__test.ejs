@@ -1,157 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
 
-    <link rel="stylesheet" href="/css/admin.css" />
-    <title>Mental Health and Wellbeing Assessment</title>
-  </head>
+        <link rel="stylesheet" href="/css/admin.css" />
+        <title>Mental Health and Wellbeing Assessment</title>
+</head>
 
-  <body>
+<body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-      <header>
-        <nav>
-          <%- include('./partials/adminNavbar')%>
-        </nav>
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Admin Panel</a> / Services</p>
-          </div>
-          <div class="bigText">
-            <p>Mental Health and Wellbeing Assessment</p>
-          </div>
-        </div>
-      </header>
-      <div class="twoBigSectionFlex">
-        <div class="eachBigSection">
-          <div class="imageee py-2 pb-4">
-            <img src="/images/adminTest.jpg" alt="" />
-          </div>
-          <div class="addNewTestBtn">
-            <button onclick="go()">Add New Test</button>
-          </div>
-        </div>
-        <div class="eachBigSection">
-          <form action="/admin/tests" method="GET">
-            <div class="container">
-              <section class="healthAllTest p-1">
-                <div class="healthTest__heading text-center">
-                  <h1>Mental Health Test</h1>
+        <header>
+            <nav>
+                <%- include('./partials/adminNavbar')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Admin Panel</a> / Services</p>
                 </div>
-                <div class="healthTest__add_test text-right"></div>
-                <div class="healthTest__searching px-3 pb-3">
-                  <div class="inputbox">
-                    <div class="form-selectpicker">
-                      <select
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Select Disorder"
-                        name="disorder"
-                        id="disorderInput"
-                        data-size="6"
-                      >
+                <div class="bigText">
+                    <p>Mental Health and Wellbeing Assessment</p>
+                </div>
+            </div>
+        </header>
+        <div class="twoBigSectionFlex">
+            <div class="eachBigSection">
+                <div class="imageee py-2 pb-4">
+                    <img src="/images/adminTest.jpg" alt="" />
+                </div>
+                <div class="addNewTestBtn">
+                    <button onclick="go()">Add New Test</button>
+                </div>
+            </div>
+            <div class="eachBigSection">
+                <form action="/admin/tests" method="GET">
+                    <div class="container">
+                        <section class="healthAllTest p-1">
+                            <div class="healthTest__heading text-center">
+                                <h1>Mental Health Test</h1>
+                            </div>
+                            <div class="healthTest__add_test text-right"></div>
+                            <div class="healthTest__searching px-3 pb-3">
+                                <div class="inputbox">
+                                    <div class="form-selectpicker">
+                                        <select class="selectpicker" data-width="100%" title="Select Disorder" name="disorder" id="disorderInput" data-size="6">
                         <% for(let i = 0 ; i < searchDisorder.length; i++) { %>
                         <option value="<%=searchDisorder[i]%>"
                           ><%=searchDisorder[i]%></option
                         >
                         <% } %>
                       </select>
-                    </div>
-                  </div>
-                  <div class="inputbox">
-                    <div class="form-selectpicker">
-                      <select
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Select Test"
-                        name="test"
-                        id="testInput"
-                        data-size="6"
-                      >
+                                    </div>
+                                </div>
+                                <div class="inputbox">
+                                    <div class="form-selectpicker">
+                                        <select class="selectpicker" data-width="100%" title="Select Test" name="test" id="testInput" data-size="6">
                       </select>
-                    </div>
-                  </div>
-                  <div class="inputbox">
-                    <div class="form-selectpicker">
-                      <select
-                        class="selectpicker"
-                        data-width="100%"
-                        title="Paid or not"
-                        name="paid"
-                        id="paidInput"
-                        data-size="6"
-                      >
+                                    </div>
+                                </div>
+                                <div class="inputbox">
+                                    <div class="form-selectpicker">
+                                        <select class="selectpicker" data-width="100%" title="Paid or not" name="paid" id="paidInput" data-size="6">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                       </select>
-                    </div>
-                  </div>
-                  <div class="inputbox">
-                    <button type="submit" class="btn btn-success">
+                                    </div>
+                                </div>
+                                <div class="inputbox">
+                                    <button type="submit" class="btn btn-success">
                       Search
                     </button>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </form>
-          <% const x = d => d.charAt(0).toUpperCase() + d.substr(1); %>
-          <div class="healthTest_allDisorders">
-            <% for (let i=0; i < tests.length; i++) { %>
-            <div class="eachDisorderTestAll">
-              <div class="eachDisorder_heading">
-                <h6>
-                  <%= tests[i].disorderName %>
-                </h6>
-              </div>
-              <div class="eachDisorder_eachTest">
-                <ul>
-                  <% for(let j = 0 ; j < tests[i].relatedTests.length; j++) { %>
-                  <li>
-                    <a
-                      href="/admin/test/single/<%= tests[0].relatedTests[0]._id %>"
-                    >
-                      <%= tests[i].relatedTests[j].testEng %> ( <%=
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </form>
+                <% const x = d => d.charAt(0).toUpperCase() + d.substr(1); %>
+                    <div class="healthTest_allDisorders">
+                        <% for (let i=0; i < tests.length; i++) { %>
+                            <div class="eachDisorderTestAll">
+                                <div class="eachDisorder_heading">
+                                    <h6>
+                                        <%= tests[i].disorderName %>
+                                    </h6>
+                                </div>
+                                <div class="eachDisorder_eachTest">
+                                    <ul>
+                                        <% for(let j = 0 ; j < tests[i].relatedTests.length; j++) { %>
+                                            <li>
+                                                <a href="/admin/test/single/<%= tests[i].relatedTests[j]._id %>">
+                                                    <%= tests[i].relatedTests[j].testEng %> (
+                                                        <%=
                       tests[i].relatedTests[j].disorderNameBan %>)
-                    </a>
-                  </li>
-                  <% } %>
-                </ul>
-              </div>
+                                                </a>
+                                            </li>
+                                            <% } %>
+                                    </ul>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
             </div>
-            <% } %>
-          </div>
         </div>
-      </div>
     </section>
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    function go() {
-      location = '/admin/test/new';
-    }
-    document.getElementById('disorderInput').addEventListener('change', (e) => {
-      const { value } = e.target;
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script>
+        function go() {
+            location = '/admin/test/new';
+        }
+        document.getElementById('disorderInput').addEventListener('change', (e) => {
+            const {
+                value
+            } = e.target;
 
-      $('#testInput').empty();
+            $('#testInput').empty();
 
-      $.ajax({
-        type: 'POST',
-        url: '/admin/findTestbyDisorder',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          value,
-        }),
-      }).done((response) => {
-        for (let i = 0; i < response.test.length; i++) {
-          console.log(response.test[i]);
-          $('#testInput').append(`
+            $.ajax({
+                type: 'POST',
+                url: '/admin/findTestbyDisorder',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    value,
+                }),
+            }).done((response) => {
+                for (let i = 0; i < response.test.length; i++) {
+                    console.log(response.test[i]);
+                    $('#testInput').append(`
             <option value="${response.test[i]}">${response.test[i]}</option>
           `);
-        }
-        $('#testInput').selectpicker('refresh');
-      });
-    });
-  </script>
+                }
+                $('#testInput').selectpicker('refresh');
+            });
+        });
+    </script>
+
 </html>

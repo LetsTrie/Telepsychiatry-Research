@@ -37,54 +37,89 @@ exports.getSingleTest = async(req, res) => {
     let test = await testModel.findById(req.params.id);
     let { lang } = req.query;
     // console.log(lang);
-    if (nullChk(lang)) lang = 'eng';
+    if (nullChk(lang)) {
+        if (test.language.length == 1) {
+            lang = test.language[0];
+        } else {
+            lang = 'English';
+        }
+    }
+    console.log('selected', lang);
     let data = {};
-    if (lang === 'eng') {
+    if (lang === 'English') {
         data['testName'] = test.testEng;
         data['disorderName'] = test.disorderNameEng;
         data['ageRange'] = test.age;
         data['paidInput'] = test.isPaid;
         data['payAmount'] = test.payAmount;
+        data['language'] = [];
         data['questions'] = [];
-        let questions = test.questionSet.Questions;
-        for (let i = 0; i < questions.length; i++) {
+        for (let i = 0; i < test.language.length; i++) {
+            data['language'].push(test.language[i]);
+        }
+        let questions = [];
+        for (let i = 0; i < test.questionSet.length; i++) {
+            console.log(test.questionSet[i].language);
+            if (test.questionSet[i].language == 'English') {
+                questions = test.questionSet[i];
+                break;
+            }
+        }
+        // console.log(questions);
+        for (let i = 0; i < questions.Questions.length; i++) {
             let obj = {};
-            obj['QuesName'] = questions[i].question;
+            obj['QuesName'] = questions.Questions[i].question;
             let arr = [];
-            for (let j = 0; j < questions[i].Options.length; j++) {
+
+            for (let j = 0; j < questions.Questions[i].Options.length; j++) {
                 arr.push({
-                    optionName: questions[i].Options[j].option,
-                    optionScale: test.questions[i].Options[j].optionScale,
+                    optionName: questions.Questions[i].Options[j].option,
+                    optionScale: questions.Questions[i].Options[j].optionScale,
                 });
             }
+
             obj['options'] = arr;
             data['questions'].push(obj);
+            // console.log(data['questions']);
         }
     } else {
         data['testName'] = test.testBan;
-        data['disorderName'] = test.nameBan;
+        data['disorderName'] = test.disorderNameBan;
         data['ageRange'] = test.age;
         data['paidInput'] = test.paidInput;
         data['payAmount'] = test.payAmount;
+        data['language'] = [];
         data['questions'] = [];
-        let questions = test.questionSet.Questions;
-        for (let i = 0; i < questions; i++) {
+        for (let i = 0; i < test.language.length; i++) {
+            data['language'].push(test.language[i]);
+        }
+        let questions = [];
+        for (let i = 0; i < test.questionSet.length; i++) {
+            console.log(test.questionSet[i].language);
+            if (test.questionSet[i].language == 'Bengali') {
+                questions = test.questionSet[i];
+                break;
+            }
+        }
+        // console.log(questions);
+        for (let i = 0; i < questions.Questions.length; i++) {
             let obj = {};
-            obj['QuesName'] = questions[i].question;
+            obj['QuesName'] = questions.Questions[i].question;
             let arr = [];
 
-            for (let j = 0; j < questions[i].Options.length; j++) {
+            for (let j = 0; j < questions.Questions[i].Options.length; j++) {
                 arr.push({
-                    optionName: questions[i].Options[j].option,
-                    optionScale: questions[i].Options[j].optionScale,
+                    optionName: questions.Questions[i].Options[j].option,
+                    optionScale: questions.Questions[i].Options[j].optionScale,
                 });
             }
 
             obj['options'] = arr;
-            // console.log(obj['options']);
             data['questions'].push(obj);
+            // console.log(data['questions']);
         }
     }
+
     data['_id'] = test._id;
     res.render('singleTest', { test: data, lang });
 };
@@ -93,11 +128,137 @@ function nullChk(data) {
     return data === undefined || data === null || data === '';
 }
 exports.updateTest = async(req, res) => {
-    const test = await testModel.findById(req.params.id);
-    res.render('updateTest', { test });
+    let test = await testModel.findById(req.params.id);
+    let { lang } = req.query;
+    // console.log(lang);
+    if (nullChk(lang)) {
+        if (test.language.length == 1) {
+            lang = test.language[0];
+        } else {
+            lang = 'English';
+        }
+    }
+    console.log('selected', lang);
+    let data = {};
+    if (lang === 'English') {
+        data['testName'] = test.testEng;
+        data['disorderName'] = test.disorderNameEng;
+        data['ageRange'] = test.age;
+        data['paidInput'] = test.isPaid;
+        data['payAmount'] = test.payAmount;
+        data['language'] = [];
+        data['questions'] = [];
+        for (let i = 0; i < test.language.length; i++) {
+            data['language'].push(test.language[i]);
+        }
+        let questions = [];
+        for (let i = 0; i < test.questionSet.length; i++) {
+            console.log(test.questionSet[i].language);
+            if (test.questionSet[i].language == 'English') {
+                questions = test.questionSet[i];
+                break;
+            }
+        }
+        // console.log(questions);
+        for (let i = 0; i < questions.Questions.length; i++) {
+            let obj = {};
+            obj['QuesName'] = questions.Questions[i].question;
+            let arr = [];
+
+            for (let j = 0; j < questions.Questions[i].Options.length; j++) {
+                arr.push({
+                    optionName: questions.Questions[i].Options[j].option,
+                    optionScale: questions.Questions[i].Options[j].optionScale,
+                });
+            }
+
+            obj['options'] = arr;
+            data['questions'].push(obj);
+            // console.log(data['questions']);
+        }
+    } else {
+        data['testName'] = test.testBan;
+        data['disorderName'] = test.disorderNameBan;
+        data['ageRange'] = test.age;
+        data['paidInput'] = test.paidInput;
+        data['payAmount'] = test.payAmount;
+        data['language'] = [];
+        data['questions'] = [];
+        for (let i = 0; i < test.language.length; i++) {
+            data['language'].push(test.language[i]);
+        }
+        let questions = [];
+        for (let i = 0; i < test.questionSet.length; i++) {
+            console.log(test.questionSet[i].language);
+            if (test.questionSet[i].language == 'Bengali') {
+                questions = test.questionSet[i];
+                break;
+            }
+        }
+        // console.log(questions);
+        for (let i = 0; i < questions.Questions.length; i++) {
+            let obj = {};
+            obj['QuesName'] = questions.Questions[i].question;
+            let arr = [];
+
+            for (let j = 0; j < questions.Questions[i].Options.length; j++) {
+                arr.push({
+                    optionName: questions.Questions[i].Options[j].option,
+                    optionScale: questions.Questions[i].Options[j].optionScale,
+                });
+            }
+
+            obj['options'] = arr;
+            data['questions'].push(obj);
+            // console.log(data['questions']);
+        }
+    }
+
+    data['_id'] = test._id;
+    console.log(data);
+    res.render('updateTest', {
+        test,
+        questionData: data,
+        lang,
+    });
 };
 
 // ################## OKAY [THE END] ########################
+
+exports.addTestVersion = async(req, res, next) => {
+    const id = req.params.id;
+    const { version } = req.query;
+    const test = await testModel.find({ _id: id });
+    // console.log(test);
+    res.render('addTestVersion', {
+        test: test[0],
+        version,
+    });
+};
+
+exports.postTestVersion = async(req, res, next) => {
+    const { id } = req.body;
+    const qItem = JSON.parse(req.body.qItem);
+    const newLanguage = JSON.parse(req.body.languages)[0];
+    const test = await testModel.find({ _id: id });
+
+    let QuestionSet = test[0].questionSet;
+    QuestionSet.push(qItem);
+    let languages = test[0].language;
+    languages.push(newLanguage);
+
+    await testModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            questionSet: QuestionSet,
+            language: languages,
+        },
+    });
+
+    res.send({
+        status: true,
+        id: id,
+    });
+};
 
 exports.findTestbyDisorder = async(req, res) => {
     const { value } = req.body;
@@ -173,18 +334,28 @@ exports.getAllTests = async(req, res, next) => {
 };
 
 exports.postUpdateTest = async(req, res) => {
-    const id = req.body.id;
-    const Questions = JSON.parse(req.body.questions);
+    const { id, qLang } = req.body;
+    let QuestionSet = JSON.parse(req.body.questionSet)[0];
+    const test = await testModel.find({ _id: id });
+    for (let i = 0; i < test[0].questionSet.length; i++) {
+        if (test[0].questionSet[i].language == qLang) {
+            test[0].questionSet.splice(i, 1);
+        }
+    }
+    test[0].questionSet.push({
+        Questions: QuestionSet.Questions,
+        language: QuestionSet.language,
+    });
     await testModel.update({ _id: id }, {
         $set: {
             testEng: req.body.testEng,
             testBan: req.body.testBan,
-            nameEng: trnsfrm(req.body.nameEng),
-            nameBan: req.body.nameBan,
+            disorderNameEng: trnsfrm(req.body.disorderNameEng),
+            disorderNameBan: req.body.disorderNameBan,
             age: req.body.age,
-            paidInput: req.body.paidInput,
+            isPaid: req.body.isPaid,
             payAmount: req.body.payAmount,
-            questions: Questions,
+            questionSet: test[0].questionSet,
         },
     });
 
@@ -195,7 +366,7 @@ exports.postUpdateTest = async(req, res) => {
 };
 
 exports.createTest = async(req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     let {
         testEng,
         testBan,

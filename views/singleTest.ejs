@@ -1,139 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
 
-    <link rel="stylesheet" href="/css/admin.css" />
-    <title>
-      <%= test.nameEng %>
-    </title>
-  </head>
+        <link rel="stylesheet" href="/css/admin.css" />
+        <title>
+            <%= test.nameEng %>
+        </title>
+</head>
 
-  <body>
+<body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-      <header>
-        <nav>
-          <%- include('./partials/adminNavbar')%>
-        </nav>
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Admin Panel</a> / Services</p>
-          </div>
-          <div class="bigText">
-            <p>
-              <%= test.testName %>
-            </p>
-          </div>
-        </div>
-      </header>
-      <div class="questionListWithDetails">
-        <div class="test_header text-center">
-          <h1>Mental Health Test</h1>
-        </div>
-        <div class="testInfo">
-          <table class="table table-bordered table-striped table-hover">
-            <tbody>
-              <tr>
-                <td>Disorder name</td>
-                <td><%= test.disorderName %></td>
-              </tr>
-              <tr>
-                <td>Test name</td>
-                <td><%= test.testName %></td>
-              </tr>
-              <tr>
-                <td>Age range</td>
-                <td><%= test.ageRange %></td>
-              </tr>
-              <tr>
-                <td>Pay amount</td>
-                <% if(test.paidInput === 'No') { %>
-                <td>Free</td>
-                <% } else { %>
-                <td><%= test.payAmount %> BDT</td>
-                <% } %>
-              </tr>
-              <tr>
-                <td>Available Language</td>
-                <td>
-                  <% if(lang === 'eng') { %>
-                  <a href="#" class="notColor"> English</a>
-                  ,
-                  <a href="/admin/test/single/<%=test._id%>?lang=ban">
-                    <!-- ekhane link hobe -->
+        <header>
+            <nav>
+                <%- include('./partials/adminNavbar')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Admin Panel</a> / Services</p>
+                </div>
+                <div class="bigText">
+                    <p>
+                        <%= test.testName %>
+                    </p>
+                </div>
+            </div>
+        </header>
+        <div class="questionListWithDetails">
+            <div class="test_header text-center">
+                <h1>Mental Health Test</h1>
+            </div>
+            <div class="testInfo">
+                <table class="table table-bordered table-striped table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Disorder name</td>
+                            <td>
+                                <%= test.disorderName %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Test name</td>
+                            <td>
+                                <%= test.testName %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Age range</td>
+                            <td>
+                                <%= test.ageRange %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pay amount</td>
+                            <% if(test.paidInput === 'No') { %>
+                                <td>Free</td>
+                                <% } else { %>
+                                    <td>
+                                        <%= test.payAmount %> BDT
+                                    </td>
+                                    <% } %>
+                        </tr>
+                        <tr>
+                            <td>Available Language</td>
+                            <td>
+                                <% if (test.language.length == 1) { %>
+                                    <a href="#" class="notColor">
+                                        <%= test.language[0] %>
+                                    </a>
+                                    <% } else { %>
+                                        <% if(lang === 'English') { %>
+                                            <a href="#" class="notColor"> English</a> ,
+                                            <a href="/admin/test/single/<%=test._id%>?lang=Bengali">
+                                                <!-- ekhane link hobe -->
+                                                Bangla
+                                            </a>
+                                            <% } else { %>
+                                                <a href="/admin/test/single/<%=test._id%>?lang=English">
+                                                    <!-- ekhane link hobe -->
+                                                    English</a>
+                                                ,
+                                                <a href="#" class="notColor">
                     Bangla
                   </a>
-                  <% } else { %>
-                  <a href="/admin/test/single/<%=test._id%>?lang=eng">
-                    <!-- ekhane link hobe -->
-                    English</a
-                  >
-                  ,
-                  <a href="#" class="notColor">
-                    Bangla
-                  </a>
-                  <% } %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div
-          class="updateBtn text-right"
-          style="margin-right: 30px; padding-right: 30px;"
-        >
-          <button id="update-btn" class="">Update</button>
-        </div>
-        <div class="test_header text-center">
-          <h2>Questions</h2>
-        </div>
-        <div class="allQuestions">
-          <div class="questions">
-            <% for(let i = 0; i < test.questions.length; i++) { %>
-            <div class="question">
-              <div class="question_name">
-                <p>
-                  <%=i + 1%>. <%= test.questions[i].QuesName %>
-                </p>
-              </div>
-              <div class="options">
-                <% for(let j = 0 ; j < test.questions[i].options.length ; j++) {
+                                                <% } %>
+                                                    <% } %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="updateBtn text-right" style="margin-right: 30px; padding-right: 30px;">
+                <% if (test.language.length == 1 && test.language[0] == 'English') {
+          %>
+                    <button id="alt-lang-btn" name="Bengali" class="">
+            Create Bangla Version
+          </button>
+                    <% } else if (test.language.length == 1 && test.language[0] ==
+          'Bengali') { %>
+                        <button id="alt-lang-btn" name="English" class="">
+            Create English Version
+          </button>
+                        <% } %>
+                            <button id="update-btn" class="">Update</button>
+            </div>
+            <div class="test_header text-center">
+                <h2>Questions</h2>
+            </div>
+            <div class="allQuestions">
+                <div class="questions">
+                    <% for(let i = 0; i < test.questions.length; i++) { %>
+                        <div class="question">
+                            <div class="question_name">
+                                <p>
+                                    <%=i + 1%>.
+                                        <%= test.questions[i].QuesName %>
+                                </p>
+                            </div>
+                            <div class="options">
+                                <% for(let j = 0 ; j < test.questions[i].options.length ; j++) {
                 %>
-                <div class="pl-2 magicc">
-                  <div class="custom-control custom-radio">
-                    <input
-                      type="radio"
-                      class="custom-control-input"
-                      id="Radio<%=i%><%=j%>"
-                      name="quiz<%=i%>"
-                      value="<%=i%>-<%=j%>"
-                    />
-                    <label class="custom-control-label" for="Radio<%=i%><%=j%>"
-                      ><%= test.questions[i].options[j].optionName %> (<%=
+                                    <div class="pl-2 magicc">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" id="Radio<%=i%><%=j%>" name="quiz<%=i%>" value="<%=i%>-<%=j%>" />
+                                            <label class="custom-control-label" for="Radio<%=i%><%=j%>"><%= test.questions[i].options[j].optionName %> (<%=
                       test.questions[i].options[j].optionScale %>%)
                     </label>
-                  </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <% } %>
                 </div>
-                <% } %>
-              </div>
             </div>
-            <% } %>
-          </div>
         </div>
-      </div>
-      <input type="hidden" name="" value="<%= test._id %>" id="id" />
+        <input type="hidden" name="" value="<%= test._id %>" id="id" />
+        <input type="hidden" name="" value="<%= lang %>" id="version" />
     </section>
-  </body>
-  <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"
-  ></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-  <script>
-    $('#update-btn').click((e) => {
-      const id = $('#id').val();
-      location = '/admin/test/update/' + id;
+<script>
+    $('#alt-lang-btn').click((e) => {
+        const version = $('#version').val();
+        console.log(version);
+        const id = $('#id').val();
+        location = `/admin/test/version/${id}?lang=${version}`;
     });
-  </script>
+    $('#update-btn').click((e) => {
+        const version = $('#version').val();
+        const id = $('#id').val();
+        console.log(version);
+        location = `/admin/test/update/${id}?lang=${version}`;
+    });
+</script>
+
 </html>

@@ -230,17 +230,16 @@
     <%- include('./partials/footer')%>
   </body>
   <%- include('./partials/vendorsBottom')%>
+
   <script>
     function go() {
       location = '/admin/test/new';
     }
-
     $('#paidInput').on('change', (e) => {
       if (e.target.value === 'Yes') {
         $('#payAmount').css('visibility', 'visible');
       }
     });
-
     $(document).on('click', '.newQuestion', (e) => {
       $('.allQuestions').append(`
         <div class="eachQuestions pt-3">
@@ -372,7 +371,6 @@
       const res = str == '' || str == null || str == undefined;
       return res;
     };
-
     const showAlert = (msg) => {
       $('#alert').show();
       $('#alert').html(msg);
@@ -383,7 +381,6 @@
         'slow'
       );
     };
-
     const Submit = (data) => {
       $.ajax({
         type: 'POST',
@@ -399,6 +396,7 @@
         },
       });
     };
+
     $(document).on('click', '#submit-btn', (e) => {
       e.preventDefault();
       const disorderNameEng = $('#disorderNameInEng').val();
@@ -462,7 +460,7 @@
               } else {
                 Options.push({
                   option,
-                  optionScale,
+                  scale: optionScale,
                 });
               }
               if (error) break;
@@ -471,7 +469,7 @@
 
             Questions.push({
               question,
-              questionScale,
+              scale: questionScale,
               Options,
             });
           }
@@ -483,6 +481,7 @@
         });
         const languages = [];
         languages.push(language);
+        console.log(questionSet);
         const postData = {
           disorderNameEng,
           disorderNameBan,

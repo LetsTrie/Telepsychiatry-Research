@@ -1,171 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
 
-        <link rel="stylesheet" href="/css/admin_new_test.css" />
-        <title>Add New Test | Mental Health and Wellbeing Assessment</title>
-</head>
+    <link rel="stylesheet" href="/css/admin_new_test.css" />
+    <title>Add New Test | Mental Health and Wellbeing Assessment</title>
+  </head>
 
-<body>
+  <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Services</p>
-                </div>
-                <div class="bigText">
-                    <p>Mental Health and Wellbeing Assessment</p>
-                </div>
-            </div>
-        </header>
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Services</p>
+          </div>
+          <div class="bigText">
+            <p>Mental Health and Wellbeing Assessment</p>
+          </div>
+        </div>
+      </header>
 
-        <input type="hidden" value="<%= test.age %>" id="ageRange" />
-        <input type="hidden" value="<%= test.isPaid %>" id="paid" />
-        <input type="hidden" value="<%= lang %>" id="version" />
-        <input type="hidden" value="<%= test.payAmount %>" id="amounts" />
-        <input type="hidden" value="<%= test.id %>" id="id" />
+      <input type="hidden" value="<%= test.age %>" id="ageRange" />
+      <input type="hidden" value="<%= test.isPaid %>" id="paid" />
+      <input type="hidden" value="<%= lang %>" id="version" />
+      <input type="hidden" value="<%= test.payAmount %>" id="amounts" />
+      <input type="hidden" value="<%= test.id %>" id="id" />
 
-        <div class="BigSectionFlex">
-            <div class="testAdd">
-                <div class="container">
-                    <div class="add_test_wrapper">
-                        <div class="add_test_Header text-center">
-                            <h1>Add New Test</h1>
-                        </div>
-                        <div class="add_test_form">
-                            <div class="alert alert-danger" id="alert"></div>
-                            <div class="alert alert-success" id="alert-success" style="display: none;"></div>
-                            <form action="#">
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <input type="text" id="disorderNameInEng" class="form-control" value="<%= test.disorderNameEng %>" placeholder="Disorder name (In English)" />
-                                    </div>
-                                    <div class="flx-chld">
-                                        <input type="text" id="disorderNameInBangla" class="form-control" value="<%= test.disorderNameBan %>" placeholder="Disorder name (In Bengali)" />
-                                    </div>
-                                </div>
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <input type="text" id="testNameInEng" class="form-control" value="<%= test.testEng %>" placeholder="Test Name (In English)" />
-                                    </div>
-                                    <div class="flx-chld">
-                                        <input type="text" id="testNameInBangla" class="form-control" value="<%= test.testBan %>" placeholder="Test Name (In Bengali)" />
-                                    </div>
-                                </div>
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <div class="form-selectpicker">
-                                            <select class="selectpicker" data-width="100%" title="Age range" name="age" id="ageRangeInput" data-size="6">
+      <div class="BigSectionFlex">
+        <div class="testAdd">
+          <div class="container">
+            <div class="add_test_wrapper">
+              <div class="add_test_Header text-center">
+                <h1>Add New Test</h1>
+              </div>
+              <div class="add_test_form">
+                <div class="alert alert-danger" id="alert"></div>
+                <div
+                  class="alert alert-success"
+                  id="alert-success"
+                  style="display: none;"
+                ></div>
+                <form action="#">
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="disorderNameInEng"
+                        class="form-control"
+                        value="<%= test.disorderNameEng %>"
+                        placeholder="Disorder name (In English)"
+                      />
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="disorderNameInBangla"
+                        class="form-control"
+                        value="<%= test.disorderNameBan %>"
+                        placeholder="Disorder name (In Bengali)"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="testNameInEng"
+                        class="form-control"
+                        value="<%= test.testEng %>"
+                        placeholder="Test Name (In English)"
+                      />
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        id="testNameInBangla"
+                        class="form-control"
+                        value="<%= test.testBan %>"
+                        placeholder="Test Name (In Bengali)"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Age range"
+                          name="age"
+                          id="ageRangeInput"
+                          data-size="6"
+                        >
                           <option value="For Children">For Children</option>
                           <option value="For Adults">For Adults</option>
                           <option value="For Old People">For Old People</option>
                         </select>
-                                        </div>
-                                    </div>
-                                    <div class="flx-chld">
-                                        <div class="form-selectpicker">
-                                            <select class="selectpicker" data-width="100%" title="Select Language" name="lang" id="langInput" data-size="6">
+                      </div>
+                    </div>
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Select Language"
+                          name="lang"
+                          id="langInput"
+                          data-size="6"
+                        >
                           <option value="Bengali">Bengali</option>
                           <option value="English">English</option>
                         </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flx-prnt">
-                                    <div class="flx-chld">
-                                        <div class="form-selectpicker">
-                                            <select class="selectpicker" data-width="100%" title="Paid or not" name="paid" id="paidInput" data-size="6">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flx-prnt">
+                    <div class="flx-chld">
+                      <div class="form-selectpicker">
+                        <select
+                          class="selectpicker"
+                          data-width="100%"
+                          title="Paid or not"
+                          name="paid"
+                          id="paidInput"
+                          data-size="6"
+                        >
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
                         </select>
-                                        </div>
-                                    </div>
-                                    <div class="flx-chld">
-                                        <input type="text" placeholder="Pay amount (Only Numbers)" class="form-control" id="payAmount" style="visibility: hidden;" />
-                                    </div>
-                                </div>
+                      </div>
+                    </div>
+                    <div class="flx-chld">
+                      <input
+                        type="text"
+                        placeholder="Pay amount (Only Numbers)"
+                        class="form-control"
+                        id="payAmount"
+                        style="visibility: hidden;"
+                      />
+                    </div>
+                  </div>
 
-                                <h5 class="Ques_heading">Questions</h5>
+                  <h5 class="Ques_heading">Questions</h5>
 
-                                <div class="allQuestionsWrapper">
-                                    <div class="allQuestions">
-                                        <% questionData.questions.forEach ( item => { %>
-                                            <div class="eachQuestions">
-                                                <div class="quesInfo">
-                                                    <div class="flx-prnt">
-                                                        <span class="fa fa-arrow-right"></span>
-                                                        <div class="flx-chld inp_q_box">
-                                                            <input type="text" class="form-control" value="<%= item.QuesName %>" id="question" placeholder="Write question here.." />
-                                                        </div>
-                                                        <div class="flx-chld inp_sc_box">
-                                                            <input type="text" class="form-control" value="<%= item.questionScale %>" id="questionScale" placeholder="Scale (By Default 1)" />
-                                                        </div>
-                                                        <div class="flx-chld inp_btn">
-                                                            <input type="button" value="Delete" class="btn btn-dark deleteBtn QuestionDelete" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="optionInfo">
-                                                    <div class="allOptions">
-                                                        <% item.options.forEach( op => { %>
-                                                            <div class="eachOptions flx-prnt pl-5 pt-1">
-                                                                <div class="flx-chld inp_o_box">
-                                                                    <input type="text" class="form-control" id="option" value="<%= op.optionName %>" placeholder="Write option here.." />
-                                                                </div>
-                                                                <div class="flx-chld inp_sc_box inp_sco_box">
-                                                                    <input type="text" class="form-control" id="optionScale" value="<%= op.optionScale %>" placeholder="Scale (By Default 1)" />
-                                                                </div>
-                                                                <div class="flx-chld inp_btn">
-                                                                    <input type="button" value="Delete" class="btn btn-dark deleteBtn optionDelete" />
-                                                                </div>
-                                                            </div>
-                                                            <% }) %>
-                                                    </div>
-                                                    <div class="addoption ml-1 pl-5 pt-2 py-2">
-                                                        <input type="button" value="Add option" class="addBtn addOptions" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <% }) %>
-                                    </div>
-                                    <div class="newQuestion ml-2 pl-3 py-2">
-                                        <input type="button" value="Add question" class="addBtn" id="addQuestion" />
-                                    </div>
-                                </div>
+                  <div class="allQuestionsWrapper">
+                    <div class="allQuestions">
+                      <% questionData.questions.forEach ( item => { %>
+                      <div class="eachQuestions">
+                        <div class="quesInfo">
+                          <div class="flx-prnt">
+                            <span class="fa fa-arrow-right"></span>
+                            <div class="flx-chld inp_q_box">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="<%= item.QuesName %>"
+                                id="question"
+                                placeholder="Write question here.."
+                              />
+                            </div>
+                            <div class="flx-chld inp_sc_box">
+                              <input
+                                type="text"
+                                class="form-control"
+                                value="<%= item.QuesScale %>"
+                                id="questionScale"
+                                placeholder="Scale (By Default 1)"
+                              />
+                            </div>
+                            <div class="flx-chld inp_btn">
+                              <input
+                                type="button"
+                                value="Delete"
+                                class="btn btn-dark deleteBtn QuestionDelete"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="optionInfo">
+                          <div class="allOptions">
+                            <% item.options.forEach( op => { %>
+                            <div class="eachOptions flx-prnt pl-5 pt-1">
+                              <div class="flx-chld inp_o_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="option"
+                                  value="<%= op.optionName %>"
+                                  placeholder="Write option here.."
+                                />
+                              </div>
+                              <div class="flx-chld inp_sc_box inp_sco_box">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="optionScale"
+                                  value="<%= op.optionScale %>"
+                                  placeholder="Scale (By Default 1)"
+                                />
+                              </div>
+                              <div class="flx-chld inp_btn">
+                                <input
+                                  type="button"
+                                  value="Delete"
+                                  class="btn btn-dark deleteBtn optionDelete"
+                                />
+                              </div>
+                            </div>
+                            <% }) %>
+                          </div>
+                          <div class="addoption ml-1 pl-5 pt-2 py-2">
+                            <input
+                              type="button"
+                              value="Add option"
+                              class="addBtn addOptions"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <% }) %>
+                    </div>
+                    <div class="newQuestion ml-2 pl-3 py-2">
+                      <input
+                        type="button"
+                        value="Add question"
+                        class="addBtn"
+                        id="addQuestion"
+                      />
+                    </div>
+                  </div>
 
-                                <div class="pt-3 text-center pt-2 pb-5">
-                                    <button id="submit-btn" class="addBtn finalSubmit">
+                  <div class="pt-3 text-center pt-2 pb-5">
+                    <button id="submit-btn" class="addBtn finalSubmit">
                       SUBMIT
                     </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
     <%- include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script>
-        function go() {
-            location = '/admin/test/new';
-        }
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    function go() {
+      location = '/admin/test/new';
+    }
 
-        $('#paidInput').on('change', (e) => {
-            if (e.target.value === 'Yes') {
-                $('#payAmount').css('visibility', 'visible');
-            }
-        });
+    $('#paidInput').on('change', (e) => {
+      if (e.target.value === 'Yes') {
+        $('#payAmount').css('visibility', 'visible');
+      }
+    });
 
-        $(document).on('click', '.newQuestion', (e) => {
-            $('.allQuestions').append(`
+    $(document).on('click', '.newQuestion', (e) => {
+      $('.allQuestions').append(`
         <div class="eachQuestions pt-3">
           <div class="quesInfo">
             <div class="flx-prnt">
@@ -233,9 +328,9 @@
           </div>
         </div>
       `);
-        });
-        $(document).on('click', '.addOptions', (e) => {
-            $(e.target.parentElement.parentElement.children[0]).append(`
+    });
+    $(document).on('click', '.addOptions', (e) => {
+      $(e.target.parentElement.parentElement.children[0]).append(`
         <div class="eachOptions flx-prnt pl-5 pt-1">
           <div class="flx-chld inp_o_box">
             <input
@@ -262,175 +357,175 @@
           </div>
         </div>
       `);
-        });
-        $(document).on('click', '.optionDelete', (e) => {
-            let fld = e.target;
-            while (true) {
-                let val = $(fld)[0].className;
-                console.log(val);
-                if (val.includes('eachOptions')) break;
-                fld = fld.parentElement;
-            }
-            const numOfChildren = fld.parentElement.children.length;
-            if (numOfChildren > 1) {
-                $(fld).remove();
-            }
-        });
-        $(document).on('click', '.QuestionDelete', (e) => {
-            let fld = e.target;
-            while (true) {
-                let val = $(fld)[0].className;
-                if (val.includes('eachQuestions')) break;
-                fld = fld.parentElement;
-            }
-            const numOfChildren = fld.parentElement.children.length;
-            if (numOfChildren > 1) {
-                $(fld).remove();
-            }
-        });
-    </script>
-    <script>
-        $('#paidInput').val($('#paid').val());
-        $('#ageRangeInput').val($('#ageRange').val());
-        $('#langInput').val($('#version').val());
-        console.log($('#version').val(), '?');
-        if ($('#paid').val() == 'Yes') {
-            $('#payAmount').css('visibility', 'visible');
-            $('#payAmount').val($('#amounts').val());
-        }
-    </script>
-    <script>
-        const check = (str) => {
-            const res = str == '' || str == null || str == undefined;
-            return res;
-        };
+    });
+    $(document).on('click', '.optionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        console.log(val);
+        if (val.includes('eachOptions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+    $(document).on('click', '.QuestionDelete', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        if (val.includes('eachQuestions')) break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+  </script>
+  <script>
+    $('#paidInput').selectpicker('val', $('#paid').val());
+    $('#ageRangeInput').selectpicker('val', $('#ageRange').val());
+    $('#langInput').selectpicker('val', $('#version').val());
+    console.log($('#version').val(), '?');
+    if ($('#paid').val() == 'Yes') {
+      $('#payAmount').css('visibility', 'visible');
+      $('#payAmount').val($('#amounts').val());
+    }
+  </script>
+  <script>
+    const check = (str) => {
+      const res = str == '' || str == null || str == undefined;
+      return res;
+    };
 
-        const showAlert = (msg) => {
-            $('#alert').show();
-            $('#alert').html(msg);
-            $('html, body').animate({
-                    scrollTop: 0,
-                },
-                'slow'
-            );
-        };
+    const showAlert = (msg) => {
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate(
+        {
+          scrollTop: 0,
+        },
+        'slow'
+      );
+    };
 
-        const Submit = (data) => {
-            $.ajax({
-                type: 'POST',
-                url: '/admin/test/update',
-                data,
-                success: (response) => {
-                    location = '/admin/test/single/' + $('#id').val();
-                },
-            });
-        };
-        $(document).on('click', '#submit-btn', (e) => {
-            e.preventDefault();
-            const disorderNameEng = $('#disorderNameInEng').val();
-            const disorderNameBan = $('#disorderNameInBangla').val();
-            const testEng = $('#testNameInEng').val();
-            const testBan = $('#testNameInBangla').val();
-            const age = $('#ageRangeInput').val();
-            const paidInput = $('#paidInput').val();
-            const payAmount = $('#payAmount').val();
-            const language = $('#langInput').val();
-            const id = $('#id').val();
-            let error = false;
-            const qLang = language;
-            if (check(disorderNameEng)) {
+    const Submit = (data) => {
+      $.ajax({
+        type: 'POST',
+        url: '/admin/test/update',
+        data,
+        success: (response) => {
+          location = '/admin/test/single/' + $('#id').val();
+        },
+      });
+    };
+    $(document).on('click', '#submit-btn', (e) => {
+      e.preventDefault();
+      const disorderNameEng = $('#disorderNameInEng').val();
+      const disorderNameBan = $('#disorderNameInBangla').val();
+      const testEng = $('#testNameInEng').val();
+      const testBan = $('#testNameInBangla').val();
+      const age = $('#ageRangeInput').val();
+      const paidInput = $('#paidInput').val();
+      const payAmount = $('#payAmount').val();
+      const language = $('#langInput').val();
+      const id = $('#id').val();
+      let error = false;
+      const qLang = language;
+      if (check(disorderNameEng)) {
+        error = true;
+        showAlert('Enter the name of disorder in English');
+      } else if (check(disorderNameBan)) {
+        error = true;
+        showAlert('Enter the name of disorder in Bengali');
+      } else if (check(testEng)) {
+        error = true;
+        showAlert('Enter the name of test in English');
+      } else if (check(testBan)) {
+        error = true;
+        showAlert('Enter the name of test in Bengali');
+      } else if (check(age)) {
+        error = true;
+        showAlert('Enter the age range');
+      } else if (check(paidInput)) {
+        error = true;
+        showAlert('Specify Test is Paid or not');
+      } else if (paidInput == 'Yes' && check(payAmount)) {
+        error = true;
+        showAlert('Enter the amount of payment');
+      } else if (check(language)) {
+        error = true;
+        showAlert('Specify the lanuage of test');
+      } else {
+        let Questions = [];
+        const questions = $('.eachQuestions');
+        for (let i = 0; i < questions.length; i++) {
+          const question = $(questions[i]).find('#question').val();
+          let questionScale = $(questions[i]).find('#questionScale').val();
+          if (check(questionScale)) {
+            questionScale = '1';
+          }
+          if (check(question)) {
+            error = true;
+            showAlert('Enter the question');
+          } else {
+            const options = $(questions[i]).find('.eachOptions');
+            const Options = [];
+            for (let j = 0; j < options.length; j++) {
+              const option = $(options[j]).find('#option').val();
+              let optionScale = $(options[j]).find('#optionScale').val();
+              if (check(optionScale)) {
+                optionScale = '1';
+              }
+              if (check(option)) {
                 error = true;
-                showAlert('Enter the name of disorder in English');
-            } else if (check(disorderNameBan)) {
-                error = true;
-                showAlert('Enter the name of disorder in Bengali');
-            } else if (check(testEng)) {
-                error = true;
-                showAlert('Enter the name of test in English');
-            } else if (check(testBan)) {
-                error = true;
-                showAlert('Enter the name of test in Bengali');
-            } else if (check(age)) {
-                error = true;
-                showAlert('Enter the age range');
-            } else if (check(paidInput)) {
-                error = true;
-                showAlert('Specify Test is Paid or not');
-            } else if (paidInput == 'Yes' && check(payAmount)) {
-                error = true;
-                showAlert('Enter the amount of payment');
-            } else if (check(language)) {
-                error = true;
-                showAlert('Specify the lanuage of test');
-            } else {
-                let Questions = [];
-                const questions = $('.eachQuestions');
-                for (let i = 0; i < questions.length; i++) {
-                    const question = $(questions[i]).find('#question').val();
-                    let questionScale = $(questions[i]).find('#questionScale').val();
-                    if (check(questionScale)) {
-                        questionScale = '1';
-                    }
-                    if (check(question)) {
-                        error = true;
-                        showAlert('Enter the question');
-                    } else {
-                        const options = $(questions[i]).find('.eachOptions');
-                        const Options = [];
-                        for (let j = 0; j < options.length; j++) {
-                            const option = $(options[j]).find('#option').val();
-                            let optionScale = $(options[j]).find('#optionScale').val();
-                            if (check(optionScale)) {
-                                optionScale = '1';
-                            }
-                            if (check(option)) {
-                                error = true;
-                                showAlert('Enter the option');
-                            } else {
-                                Options.push({
-                                    option,
-                                    optionScale,
-                                });
-                            }
-                            if (error) break;
-                        }
-                        if (error) break;
-
-                        Questions.push({
-                            question,
-                            questionScale,
-                            Options,
-                        });
-                    }
-                }
-                const questionSet = [];
-                questionSet.push({
-                    language,
-                    Questions,
+                showAlert('Enter the option');
+              } else {
+                Options.push({
+                  option,
+                  scale: optionScale,
                 });
-                const languages = [];
-                languages.push(language);
-                const postData = {
-                    id,
-                    qLang,
-                    disorderNameEng,
-                    disorderNameBan,
-                    testEng,
-                    testBan,
-                    age,
-                    isPaid: paidInput,
-                    payAmount,
-                    languages: JSON.stringify(languages),
-                    questionSet: JSON.stringify(questionSet),
-                };
-
-                if (!error) {
-                    $('#alert').hide();
-                    console.log(postData);
-                    Submit(postData);
-                }
+              }
+              if (error) break;
             }
-        });
-    </script>
+            if (error) break;
 
+            Questions.push({
+              question,
+              scale: questionScale,
+              Options,
+            });
+          }
+        }
+        const questionSet = [];
+        questionSet.push({
+          language,
+          Questions,
+        });
+        const languages = [];
+        languages.push(language);
+        const postData = {
+          id,
+          qLang,
+          disorderNameEng,
+          disorderNameBan,
+          testEng,
+          testBan,
+          age,
+          isPaid: paidInput,
+          payAmount,
+          languages: JSON.stringify(languages),
+          questionSet: JSON.stringify(questionSet),
+        };
+
+        if (!error) {
+          $('#alert').hide();
+          console.log(postData);
+          Submit(postData);
+        }
+      }
+    });
+  </script>
 </html>

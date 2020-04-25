@@ -388,8 +388,7 @@
         data,
         success: (response) => {
           if (response.status) {
-            location.reload();
-            //= '/admin/test/single/' + response.id;
+            location = `/admin/test/single/${response.id}?lang=${response.lang}`;
           } else {
             showAlert(response.msg);
           }

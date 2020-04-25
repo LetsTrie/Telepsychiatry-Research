@@ -417,7 +417,8 @@
         url: '/admin/test/update',
         data,
         success: (response) => {
-          location = '/admin/test/single/' + $('#id').val();
+          console.log(response);
+          location = `/admin/test/single/${data.id}?lang=${data.qLang}`;
         },
       });
     };

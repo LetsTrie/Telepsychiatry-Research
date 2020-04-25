@@ -41,13 +41,13 @@ exports.postTestVersion = async (req, res, next) => {
 exports.postUpdateTest = async (req, res) => {
   const { id, qLang } = req.body;
   let QuestionSet = JSON.parse(req.body.questionSet)[0];
-  const test = await testModel.find({ _id: id });
-  for (let i = 0; i < test[0].questionSet.length; i++) {
-    if (test[0].questionSet[i].language == qLang) {
-      test[0].questionSet.splice(i, 1);
+  const test = await testModel.findById(id);
+  for (let i = 0; i < test.questionSet.length; i++) {
+    if (test.questionSet[i].language == qLang) {
+      test.questionSet.splice(i, 1);
     }
   }
-  test[0].questionSet.push({
+  test.questionSet.push({
     Questions: QuestionSet.Questions,
     language: QuestionSet.language,
   });
@@ -62,13 +62,13 @@ exports.postUpdateTest = async (req, res) => {
         age: req.body.age,
         isPaid: req.body.isPaid,
         payAmount: req.body.payAmount,
-        questionSet: test[0].questionSet,
+        questionSet: test.questionSet,
       },
     }
   );
 
   res.send({
-    staus: true,
+    status: true,
     msg: 'okay',
   });
 };

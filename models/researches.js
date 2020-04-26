@@ -1,35 +1,23 @@
 const mongoose = require('mongoose');
 
 const researchSchema = new mongoose.Schema({
-    title: {
-        type: String
-    },
-    BriefDesciption: {
-        type: String
-    },
-    conflictOfInterest: {
-        type: String
-    },
-    financialSupport: {
-        type: String
-    },
-    Acknowlegement: {
-        type: String
-    },
-    references: {
-        type: String
-    },
-    authors: {
-        type: String
-    },
+    title: String,
+    description: String,
+    contacPerson: String,
+    collaboration: String,
+    collabScope: String,
+    newsAndPub: String,
+    researchStage: String,
+    financialSupport: String,
+    file: String,
     isVerified: {
         type: Boolean,
-        default: false
+        default: false,
     },
     createdAt: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now(),
+    },
 });
 
 exports.ResearchModel = mongoose.model('researches', researchSchema);

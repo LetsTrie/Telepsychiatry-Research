@@ -53,7 +53,9 @@ const uploadPhoto = multer({
 
 const { privateRoute } = require('../middlewares/authorization');
 
-router.get('/login', (req, res, next) => res.render('login'));
+router.get('/login', (req, res, next) =>
+    res.render('login', { user: req.user })
+);
 router.post('/login', postLogin);
 router.get('/logout', (req, res, next) => {
     req.logout();

@@ -29,8 +29,13 @@
 //     res.redirect('/events')
 // }
 
-exports.getWorkshop = (req, res, next) => res.render('listOfWorkshop');
-exports.getTraining = (req, res, next) => res.render('listOfTrainingSession');
-exports.getNewWorkshop = (req, res, next) => res.render('createNewWorkshop');
-exports.getNewTraining = (req, res, next) => res.render('createNewTraining');
-exports.eventsAll = (req, res, next) => res.render('eventShowAll');
+exports.getWorkshop = (req, res, next) =>
+    res.render('listOfWorkshop', { user: req.user });
+exports.getTraining = (req, res, next) =>
+    res.render('listOfTrainingSession', { user: req.user });
+exports.getNewWorkshop = (req, res, next) =>
+    res.render('createNewWorkshop', { user: req.user });
+exports.getNewTraining = (req, res, next) =>
+    res.render('createNewTraining', { user: req.user });
+exports.eventsAll = (req, res, next) =>
+    res.render('eventShowAll', { user: req.user });

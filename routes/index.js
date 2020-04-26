@@ -9,7 +9,7 @@ const admin = {
 };
 
 router.get('/', (req, res, next) => {
-    res.render('homepage');
+    res.render('homepage', { user: req.user });
 });
 router.get('/getUser', (req, res, next) => {
     if (req.user) {

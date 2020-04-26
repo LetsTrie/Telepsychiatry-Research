@@ -13,7 +13,7 @@ exports.getAllResearchers = async(req, res, next) => {
     const experts = await eUserModel
         .find({ speciality: 'Researcher' })
         .sort({ _id: -1 });
-    res.render('researcherList', { experts });
+    res.render('researcherList', { experts, user: req.user });
 };
 
 exports.searchResearchers = async(req, res, next) => {
@@ -25,7 +25,7 @@ exports.searchResearchers = async(req, res, next) => {
     if (search === '') search = undefined;
     if (nullCheck(search) && nullCheck(gender) && nullCheck(city)) {
         const experts = await eUserModel.find(keyword).sort({ _id: -1 });
-        return res.render('consultation', { experts });
+        return res.render('consultation', { experts, user: req.user });
     }
 
     let searchedExperts = [];
@@ -108,6 +108,7 @@ exports.searchResearchers = async(req, res, next) => {
     }
 
     return res.render('researcherList', {
+        user: req.user,
         experts: container.sort((a, b) => (a._id > b._id ? -1 : 1)),
     });
 };
@@ -116,7 +117,7 @@ exports.consultation = async(req, res) => {
     const experts = await eUserModel
         .find({ speciality: 'Psychiatric Consultation' })
         .sort({ _id: -1 });
-    res.render('consultation', { experts });
+    res.render('consultation', { experts, user: req.user });
 };
 exports.searchConsultation = async(req, res) => {
     let search = req.query.searchInput;
@@ -127,7 +128,7 @@ exports.searchConsultation = async(req, res) => {
     if (search === '') search = undefined;
     if (nullCheck(search) && nullCheck(gender) && nullCheck(city)) {
         const experts = await eUserModel.find(keyword).sort({ _id: -1 });
-        return res.render('consultation', { experts });
+        return res.render('consultation', { experts, user: req.user });
     }
 
     let searchedExperts = [];
@@ -224,6 +225,7 @@ exports.searchConsultation = async(req, res) => {
     }
 
     return res.render('consultation', {
+        user: req.user,
         experts: container.sort((a, b) => (a._id > b._id ? -1 : 1)),
     });
 };
@@ -232,7 +234,7 @@ exports.psychoTherapy = async(req, res) => {
     const experts = await eUserModel
         .find({ speciality: 'Psycho Therapy & Counselling' })
         .sort({ _id: -1 });
-    res.render('psycho_therapy', { experts });
+    res.render('psycho_therapy', { experts, user: req.user });
 };
 
 exports.searchPsychoTherapy = async(req, res) => {
@@ -244,7 +246,7 @@ exports.searchPsychoTherapy = async(req, res) => {
     if (search === '') search = undefined;
     if (nullCheck(search) && nullCheck(gender) && nullCheck(city)) {
         const experts = await eUserModel.find(keyword).sort({ _id: -1 });
-        return res.render('psycho_therapy', { experts });
+        return res.render('psycho_therapy', { experts, user: req.user });
     }
 
     let searchedExperts = [];
@@ -341,6 +343,7 @@ exports.searchPsychoTherapy = async(req, res) => {
     }
 
     return res.render('psycho_therapy', {
+        user: req.user,
         experts: container.sort((a, b) => (a._id > b._id ? -1 : 1)),
     });
 };
@@ -401,5 +404,5 @@ function sendEmail(emailID, reply) {
 exports.singleDoctorConsultation = async(req, res, next) => {
     const doc = await eUserModel.findById(req.params.id);
     console.log(doc);
-    return res.render('doctorsProfile', { doc });
+    return res.render('doctorsProfile', { doc, user: req.user });
 };

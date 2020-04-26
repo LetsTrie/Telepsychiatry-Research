@@ -13,10 +13,10 @@ const fs = require('fs');
 const { AccountVerifyMail } = require('../config/sendMail');
 
 exports.getRegisterGeneralUser = (req, res, next) => {
-    return res.render('register_gen', { country });
+    return res.render('register_gen', { country, user: req.user });
 };
 exports.getRegisterOrganizations = (req, res, next) => {
-    return res.render('register_org', { country });
+    return res.render('register_org', { country, user: req.user });
 };
 
 exports.postUpdateExpertPassword = (req, res, next) =>
@@ -96,7 +96,7 @@ module.exports.postLogin = (req, res, next) => {
 };
 
 exports.getRegisterExpertUser = (req, res, next) => {
-    return res.render('register_exp', { country });
+    return res.render('register_exp', { country, user: req.user });
 };
 
 exports.eUserCheckDuplication = async(req, res, next) => {

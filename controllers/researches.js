@@ -18,7 +18,7 @@ exports.getResearches = async (req, res) => {
     baseUrl += `?search=${search}&page=`;
     const searchOption = {
       $regex: search,
-      $options: 'i'
+      $options: 'i',
     };
     searchKey = {
       $or: [
@@ -28,8 +28,8 @@ exports.getResearches = async (req, res) => {
         { financialSupport: searchOption },
         { Acknowlegement: searchOption },
         { references: searchOption },
-        { authors: searchOption }
-      ]
+        { authors: searchOption },
+      ],
     };
   } else baseUrl += `?page=`;
 
@@ -40,7 +40,7 @@ exports.getResearches = async (req, res) => {
   return res.render('researches', {
     data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
     search,
-    ...pagination(page, LIMIT, totalItems, baseUrl)
+    ...pagination(page, LIMIT, totalItems, baseUrl),
   });
 };
 
@@ -50,4 +50,6 @@ exports.postResearches = async (req, res) => {
   res.redirect('/researches');
 };
 
-exports.getNewResearches = (req, res) => res.render('createResearches');
+exports.getNewResearches = (req, res) => {
+  return res.render('createResearches');
+};

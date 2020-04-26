@@ -3,12 +3,14 @@ const {
   getResearches,
   postResearches,
   getNewResearches,
-  getResearch
+  getResearch,
 } = require('../controllers/researches');
 
+const { adminAccess } = require('../middlewares/authorization');
+
 router.get('/', getResearches);
-router.post('/', postResearches);
-router.get('/new', getNewResearches);
+router.post('/', adminAccess, postResearches);
+router.get('/new', adminAccess, getNewResearches);
 router.get('/:id', getResearch);
 
 module.exports = router;

@@ -2,21 +2,31 @@ const router = require('express').Router();
 const passport = require('passport');
 const { postLogin } = require('../controllers/admin');
 const admin = {
-    id: 'admin123',
-    name: 'admin',
-    email: 'admin@trin',
-    password: '123456',
+  id: 'admin123',
+  name: 'admin',
+  email: 'admin@trin',
+  password: '123456',
 };
 
-router.get('/', (req, res, next) => {
-    res.render('homepage');
+const { eUserModel } = require('../models/expertUser');
+
+router.get('/', async (req, res, next) => {
+  const eUser = await eUserModel.find({
+    $or: [
+      { name: 'Ashik Rahman' },
+      { name: 'Sharmin Ara' },
+      { name: 'Marzia Al-Hakeem' },
+    ],
+  });
+  console.log(eUser);
+  res.render('homepage', { ourExperts: eUser });
 });
 router.get('/getUser', (req, res, next) => {
-    if (req.user) {
-        res.send(req.user);
-    } else {
-        res.send(null);
-    }
+  if (req.user) {
+    res.send(req.user);
+  } else {
+    res.send(null);
+  }
 });
 router.use('/researches', require('./researches'));
 router.use('/innovations', require('./innovations'));

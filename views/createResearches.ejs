@@ -44,12 +44,12 @@
 
             <div class="one_box">
               <div class="box_header">
-                <p>Conflict of Interest:</p>
+                <p>Collaboration: (If any)</p>
               </div>
               <div class="input_box">
                 <textarea
-                  name="conflictOfInterest"
-                  id="conflictOfInterest"
+                  name="collaboration"
+                  id="collaboration"
                   cols="30"
                   rows="3"
                 ></textarea>
@@ -72,12 +72,12 @@
 
             <div class="one_box">
               <div class="box_header">
-                <p>Acknowlegement:</p>
+                <p>News and Publications:</p>
               </div>
               <div class="input_box">
                 <textarea
-                  name="Acknowlegement"
-                  id="Acknowlegement"
+                  name="newsAndPub"
+                  id="newsAndPub"
                   cols="30"
                   rows="3"
                 ></textarea>
@@ -87,7 +87,7 @@
             <div class="one_box">
               <div class="box_header">
                 <p>
-                  References: <span class="smallText"> (Use List Style) </span>
+                  References:
                 </p>
               </div>
               <div class="input_box">
@@ -97,13 +97,31 @@
 
             <div class="one_box">
               <div class="box_header">
-                <p>
-                  Authors:
-                  <span class="smallText"> (Name, Designation, Email) </span>
-                </p>
+                <p>Representational Photo</p>
               </div>
               <div class="input_box">
-                <textarea name="authors" id="Aeditor"> </textarea>
+                <input type="file" name="repPhoto" id="repPhotoID" />
+              </div>
+            </div>
+
+            <div class="one_box">
+              <div class="box_header">
+                <p>Research Stage</p>
+              </div>
+              <div class="input_box slct_picker">
+                <div class="form-selectpicker">
+                  <select
+                    id="researchStageID"
+                    class="selectpicker researchStage-selector"
+                    data-width="100%"
+                    title="Select research stage"
+                    data-size="6"
+                    name="researchStage"
+                  >
+                    <option value="On going">On going</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="createResources__submit">
@@ -128,29 +146,29 @@
       let Reditor;
       let Aeditor;
       ClassicEditor.create(document.querySelector('#BDeditor'))
-        .then(editor => {
+        .then((editor) => {
           bdeditor = editor;
           console.log(editor);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
 
       ClassicEditor.create(document.querySelector('#Reditor'))
-        .then(editor => {
+        .then((editor) => {
           Reditor = editor;
           console.log(editor);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
 
       ClassicEditor.create(document.querySelector('#Aeditor'))
-        .then(editor => {
+        .then((editor) => {
           Aeditor = editor;
           console.log(editor);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
 
@@ -169,7 +187,7 @@
       }
       console.log(isAlphaSpace('is ,alpha'));
 
-      $('#form-submit').click(e => {
+      $('#form-submit').click((e) => {
         e.preventDefault();
         const title = $('#title').val();
         const conflictOfInterest = $('#conflictOfInterest').val();

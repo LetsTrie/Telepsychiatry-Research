@@ -90,9 +90,27 @@
                   References:
                 </p>
               </div>
-              <div class="input_box">
-                <textarea name="references" id="Reditor"> </textarea>
+              <div class="all_ref">
+                <div class="input_box">
+                  <input
+                    type="text"
+                    name="ref"
+                    id="ref"
+                    placeholder="Add References Here"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-dark dltRef"
+                    value="Delete"
+                  />
+                </div>
               </div>
+              <input
+                type="button"
+                class="btn btn-dark"
+                id="AddRefID"
+                value="Add Field"
+              />
             </div>
 
             <div class="one_box">
@@ -139,6 +157,36 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"
   ></script>
+  <script>
+    $(document).on('click', '#AddRefID', (e) => {
+      $('.all_ref').append(` 
+      <div class="input_box">
+        <input
+          type="text"
+          name="ref"
+          id="ref"
+          placeholder="Add References Here"
+        />
+        <input
+          type="button"
+          class="btn btn-dark dltRef"
+          value="Delete"
+        />
+      </div>`);
+    });
+    $(document).on('click', '.dltRef', (e) => {
+      let fld = e.target;
+      while (true) {
+        let val = $(fld)[0].className;
+        if (val === 'input_box') break;
+        fld = fld.parentElement;
+      }
+      const numOfChildren = fld.parentElement.children.length;
+      if (numOfChildren > 1) {
+        $(fld).remove();
+      }
+    });
+  </script>
   <script>
     $(document).ready(() => {
       console.log('resource ready');

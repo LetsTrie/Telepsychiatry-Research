@@ -1078,6 +1078,12 @@ p {
   width: 100%;
 }
 
+.input_boxes .one_box .input_box textarea.dltRef,
+.input_boxes .one_box .input_box input:not([type='file']).dltRef {
+  width: 10%;
+  margin-left: 10px;
+}
+
 .flex-parent {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1156,4 +1162,16 @@ p {
 
 #alertF {
   display: none;
+}
+
+.all_ref .input_box {
+  padding-bottom: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.all_ref .input_box button {
+  margin-left: 10px;
 }

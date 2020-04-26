@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/singleResearcher.css" />
-    <title>
-      <%= data.title %> | Telepsychiatry Research
-    </title>
-  </head>
+        <link rel="stylesheet" href="/css/singleResearcher.css" />
+        <title>
+            <%= data.title %> | Telepsychiatry Research
+        </title>
+</head>
 
-  <body>
+<body>
     <div>
-      <header>
-        <nav>
-          <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-      </header>
-      <!-- NEXT -->
-      <section class="containerr">
-        <div class="contentTitle">
-          <p>
-            <%= data.title %>
-          </p>
-        </div>
-        <div class="contentDescription">
-          <p>
-            <%- data.BriefDesciption %>
-          </p>
-        </div>
+        <header>
+            <nav>
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="my-3 divider"></div>
+        </header>
+        <!-- NEXT -->
+        <section class="containerr">
+            <div class="contentTitle">
+                <p>
+                    <%= data.title %>
+                </p>
+            </div>
+            <div class="contentDescription">
+                <p>
+                    <%- data.description %>
+                </p>
+            </div>
 
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Financial support</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              <%= data.financialSupport %>
-            </p>
-          </div>
-        </div>
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Conflict of interest</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              <%= data.conflictOfInterest %>
-            </p>
-          </div>
-        </div>
-        <div class="content_box">
-          <div class="content_box_header">
-            <p>Acknowledgement</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              <%= data.Acknowledgement %>
-            </p>
-          </div>
-        </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Financial support</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.financialSupport %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Collaboration</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.collaboration %>
+                    </p>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Scope of Collaboration</p>
+                </div>
+                <div class="content_box_details">
+                    <p>
+                        <%= data.collabScope %>
+                    </p>
+                </div>
+            </div>
 
-        <div class="content_box">
+            <!-- <div class="content_box">
           <div class="content_box_header">
             <p>References</p>
           </div>
@@ -69,19 +70,38 @@
               <%- data.references %>
             </p>
           </div>
-        </div>
+        </div> -->
 
-        <div class="content_box">
+            <!-- <div class="content_box">
           <div class="content_box_header">
             <p>Authors</p>
           </div>
           <div class="content_box_details">
             <%- data.authors %>
           </div>
-        </div>
-      </section>
+        </div> -->
+
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>News and Publication</p>
+                </div>
+                <div class="content_box_details">
+                    <%= data.newsAndPub %>
+                </div>
+            </div>
+
+            <div class="content_box">
+                <div class="content_box_header">
+                    <p>Research Stage</p>
+                </div>
+                <div class="content_box_details">
+                    <%= data.researchStage %>
+                </div>
+            </div>
+        </section>
     </div>
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+
 </html>

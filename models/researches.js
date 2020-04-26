@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const researchSchema = new mongoose.Schema({
     title: String,
     description: String,
-    contacPerson: String,
+    contactPerson: String,
     collaboration: String,
     collabScope: String,
     newsAndPub: String,

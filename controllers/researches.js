@@ -6,7 +6,7 @@ const LIMIT = 9;
 
 exports.getResearch = async(req, res) => {
     const data = await ResearchModel.findById(req.params.id);
-    res.render('adminSingleResearch', { data, user: req.user });
+    res.render('singleResearch', { data, user: req.user });
 };
 
 exports.getResearches = async(req, res) => {
@@ -58,7 +58,7 @@ exports.getAllResearches = async(req, res) => {
 
 exports.researchFile = async(req, res) => {
     console.log('file saved');
-    res.redirect('back');
+    res.redirect(`/researches?stage=${req.body.researchStage}`);
 };
 exports.postResearches = async(req, res) => {
     const { validateResearchData } = require('../validations/researches');
@@ -70,7 +70,10 @@ exports.postResearches = async(req, res) => {
             msg: error.details[0].message,
         });
     }
-    const newResearch = new ResearchModel(req.body);
+    const newResearch = new ResearchModel({
+        ...req.body,
+        description: makeSmallParagraphFromHTML(req.body, 'description'),
+    });
     console.log(newResearch);
     await newResearch.save();
     res.send({

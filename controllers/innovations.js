@@ -7,13 +7,13 @@ const { makeSmallParagraphFromHTML } = require('./utils');
 
 exports.getInnovation = async(req, res) => {
     const data = await InnovationModel.findById(req.params.id);
-    res.render('singleInnovations', { data });
+    res.render('singleInnovations', { data, user: req.user });
 };
 
 exports.getInnovations = async(req, res) => {
     const page = +req.query.page || 1;
     const search = req.query.search;
-    let searchKey 
+    let searchKey;
     // = { isVerified: true };
     let baseUrl = req.baseUrl;
     if (search) {
@@ -41,13 +41,15 @@ exports.getInnovations = async(req, res) => {
     const totalItems = await InnovationModel.find(searchKey).countDocuments();
 
     return res.render('innovations', {
+        user: req.user,
         data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
         search,
         ...pagination(page, LIMIT, totalItems, baseUrl),
     });
 };
 
-exports.getNewInnovations = (req, res) => res.render('createInnovations');
+exports.getNewInnovations = (req, res) =>
+    res.render('createInnovations', { user: req.user });
 
 exports.postInnovations = async(req, res) => {
     const newInnovations = new InnovationModel({...req.body });

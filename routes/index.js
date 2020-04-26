@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
     ],
   });
   console.log(eUser);
-  res.render('homepage', { ourExperts: eUser });
+  res.render('homepage', { ourExperts: eUser, user: req.user });
 });
 router.get('/getUser', (req, res, next) => {
   if (req.user) {

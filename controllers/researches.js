@@ -6,7 +6,7 @@ const LIMIT = 9;
 
 exports.getResearch = async (req, res) => {
   const data = await ResearchModel.findById(req.params.id);
-  res.render('adminSingleResearch', { data });
+  res.render('adminSingleResearch', { data, user: req.user });
 };
 
 exports.getResearches = async (req, res) => {
@@ -38,6 +38,7 @@ exports.getResearches = async (req, res) => {
     .skip(LIMIT * (page - 1));
   const totalItems = await ResearchModel.find(searchKey).countDocuments();
   return res.render('researches', {
+    user: req.user,
     data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
     search,
     ...pagination(page, LIMIT, totalItems, baseUrl),
@@ -50,6 +51,5 @@ exports.postResearches = async (req, res) => {
   res.redirect('/researches');
 };
 
-exports.getNewResearches = (req, res) => {
-  return res.render('createResearches');
-};
+exports.getNewResearches = (req, res) =>
+  res.render('createResearches', { user: req.user });

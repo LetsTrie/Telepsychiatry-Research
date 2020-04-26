@@ -23,26 +23,26 @@ router.get('/psychoTherapy/search', searchPsychoTherapy);
 router.get('/doctor/profile/:id', singleDoctorConsultation);
 
 router.get('/institution', (req, res, next) => {
-    res.render('institution');
+    res.render('institution', { user: req.user });
 });
 
 router.get('/assessment', (req, res, next) => {
-    res.render('assessment');
+    res.render('assessment', { user: req.user });
 });
 
 router.get('/assessment/result', (req, res, next) => {
-    res.render('assessment_result');
+    res.render('assessment_result', { user: req.user });
 });
 router.get('/assessment/quiz', (req, res, next) => {
-    res.render('assessment_quiz');
+    res.render('assessment_quiz', { user: req.user });
 });
 
 router.get('/assessment/register', (req, res, next) => {
-    res.render('assessment_reg');
+    res.render('assessment_reg', { user: req.user });
 });
 
 router.get('/special_services', (req, res, next) => {
-    res.render('specialServices');
+    res.render('specialServices', { user: req.user });
 });
 
 router.post('/book', bookAppointment);

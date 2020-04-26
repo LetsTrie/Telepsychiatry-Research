@@ -178,6 +178,7 @@ exports.getAllTests = async (req, res, next) => {
   for (let i = 0; i < tests.length; i++)
     disorders.add(tests[i].disorderNameEng);
   disorders = Array.from(disorders);
+
   const groupedTests = groupBy(tests, (tests) => tests.disorderNameEng);
 
   let final = [];

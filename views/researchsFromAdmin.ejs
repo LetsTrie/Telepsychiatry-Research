@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Researches | Admin Panel</title>
+  </head>
+
+  <body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Researches</p>
+          </div>
+          <div class="bigText">
+            <p>Researches</p>
+          </div>
+        </div>
+      </header>
+      <div class="twoBigSectionFlex">
+        <div class="eachBigSection">
+          <div class="imageee py-2 pb-4">
+            <img
+              src="/images/scientists-working-concept_23-2148497600.jpg"
+              alt=""
+            />
+          </div>
+          <div class="addNewTestBtn" style="padding: 0px;">
+            <button class="addNewResearch">Add New Research</button>
+          </div>
+        </div>
+        <div class="eachBigSection">
+          <div class="all_resources_wrapper">
+            <div class="resources_title text-center pt-4 pb-2">
+              <h1>Our Researches</h1>
+            </div>
+
+            <div class="all_researchers">
+              <% for(let i = 0 ; i < 6; i++) { %>
+              <div class="each_researchers">
+                <div class="flx-prnt">
+                  <div class="flx-chld">
+                    <div class="each_researchers_img">
+                      <img
+                        src="/images/scientists-working-concept_23-2148497600.jpg"
+                        alt="image"
+                        class="goToDetailsPage"
+                      />
+                    </div>
+                  </div>
+                  <div class="flx-chld">
+                    <div class="each_researchers_heading">
+                      <h4 class="goToDetailsPage">Research Resources</h4>
+                    </div>
+                    <div class="each_researchers_desc">
+                      <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Excepturi doloribus veritatis fugit aut quaerat
+                        facere commodi, eius laborum corrupti quas minus
+                        doloremque nostrum consectetur in! Unde, earum ut fugiat
+                        voluptatibus sint eius porro fugit. Voluptate
+                        perspiciatis, nesciunt consectetur perferendis rerum
+                        voluptas eius commodi cupiditate ipsum quisquam laborum
+                        delectus libero iusto quasi molestias, odio soluta quo
+                        officiis consequatur aliquid. Totam error libero
+                        consequatur unde voluptas quia odio, saepe itaque minus
+                        suscipit adipisci dignissimos, ipsa repudiandae eveniet,
+                        aliquid ducimus! Quos nemo provident natus dolore
+                        ratione, aliquam similique reprehenderit illum error?
+                        Possimus consectetur repellat cupiditate neque
+                        repellendus ipsa recusandae voluptatem pariatur
+                        asperiores in.
+                      </p>
+                    </div>
+                    <div class="each_researchers_btn">
+                      <button class="goToDetailsPage">READ MORE</button>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+
+  <script>
+    $('.goToDetailsPage').on('click', (e) => {
+      location = '/admin/research/1';
+    });
+    $('.addNewResearch').on('click', (e) => {
+      location = '/admin/new/research/';
+    });
+  </script>
+</html>

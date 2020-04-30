@@ -2,3 +2,10 @@
 2) ./config/sendMail.js => ekhaner PORT r app.js er PORT same kina dekhte hobe
 3) ./app.js => PORT ta thik korte hobe "3000"
 4) ./.env => mongo address e "trin" boshate hobe
+
+
+{% comment %} 
+  Photo gular size komate hobe...
+  Research e photo rakhar jayga pai na...
+
+{% endcomment %}

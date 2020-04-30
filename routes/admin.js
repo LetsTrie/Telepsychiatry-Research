@@ -1,34 +1,37 @@
 const router = require('express').Router();
 
 const {
-    getLogin,
-    contactUs,
-    adminGetResearch,
-    getResearch,
-    approveResearch,
-    disapproveResearch,
-    getInnovations,
-    singleInnoavtion,
-    approveInnovation,
-    disapproveInnovation,
-    postAddDoctor,
-    replyEmail,
-    getAllTests,
-    newTest,
-    postLogin,
-    createTest,
-    getSingleTest,
-    updateTest,
-    postUpdateTest,
-    getDashboard,
-    findTestbyDisorder,
-    addTestVersion,
-    postTestVersion,
+  getLogin,
+  contactUs,
+  adminGetResearch,
+  getResearch,
+  approveResearch,
+  disapproveResearch,
+  getInnovations,
+  singleInnoavtion,
+  approveInnovation,
+  disapproveInnovation,
+  postAddDoctor,
+  replyEmail,
+  getAllTests,
+  newTest,
+  postLogin,
+  createTest,
+  getSingleTest,
+  updateTest,
+  postUpdateTest,
+  getDashboard,
+  findTestbyDisorder,
+  addTestVersion,
+  postTestVersion,
+  getAdminResearches,
+  getAdminResearch,
+  getAdminNewResearch,
 } = require('../controllers/admin');
 
 const {
-    adminAccess,
-    canNotBeAuthenticated,
+  adminAccess,
+  canNotBeAuthenticated,
 } = require('../middlewares/authorization');
 
 // OKAY
@@ -37,7 +40,7 @@ router.get('/login', canNotBeAuthenticated, getLogin);
 router.post('/login', canNotBeAuthenticated, postLogin);
 router.get('/tests', adminAccess, getAllTests);
 router.get('/test/new', adminAccess, (req, res, next) =>
-    res.render('admin_test_new', newTest)
+  res.render('admin_test_new', newTest)
 );
 router.post('/test/new', adminAccess, createTest);
 router.get('/test/single/:id', adminAccess, getSingleTest);
@@ -46,8 +49,8 @@ router.post('/test/update', adminAccess, postUpdateTest);
 router.get('/test/version/:id', adminAccess, addTestVersion);
 router.post('/test/version', adminAccess, postTestVersion);
 router.get('/logout', adminAccess, (req, res, next) => {
-    req.logout();
-    res.redirect('/admin/login');
+  req.logout();
+  res.redirect('/admin/login');
 });
 router.post('/findTestbyDisorder', adminAccess, findTestbyDisorder);
 
@@ -57,7 +60,7 @@ router.post('/replyEmail', replyEmail);
 
 //admin Add Doctors
 router.get('/addDoctors', (req, res) => {
-    res.render('addDoctors', { user: req.user });
+  res.render('addDoctors', { user: req.user });
 });
 router.post('/postAddDoctor', postAddDoctor);
 
@@ -72,5 +75,10 @@ router.get('/get_innovation', getInnovations);
 router.get('/single_innovation/:id', singleInnoavtion);
 router.get('/innovation/approve/:id', approveInnovation);
 router.get('/innovation/disapprove/:id', disapproveInnovation);
+
+//admin research
+router.get('/researches', getAdminResearches);
+router.get('/research/:id', getAdminResearch);
+router.get('/new/research', getAdminNewResearch);
 
 module.exports = router;

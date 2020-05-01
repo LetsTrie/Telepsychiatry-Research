@@ -415,34 +415,7 @@
               <div class="meet_doctors_header mb-3">
                 <p>MEET OUR <span>EXPERTS</span></p>
               </div>
-              <div class="cardspace">
-                <div class="owl-carousel owl-theme owl-doctor-list">
-                  <% for(let i = 0 ; i < 6; i++) { %>
-                  <div class="item">
-                    <div class="m-1 mb-5 card">
-                      <img src="/images/doctor.jpg" class="card-img-top" />
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <p class="cardName">Sharmin Afroz</p>
-                          <p class="cardDegree">CARDIAC SURGERY</p>
-                        </h5>
-                        <p class="card-text pb-2">
-                          We provide the corporate health Care for various
-                          organizations Next-generation wellness service for
-                          employer and employee. We treat few but energise all.
-                        </p>
-                        <p class="icons">
-                          <a href="#" class="fa fa-facebook"></a>
-                          <a href="#" class="fa fa-google-plus"></a>
-                          <a href="#" class="fa fa-instagram"></a>
-                          <a href="#" class="fa fa-linkedin"></a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <% } %>
-                </div>
-              </div>
+              <%- include('./partials/homepage_experts')%>
             </div>
           </div>
         </div>
@@ -538,7 +511,7 @@
         loop: true,
         margin: 10,
         autoplay: true,
-        autoplayTimeout: 3000,
+        autoplayTimeout: 3500,
         autoplayHoverPause: true,
         dots: false,
         responsive: {

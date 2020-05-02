@@ -27,6 +27,7 @@ const {
   getAdminResearches,
   getAdminResearch,
   getAdminNewResearch,
+  getBackup,
 } = require('../controllers/admin');
 
 const {
@@ -80,5 +81,7 @@ router.get('/innovation/disapprove/:id', disapproveInnovation);
 router.get('/researches', getAdminResearches);
 router.get('/research/:id', getAdminResearch);
 router.get('/new/research', getAdminNewResearch);
+
+router.get('/backup', getBackup);
 
 module.exports = router;

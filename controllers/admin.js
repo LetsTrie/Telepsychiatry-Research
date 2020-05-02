@@ -9,7 +9,30 @@ const { makeSmallParagraphFromHTML } = require('./utils');
 const { testModel } = require('../models/test');
 const admin = require('../config/credentials').adminCredentials;
 
+const { eUserModel } = require('../models/expertUser');
+
 const LIMIT = 9;
+
+const { createDirectory, createFile } = require('../config/file');
+const { getDate } = require('../config/dateTime');
+
+exports.getBackup = async (req, res, next) => {
+  const getDBName = process.env.mongoURI.split('/')[3].split('?')[0];
+  if (getDBName !== 'trin') {
+    return res.status(403).json({
+      success: false,
+      message: 'ACCESS_DENIED',
+    });
+  }
+  const expertUserData = await eUserModel.find();
+  const FolderName = '/Backup/' + getDate();
+  await createDirectory(FolderName);
+  await createFile(
+    FolderName + '/expertUsers.json',
+    JSON.stringify(expertUserData)
+  );
+  return res.json(expertUserData);
+};
 
 exports.getAdminNewResearch = async (req, res, next) => {
   return res.render('addResearchFromAdmin', { user: req.user });

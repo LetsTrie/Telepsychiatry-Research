@@ -48,9 +48,10 @@
 .cardspace .item .card-text {
   color: #626161;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
   font-size: 15px;
 }
 

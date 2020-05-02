@@ -11,14 +11,7 @@ const admin = {
 const { eUserModel } = require('../models/expertUser');
 
 router.get('/', async (req, res, next) => {
-  const eUser = await eUserModel.find({
-    $or: [
-      { name: 'Ashik Rahman' },
-      { name: 'Sharmin Ara' },
-      { name: 'Marzia Al-Hakeem' },
-    ],
-  });
-  console.log(eUser);
+  const eUser = require('../data/homepage_experts');
   res.render('homepage', { ourExperts: eUser, user: req.user });
 });
 router.get('/getUser', (req, res, next) => {

@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const researchSchema = new mongoose.Schema({
     title: String,
     description: String,
-    contactPerson: String,
+    name: String,
+    designation: String,
+    email: String,
+    phone: String,
     collaboration: String,
     collabScope: String,
     newsAndPub: String,

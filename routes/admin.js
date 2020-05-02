@@ -13,6 +13,8 @@ const {
   disapproveInnovation,
   postAddDoctor,
   replyEmail,
+
+  // tests
   getAllTests,
   newTest,
   postLogin,
@@ -24,9 +26,26 @@ const {
   findTestbyDisorder,
   addTestVersion,
   postTestVersion,
+
+  // researches
   getAdminResearches,
   getAdminResearch,
   getAdminNewResearch,
+  postResearches,
+  researchFile,
+  getAllResearches,
+  getAdminUpdateResearch,
+  postAdminUpdateResearch,
+
+  // innovations
+  postInnovation,
+  innovationFile,
+  getAdminInnovations,
+  getAdminInnovation,
+  getAdminUpdateInnovation,
+  postAdminUpdateInnovation,
+
+  // backup
   getBackup,
 } = require('../controllers/admin');
 
@@ -34,6 +53,50 @@ const {
   adminAccess,
   canNotBeAuthenticated,
 } = require('../middlewares/authorization');
+
+const multer = require('multer');
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/research/');
+  },
+  filename: (req, file, cb) => {
+    const filename = req.body.filename;
+    cb(null, filename);
+  },
+});
+
+const innovationStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    console.log('here');
+    cb(null, 'public/innovation/');
+  },
+  filename: (req, file, cb) => {
+    const filename = req.body.filename;
+    cb(null, filename);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const uploadResearchFile = multer({
+  storage: fileStorage,
+  fileFilter: fileFilter,
+}).single('researchFile');
+
+const uploadInnovationFile = multer({
+  storage: innovationStorage,
+  fileFilter: fileFilter,
+}).single('innovationFile');
 
 // OKAY
 router.get('/', adminAccess, getDashboard);
@@ -77,10 +140,27 @@ router.get('/single_innovation/:id', singleInnoavtion);
 router.get('/innovation/approve/:id', approveInnovation);
 router.get('/innovation/disapprove/:id', disapproveInnovation);
 
-//admin research
+//admin researches
 router.get('/researches', getAdminResearches);
 router.get('/research/:id', getAdminResearch);
 router.get('/new/research', getAdminNewResearch);
+router.post('/research/new', postResearches);
+router.post('/research/new/file', uploadResearchFile, researchFile);
+router.get('/research/update/:id', getAdminUpdateResearch);
+router.post('/research/update', postAdminUpdateResearch);
+
+// admin innovations
+router.get('/innovation/new', (req, res) => {
+  res.render('addInnovationFromAdmin', {
+    user: req.user,
+  });
+});
+router.post('/innovation/new', postInnovation);
+router.post('/innovation/new/file', uploadInnovationFile, innovationFile);
+router.get('/innovations', getAdminInnovations);
+router.get('/innovation/:id', getAdminInnovation);
+router.get('/innovation/update/:id', getAdminUpdateInnovation);
+router.post('/innovation/update', postAdminUpdateInnovation);
 
 router.get('/backup', getBackup);
 

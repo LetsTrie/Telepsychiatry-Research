@@ -13,6 +13,28 @@ const { eUserModel } = require('../models/expertUser');
 
 const LIMIT = 9;
 
+exports.postTestVersion = async (req, res, next) => {
+  const { id } = req.body;
+  const qItem = JSON.parse(req.body.qItem);
+  const newLanguage = JSON.parse(req.body.languages)[0];
+  const test = await testModel.find({ _id: id });
+
+  let QuestionSet = test[0].questionSet;
+  QuestionSet.push(qItem);
+  let languages = test[0].language;
+  languages.push(newLanguage);
+
+  await testModel.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        questionSet: QuestionSet,
+        language: languages,
+      },
+    }
+  );
+};
+
 const { createDirectory, createFile } = require('../config/file');
 const { getDate } = require('../config/dateTime');
 
@@ -636,4 +658,208 @@ module.exports.replyEmail = (req, res) => {
       res.redirect('back');
     }
   );
+};
+
+// Research Module
+
+exports.getAllResearches = async (req, res) => {
+  const { stage } = req.query;
+  const researches = await ResearchModel.find({ researchStage: stage });
+  console.log(researches);
+  if (stage == 'ongoing') {
+    res.render('ongoingResearches', { researches, search: null });
+  } else {
+    res.render('completeResearches', { researches, search: null });
+  }
+};
+
+exports.researchFile = async (req, res) => {
+  console.log('file saved');
+  res.redirect(`/admin/researches`);
+};
+exports.postResearches = async (req, res) => {
+  const { validateResearchData } = require('../validations/researches');
+  const { error } = validateResearchData(req.body);
+  if (error) {
+    console.log(error);
+    res.send({
+      status: false,
+      msg: 'error',
+    });
+  }
+  const newResearch = new ResearchModel({
+    ...req.body,
+    description: makeSmallParagraphFromHTML([req.body], 'description')[0]
+      .description,
+  });
+  console.log(newResearch);
+  await newResearch.save();
+  res.send({
+    status: true,
+    msg: 'okay',
+  });
+};
+
+exports.getAdminNewResearch = async (req, res, next) => {
+  return res.render('addResearchFromAdmin', { user: req.user });
+};
+
+exports.getAdminResearch = async (req, res, next) => {
+  const data = await ResearchModel.findOne({ _id: req.params.id });
+  return res.render('singleResearchFromAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.getAdminResearches = async (req, res, next) => {
+  const data = await ResearchModel.find();
+  return res.render('researchsFromAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.getAdminUpdateResearch = async (req, res, next) => {
+  const data = await ResearchModel.findOne({ _id: req.params.id });
+  return res.render('updateResearchFromAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.postAdminUpdateResearch = async (req, res) => {
+  const {
+    id,
+    title,
+    description,
+    name,
+    designation,
+    email,
+    phone,
+    collaboration,
+    collabScope,
+    financialSupport,
+    newsAndPub,
+    researchStage,
+  } = req.body;
+
+  await ResearchModel.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        title: title,
+        description: description,
+        name: name,
+        designation: designation,
+        email: email,
+        phone: phone,
+        collaboration: collaboration,
+        collabScope: collabScope,
+        financialSupport: financialSupport,
+        newsAndPub: newsAndPub,
+        researchStage: researchStage,
+      },
+    }
+  );
+  res.send({
+    status: true,
+    msg: 'okke',
+  });
+};
+
+// Innovations Module
+
+exports.innovationFile = async (req, res) => {
+  console.log('innovations file saved');
+  res.redirect(`/admin/innovations`);
+};
+
+exports.postInnovation = async (req, res) => {
+  const { validateInnovationData } = require('../validations/innovations');
+  const { error } = validateInnovationData(req.body);
+  if (error) {
+    console.log(error);
+    res.send({
+      status: false,
+      msg: 'error',
+    });
+  }
+  const newInn = new InnovationModel({
+    ...req.body,
+    description: makeSmallParagraphFromHTML([req.body], 'description')[0]
+      .description,
+  });
+  console.log(newInn);
+  await newInn.save();
+  res.send({
+    status: true,
+    msg: 'okay',
+  });
+};
+
+exports.getAdminInnovation = async (req, res, next) => {
+  const data = await InnovationModel.findOne({ _id: req.params.id });
+  return res.render('singleInnovationFromAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.getAdminInnovations = async (req, res, next) => {
+  const data = await InnovationModel.find();
+  return res.render('innovationsFromAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.getAdminUpdateInnovation = async (req, res, next) => {
+  const data = await InnovationModel.findOne({ _id: req.params.id });
+  return res.render('updateInnovationFromAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.postAdminUpdateInnovation = async (req, res) => {
+  const {
+    id,
+    title,
+    description,
+    name,
+    designation,
+    email,
+    phone,
+    collaboration,
+    collabScope,
+    financialSupport,
+    newsAndPub,
+    innovationStage,
+    link,
+  } = req.body;
+
+  await InnovationModel.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        title: title,
+        description: description,
+        name: name,
+        designation: designation,
+        email: email,
+        phone: phone,
+        collaboration: collaboration,
+        collabScope: collabScope,
+        financialSupport: financialSupport,
+        newsAndPub: newsAndPub,
+        innovationStage: innovationStage,
+        link: link,
+      },
+    }
+  );
+  res.send({
+    status: true,
+    msg: 'okke',
+  });
 };

@@ -5,7 +5,7 @@
     <%- include('./partials/vendorsTop')%>
 
         <link rel="stylesheet" href="/css/admin.css" />
-        <title>Research | Admin Panel</title>
+        <title>Innovations | Admin Panel</title>
 </head>
 
 <body>
@@ -16,10 +16,12 @@
             </nav>
             <div class="blueDivider">
                 <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Research</p>
+                    <p><a href="#">Admin Panel</a> / Innovation</p>
                 </div>
                 <div class="bigText">
-                    <p>Researche Name</p>
+                    <p>
+                        <%= data.title %>
+                    </p>
                 </div>
             </div>
         </header>
@@ -103,6 +105,17 @@
 
                             <div class="content_box">
                                 <div class="content_box_header">
+                                    <p>URL</p>
+                                </div>
+                                <div class="content_box_details">
+                                    <p class="additionalFileName">
+                                        <%= data.link %>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="content_box">
+                                <div class="content_box_header">
                                     <p>Additional Files</p>
                                 </div>
                                 <div class="content_box_details">
@@ -119,7 +132,7 @@
     <script>
         $('button').click((e) => {
             const id = e.target.id;
-            location = '/admin/research/update/' + id;
+            location = '/admin/innovation/update/' + id;
         });
     </script>
 

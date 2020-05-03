@@ -5,7 +5,7 @@
     <%- include('./partials/vendorsTop')%>
 
         <link rel="stylesheet" href="/css/admin.css" />
-        <title>Innovations | Admin Panel</title>
+        <title>Unverified Researches | Admin Panel</title>
 </head>
 
 <body>
@@ -16,10 +16,10 @@
             </nav>
             <div class="blueDivider">
                 <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Innovations</p>
+                    <p><a href="#">Admin Panel</a> / Researches</p>
                 </div>
                 <div class="bigText">
-                    <p>Innovations</p>
+                    <p>Researches</p>
                 </div>
             </div>
         </header>
@@ -29,18 +29,19 @@
                     <img src="/images/scientists-working-concept_23-2148497600.jpg" alt="" />
                 </div>
                 <div class="addNewTestBtn" style="padding: 0px;">
-                    <button class="addNewResearch">Add New Innovation</button>
+                    <button class="addNewResearch">Add New Research</button>
                 </div>
-                <div class="addNewTestBtn" style="padding: 0px; margin-top: 20px;">
+                <br />
+                <div class="addNewTestBtn" style="padding: 0px;">
                     <button class="addNewResearch" id="unverified">
-              Unverified Innovations
+              Verified Researches
             </button>
                 </div>
             </div>
             <div class="eachBigSection">
                 <div class="all_resources_wrapper">
                     <div class="resources_title text-center pt-4 pb-2">
-                        <h1>Our Innovations</h1>
+                        <h1>Our Researches</h1>
                     </div>
 
                     <div class="all_researchers">
@@ -49,7 +50,7 @@
                                 <div class="flx-prnt">
                                     <div class="flx-chld">
                                         <div class="each_researchers_img">
-                                            <img src="/innovation/<%= data[i].file %>" id="<%= data[i]._id %>" alt="image" class="goToDetailsPage" />
+                                            <img src="/research/<%= data[i].file %>" id="<%= data[i]._id %>" alt="image" class="goToDetailsPage" />
                                         </div>
                                     </div>
                                     <div class="flx-chld">
@@ -85,13 +86,13 @@
     <script>
         $('.goToDetailsPage').on('click', (e) => {
             const id = e.target.id;
-            location = '/admin/innovation/' + id;
+            location = '/admin/research/' + id;
         });
         $('.addNewResearch').on('click', (e) => {
-            location = '/admin/innovation/new';
+            location = '/admin/new/research/';
         });
         $('#unverified').click((e) => {
-            location = '/admin/innovations/unverified';
+            location = '/admin/researches/';
         });
     </script>
 

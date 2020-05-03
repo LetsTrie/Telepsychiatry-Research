@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/css/newResearches.css" />
 
         <title>
-            Ongoing Researches | Telepsychiatry Research
+            Ongoing Innovations | Telepsychiatry Research
         </title>
 </head>
 
@@ -18,10 +18,10 @@
         <div class="assessment_wrapper">
             <div class="blueDivider">
                 <div class="smallText">
-                    <p><a href="#">Researches</a> / Ongoing</p>
+                    <p><a href="#">Innovations</a> / Complete</p>
                 </div>
                 <div class="bigText">
-                    <p>Ongoing Researches</p>
+                    <p>Ongoing Innovations</p>
                 </div>
             </div>
 
@@ -30,12 +30,12 @@
                     <div class="searchFilter">
                         <p>Search Filter</p>
                     </div>
-                    <form action="/researches" method="GET" id="search-form">
+                    <form action="#" id="search-form">
                         <div class="searchFields">
                             <div class="sField">
                                 <div class="input-group">
                                     <input type="text" required class="form-control py-4" id="search-input" name="searchInput" placeholder="Search Researches (With any keywords)" />
-                                    <input type="hidden" name="type" value="ongoing" />
+                                    <input type="hidden" name="type" value="completed" />
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" id="" type="submit" disabled>
                         <i class="fa fa-search"></i>
@@ -45,18 +45,18 @@
                             </div>
                             <div class="cat">
                                 <div class="cat_heading">
-                                    <p>Research Stage</p>
+                                    <p>Innovation Stage</p>
                                 </div>
                                 <div class="catOptions">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage" value="ongoingResearches" aria-selected="true" />
-                                        <label class="custom-control-label" for="customCheck">Ongoing Researches
+                                        <label class="custom-control-label" for="customCheck">Ongoing Innovations
                       </label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage" value="completedResearches" />
                                         <label class="custom-control-label" for="customCheckw">
-                        Completed Researches
+                        Complete Innovations
                       </label>
                                     </div>
                                 </div>
@@ -70,10 +70,10 @@
 
                 <div class="eachBigSection">
                     <div class="bigHeading">
-                        <p>Ongoing Researches</p>
+                        <p>Ongoing Innovation</p>
                     </div>
                     <div class="submitResource" id="submitResource">
-                        <button>Submit Research</button>
+                        <button>Submit Innovation</button>
                     </div>
 
                     <div class="all_resources">
@@ -89,7 +89,7 @@
                                         <div class="flx-prnt">
                                             <div class="flx-chld">
                                                 <div class="each_resources_img">
-                                                    <img src="/research/<%= data[i].file %>" id="<%= data[i]._id %>" alt="image" class="goToDetailsPage" />
+                                                    <img src="/innovation/<%= data[i].file %>" id="<%= data[i]._id %>" alt="image" class="goToDetailsPage" />
                                                 </div>
                                             </div>
                                             <div class="flx-chld">
@@ -128,19 +128,19 @@
             const id = e.target.id;
             location = '/researches/' + id;
         });
+        $('#submitResource').click((e) => {
+            location = '/admin/innovation/new';
+        });
         $('.search-btn').click((e) => {
             $('#form').submit();
         });
-        $('#submitResource').click((e) => {
-            location = '/admin/new/research';
-        });
         $('#customCheck').click((e) => {
             console.log('wrong?');
-            location = '/researches?stage=ongoing';
+            location = '/innovations?stage=ongoing';
         });
         $('#customCheckw').click((e) => {
             console.log('wrong?');
-            location = '/researches?stage=completed';
+            location = '/innovations?stage=completed';
         });
     </script>
 

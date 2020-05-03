@@ -11,41 +11,51 @@ exports.getInnovation = async(req, res) => {
 };
 
 exports.getInnovations = async(req, res) => {
-    const page = +req.query.page || 1;
-    const search = req.query.search;
-    let searchKey;
-    // = { isVerified: true };
-    let baseUrl = req.baseUrl;
-    if (search) {
-        baseUrl += `?search=${search}&page=`;
-        const searchOption = {
-            $regex: search,
+    let { stage, searchInput, type } = req.query;
+    let data;
+    // console.log(searchInput);
+    if (searchInput) {
+        const keyword = {
+            innovationStage: type,
+            isVerified: true,
+        };
+        searchInput = searchInput.trim();
+        let searchOptions = {
+            $regex: searchInput,
             $options: 'i',
         };
-        searchKey = {
+        let searchKey = {
             $or: [
-                { title: searchOption },
-                { BriefDesciption: searchOption },
-                { conflictOfInterest: searchOption },
-                { financialSupport: searchOption },
-                { Acknowlegement: searchOption },
-                { references: searchOption },
-                { authors: searchOption },
+                { title: searchOptions },
+                { description: searchOptions },
+                { name: searchOptions },
+                { designation: searchOptions },
+                { email: searchOptions },
+                { phone: searchOptions },
+                { collaboration: searchOptions },
+                { collabScope: searchOptions },
+                { newsAndPub: searchOptions },
             ],
         };
-    } else baseUrl += `?page=`;
-
-    const data = await InnovationModel.find(searchKey)
-        .limit(LIMIT)
-        .skip(LIMIT * (page - 1));
-    const totalItems = await InnovationModel.find(searchKey).countDocuments();
-
-    return res.render('innovations', {
-        user: req.user,
-        data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
-        search,
-        ...pagination(page, LIMIT, totalItems, baseUrl),
+        data = await InnovationModel.find({
+            $and: [keyword, searchKey],
+        });
+        console.log(type);
+        if (type == 'ongoing') {
+            res.render('ongoingInnovations', { data, search: null });
+        } else {
+            res.render('completeInnovations', { data, search: null });
+        }
+    }
+    data = await InnovationModel.find({
+        innovationStage: stage,
+        isVerified: true,
     });
+    if (stage == 'ongoing') {
+        res.render('ongoingInnovations', { data, search: null });
+    } else {
+        res.render('completeInnovations', { data, search: null });
+    }
 };
 
 exports.getNewInnovations = (req, res) =>

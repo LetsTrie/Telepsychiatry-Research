@@ -31,6 +31,12 @@
                 <div class="addNewTestBtn" style="padding: 0px;">
                     <button class="addNewResearch">Add New Research</button>
                 </div>
+                <br />
+                <div class="addNewTestBtn" style="padding: 0px;">
+                    <button class="addNewResearch" id="verified">
+              Unverified Researches
+            </button>
+                </div>
             </div>
             <div class="eachBigSection">
                 <div class="all_resources_wrapper">
@@ -84,6 +90,9 @@
         });
         $('.addNewResearch').on('click', (e) => {
             location = '/admin/new/research/';
+        });
+        $('#verified').click((e) => {
+            location = '/admin/researches/unverified';
         });
     </script>
 

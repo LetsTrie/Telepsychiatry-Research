@@ -5,7 +5,7 @@
     <%- include('./partials/vendorsTop')%>
 
         <link rel="stylesheet" href="/css/admin.css" />
-        <title>Innovations | Admin Panel</title>
+        <title>Unverified Innovations | Admin Panel</title>
 </head>
 
 <body>
@@ -31,9 +31,10 @@
                 <div class="addNewTestBtn" style="padding: 0px;">
                     <button class="addNewResearch">Add New Innovation</button>
                 </div>
+                hr
                 <div class="addNewTestBtn" style="padding: 0px; margin-top: 20px;">
-                    <button class="addNewResearch" id="unverified">
-              Unverified Innovations
+                    <button class="addNewResearch" id="verified">
+              Verified Innovations
             </button>
                 </div>
             </div>
@@ -90,8 +91,8 @@
         $('.addNewResearch').on('click', (e) => {
             location = '/admin/innovation/new';
         });
-        $('#unverified').click((e) => {
-            location = '/admin/innovations/unverified';
+        $('#verified').click((e) => {
+            location = '/admin/innovations';
         });
     </script>
 

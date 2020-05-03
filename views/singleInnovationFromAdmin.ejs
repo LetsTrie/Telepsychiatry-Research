@@ -25,6 +25,7 @@
                 </div>
             </div>
         </header>
+        <input type="hidden" value="<%= data._id %>" id="id" />
         <div class="twoBigSectionFlex">
             <div class="oneBigFatCat_wrapper">
                 <div class="oneBigFatCat">
@@ -32,6 +33,14 @@
                         <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
                 Update
               </button>
+                        <% if (!data.isVerified) { %>
+                            <button id="approve-btn" class="btn btn-success btn-lg px-4">
+                Approve
+              </button>
+                            <button id="disapprove-btn" class="btn btn-success btn-lg px-4">
+                Disapprove
+              </button>
+                            <% } %>
                     </div>
                     <div class="contentTitle">
                         <p>
@@ -133,6 +142,14 @@
         $('button').click((e) => {
             const id = e.target.id;
             location = '/admin/innovation/update/' + id;
+        });
+        $('#approve-btn').click((e) => {
+            const id = $('#id').val();
+            location = '/admin/innovation/approve/' + id;
+        });
+        $('#disapprove-btn').click((e) => {
+            const id = $('#id').val();
+            location = '/admin/innovation/disapprove/' + id;
         });
     </script>
 

@@ -3,105 +3,133 @@
 
 <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/singleResearcher.css" />
-        <title>
-            <%= data.title %> | Telepsychiatry Research
-        </title>
+
+        <link rel="stylesheet" href="/css/admin.css" />
+        <title>Innovation</title>
 </head>
 
 <body>
-    <div>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
         <header>
             <nav>
-                <%- include('./partials/navbar')%>
+                <%- include('./partials/navbar.ejs')%>
             </nav>
-            <div class="my-3 divider"></div>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p>Innovation</p>
+                </div>
+                <div class="bigText">
+                    <p>
+                        <%= data.title %>
+                    </p>
+                </div>
+            </div>
         </header>
-        <!-- NEXT -->
-        <section class="containerr">
-            <div class="contentTitle">
-                <p>
-                    <%= data.title %>
-                </p>
-            </div>
-            <div class="contentDescription">
-                <p>
-                    <%- data.description %>
-                </p>
-            </div>
+        <div class="twoBigSectionFlex">
+            <div class="oneBigFatCat_wrapper">
+                <div class="oneBigFatCat">
+                    <!-- <div class="updateBtn text-right">
+                        <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
+                Update
+              </button>
+                    </div> -->
+                    <div class="contentTitle">
+                        <p>
+                            <%= data.title %>
+                        </p>
+                    </div>
+                    <div class="contentDescription">
+                        <p>
+                            <%- data.description %>
+                        </p>
+                    </div>
+                    <% if (data.collaboration) { %>
+                        <div class="content_box">
+                            <div class="content_box_header">
+                                <p>Collaboration</p>
+                            </div>
+                            <div class="content_box_details">
+                                <p>
+                                    <%= data.collaboration %>
+                                </p>
+                            </div>
+                        </div>
+                        <% } %>
+                            <div class="content_box">
+                                <div class="content_box_header">
+                                    <p>Financial support and grant</p>
+                                </div>
+                                <div class="content_box_details">
+                                    <p>
+                                        <%= data.financialSupport %>
+                                    </p>
+                                </div>
+                            </div>
 
-            <div class="content_box">
-                <div class="content_box_header">
-                    <p>Financial support</p>
-                </div>
-                <div class="content_box_details">
-                    <p>
-                        <%= data.financialSupport %>
-                    </p>
-                </div>
-            </div>
-            <div class="content_box">
-                <div class="content_box_header">
-                    <p>Collaboration</p>
-                </div>
-                <div class="content_box_details">
-                    <p>
-                        <%= data.collaboration %>
-                    </p>
-                </div>
-            </div>
-            <div class="content_box">
-                <div class="content_box_header">
-                    <p>Scope of Collaboration</p>
-                </div>
-                <div class="content_box_details">
-                    <p>
-                        <%= data.collabScope %>
-                    </p>
-                </div>
-            </div>
+                            <div class="content_box">
+                                <div class="content_box_header">
+                                    <p>Scope of Collaboration</p>
+                                </div>
+                                <div class="content_box_details">
+                                    <p>
+                                        <%= data.collabScope %>
+                                    </p>
+                                </div>
+                            </div>
 
-            <!-- <div class="content_box">
-          <div class="content_box_header">
-            <p>References</p>
-          </div>
-          <div class="content_box_details">
-            <p>
-              <%- data.references %>
-            </p>
-          </div>
-        </div> -->
+                            <div class="content_box">
+                                <div class="content_box_header">
+                                    <p>News and Publication</p>
+                                </div>
+                                <div class="content_box_details">
+                                    <p>
+                                        <%= data.newsAndPub %>
+                                    </p>
+                                </div>
+                            </div>
 
-            <!-- <div class="content_box">
-          <div class="content_box_header">
-            <p>Authors</p>
-          </div>
-          <div class="content_box_details">
-            <%- data.authors %>
-          </div>
-        </div> -->
+                            <div class="content_box">
+                                <div class="content_box_header">
+                                    <p>Key Contact Persons</p>
+                                </div>
+                                <div class="content_box_details">
+                                    <p>
+                                        <%= data.name %>,
+                                            <%= data.designation %>, Email:
+                                                <%=
+                  data.email %>, Phone:
+                                                    <%= data.phone %>
+                                    </p>
+                                </div>
+                            </div>
 
-            <div class="content_box">
-                <div class="content_box_header">
-                    <p>News and Publication</p>
-                </div>
-                <div class="content_box_details">
-                    <%= data.newsAndPub %>
+                            <div class="content_box">
+                                <div class="content_box_header">
+                                    <p>Additional Files</p>
+                                </div>
+                                <div class="content_box_details">
+                                    <p class="additionalFileName">
+                                        <% const filename = data.file.split('-')[1]%>
+                                            <%= filename %>
+                                                <input type="hidden" value="<%= data.file %>" id="file-link" />
+                                    </p>
+                                </div>
+                            </div>
                 </div>
             </div>
-
-            <div class="content_box">
-                <div class="content_box_header">
-                    <p>Research Stage</p>
-                </div>
-                <div class="content_box_details">
-                    <%= data.researchStage %>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
     <%- include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
+    <script>
+        $('button').click((e) => {
+            const id = e.target.id;
+            location = '/admin/research/update/' + id;
+        });
+        $('.additionalFileName').click((e) => {
+            location = '/innovation/download/' + $('#file-link').val();
+        });
+    </script>
 
 </html>

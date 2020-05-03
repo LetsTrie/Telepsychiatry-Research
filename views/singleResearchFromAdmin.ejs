@@ -115,7 +115,11 @@
                                     <p>Additional Files</p>
                                 </div>
                                 <div class="content_box_details">
-                                    <p class="additionalFileName">File Name</p>
+                                    <p class="additionalFileName">
+                                        <% const filename = data.file.split('-')[1]%>
+                                            <%= filename %>
+                                                <input type="hidden" value="<%= data.file %>" id="file-link" />
+                                    </p>
                                 </div>
                             </div>
                 </div>
@@ -135,6 +139,9 @@
         });
         $('#disapprove-btn').click((e) => {
             location = '/admin/research/disapprove/' + $('#id').val();
+        });
+        $('.additionalFileName').click((e) => {
+            location = '/researches/download/' + $('#file-link').val();
         });
     </script>
 

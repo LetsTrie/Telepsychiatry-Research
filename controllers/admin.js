@@ -616,9 +616,12 @@ exports.getAllResearches = async(req, res) => {
 
 exports.researchFile = async(req, res) => {
     console.log('file saved');
-    res.redirect(`/admin/researches`);
+    res.redirect(`/admin/research/${req.body.id}`);
 };
 exports.postResearches = async(req, res) => {
+    if (!req.user) {
+        res.send('User not found');
+    }
     const { validateResearchData } = require('../validations/researches');
     const { error } = validateResearchData(req.body);
     if (error) {
@@ -632,13 +635,14 @@ exports.postResearches = async(req, res) => {
         ...req.body,
         description: makeSmallParagraphFromHTML([req.body], 'description')[0]
             .description,
+        authorID: req.user._id,
         isVerified: true,
     });
     console.log(newResearch);
     await newResearch.save();
     res.send({
         status: true,
-        msg: 'okay',
+        msg: newResearch._id,
     });
 };
 
@@ -737,10 +741,13 @@ exports.disapproveResearch = async(req, res) => {
 
 exports.innovationFile = async(req, res) => {
     console.log('innovations file saved');
-    res.redirect(`/admin/innovations`);
+    res.redirect(`/admin/innovation/${req.body.id}`);
 };
 
 exports.postInnovation = async(req, res) => {
+    if (!req.user) {
+        res.send('User not found');
+    }
     const { validateInnovationData } = require('../validations/innovations');
     const { error } = validateInnovationData(req.body);
     if (error) {
@@ -754,13 +761,14 @@ exports.postInnovation = async(req, res) => {
         ...req.body,
         description: makeSmallParagraphFromHTML([req.body], 'description')[0]
             .description,
+        authorID: req.user._id,
         isVerified: true,
     });
     console.log(newInn);
     await newInn.save();
     res.send({
         status: true,
-        msg: 'okay',
+        msg: newInn._id,
     });
 };
 

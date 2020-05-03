@@ -5,18 +5,18 @@
     <%- include('./partials/vendorsTop')%>
 
         <link rel="stylesheet" href="/css/admin.css" />
-        <title>Add New Research | Admin Panel</title>
+        <title>Add New Research</title>
 </head>
 
 <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
         <header>
             <nav>
-                <%- include('./partials/adminNavbar')%>
+                <%- include('./partials/navbar')%>
             </nav>
             <div class="blueDivider">
                 <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Research</p>
+                    <p>Research</p>
                 </div>
                 <div class="bigText">
                     <p>Add New Research</p>
@@ -32,7 +32,7 @@
                     <div class="addResource_form">
                         <div class="alert alert-danger" id="alert"></div>
                         <div class="alert alert-success" id="alert-success" style="display: none;"></div>
-                        <form action="/admin/research/new/file" id="form" enctype="multipart/form-data" method="POST">
+                        <form action="/researches/file" id="form" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="filename" id="filename" />
                             <input type="hidden" name="id" id="id" />
                             <div class="one_box">
@@ -239,7 +239,7 @@
         const Submit = (data) => {
             $.ajax({
                 type: 'POST',
-                url: '/admin/research/new',
+                url: '/researches/',
                 data,
                 success: (data) => {
                     console.log(data);

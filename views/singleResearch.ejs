@@ -5,21 +5,23 @@
     <%- include('./partials/vendorsTop')%>
 
         <link rel="stylesheet" href="/css/admin.css" />
-        <title>Research | Admin Panel</title>
+        <title>Research</title>
 </head>
 
 <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
         <header>
             <nav>
-                <%- include('./partials/adminNavbar')%>
+                <%- include('./partials/navbar.ejs')%>
             </nav>
             <div class="blueDivider">
                 <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Research</p>
+                    <p>Research</p>
                 </div>
                 <div class="bigText">
-                    <p>Researche Name</p>
+                    <p>
+                        <%= data.title %>
+                    </p>
                 </div>
             </div>
         </header>
@@ -106,7 +108,11 @@
                                     <p>Additional Files</p>
                                 </div>
                                 <div class="content_box_details">
-                                    <p class="additionalFileName">File Name</p>
+                                    <p class="additionalFileName">
+                                        <% const filename = data.file.split('-')[1]%>
+                                            <%= filename %>
+                                                <input type="hidden" value="<%= data.file %>" id="file-link" />
+                                    </p>
                                 </div>
                             </div>
                 </div>
@@ -120,6 +126,9 @@
         $('button').click((e) => {
             const id = e.target.id;
             location = '/admin/research/update/' + id;
+        });
+        $('.additionalFileName').click((e) => {
+            location = '/researches/download/' + $('#file-link').val();
         });
     </script>
 

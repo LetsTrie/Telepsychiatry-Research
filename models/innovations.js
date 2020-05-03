@@ -14,6 +14,7 @@ const innovationsSchema = new mongoose.Schema({
     financialSupport: String,
     file: String,
     link: String,
+    authorID: String,
     isVerified: {
         type: Boolean,
         default: false,

@@ -13,7 +13,7 @@ exports.validateInnovationData = (data) => {
         financialSupport: joi.string().required(),
         newsAndPub: joi.string().required(),
         innovationStage: joi.string().required(),
-        link: joi.string().required(),
+        link: joi.string().allow(null, ''),
         file: joi.string().required(),
     });
     return compareWith.validate(data);

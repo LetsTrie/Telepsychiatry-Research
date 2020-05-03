@@ -112,25 +112,31 @@
                                 </div>
                             </div>
 
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>URL</p>
+                            <% if (data.link) { %>
+                                <div class="content_box">
+                                    <div class="content_box_header">
+                                        <p>URL</p>
+                                    </div>
+                                    <div class="content_box_details">
+                                        <a style="font-size: 20px; color: rgb(12, 150, 214);" href="<%= data.link %>">
+                                            <%= data.link %>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="content_box_details">
-                                    <p class="additionalFileName">
-                                        <%= data.link %>
-                                    </p>
-                                </div>
-                            </div>
+                                <% } %>
 
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>Additional Files</p>
-                                </div>
-                                <div class="content_box_details">
-                                    <p class="additionalFileName">File Name</p>
-                                </div>
-                            </div>
+                                    <div class="content_box">
+                                        <div class="content_box_header">
+                                            <p>Additional Files</p>
+                                        </div>
+                                        <div class="content_box_details">
+                                            <% const file = data.file.split('-')[1] %>
+                                                <input type="hidden" value="<%= data.file %>" id="file-link" />
+                                                <p class="additionalFileName">
+                                                    <%= file %>
+                                                </p>
+                                        </div>
+                                    </div>
                 </div>
             </div>
         </div>
@@ -150,6 +156,9 @@
         $('#disapprove-btn').click((e) => {
             const id = $('#id').val();
             location = '/admin/innovation/disapprove/' + id;
+        });
+        $('.additionalFileName').click((e) => {
+            location = '/innovations/download/' + $('#file-link').val();
         });
     </script>
 

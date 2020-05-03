@@ -36,14 +36,18 @@ const {
     getNewResearches,
     getResearch,
     researchFile,
+    downloadFile,
 } = require('../controllers/researches');
 
 const { adminAccess } = require('../middlewares/authorization');
 
 router.get('/', getAllResearches);
-router.post('/', adminAccess, postResearches);
+router.post('/', postResearches);
 router.post('/file', uploadPhoto, researchFile);
-router.get('/new', adminAccess, getNewResearches);
+router.get('/new', (req, res) => {
+    res.render('addResearchOthers');
+});
 router.get('/:id', getResearch);
+router.get('/download/:id', downloadFile);
 
 module.exports = router;

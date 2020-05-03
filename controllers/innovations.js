@@ -61,8 +61,45 @@ exports.getInnovations = async(req, res) => {
 exports.getNewInnovations = (req, res) =>
     res.render('createInnovations', { user: req.user });
 
+exports.innovationFile = async(req, res) => {
+    console.log('innovations file saved');
+    res.redirect(`/innovations?stage=ongoing`);
+};
 exports.postInnovations = async(req, res) => {
-    const newInnovations = new InnovationModel({...req.body });
-    await newInnovations.save();
-    return res.redirect('/innovations');
+    if (!req.user) {
+        res.send('User not found');
+    }
+    const { validateInnovationData } = require('../validations/innovations');
+    const { error } = validateInnovationData(req.body);
+    if (error) {
+        console.log(error);
+        res.send({
+            status: false,
+            msg: 'error',
+        });
+    }
+    const newInn = new InnovationModel({
+        ...req.body,
+        description: makeSmallParagraphFromHTML([req.body], 'description')[0]
+            .description,
+        authorID: req.user._id,
+        isVerified: false,
+    });
+    console.log(newInn);
+    await newInn.save();
+    res.send({
+        status: true,
+        msg: newInn._id,
+    });
+};
+
+const path = require('path');
+exports.downloadFile = async(req, res) => {
+    const filePath = path.join(
+        process.cwd(),
+        '/public',
+        '/innovation',
+        req.params.id
+    );
+    res.download(filePath);
 };

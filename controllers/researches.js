@@ -96,6 +96,9 @@ exports.researchFile = async(req, res) => {
     res.redirect(`/researches?stage=${req.body.researchStage}`);
 };
 exports.postResearches = async(req, res) => {
+    if (!req.user) {
+        res.send('User not found');
+    }
     const { validateResearchData } = require('../validations/researches');
     const { error } = validateResearchData(req.body);
     if (error) {
@@ -109,6 +112,8 @@ exports.postResearches = async(req, res) => {
         ...req.body,
         description: makeSmallParagraphFromHTML([req.body], 'description')[0]
             .description,
+        authorID: req.user._id,
+        isVerified: false,
     });
     console.log(newResearch);
     await newResearch.save();
@@ -120,3 +125,14 @@ exports.postResearches = async(req, res) => {
 
 exports.getNewResearches = (req, res) =>
     res.render('createResearches', { user: req.user });
+
+const path = require('path');
+exports.downloadFile = async(req, res) => {
+    const filePath = path.join(
+        process.cwd(),
+        '/public',
+        '/research',
+        req.params.id
+    );
+    res.download(filePath);
+};

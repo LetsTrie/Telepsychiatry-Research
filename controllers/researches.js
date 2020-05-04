@@ -196,13 +196,6 @@ exports.postUpdate = async (req, res) => {
     researchStage,
   } = req.body;
 
-  if (id !== req.user._id) {
-    return res.send({
-      status: false,
-      msg: 'ACCESS DENIED',
-    });
-  }
-
   await ResearchModel.findOneAndUpdate(
     { _id: id },
     {

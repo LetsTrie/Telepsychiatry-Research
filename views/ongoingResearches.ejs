@@ -17,7 +17,7 @@
       <div class="assessment_wrapper">
         <div class="blueDivider">
           <div class="smallText">
-            <p><a href="#">Researches</a> / Ongoing</p>
+            <p><a href="#">Home</a> / Researches</p>
           </div>
           <div class="bigText">
             <p>Ongoing Researches</p>
@@ -97,9 +97,11 @@
             <div class="bigHeading">
               <p>Ongoing Researches</p>
             </div>
+            <% if(showSubmitBtn) { %>
             <div class="submitResource mb-3" id="submitResource">
               <button>Submit Research</button>
             </div>
+            <% } %>
 
             <div class="all_resources">
               <% if (successMessage != '') { %>

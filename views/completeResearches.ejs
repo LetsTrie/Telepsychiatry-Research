@@ -17,10 +17,10 @@
       <div class="assessment_wrapper">
         <div class="blueDivider">
           <div class="smallText">
-            <p><a href="#">Researches</a> / Complete</p>
+            <p><a href="#">Home</a> / Researches</p>
           </div>
           <div class="bigText">
-            <p>Complete Researches</p>
+            <p>Completed Researches</p>
           </div>
         </div>
 
@@ -95,11 +95,13 @@
 
           <div class="eachBigSection">
             <div class="bigHeading">
-              <p>Complete Researches</p>
+              <p>Completed Researches</p>
             </div>
+            <% if(showSubmitBtn) { %>
             <div class="submitResource mb-3" id="submitResource">
               <button>Submit Research</button>
             </div>
+            <% } %>
 
             <div class="all_resources">
               <% if (successMessage != '') { %>

@@ -97,9 +97,11 @@
             <div class="bigHeading">
               <p>Ongoing Innovation</p>
             </div>
+            <% if(showSubmitBtn) { %>
             <div class="submitResource mb-3" id="submitResource">
               <button>Submit Innovation</button>
             </div>
+            <% } %>
             <div class="all_resources">
               <% if (successMessage != '') { %>
               <div class="alert alert-success text-center">

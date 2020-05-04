@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const { eUserModel } = require('../models/expertUser');
 
 const { adminCredentials: admin } = require('./credentials');
-console.log(admin);
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(

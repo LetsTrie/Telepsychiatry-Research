@@ -128,6 +128,10 @@ exports.getAllResearches = async (req, res) => {
 
 exports.researchFile = async (req, res) => {
   console.log('file saved');
+  req.flash(
+    'successMessage',
+    'Your post has been submitted successfully. Please wait for the admin approval.'
+  );
   res.redirect(`/researches?stage=${req.body.researchStage}`);
 };
 exports.postResearches = async (req, res) => {
@@ -214,7 +218,8 @@ exports.postUpdate = async (req, res) => {
       },
     }
   );
-  res.send({
+
+  return res.send({
     status: true,
     msg: 'okke',
   });

@@ -37,6 +37,8 @@ const {
     getResearch,
     researchFile,
     downloadFile,
+    getUpdate,
+    postUpdate,
 } = require('../controllers/researches');
 
 const { adminAccess } = require('../middlewares/authorization');
@@ -50,4 +52,6 @@ router.get('/new', (req, res) => {
 router.get('/:id', getResearch);
 router.get('/download/:id', downloadFile);
 
+router.get('/update/:id', getUpdate);
+router.post('/update', postUpdate);
 module.exports = router;

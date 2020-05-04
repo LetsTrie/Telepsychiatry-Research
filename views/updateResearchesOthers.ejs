@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+
+        <link rel="stylesheet" href="/css/admin.css" />
+        <title>Update Research</title>
+</head>
+
+<body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+        <header>
+            <nav>
+                <%- include('./partials/navbar')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p>Research</p>
+                </div>
+                <div class="bigText">
+                    <p>Update Research</p>
+                </div>
+            </div>
+        </header>
+        <div class="twoBigSectionFlex">
+            <div class="oneBigFatCat_wrapper">
+                <div class="oneBigFatCat">
+                    <div class="addResource text-center my-2">
+                        <h1>Update Research</h1>
+                    </div>
+                    <div class="addResource_form">
+                        <div class="alert alert-danger" id="alert"></div>
+                        <div class="alert alert-success" id="alert-success" style="display: none;"></div>
+                        <form action="/admin/research/new/file" id="form" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" value="<%= data._id %>" name="id" id="id" />
+                            <input type="hidden" value="<%= data.researchStage %>" id="stage" />
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Title:</p>
+                                </div>
+                                <div class="input_box">
+                                    <input value="<%= data.title %>" type="text" name="title" id="title" placeholder="Title" />
+                                </div>
+                            </div>
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Breif Description:</p>
+                                </div>
+                                <div class="input_box">
+                                    <textarea name="BriefDesciption" id="BDeditor">
+<%= data.description %></textarea
+                    >
+                  </div>
+                </div>
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Key Contact Persons:</p>
+                  </div>
+                  <div class="keyContactPersonWrapper">
+                    <div class="keyContactPerson">
+                      <div class="input_box_flx_prnt">
+                        <div class="input_box_flx_chld">
+                          <input
+                            value="<%= data.name %>"
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="name"
+                          />
+                        </div>
+                        <div class="input_box_flx_chld">
+                          <input
+                            value="<%= data.designation %>"
+                            type="text"
+                            name="designation"
+                            id="designation"
+                            placeholder="Designation"
+                          />
+                        </div>
+                        <div class="input_box_flx_chld">
+                          <input
+                            value="<%= data.email %>"
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Email"
+                          />
+                        </div>
+                        <div class="input_box_flx_chld">
+                          <input
+                            value="<%= data.phone %>"
+                            type="text"
+                            name="phoneNumber"
+                            id="phone"
+                            placeholder="Phone Number"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Collaboration: (If any)</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea
+                      name="collaboration"
+                      id="collaboration"
+                      cols="30"
+                      rows="3"
+                    >
+<%= data.collaboration %></textarea
+                    >
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Scope for collaboration:</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea
+                      name="collabScope"
+                      id="collabScope"
+                      cols="30"
+                      rows="3"
+                    >
+<%= data.collabScope %></textarea
+                    >
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Financial Support and Grant:</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea
+                      name="financialSupport"
+                      id="financialSupport"
+                      cols="30"
+                      rows="3"
+                    >
+<%= data.financialSupport %></textarea
+                    >
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>News and Publications:</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea
+                      name="newsAndPub"
+                      id="newsAndPub"
+                      cols="30"
+                      rows="3"
+                    >
+<%= data.newsAndPub %></textarea
+                    >
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Research Stage</p>
+                  </div>
+                  <div class="input_box slct_picker">
+                    <div class="form-selectpicker">
+                      <select
+                        id="researchStageID"
+                        class="selectpicker researchStage-selector"
+                        data-width="100%"
+                        title="Select research stage"
+                        data-size="6"
+                        name="researchStage"
+                      >
+                        <option value="ongoing">On going</option>
+                        <option value="completed">Completed</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="one_box">
+                                <div class="box_header">
+                                    <p>Representational Photo</p>
+                                </div>
+                                <div class="input_box">
+                                    <input type="file" name="researchFile" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
+                                </div>
+                            </div> -->
+
+                <div class="createResources__submit">
+                  <button id="submit-btn">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+
+  <script>
+    let bdeditor;
+
+    ClassicEditor.create(document.querySelector('#BDeditor'))
+      .then((editor) => {
+        bdeditor = editor;
+        console.log(editor);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    $('#researchStageID').selectpicker('val', $('#stage').val());
+
+    $('#submit-btn').click((e) => {
+      e.preventDefault();
+      const title = $('#title').val();
+      const description = bdeditor.getData();
+      const name = $('#name').val();
+      const designation = $('#designation').val();
+      const email = $('#email').val();
+      const phone = $('#phone').val();
+      const collaboration = $('#collaboration').val();
+      const collabScope = $('#collabScope').val();
+      const financialSupport = $('#financialSupport').val();
+      const newsAndPub = $('#newsAndPub').val();
+      const researchStage = $('#researchStageID').val();
+
+      if (check(title)) {
+        showAlert('Enter the title');
+      } else if (check(description)) {
+        showAlert('Enter a brief description');
+      } else if (check(name)) {
+        showAlert('Enter the name of the key contact person');
+      } else if (check(designation)) {
+        showAlert('Enter the designation of the key contact person');
+      } else if (check(email)) {
+        showAlert('Enter the email of the key contact person');
+      } else if (check(phone)) {
+        showAlert('Enter the phone of the key contact person');
+      } else if (check(collabScope)) {
+        showAlert('Enter the scope of collaboration');
+      } else if (check(financialSupport)) {
+        showAlert('Enter the financial support');
+      } else if (check(newsAndPub)) {
+        showAlert('Enter the news and publication');
+      } else if (check(researchStage)) {
+        showAlert('Enter the stage of the research');
+      } else {
+        const id = $('#id').val();
+        const data = {
+          id,
+          title,
+          description,
+          name,
+          designation,
+          email,
+          phone,
+          collaboration,
+          collabScope,
+          financialSupport,
+          newsAndPub,
+          researchStage,
+        };
+        console.log(data);
+        Submit(data, id);
+      }
+    });
+
+    const check = (str) => {
+      const res = str == '' || str == null || str == undefined;
+      return res;
+    };
+    const showAlert = (msg) => {
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate(
+        {
+          scrollTop: 0,
+        },
+        'slow'
+      );
+    };
+    const Submit = (data, id) => {
+      $.ajax({
+        type: 'POST',
+        url: '/researches/update',
+        data,
+        success: (data) => {
+          console.log(data);
+          if (data.status) {
+            location = '/researches/' + id;
+          }
+        },
+      });
+    };
+  </script>
+</html>

@@ -7,6 +7,8 @@ const {
     postInnovations,
     innovationFile,
     downloadFile,
+    getUpdate,
+    postUpdate,
 } = require('../controllers/innovations');
 
 const innovationStorage = multer.diskStorage({
@@ -46,5 +48,8 @@ router.post('/new/file', uploadInnovationFile, innovationFile);
 
 router.get('/:id', getInnovation);
 router.get('/download/:id', downloadFile);
+
+router.get('/update/:id', getUpdate);
+router.post('/update', postUpdate);
 
 module.exports = router;

@@ -4,13 +4,8 @@ const bcrypt = require('bcryptjs');
 
 const { eUserModel } = require('../models/expertUser');
 
-const admin = {
-  id: 'admin123',
-  name: 'admin',
-  email: 'manager@trin-innovation.com',
-  password: 'trin123admin@',
-};
-
+const { adminCredentials: admin } = require('./credentials');
+console.log(admin);
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(
@@ -53,11 +48,11 @@ module.exports = function (passport) {
   );
 
   passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    done(null, user._id);
   });
 
   passport.deserializeUser((id, done) => {
-    if (id == admin.id) {
+    if (id == admin._id) {
       done(null, admin);
     } else {
       eUserModel.findById(id, (err, euser) => {

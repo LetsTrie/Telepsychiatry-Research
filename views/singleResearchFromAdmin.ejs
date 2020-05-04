@@ -1,148 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
 
-        <link rel="stylesheet" href="/css/admin.css" />
-        <title>Research | Admin Panel</title>
-</head>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title><%= data.title %> | Admin Panel</title>
+  </head>
 
-<body>
+  <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Research</p>
-                </div>
-                <div class="bigText">
-                    <p>Researche Name</p>
-                </div>
-            </div>
-        </header>
-        <input type="hidden" value="<%= data._id %>" id="id" />
-        <div class="twoBigSectionFlex">
-            <div class="oneBigFatCat_wrapper">
-                <div class="oneBigFatCat">
-                    <div class="updateBtn text-right">
-                        <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Research</p>
+          </div>
+          <div class="bigText">
+            <p><%= data.title %></p>
+          </div>
+        </div>
+      </header>
+      <input type="hidden" value="<%= data._id %>" id="id" />
+      <div class="twoBigSectionFlex">
+        <div class="oneBigFatCat_wrapper">
+          <div class="oneBigFatCat">
+            <% if(user && user._id.toString().trim() ===
+            data.authorID.toString().trim()) { %>
+            <div class="updateBtn text-right">
+              <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
                 Update
               </button>
-                        <% if (!data.isVerified) { %>
-                            <button id="approve-btn" class="btn btn-success btn-lg px-4">
+            </div>
+            <% } %>
+            <div class="contentTitle">
+              <p>
+                <%= data.title %>
+              </p>
+            </div>
+            <div class="contentDescription">
+              <p>
+                <%- data.description %>
+              </p>
+            </div>
+            <% if (data.collaboration) { %>
+            <div class="content_box">
+              <div class="content_box_header">
+                <p>Collaboration</p>
+              </div>
+              <div class="content_box_details">
+                <p>
+                  <%= data.collaboration %>
+                </p>
+              </div>
+            </div>
+            <% } %>
+            <div class="content_box">
+              <div class="content_box_header">
+                <p>Financial support and grant</p>
+              </div>
+              <div class="content_box_details">
+                <p>
+                  <%= data.financialSupport %>
+                </p>
+              </div>
+            </div>
+
+            <div class="content_box">
+              <div class="content_box_header">
+                <p>Scope of Collaboration</p>
+              </div>
+              <div class="content_box_details">
+                <p>
+                  <%= data.collabScope %>
+                </p>
+              </div>
+            </div>
+
+            <div class="content_box">
+              <div class="content_box_header">
+                <p>News and Publication</p>
+              </div>
+              <div class="content_box_details">
+                <p>
+                  <%= data.newsAndPub %>
+                </p>
+              </div>
+            </div>
+
+            <div class="content_box">
+              <div class="content_box_header">
+                <p>Key Contact Persons</p>
+              </div>
+              <div class="content_box_details">
+                <p>
+                  <%= data.name %> <br />
+                  <%= data.designation %>, <br />
+                  <%= data.email %> <br />
+                  <%= data.phone %>
+                </p>
+              </div>
+            </div>
+            <div class="text-center">
+              <% if (!data.isVerified && user && user._id.toString().trim() ===
+              'ADMIN_ID_TRIN_POIUYTREWQ') { %>
+              <button id="approve-btn" class="btn btn-success btn-lg px-4 w-25">
                 Approve
               </button>
-                            <button id="disapprove-btn" class="btn btn-success btn-lg px-4">
+              <!-- <button
+                id="disapprove-btn"
+                class="btn btn-success btn-lg px-4 w-25"
+              >
                 Disapprove
-              </button>
-                            <% } %>
-                    </div>
-                    <div class="contentTitle">
-                        <p>
-                            <%= data.title %>
-                        </p>
-                    </div>
-                    <div class="contentDescription">
-                        <p>
-                            <%- data.description %>
-                        </p>
-                    </div>
-                    <% if (data.collaboration) { %>
-                        <div class="content_box">
-                            <div class="content_box_header">
-                                <p>Collaboration</p>
-                            </div>
-                            <div class="content_box_details">
-                                <p>
-                                    <%= data.collaboration %>
-                                </p>
-                            </div>
-                        </div>
-                        <% } %>
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>Financial support and grant</p>
-                                </div>
-                                <div class="content_box_details">
-                                    <p>
-                                        <%= data.financialSupport %>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>Scope of Collaboration</p>
-                                </div>
-                                <div class="content_box_details">
-                                    <p>
-                                        <%= data.collabScope %>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>News and Publication</p>
-                                </div>
-                                <div class="content_box_details">
-                                    <p>
-                                        <%= data.newsAndPub %>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>Key Contact Persons</p>
-                                </div>
-                                <div class="content_box_details">
-                                    <p>
-                                        <%= data.name %>,
-                                            <%= data.designation %>, Email:
-                                                <%=
-                  data.email %>, Phone:
-                                                    <%= data.phone %>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="content_box">
-                                <div class="content_box_header">
-                                    <p>Additional Files</p>
-                                </div>
-                                <div class="content_box_details">
-                                    <p class="additionalFileName">
-                                        <% const filename = data.file.split('-')[1]%>
-                                            <%= filename %>
-                                                <input type="hidden" value="<%= data.file %>" id="file-link" />
-                                    </p>
-                                </div>
-                            </div>
-                </div>
+              </button> -->
+              <% } %>
             </div>
+            <!-- 
+            <div class="content_box">
+              <div class="content_box_header">
+                <p>Additional Files</p>
+              </div>
+              <div class="content_box_details">
+                <p class="additionalFileName">
+                  <% const filename = data.file.split('-')[1]%> <%= filename %>
+                  <input
+                    type="hidden"
+                    value="<%= data.file %>"
+                    id="file-link"
+                  />
+                </p>
+              </div>
+            </div> -->
+          </div>
         </div>
+      </div>
     </section>
     <%- include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script>
-        $('button').click((e) => {
-            const id = e.target.id;
-            location = '/admin/research/update/' + id;
-        });
-        $('#approve-btn').click((e) => {
-            location = '/admin/research/approve/' + $('#id').val();
-        });
-        $('#disapprove-btn').click((e) => {
-            location = '/admin/research/disapprove/' + $('#id').val();
-        });
-        $('.additionalFileName').click((e) => {
-            location = '/researches/download/' + $('#file-link').val();
-        });
-    </script>
-
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $('button').click((e) => {
+      const id = e.target.id;
+      location = '/admin/research/update/' + id;
+    });
+    $('#approve-btn').click((e) => {
+      location = '/admin/research/approve/' + $('#id').val();
+    });
+    $('#disapprove-btn').click((e) => {
+      location = '/admin/research/disapprove/' + $('#id').val();
+    });
+    $('.additionalFileName').click((e) => {
+      location = '/researches/download/' + $('#file-link').val();
+    });
+  </script>
 </html>

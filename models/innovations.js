@@ -10,7 +10,6 @@ const innovationsSchema = new mongoose.Schema({
     collaboration: String,
     collabScope: String,
     newsAndPub: String,
-    innovationStage: String,
     financialSupport: String,
     file: String,
     link: String,

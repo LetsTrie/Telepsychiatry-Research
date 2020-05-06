@@ -26,12 +26,11 @@ const isExpertDoc = (req) => {
 };
 
 exports.getInnovations = async(req, res) => {
-    let { stage, searchInput, type } = req.query;
+    let { searchInput } = req.query;
     let data;
     // console.log(searchInput);
     if (searchInput) {
         const keyword = {
-            innovationStage: type,
             isVerified: true,
         };
         searchInput = searchInput.trim();
@@ -56,41 +55,22 @@ exports.getInnovations = async(req, res) => {
             $and: [keyword, searchKey],
         });
         console.log(type);
-        if (type == 'ongoing') {
-            return res.render('ongoingInnovations', {
-                data,
-                search: null,
-                user: req.user,
-                showSubmitBtn: isExpertDoc(req),
-            });
-        } else {
-            return res.render('completeInnovations', {
-                data,
-                search: null,
-                user: req.user,
-                showSubmitBtn: isExpertDoc(req),
-            });
-        }
+        return res.render('allInnovations', {
+            data,
+            search: null,
+            user: req.user,
+            showSubmitBtn: isExpertDoc(req),
+        });
     }
     data = await InnovationModel.find({
-        innovationStage: stage,
         isVerified: true,
     });
-    if (stage == 'ongoing') {
-        return res.render('ongoingInnovations', {
-            data,
-            search: null,
-            user: req.user,
-            showSubmitBtn: isExpertDoc(req),
-        });
-    } else {
-        return res.render('completeInnovations', {
-            data,
-            search: null,
-            user: req.user,
-            showSubmitBtn: isExpertDoc(req),
-        });
-    }
+    return res.render('allInnovations', {
+        data,
+        search: null,
+        user: req.user,
+        showSubmitBtn: isExpertDoc(req),
+    });
 };
 
 exports.getNewInnovations = (req, res) =>
@@ -102,7 +82,7 @@ exports.innovationFile = async(req, res) => {
         'successMessage',
         'Your post has been submitted successfully. Please wait for the admin approval.'
     );
-    res.redirect(`/innovations?stage=${req.body.innovationStage}`);
+    res.redirect(`/innovations`);
 };
 exports.postInnovations = async(req, res) => {
     if (!req.user) {

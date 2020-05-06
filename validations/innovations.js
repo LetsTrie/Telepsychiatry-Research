@@ -12,7 +12,6 @@ exports.validateInnovationData = (data) => {
         collabScope: joi.string().required(),
         financialSupport: joi.string().required(),
         newsAndPub: joi.string().required(),
-        innovationStage: joi.string().required(),
         link: joi.string().allow(null, ''),
         file: joi.string().required(),
     });

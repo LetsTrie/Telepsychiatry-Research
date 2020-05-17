@@ -1,14 +1,16 @@
 const router = require('express').Router();
 
 const {
-    bookAppointment,
-    consultation,
-    searchConsultation,
-    psychoTherapy,
-    searchPsychoTherapy,
-    singleDoctorConsultation,
-    getAllResearchers,
-    searchResearchers,
+  bookAppointment,
+  consultation,
+  searchConsultation,
+  psychoTherapy,
+  searchPsychoTherapy,
+  singleDoctorConsultation,
+  getAllResearchers,
+  searchResearchers,
+  getBookAppointment,
+  getChamberTimes,
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
@@ -23,26 +25,26 @@ router.get('/psychoTherapy/search', searchPsychoTherapy);
 router.get('/doctor/profile/:id', singleDoctorConsultation);
 
 router.get('/institution', (req, res, next) => {
-    res.render('institution', { user: req.user });
+  res.render('institution', { user: req.user });
 });
 
 router.get('/assessment', (req, res, next) => {
-    res.render('assessment', { user: req.user });
+  res.render('assessment', { user: req.user });
 });
 
 router.get('/assessment/result', (req, res, next) => {
-    res.render('assessment_result', { user: req.user });
+  res.render('assessment_result', { user: req.user });
 });
 router.get('/assessment/quiz', (req, res, next) => {
-    res.render('assessment_quiz', { user: req.user });
+  res.render('assessment_quiz', { user: req.user });
 });
 
 router.get('/assessment/register', (req, res, next) => {
-    res.render('assessment_reg', { user: req.user });
+  res.render('assessment_reg', { user: req.user });
 });
 
 router.get('/special_services', (req, res, next) => {
-    res.render('specialServices', { user: req.user });
+  res.render('specialServices', { user: req.user });
 });
 
 router.post('/book', bookAppointment);
@@ -50,4 +52,6 @@ router.post('/book', bookAppointment);
 router.get('/researchers', getAllResearchers);
 router.get('/search/researchers', searchResearchers);
 
+router.get('/bookAppointment/:expID', getBookAppointment);
+router.get('/getTimes', getChamberTimes);
 module.exports = router;

@@ -10,21 +10,18 @@
 
       <div class="modal-body">
         <form>
+          <input type="hidden" name="docName" class="docName" />
           <div class="two_box flex-parent">
             <div class="two_box_one flex-child">
               <div class="two_box_header form-header">
                 <p>Name:</p>
               </div>
               <div class="input_box">
-                <input
-                  type="text"
-                  name="patientName"
-                  placeholder="Select Time"
-                />
+                <input type="text" name="patientName" placeholder="Your name" />
               </div>
             </div>
-            <div class="two_box_one  flex-child">
-              <div class="two_box_header  form-header">
+            <div class="two_box_one flex-child">
+              <div class="two_box_header form-header">
                 <p>Contact Info:</p>
               </div>
               <div class="input_box slct_picker">
@@ -41,15 +38,15 @@
 
           <div class="two_box flex-parent">
             <div class="two_box_on flex-child">
-              <div class="two_box_header  form-header">
+              <div class="two_box_header form-header">
                 <p>Age:</p>
               </div>
               <div class="input_box">
                 <input type="text" class="contact" placeholder="Age" />
               </div>
             </div>
-            <div class="two_box_one  flex-child">
-              <div class="two_box_header  form-header">
+            <div class="two_box_one flex-child">
+              <div class="two_box_header form-header">
                 <p>Booking Type:</p>
               </div>
               <div class="input_box slct_picker">
@@ -57,7 +54,7 @@
                   <select
                     class="selectpicker"
                     data-width="100%"
-                    title="Select Type"
+                    title="Select Booking Type"
                     required
                   >
                     <option value="Online">Online</option>
@@ -74,11 +71,16 @@
                 <p>Date:</p>
               </div>
               <div class="input_box">
-                <input type="text" name="meet_date" placeholder="Select Time" />
+                <input
+                  type="text"
+                  id="meet_date"
+                  name="meet_date"
+                  placeholder="Select Date"
+                />
               </div>
             </div>
-            <div class="two_box_one  flex-child">
-              <div class="two_box_header  form-header">
+            <div class="two_box_one flex-child">
+              <div class="two_box_header form-header">
                 <p>Time:</p>
               </div>
               <div class="input_box slct_picker">
@@ -87,25 +89,10 @@
                     class="selectpicker"
                     data-width="100%"
                     title="Select Time"
+                    id="selectTime"
                     data-size="3"
                     required
                   >
-                    <option value="10">05:00 PM - 06:00 PM</option>
-                    <option value="11">06:00 PM - 07:00 PM</option>
-                    <option value="12">07:00 PM - 08:00 PM</option>
-                    <option value="13">08:00 PM - 09:00 PM</option>
-                    <option value="14">09:00 PM - 10:00 PM</option>
-                    <option value="15">10:00 PM - 11:00 PM</option>
-                    <option value="0">07:00 AM - 08:00 AM</option>
-                    <option value="1">08:00 AM - 09:00 AM</option>
-                    <option value="2">09:00 AM - 10:00 AM</option>
-                    <option value="3">10:00 AM - 11:00 AM</option>
-                    <option value="4">11:00 AM - 12:00 AM</option>
-                    <option value="5">12:00 AM - 01:00 PM</option>
-                    <option value="6">01:00 PM - 02:00 PM</option>
-                    <option value="7">02:00 PM - 03:00 PM</option>
-                    <option value="8">03:00 PM - 04:00 PM</option>
-                    <option value="9">04:00 PM - 05:00 PM</option>
                   </select>
                 </div>
               </div>
@@ -147,21 +134,42 @@
     maxYear: parseInt(moment().format('YYYY'), 10) + 1,
     autoUpdateInput: false,
     locale: {
-      cancelLabel: 'Clear'
-    }
+      cancelLabel: 'Clear',
+    },
   });
 
-  $('input[name="meet_date"]').on('apply.daterangepicker', function(
+  $('input[name="meet_date"]').on('apply.daterangepicker', function (
     ev,
     picker
   ) {
-    $(this).val(picker.startDate.format('MM/DD/YYYY'));
+    const val = picker.startDate.format('DD/MM/YYYY');
+    $(this).val(val);
+    let weekday = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ][new Date(picker.startDate.format('MM/DD/YYYY')).getDay()];
+    console.log(weekday);
+    $('#selectTime').empty();
+    $('#selectTime').append(`<option value='10'>05:00 PM - 06:00 PM</option>`);
+    $('#selectTime').append(`<option value='10'>05:00 PM - 06:00 PM</option>`);
+    $('#selectTime').append(`<option value='10'>05:00 PM - 06:00 PM</option>`);
+    $('#selectTime').append(`<option value='10'>05:00 PM - 06:00 PM</option>`);
+    $('#selectTime').selectpicker('refresh');
   });
 
-  $('input[name="meet_date"]').on('cancel.daterangepicker', function(
+  $('input[name="meet_date"]').on('cancel.daterangepicker', function (
     ev,
     picker
   ) {
     $(this).val('');
+  });
+  $(document).on('click', '.bookAppointment', (e) => {
+    const docID = $(e.target)[0].dataset.id;
+    $('.docName').val(docID);
   });
 </script>

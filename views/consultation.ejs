@@ -167,6 +167,7 @@
                       class="bookAppointment"
                       data-toggle="modal"
                       data-target="#BOOK_APPOINTMENT_MODAL"
+                      data-id="<%=experts[i]._id%>"
                     >
                       Book appointment
                     </button>
@@ -190,6 +191,12 @@
     });
     $('.search-btn').click((e) => {
       $('#form').submit();
+    });
+
+    document.addEventListener('click', '.bookAppointment', function () {
+      var myBookId = $(this).data('id');
+      console.log('I am in event Handler');
+      console.log(myBookId);
     });
   </script>
 </html>

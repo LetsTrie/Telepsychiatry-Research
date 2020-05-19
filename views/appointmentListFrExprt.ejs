@@ -3,10 +3,9 @@
   <head>
     <%- include('./partials/vendorsTop')%>
     <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
       rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
+      type="text/css"
     />
     <link rel="stylesheet" href="/css/appointments.css" />
 
@@ -94,22 +93,65 @@
                 </thead>
                 <tbody class="text-center">
                   <tr>
-                    <td>MD. Sakib Khan (24)</td>
                     <td>
-                      <p>10:00AM - 11:00AM</p>
-                      <p>11/12/20</p>
+                      <span class="fa fa-user pr-1"> </span> MD. Sakib Khan (24)
                     </td>
                     <td>
-                      <p>chamber name (chamber address)</p>
+                      <p>
+                        <span class="fa fa-clock-o"> </span> 10:00AM - 11:00AM
+                      </p>
+                      <p><span class="fa fa-calendar"> </span> 11/12/20</p>
                     </td>
                     <td>
-                      <p>sakibkhan111296@gmail.com</p>
-                      <p>01938929740</p>
+                      <p>
+                        <span class="fa fa-map-marker"> </span> chamber name
+                        <span style="color: gray;">(chamber address)</span>
+                      </p>
                     </td>
                     <td>
-                      <button class="btn btn-dark">
+                      <p>
+                        <span class="fa fa-envelope pr-1"> </span>
+                        sakibkhan111296@gmail.com
+                      </p>
+                      <p><span class="fa fa-phone pr-1"> </span> 01938929740</p>
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-dark"
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                      >
                         Not Yet Proposed
                       </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <span class="fa fa-user pr-1"> </span> MD. Sakib Khan (24)
+                    </td>
+                    <td>
+                      <p>
+                        <span class="fa fa-clock-o"> </span> 10:00AM - 11:00AM
+                      </p>
+                      <p><span class="fa fa-calendar"> </span> 11/12/20</p>
+                    </td>
+                    <td>
+                      <p>
+                        <span class="fa fa-map-marker"> </span> chamber name
+                        <span style="color: gray;">(chamber address)</span>
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        <span class="fa fa-envelope pr-1"> </span>
+                        sakibkhan111296@gmail.com
+                      </p>
+                      <p><span class="fa fa-phone pr-1"> </span> 01938929740</p>
+                    </td>
+                    <td>
+                      <p><span class="fa fa-clock-o"> </span> 10:10AM</p>
+                      <p><span class="fa fa-calendar"> </span> 11/12/20</p>
                     </td>
                   </tr>
                 </tbody>
@@ -119,12 +161,112 @@
         </div>
       </div>
     </section>
+
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Set a Time</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <p>
+                <span class="pr-2"><strong>Requested Time: </strong></span>
+                10:00AM
+              </p>
+              <p>
+                <span class="pr-2"><strong>Requested Date: </strong></span>
+                20/12/21
+              </p>
+
+              <p>
+                <span class="pr-2"><strong>Set a Time:</strong></span>
+                <select name="oneToTwelve" id="oneToTwelveID">
+                  <% for(let i = 1 ; i < 12; i++) { %>
+                  <option value="<%=i%>"><%=i%></option>
+                  <% } %>
+                </select>
+                <select name="zeroToSixty" id="zeroToSixtyID">
+                  <% for(let i = 0 ; i < 60; i += 10) { %>
+                  <option value="<%=i%>"><%=i%></option>
+                  <% } %>
+                </select>
+                <select name="AmPm" id="AmPmID">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </p>
+              <p>
+                <span class="pr-2"><strong>Set a Date:</strong></span>
+                <input
+                  name="dob"
+                  type="text"
+                  placeholder="Date of Birth"
+                  class="dob"
+                  id="dob"
+                  autocomplete="off"
+                />
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%- include('./partials/footer')%>
   </body>
   <%- include('./partials/vendorsBottom')%>
+
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+  ></script>
+
   <script>
-    $(document).on('click', '.quizBtn button', (e) => {
-      location = '/services/assessment/register';
+    $('input[name="dob"]').daterangepicker({
+      autoUpdateInput: false,
+      singleDatePicker: true,
+      showDropdowns: true,
+      minYear: 1930,
+      maxYear: parseInt(moment().format('YYYY'), 10),
+      locale: {
+        cancelLabel: 'Clear',
+      },
+    });
+    $('input[name="dob"]').on('apply.daterangepicker', function (ev, picker) {
+      $(this).val(picker.startDate.format('DD/MM/YYYY'));
+    });
+    $('input[name="dob"]').on('cancel.daterangepicker', function (ev, picker) {
+      $(this).val('');
     });
   </script>
 </html>

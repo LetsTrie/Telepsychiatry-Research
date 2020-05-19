@@ -1,65 +1,66 @@
 const router = require('express').Router();
 
 const {
-    getRegisterGeneralUser,
-    getRegisterExpertUser,
-    getRegisterOrganizations,
-    postRegisterGeneralUser,
-    postRegisterExpertUserData,
-    postRegisterExpertUserFile,
-    postRegisterOrgUser,
-    postCheckDuplication,
-    eUserCheckDuplication,
-    postLogin,
-    expProfile,
-    verifyAccount,
-    mail,
-    updateExpertFile,
-    getUpdateExpertProfile,
-    postUpdateExpUser,
-    getExpUser,
-    postUpdateExpertPassword,
-    postUpdateExpertPicture,
-    changePassword,
+  getRegisterGeneralUser,
+  getRegisterExpertUser,
+  getRegisterOrganizations,
+  postRegisterGeneralUser,
+  postRegisterExpertUserData,
+  postRegisterExpertUserFile,
+  postRegisterOrgUser,
+  postCheckDuplication,
+  eUserCheckDuplication,
+  postLogin,
+  expProfile,
+  verifyAccount,
+  mail,
+  updateExpertFile,
+  getUpdateExpertProfile,
+  postUpdateExpUser,
+  getExpUser,
+  postUpdateExpertPassword,
+  postUpdateExpertPicture,
+  changePassword,
+  getMyAppointments,
 } = require('../controllers/auth');
 
 const multer = require('multer');
 const fileStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/uploads/');
-    },
-    filename: (req, file, cb) => {
-        const filename = req.body.filename + '-' + file.originalname;
-        cb(null, filename);
-    },
+  destination: (req, file, cb) => {
+    cb(null, 'public/uploads/');
+  },
+  filename: (req, file, cb) => {
+    const filename = req.body.filename + '-' + file.originalname;
+    cb(null, filename);
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-    if (
-        file.mimetype === 'image/png' ||
-        file.mimetype === 'image/jpg' ||
-        file.mimetype === 'image/jpeg'
-    ) {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
 };
 
 const uploadPhoto = multer({
-    storage: fileStorage,
-    fileFilter: fileFilter,
+  storage: fileStorage,
+  fileFilter: fileFilter,
 }).single('exp_user_propic');
 
 const { privateRoute } = require('../middlewares/authorization');
 
 router.get('/login', (req, res, next) =>
-    res.render('login', { user: req.user })
+  res.render('login', { user: req.user })
 );
 router.post('/login', postLogin);
 router.get('/logout', (req, res, next) => {
-    req.logout();
-    res.redirect('/auth/login');
+  req.logout();
+  res.redirect('/auth/login');
 });
 
 router.get('/register/new/gen', getRegisterGeneralUser);
@@ -86,4 +87,8 @@ router.get('/getExpUser', privateRoute, getExpUser);
 router.post('/update/exp/profile', privateRoute, postUpdateExpUser);
 router.get('/update/exp/password', privateRoute, postUpdateExpertPassword);
 router.get('/update/exp/profilePicture', privateRoute, postUpdateExpertPicture);
+
+// Appointments
+router.get('/appointments', privateRoute, getMyAppointments);
+
 module.exports = router;

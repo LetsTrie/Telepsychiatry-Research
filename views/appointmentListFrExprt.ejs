@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/appointments.css" />
+
+    <title>
+      Appointments | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="appointment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="/">Experts</a> / Appointments</p>
+          </div>
+          <div class="bigText">
+            <p>List of Appointments</p>
+          </div>
+        </div>
+
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="appType">
+              <div class="appTypeHeading">
+                <p>Appointment Types</p>
+              </div>
+              <div class="appTypeOptions">
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio1">
+                    Current Appointments
+                  </label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio11"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio11">
+                    Upcoming Appointments
+                  </label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio111"
+                    name="example1"
+                    value="customEx"
+                  />
+                  <label class="custom-control-label" for="customRadio111">
+                    Unseen Appointments
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="eachBigSection">
+            <div class="app_heading text-center pt-3">
+              <h1>Appointments</h1>
+            </div>
+
+            <div class="app_list mt-5">
+              <table class="table table-striped table-bordered">
+                <thead class="thead-dark text-center">
+                  <tr>
+                    <th>User</th>
+                    <th>Requested Time</th>
+                    <th>Location</th>
+                    <th>Contact Info</th>
+                    <th>Final Time</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr>
+                    <td>MD. Sakib Khan (24)</td>
+                    <td>
+                      <p>10:00AM - 11:00AM</p>
+                      <p>11/12/20</p>
+                    </td>
+                    <td>
+                      <p>chamber name (chamber address)</p>
+                    </td>
+                    <td>
+                      <p>sakibkhan111296@gmail.com</p>
+                      <p>01938929740</p>
+                    </td>
+                    <td>
+                      <button class="btn btn-dark">
+                        Not Yet Proposed
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $(document).on('click', '.quizBtn button', (e) => {
+      location = '/services/assessment/register';
+    });
+  </script>
+</html>

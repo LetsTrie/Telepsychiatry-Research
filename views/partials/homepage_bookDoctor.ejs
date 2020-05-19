@@ -8,7 +8,9 @@
 
             <div class="modal-body">
                 <form id="book-form" action="/services/book" method="POST">
-                    <div class="alert alert-danger" style="display: none;" id="alert-book">hi</div>
+                    <div class="alert alert-danger" style="display: none;" id="alert-book">
+                        hi
+                    </div>
                     <div class="alert alert-success" style="display: none;" id="alert-success-book"></div>
                     <div class="two_box_one flex-child">
                         <div class="two_box_header form-header">
@@ -111,11 +113,11 @@
                         </div>
                     </div>
                     <div class="modal-body-submit submit">
-                        <button id="book-submit-btn" class="green-btn gotoResetPass">Proceed to Pay</button>
+                        <button id="book-submit-btn" class="green-btn gotoResetPass">
+              Proceed to Pay
+            </button>
                     </div>
                 </form>
-
-
             </div>
 
             <div class="modal-footer submit">
@@ -131,28 +133,25 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
-    console.log('ouy')
-
     function showAlert(text) {
-        console.log('yo 2')
-        $('#alert-book').show()
-        $('#alert-book').html(text)
+        $('#alert-book').show();
+        $('#alert-book').html(text);
     }
 
     function successBook(text) {
-        $('#alert-book').hide()
-        $('#alert-success-book').show()
-        $('#alert-success-book').html(text)
+        $('#alert-book').hide();
+        $('#alert-success-book').show();
+        $('#alert-success-book').html(text);
     }
 
     function clearBook() {
-        $('#book-service').val('')
-        $('#book-name').val('')
-        $('#book-contact').val('')
-        $('#book-age').val('')
-        $('#book-bookType').val('')
-        $('#book-date').val('')
-        $('#book-time').val('')
+        $('#book-service').val('');
+        $('#book-name').val('');
+        $('#book-contact').val('');
+        $('#book-age').val('');
+        $('#book-bookType').val('');
+        $('#book-date').val('');
+        $('#book-time').val('');
     }
 
     function formSubmitBook(data) {
@@ -161,46 +160,47 @@
             url: '/services/book',
             data,
             success: () => {
-                clearBook()
-                successBook('Your booking has been reserved. Thanks for your concern')
-            }
-        })
+                clearBook();
+                successBook('Your booking has been reserved. Thanks for your concern');
+            },
+        });
     }
 
     $('#book-submit-btn').click((e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const service = $('#book-service').val()
-        const name = $('#book-name').val()
-        const contact = $('#book-contact').val()
-        const age = $('#book-age').val()
-        const bookType = $('#book-bookType').val()
-        const date = $('#book-date').val()
-        const time = $('#book-time').val()
-        let error = false
+        const service = $('#book-service').val();
+        const name = $('#book-name').val();
+        const contact = $('#book-contact').val();
+        const age = $('#book-age').val();
+        const bookType = $('#book-bookType').val();
+        const date = $('#book-date').val();
+        const time = $('#book-time').val();
+        let error = false;
+        const startTime = date + ' ' + time + ':00:00';
+        console.log(Date.parse(startTime));
 
         if (service == '') {
-
-            error = true
-            showAlert('Enter the service you want')
+            error = true;
+            showAlert('Enter the service you want');
         } else if (name == '') {
-            error = true
-            showAlert('Enter your name')
+            error = true;
+            showAlert('Enter your name');
         } else if (contact == '') {
-            error = true
-            showAlert('Enter your contact info')
+            error = true;
+            showAlert('Enter your contact info');
         } else if (age == '') {
-            error = true
-            showAlert('Enter your age')
+            error = true;
+            showAlert('Enter your age');
         } else if (bookType == '') {
-            error = true
-            showAlert('Enter your booking type')
+            error = true;
+            showAlert('Enter your booking type');
         } else if (date == '') {
-            error = true
-            showAlert('Enter the date of visit')
+            error = true;
+            showAlert('Enter the date of visit');
         } else if (time == '') {
-            error = true
-            showAlert('Enter the time of visit')
+            error = true;
+            showAlert('Enter the time of visit');
         }
 
         const data = {
@@ -210,15 +210,13 @@
             age,
             bookType,
             date,
-            time
-        }
-
-        console.log(data)
+            time,
+        };
 
         if (!error) {
-            formSubmitBook(data)
+            // formSubmitBook(data);
         }
-    })
+    });
 
     $('input[name="date"]').daterangepicker({
         singleDatePicker: true,
@@ -231,17 +229,11 @@
         },
     });
 
-    $('input[name="date"]').on('apply.daterangepicker', function(
-        ev,
-        picker
-    ) {
+    $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY'));
     });
 
-    $('input[name="date"]').on('cancel.daterangepicker', function(
-        ev,
-        picker
-    ) {
+    $('input[name="date"]').on('cancel.daterangepicker', function(ev, picker) {
         $(this).val('');
     });
 </script>

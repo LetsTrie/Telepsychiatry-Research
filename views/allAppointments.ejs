@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/ourDoctors.css" />
+
+        <title>
+            Apointments | Telepsychiatry Research
+        </title>
+</head>
+
+<body>
+    <nav>
+        <%- include('./partials/navbar')%>
+    </nav>
+    <div class="blueDivider">
+        <div class="smallText">
+            <p><a href="#">Clinical Services</a> / Appointments</p>
+        </div>
+        <div class="bigText">
+            <p>All Appointments</p>
+        </div>
+    </div>
+    <div class="appointments" style="padding: 100px;">
+        <% for (let i=0; i<data.length; i++) { %>
+            Patient's name:
+            <%= data[i].name %>
+                <br>
+                <br>
+                <% } %>
+    </div>
+    <%- include('./partials/bookAppointment') %>
+        <%-
+    include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        console.log('yeah')
+        const socket = io.connect()
+        socket.emit('msg', 'hi')
+        socket.on('msg', data => {
+            console.log(data)
+        })
+        socket.on('new appointment', data => {
+            console.log(data.fullDocument)
+            $('.appointments').append(`
+              Patient's name:
+            ${data.fullDocument.name}
+                <br>
+                <br>
+            `)
+        })
+    </script>
+
+</html>

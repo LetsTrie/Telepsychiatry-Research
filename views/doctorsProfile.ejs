@@ -1,78 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/doctorProfile.css" />
+        <link rel="stylesheet" href="/css/doctorProfile.css" />
 
-    <title>Profile | Expert | Telepsychiatry Research</title>
-  </head>
+        <title>Profile | Expert | Telepsychiatry Research</title>
+</head>
 
-  <body>
+<body>
     <section>
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="blueDivider">
-        <div class="smallText">
-          <p><a href="/">Experts</a> / profile</p>
-        </div>
-        <div class="bigText">
-          <p><%=doc.name%></p>
-        </div>
-      </div>
-
-      <section class="py-5 mt-1 docProWrapper">
-        <div class="container">
-          <div class="doctor_identity">
-            <div class="his_photo">
-              <img src="/uploads/<%=doc.propicURL%>" alt="Doctor" />
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="blueDivider">
+            <div class="smallText">
+                <p><a href="/">Experts</a> / profile</p>
             </div>
-            <div class="His_profession">
-              <p class="name">
-                <%= doc.name %>
-              </p>
-              <p class="degreeNspeciality">
-                <%= doc.education[0].degree %> in <%= doc.education[0].field %>
-              </p>
+            <div class="bigText">
+                <p>
+                    <%=doc.name%>
+                </p>
+            </div>
+        </div>
 
-              <p class="expertize">
-                <span class="fa fa-user-md">&nbsp;&nbsp;</span>
-                Experts in <%= doc.expertise %>
-              </p>
-              <p class="aff">
-                <span class="fa fa-user">&nbsp;&nbsp;</span>
-                <%= doc.designation %>
-              </p>
-              <p class="college">
-                <span class="fa fa-university">&nbsp;</span>
-                <%= doc.affiliation %>
-              </p>
-              <% if(doc.speciality !== 'Researcher') { %>
-              <div class="bookingg">
-                <button
-                  data-toggle="modal"
-                  data-target="#BOOK_APPOINTMENT_MODAL"
-                  data-id="<%= doc._id %>"
-                >
+        <section class="py-5 mt-1 docProWrapper">
+            <div class="container">
+                <div class="doctor_identity">
+                    <div class="his_photo">
+                        <img src="/uploads/<%=doc.propicURL%>" alt="Doctor" />
+                    </div>
+                    <div class="His_profession">
+                        <p class="name">
+                            <%= doc.name %>
+                        </p>
+                        <p class="degreeNspeciality">
+                            <%= doc.education[0].degree %> in
+                                <%= doc.education[0].field %>
+                        </p>
+
+                        <p class="expertize">
+                            <span class="fa fa-user-md">&nbsp;&nbsp;</span> Experts in
+                            <%=
+                doc.expertise %>
+                        </p>
+                        <p class="aff">
+                            <span class="fa fa-user">&nbsp;&nbsp;</span>
+                            <%= doc.designation %>
+                        </p>
+                        <p class="college">
+                            <span class="fa fa-university">&nbsp;</span>
+                            <%= doc.affiliation %>
+                        </p>
+                        <% if(doc.speciality !== 'Researcher') { %>
+                            <div class="bookingg">
+                                <button data-id="<%= doc._id %>">
                   Book appointment
                 </button>
-              </div>
-              <% } %>
-            </div>
-          </div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
 
-          <div class="aboutDoctor_wrapper">
-            <div class="card card-tabs-2 aboutDoctor">
-              <div class="card-header">
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      id="overview"
-                      data-toggle="tab"
-                      href="#tab1"
-                      role="tab"
-                      >Overview</a
+                <div class="aboutDoctor_wrapper">
+                    <div class="card card-tabs-2 aboutDoctor">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="overview" data-toggle="tab" href="#tab1" role="tab">Overview</a
                     >
                   </li>
                   <li class="nav-item">
@@ -304,4 +299,9 @@
     <%- include('./partials/vendorsBottom')%> <%-
     include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
   </body>
+  <script>
+    $('.bookingg button').click((e) => {
+      location = '/services/bookAppointment/' + $(e.target).attr('data-id');
+    });
+  </script>
 </html>

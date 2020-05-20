@@ -54,37 +54,37 @@ require('./config/passport')(passport);
 
 app.use('/', require('./routes'));
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () =>
     console.log(`Server is running at port: ${port}`)
 );
-// require('http').createServer(app);
+// for real time communications, to be used later
 const io = require('socket.io').listen(server);
 const connections = [];
 const { appointment } = require('./models/appointment');
-io.sockets.on('connection', (socket) => {
-    //Connect
-    connections.push(socket);
-    console.log('connected: ', connections.length);
-    const len = connections.length;
-    io.sockets.emit('poeple', 'wow');
+// io.sockets.on('connection', (socket) => {
+//     //Connect
+//     connections.push(socket);
+//     console.log('connected: ', connections.length);
+//     const len = connections.length;
+//     io.sockets.emit('poeple', 'wow');
 
-    //Disconnect
-    socket.on('disconnect', (data) => {
-        connections.splice(connections.indexOf(socket), 1);
-        console.log('disconnected! left:  ', connections.length);
-        const len = connections.length;
-        io.sockets.emit('poeple', { len });
-    });
+//     //Disconnect
+//     socket.on('disconnect', (data) => {
+//         connections.splice(connections.indexOf(socket), 1);
+//         console.log('disconnected! left:  ', connections.length);
+//         const len = connections.length;
+//         io.sockets.emit('poeple', { len });
+//     });
 
-    socket.on('msg', (data) => {
-        console.log(data);
-        io.sockets.emit('msg', 'hello');
-    });
+//     socket.on('msg', (data) => {
+//         console.log(data);
+//         io.sockets.emit('msg', 'hello');
+//     });
 
-    appointment.watch().on('change', (change) => {
-        console.log('update: ', change);
-        io.sockets.emit('new appointment', change);
-    });
-});
+//     appointment.watch().on('change', (change) => {
+//         console.log('update: ', change);
+//         io.sockets.emit('new appointment', change);
+//     });
+// });

@@ -12,6 +12,10 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const { AccountVerifyMail } = require('../config/sendMail');
 
+exports.getMyAppointments = (req, res, next) => {
+  return res.render('appointmentListFrExprt');
+};
+
 exports.getRegisterGeneralUser = (req, res, next) => {
   return res.render('register_gen', { country, user: req.user });
 };

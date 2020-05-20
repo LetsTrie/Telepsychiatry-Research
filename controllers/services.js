@@ -466,10 +466,25 @@ exports.bookAppointment = async(req, res) => {
 
 exports.allAppointments = async(req, res) => {
     const data = await appointment.find({ doctorId: req.user._id });
-    res.render('allAppointments', {
+    res.render('appointmentListFrExprt', {
         user: req.user,
         data,
     });
+};
+
+exports.dateTimeReset = async(req, res) => {
+    const { id, email, date, time } = req.body;
+    const doctor = req.user.name;
+    console.log(req.body);
+    await appointment.findOneAndUpdate({ _id: id }, {
+        $set: {
+            date: date,
+            time: time,
+            isConfirmed: true,
+        },
+    });
+    sendSMTP(email, date, time, doctor);
+    res.redirect('back');
 };
 
 function sendEmail(emailID, reply) {
@@ -503,4 +518,33 @@ exports.singleDoctorConsultation = async(req, res, next) => {
     const doc = await eUserModel.findById(req.params.id);
     console.log(doc);
     return res.render('doctorsProfile', { doc, user: req.user });
+};
+
+// send mail to the patient
+const smtpTransport = nodemailer.createTransport({
+    host: 'mail.trin-innovation.com.netsolmail.net.',
+    port: 587,
+    auth: {
+        user: 'manager@trin-innovation.com',
+        pass: 'Mwjwy45@trin',
+    },
+    logger: true,
+    debug: true,
+    secureConnection: 'false',
+    tls: {
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false,
+    },
+});
+
+const sendSMTP = async(email, date, time, doctor) => {
+    const mailBody = `Your meeting with ${doctor} has been shifted to ${date} at ${time}`;
+    let mailOptions = {
+        from: 'manager@trin-innovation.com',
+        to: email,
+        subject: 'TRIN - Time and date confirmation',
+        html: mailBody,
+    };
+
+    return await smtpTransport.sendMail(mailOptions);
 };

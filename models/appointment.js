@@ -8,6 +8,10 @@ const appointmentSchema = new mongoose.Schema({
     date: String,
     time: String,
     doctorId: String,
+    isConfirmed: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 exports.appointment = mongoose.model('appointment', appointmentSchema);

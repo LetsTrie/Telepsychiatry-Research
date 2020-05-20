@@ -12,6 +12,7 @@ const {
     getBookAppointment,
     getChamberTimes,
     allAppointments,
+    dateTimeReset,
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
@@ -57,4 +58,5 @@ router.get('/bookAppointment/:expID', getBookAppointment);
 router.get('/getTimes', getChamberTimes);
 
 router.get('/all-appointments', allAppointments);
+router.post('/date-time-reset', dateTimeReset);
 module.exports = router;

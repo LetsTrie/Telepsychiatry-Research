@@ -220,6 +220,7 @@ exports.searchResearchers = async(req, res, next) => {
 };
 
 exports.consultation = async(req, res) => {
+    req.session.prev = 'consultation';
     const experts = await eUserModel
         .find({ speciality: 'Psychiatric Consultation' })
         .sort({ _id: -1 });
@@ -337,6 +338,7 @@ exports.searchConsultation = async(req, res) => {
 };
 
 exports.psychoTherapy = async(req, res) => {
+    req.session.prev = 'psychoTherapy';
     const experts = await eUserModel
         .find({ speciality: 'Psycho Therapy & Counselling' })
         .sort({ _id: -1 });
@@ -455,20 +457,124 @@ exports.searchPsychoTherapy = async(req, res) => {
 };
 
 exports.bookAppointment = async(req, res) => {
-    console.log(req.body);
-    const newApt = new appointment(req.body);
+    let startTime = req.body.time.split(' - ')[0].trim();
+    if (startTime[5] == 'P') {
+        let x = parseInt(startTime.split(':')[0]) + 12;
+        startTime = x.toString() + ':00:00';
+    } else {
+        startTime = startTime.substring(0, 6) + ':00';
+    }
+    console.log(startTime);
+    const obj = {
+        ...req.body,
+        startTime,
+    };
+    const newApt = new appointment(obj);
+
     await newApt.save();
     res.send({
         status: true,
+        prev: req.session.prev,
         msg: 'You will get notified the exact time through your email',
     });
 };
 
 exports.allAppointments = async(req, res) => {
-    const data = await appointment.find({ doctorId: req.user._id });
-    res.render('appointmentListFrExprt', {
+    const { type } = req.query;
+    let data;
+    if (type) {
+        if (type == 'unseen') {
+            data = await appointment
+                .find({
+                    doctorId: req.user._id,
+                    isConfirmed: false,
+                })
+                .sort({ _id: -1 });
+            return res.render('appointmentListFrExprt', {
+                user: req.user,
+                data,
+                cat: 'Unseen',
+            });
+        } else if (type == 'upcoming') {
+            let nowDate = new Date();
+            currentDate =
+                nowDate.getDate() +
+                '/' +
+                (nowDate.getMonth() + 1) +
+                '/' +
+                nowDate.getFullYear();
+            currentTime =
+                nowDate.getHours() +
+                ':' +
+                nowDate.getMinutes() +
+                ':' +
+                nowDate.getSeconds();
+            console.log(currentTime);
+
+            // data = await appointment
+            //     .find({
+            //         $and: [
+            //             { doctorId: req.user._id, date: { $gte: currentDate } },
+            //             { doctorId: req.user._id, startTime: { $gte: currentTime } },
+            //         ],
+            //     })
+            //     .sort({ _id: -1 });
+            let data1 = await appointment.find({
+                doctorId: req.user._id,
+                date: { $lte: currentDate },
+            });
+            let data2 = await appointment.find({
+                doctorId: req.user._id,
+                startTime: { $gte: currentTime },
+            });
+            console.log(data1, data2);
+            return res.render('appointmentListFrExprt', {
+                user: req.user,
+                data: [],
+                cat: 'Upcoming',
+            });
+        } else if (type == 'current') {
+            let nowDate = new Date();
+            currentDate =
+                nowDate.getDate() +
+                '/' +
+                (nowDate.getMonth() + 1) +
+                '/' +
+                nowDate.getFullYear();
+            currentTime =
+                nowDate.getHours() +
+                ':' +
+                nowDate.getMinutes() +
+                ':' +
+                nowDate.getSeconds();
+            console.log(currentTime);
+            data = await appointment
+                .find({
+                    doctorId: req.user._id,
+                    startTime: { $lte: currentTime },
+                })
+                .sort({ _id: -1 });
+            return res.render('appointmentListFrExprt', {
+                user: req.user,
+                data,
+                cat: 'Current',
+            });
+        } else {
+            data = await appointment
+                .find({ doctorId: req.user._id })
+                .sort({ _id: -1 });
+            return res.render('appointmentListFrExprt', {
+                user: req.user,
+                data,
+                cat: 'All',
+            });
+        }
+    }
+    data = await appointment.find({ doctorId: req.user._id }).sort({ _id: -1 });
+    return res.render('appointmentListFrExprt', {
         user: req.user,
         data,
+        cat: 'All',
     });
 };
 

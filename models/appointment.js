@@ -7,6 +7,8 @@ const appointmentSchema = new mongoose.Schema({
     bookingType: String,
     date: String,
     time: String,
+    startTime: String,
+    location: String,
     doctorId: String,
     isConfirmed: {
         type: Boolean,

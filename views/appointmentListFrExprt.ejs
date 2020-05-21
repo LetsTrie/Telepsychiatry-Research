@@ -1,319 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link
-      src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="/css/appointments.css" />
+        <link src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/css/appointments.css" />
 
-    <title>
-      Appointments | Telepsychiatry Research
-    </title>
-  </head>
+        <title>
+            Appointments | Telepsychiatry Research
+        </title>
+</head>
 
-  <body>
+<body>
     <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="appointment_wrapper">
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="/">Experts</a> / Appointments</p>
-          </div>
-          <div class="bigText">
-            <p>List of Appointments</p>
-          </div>
-        </div>
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="appointment_wrapper">
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="/">Experts</a> / Appointments</p>
+                </div>
+                <div class="bigText">
+                    <p>List of Appointments</p>
+                </div>
+            </div>
 
-        <div class="twoBigSectionFlex">
-          <div class="eachBigSection">
-            <div class="appType">
-              <div class="appTypeHeading">
-                <p>Appointment Types</p>
-              </div>
-              <div class="appTypeOptions">
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="customRadio1xx"
-                    name="example1"
-                    value="customEx"
-                  />
-                  <label class="custom-control-label" for="customRadio1xx">
+            <div class="twoBigSectionFlex">
+                <div class="eachBigSection">
+                    <div class="appType">
+                        <div class="appTypeHeading">
+                            <p>Appointment Types</p>
+                        </div>
+                        <div class="appTypeOptions">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio1xx" name="example1" value="all" />
+                                <label class="custom-control-label" for="customRadio1xx">
                     All Appointments
                   </label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="customRadio1"
-                    name="example1"
-                    value="customEx"
-                  />
-                  <label class="custom-control-label" for="customRadio1">
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="current" />
+                                <label class="custom-control-label" for="customRadio1">
                     Current Appointments
                   </label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="customRadio11"
-                    name="example1"
-                    value="customEx"
-                  />
-                  <label class="custom-control-label" for="customRadio11">
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio11" name="example1" value="upcoming" />
+                                <label class="custom-control-label" for="customRadio11">
                     Upcoming Appointments
                   </label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="customRadio111"
-                    name="example1"
-                    value="customEx"
-                  />
-                  <label class="custom-control-label" for="customRadio111">
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customRadio111" name="example1" value="unseen" />
+                                <label class="custom-control-label" for="customRadio111">
                     Unseen Appointments
                   </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="eachBigSection">
-            <div class="app_heading text-center pt-3">
-              <h1>Appointments</h1>
-            </div>
+                <div class="eachBigSection">
+                    <div class="app_heading text-center pt-3">
+                        <h1>Appointments (
+                            <%= cat %>)</h1>
+                    </div>
 
-            <div class="app_list mt-5">
-              <table class="table table-striped table-bordered">
-                <thead class="thead-dark text-center">
-                  <tr>
-                    <th>User</th>
-                    <th>Requested Time</th>
-                    <th>Location</th>
-                    <th>Contact Info</th>
-                    <th>Final Time</th>
-                  </tr>
-                </thead>
-                <tbody class="text-center">
-                  <% for (let i=0; i< data.length; i++) { %>
-                  <tr>
-                    <td>
-                      <span class="fa fa-user pr-1"> </span>
-                      <%= data[i].name %> ( <%= data[i].age %>)
-                    </td>
-                    <td>
-                      <p>
-                        <span class="fa fa-clock-o"> </span>
-                        <%= data[i].time %>
-                      </p>
-                      <p>
-                        <span class="fa fa-calendar"> </span>
-                        <%= data[i].date %>
-                      </p>
-                    </td>
-                    <td>
-                      <p>
-                        <span class="fa fa-map-marker"> </span> chamber name
-                        <span style="color: gray;">(chamber address)</span>
-                      </p>
-                    </td>
-                    <td>
-                      <p>
-                        <span class="fa fa-envelope pr-1"> </span>
-                        <%= data[i].email %>
-                      </p>
-                      <p>
-                        <span class="fa fa-phone pr-1"> </span>
-                        <%= data[i].phoneNumber %>
-                      </p>
-                    </td>
-                    <td>
-                      <% if (!data[i].isConfirmed) { %>
-                      <button
-                        class="btn btn-dark"
-                        name="<%=data[i].time%>-<%=data[i].date%>-<%=data[i]._id%>-<%=data[i].email%>"
-                        data-toggle="modal"
-                        data-target="#exampleModalCenter"
-                      >
+                    <div class="app_list mt-5">
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-dark text-center">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Requested Time</th>
+                                    <th>Location</th>
+                                    <th>Contact Info</th>
+                                    <th>Final Time</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <% for (let i=0; i< data.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <span class="fa fa-user pr-1"> </span>
+                                            <%= data[i].name %> (
+                                                <%= data[i].age %>)
+                                        </td>
+                                        <td>
+                                            <p>
+                                                <span class="fa fa-clock-o"> </span>
+                                                <%= data[i].time %>
+                                            </p>
+                                            <p>
+                                                <span class="fa fa-calendar"> </span>
+                                                <%= data[i].date %>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p>
+                                                <span class="fa fa-map-marker"> </span>
+                                                <%=data[i].location%>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p>
+                                                <span class="fa fa-envelope pr-1"> </span>
+                                                <%= data[i].email %>
+                                            </p>
+                                            <p>
+                                                <span class="fa fa-phone pr-1"> </span>
+                                                <%= data[i].phoneNumber %>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <% if (!data[i].isConfirmed) { %>
+                                                <button class="btn btn-dark" name="<%=data[i].time%>-<%=data[i].date%>-<%=data[i]._id%>-<%=data[i].email%>" data-toggle="modal" data-target="#exampleModalCenter">
                         Not Yet Proposed
                       </button>
-                      <% } else { %>
-                      <p>
-                        <span class="fa fa-clock-o"> </span>
-                        <%= data[i].time %>
-                      </p>
-                      <p>
-                        <span class="fa fa-calendar"> </span>
-                        <%= data[i].date %>
-                      </p>
-                      <% } %>
-                    </td>
-                  </tr>
-                  <% } %>
-                </tbody>
-              </table>
+                                                <% } else { %>
+                                                    <p>
+                                                        <span class="fa fa-clock-o"> </span>
+                                                        <%= data[i].time %>
+                                                    </p>
+                                                    <p>
+                                                        <span class="fa fa-calendar"> </span>
+                                                        <%= data[i].date %>
+                                                    </p>
+                                                    <% } %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <div
-      class="modal fade"
-      id="exampleModalCenter"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Set a Time</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Set a Time</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <p>
-                <span class="pr-2"><strong>Requested Time: </strong></span>
-                <span class="reqtime"></span>
-              </p>
-              <p>
-                <span class="pr-2 req-time"
-                  ><strong>Requested Date: </strong></span
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <p>
+                            <span class="pr-2"><strong>Requested Time: </strong></span>
+                            <span class="reqtime"></span>
+                        </p>
+                        <p>
+                            <span class="pr-2 req-time"><strong>Requested Date: </strong></span
                 >
                 <span class="reqdate"></span>
-              </p>
+                        </p>
 
-              <p>
-                <span class="pr-2"><strong>Set a Time:</strong></span>
-                <select name="oneToTwelve" id="oneToTwelveID">
+                        <p>
+                            <span class="pr-2"><strong>Set a Time:</strong></span>
+                            <select name="oneToTwelve" id="oneToTwelveID">
                   <% for(let i = 1 ; i <= 12; i++) { let x = ('0' +
                   i).slice(-2); %>
                   <option value="<%=x%>"><%=x%></option>
                   <% } %>
                 </select>
-                <select name="zeroToSixty" id="zeroToSixtyID">
+                            <select name="zeroToSixty" id="zeroToSixtyID">
                   <% for(let i = 0 ; i < 60; i += 10) { let x = ('0' +
                   i).slice(-2);%>
                   <option value="<%=x%>"><%=x%></option>
                   <% } %>
                 </select>
-                <select name="AmPm" id="AmPmID">
+                            <select name="AmPm" id="AmPmID">
                   <option value="AM">AM</option>
                   <option value="PM">PM</option>
                 </select>
-              </p>
-              <p>
-                <span class="pr-2"><strong>Set a Date:</strong></span>
-                <input
-                  name="dob"
-                  type="text"
-                  placeholder="Date"
-                  class="dob"
-                  id="dob"
-                  autocomplete="off"
-                />
-              </p>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
+                        </p>
+                        <p>
+                            <span class="pr-2"><strong>Set a Date:</strong></span>
+                            <input name="dob" type="text" placeholder="Date" class="dob" id="dob" autocomplete="off" />
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
               Close
             </button>
-            <button type="button" id="submit" class="btn btn-primary">
+                    <button type="button" id="submit" class="btn btn-primary">
               Save changes
             </button>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
 
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-  <script>
-    $('input[name="dob"]').daterangepicker({
-      autoUpdateInput: false,
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1930,
-      maxYear: parseInt(moment().format('YYYY'), 10),
-      locale: {
-        cancelLabel: 'Clear',
-        format: 'DD/MM/YYYY',
-      },
-    });
-    $('input[name="dob"]').on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
-    });
-    $('input[name="dob"]').on('cancel.daterangepicker', function (ev, picker) {
-      $(this).val('');
-    });
-  </script>
-  <script>
-    let id, email;
-    $('.btn-dark').click((e) => {
-      const time = e.target.name.split('-')[0];
-      const date = e.target.name.split('-')[2];
-      id = e.target.name.split('-')[3];
-      email = e.target.name.split('-')[4];
-      console.log(time, date);
-      $('.reqdate').html(date);
-      $('.reqtime').html(time);
-    });
+    <script>
+        $('input[name="dob"]').daterangepicker({
+            autoUpdateInput: false,
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1930,
+            maxYear: parseInt(moment().format('YYYY'), 10),
+            locale: {
+                cancelLabel: 'Clear',
+                format: 'DD/MM/YYYY',
+            },
+        });
+        $('input[name="dob"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY'));
+        });
+        $('input[name="dob"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    </script>
+    <script>
+        let id, email;
+        $('.btn-dark').click((e) => {
+            const time = e.target.name.split('-')[0];
+            const date = e.target.name.split('-')[2];
+            id = e.target.name.split('-')[3];
+            email = e.target.name.split('-')[4];
+            console.log(time, date);
+            $('.reqdate').html(date);
+            $('.reqtime').html(time);
+        });
 
-    $('#submit').click((e) => {
-      const hr = $('#oneToTwelveID').val();
-      const min = $('#zeroToSixtyID').val();
-      const ampm = $('#AmPmID').val();
-      const time = hr + ':' + min + ' ' + ampm;
-      const date = $('#dob').val();
-      const data = {
-        time,
-        date,
-        id,
-        email,
-      };
-      console.log(data);
-      $.ajax({
-        type: 'POST',
-        url: '/services/date-time-reset',
-        data,
-        success: (data) => {
-          location = '/services/all-appointments';
-        },
-      });
-    });
-  </script>
+        $('input[name="example1"]').click((e) => {
+            const type = $(e.target).val();
+            console.log(type);
+            location = `/services/all-appointments?type=${type}`;
+        });
+
+        $('#submit').click((e) => {
+            const hr = $('#oneToTwelveID').val();
+            const min = $('#zeroToSixtyID').val();
+            const ampm = $('#AmPmID').val();
+            const time = hr + ':' + min + ' ' + ampm;
+            const date = $('#dob').val();
+            const data = {
+                time,
+                date,
+                id,
+                email,
+            };
+            console.log(data);
+            $.ajax({
+                type: 'POST',
+                url: '/services/date-time-reset',
+                data,
+                success: (data) => {
+                    location = '/services/all-appointments';
+                },
+            });
+        });
+    </script>
+
 </html>

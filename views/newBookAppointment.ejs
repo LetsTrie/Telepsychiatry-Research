@@ -1,435 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/bookings.css" />
+        <link rel="stylesheet" href="/css/bookings.css" />
 
-    <title>
-      Book Appointment | Telepsychiatry Research
-    </title>
-  </head>
+        <title>
+            Book Appointment | Telepsychiatry Research
+        </title>
+</head>
 
-  <body>
+<body>
     <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="bookAppointmentWrapper">
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Home</a> / Services</p>
-          </div>
-          <div class="bigText">
-            <p>Book Appointment</p>
-          </div>
-        </div>
-        <input type="hidden" value="<%= data._id %>" id="expId" />
-        <div class="bookAppointment">
-          <div class="twoSection">
-            <div class="eachSection">
-              <div class="inputSection">
-                <div class="personalInfo infoBox">
-                  <div
-                    class="alert alert-danger"
-                    id="alert"
-                    style="display: none;"
-                  ></div>
-                  <div
-                    class="alert alert-success"
-                    id="success"
-                    style="display: none;"
-                  ></div>
-                  <div class="infoBox_heading">
-                    <p>Personal Information</p>
-                  </div>
-                  <input
-                    type="hidden"
-                    name="docName"
-                    id="docID"
-                    value="<%=data._id%>"
-                  />
-                  <div class="inSecFlxPrnt">
-                    <div class="form-group card-label">
-                      <label>Name</label>
-                      <input class="form-control" id="name" type="text" />
-                    </div>
-                    <div class="form-group card-label">
-                      <label>Age</label>
-                      <input class="form-control" id="age" type="text" />
-                    </div>
-                  </div>
-                  <div class="inSecFlxPrnt">
-                    <div class="form-group card-label">
-                      <label>Email</label>
-                      <input class="form-control" id="email" type="text" />
-                    </div>
-                    <div class="form-group card-label">
-                      <label>Phone Number</label>
-                      <input
-                        class="form-control"
-                        id="phoneNumber"
-                        type="text"
-                      />
-                    </div>
-                  </div>
+        <nav>
+            <%- include('./partials/navbar')%>
+        </nav>
+        <div class="bookAppointmentWrapper">
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Home</a> / Services</p>
                 </div>
-                <div class="DisorderInfo infoBox mb-2">
-                  <div class="infoBox_heading pt-2 pb-1">
-                    <p>Booking Information</p>
-                  </div>
-                  <div class="inSecFlxPrnt">
-                    <div class="slctpkr">
-                      <div class="selectBoxContainer" style="width: 100%;">
-                        <select
-                          class="selectpicker"
-                          data-width="100%"
-                          name="BookingType"
-                          title="Booking Type"
-                          id="bookingTypeID"
-                          required
-                        >
+                <div class="bigText">
+                    <p>Book Appointment</p>
+                </div>
+            </div>
+            <input type="hidden" value="<%= data._id %>" id="expId" />
+            <div class="bookAppointment">
+                <div class="twoSection">
+                    <div class="eachSection">
+                        <div class="inputSection">
+                            <div class="personalInfo infoBox">
+                                <div class="alert alert-danger" id="alert" style="display: none;"></div>
+                                <div class="alert alert-success" id="success" style="display: none;"></div>
+                                <div class="infoBox_heading">
+                                    <p>Personal Information</p>
+                                </div>
+                                <input type="hidden" name="docName" id="docID" value="<%=data._id%>" />
+                                <div class="inSecFlxPrnt">
+                                    <div class="form-group card-label">
+                                        <label>Name</label>
+                                        <input class="form-control" id="name" type="text" />
+                                    </div>
+                                    <div class="form-group card-label">
+                                        <label>Age</label>
+                                        <input class="form-control" id="age" type="text" />
+                                    </div>
+                                </div>
+                                <div class="inSecFlxPrnt">
+                                    <div class="form-group card-label">
+                                        <label>Email</label>
+                                        <input class="form-control" id="email" type="text" />
+                                    </div>
+                                    <div class="form-group card-label">
+                                        <label>Phone Number</label>
+                                        <input class="form-control" id="phoneNumber" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="DisorderInfo infoBox mb-2">
+                                <div class="infoBox_heading pt-2 pb-1">
+                                    <p>Booking Information</p>
+                                </div>
+                                <div class="inSecFlxPrnt">
+                                    <div class="slctpkr">
+                                        <div class="selectBoxContainer" style="width: 100%;">
+                                            <select class="selectpicker" data-width="100%" name="BookingType" title="Booking Type" id="bookingTypeID" required>
                           <option value="FaceToFace"> Face to Face</option>
                           <option value="Online"> Online </option>
                         </select>
-                      </div>
-                      <div
-                        id="Warning"
-                        class="text-danger pt-1"
-                        style="display: none;"
-                      >
-                        * Please Select a booking type
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="DisorderInfo infoBox">
-                  <div class="infoBox_heading pt-2 pb-1">
-                    <p>Request for a schedule</p>
-                  </div>
-                  <div class="inSecFlxPrnt">
-                    <div class="slctpkr">
-                      <div class="input_box">
-                        <input
-                          type="text"
-                          id="meet_date"
-                          name="meet_date"
-                          placeholder="Select Date"
-                          autocomplete="off"
-                        />
-                      </div>
-                    </div>
-                    <div class="slctpkr">
-                      <div
-                        class="selectBoxContainer"
-                        style="width: 100%;"
-                        data-live-search="true"
-                      >
-                        <select
-                          class="selectpicker"
-                          data-width="100%"
-                          title="Select Time"
-                          data-size="6"
-                          id="selectTime"
-                          required
-                        >
+                                        </div>
+                                        <div id="Warning" class="text-danger pt-1" style="display: none;">
+                                            * Please Select a booking type
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="DisorderInfo infoBox">
+                                <div class="infoBox_heading pt-2 pb-1">
+                                    <p>Request for a schedule</p>
+                                </div>
+                                <div class="inSecFlxPrnt">
+                                    <div class="slctpkr">
+                                        <div class="input_box">
+                                            <input type="text" id="meet_date" name="meet_date" placeholder="Select Date" autocomplete="off" />
+                                        </div>
+                                    </div>
+                                    <div class="slctpkr">
+                                        <div class="selectBoxContainer" style="width: 100%;" data-live-search="true">
+                                            <select class="selectpicker" data-width="100%" title="Select Time" data-size="6" id="selectTime" required>
                         </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="hiddenInputs"></div>
+                            <div class="hiddenInputs"></div>
 
-                <div class="DisorderInfo infoBox mb-2 pt-1">
-                  <div class="infoBox_heading pt-2 pb-1">
-                    <p>Location</p>
-                  </div>
-                  <div class="inSecFlxPrnt locationOfChamber">
-                    <p>
-                      <span class="fa fa-map-marker pr-1"></span>
-                      <span style="color: gray;">Not yet finalized</span>
-                    </p>
-                  </div>
-                </div>
+                            <div class="DisorderInfo infoBox mb-2 pt-1">
+                                <div class="infoBox_heading pt-2 pb-1">
+                                    <p id="location">Location</p>
+                                </div>
+                                <div class="inSecFlxPrnt locationOfChamber">
+                                    <p>
+                                        <span class="fa fa-map-marker pr-1"></span>
+                                        <span style="color: gray;">Not yet finalized</span>
+                                    </p>
+                                </div>
+                            </div>
 
-                <div class="mt-3 terms">
-                  <input type="checkbox" name="term" id="term" />
-                  <label for="term">
+                            <div class="mt-3 terms">
+                                <input type="checkbox" name="term" id="term" />
+                                <label for="term">
                     I have read and accept <a href="#">Terms & Conditions</a>
                   </label>
+                            </div>
+                            <div class="submit-btn">
+                                <button>Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eachSection">
+                        <div class="expert_info_wrapper">
+                            <div class="expert_info_heading">
+                                <p>Expert Information</p>
+                            </div>
+                            <div class="expert_info_img">
+                                <img src="/uploads/<%= data.propicURL %>" alt="Expert image" />
+                            </div>
+                            <div class="expert_info_name">
+                                <p>
+                                    <%= data.name %>
+                                </p>
+                            </div>
+                            <div class="expert_infos">
+                                <div class="expert_infos_name">
+                                    <p>Visiting Fee</p>
+                                </div>
+                                <div class="expert_infos_det">
+                                    <p>
+                                        <%= data.fee %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="submit-btn">
-                  <button>Confirm</button>
-                </div>
-              </div>
             </div>
-            <div class="eachSection">
-              <div class="expert_info_wrapper">
-                <div class="expert_info_heading">
-                  <p>Expert Information</p>
-                </div>
-                <div class="expert_info_img">
-                  <img
-                    src="/uploads/<%= data.propicURL %>"
-                    alt="Expert image"
-                  />
-                </div>
-                <div class="expert_info_name">
-                  <p>
-                    <%= data.name %>
-                  </p>
-                </div>
-                <div class="expert_infos">
-                  <div class="expert_infos_name">
-                    <p>Visiting Fee</p>
-                  </div>
-                  <div class="expert_infos_det">
-                    <p>
-                      <%= data.fee %>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
     <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
 
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
-  <script>
-    $(document).on('change', '#selectTime', (e) => {
-      const bookingTypeVal = $('#bookingTypeID').val();
-      $('.locationOfChamber').empty();
-      if (bookingTypeVal === 'FaceToFace') {
-        const locations = JSON.parse($(`#${e.target.value}`).val());
-        console.log('select time changing...', locations);
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        let _location;
+        $(document).on('change', '#selectTime', (e) => {
+            const bookingTypeVal = $('#bookingTypeID').val();
+            $('.locationOfChamber').empty();
+            if (bookingTypeVal === 'FaceToFace') {
+                const locations = JSON.parse($(`#${e.target.value}`).val());
+                console.log('select time changing...', locations);
 
-        for (let i = 0; i < locations.length; i++) {
-          const { chamName, chamAdd } = locations[i];
-          $('.locationOfChamber').append(`
+                for (let i = 0; i < locations.length; i++) {
+                    const {
+                        chamName,
+                        chamAdd
+                    } = locations[i];
+                    $('.locationOfChamber').append(`
             <p> 
               <span class="fa fa-map-marker"></span> <b> ${chamName} </b> (${chamAdd})
             </p>
           `);
-          break;
-        }
-      } else {
-        $('.locationOfChamber').append(`
+                    break;
+                }
+                _location = `${chamName}, ${chamAdd}`;
+            } else {
+                $('.locationOfChamber').append(`
             <p> 
               <span class="fa fa-map-marker"></span> <b> Online </b>
             </p>
           `);
-      }
-    });
-    $('#bookingTypeID').on('change', (e) => {
-      $('#Warning').css('display', 'none');
-      const bookingTypeVal = $('#bookingTypeID').val();
-      $('#selectTime').empty();
-      $('input[name="meet_date"]').val('');
-    });
-    $('input[name="meet_date"]').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: parseInt(moment().format('YYYY'), 10),
-      maxYear: parseInt(moment().format('YYYY'), 10) + 1,
-      autoUpdateInput: false,
-      locale: {
-        cancelLabel: 'Clear',
-      },
-    });
+                _location = `Online`;
+            }
+        });
+        $('#bookingTypeID').on('change', (e) => {
+            $('#Warning').css('display', 'none');
+            const bookingTypeVal = $('#bookingTypeID').val();
+            $('#selectTime').empty();
+            $('input[name="meet_date"]').val('');
+        });
+        $('input[name="meet_date"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: parseInt(moment().format('YYYY'), 10),
+            maxYear: parseInt(moment().format('YYYY'), 10) + 1,
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear',
+            },
+        });
 
-    $('input[name="meet_date"]').on('apply.daterangepicker', function (
-      ev,
-      picker
-    ) {
-      const val = picker.startDate.format('DD/MM/YYYY');
-      const bookingTypeVal = $('#bookingTypeID').val();
-      if (!bookingTypeVal) {
-        $('#Warning').css('display', 'block');
-        $(this).val('');
-      } else {
-        $(this).val(val);
-        let weekday = [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-        ][new Date(picker.startDate.format('MM/DD/YYYY')).getDay()];
-        console.log(weekday);
-        $('#selectTime').empty();
-        const DocID = $('#docID').val();
-        console.log(DocID);
-        const bookingTypeVal = $('#bookingTypeID').val();
-        $('.hiddenInputs').empty();
-        const makeID = (data) => {
-          let x = '';
-          for (let i = 0; i < data.length; i++) {
-            if (data[i] === ' ' || data[i] === ':' || data[i] === '-') continue;
-            x += data[i];
-          }
-          return x;
-        };
+        $('input[name="meet_date"]').on('apply.daterangepicker', function(
+            ev,
+            picker
+        ) {
+            const val = picker.startDate.format('DD/MM/YYYY');
+            const bookingTypeVal = $('#bookingTypeID').val();
+            if (!bookingTypeVal) {
+                $('#Warning').css('display', 'block');
+                $(this).val('');
+            } else {
+                $(this).val(val);
+                let weekday = [
+                    'Sunday',
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                ][new Date(picker.startDate.format('MM/DD/YYYY')).getDay()];
+                console.log(weekday);
+                $('#selectTime').empty();
+                const DocID = $('#docID').val();
+                console.log(DocID);
+                const bookingTypeVal = $('#bookingTypeID').val();
+                $('.hiddenInputs').empty();
+                const makeID = (data) => {
+                    let x = '';
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i] === ' ' || data[i] === ':' || data[i] === '-') continue;
+                        x += data[i];
+                    }
+                    return x;
+                };
 
-        if (bookingTypeVal === 'FaceToFace') {
-          $.get(`/services/getTimes?id=${DocID}&day=${weekday}`, (data) => {
-            console.log(data);
-            for (let x = 0; x < data.times.length; x++) {
-              const { time, loc } = data.times[x];
-              const mkeID = makeID(`${DocID}${weekday}${time}`);
-              $('#selectTime').append(
-                `<option value='${mkeID}'>${time}</option>`
-              );
-              console.log(mkeID);
-              $('.hiddenInputs').append(`
+                if (bookingTypeVal === 'FaceToFace') {
+                    $.get(`/services/getTimes?id=${DocID}&day=${weekday}`, (data) => {
+                        console.log(data);
+                        for (let x = 0; x < data.times.length; x++) {
+                            const {
+                                time,
+                                loc
+                            } = data.times[x];
+                            const mkeID = makeID(`${DocID}${weekday}${time}`);
+                            $('#selectTime').append(
+                                `<option value='${mkeID}'>${time}</option>`
+                            );
+                            console.log(mkeID);
+                            $('.hiddenInputs').append(`
                 <input
                   type='hidden'
                   id='${mkeID}'
                   value='${JSON.stringify(loc)}'>
               `);
-            }
+                        }
 
-            $('#selectTime').selectpicker('refresh');
-            $('#selectTime').css('width', '100%');
-          });
-        } else {
-          const m2 = (deg) => ('0' + deg).slice(-2);
-          const ch = (tm, am1, am2) => {
-            let snd = tm + 1;
-            if (tm + 1 === 13) snd = 1;
-            return `${m2(tm)}:00${am1} - ${m2(snd)}:00${am2}`;
-          };
-          for (let i = 8; i <= 10; i++) {
-            $('#selectTime').append(
-              `<option value='${ch(i, 'AM', 'AM')}'>
+                        $('#selectTime').selectpicker('refresh');
+                        $('#selectTime').css('width', '100%');
+                    });
+                } else {
+                    const m2 = (deg) => ('0' + deg).slice(-2);
+                    const ch = (tm, am1, am2) => {
+                        let snd = tm + 1;
+                        if (tm + 1 === 13) snd = 1;
+                        return `${m2(tm)}:00${am1} - ${m2(snd)}:00${am2}`;
+                    };
+                    for (let i = 8; i <= 10; i++) {
+                        $('#selectTime').append(
+                            `<option value='${ch(i, 'AM', 'AM')}'>
                 ${ch(i, 'AM', 'AM')}
               </option>`
-            );
-          }
-          $('#selectTime').append(
-            `<option value='${ch(11, 'AM', 'PM')}'>
+                        );
+                    }
+                    $('#selectTime').append(
+                        `<option value='${ch(11, 'AM', 'PM')}'>
                 ${ch(11, 'AM', 'PM')}
               </option>`
-          );
-          $('#selectTime').append(
-            `<option value='${ch(12, 'PM', 'PM')}'>
+                    );
+                    $('#selectTime').append(
+                        `<option value='${ch(12, 'PM', 'PM')}'>
                 ${ch(12, 'PM', 'PM')}
               </option>`
-          );
-          for (let i = 1; i <= 10; i++) {
-            $('#selectTime').append(
-              `<option value='${ch(i, 'PM', 'PM')}'>
+                    );
+                    for (let i = 1; i <= 10; i++) {
+                        $('#selectTime').append(
+                            `<option value='${ch(i, 'PM', 'PM')}'>
                 ${ch(i, 'PM', 'PM')}
               </option>`
-            );
-          }
-          $('#selectTime').append(
-            `<option value='${ch(11, 'PM', 'AM')}'>
+                        );
+                    }
+                    $('#selectTime').append(
+                        `<option value='${ch(11, 'PM', 'AM')}'>
                 ${ch(11, 'PM', 'AM')}
               </option>`
-          );
+                    );
 
-          $('#selectTime').selectpicker('refresh');
-          $('#selectTime').css('width', '100%');
-        }
-      }
-    });
-
-    $('input[name="meet_date"]').on('cancel.daterangepicker', function (
-      ev,
-      picker
-    ) {
-      $(this).val('');
-    });
-  </script>
-
-  <script>
-    // Space for Safwan...
-    // Submit hoye gele doctor list page e jabe..
-    // flash message: "You will get notified the exact time through your email !!"
-    function showAlert(msg) {
-      $('#alert').show();
-      $('#alert').html(msg);
-      $('html, body').animate(
-        {
-          scrollTop: 0,
-        },
-        'slow'
-      );
-    }
-    const check = (data) => {
-      return data == '' || data == null || data == undefined;
-    };
-    $('.submit-btn button').click((e) => {
-      const name = $('#name').val();
-      const email = $('#email').val();
-      const phoneNumber = $('#phoneNumber').val();
-      const age = $('#age').val();
-      const bookingType = $('#bookingTypeID').val();
-      const date = $('#meet_date').val();
-      const time = $('#selectTime').val();
-
-      if (check(name)) {
-        showAlert('Enter your name');
-      } else if (check(age)) {
-        showAlert('Enter your age');
-      } else if (check(email)) {
-        showAlert('Enter your email');
-      } else if (check(phoneNumber)) {
-        showAlert('Enter your phone number');
-      } else if (check(bookingType)) {
-        showAlert('Enter the type of booking');
-      } else if (check(date)) {
-        showAlert('Enter the date of your meeting');
-      } else if (check(time)) {
-        showAlert('Enter the time of your meeting');
-      } else if (!$('#term').is(':checked')) {
-        showAlert(
-          'Please read our terms and conditions and tick the box below'
-        );
-      } else {
-        $('#alert').hide();
-        const doctorId = $('#expId').val();
-        const data = {
-          doctorId,
-          name,
-          age,
-          email,
-          phoneNumber,
-          bookingType,
-          date,
-          time,
-        };
-        console.log(data);
-
-        $.ajax({
-          type: 'POST',
-          url: '/services/book',
-          data,
-          success: (data) => {
-            if (data.status) {
-              $('#success').show();
-              $('#success').html(data.msg);
-              setTimeout(() => {
-                location = '/services/consultation';
-              }, 2000);
+                    $('#selectTime').selectpicker('refresh');
+                    $('#selectTime').css('width', '100%');
+                }
             }
-          },
         });
-      }
-    });
-  </script>
+
+        $('input[name="meet_date"]').on('cancel.daterangepicker', function(
+            ev,
+            picker
+        ) {
+            $(this).val('');
+        });
+    </script>
+
+    <script>
+        // Space for Safwan...
+        // Submit hoye gele doctor list page e jabe..
+        // flash message: "You will get notified the exact time through your email !!"
+        function showAlert(msg) {
+            $('#alert').show();
+            $('#alert').html(msg);
+            $('html, body').animate({
+                    scrollTop: 0,
+                },
+                'slow'
+            );
+        }
+        const check = (data) => {
+            return data == '' || data == null || data == undefined;
+        };
+        $('.submit-btn button').click((e) => {
+            const name = $('#name').val();
+            const email = $('#email').val();
+            const phoneNumber = $('#phoneNumber').val();
+            const age = $('#age').val();
+            const bookingType = $('#bookingTypeID').val();
+            const date = $('#meet_date').val();
+            const time = $('#selectTime').val();
+
+            if (check(name)) {
+                showAlert('Enter your name');
+            } else if (check(age)) {
+                showAlert('Enter your age');
+            } else if (check(email)) {
+                showAlert('Enter your email');
+            } else if (check(phoneNumber)) {
+                showAlert('Enter your phone number');
+            } else if (check(bookingType)) {
+                showAlert('Enter the type of booking');
+            } else if (check(date)) {
+                showAlert('Enter the date of your meeting');
+            } else if (check(time)) {
+                showAlert('Enter the time of your meeting');
+            } else if (!$('#term').is(':checked')) {
+                showAlert(
+                    'Please read our terms and conditions and tick the box below'
+                );
+            } else {
+                $('#alert').hide();
+                const doctorId = $('#expId').val();
+                const data = {
+                    doctorId,
+                    name,
+                    age,
+                    email,
+                    phoneNumber,
+                    bookingType,
+                    date,
+                    time,
+                    location: _location,
+                };
+                console.log(data);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/services/book',
+                    data,
+                    success: (data) => {
+                        if (data.status) {
+                            $('#success').show();
+                            $('#success').html(data.msg);
+                            setTimeout(() => {
+                                location = `/services/${data.prev}`;
+                            }, 2000);
+                        }
+                    },
+                });
+            }
+        });
+    </script>
+
 </html>

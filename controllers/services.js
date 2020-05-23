@@ -475,12 +475,12 @@ exports.getEmergency = async(req, res) => {
             doctorID: req.user._id,
             service: req.user.speciality,
             status: type,
-        });
+        }).sort({ _id: -1 });
     } else {
         data = await Emergency.find({
             service: req.user.speciality,
             status: type,
-        });
+        }).sort({ _id: -1 });
     }
     res.render('emergencyAppointments', {
         cat: type,
@@ -489,8 +489,8 @@ exports.getEmergency = async(req, res) => {
 };
 
 exports.approveEmergency = async(req, res) => {
-    let isTaken = await Emergency.findOne({ _id: req.params.id });
-    isTaken = isTaken.status;
+    let emApt = await Emergency.findOne({ _id: req.params.id });
+    isTaken = emApt.status;
     console.log(isTaken);
     if (isTaken == 'taken') {
         req.flash(
@@ -505,6 +505,7 @@ exports.approveEmergency = async(req, res) => {
                 doctorID: req.user._id,
             },
         });
+        sendEmergencyLink(emApt.email, req.user.name, emApt._id);
         res.redirect('back');
     }
 };
@@ -668,6 +669,18 @@ const sendSMTP = async(email, date, time, doctor, id) => {
         from: 'manager@trin-innovation.com',
         to: email,
         subject: 'TRIN - Time and date confirmation',
+        html: mailBody,
+    };
+
+    return await smtpTransport.sendMail(mailOptions);
+};
+const sendEmergencyLink = async(email, doctor, id) => {
+    console.log(email);
+    const mailBody = `Your emergency meeting has been approved by ${doctor}.<br>This is your <a href="https://media.monerdaktar.com/${id}" target="_blank">Meeting Link</a>`;
+    let mailOptions = {
+        from: 'manager@trin-innovation.com',
+        to: email,
+        subject: 'TRIN - Emergency meeting',
         html: mailBody,
     };
 

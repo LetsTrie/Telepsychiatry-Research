@@ -3,6 +3,8 @@ const router = require('express').Router();
 const {
     bookAppointment,
     emergenceBooking,
+    getEmergency,
+    approveEmergency,
     consultation,
     searchConsultation,
     psychoTherapy,
@@ -47,11 +49,13 @@ router.get('/special_services', (req, res, next) => {
 
 router.post('/book', bookAppointment);
 router.post('/book/emergency', emergenceBooking);
+router.get('/emergency/approve/:id', approveEmergency);
 router.get('/researchers', getAllResearchers);
 router.get('/search/researchers', searchResearchers);
 router.get('/bookAppointment/:expID', getBookAppointment);
 router.get('/getTimes', getChamberTimes);
 router.get('/all-appointments', allAppointments);
+router.get('/emergency', getEmergency);
 router.post('/date-time-reset', dateTimeReset);
 
 module.exports = router;

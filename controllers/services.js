@@ -467,6 +467,48 @@ exports.emergenceBooking = async(req, res) => {
     });
 };
 
+exports.getEmergency = async(req, res) => {
+    const { type } = req.query;
+    let data;
+    if (type == 'taken') {
+        data = await Emergency.find({
+            doctorID: req.user._id,
+            service: req.user.speciality,
+            status: type,
+        });
+    } else {
+        data = await Emergency.find({
+            service: req.user.speciality,
+            status: type,
+        });
+    }
+    res.render('emergencyAppointments', {
+        cat: type,
+        data,
+    });
+};
+
+exports.approveEmergency = async(req, res) => {
+    let isTaken = await Emergency.findOne({ _id: req.params.id });
+    isTaken = isTaken.status;
+    console.log(isTaken);
+    if (isTaken == 'taken') {
+        req.flash(
+            'errorMessage',
+            'This emergency appointment has already been taken.'
+        );
+        res.redirect('back');
+    } else {
+        await Emergency.findOneAndUpdate({ _id: req.params.id }, {
+            $set: {
+                status: 'taken',
+                doctorID: req.user._id,
+            },
+        });
+        res.redirect('back');
+    }
+};
+
 exports.bookAppointment = async(req, res) => {
     console.log(req.body);
     let startTime = req.body.time.split('-')[0].trim();

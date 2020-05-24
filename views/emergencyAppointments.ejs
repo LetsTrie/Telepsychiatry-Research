@@ -1,143 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="/css/appointments.css" />
+    <link
+      src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/css/appointments.css" />
 
-        <title>
-            Emergency Appointments | Telepsychiatry Research
-        </title>
-</head>
+    <title>
+      Emergency Appointments | Telepsychiatry Research
+    </title>
+  </head>
 
-<body>
+  <body>
     <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="appointment_wrapper">
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="/">Experts</a> / Appointments</p>
-                </div>
-                <div class="bigText">
-                    <p>List of Appointments</p>
-                </div>
-            </div>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="appointment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="/">Experts</a> / Appointments</p>
+          </div>
+          <div class="bigText">
+            <p>List of Appointments</p>
+          </div>
+        </div>
 
-            <div class="twoBigSectionFlex">
-                <div class="eachBigSection">
-                    <div class="appType">
-                        <div class="appTypeHeading">
-                            <p>Appointment Types</p>
-                        </div>
-                        <div class="appTypeOptions">
-                            <div class="custom-control custom-radio">
-                                <% if(cat === 'All') { %>
-                                    <input type="radio" class="custom-control-input" id="customRadio1xx" name="example1" value="all" checked />
-                                    <% } else { %>
-                                        <input type="radio" class="custom-control-input" id="customRadio1xx" name="example1" value="all" />
-                                        <% } %>
-                                            <label class="custom-control-label" for="customRadio1xx">
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="appType">
+              <div class="appTypeHeading">
+                <p>Appointment Types</p>
+              </div>
+              <div class="appTypeOptions">
+                <div class="custom-control custom-radio">
+                  <% if(cat === 'All') { %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1xx"
+                    name="example1"
+                    value="all"
+                    checked
+                  />
+                  <% } else { %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1xx"
+                    name="example1"
+                    value="all"
+                  />
+                  <% } %>
+                  <label class="custom-control-label" for="customRadio1xx">
                     All Appointments
                   </label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <% if(cat === 'Current'){ %>
-                                    <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="current" checked />
-                                    <% } else { %>
-                                        <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="current" />
-                                        <% } %>
-                                            <label class="custom-control-label" for="customRadio1">
+                </div>
+                <div class="custom-control custom-radio">
+                  <% if(cat === 'Current'){ %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1"
+                    name="example1"
+                    value="current"
+                    checked
+                  />
+                  <% } else { %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio1"
+                    name="example1"
+                    value="current"
+                  />
+                  <% } %>
+                  <label class="custom-control-label" for="customRadio1">
                     Current Appointments
                   </label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <% if(cat === 'Upcoming'){ %>
-                                    <input type="radio" class="custom-control-input" id="customRadio11" name="example1" value="upcoming" checked />
-                                    <% } else { %>
-                                        <input type="radio" class="custom-control-input" id="customRadio11" name="example1" value="upcoming" />
-                                        <% } %>
-                                            <label class="custom-control-label" for="customRadio11">
+                </div>
+                <div class="custom-control custom-radio">
+                  <% if(cat === 'Upcoming'){ %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio11"
+                    name="example1"
+                    value="upcoming"
+                    checked
+                  />
+                  <% } else { %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio11"
+                    name="example1"
+                    value="upcoming"
+                  />
+                  <% } %>
+                  <label class="custom-control-label" for="customRadio11">
                     Upcoming Appointments
                   </label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <% if(cat === 'Unseen'){ %>
-                                    <input type="radio" class="custom-control-input" id="customRadio111" name="example1" value="unseen" checked />
-                                    <% } else { %>
-                                        <input type="radio" class="custom-control-input" id="customRadio111" name="example1" value="unseen" />
-                                        <% } %>
+                </div>
+                <div class="custom-control custom-radio">
+                  <% if(cat === 'Unseen'){ %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio111"
+                    name="example1"
+                    value="unseen"
+                    checked
+                  />
+                  <% } else { %>
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="customRadio111"
+                    name="example1"
+                    value="unseen"
+                  />
+                  <% } %>
 
-                                            <label class="custom-control-label" for="customRadio111">
+                  <label class="custom-control-label" for="customRadio111">
                     Unseen Appointments
                   </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="appType">
-                        <div class="appType">
-                            <div class="appTypeHeading">
-                                <p>Emergency Appointments</p>
-                            </div>
-
-                            <div class="appTypeOptions">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio21" name="emergency" value="unseen" />
-
-                                    <label class="custom-control-label" for="customRadio21">
-                      Unseen
-                    </label>
-                                </div>
-                            </div>
-                            <div class="appTypeOptions">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio22" name="emergency" value="taken" />
-
-                                    <label class="custom-control-label" for="customRadio22">
-                      Taken
-                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="eachBigSection">
-                    <div class="app_heading text-center pt-3">
-                        <h1>Emergency Appointments (
-                            <%= cat %>)</h1>
-                    </div>
-                    <% if (errorMessage.length != 0) { %>
-                        <div class="alert alert-danger" style="margin-top: 30px;">
-                            <%= errorMessage %>
-                        </div>
-                        <% } %>
-                            <div class="app_list mt-5">
-                                <table class="table table-striped table-bordered">
-                                    <thead class="thead-dark text-center">
-                                        <tr>
-                                            <th>User</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        <% for (let i=0; i< data.length; i++) { %>
-                                            <tr>
-                                                <td>
-                                                    <span class="fa fa-user pr-1"> </span>
-                                                    <%= data[i].name %> (
-                                                        <%= data[i].age %>)
-                                                </td>
+              </div>
+            </div>
 
-                                                <td>
-                                                    <% if (cat == 'unseen') { %>
-                                                        <button name="<%= data[i]._id %>" class="btn btn-dark updateBtn">
+            <div class="appType">
+              <div class="appType">
+                <div class="appTypeHeading">
+                  <p>Emergency Appointments</p>
+                </div>
+
+                <div class="appTypeOptions">
+                  <div class="custom-control custom-radio">
+                    <% if (cat === 'unseen') { %>
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      id="customRadio21"
+                      name="emergency"
+                      value="unseen"
+                      checked
+                    />
+                    <% } else { %>
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      id="customRadio21"
+                      name="emergency"
+                      value="unseen"
+                    />
+                    <% } %>
+
+                    <label class="custom-control-label" for="customRadio21">
+                      Unseen Appointments
+                    </label>
+                  </div>
+                </div>
+                <div class="appTypeOptions">
+                  <div class="custom-control custom-radio">
+                    <% if(cat === 'taken') { %>
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      id="customRadio22"
+                      name="emergency"
+                      value="taken"
+                      checked
+                    />
+                    <% } else { %>
+                    <input
+                      type="radio"
+                      class="custom-control-input"
+                      id="customRadio22"
+                      name="emergency"
+                      value="taken"
+                    />
+                    <% } %>
+
+                    <label class="custom-control-label" for="customRadio22">
+                      Taken Appointments
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="eachBigSection">
+            <div class="app_heading text-center pt-3">
+              <h1>Emergency Appointments ( <%= cat %>)</h1>
+            </div>
+            <% if (errorMessage.length != 0) { %>
+            <div class="alert alert-danger" style="margin-top: 30px;">
+              <%= errorMessage %>
+            </div>
+            <% } %>
+            <div class="app_list mt-5">
+              <table class="table table-striped table-bordered">
+                <thead class="thead-dark text-center">
+                  <tr>
+                    <th>User</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <% for (let i=0; i< data.length; i++) { %>
+                  <tr>
+                    <td>
+                      <span class="fa fa-user pr-1"> </span>
+                      <%= data[i].name %> (<%= data[i].age %>)
+                    </td>
+
+                    <td>
+                      <% if (cat == 'unseen') { %>
+                      <button
+                        name="<%= data[i]._id %>"
+                        class="btn btn-dark updateBtn"
+                      >
                         Approve
                       </button>
-                                                        <% } else { %>
-                                                            <a class="btn btn-success btn-lg px-4" style="color: white; cursor: pointer;" href="https://media.monerdaktar.com/<%=data[i]._id%>" target="_blank">Start</a
+                      <% } else { %>
+                      <a
+                        class="btn btn-success btn-lg px-4"
+                        style="color: white; cursor: pointer;"
+                        href="https://media.monerdaktar.com/<%=data[i]._id%>"
+                        target="_blank"
+                        >Start</a
                       >
                       <% } %>
                     </td>

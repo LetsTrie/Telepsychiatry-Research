@@ -88,6 +88,13 @@
                         <p>Book Appointment</p>
                     </div>
 
+                    <div class="em-button">
+                        <div class=""></div>
+                        <button class="emAppointment">
+                Emergency Appointment
+              </button>
+                    </div>
+
                     <div class="allDoctors container">
                         <% if (successMessage != '') { %>
                             <div class="alert alert-success text-center">
@@ -129,6 +136,7 @@
                                                 <button class="viewProfile">
                       View Profile
                     </button>
+
                                                 <button class="bookAppointment" data-id="<%=experts[i]._id%>">
                       Book appointment
                     </button>
@@ -158,6 +166,10 @@
         $('.bookAppointment').click((e) => {
             console.log($(e.target).attr('data-id'));
             location = '/services/bookAppointment/' + $(e.target).attr('data-id');
+        });
+        $('.emAppointment').click((e) => {
+            console.log($(e.target).attr('data-id'));
+            location = '/services/emergencyAppointment/';
         });
     </script>
 

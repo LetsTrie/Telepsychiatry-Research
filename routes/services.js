@@ -4,6 +4,7 @@ const {
     bookAppointment,
     emergenceBooking,
     getEmergency,
+    getEmBooking,
     approveEmergency,
     consultation,
     searchConsultation,
@@ -53,6 +54,7 @@ router.get('/emergency/approve/:id', approveEmergency);
 router.get('/researchers', getAllResearchers);
 router.get('/search/researchers', searchResearchers);
 router.get('/bookAppointment/:expID', getBookAppointment);
+router.get('/emergencyAppointment/', getEmBooking);
 router.get('/getTimes', getChamberTimes);
 router.get('/all-appointments', allAppointments);
 router.get('/emergency', getEmergency);

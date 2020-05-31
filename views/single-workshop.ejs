@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/single-workshop.css" />
+        <title>Add New Workshop | Admin Panel</title>
+</head>
+
+<body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+        <header>
+            <nav>
+                <%- include('./partials/navbar.ejs')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Events</a>/Workshops/Single</p>
+                </div>
+                <div class="bigText">
+                    <p>Single Workshop</p>
+                </div>
+            </div>
+        </header>
+        <div class="cover-image">
+            <p>
+                <%= data.title %>
+            </p>
+        </div>
+        <div class="contentWrapper">
+            <div class="left">
+                <div class="body">
+                    <%- data.description %>
+                </div>
+            </div>
+            <div class="right">
+                <div class="contents">
+                    <div class="item">
+                        <div class="heading">
+                            <i class="fa fa-volume-up"></i>To speak to someone
+                        </div>
+
+                        <div class="con">+8801552-525252</div>
+                        <div class="con">info@trin-innovation.com</div>
+                    </div>
+                    <div class="item">
+                        <div class="heading">
+                            <i class="fa fa-map-marker"></i>Location
+                        </div>
+                        <div class="con">
+                            <%= data.location %>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="heading">
+                            <i class="fa fa-clock-o"></i>Event Timing
+                        </div>
+                        <div class="con">
+                            Time:
+                            <%= data.schedule.startTime %> to
+                                <%=
+                data.schedule.endTime %>
+                        </div>
+                        <div class="con">
+                            Date:
+                            <%= data.schedule.startDate %> to
+                                <%=
+                data.schedule.endDate %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-reg">
+            <p><button>Register</button></p>
+        </div>
+        <div class="lower">
+            <div class="lower-cover">
+                <div class="contents">
+                    <div class="texts">
+                        <div class="heading">Some random heading</div>
+                        <div class="body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nulla recusandae tempore reprehenderit unde eius. In quae odio ad voluptas dolorem earum placeat ducimus sapiente! Incidunt deserunt itaque fugit explicabo.
+                        </div>
+                        <div class="reg-btn">
+                            <div class=""></div>
+                            <button>Register</button>
+                        </div>
+                    </div>
+                    <div class=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('./partials/footer')%>
+</body>
+
+</html>

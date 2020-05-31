@@ -1629,6 +1629,21 @@ p {
   width: 100%;
 }
 
+.addResource_form .one_box .input_box .side-by-side {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.addResource_form .one_box .input_box .side-by-side .side {
+  width: 22.5%;
+}
+
 .addResource_form .one_box .input_box textarea,
 .addResource_form .one_box .input_box input:not([type='file']) {
   padding: 7px;

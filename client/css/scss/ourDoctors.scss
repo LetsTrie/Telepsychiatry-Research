@@ -2,14 +2,15 @@
 @import '_navbar';
 @import '_main';
 @import '_navbar';
-
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
 .assessment_wrapper {
   background: #ebebeb;
   min-height: 100vh;
 }
+
 .blueDivider {
   padding: 13px 0 10px 0;
   padding-left: 20px;
@@ -38,12 +39,10 @@ body {
   .bigText {
     margin: auto;
     width: 90%;
-
     @media (max-width: 1410px) {
       width: 97%;
     }
     padding-bottom: 3px;
-
     p {
       font-size: 22px;
       font-weight: 700;
@@ -57,12 +56,14 @@ body {
     color: white;
   }
 }
+.em-button {
+  margin-right: 30px;
+}
 .twoBigSectionFlex {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 95%;
-
   @media (max-width: 1320px) {
     width: 98%;
   }
@@ -70,15 +71,12 @@ body {
     flex-direction: column;
   }
   margin: 30px auto 0 auto;
-
   .eachBigSection {
     background: white;
     border-radius: 5px;
-
     &:first-child {
       width: 25%;
       margin-bottom: 15px;
-
       @media (max-width: 1300px) {
         width: 100%;
       }
@@ -147,7 +145,6 @@ body {
         .catOptions {
           .custom-checkbox {
             padding-bottom: 4px;
-
             label {
               color: rgb(78, 77, 77);
               padding-bottom: 5px;
@@ -173,7 +170,6 @@ body {
         }
       }
     }
-
     &:last-child {
       width: 73%;
       min-height: 60vh;
@@ -195,7 +191,6 @@ body {
         font-weight: 600;
         color: #2f337e;
         font-family: 'Libre Franklin', sans-serif;
-
         p {
           font-size: 2.5rem;
         }
@@ -209,9 +204,7 @@ body {
   border: 1px solid rgba(19, 19, 19, 0.125);
   border-radius: 4px;
   box-shadow: rgba(141, 141, 141, 0.8) 1px 1px 3px;
-
   margin-bottom: 20px;
-
   display: flex;
   flex-direction: row;
   @media (max-width: 768px) {
@@ -258,7 +251,6 @@ body {
       font-weight: 500;
       margin-bottom: 15px;
     }
-
     .aff,
     .college,
     .expertize {
@@ -296,11 +288,9 @@ body {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-
       @media (max-width: 500px) {
         flex-direction: column;
       }
-
       button {
         border: 2px solid #0db9f2;
         border-radius: 4px;

@@ -1,164 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/ourDoctors.css" />
+    <link rel="stylesheet" href="/css/ourDoctors.css" />
 
-        <title>
-            Our Doctors | Telepsychiatry Research
-        </title>
-</head>
+    <title>
+      Our Doctors | Telepsychiatry Research
+    </title>
+  </head>
 
-<body>
+  <body>
     <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="assessment_wrapper">
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Clinical Services</a> / Psychiatric consultations</p>
-                </div>
-                <div class="bigText">
-                    <p>Our Psychiatrists</p>
-                </div>
-            </div>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="assessment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Clinical Services</a> / Psychiatric consultations</p>
+          </div>
+          <div class="bigText">
+            <p>Our Psychiatrists</p>
+          </div>
+        </div>
 
-            <div class="twoBigSectionFlex">
-                <div class="eachBigSection">
-                    <div class="searchFilter">
-                        <p>Search Filter</p>
-                    </div>
-                    <form action="/services/consultation/search" method="GET" id="search-form">
-                        <div class="searchFields">
-                            <div class="sField">
-                                <div class="input-group">
-                                    <input type="text" class="form-control py-4" id="search-input" name="searchInput" placeholder="Search psychiatrists (with any keywords)" />
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" id="" type="submit" disabled>
+        <div class="twoBigSectionFlex">
+          <div class="eachBigSection">
+            <div class="searchFilter">
+              <p>Search Filter</p>
+            </div>
+            <form
+              action="/services/consultation/search"
+              method="GET"
+              id="search-form"
+            >
+              <div class="searchFields">
+                <div class="sField">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control py-4"
+                      id="search-input"
+                      name="searchInput"
+                      placeholder="Search psychiatrists (with any keywords)"
+                    />
+                    <div class="input-group-btn">
+                      <button
+                        class="btn btn-default"
+                        id=""
+                        type="submit"
+                        disabled
+                      >
                         <i class="fa fa-search"></i>
                       </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat">
-                                <div class="cat_heading">
-                                    <p>Gender</p>
-                                </div>
-                                <div class="catOptions">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="gender" value="Male" />
-                                        <label class="custom-control-label" for="customCheck">Male psychiatrists
+                    </div>
+                  </div>
+                </div>
+                <div class="cat">
+                  <div class="cat_heading">
+                    <p>Gender</p>
+                  </div>
+                  <div class="catOptions">
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheck"
+                        name="gender"
+                        value="Male"
+                      />
+                      <label class="custom-control-label" for="customCheck"
+                        >Male psychiatrists
                       </label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckw" name="gender" value="Female" />
-                                        <label class="custom-control-label" for="customCheckw">Female psychiatrists
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="customCheckw"
+                        name="gender"
+                        value="Female"
+                      />
+                      <label class="custom-control-label" for="customCheckw"
+                        >Female psychiatrists
                       </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <% let city = ['Barishal', 'Chattogram', 'Dhaka', 'Khulna',
+                    </div>
+                  </div>
+                </div>
+                <% let city = ['Barishal', 'Chattogram', 'Dhaka', 'Khulna',
                 'Rajshahi', 'Sylhet', 'Rangpur', 'Mymensingh'] %>
-                                <div class="cat">
-                                    <div class="cat_heading">
-                                        <p>Select Divisions</p>
-                                    </div>
-                                    <div class="catOptions">
-                                        <% for(let i = 0 ; i < 8; i++) { %>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="14-<%=i%>" name="city" value="14-<%=i%>" />
-                                                <label class="custom-control-label" for="14-<%=i%>">
+                <div class="cat">
+                  <div class="cat_heading">
+                    <p>Select Divisions</p>
+                  </div>
+                  <div class="catOptions">
+                    <% for(let i = 0 ; i < 8; i++) { %>
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        class="custom-control-input"
+                        id="14-<%=i%>"
+                        name="city"
+                        value="14-<%=i%>"
+                      />
+                      <label class="custom-control-label" for="14-<%=i%>">
                         <%= city[i]%>
                       </label>
-                                            </div>
-                                            <% } %>
-                                    </div>
-                                </div>
-                                <div class="findDocBtn">
-                                    <button id="search-btn">Search</button>
-                                </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="eachBigSection">
-                    <div class="bigHeading">
-                        <p>Book Appointment</p>
                     </div>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="findDocBtn">
+                  <button id="search-btn">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
 
-                    <div class="allDoctors container">
-                        <% if (successMessage != '') { %>
-                            <div class="alert alert-success text-center">
-                                <p>
-                                    <%= successMessage %>
-                                </p>
-                            </div>
-                            <% } %>
-                                <% for(let i = 0 ; i < experts.length; i++) { %>
-                                    <div class="doctor_identity">
-                                        <div class="his_photo">
-                                            <img src="/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
-                                        </div>
-                                        <div class="His_profession">
-                                            <p class="name">
-                                                <%= experts[i].name %>
-                                            </p>
-                                            <p class="degreeNspeciality">
-                                                <%= experts[i].education[0].degree %> in
-                                                    <%=
+          <div class="eachBigSection">
+            <div class="bigHeading">
+              <p>Book Appointment</p>
+            </div>
+
+            <div class="em-button text-right mb-3">
+              <button class="emAppointment btn-danger btn-lg px-3 py-2">
+                Emergency Appointment
+              </button>
+            </div>
+
+            <div class="allDoctors container">
+              <% if (successMessage != '') { %>
+              <div class="alert alert-success text-center">
+                <p>
+                  <%= successMessage %>
+                </p>
+              </div>
+              <% } %> <% for(let i = 0 ; i < experts.length; i++) { %>
+              <div class="doctor_identity">
+                <div class="his_photo">
+                  <img src="/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
+                </div>
+                <div class="His_profession">
+                  <p class="name">
+                    <%= experts[i].name %>
+                  </p>
+                  <p class="degreeNspeciality">
+                    <%= experts[i].education[0].degree %> in <%=
                     experts[i].education[0].field %>
-                                            </p>
+                  </p>
 
-                                            <p class="expertize">
-                                                <span class="fa fa-user-md">&nbsp;&nbsp;</span> Experts in
-                                                <%= experts[i].expertise %>
-                                            </p>
-                                            <p class="aff">
-                                                <span class="fa fa-user">&nbsp;&nbsp;</span>
-                                                <%= experts[i].designation %>
-                                            </p>
-                                            <p class="college">
-                                                <span class="fa fa-university">&nbsp;</span>
-                                                <%= experts[i].affiliation %>
-                                            </p>
+                  <p class="expertize">
+                    <span class="fa fa-user-md">&nbsp;&nbsp;</span> Experts in
+                    <%= experts[i].expertise %>
+                  </p>
+                  <p class="aff">
+                    <span class="fa fa-user">&nbsp;&nbsp;</span>
+                    <%= experts[i].designation %>
+                  </p>
+                  <p class="college">
+                    <span class="fa fa-university">&nbsp;</span>
+                    <%= experts[i].affiliation %>
+                  </p>
 
-                                            <div class="bookingg">
-                                                <input type="hidden" name="docID" value="<%=experts[i]._id%>" />
-                                                <button class="viewProfile">
+                  <div class="bookingg">
+                    <input
+                      type="hidden"
+                      name="docID"
+                      value="<%=experts[i]._id%>"
+                    />
+                    <button class="viewProfile">
                       View Profile
                     </button>
-                                                <button class="bookAppointment" data-id="<%=experts[i]._id%>">
+
+                    <button
+                      class="bookAppointment"
+                      data-id="<%=experts[i]._id%>"
+                    >
                       Book appointment
                     </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <% } %>
-                    </div>
+                  </div>
                 </div>
+              </div>
+              <% } %>
             </div>
+          </div>
         </div>
+      </div>
     </section>
-    <%- include('./partials/bookAppointment') %>
-        <%-
+    <%- include('./partials/bookAppointment') %> <%-
     include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script>
-        $('.viewProfile').on('click', (e) => {
-            const ID = $(e.target.parentNode.children[0]).val();
-            location = '/services/doctor/profile/' + ID;
-        });
-        $('.search-btn').click((e) => {
-            $('#form').submit();
-        });
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $('.viewProfile').on('click', (e) => {
+      const ID = $(e.target.parentNode.children[0]).val();
+      location = '/services/doctor/profile/' + ID;
+    });
+    $('.search-btn').click((e) => {
+      $('#form').submit();
+    });
 
-        $('.bookAppointment').click((e) => {
-            console.log($(e.target).attr('data-id'));
-            location = '/services/bookAppointment/' + $(e.target).attr('data-id');
-        });
-    </script>
-
+    $('.bookAppointment').click((e) => {
+      console.log($(e.target).attr('data-id'));
+      location = '/services/bookAppointment/' + $(e.target).attr('data-id');
+    });
+    $('.emAppointment').click((e) => {
+      console.log($(e.target).attr('data-id'));
+      location = '/services/emergencyAppointment/';
+    });
+  </script>
 </html>

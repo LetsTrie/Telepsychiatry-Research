@@ -521,7 +521,6 @@ p {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   width: 100%;
-  padding: 5px 0;
 }
 
 #BOOK_APPOINTMENT_MODAL .flex-child,

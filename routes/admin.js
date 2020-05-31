@@ -31,6 +31,7 @@ const {
   getAdminResearches,
   getAdminResearch,
   getAdminNewResearch,
+  getAdminNewSpecialService,
   postResearches,
   researchFile,
   getAllResearches,
@@ -156,6 +157,12 @@ router.post(
 router.get('/research/update/:id', adminAccess, getAdminUpdateResearch);
 router.post('/research/update', adminAccess, postAdminUpdateResearch);
 router.get('/researches/unverified', adminAccess, getUnverifiedResearches);
+
+router.get('/new/specialService', adminAccess, getAdminNewSpecialService);
+router.post('/new/specialService', adminAccess, (req, res) => {
+  // form data database e rakhte hobe
+  return res.json(req.body);
+});
 
 // admin innovations
 router.get('/innovation/new', adminAccess, (req, res) => {

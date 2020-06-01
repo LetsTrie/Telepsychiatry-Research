@@ -29,40 +29,8 @@
 //     res.redirect('/events')
 // }
 const { workshopModel } = require('../models/workshop.js');
-exports.getWorkshop = async(req, res, next) => {
-    const { type } = req.query;
-    let data;
-    if (type) {
-        if (type == 'current') {
-            data = await workshopModel.find({
-                start: { $lte: new Date() },
-                end: { $gte: new Date() },
-            });
-            res.render('all-workshops', {
-                data,
-                user: req.user,
-            });
-        } else if (type == 'past') {
-            data = await workshopModel.find({
-                end: { $lte: new Date() },
-            });
-            res.render('all-workshops', {
-                data,
-                user: req.user,
-            });
-        } else if (type == 'upcoming') {
-            data = await workshopModel.find({
-                start: { $gte: new Date() },
-            });
-            res.render('all-workshops', {
-                data,
-                user: req.user,
-            });
-        }
-    }
-    data = await workshopModel.find();
-    res.render('all-workshops', { data, user: req.user });
-};
+const { workshopReg } = require('../models/workshopRegistration.js');
+
 exports.getTraining = (req, res, next) =>
     res.render('listOfTrainingSession', { user: req.user });
 exports.getNewWorkshop = (req, res, next) =>
@@ -72,70 +40,116 @@ exports.getNewTraining = (req, res, next) =>
 exports.eventsAll = (req, res, next) =>
     res.render('eventShowAll', { user: req.user });
 
-exports.workshopFile = async(req, res) => {
-    console.log('Workshop file added');
-    res.redirect('/events/workshop');
-};
-
-exports.postWorkshop = async(req, res) => {
-    const { title, description, location, image } = req.body;
-    const schedule = JSON.parse(req.body.schedule);
-    const sdate = schedule.startDate.split('/');
-    const stime = schedule.startTime.split(':');
-    let x = parseInt(stime[0]);
-    let y = ('0' + parseInt(stime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
-    if (schedule.startTime[6] == 'P') {
-        x = parseInt(stime[0]) + 12;
-    }
-    console.log(sdate);
-    let start =
-        sdate[2] +
-        '-' +
-        sdate[0] +
-        '-' +
-        sdate[1] +
-        ' ' +
-        '00' +
-        ':' +
-        y +
-        ':00:00';
-    console.log(start);
-    start = new Date(sdate[2], parseInt(sdate[0]) - 1, sdate[1], 13, 0, 0, 0);
-    console.log(start);
-
-    const edate = schedule.endDate.split('/').map((x) => parseInt(x));
-    const etime = schedule.endTime.split(':');
-    let a = parseInt(etime[0]);
-    let b = parseInt(etime[1].split(' ')[0]);
-    if (schedule.endTime[6] == 'P') {
-        a = parseInt(etime[0]) + 12;
-    }
-    const end = new Date(edate[2], edate[1] - 1, edate[0], a - 18, b, 0, 0);
-    console.log(end);
-
-    obj = {
-        title,
-        description,
-        location,
-        schedule,
-        start,
-        end,
-        image,
-    };
-    const newWorkshop = new workshopModel(obj);
-    console.log(newWorkshop);
-    // await newWorkshop.save();
-    res.send({
-        status: true,
-        msg: 'Workshop created',
-    });
-};
-
 exports.singleWorkshop = async(req, res) => {
-    console.log('sin');
-    const data = await workshopModel.findOne({ _id: req.params.id });
-    res.render('single-workshop', {
-        user: req.user,
-        data,
-    });
+    if (!req.user) {
+        const data = await workshopModel.findOne({ _id: req.params.id });
+        res.render('single-workshop', {
+            user: req.user,
+            data,
+            registered: false,
+        });
+    } else {
+        const data = await workshopModel.findOne({ _id: req.params.id });
+        let regList = [];
+        let registered = false;
+        const arr = await workshopReg.find({ user_id: req.user._id });
+        for (let i = 0; i < arr.length; i++) {
+            regList.push(arr[i].workshop_id);
+        }
+        if (regList.includes(data._id.toString())) {
+            registered = true;
+        }
+        console.log(registered);
+        res.render('single-workshop', {
+            user: req.user,
+            data,
+            registered,
+        });
+    }
+};
+
+exports.getWorkshop = async(req, res, next) => {
+    let { type, search } = req.query;
+    let data;
+    let regList = [];
+    if (req.user) {
+        const arr = await workshopReg.find({ user_id: req.user._id });
+        for (let i = 0; i < arr.length; i++) {
+            regList.push(arr[i].workshop_id);
+        }
+    }
+    if (type) {
+        if (type == 'current') {
+            data = await workshopModel.find({
+                start: { $lte: new Date() },
+                end: { $gte: new Date() },
+            });
+            res.render('all-workshops', {
+                data,
+                user: req.user,
+                regList,
+            });
+        } else if (type == 'past') {
+            data = await workshopModel.find({
+                end: { $lte: new Date() },
+            });
+            res.render('all-workshops', {
+                data,
+                user: req.user,
+                regList,
+            });
+        } else if (type == 'upcoming') {
+            data = await workshopModel.find({
+                start: { $gte: new Date() },
+            });
+            res.render('all-workshops', {
+                data,
+                user: req.user,
+                regList,
+            });
+        }
+    }
+    if (search) {
+        console.log(search);
+        search = search.trim();
+        let searchOptions = {
+            $regex: search,
+            $options: 'i',
+        };
+        data = await workshopModel.find({
+            $or: [
+                { title: searchOptions },
+                { description: searchOptions },
+                { location: searchOptions },
+            ],
+        });
+        return res.render('all-workshops', {
+            data,
+            user: req.user,
+            regList,
+        });
+    }
+    data = await workshopModel.find().sort({ _id: -1 });
+    res.render('all-workshops', { data, user: req.user, regList });
+};
+
+exports.regForWorkshop = async(req, res) => {
+    if (!req.user) {
+        req.flash('errorMessage', 'Sign in to register for this workshop');
+        res.redirect('back');
+    } else {
+        const obj = {
+            user_id: req.user._id,
+            user_name: req.user.name,
+            workshop_id: req.params.id,
+        };
+        const newWR = new workshopReg(obj);
+        console.log(req.params.id);
+        await newWR.save();
+        req.flash(
+            'successMessage',
+            'You have successfully registered to this workshop.'
+        );
+        res.redirect('back');
+    }
 };

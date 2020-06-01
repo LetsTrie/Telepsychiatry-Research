@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/single-workshop.css" />
+        <title>Add New Workshop | Admin Panel</title>
+</head>
+
+<body>
+    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+        <header>
+            <nav>
+                <%- include('./partials/adminNavbar.ejs')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Events</a>/Workshops/Single</p>
+                </div>
+                <div class="bigText">
+                    <p>Single Workshop</p>
+                </div>
+            </div>
+        </header>
+        <div class="cover-image">
+            <p>
+                <%= data.title %>
+            </p>
+        </div>
+        <div class="updateBtn text-right">
+            <p style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-secondary" data-toggle="modal" data-target="#parts" style="font-size: 18px; padding: 10px;">
+            Show All Participents
+          </button>
+                <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
+            Update
+          </button>
+            </p>
+        </div>
+        <div class="contentWrapper">
+            <div class="left">
+                <div class="body">
+                    <%- data.description %>
+                </div>
+            </div>
+            <div class="right">
+                <div class="contents">
+                    <div class="item">
+                        <div class="heading">
+                            <i class="fa fa-volume-up"></i>To speak to someone
+                        </div>
+
+                        <div class="con">+8801552-525252</div>
+                        <div class="con">info@trin-innovation.com</div>
+                    </div>
+                    <div class="item">
+                        <div class="heading">
+                            <i class="fa fa-map-marker"></i>Location
+                        </div>
+                        <div class="con">
+                            <%= data.location %>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="heading">
+                            <i class="fa fa-clock-o"></i>Event Timing
+                        </div>
+                        <div class="con">
+                            Time:
+                            <%= data.schedule.startTime %> to
+                                <%=
+                data.schedule.endTime %>
+                        </div>
+                        <div class="con">
+                            Date:
+                            <%= data.schedule.startDate %> to
+                                <%=
+                data.schedule.endDate %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="mobile-reg">
+            <p><button>Register</button></p>
+        </div> -->
+        <div class="lower">
+            <div class="lower-cover">
+                <div class="contents">
+                    <div class="texts">
+                        <div class="heading">Some random heading</div>
+                        <div class="body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nulla recusandae tempore reprehenderit unde eius. In quae odio ad voluptas dolorem earum placeat ducimus sapiente! Incidunt deserunt itaque fugit explicabo.
+                        </div>
+                        <div class="reg-btn">
+                            <div class=""></div>
+                            <!-- <button>Register</button> -->
+                        </div>
+                    </div>
+                    <div class=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="parts" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">
+                        All Participents
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <div class="modal-body">
+                    <div class="parts">
+                        <% for (let i=0; i<parts.length; i++) { %>
+                            <div class="each-part">
+                                <a href="/services/doctor/profile/<%=parts[i].user_id%>"> <i class="fa fa-user"></i>
+                                    <%= parts[i].user_name %>
+                                </a>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/footer')%>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+    $('.btn-success').click((e) => {
+        const id = e.target.id;
+        location = `/admin/workshop/update/${id}`;
+    });
+</script>
+
+</html>

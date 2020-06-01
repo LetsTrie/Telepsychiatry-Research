@@ -27,72 +27,134 @@
                 <%= data.title %>
             </p>
         </div>
-        <div class="contentWrapper">
-            <div class="left">
-                <div class="body">
-                    <%- data.description %>
-                </div>
+        <% if (successMessage.length != 0) { %>
+            <div class="alert alert-success" style="width: 60%; margin: 40px auto;">
+                <p style="text-align: center;">
+                    <%= successMessage %>
+                </p>
             </div>
-            <div class="right">
-                <div class="contents">
-                    <div class="item">
-                        <div class="heading">
-                            <i class="fa fa-volume-up"></i>To speak to someone
-                        </div>
+            <% } %>
+                <% if (errorMessage.length != 0) { %>
+                    <div class="alert alert-danger" style="width: 60%; margin: 40px auto;">
+                        <p style="text-align: center;">
+                            <%= errorMessage %>
+                        </p>
+                    </div>
+                    <% } %>
+                        <input type="hidden" value="<%=data._id%>" id="id" />
+                        <div class="contentWrapper">
+                            <div class="left">
+                                <div class="body">
+                                    <%- data.description %>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="contents">
+                                    <div class="item">
+                                        <div class="heading">
+                                            <i class="fa fa-volume-up"></i>To speak to someone
+                                        </div>
 
-                        <div class="con">+8801552-525252</div>
-                        <div class="con">info@trin-innovation.com</div>
-                    </div>
-                    <div class="item">
-                        <div class="heading">
-                            <i class="fa fa-map-marker"></i>Location
-                        </div>
-                        <div class="con">
-                            <%= data.location %>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="heading">
-                            <i class="fa fa-clock-o"></i>Event Timing
-                        </div>
-                        <div class="con">
-                            Time:
-                            <%= data.schedule.startTime %> to
-                                <%=
+                                        <div class="con">+8801552-525252</div>
+                                        <div class="con">info@trin-innovation.com</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="heading">
+                                            <i class="fa fa-map-marker"></i>Location
+                                        </div>
+                                        <div class="con">
+                                            <%= data.location %>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="heading">
+                                            <i class="fa fa-clock-o"></i>Event Timing
+                                        </div>
+                                        <div class="con">
+                                            Time:
+                                            <%= data.schedule.startTime %> to
+                                                <%=
                 data.schedule.endTime %>
-                        </div>
-                        <div class="con">
-                            Date:
-                            <%= data.schedule.startDate %> to
-                                <%=
+                                        </div>
+                                        <div class="con">
+                                            Date:
+                                            <%= data.schedule.startDate %> to
+                                                <%=
                 data.schedule.endDate %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mobile-reg">
-            <p><button>Register</button></p>
-        </div>
-        <div class="lower">
-            <div class="lower-cover">
-                <div class="contents">
-                    <div class="texts">
-                        <div class="heading">Some random heading</div>
-                        <div class="body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nulla recusandae tempore reprehenderit unde eius. In quae odio ad voluptas dolorem earum placeat ducimus sapiente! Incidunt deserunt itaque fugit explicabo.
+                        <div class="mobile-reg">
+                            <% if (registered) { %>
+                                <p>
+                                    <button disabled>
+            <i class="fa fa-check" style="color: #fff;"></i> Registered
+          </button>
+                                </p>
+                                <% } else { %>
+                                    <p><button>Register</button></p>
+                                    <% } %>
                         </div>
-                        <div class="reg-btn">
-                            <div class=""></div>
-                            <button>Register</button>
+                        <div class="lower">
+                            <div class="lower-cover">
+                                <div class="contents">
+                                    <div class="texts">
+                                        <div class="heading">Some random heading</div>
+                                        <div class="body">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, nulla recusandae tempore reprehenderit unde eius. In quae odio ad voluptas dolorem earum placeat ducimus sapiente! Incidunt deserunt itaque fugit explicabo.
+                                        </div>
+                                        <div class="reg-btn">
+                                            <div class=""></div>
+                                            <% if (registered) { %>
+                                                <button disabled>
+                  <i class="fa fa-check" style="color: #fff;"></i> Registered
+                </button>
+                                                <% } else { %>
+                                                    <button class="reg" data-toggle="modal" data-target="#exampleModal">
+                  Register
+                </button>
+                                                    <% } %>
+                                        </div>
+                                    </div>
+                                    <div class=""></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class=""></div>
-                </div>
-            </div>
-        </div>
     </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="justify-content: flex-start;">
+                    <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i> Confirmation
+                </div>
+                <div class="modal-body">
+                    <p style="text-align: center;">
+                        Are you sure you want to register for this event?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Cancel
+            </button>
+                    <button type="button" class="btn go-ahead btn-primary">
+              Go Ahead
+            </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <%- include('./partials/footer')%>
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+    $('.go-ahead').click((e) => {
+        const id = $('#id').val();
+        location = `/events/workshop/reg/${id}`;
+    });
+</script>
 
 </html>

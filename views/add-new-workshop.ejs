@@ -34,7 +34,7 @@
                     <div class="addResource_form">
                         <div class="alert alert-danger text-center" id="alert"></div>
                         <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
-                        <form action="/events/workshop/new/file" id="form" enctype="multipart/form-data" method="POST">
+                        <form action="/admin/workshop/new/file" id="form" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="filename" id="filename" />
                             <input type="hidden" name="id" id="id" />
                             <div class="one_box">
@@ -165,7 +165,7 @@
                 const image =
                     Date.parse(new Date().toString()) + '-' + $('#file')[0].files[0].name;
                 $('#filename').val(image);
-                $('alert').hide();
+                $('#alert').hide();
                 schedule = {
                     startDate,
                     startTime,
@@ -200,7 +200,7 @@
         const Submit = (data) => {
             $.ajax({
                 type: 'POST',
-                url: '/events/workshop/new',
+                url: '/admin/workshop/new',
                 data,
                 success: (data) => {
                     if (data.status) {
@@ -211,7 +211,7 @@
                         );
                         $('#alert-success').show();
                         $('#alert-success').html('The workshop is being added');
-                        // $('#form').submit();
+                        $('#form').submit();
                     }
                 },
             });

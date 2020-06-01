@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/vendorsTop')%>
+        <link rel="stylesheet" href="/css/all-workshops.css" />
+
+        <title>
+            Workshops | Telepsychiatry Research
+        </title>
+</head>
+
+<body>
+    <section class="wrapper">
+        <nav>
+            <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="assessment_wrapper">
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Admin</a> / Workshops</p>
+                </div>
+                <div class="bigText">
+                    <p>Workshops</p>
+                </div>
+            </div>
+
+            <div class="twoBigSectionFlex">
+                <div class="eachBigSection">
+                    <div class="searchFilter">
+                        <p>Search Filter</p>
+                    </div>
+                    <form action="#" id="search-form">
+                        <div class="searchFields">
+                            <div class="sField">
+                                <div class="input-group">
+                                    <input type="text" required class="form-control py-4" id="search-input" name="search" placeholder="Search Researches (With any keywords)" />
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" id="" type="submit">
+                        <i class="fa fa-search"></i>
+                      </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cat">
+                                <div class="cat_heading">
+                                    <p>Workshop Stage</p>
+                                </div>
+                                <div class="catOptions">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage" value="current" aria-selected="true" />
+                                        <label class="custom-control-label" for="customCheck">Current
+                      </label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage" value="past" />
+                                        <label class="custom-control-label" for="customCheckw">
+                        Past
+                      </label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckc" name="rStage" value="upcoming" />
+                                        <label class="custom-control-label" for="customCheckc">
+                        Upcoming
+                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="findDocBtn">
+                                <button id="search-btn">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="eachBigSection">
+                    <div class="bigHeading">
+                        <p>Workshops - Admin Panel</p>
+                    </div>
+                    <div class="submitResource mb-3" id="submitResource">
+                        <button>Add New Workshop</button>
+                    </div>
+                    <div class="all_resources">
+                        <div class="alert alert-success text-center" id="alert">
+                            <p></p>
+                        </div>
+                        <% for(let i = 0 ; i < data.length; i++) { %>
+                            <div class="each_resources">
+                                <div class="flx-prnt">
+                                    <div class="flx-chld image">
+                                        <div class="each_resources_img">
+                                            <img src="/workshop/<%= data[i].image %>" id="" alt="image" class="goToDetailsPage" />
+                                        </div>
+                                    </div>
+                                    <div class="flx-chld texts">
+                                        <div class="each_resources_heading">
+                                            <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
+                                                <%= data[i].title %>
+                                            </h4>
+                                        </div>
+                                        <div class="each_resources_desc">
+                                            <p>
+                                                <%- data[i].description %>
+                                            </p>
+                                        </div>
+                                        <div class="each_resources_info">
+                                            <i class="fa fa-table"></i>
+                                            <%= data[i].schedule.startDate %> to
+                                                <%=
+                      data[i].schedule.endDate %>
+                                                    <br />
+                                                    <i class="fa fa-clock-o"></i>
+                                                    <%= data[i].schedule.startTime %> to
+                                                        <%=
+                      data[i].schedule.endTime %>
+                                                            <br />
+                                                            <i class="fa fa-map-marker"></i>
+                                                            <%= data[i].location %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('./partials/bookAppointment') %>
+        <%-
+    include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+    <script>
+        $('.goToDetailsPage').click((e) => {
+            const id = e.target.id;
+            location = '/admin/workshop/' + id;
+        });
+        $('#submitResource').click((e) => {
+            location = '/admin/workshop/new';
+        });
+        $('.search-btn').click((e) => {
+            $('#form').submit();
+        });
+        $('input[name="rStage"]').click((e) => {
+            const stage = $(e.target).val();
+            console.log(stage);
+            location = `/admin/workshop?type=${stage}`;
+        });
+        $('#search-btn').click((e) => {
+            const phrase = $('#search-input').val();
+            console.log(`/admin/workshop?search=${phrase}`);
+            location = `/admin/workshop?search=${phrase}`;
+        });
+    </script>
+
+</html>

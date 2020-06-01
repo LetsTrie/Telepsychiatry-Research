@@ -13,121 +13,112 @@ const { eUserModel } = require('../models/expertUser');
 
 const LIMIT = 9;
 
-exports.postTestVersion = async (req, res, next) => {
-  const { id } = req.body;
-  const qItem = JSON.parse(req.body.qItem);
-  const newLanguage = JSON.parse(req.body.languages)[0];
-  const test = await testModel.find({ _id: id });
+exports.postTestVersion = async(req, res, next) => {
+    const { id } = req.body;
+    const qItem = JSON.parse(req.body.qItem);
+    const newLanguage = JSON.parse(req.body.languages)[0];
+    const test = await testModel.find({ _id: id });
 
-  let QuestionSet = test[0].questionSet;
-  QuestionSet.push(qItem);
-  let languages = test[0].language;
-  languages.push(newLanguage);
+    let QuestionSet = test[0].questionSet;
+    QuestionSet.push(qItem);
+    let languages = test[0].language;
+    languages.push(newLanguage);
 
-  await testModel.findOneAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        questionSet: QuestionSet,
-        language: languages,
-      },
-    }
-  );
+    await testModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            questionSet: QuestionSet,
+            language: languages,
+        },
+    });
 };
 
 const { createDirectory, createFile } = require('../config/file');
 const { getDate } = require('../config/dateTime');
 
-exports.getBackup = async (req, res, next) => {
-  const getDBName = process.env.mongoURI.split('/')[3].split('?')[0];
-  if (getDBName !== 'trin') {
-    return res.status(403).json({
-      success: false,
-      message: 'ACCESS_DENIED',
+exports.getBackup = async(req, res, next) => {
+    const getDBName = process.env.mongoURI.split('/')[3].split('?')[0];
+    if (getDBName !== 'trin') {
+        return res.status(403).json({
+            success: false,
+            message: 'ACCESS_DENIED',
+        });
+    }
+    const expertUserData = await eUserModel.find();
+    const FolderName = '/Backup/' + getDate();
+    await createDirectory(FolderName);
+    await createFile(
+        FolderName + '/expertUsers.json',
+        JSON.stringify(expertUserData)
+    );
+    return res.json(expertUserData);
+};
+
+exports.getAdminNewResearch = async(req, res, next) => {
+    return res.render('addResearchFromAdmin', { user: req.user });
+};
+
+exports.getAdminResearch = async(req, res, next) => {
+    return res.render('singleResearchFromAdmin', { user: req.user });
+};
+
+exports.getAdminResearches = async(req, res, next) => {
+    return res.render('researchsFromAdmin', { user: req.user });
+};
+
+exports.postTestVersion = async(req, res, next) => {
+    const { id } = req.body;
+    const qItem = JSON.parse(req.body.qItem);
+    const newLanguage = JSON.parse(req.body.languages)[0];
+    const test = await testModel.find({ _id: id });
+
+    let QuestionSet = test[0].questionSet;
+    QuestionSet.push(qItem);
+    let languages = test[0].language;
+    languages.push(newLanguage);
+
+    await testModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            questionSet: QuestionSet,
+            language: languages,
+        },
     });
-  }
-  const expertUserData = await eUserModel.find();
-  const FolderName = '/Backup/' + getDate();
-  await createDirectory(FolderName);
-  await createFile(
-    FolderName + '/expertUsers.json',
-    JSON.stringify(expertUserData)
-  );
-  return res.json(expertUserData);
+
+    res.send({
+        status: true,
+        id: id,
+    });
 };
 
-exports.getAdminNewResearch = async (req, res, next) => {
-  return res.render('addResearchFromAdmin', { user: req.user });
-};
-
-exports.getAdminResearch = async (req, res, next) => {
-  return res.render('singleResearchFromAdmin', { user: req.user });
-};
-
-exports.getAdminResearches = async (req, res, next) => {
-  return res.render('researchsFromAdmin', { user: req.user });
-};
-
-exports.postTestVersion = async (req, res, next) => {
-  const { id } = req.body;
-  const qItem = JSON.parse(req.body.qItem);
-  const newLanguage = JSON.parse(req.body.languages)[0];
-  const test = await testModel.find({ _id: id });
-
-  let QuestionSet = test[0].questionSet;
-  QuestionSet.push(qItem);
-  let languages = test[0].language;
-  languages.push(newLanguage);
-
-  await testModel.findOneAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        questionSet: QuestionSet,
-        language: languages,
-      },
+exports.postUpdateTest = async(req, res) => {
+    const { id, qLang } = req.body;
+    let QuestionSet = JSON.parse(req.body.questionSet)[0];
+    const test = await testModel.findById(id);
+    for (let i = 0; i < test.questionSet.length; i++) {
+        if (test.questionSet[i].language == qLang) {
+            test.questionSet.splice(i, 1);
+        }
     }
-  );
+    test.questionSet.push({
+        Questions: QuestionSet.Questions,
+        language: QuestionSet.language,
+    });
+    await testModel.update({ _id: id }, {
+        $set: {
+            testEng: req.body.testEng,
+            testBan: req.body.testBan,
+            disorderNameEng: trnsfrm(req.body.disorderNameEng),
+            disorderNameBan: req.body.disorderNameBan,
+            age: req.body.age,
+            isPaid: req.body.isPaid,
+            payAmount: req.body.payAmount,
+            questionSet: test.questionSet,
+        },
+    });
 
-  res.send({
-    status: true,
-    id: id,
-  });
-};
-
-exports.postUpdateTest = async (req, res) => {
-  const { id, qLang } = req.body;
-  let QuestionSet = JSON.parse(req.body.questionSet)[0];
-  const test = await testModel.findById(id);
-  for (let i = 0; i < test.questionSet.length; i++) {
-    if (test.questionSet[i].language == qLang) {
-      test.questionSet.splice(i, 1);
-    }
-  }
-  test.questionSet.push({
-    Questions: QuestionSet.Questions,
-    language: QuestionSet.language,
-  });
-  await testModel.update(
-    { _id: id },
-    {
-      $set: {
-        testEng: req.body.testEng,
-        testBan: req.body.testBan,
-        disorderNameEng: trnsfrm(req.body.disorderNameEng),
-        disorderNameBan: req.body.disorderNameBan,
-        age: req.body.age,
-        isPaid: req.body.isPaid,
-        payAmount: req.body.payAmount,
-        questionSet: test.questionSet,
-      },
-    }
-  );
-
-  res.send({
-    status: true,
-    msg: 'okay',
-  });
+    res.send({
+        status: true,
+        msg: 'okay',
+    });
 };
 
 // ############## OKAY ####################
@@ -140,9 +131,9 @@ exports.postUpdateTest = async (req, res) => {
 */
 
 exports.getDashboard = (req, res, next) =>
-  res.render('admin_dashboard', {
-    user: req.user,
-  });
+    res.render('admin_dashboard', {
+        user: req.user,
+    });
 
 /*
   @method : GET
@@ -152,9 +143,9 @@ exports.getDashboard = (req, res, next) =>
 */
 
 exports.getLogin = (req, res, next) =>
-  res.render('adminLogin', {
-    user: req.user,
-  });
+    res.render('adminLogin', {
+        user: req.user,
+    });
 
 /*
   @method : POST
@@ -164,18 +155,18 @@ exports.getLogin = (req, res, next) =>
 */
 
 exports.postLogin = (req, res, next) => {
-  if (req.body.email == admin.email && req.body.password === admin.password) {
-    passport.authenticate('local', {
-      successRedirect: '/admin/',
-      failureRedirect: '/admin/login',
-      failureFlash: true,
-    })(req, res, next);
-  } else {
-    return res.json({
-      gotError: true,
-      message: 'Incorrect Email or Password',
-    });
-  }
+    if (req.body.email == admin.email && req.body.password === admin.password) {
+        passport.authenticate('local', {
+            successRedirect: '/admin/',
+            failureRedirect: '/admin/login',
+            failureFlash: true,
+        })(req, res, next);
+    } else {
+        return res.json({
+            gotError: true,
+            message: 'Incorrect Email or Password',
+        });
+    }
 };
 
 /*
@@ -185,40 +176,40 @@ exports.postLogin = (req, res, next) => {
   @desc   : Add Test
 */
 
-exports.createTest = async (req, res, next) => {
-  let {
-    testEng,
-    testBan,
-    disorderNameEng,
-    disorderNameBan,
-    age,
-    isPaid,
-    payAmount,
-  } = req.body;
-  const language = JSON.parse(req.body.languages);
-  const questionSet = JSON.parse(req.body.questionSet);
-  const test = {
-    testEng,
-    testBan,
-    disorderNameEng: trnsfrm(disorderNameEng),
-    disorderNameBan,
-    age,
-    isPaid,
-    payAmount,
-    language,
-    questionSet,
-  };
-  const { validateTestData } = require('../validations/test');
-  const { error } = validateTestData(test);
-  if (error) return res.send({ status: false, msg: error.details[0].message });
-  const newTest = new testModel(test);
-  await newTest.save();
-  return res.send({
-    status: true,
-    msg: 'okay',
-    id: newTest._id,
-    lang: test.language[0],
-  });
+exports.createTest = async(req, res, next) => {
+    let {
+        testEng,
+        testBan,
+        disorderNameEng,
+        disorderNameBan,
+        age,
+        isPaid,
+        payAmount,
+    } = req.body;
+    const language = JSON.parse(req.body.languages);
+    const questionSet = JSON.parse(req.body.questionSet);
+    const test = {
+        testEng,
+        testBan,
+        disorderNameEng: trnsfrm(disorderNameEng),
+        disorderNameBan,
+        age,
+        isPaid,
+        payAmount,
+        language,
+        questionSet,
+    };
+    const { validateTestData } = require('../validations/test');
+    const { error } = validateTestData(test);
+    if (error) return res.send({ status: false, msg: error.details[0].message });
+    const newTest = new testModel(test);
+    await newTest.save();
+    return res.send({
+        status: true,
+        msg: 'okay',
+        id: newTest._id,
+        lang: test.language[0],
+    });
 };
 
 /*
@@ -228,50 +219,50 @@ exports.createTest = async (req, res, next) => {
   @desc   : Show All Disorders with distinct Test name
 */
 
-exports.getAllTests = async (req, res, next) => {
-  let searchKey = {};
-  const { disorder, test, paid } = req.query;
-  if (!nullChk(disorder)) searchKey['disorderNameEng'] = disorder;
-  if (!nullChk(test)) searchKey['testEng'] = test;
-  if (!nullChk(paid)) searchKey['isPaid'] = paid;
+exports.getAllTests = async(req, res, next) => {
+    let searchKey = {};
+    const { disorder, test, paid } = req.query;
+    if (!nullChk(disorder)) searchKey['disorderNameEng'] = disorder;
+    if (!nullChk(test)) searchKey['testEng'] = test;
+    if (!nullChk(paid)) searchKey['isPaid'] = paid;
 
-  let tests = await testModel.find(searchKey);
+    let tests = await testModel.find(searchKey);
 
-  let disorders = new Set();
-  for (let i = 0; i < tests.length; i++)
-    disorders.add(tests[i].disorderNameEng);
-  disorders = Array.from(disorders);
+    let disorders = new Set();
+    for (let i = 0; i < tests.length; i++)
+        disorders.add(tests[i].disorderNameEng);
+    disorders = Array.from(disorders);
 
-  const groupedTests = groupBy(tests, (tests) => tests.disorderNameEng);
+    const groupedTests = groupBy(tests, (tests) => tests.disorderNameEng);
 
-  let final = [];
-  for (let i = 0; i < disorders.length; i++) {
-    let disorderName = disorders[i];
-    let relatedTests = [];
-    let testMap = groupedTests.get(disorderName.toLowerCase());
-    for (let j = 0; j < testMap.length; j++) {
-      const langLen = testMap[j].language.length;
-      let language = langLen == 1 ? testMap[j].language[0] : 'English';
-      relatedTests.push({ test: testMap[j], language });
+    let final = [];
+    for (let i = 0; i < disorders.length; i++) {
+        let disorderName = disorders[i];
+        let relatedTests = [];
+        let testMap = groupedTests.get(disorderName.toLowerCase());
+        for (let j = 0; j < testMap.length; j++) {
+            const langLen = testMap[j].language.length;
+            let language = langLen == 1 ? testMap[j].language[0] : 'English';
+            relatedTests.push({ test: testMap[j], language });
+        }
+        final.push({ disorderName, relatedTests });
     }
-    final.push({ disorderName, relatedTests });
-  }
 
-  // ########### Search Disorder (All names) ###########
-  let AllTestForSearch = await testModel.find();
-  let fs_disorders = new Set();
-  for (let i = 0; i < AllTestForSearch.length; i++)
-    fs_disorders.add(
-      trnsfrm(AllTestForSearch[i].disorderNameEng.toLowerCase())
-    );
-  fs_disorders = Array.from(fs_disorders);
-  // ###################################################
+    // ########### Search Disorder (All names) ###########
+    let AllTestForSearch = await testModel.find();
+    let fs_disorders = new Set();
+    for (let i = 0; i < AllTestForSearch.length; i++)
+        fs_disorders.add(
+            trnsfrm(AllTestForSearch[i].disorderNameEng.toLowerCase())
+        );
+    fs_disorders = Array.from(fs_disorders);
+    // ###################################################
 
-  return res.render('admin__test', {
-    tests: final,
-    searchDisorder: fs_disorders,
-    user: req.user,
-  });
+    return res.render('admin__test', {
+        tests: final,
+        searchDisorder: fs_disorders,
+        user: req.user,
+    });
 };
 
 /*
@@ -281,16 +272,16 @@ exports.getAllTests = async (req, res, next) => {
   @desc   : Show a single test
 */
 
-exports.getSingleTest = async (req, res) => {
-  let testData = await testModel.findById(req.params.id);
-  let { lang } = req.query;
-  if (nullChk(lang)) {
-    const langLen = testData.language.length;
-    lang = langLen === 1 ? testData.language[0] : 'English';
-  }
-  const test = await getTestData(testData, lang);
-  console.log(test);
-  res.render('singleTest', { test, lang, user: req.user });
+exports.getSingleTest = async(req, res) => {
+    let testData = await testModel.findById(req.params.id);
+    let { lang } = req.query;
+    if (nullChk(lang)) {
+        const langLen = testData.language.length;
+        lang = langLen === 1 ? testData.language[0] : 'English';
+    }
+    const test = await getTestData(testData, lang);
+    console.log(test);
+    res.render('singleTest', { test, lang, user: req.user });
 };
 
 /*
@@ -300,15 +291,15 @@ exports.getSingleTest = async (req, res) => {
   @desc   : Update a test of a language
 */
 
-exports.updateTest = async (req, res) => {
-  let test = await testModel.findById(req.params.id);
-  let { lang } = req.query;
-  if (nullChk(lang)) {
-    const langLen = test.language.length;
-    lang = langLen === 1 ? test.language[0] : 'English';
-  }
-  const questionData = await getTestData(test, lang);
-  res.render('updateTest', { test, questionData, lang, user: req.user });
+exports.updateTest = async(req, res) => {
+    let test = await testModel.findById(req.params.id);
+    let { lang } = req.query;
+    if (nullChk(lang)) {
+        const langLen = test.language.length;
+        lang = langLen === 1 ? test.language[0] : 'English';
+    }
+    const questionData = await getTestData(test, lang);
+    res.render('updateTest', { test, questionData, lang, user: req.user });
 };
 
 /*
@@ -318,12 +309,12 @@ exports.updateTest = async (req, res) => {
   @desc   : Find Test by Disorder
 */
 
-exports.findTestbyDisorder = async (req, res) => {
-  const { value } = req.body;
-  const tests = await testModel.find({ disorderNameEng: value });
-  return res.json({
-    test: tests.map((x) => x.testEng),
-  });
+exports.findTestbyDisorder = async(req, res) => {
+    const { value } = req.body;
+    const tests = await testModel.find({ disorderNameEng: value });
+    return res.json({
+        test: tests.map((x) => x.testEng),
+    });
 };
 
 /*
@@ -333,545 +324,721 @@ exports.findTestbyDisorder = async (req, res) => {
   @desc   : Insert new (language) version of a test...
 */
 
-exports.addTestVersion = async (req, res, next) => {
-  let { alt } = req.query;
-  if (alt === 'English') alt = 'Bengali';
-  else alt = 'English';
-  const test = await testModel.findById(req.params.id);
-  return res.render('addTestVersion', { test, version: alt, user: req.user });
+exports.addTestVersion = async(req, res, next) => {
+    let { alt } = req.query;
+    if (alt === 'English') alt = 'Bengali';
+    else alt = 'English';
+    const test = await testModel.findById(req.params.id);
+    return res.render('addTestVersion', { test, version: alt, user: req.user });
 };
 
 async function getTestData(test, lang) {
-  let data = {};
-  data['_id'] = test._id;
-  data['testName'] = lang === 'English' ? test.testEng : test.testBan;
-  data['disorderName'] =
-    lang === 'English' ? test.disorderNameEng : test.disorderNameBan;
-  data['ageRange'] = test.age;
-  data['paidInput'] = test.isPaid;
-  data['payAmount'] = test.payAmount;
-  data['language'] = test.language;
-  data['questions'] = [];
+    let data = {};
+    data['_id'] = test._id;
+    data['testName'] = lang === 'English' ? test.testEng : test.testBan;
+    data['disorderName'] =
+        lang === 'English' ? test.disorderNameEng : test.disorderNameBan;
+    data['ageRange'] = test.age;
+    data['paidInput'] = test.isPaid;
+    data['payAmount'] = test.payAmount;
+    data['language'] = test.language;
+    data['questions'] = [];
 
-  let questions = [];
-  for (let i = 0; i < test.questionSet.length; i++) {
-    if (test.questionSet[i].language == lang) {
-      questions = test.questionSet[i].Questions;
-      break;
+    let questions = [];
+    for (let i = 0; i < test.questionSet.length; i++) {
+        if (test.questionSet[i].language == lang) {
+            questions = test.questionSet[i].Questions;
+            break;
+        }
     }
-  }
-  for (let i = 0; i < questions.length; i++) {
-    let obj = {};
-    obj['QuesName'] = questions[i].question;
-    obj['QuesScale'] = questions[i].scale;
-    obj['options'] = [];
-    for (let j = 0; j < questions[i].Options.length; j++) {
-      obj['options'].push({
-        optionName: questions[i].Options[j].option,
-        optionScale: questions[i].Options[j].scale,
-      });
+    for (let i = 0; i < questions.length; i++) {
+        let obj = {};
+        obj['QuesName'] = questions[i].question;
+        obj['QuesScale'] = questions[i].scale;
+        obj['options'] = [];
+        for (let j = 0; j < questions[i].Options.length; j++) {
+            obj['options'].push({
+                optionName: questions[i].Options[j].option,
+                optionScale: questions[i].Options[j].scale,
+            });
+        }
+        data['questions'].push(obj);
     }
-    data['questions'].push(obj);
-  }
-  return data;
+    return data;
 }
 
 // ################## Utils #######################
 
 function trnsfrm(x) {
-  return x.charAt(0).toUpperCase() + x.substr(1).toLowerCase();
+    return x.charAt(0).toUpperCase() + x.substr(1).toLowerCase();
 }
 
 function nullChk(data) {
-  return data === undefined || data === null || data === '';
+    return data === undefined || data === null || data === '';
 }
 
 function checker(req, res) {
-  if (req.user) {
-    const logged = JSON.stringify(admin) == JSON.stringify(req.user);
-    if (!logged) {
-      return res.redirect('/admin/login');
+    if (req.user) {
+        const logged = JSON.stringify(admin) == JSON.stringify(req.user);
+        if (!logged) {
+            return res.redirect('/admin/login');
+        }
+    } else {
+        return res.redirect('/admin/login');
     }
-  } else {
-    return res.redirect('/admin/login');
-  }
 }
 
 function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach((item) => {
-    const key = keyGetter(item).toLowerCase();
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
-    } else {
-      collection.push(item);
-    }
-  });
-  return map;
+    const map = new Map();
+    list.forEach((item) => {
+        const key = keyGetter(item).toLowerCase();
+        const collection = map.get(key);
+        if (!collection) {
+            map.set(key, [item]);
+        } else {
+            collection.push(item);
+        }
+    });
+    return map;
 }
 
 // ####################### Extra Part #######################
-exports.contactUs = async (req, res, next) => {
-  checker(req, res);
-  const page = +req.query.page || 1;
-  const data = await contactUsModel
-    .find()
-    .limit(LIMIT)
-    .skip(LIMIT * (page - 1))
-    .sort({ _id: -1 });
-  const totalItems = await contactUsModel.find().countDocuments();
-  return res.render('adminContactUs', {
-    user: req.user,
-    data,
-    ...pagination(page, LIMIT, totalItems, '/admin/contactUs?page='),
-  });
+exports.contactUs = async(req, res, next) => {
+    checker(req, res);
+    const page = +req.query.page || 1;
+    const data = await contactUsModel
+        .find()
+        .limit(LIMIT)
+        .skip(LIMIT * (page - 1))
+        .sort({ _id: -1 });
+    const totalItems = await contactUsModel.find().countDocuments();
+    return res.render('adminContactUs', {
+        user: req.user,
+        data,
+        ...pagination(page, LIMIT, totalItems, '/admin/contactUs?page='),
+    });
 };
 
-exports.adminGetResearch = async (req, res) => {
-  checker(req, res);
-  const page = +req.query.page || 1;
-  const search = req.query.search;
-  let searchKey = { isVerified: false };
-  let baseUrl = req.baseUrl;
-  if (search) {
-    baseUrl += `?search=${search}&page=`;
-    const searchOption = {
-      $regex: search,
-      $options: 'i',
-    };
-    searchKey = {
-      $or: [
-        { title: searchOption },
-        { BriefDesciption: searchOption },
-        { conflictOfInterest: searchOption },
-        { financialSupport: searchOption },
-        { Acknowlegement: searchOption },
-        { references: searchOption },
-        { authors: searchOption },
-        { isVerified: false },
-      ],
-    };
-  } else baseUrl += `?page=`;
+exports.adminGetResearch = async(req, res) => {
+    checker(req, res);
+    const page = +req.query.page || 1;
+    const search = req.query.search;
+    let searchKey = { isVerified: false };
+    let baseUrl = req.baseUrl;
+    if (search) {
+        baseUrl += `?search=${search}&page=`;
+        const searchOption = {
+            $regex: search,
+            $options: 'i',
+        };
+        searchKey = {
+            $or: [
+                { title: searchOption },
+                { BriefDesciption: searchOption },
+                { conflictOfInterest: searchOption },
+                { financialSupport: searchOption },
+                { Acknowlegement: searchOption },
+                { references: searchOption },
+                { authors: searchOption },
+                { isVerified: false },
+            ],
+        };
+    } else baseUrl += `?page=`;
 
-  const data = await ResearchModel.find(searchKey)
-    .limit(LIMIT)
-    .skip(LIMIT * (page - 1));
-  const totalItems = await ResearchModel.find(searchKey).countDocuments();
-  return res.render('adminResearch', {
-    data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
-    search,
-    user: req.user,
-    ...pagination(page, LIMIT, totalItems, baseUrl),
-  });
+    const data = await ResearchModel.find(searchKey)
+        .limit(LIMIT)
+        .skip(LIMIT * (page - 1));
+    const totalItems = await ResearchModel.find(searchKey).countDocuments();
+    return res.render('adminResearch', {
+        data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
+        search,
+        user: req.user,
+        ...pagination(page, LIMIT, totalItems, baseUrl),
+    });
 };
 
-exports.getResearch = async (req, res) => {
-  checker(req, res);
-  const data = await ResearchModel.findById(req.params.id);
-  res.render('adminSingleResearch', { data, user: req.user });
+exports.getResearch = async(req, res) => {
+    checker(req, res);
+    const data = await ResearchModel.findById(req.params.id);
+    res.render('adminSingleResearch', { data, user: req.user });
 };
 
-exports.getInnovations = async (req, res) => {
-  checker(req, res);
-  const page = +req.query.page || 1;
-  const search = req.query.search;
-  let searchKey = { isVerified: false };
-  let baseUrl = req.baseUrl;
-  if (search) {
-    baseUrl += `?search=${search}&page=`;
-    const searchOption = {
-      $regex: search,
-      $options: 'i',
-    };
-    searchKey = {
-      $or: [
-        { title: searchOption },
-        { BriefDesciption: searchOption },
-        { conflictOfInterest: searchOption },
-        { financialSupport: searchOption },
-        { Acknowlegement: searchOption },
-        { references: searchOption },
-        { authors: searchOption },
-        { isVerified: false },
-      ],
-    };
-  } else baseUrl += `?page=`;
+exports.getInnovations = async(req, res) => {
+    checker(req, res);
+    const page = +req.query.page || 1;
+    const search = req.query.search;
+    let searchKey = { isVerified: false };
+    let baseUrl = req.baseUrl;
+    if (search) {
+        baseUrl += `?search=${search}&page=`;
+        const searchOption = {
+            $regex: search,
+            $options: 'i',
+        };
+        searchKey = {
+            $or: [
+                { title: searchOption },
+                { BriefDesciption: searchOption },
+                { conflictOfInterest: searchOption },
+                { financialSupport: searchOption },
+                { Acknowlegement: searchOption },
+                { references: searchOption },
+                { authors: searchOption },
+                { isVerified: false },
+            ],
+        };
+    } else baseUrl += `?page=`;
 
-  const data = await InnovationModel.find(searchKey)
-    .limit(LIMIT)
-    .skip(LIMIT * (page - 1));
-  const totalItems = await InnovationModel.find(searchKey).countDocuments();
-  return res.render('adminInnovations', {
-    data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
-    search,
-    user: req.user,
-    ...pagination(page, LIMIT, totalItems, baseUrl),
-  });
+    const data = await InnovationModel.find(searchKey)
+        .limit(LIMIT)
+        .skip(LIMIT * (page - 1));
+    const totalItems = await InnovationModel.find(searchKey).countDocuments();
+    return res.render('adminInnovations', {
+        data: makeSmallParagraphFromHTML(data, 'BriefDesciption'),
+        search,
+        user: req.user,
+        ...pagination(page, LIMIT, totalItems, baseUrl),
+    });
 };
 
-exports.singleInnoavtion = async (req, res) => {
-  checker(req, res);
-  const data = await InnovationModel.findById(req.params.id);
-  res.render('adminSingleInnovation', { data, user: req.user });
+exports.singleInnoavtion = async(req, res) => {
+    checker(req, res);
+    const data = await InnovationModel.findById(req.params.id);
+    res.render('adminSingleInnovation', { data, user: req.user });
 };
 
 const APM = (data) => (data === 'AM' ? 1 : 0);
 const revAPM = (data) => (data ? 'AM' : 'PM');
 const makeNumberLengthTwo = (data) => {
-  let x = data.toString();
-  return x.length === 2 ? x : `0${x}`;
+    let x = data.toString();
+    return x.length === 2 ? x : `0${x}`;
 };
 
 const createTimeString = (frm, two) => {
-  checker(req, res);
-  return `${makeNumberLengthTwo(frm.from)}:00 ${revAPM(
+    checker(req, res);
+    return `${makeNumberLengthTwo(frm.from)}:00 ${revAPM(
     frm.APM
   )} - ${makeNumberLengthTwo(two.to)}:00 ${revAPM(two.APM)}`;
 };
 
 const getScheduleArray = (visitingTime) => {
-  checker(req, res);
-  const schedules = [];
-  for (let i = 0; i < visitingTime.length; i++) {
-    let frm = visitingTime[i].from;
-    let two = visitingTime[i].to;
-    let fromStart = parseInt(frm.split(':')[0]);
-    let toEnd = parseInt(two.split(':')[0]);
-    let fromAPM = APM(frm.split(' ')[1]);
-    let toAPM = APM(two.split(' ')[1]);
-    if (fromAPM === toAPM) {
-      if (fromStart > toEnd) {
-        return res.status(400).json({ success: false });
-      }
+    checker(req, res);
+    const schedules = [];
+    for (let i = 0; i < visitingTime.length; i++) {
+        let frm = visitingTime[i].from;
+        let two = visitingTime[i].to;
+        let fromStart = parseInt(frm.split(':')[0]);
+        let toEnd = parseInt(two.split(':')[0]);
+        let fromAPM = APM(frm.split(' ')[1]);
+        let toAPM = APM(two.split(' ')[1]);
+        if (fromAPM === toAPM) {
+            if (fromStart > toEnd) {
+                return res.status(400).json({ success: false });
+            }
+        }
+        while (fromStart !== toEnd || fromAPM !== toAPM) {
+            schedules.push({ from: fromStart, APM: fromAPM });
+            fromStart++;
+            if (fromStart > 12) fromStart %= 12;
+            if (fromStart === 12) fromAPM ^= 1;
+            schedules.push({ to: fromStart, APM: fromAPM });
+        }
     }
-    while (fromStart !== toEnd || fromAPM !== toAPM) {
-      schedules.push({ from: fromStart, APM: fromAPM });
-      fromStart++;
-      if (fromStart > 12) fromStart %= 12;
-      if (fromStart === 12) fromAPM ^= 1;
-      schedules.push({ to: fromStart, APM: fromAPM });
+    const schedule = [];
+    for (let i = 0; i < schedules.length; i += 2) {
+        schedule.push(createTimeString(schedules[i], schedules[i + 1]));
     }
-  }
-  const schedule = [];
-  for (let i = 0; i < schedules.length; i += 2) {
-    schedule.push(createTimeString(schedules[i], schedules[i + 1]));
-  }
-  return schedule;
+    return schedule;
 };
 
-exports.addDoctor = async (req, res, next) => {
-  checker(req, res);
-  const { error } = addDoctorValidation(req.body);
-  if (error) return res.status(400).json({ error: error.details[0].message });
-  const { visitingTime } = req.body;
-  const schedules = getScheduleArray(visitingTime);
-  const doc = new addDoctorModel({
-    ...req.body,
-    visitingTime: schedules,
-  });
-  await doc.save();
-  return res.json({ success: true, doc });
+exports.addDoctor = async(req, res, next) => {
+    checker(req, res);
+    const { error } = addDoctorValidation(req.body);
+    if (error) return res.status(400).json({ error: error.details[0].message });
+    const { visitingTime } = req.body;
+    const schedules = getScheduleArray(visitingTime);
+    const doc = new addDoctorModel({
+        ...req.body,
+        visitingTime: schedules,
+    });
+    await doc.save();
+    return res.json({ success: true, doc });
 };
 
-module.exports.postAddDoctor = async (req, res) => {
-  checker(req, res);
-  const {
-    name,
-    gender,
-    institute,
-    expertise,
-    designation,
-    aboutYourself,
-    email,
-    speciality,
-    dob,
-    fee,
-  } = req.body;
-  const education = JSON.parse(req.body.education);
-  const services = JSON.parse(req.body.services);
-  const workExperience = JSON.parse(req.body.workExperience);
-  const visitingHour = JSON.parse(req.body.visitingHour);
+module.exports.postAddDoctor = async(req, res) => {
+    checker(req, res);
+    const {
+        name,
+        gender,
+        institute,
+        expertise,
+        designation,
+        aboutYourself,
+        email,
+        speciality,
+        dob,
+        fee,
+    } = req.body;
+    const education = JSON.parse(req.body.education);
+    const services = JSON.parse(req.body.services);
+    const workExperience = JSON.parse(req.body.workExperience);
+    const visitingHour = JSON.parse(req.body.visitingHour);
 
-  console.log(req.body);
+    console.log(req.body);
 };
 
 module.exports.replyEmail = (req, res) => {
-  checker(req, res);
-  const reply = req.body.reply;
-  const emailID = req.body.emailID;
-  const id = req.body.id;
-  // sendReply(emailID, reply)
-  contactUsModel.updateOne(
-    { _id: id },
-    { $set: { isReplied: true } },
-    (err, docs) => {
-      req.flash('successMessage', 'ok');
-      res.redirect('back');
-    }
-  );
+    checker(req, res);
+    const reply = req.body.reply;
+    const emailID = req.body.emailID;
+    const id = req.body.id;
+    // sendReply(emailID, reply)
+    contactUsModel.updateOne({ _id: id }, { $set: { isReplied: true } },
+        (err, docs) => {
+            req.flash('successMessage', 'ok');
+            res.redirect('back');
+        }
+    );
 };
 
 // Research Module
-exports.getAllResearches = async (req, res) => {
-  const { stage } = req.query;
-  const researches = await ResearchModel.find({ researchStage: stage });
-  console.log(researches);
-  if (stage == 'ongoing') {
-    res.render('ongoingResearches', { researches, search: null });
-  } else {
-    res.render('completeResearches', { researches, search: null });
-  }
+exports.getAllResearches = async(req, res) => {
+    const { stage } = req.query;
+    const researches = await ResearchModel.find({ researchStage: stage });
+    console.log(researches);
+    if (stage == 'ongoing') {
+        res.render('ongoingResearches', { researches, search: null });
+    } else {
+        res.render('completeResearches', { researches, search: null });
+    }
 };
-exports.researchFile = async (req, res) => {
-  console.log('file saved');
-  res.redirect(`/admin/research/${req.body.id}`);
+exports.researchFile = async(req, res) => {
+    console.log('file saved');
+    res.redirect(`/admin/research/${req.body.id}`);
 };
 
 // ADMIN SUBMIT RESEARCH (GET)
 // OKAY
-exports.getAdminNewResearch = async (req, res, next) => {
-  return res.render('addResearchFromAdmin', { user: req.user });
+exports.getAdminNewResearch = async(req, res, next) => {
+    return res.render('addResearchFromAdmin', { user: req.user });
 };
 
 // ADMIN SUBMIT RESEARCH (POST)
 // OKAY
 const { validateResearchData } = require('../validations/researches');
-exports.postResearches = async (req, res) => {
-  if (!req.user) return res.send('User not found');
-  const { error } = validateResearchData(req.body);
-  console.log(error);
-  if (error) return res.send({ status: false, msg: 'error' });
-  const newResearch = new ResearchModel({
-    ...req.body,
-    description: makeSmallParagraphFromHTML([req.body], 'description')[0]
-      .description,
-    authorID: req.user._id,
-    isVerified: true,
-  });
-  await newResearch.save();
-  console.log(newResearch);
-  console.log('Bingo');
-  return res.send({ status: true, msg: newResearch._id });
+exports.postResearches = async(req, res) => {
+    if (!req.user) return res.send('User not found');
+    const { error } = validateResearchData(req.body);
+    console.log(error);
+    if (error) return res.send({ status: false, msg: 'error' });
+    const newResearch = new ResearchModel({
+        ...req.body,
+        description: makeSmallParagraphFromHTML([req.body], 'description')[0]
+            .description,
+        authorID: req.user._id,
+        isVerified: true,
+    });
+    await newResearch.save();
+    console.log(newResearch);
+    console.log('Bingo');
+    return res.send({ status: true, msg: newResearch._id });
 };
 
 // ADMIN GET SINGLE RESEARCH
 // OKAY
-exports.getAdminResearch = async (req, res, next) => {
-  const data = await ResearchModel.findById(req.params.id);
-  return res.render('singleResearchFromAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getAdminResearch = async(req, res, next) => {
+    const data = await ResearchModel.findById(req.params.id);
+    return res.render('singleResearchFromAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
 // ADMIN SHOW RESEARCH ( VERIFIED / UNVERIFIED)
 // OKAY
-exports.getAdminResearches = async (req, res, next) => {
-  const { verified } = req.query;
-  let isVerified = verified === 'false' ? false : true;
-  const data = await ResearchModel.find({ isVerified });
-  return res.render('researchsFromAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getAdminResearches = async(req, res, next) => {
+    const { verified } = req.query;
+    let isVerified = verified === 'false' ? false : true;
+    const data = await ResearchModel.find({ isVerified });
+    return res.render('researchsFromAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.getUnverifiedResearches = async (req, res, next) => {
-  const data = await ResearchModel.find({ isVerified: false });
-  return res.render('unverifiedResearchesAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getUnverifiedResearches = async(req, res, next) => {
+    const data = await ResearchModel.find({ isVerified: false });
+    return res.render('unverifiedResearchesAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.getAdminUpdateResearch = async (req, res, next) => {
-  const data = await ResearchModel.findOne({ _id: req.params.id });
-  return res.render('updateResearchFromAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getAdminUpdateResearch = async(req, res, next) => {
+    const data = await ResearchModel.findOne({ _id: req.params.id });
+    return res.render('updateResearchFromAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.postAdminUpdateResearch = async (req, res) => {
-  const {
-    id,
-    title,
-    description,
-    name,
-    designation,
-    email,
-    phone,
-    collaboration,
-    collabScope,
-    financialSupport,
-    newsAndPub,
-    researchStage,
-  } = req.body;
+exports.postAdminUpdateResearch = async(req, res) => {
+    const {
+        id,
+        title,
+        description,
+        name,
+        designation,
+        email,
+        phone,
+        collaboration,
+        collabScope,
+        financialSupport,
+        newsAndPub,
+        researchStage,
+    } = req.body;
 
-  await ResearchModel.findOneAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        title: title,
-        description: description,
-        name: name,
-        designation: designation,
-        email: email,
-        phone: phone,
-        collaboration: collaboration,
-        collabScope: collabScope,
-        financialSupport: financialSupport,
-        newsAndPub: newsAndPub,
-        researchStage: researchStage,
-      },
-    }
-  );
-  res.send({
-    status: true,
-    msg: 'okke',
-  });
+    await ResearchModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            title: title,
+            description: description,
+            name: name,
+            designation: designation,
+            email: email,
+            phone: phone,
+            collaboration: collaboration,
+            collabScope: collabScope,
+            financialSupport: financialSupport,
+            newsAndPub: newsAndPub,
+            researchStage: researchStage,
+        },
+    });
+    res.send({
+        status: true,
+        msg: 'okke',
+    });
 };
 
-exports.approveResearch = async (req, res) => {
-  await ResearchModel.findOneAndUpdate(
-    { _id: req.params.id },
-    { $set: { isVerified: true } }
-  );
-  res.redirect('/admin/researches');
+exports.approveResearch = async(req, res) => {
+    await ResearchModel.findOneAndUpdate({ _id: req.params.id }, { $set: { isVerified: true } });
+    res.redirect('/admin/researches');
 };
 
-exports.disapproveResearch = async (req, res) => {
-  // checker(req, res);
-  const id = req.params.id;
-  await ResearchModel.findByIdAndDelete(id);
-  res.redirect('/admin/researches');
+exports.disapproveResearch = async(req, res) => {
+    // checker(req, res);
+    const id = req.params.id;
+    await ResearchModel.findByIdAndDelete(id);
+    res.redirect('/admin/researches');
 };
 
 // Innovations Module
 
-exports.innovationFile = async (req, res) => {
-  console.log('innovations file saved');
-  res.redirect(`/admin/innovation/${req.body.id}`);
+exports.innovationFile = async(req, res) => {
+    console.log('innovations file saved');
+    res.redirect(`/admin/innovation/${req.body.id}`);
 };
 
 // ADMIN POST NEW INNOVATION
 // OKAY
 const { validateInnovationData } = require('../validations/innovations');
-exports.postInnovation = async (req, res) => {
-  console.log('I am in controller');
-  const { error } = validateInnovationData(req.body);
-  console.log('Checking Joi Error: ', error);
-  if (error) return res.send({ status: false, msg: 'error' });
-  const newInn = new InnovationModel({
-    ...req.body,
-    description: makeSmallParagraphFromHTML([req.body], 'description')[0]
-      .description,
-    authorID: req.user._id,
-    isVerified: true,
-  });
-  console.log('New Object: ', newInn);
-  await newInn.save();
-  console.log('MongoObject Saved: ', newInn);
-  return res.send({ status: true, msg: newInn._id });
+exports.postInnovation = async(req, res) => {
+    console.log('I am in controller');
+    const { error } = validateInnovationData(req.body);
+    console.log('Checking Joi Error: ', error);
+    if (error) return res.send({ status: false, msg: 'error' });
+    const newInn = new InnovationModel({
+        ...req.body,
+        description: makeSmallParagraphFromHTML([req.body], 'description')[0]
+            .description,
+        authorID: req.user._id,
+        isVerified: true,
+    });
+    console.log('New Object: ', newInn);
+    await newInn.save();
+    console.log('MongoObject Saved: ', newInn);
+    return res.send({ status: true, msg: newInn._id });
 };
 
 // ADMIN GET INNOVATION
 // OKAY
-exports.getAdminInnovation = async (req, res, next) => {
-  const data = await InnovationModel.findOne({ _id: req.params.id });
-  return res.render('singleInnovationFromAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getAdminInnovation = async(req, res, next) => {
+    const data = await InnovationModel.findOne({ _id: req.params.id });
+    return res.render('singleInnovationFromAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.getUnverifiedInnoations = async (req, res, next) => {
-  const data = await InnovationModel.find({ isVerified: false });
-  return res.render('unverifiedInnovationsAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getUnverifiedInnoations = async(req, res, next) => {
+    const data = await InnovationModel.find({ isVerified: false });
+    return res.render('unverifiedInnovationsAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.getAdminInnovations = async (req, res, next) => {
-  const { verified } = req.query;
-  let isVerified = verified === 'false' ? false : true;
-  const data = await InnovationModel.find({ isVerified });
-  return res.render('innovationsFromAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getAdminInnovations = async(req, res, next) => {
+    const { verified } = req.query;
+    let isVerified = verified === 'false' ? false : true;
+    const data = await InnovationModel.find({ isVerified });
+    return res.render('innovationsFromAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.getAdminUpdateInnovation = async (req, res, next) => {
-  const data = await InnovationModel.findOne({ _id: req.params.id });
-  return res.render('updateInnovationFromAdmin', {
-    data,
-    user: req.user,
-  });
+exports.getAdminUpdateInnovation = async(req, res, next) => {
+    const data = await InnovationModel.findOne({ _id: req.params.id });
+    return res.render('updateInnovationFromAdmin', {
+        data,
+        user: req.user,
+    });
 };
 
-exports.postAdminUpdateInnovation = async (req, res) => {
-  const {
-    id,
-    title,
-    description,
-    name,
-    designation,
-    email,
-    phone,
-    collaboration,
-    collabScope,
-    financialSupport,
-    newsAndPub,
-    innovationStage,
-    link,
-  } = req.body;
+exports.postAdminUpdateInnovation = async(req, res) => {
+    const {
+        id,
+        title,
+        description,
+        name,
+        designation,
+        email,
+        phone,
+        collaboration,
+        collabScope,
+        financialSupport,
+        newsAndPub,
+        innovationStage,
+        link,
+    } = req.body;
 
-  await InnovationModel.findOneAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        title: title,
-        description: description,
-        name: name,
-        designation: designation,
-        email: email,
-        phone: phone,
-        collaboration: collaboration,
-        collabScope: collabScope,
-        financialSupport: financialSupport,
-        newsAndPub: newsAndPub,
-        innovationStage: innovationStage,
-        link: link,
-      },
+    await InnovationModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            title: title,
+            description: description,
+            name: name,
+            designation: designation,
+            email: email,
+            phone: phone,
+            collaboration: collaboration,
+            collabScope: collabScope,
+            financialSupport: financialSupport,
+            newsAndPub: newsAndPub,
+            innovationStage: innovationStage,
+            link: link,
+        },
+    });
+    res.send({
+        status: true,
+        msg: 'okke',
+    });
+};
+
+exports.approveInnovation = async(req, res) => {
+    // checker(req, res);
+    const id = req.params.id;
+    await InnovationModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            isVerified: true,
+        },
+    });
+    res.redirect('/admin/innovations');
+};
+
+exports.disapproveInnovation = async(req, res) => {
+    // checker(req, res);
+    const id = req.params.id;
+    console.log(id);
+    await InnovationModel.findByIdAndDelete(id);
+    res.redirect('/admin/innovations');
+};
+
+// Events
+const { workshopModel } = require('../models/workshop.js');
+const { workshopReg } = require('../models/workshopRegistration.js');
+exports.getWorkshop = async(req, res, next) => {
+    let { type, search } = req.query;
+    let data;
+    if (type) {
+        if (type == 'current') {
+            data = await workshopModel.find({
+                start: { $lte: new Date() },
+                end: { $gte: new Date() },
+            });
+            res.render('allWorkshopFromAdmin', {
+                data,
+                user: req.user,
+            });
+        } else if (type == 'past') {
+            data = await workshopModel.find({
+                end: { $lte: new Date() },
+            });
+            res.render('allWorkshopFromAdmin', {
+                data,
+                user: req.user,
+            });
+        } else if (type == 'upcoming') {
+            data = await workshopModel.find({
+                start: { $gte: new Date() },
+            });
+            res.render('allWorkshopFromAdmin', {
+                data,
+                user: req.user,
+            });
+        }
     }
-  );
-  res.send({
-    status: true,
-    msg: 'okke',
-  });
-};
-
-exports.approveInnovation = async (req, res) => {
-  // checker(req, res);
-  const id = req.params.id;
-  await InnovationModel.findOneAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        isVerified: true,
-      },
+    if (search) {
+        console.log(search);
+        search = search.trim();
+        let searchOptions = {
+            $regex: search,
+            $options: 'i',
+        };
+        data = await workshopModel.find({
+            $or: [
+                { title: searchOptions },
+                { description: searchOptions },
+                { location: searchOptions },
+            ],
+        });
+        return res.render('allWorkshopFromAdmin', {
+            data,
+            user: req.user,
+        });
     }
-  );
-  res.redirect('/admin/innovations');
+    data = await workshopModel.find().sort({ _id: -1 });
+    res.render('allWorkshopFromAdmin', { data, user: req.user });
 };
 
-exports.disapproveInnovation = async (req, res) => {
-  // checker(req, res);
-  const id = req.params.id;
-  console.log(id);
-  await InnovationModel.findByIdAndDelete(id);
-  res.redirect('/admin/innovations');
+exports.singleWorkshop = async(req, res) => {
+    const data = await workshopModel.findOne({ _id: req.params.id });
+    const parts = await workshopReg.find({ workshop_id: req.params.id });
+    res.render('singleWorkshopFromAdmin', {
+        user: req.user,
+        data,
+        parts,
+    });
+};
+
+exports.postWorkshop = async(req, res) => {
+    const { title, description, location, image } = req.body;
+    const schedule = JSON.parse(req.body.schedule);
+    const sdate = schedule.startDate.split('/');
+    const stime = schedule.startTime.split(':');
+    let x;
+    let y = ('0' + parseInt(stime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+    if (schedule.startTime[6] == 'P' && stime != '12') {
+        x = ('0' + (parseInt(stime[0]) + 12)).slice(-2);
+    } else {
+        x = ('0' + (parseInt(stime[0]) % 12)).slice(-2);
+    }
+
+    let start = sdate[2] + '-' + sdate[0] + '-' + sdate[1] + 'T' + x + ':' + y;
+    console.log(start);
+    start = new Date(start);
+    start.setHours(start.getHours() - new Date().getTimezoneOffset() / 60);
+    console.log(start);
+
+    const edate = schedule.endDate.split('/');
+    const etime = schedule.endTime.split(':');
+    let a;
+    let b = ('0' + parseInt(etime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+    if (schedule.endTime[6] == 'P' && etime != '12') {
+        a = ('0' + (parseInt(etime[0]) + 12)).slice(-2);
+    } else {
+        a = ('0' + (parseInt(etime[0]) % 12)).slice(-2);
+    }
+
+    let end = edate[2] + '-' + edate[0] + '-' + edate[1] + 'T' + a + ':' + b;
+    console.log(end);
+    end = new Date(end);
+    end.setHours(end.getHours() - new Date().getTimezoneOffset() / 60);
+    console.log(end);
+
+    obj = {
+        title,
+        description,
+        location,
+        schedule,
+        start,
+        end,
+        image,
+    };
+    const newWorkshop = new workshopModel(obj);
+    console.log(newWorkshop);
+    await newWorkshop.save();
+    res.send({
+        status: true,
+        msg: 'Workshop created',
+    });
+};
+
+exports.workshopFile = async(req, res) => {
+    console.log('Workshop file added');
+    res.redirect('/admin/workshop');
+};
+
+exports.getUpdateWorkshop = async(req, res) => {
+    const data = await workshopModel.findOne({ _id: req.params.id });
+    res.render('updateWorkshop', {
+        user: req.user,
+        data,
+    });
+};
+
+exports.postUpdateWorkshop = async(req, res) => {
+    const { id, title, description, location } = req.body;
+    const schedule = JSON.parse(req.body.schedule);
+    const sdate = schedule.startDate.split('/');
+    const stime = schedule.startTime.split(':');
+    let x;
+    let y = ('0' + parseInt(stime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+    if (schedule.startTime[6] == 'P' && stime != '12') {
+        x = ('0' + (parseInt(stime[0]) + 12)).slice(-2);
+    } else {
+        x = ('0' + (parseInt(stime[0]) % 12)).slice(-2);
+    }
+
+    let start = sdate[2] + '-' + sdate[0] + '-' + sdate[1] + 'T' + x + ':' + y;
+    console.log(start);
+    start = new Date(start);
+    start.setHours(start.getHours() - new Date().getTimezoneOffset() / 60);
+    console.log(start);
+
+    const edate = schedule.endDate.split('/');
+    const etime = schedule.endTime.split(':');
+    let a;
+    let b = ('0' + parseInt(etime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+    if (schedule.endTime[6] == 'P' && etime != '12') {
+        a = ('0' + (parseInt(etime[0]) + 12)).slice(-2);
+    } else {
+        a = ('0' + (parseInt(etime[0]) % 12)).slice(-2);
+    }
+
+    let end = edate[2] + '-' + edate[0] + '-' + edate[1] + 'T' + a + ':' + b;
+    console.log(end);
+    end = new Date(end);
+    end.setHours(end.getHours() - new Date().getTimezoneOffset() / 60);
+    console.log(end);
+
+    await workshopModel.findOneAndUpdate({ _id: id }, {
+        $set: {
+            title: title,
+            description: description,
+            location: location,
+            schedule: {
+                startDate: schedule.startDate,
+                startTime: schedule.startTime,
+                endDate: schedule.endDate,
+                endTime: schedule.endTime,
+            },
+            start: start,
+            end: end,
+        },
+    });
+
+    res.send({
+        status: true,
+        msg: 'Workshop updated',
+    });
 };

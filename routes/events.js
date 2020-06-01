@@ -8,6 +8,7 @@ const {
     postWorkshop,
     workshopFile,
     eventsAll,
+    regForWorkshop,
 } = require('../controllers/events');
 
 const multer = require('multer');
@@ -34,7 +35,7 @@ const fileFilter = (req, file, cb) => {
     }
 };
 
-const uploadPhoto = multer({
+const uploadPhotoWorkshop = multer({
     storage: fileStorage,
     fileFilter: fileFilter,
 }).single('workshopFile');
@@ -46,11 +47,9 @@ const uploadPhoto = multer({
 
 router.get('/workshop', getWorkshop);
 router.get('/training', getTraining);
-router.get('/workshop/new', getNewWorkshop);
 router.get('/workshop/:id', singleWorkshop);
 router.get('/training/new', getNewTraining);
-router.post('/workshop/new', postWorkshop);
-router.post('/workshop/new/file', uploadPhoto, workshopFile);
 router.get('/showAll', eventsAll);
+router.get('/workshop/reg/:id', regForWorkshop);
 
 module.exports = router;

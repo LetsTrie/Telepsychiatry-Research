@@ -2267,6 +2267,10 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   padding-bottom: 15px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 @media (max-width: 900px) {
@@ -2276,6 +2280,20 @@ body {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+}
+
+.all_resources .each_resources .flx-prnt .image {
+  width: 20%;
+}
+
+.all_resources .each_resources .flx-prnt .texts {
+  width: 72%;
+}
+
+@media (max-width: 1300px) {
+  .all_resources .each_resources .flx-prnt .texts {
+    width: 55%;
   }
 }
 

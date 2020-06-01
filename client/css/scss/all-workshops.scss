@@ -211,8 +211,18 @@ body {
             display: flex;
             flex-direction: row;
             padding-bottom: 15px;
+            justify-content: space-between;
             @media (max-width: 900px) {
                 flex-direction: column;
+            }
+            .image {
+                width: 20%;
+            }
+            .texts {
+                width: 72%;
+                @media (max-width: 1300px) {
+                    width: 55%;
+                }
             }
             .flx-chld {
                 padding-left: 30px;

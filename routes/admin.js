@@ -55,6 +55,9 @@ const {
     getUpdateWorkshop,
     postUpdateWorkshop,
 
+    // special service
+    getAdminNewSpecialService,
+
     // backup
     getBackup,
 } = require('../controllers/admin');

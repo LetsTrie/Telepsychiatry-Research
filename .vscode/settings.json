@@ -1,6 +1,6 @@
 {
   "editor.tabSize": 2,
-  "editor.fontSize": 18,
+  "editor.fontSize": 22,
   "editor.formatOnPaste": true,
   "liveSassCompile.settings.autoprefix": [
     "> 1%",
@@ -58,5 +58,6 @@
     "source.fixAll.eslint": true
   },
   "python.pythonPath": "/usr/bin/python3",
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "editor.accessibilityPageSize": 15
 }

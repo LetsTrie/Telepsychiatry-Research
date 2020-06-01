@@ -33,7 +33,7 @@
                         <div class="alert alert-danger text-center" id="alert"></div>
                         <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
                         <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
-                        <form autocomplete="off" action="/admin/research/new/file" id="form" enctype="multipart/form-data" method="POST">
+                        <form autocomplete="off" action="/admin/new/specialService" id="form" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="filename" id="filename" />
                             <input type="hidden" name="id" id="id" />
 
@@ -57,39 +57,112 @@
                                 <div class="box_header">
                                     <p>Doctors:</p>
                                 </div>
-                                <input type="text" id="doctorCnt" name="doctorCnt" style="display: none; width: 100%;" />
+                                <input type="number" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
+                                <div class="keyContactPersonWrapper" id="doctor0">
+                                    <div class="keyContactPerson">
+                                        <div class="input_box_flx_prnt">
+                                            <div class="input_box_flx_chld">
+                                                <input id="doctorName0" type="text" name="doctorName" placeholder="Doctor name">
+                                            </div>'
+                                            <div class="input_box_flx_chld_btn">'
+                                                <button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="doctorAddPlace"></div>
                                 <button type="button" class="btn btn-secondary" onclick="addDoctor()">
                     Add doctor
                   </button>
                             </div>
+                    </div>
+                    </header>
+                    <div class="twoBigSectionFlex">
+                        <div class="oneBigFatCat_wrapper">
+                            <div class="oneBigFatCat">
+                                <div class="addResource text-center my-2">
+                                    <h1>Add Special Service</h1>
+                                </div>
+                                <div class="addResource_form">
+                                    <div class="alert alert-danger text-center" id="alert"></div>
+                                    <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
+                                    <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
+                                    <form autocomplete="off" action="/admin/research/new/file" id="form" enctype="multipart/form-data" method="POST">
+                                        <input type="hidden" name="filename" id="filename" />
+                                        <input type="hidden" name="id" id="id" />
 
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Service Details:</p>
+                                        <<<<<<< HEAD <div class="one_box">
+                                            <div class="box_header">
+                                                <p>Title:</p>
+                                            </div>
+                                            <div class="input_box">
+                                                <input type="text" name="title" id="title" placeholder="Title" />
+                                            </div>
                                 </div>
-                                <div class="input_box">
-                                    <textarea name="ServiceDetails" id="SDeditor"> </textarea>
+                                <div class="one_box">
+                                    <div class="box_header">
+                                        <p>Breif Description:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <textarea name="BriefDesciption" id="BDeditor"> </textarea>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="one_box">
+                                    <div class="box_header">
+                                        <p>Doctors:</p>
+                                    </div>
+                                    <input type="text" id="doctorCnt" name="doctorCnt" style="display: none; width: 100%;" />
+                                    <div id="doctorAddPlace"></div>
+                                    <button type="button" class="btn btn-secondary" onclick="addDoctor()">
+                    Add doctor
+                  </button>
+                                </div>
 
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Representational Photo</p>
+                                <div class="one_box">
+                                    <div class="box_header">
+                                        <p>Service Details:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <textarea name="ServiceDetails" id="SDeditor"> </textarea>
+                                    </div>
                                 </div>
-                                <div class="input_box">
-                                    <input type="file" name="representPhoto" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
-                                </div>
-                            </div>
 
-                            <div class="createResources__submit">
-                                <button id="submit-btn">Submit</button>
+                                <div class="one_box">
+                                    <div class="box_header">
+                                        <p>Representational Photo</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="file" name="representPhoto" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
+                                    </div>
+                                </div>
+                                =======
+                                <div class="one_box">
+                                    <div class="box_header">
+                                        <p>Service Details:</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <textarea name="ServiceDetails" id="SDeditor"> </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="one_box">
+                                    <div class="box_header">
+                                        <p>Representational Photo</p>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="file" name="representPhoto" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
+                                    </div>
+                                </div>
+                                >>>>>>> d1060547b122a03a0cbbe24088ef49f0bad8d840
+
+                                <div class="createResources__submit">
+                                    <button id="submit-btn">Submit</button>
+                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
     <%- include('./partials/footer')%>
 </body>
@@ -315,8 +388,16 @@
             });
         }
 
+        <<
+        << << < HEAD
         /*this doctors array is used in adding new doctor to service*/
         var doctors = <%-JSON.stringify(doctors)%>;
     </script>
 
 </html>
+======= /*this doctors array is used in adding new doctor to service*/ var doctors =
+<%-JSON.stringify(doctors)%>;
+    </script>
+
+    </html>
+    >>>>>>> d1060547b122a03a0cbbe24088ef49f0bad8d840

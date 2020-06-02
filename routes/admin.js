@@ -57,6 +57,8 @@ const {
 
     // special service
     getAdminNewSpecialService,
+    postAdminNewSS,
+    ssFile,
 
     // backup
     getBackup,
@@ -100,6 +102,16 @@ const workshopStorage = multer.diskStorage({
     },
 });
 
+const ssStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/specialService/');
+    },
+    filename: (req, file, cb) => {
+        const filename = req.body.filename;
+        cb(null, filename);
+    },
+});
+
 const fileFilter = (req, file, cb) => {
     if (
         file.mimetype === 'image/png' ||
@@ -126,6 +138,11 @@ const uploadPhotoWorkshop = multer({
     storage: workshopStorage,
     fileFilter: fileFilter,
 }).single('workshopFile');
+
+const uploadPhotoSS = multer({
+    storage: ssStorage,
+    fileFilter: fileFilter,
+}).single('ssFile');
 
 // OKAY
 router.get('/', adminAccess, getDashboard);
@@ -186,10 +203,8 @@ router.get('/researches/unverified', adminAccess, getUnverifiedResearches);
 
 // special services
 router.get('/new/specialService', adminAccess, getAdminNewSpecialService);
-router.post('/new/specialService', adminAccess, (req, res) => {
-    // form data database e rakhte hobe
-    return res.json(req.body);
-});
+router.post('/new/specialService', adminAccess, postAdminNewSS);
+router.post('/new/specialService/file', [adminAccess, uploadPhotoSS], ssFile);
 
 // admin innovations
 router.get('/innovation/new', adminAccess, (req, res) => {

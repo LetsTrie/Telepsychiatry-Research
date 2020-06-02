@@ -43,9 +43,9 @@
                 enctype="multipart/form-data"
                 method="POST"
               >
-               <input type="hidden" name="filename" id="filename" />
-               <input type="hidden" name="id" id="id" />
-               
+                <input type="hidden" name="filename" id="filename" />
+                <input type="hidden" name="id" id="id" />
+
                 <div class="one_box">
                   <div class="box_header">
                     <p>Title:</p>
@@ -71,12 +71,22 @@
                   <div class="box_header">
                     <p>Doctors:</p>
                   </div>
-                  <input type="number" id="doctorCnt" name="doctorCnt" value="0" style="display: none;">
+                  <input
+                    type="number"
+                    id="doctorCnt"
+                    name="doctorCnt"
+                    value="0"
+                    style="display: none;"
+                  />
                   <div id="doctorAddPlace"></div>
-                  <button type="button" class="btn btn-secondary" onclick="addDoctor()">Add doctor</button>                 
-                      
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="addDoctor()"
+                  >
+                    Add doctor
+                  </button>
                 </div>
-
 
                 <div class="one_box">
                   <div class="box_header">
@@ -87,7 +97,6 @@
                   </div>
                 </div>
 
-                
                 <div class="one_box">
                   <div class="box_header">
                     <p>Representational Photo</p>
@@ -336,6 +345,5 @@
 
     /*this doctors array is used in adding new doctor to service*/
     var doctors = <%-JSON.stringify(doctors)%>;
- 
   </script>
 </html>

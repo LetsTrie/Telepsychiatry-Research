@@ -302,6 +302,7 @@ body {
   width: 97%;
   margin: auto;
   margin-bottom: 30px;
+  // background-color: beige;
   .subsection-Heading {
     color: #1c82ca;
     font-family: 'Roboto';
@@ -315,19 +316,60 @@ body {
       text-decoration: underline;
     }
   }
+
   .subsection-Body {
     text-align: justify;
-    p {
-      font-size: 18px;
-      line-height: 1.7;
+    background-color: blue($color: #000000);
+    .flx_prnt {
+      @media (min-width: 1100px) {
+        display: flex;
+        justify-content: space-between;
+        
+      }
+      .flx_chld_major {
+        flex: 2;      
+        
+        p {
+          font-size: 18px;
+          line-height: 1.7;
+        }
+      }
+      .flx_chld_minor {
+        margin-left: 20px;
+        // text-align: center;
+        border: medium;
+        border-color: rgb(131, 162, 255);
+        border-style: solid;
+        border-radius: 6px;
+
+        max-width: 300px;
+        max-height: 300px;
+        flex: 1;        
+        // background-color: rgb(255, 255, 255);
+        background-image: url(../../images/buttonBackground.jpg);
+       /* Center and scale the image nicely */ 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+        //blurr effect
+        // filter: blur(8px);
+        // -webkit-filter: blur(8px);
+        button{
+          
+          margin: 25% 20% 25% 20%;
+        }
+        // margin: 10px 10px;
+      }
     }
   }
 }
 
 .specialServiceDoctors {
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-wrap: wrap;    
+  }
 
   .eachDoctor {
     width: 24%;

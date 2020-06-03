@@ -205,6 +205,7 @@ router.get('/researches/unverified', adminAccess, getUnverifiedResearches);
 router.get('/new/specialService', adminAccess, getAdminNewSpecialService);
 router.post('/new/specialService', adminAccess, postAdminNewSS);
 router.post('/new/specialService/file', [adminAccess, uploadPhotoSS], ssFile);
+router.post('/new/specialService', adminAccess, postAdminNewSS);
 
 // admin innovations
 router.get('/innovation/new', adminAccess, (req, res) => {

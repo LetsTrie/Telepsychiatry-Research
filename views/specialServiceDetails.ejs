@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/specialServiceDetails.css" />
+
+    <title>
+      Assessment | Innovations | Telepsychiatry Research
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="assessment_wrapper">
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="/">Home</a> / Services</p>
+          </div>
+          <div class="bigText">
+            <p>Pain Management Center</p>
+          </div>
+        </div>
+
+        <div class="twoBigSectionFlex">
+          <div class="oneBigFatCat_wrapper">
+            <div class="oneBigFatCat">
+              <div class="main-Heading">
+                <p>Pain Management Center</p>
+              </div>
+              <div class="specialServiceSubsection">
+                <div class="subsection-Heading">
+                  <p>ABOUT</p>
+                </div>
+                <div class="subsection-Body">
+                  <div class="flx_prnt">
+                    <div class="flx_chld_major">
+                      <p>
+                        The Pain Management Center at Stanford Health Care offers a
+                        comprehensive range of services for patients with acute or
+                        chronic pain. Through the combined expertise of a
+                        multidisciplinary team of pain specialists, Stanford offers
+                        the most advanced treatment options currently available, in
+                        a supportive, compassionate environment.
+                      </p>
+                    </div>
+                    <div class="flx_chld_minor">
+                      <button type="button" class="btn btn-danger">book appointment</button>
+                    </div>
+                  </div>                  
+                </div>                
+              </div>
+
+              <div class="specialServiceSubsection">
+                <div class="subsection-Heading">
+                  <p>Our Doctors</p>
+                </div>
+                <div class="subsection-Body specialServiceDoctors">
+                  <% console.log(ourExperts) %> <% for(let i = 0 ; i < 6; i++) {
+                  %>
+                  <div class="eachDoctor">
+                    <div class="es_img">
+                      <img
+                        src="/images/experts/<%=ourExperts[i].url%>.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="es_name">
+                      <p><%=ourExperts[i].name%></p>
+                      <p>
+                        <span><%=ourExperts[i].designation%></span>
+                      </p>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+
+              <div class="specialServiceSubsection">
+                <div class="subsection-Heading">
+                  <p>Service Details</p>
+                </div>
+                <div class="subsection-Body">
+                  <p>
+                    The Pain Management Center at Stanford Health Care offers a
+                    comprehensive range of services for patients with acute or
+                    chronic pain. Through the combined expertise of a
+                    multidisciplinary team of pain specialists, Stanford offers
+                    the most advanced treatment options currently available, in
+                    a supportive, compassionate environment.
+                    The Pain Management Center at Stanford Health Care offers a
+                    comprehensive range of services for patients with acute or
+                    chronic pain. Through the combined expertise of a
+                    multidisciplinary team of pain specialists, Stanford offers
+                    the most advanced treatment options currently available, in
+                    a supportive, compassionate environment.
+                    The Pain Management Center at Stanford Health Care offers a
+                    comprehensive range of services for patients with acute or
+                    chronic pain. Through the combined expertise of a
+                    multidisciplinary team of pain specialists, Stanford offers
+                    the most advanced treatment options currently available, in
+                    a supportive, compassionate environment.
+                    The Pain Management Center at Stanford Health Care offers a
+                    comprehensive range of services for patients with acute or
+                    chronic pain. Through the combined expertise of a
+                    multidisciplinary team of pain specialists, Stanford offers
+                    the most advanced treatment options currently available, in
+                    a supportive, compassionate environment.
+                  </p>                                                      
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+</html>

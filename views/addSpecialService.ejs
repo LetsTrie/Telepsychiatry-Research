@@ -10,86 +10,20 @@
 
 <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-      <header>
-        <nav>
-          <%- include('./partials/adminNavbar')%>
-        </nav>
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Admin Panel</a> / Special Service</p>
-          </div>
-          <div class="bigText">
-            <p>Add New Special Service</p>
-          </div>
-        </div>
-      </header>
-      <div class="twoBigSectionFlex">
-        <div class="oneBigFatCat_wrapper">
-          <div class="oneBigFatCat">
-            <div class="addResource text-center my-2">
-              <h1>Add Special Service</h1>
-            </div>
-            <div class="addResource_form">
-              <div class="alert alert-danger text-center" id="alert"></div>
-              <div
-                class="alert alert-success text-center"
-                id="alert-success"
-                style="display: none;"
-              ></div>
-              <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
-              <form
-                autocomplete="off"
-                action="/admin/research/new/file"
-                id="form"
-                enctype="multipart/form-data"
-                method="POST"
-              >
-                <input type="hidden" name="filename" id="filename" />
-                <input type="hidden" name="id" id="id" />
-
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Title:</p>
-                  </div>
-                  <div class="input_box">
-                    <input
-                      type="text"
-                      name="title"
-                      id="title"
-                      placeholder="Title"
-                    />
-                  </div>
+        <header>
+            <nav>
+                <%- include('./partials/adminNavbar')%>
+            </nav>
+            <div class="blueDivider">
+                <div class="smallText">
+                    <p><a href="#">Admin Panel</a> / Special Service</p>
                 </div>
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Breif Description:</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea name="BriefDesciption" id="BDeditor"> </textarea>
-                  </div>
-                </div>
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Doctors:</p>
-                  </div>
-                  <input
-                    type="number"
-                    id="doctorCnt"
-                    name="doctorCnt"
-                    value="0"
-                    style="display: none;"
-                  />
-                  <div id="doctorAddPlace"></div>
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    onclick="addDoctor()"
-                  >
-                    Add doctor
-                  </button>
+                <div class="bigText">
+                    <p>Add New Special Service</p>
                 </div>
             </div>
         </header>
+
         <div class="twoBigSectionFlex">
             <div class="oneBigFatCat_wrapper">
                 <div class="oneBigFatCat">
@@ -100,69 +34,63 @@
                         <div class="alert alert-danger text-center" id="alert"></div>
                         <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
                         <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
-                        <form autocomplete="off" action="/admin/new/specialService" id="form" enctype="multipart/form-data" method="POST">
+                        <form autocomplete="off" action="/admin/new/specialService/file" id="form" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="filename" id="filename" />
                             <input type="hidden" name="id" id="id" />
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Service Details:</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea name="ServiceDetails" id="SDeditor"> </textarea>
-                  </div>
-                </div>
-
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Representational Photo</p>
-                  </div>
-                  <div class="input_box">
-                    <input
-                      type="file"
-                      name="representPhoto"
-                      id="repPhotoID"
-                      accept="image/x-png,image/jpg,image/jpeg"
-                    />
-                  </div>
-                </div>
-
-                                <div class="one_box">
-                                    <div class="box_header">
-                                        <p>Representational Photo</p>
-                                    </div>
-                                    <div class="input_box">
-                                        <input type="file" name="representPhoto" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
-                                    </div>
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Title:</p>
                                 </div>
-                                =======
-                                <div class="one_box">
-                                    <div class="box_header">
-                                        <p>Service Details:</p>
-                                    </div>
-                                    <div class="input_box">
-                                        <textarea name="ServiceDetails" id="SDeditor"> </textarea>
-                                    </div>
+                                <div class="input_box">
+                                    <input type="text" name="title" id="title" placeholder="Title" />
                                 </div>
-
-                                <div class="one_box">
-                                    <div class="box_header">
-                                        <p>Representational Photo</p>
-                                    </div>
-                                    <div class="input_box">
-                                        <input type="file" name="representPhoto" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
-                                    </div>
-                                </div>
-                                >>>>>>> d1060547b122a03a0cbbe24088ef49f0bad8d840
-
-                                <div class="createResources__submit">
-                                    <button id="submit-btn">Submit</button>
-                                </div>
-                                </form>
                             </div>
-                        </div>
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Breif Description:</p>
+                                </div>
+                                <div class="input_box">
+                                    <textarea name="BriefDesciption" id="BDeditor"> </textarea>
+                                </div>
+                            </div>
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Doctors:</p>
+                                </div>
+                                <input type="text" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
+                                <div id="doctorAddPlace"></div>
+                                <button type="button" class="btn btn-secondary" onclick="addDoctor()">
+                    Add doctor
+                  </button>
+                            </div>
+
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Service Details:</p>
+                                </div>
+                                <div class="input_box">
+                                    <textarea name="ServiceDetails" id="SDeditor"> </textarea>
+                                </div>
+                            </div>
+
+                            <div class="one_box">
+                                <div class="box_header">
+                                    <p>Representational Photo</p>
+                                </div>
+                                <div class="input_box">
+                                    <input type="file" name="ssFile" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
+                                </div>
+                            </div>
+
+                            <div class="createResources__submit">
+                                <button id="submit-btn">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
     <%- include('./partials/footer')%>
 </body>
@@ -171,6 +99,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script>
         let bdeditor, sdeditor;
+        let Doctors = []
 
         ClassicEditor.create(document.querySelector('#BDeditor'))
             .then((editor) => {
@@ -194,35 +123,35 @@
         $('#submit-btn').click((e) => {
             e.preventDefault();
             const title = $('#title').val();
-            const descriptionAbout = bdeditor.getData();
-            const descriptionService = bdeditor.getData();
-            const doctorCnt = $('#doctorCnt').val();
+            const description = bdeditor.getData();
+            const details = sdeditor.getData();
             const imageFile = $('#repPhotoID');
 
             if (check(title)) {
                 showAlert('Enter the title');
-            } else if (check(descriptionAbout)) {
+            } else if (check(description)) {
                 showAlert('Enter a brief description');
-            } else if (check(descriptionService)) {
+            } else if (check(details)) {
                 showAlert('Enter service details');
-            } else if (doctorCnt == 0) {
+            } else if (Doctors.length == 0) {
                 showAlert('Enter doctors for this service');
             } else if (!imageFile[0].files.length) {
                 showAlert('Enter the representational photo');
             } else if ($('#repPhotoID')[0].files[0].size / 1024 > 250) {
                 showAlert('File size must be less then 250 KB');
             } else {
-                const file =
+                $('#alert').hide()
+                const image =
                     Date.parse(new Date().toString()) +
                     '-' +
                     $('#repPhotoID')[0].files[0].name;
-                $('#filename').val(file);
+                $('#filename').val(image);
                 const data = {
                     title,
-                    descriptionAbout,
-                    descriptionService,
-                    doctorCnt,
-                    file,
+                    description,
+                    details,
+                    image,
+                    doctors: JSON.stringify(Doctors)
                 };
                 console.log(data);
                 Submit(data);
@@ -250,8 +179,17 @@
                 success: (data) => {
                     console.log(data);
                     if (data.status) {
+                        $('html, body').animate({
+                                scrollTop: 0,
+                            },
+                            'slow'
+                        );
+                        $('#alert-success').show()
+                        $('#alert-success').html(data.msg)
                         $('#id').val(data.msg);
-                        $('#form').submit();
+                        setInterval(() => {
+                            $('#form').submit()
+                        }, 2000);
                     }
                 },
             });
@@ -266,6 +204,7 @@
                 '<div class="input_box_flx_prnt">' +
                 '<div class="input_box_flx_chld">' +
                 '<input id="doctorName' + doctorNo + '" type="text" name="doctorName" placeholder="Doctor name">' +
+
                 '</div>' +
                 '<div class="input_box_flx_chld_btn">' +
                 '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
@@ -320,8 +259,9 @@
                         b.addEventListener("click", function(e) {
                             /*insert the value for the autocomplete text field:*/
                             inp.value = this.getElementsByTagName("input")[0].value;
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
+                            Doctors.push(docIDs[arr.indexOf(inp.value)])
+                                /*close the list of autocompleted values,
+                                (or any other open lists of autocompleted values:*/
                             closeAllLists();
                         });
                         a.appendChild(b);
@@ -329,6 +269,7 @@
                 }
             });
             /*execute a function presses a key on the keyboard:*/
+
             inp.addEventListener("keydown", function(e) {
                 var x = document.getElementById(this.id + "autocomplete-list");
                 if (x) x = x.getElementsByTagName("div");
@@ -388,13 +329,10 @@
             });
         }
 
-    /*this doctors array is used in adding new doctor to service*/
-    var doctors = <%-JSON.stringify(doctors)%>;
-  </script>
-</html>
-======= /*this doctors array is used in adding new doctor to service*/ var doctors =
-<%-JSON.stringify(doctors)%>;
+        /*this doctors array is used in adding new doctor to service*/
+        var doctors = <%-JSON.stringify(doctors) %>;
+        var docIDs = <%- JSON.stringify(docIDs) %>;
     </script>
 
-    </html>
-    >>>>>>> d1060547b122a03a0cbbe24088ef49f0bad8d840
+</html>
+<!-- https://www.youtube.com/watch?v=LnyDe73orLw&t=3s  -->

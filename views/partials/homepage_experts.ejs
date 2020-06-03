@@ -1,29 +1,37 @@
 <div class="cardspace">
-  <div class="owl-carousel owl-theme owl-doctor-list">
-    <% console.log(ourExperts) %> <% for(let i = 0 ; i < 6; i++) { %>
-    <div class="item">
-      <div class="m-1 mb-5 card">
-        <img
-          src="/images/experts/<%=ourExperts[i].url%>.jpg"
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h5 class="card-title">
-            <p class="cardName"><%=ourExperts[i].name%></p>
-            <p class="cardDegree"><%=ourExperts[i].designation%></p>
-          </h5>
-          <p class="card-text mb-3" style="line-height: 1.6;">
-            <%=ourExperts[i].bio%>
-          </p>
-          <p class="icons">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-google-plus"></a>
-            <a href="#" class="fa fa-instagram"></a>
-            <a href="#" class="fa fa-linkedin"></a>
-          </p>
-        </div>
-      </div>
+    <div class="owl-carousel owl-theme owl-doctor-list">
+        <% images = [
+    'http://trin-innovation.com/uploads/1590938848000-inbound2635749077641072042.jpg',
+    'http://trin-innovation.com/uploads/1590827490000-Golam-Rabbani.jpg',
+    'http://trin-innovation.com/uploads/1587541757000-image.jpg',
+    'http://trin-innovation.com/uploads/1587121856000-Capture.PNG' ]%>
+            <%
+    for(let i = 0 ; i < ourExperts.length; i++) { %>
+                <div class="item">
+                    <div class="m-1 mb-5 card">
+                        <% console.log(ourExperts[i].name) %>
+                            <img src="<%=images[i]%>" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <p class="cardName">
+                                        <%=ourExperts[i].name%>
+                                    </p>
+                                    <p class="cardDegree">
+                                        <%=ourExperts[i].designation%>
+                                    </p>
+                                </h5>
+                                <p class="card-text mb-3" style="line-height: 1.6;">
+                                    <%=ourExperts[i].aboutYourself%>
+                                </p>
+                                <p class="icons">
+                                    <a href="#" class="fa fa-facebook"></a>
+                                    <a href="#" class="fa fa-google-plus"></a>
+                                    <a href="#" class="fa fa-instagram"></a>
+                                    <a href="#" class="fa fa-linkedin"></a>
+                                </p>
+                            </div>
+                    </div>
+                </div>
+                <% } %>
     </div>
-    <% } %>
-  </div>
 </div>

@@ -1079,3 +1079,8 @@ exports.postUpdateWorkshop = async(req, res) => {
         msg: 'Workshop updated',
     });
 };
+
+exports.deleteWorkshop = async(req, res) => {
+    await workshopModel.findByIdAndDelete({_id: req.params.id})
+    res.redirect('/admin/workshop')
+}

@@ -13,6 +13,10 @@
   padding-top: 20px;
 }
 
+.cardspace .item img {
+  height: 200px;
+}
+
 .cardspace .item .card {
   background: white;
   width: 300px;

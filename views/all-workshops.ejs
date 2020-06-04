@@ -3,11 +3,11 @@
 
 <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/all-workshops.css" />
+    <link rel="stylesheet" href="/css/all-workshops.css" />
 
-        <title>
-            Workshops | Telepsychiatry Research
-        </title>
+    <title>
+        Workshops | Telepsychiatry Research
+    </title>
 </head>
 
 <body>
@@ -34,11 +34,12 @@
                         <div class="searchFields">
                             <div class="sField">
                                 <div class="input-group">
-                                    <input type="text" required class="form-control py-4" id="search-input" name="search" placeholder="Search Researches (With any keywords)" />
+                                    <input type="text" required class="form-control py-4" id="search-input"
+                                        name="search" placeholder="Search Researches (With any keywords)" />
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" id="" type="submit">
-                        <i class="fa fa-search"></i>
-                      </button>
+                                            <i class="fa fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -48,21 +49,24 @@
                                 </div>
                                 <div class="catOptions">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage" value="current" aria-selected="true" />
+                                        <input type="checkbox" class="custom-control-input" id="customCheck"
+                                            name="rStage" value="current" aria-selected="true" />
                                         <label class="custom-control-label" for="customCheck">Current
-                      </label>
+                                        </label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage" value="past" />
+                                        <input type="checkbox" class="custom-control-input" id="customCheckw"
+                                            name="rStage" value="past" />
                                         <label class="custom-control-label" for="customCheckw">
-                        Past
-                      </label>
+                                            Past
+                                        </label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckc" name="rStage" value="upcoming" />
+                                        <input type="checkbox" class="custom-control-input" id="customCheckc"
+                                            name="rStage" value="upcoming" />
                                         <label class="custom-control-label" for="customCheckc">
-                        Upcoming
-                      </label>
+                                            Upcoming
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -79,83 +83,70 @@
                     </div>
                     <div class="all_resources">
                         <% if (successMessage.length != 0) { %>
-                            <div class="alert alert-success text-center">
-                                <p>
-                                    <%= successMessage %>
-                                </p>
+                        <div class="alert alert-success text-center">
+                            <p>
+                                <%= successMessage %>
+                            </p>
+                        </div>
+                        <% } %>
+                        <% if (errorMessage.length != 0) { %>
+                        <div class="alert alert-danger text-center">
+                            <p>
+                                <%= errorMessage %>
+                            </p>
+                        </div>
+                        <% } %>
+                        <% for(let i = 0 ; i < data.length; i++) { %>
+                        <div class="each-resources">
+                            <div class="image">
+                                <img src="/workshop/<%=data[i].image%>" alt="">
                             </div>
-                            <% } %>
-                                <% if (errorMessage.length != 0) { %>
-                                    <div class="alert alert-danger text-center">
-                                        <p>
-                                            <%= errorMessage %>
-                                        </p>
+                            <div class="texts">
+                                <div class="title">
+                                    <%= data[i].title %>
+                                </div>
+                                <div class="body">
+                                    <%- data[i].description %>
+                                </div>
+                                <div class="last-row">
+                                    <div class="add-info">
+                                        <div class="add-child"><i class="fa fa-map-marker"></i> <%= data[i].location %>
+                                        </div>
+                                        <div class="add-child"> <i class="fa fa-clock-o"></i>
+                                            <%= data[i].schedule.startTime %> to
+                                            <%= data[i].schedule.startTime %></div>
+                                        <div class="add-child"> <i class="fa fa-table"></i>
+                                            <%= data[i].schedule.startDate %> to
+                                            <%= data[i].schedule.endDate %></div>
                                     </div>
-                                    <% } %>
-                                        <% for(let i = 0 ; i < data.length; i++) { %>
-                                            <div class="each_resources">
-                                                <div class="flx-prnt" style="justify-content: space-between;">
-                                                    <div class="flx-chld image">
-                                                        <div class="each_resources_img">
-                                                            <img src="/workshop/<%= data[i].image %>" id="" alt="image" class="goToDetailsPage" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flx-chld texts">
-                                                        <div class="each_resources_heading">
-                                                            <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
-                                                                <%= data[i].title %>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="each_resources_desc">
-                                                            <p>
-                                                                <%- data[i].description %>
-                                                            </p>
-                                                        </div>
-                                                        <div class="each_resources_info">
-                                                            <i class="fa fa-table"></i>
-                                                            <%= data[i].schedule.startDate %> to
-                                                                <%=
-                      data[i].schedule.endDate %>
-                                                                    <br />
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <%= data[i].schedule.startTime %> to
-                                                                        <%=
-                      data[i].schedule.endTime %>
-                                                                            <br />
-                                                                            <i class="fa fa-map-marker"></i>
-                                                                            <%= data[i].location %>
-                                                        </div>
-                                                        <div class="each_resources_reg">
-                                                            <div class=""></div>
-                                                            <div class="">
-                                                                <% if (regList.includes(data[i]._id.toString())) { %>
-                                                                    <button style="background-color: darkorange;" disabled>
-                          <i class="fa fa-check" style="color: #fff;"></i>
-                          Registered
-                        </button>
-                                                                    <% } else { %>
-                                                                        <button class="regBtn" name="<%=data[i]._id%>" data-toggle="modal" data-target="#exampleModal">
-                          Register
-                        </button>
-                                                                        <% } %>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <hr />
-                                            </div>
-                                            <% } %>
+                                    <div class="btn-flex">
+                                        <button class="view-btn" id="<%= data[i]._id %>">View Details</button>
+                                        <% if (regList.includes(data[i]._id.toString())) { %>
+                                        <button class="regd-btn" disabled><i class="fa fa-check"></i>
+                                            Registered</button>
+                                        <% } else { %>
+                                        <button class="reg-btn" name="<%=data[i]._id%>" data-toggle="modal"
+                                            data-target="#exampleModal">Register</button>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="justify-content: flex-start;">
-                    <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i> Confirmation
+                    <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i>
+                    Confirmation
                 </div>
                 <div class="modal-body">
                     <p style="text-align: center;">
@@ -164,51 +155,51 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Cancel
-            </button>
+                        Cancel
+                    </button>
                     <button type="button" class="btn go-ahead btn-primary">
-              Go Ahead
-            </button>
+                        Go Ahead
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <%- include('./partials/bookAppointment') %>
-        <%-
+    <%-
     include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
-    <script>
-        let regID;
-        $('.regBtn').click((e) => {
-            regID = e.target.name;
-            console.log(regID);
-        });
-        $('.go-ahead').click((e) => {
-            console.log('go-ahead');
-            location = `/events/workshop/reg/${regID}`;
-        });
-        $('.goToDetailsPage').click((e) => {
-            const id = e.target.id;
-            location = '/events/workshop/' + id;
-        });
-        $('#submitResource').click((e) => {
-            location = '/events/workshop/new';
-        });
-        $('.search-btn').click((e) => {
-            $('#form').submit();
-        });
-        $('input[name="rStage"]').click((e) => {
-            const stage = $(e.target).val();
-            console.log(stage);
-            location = `/events/workshop?type=${stage}`;
-        });
-        $('#search-btn').click((e) => {
-            const phrase = $('#search-input').val();
-            console.log(`/events/workshop?search=${phrase}`);
-            location = `/events/workshop?search=${phrase}`;
-        });
-    </script>
+<script>
+    let regID;
+    $('.reg-btn').click((e) => {
+        regID = e.target.name;
+        console.log(regID);
+    });
+    $('.go-ahead').click((e) => {
+        console.log('go-ahead');
+        location = `/events/workshop/reg/${regID}`;
+    });
+    $('.view-btn').click((e) => {
+        const id = e.target.id;
+        location = '/events/workshop/' + id;
+    });
+    $('#submitResource').click((e) => {
+        location = '/events/workshop/new';
+    });
+    $('.search-btn').click((e) => {
+        $('#form').submit();
+    });
+    $('input[name="rStage"]').click((e) => {
+        const stage = $(e.target).val();
+        console.log(stage);
+        location = `/events/workshop?type=${stage}`;
+    });
+    $('#search-btn').click((e) => {
+        const phrase = $('#search-input').val();
+        console.log(`/events/workshop?search=${phrase}`);
+        location = `/events/workshop?search=${phrase}`;
+    });
+</script>
 
 </html>

@@ -54,6 +54,7 @@ const {
     singleWorkshop,
     getUpdateWorkshop,
     postUpdateWorkshop,
+    deleteWorkshop,
 
     // special service
     getAdminNewSpecialService,
@@ -236,6 +237,7 @@ router.get('/workshop', adminAccess, getWorkshop);
 router.get('/workshop/:id', adminAccess, singleWorkshop);
 router.get('/workshop/update/:id', adminAccess, getUpdateWorkshop);
 router.post('/workshop/update', adminAccess, postUpdateWorkshop);
+router.get('/workshop/delete/:id', adminAccess, deleteWorkshop)
 
 // admin backup
 router.get('/backup', getBackup);

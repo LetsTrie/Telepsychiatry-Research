@@ -73,8 +73,6 @@
                   <div class="flx_prnt">
                     <div class="flx_chld">
                       <iframe
-                        width="300"
-                        height="200"
                         src="https://www.youtube.com/embed/lS5NTF65ve4"
                         frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -83,8 +81,6 @@
                     </div>
                     <div class="flx_chld">
                       <iframe
-                        width="300"
-                        height="200"
                         src="https://www.youtube.com/embed/lS5NTF65ve4"
                         frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -93,8 +89,6 @@
                     </div>
                     <div class="flx_chld">
                       <iframe
-                        width="300"
-                        height="200"
                         src="https://www.youtube.com/embed/lS5NTF65ve4"
                         frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -110,7 +104,26 @@
                   <p>Our Doctors</p>
                 </div>
                 <div class="subsection-Body specialServiceDoctors">
-                  <% console.log(ourExperts) %> <% for(let i = 0 ; i < 6; i++) {
+                  <% console.log(ourExperts) %> <% for(let i = 0 ; i < 4; i++) {
+                  %>
+                  <div class="eachDoctor">
+                    <div class="es_img">
+                      <img
+                        src="/images/experts/<%=ourExperts[i].url%>.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="es_name">
+                      <p><%=ourExperts[i].name%></p>
+                      <p>
+                        <span><%=ourExperts[i].designation%></span>
+                      </p>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
+                <div class="subsection-Body specialServiceDoctors">
+                  <% console.log(ourExperts) %> <% for(let i = 4 ; i < 6; i++) {
                   %>
                   <div class="eachDoctor">
                     <div class="es_img">

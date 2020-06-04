@@ -345,9 +345,19 @@ body {
     justify-content: space-between;
   }
   .flx_chld {
-    padding: 20px;
-    width: 30%;
+    padding: 10px;
     flex: 1;
+    iframe {
+      width: calc(100% - 20px);
+      height: calc((20vw - 20px) * 1);
+
+      @media (max-width: 600px) {
+        height: 300px;
+      }
+      @media (max-width: 490px) {
+        height: 300px;
+      }
+    }
   }
 }
 
@@ -358,13 +368,23 @@ body {
     flex-wrap: wrap;
   }
 
+
   .eachDoctor {
     width: 24%;
     height: 300px;
     margin: 4px;
     border: 1px solid #e0e0e0;
     padding: 5px;
+
     box-shadow: 0px 0px 3px rgb(189, 187, 187);
+    @media (max-width: 1000px) {
+      width: calc(60% - 20px);
+      height: calc((60vw - 20px) * 1);
+    }
+    @media (max-width: 600px) {
+      width: calc(100% - 20px);
+      height: calc((100vw - 20px) * 1);
+    }
 
     .es_img {
       height: 77%;

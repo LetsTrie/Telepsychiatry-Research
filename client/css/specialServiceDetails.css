@@ -1346,19 +1346,19 @@ body {
   background: white;
   border-radius: 5px;
   margin: 0px auto;
-  width: 80%;
+  width: 90%;
   margin-bottom: 30px;
 }
 
 .oneBigFatCat {
-  width: 85%;
+  width: 90%;
   margin: 10px auto;
   padding: 10px;
 }
 
 @media (max-width: 1500px) {
   .oneBigFatCat {
-    width: 90%;
+    width: 95%;
   }
 }
 
@@ -1404,8 +1404,27 @@ body {
   background-color: 0;
 }
 
+.specialServiceSubsection .subsection-Body .subsection-Body-elm {
+  padding: 10px;
+}
+
+.specialServiceSubsection .subsection-Body .subsection-Body-elm .subsection-Heading-elm {
+  color: #1c82ca;
+  font-family: 'Roboto';
+  cursor: pointer;
+}
+
+.specialServiceSubsection .subsection-Body .subsection-Body-elm .subsection-Heading-elm p {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.specialServiceSubsection .subsection-Body .subsection-Body-elm .subsection-Heading-elm:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 1100px) {
-  .specialServiceSubsection .subsection-Body .flx_prnt {
+  .flx_prnt {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1417,40 +1436,13 @@ body {
   }
 }
 
-.specialServiceSubsection .subsection-Body .flx_prnt .flx_chld_major {
-  -webkit-box-flex: 2;
-  -webkit-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-}
-
-.specialServiceSubsection .subsection-Body .flx_prnt .flx_chld_major p {
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-.specialServiceSubsection .subsection-Body .flx_prnt .flx_chld_minor {
-  margin-left: 20px;
-  border: medium;
-  border-color: #83a2ff;
-  border-style: solid;
-  border-radius: 6px;
-  max-width: 300px;
-  max-height: 300px;
+.flx_prnt .flx_chld {
+  padding: 20px;
+  width: 30%;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-image: url(../../images/buttonBackground.jpg);
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-          background-size: cover;
-}
-
-.specialServiceSubsection .subsection-Body .flx_prnt .flx_chld_minor button {
-  margin: 25% 20% 25% 20%;
 }
 
 .specialServiceDoctors {

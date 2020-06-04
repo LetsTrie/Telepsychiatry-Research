@@ -1449,13 +1449,19 @@ body {
   height: calc((20vw - 20px) * 1);
 }
 
+@media (max-width: 1000px) {
+  .flx_prnt .flx_chld iframe {
+    height: 400px;
+  }
+}
+
 @media (max-width: 600px) {
   .flx_prnt .flx_chld iframe {
     height: 300px;
   }
 }
 
-@media (max-width: 490px) {
+@media (max-width: 500px) {
   .flx_prnt .flx_chld iframe {
     height: 300px;
   }

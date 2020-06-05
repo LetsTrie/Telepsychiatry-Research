@@ -17,6 +17,8 @@ const {
   getChamberTimes,
   allAppointments,
   dateTimeReset,
+  allSS,
+  singleSS
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
@@ -44,14 +46,9 @@ router.get('/assessment/register', (req, res, next) => {
   res.render('assessment_reg', { user: req.user });
 });
 
-router.get('/special_services', (req, res, next) => {
-  res.render('specialServices', { user: req.user });
-});
+router.get('/special_services', allSS);
 
-router.get('/special_services/details', async (req, res, next) => {
-  const eUser = require('../data/homepage_experts');
-  res.render('specialServiceDetails', { ourExperts: eUser, user: req.user });
-});
+router.get('/special_services/:id', singleSS);
 
 router.post('/book', bookAppointment);
 router.post('/book/emergency', emergenceBooking);

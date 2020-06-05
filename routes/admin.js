@@ -60,6 +60,7 @@ const {
     getAdminNewSpecialService,
     postAdminNewSS,
     ssFile,
+    getExperts,
 
     // backup
     getBackup,
@@ -207,6 +208,7 @@ router.get('/new/specialService', adminAccess, getAdminNewSpecialService);
 router.post('/new/specialService', adminAccess, postAdminNewSS);
 router.post('/new/specialService/file', [adminAccess, uploadPhotoSS], ssFile);
 router.post('/new/specialService', adminAccess, postAdminNewSS);
+router.get('/new/specialService/getExperts', adminAccess, getExperts)
 
 // admin innovations
 router.get('/innovation/new', adminAccess, (req, res) => {

@@ -13,7 +13,7 @@ const { eUserModel } = require('../models/expertUser');
 
 const LIMIT = 9;
 
-exports.postTestVersion = async(req, res, next) => {
+exports.postTestVersion = async (req, res, next) => {
     const { id } = req.body;
     const qItem = JSON.parse(req.body.qItem);
     const newLanguage = JSON.parse(req.body.languages)[0];
@@ -35,7 +35,7 @@ exports.postTestVersion = async(req, res, next) => {
 const { createDirectory, createFile } = require('../config/file');
 const { getDate } = require('../config/dateTime');
 
-exports.getBackup = async(req, res, next) => {
+exports.getBackup = async (req, res, next) => {
     const getDBName = process.env.mongoURI.split('/')[3].split('?')[0];
     if (getDBName !== 'trin') {
         return res.status(403).json({
@@ -53,19 +53,19 @@ exports.getBackup = async(req, res, next) => {
     return res.json(expertUserData);
 };
 
-exports.getAdminNewResearch = async(req, res, next) => {
+exports.getAdminNewResearch = async (req, res, next) => {
     return res.render('addResearchFromAdmin', { user: req.user });
 };
 
-exports.getAdminResearch = async(req, res, next) => {
+exports.getAdminResearch = async (req, res, next) => {
     return res.render('singleResearchFromAdmin', { user: req.user });
 };
 
-exports.getAdminResearches = async(req, res, next) => {
+exports.getAdminResearches = async (req, res, next) => {
     return res.render('researchsFromAdmin', { user: req.user });
 };
 
-exports.postTestVersion = async(req, res, next) => {
+exports.postTestVersion = async (req, res, next) => {
     const { id } = req.body;
     const qItem = JSON.parse(req.body.qItem);
     const newLanguage = JSON.parse(req.body.languages)[0];
@@ -89,7 +89,7 @@ exports.postTestVersion = async(req, res, next) => {
     });
 };
 
-exports.postUpdateTest = async(req, res) => {
+exports.postUpdateTest = async (req, res) => {
     const { id, qLang } = req.body;
     let QuestionSet = JSON.parse(req.body.questionSet)[0];
     const test = await testModel.findById(id);
@@ -176,7 +176,7 @@ exports.postLogin = (req, res, next) => {
   @desc   : Add Test
 */
 
-exports.createTest = async(req, res, next) => {
+exports.createTest = async (req, res, next) => {
     let {
         testEng,
         testBan,
@@ -219,7 +219,7 @@ exports.createTest = async(req, res, next) => {
   @desc   : Show All Disorders with distinct Test name
 */
 
-exports.getAllTests = async(req, res, next) => {
+exports.getAllTests = async (req, res, next) => {
     let searchKey = {};
     const { disorder, test, paid } = req.query;
     if (!nullChk(disorder)) searchKey['disorderNameEng'] = disorder;
@@ -272,7 +272,7 @@ exports.getAllTests = async(req, res, next) => {
   @desc   : Show a single test
 */
 
-exports.getSingleTest = async(req, res) => {
+exports.getSingleTest = async (req, res) => {
     let testData = await testModel.findById(req.params.id);
     let { lang } = req.query;
     if (nullChk(lang)) {
@@ -291,7 +291,7 @@ exports.getSingleTest = async(req, res) => {
   @desc   : Update a test of a language
 */
 
-exports.updateTest = async(req, res) => {
+exports.updateTest = async (req, res) => {
     let test = await testModel.findById(req.params.id);
     let { lang } = req.query;
     if (nullChk(lang)) {
@@ -309,7 +309,7 @@ exports.updateTest = async(req, res) => {
   @desc   : Find Test by Disorder
 */
 
-exports.findTestbyDisorder = async(req, res) => {
+exports.findTestbyDisorder = async (req, res) => {
     const { value } = req.body;
     const tests = await testModel.find({ disorderNameEng: value });
     return res.json({
@@ -324,7 +324,7 @@ exports.findTestbyDisorder = async(req, res) => {
   @desc   : Insert new (language) version of a test...
 */
 
-exports.addTestVersion = async(req, res, next) => {
+exports.addTestVersion = async (req, res, next) => {
     let { alt } = req.query;
     if (alt === 'English') alt = 'Bengali';
     else alt = 'English';
@@ -403,7 +403,7 @@ function groupBy(list, keyGetter) {
 }
 
 // ####################### Extra Part #######################
-exports.contactUs = async(req, res, next) => {
+exports.contactUs = async (req, res, next) => {
     checker(req, res);
     const page = +req.query.page || 1;
     const data = await contactUsModel
@@ -419,7 +419,7 @@ exports.contactUs = async(req, res, next) => {
     });
 };
 
-exports.adminGetResearch = async(req, res) => {
+exports.adminGetResearch = async (req, res) => {
     checker(req, res);
     const page = +req.query.page || 1;
     const search = req.query.search;
@@ -457,13 +457,13 @@ exports.adminGetResearch = async(req, res) => {
     });
 };
 
-exports.getResearch = async(req, res) => {
+exports.getResearch = async (req, res) => {
     checker(req, res);
     const data = await ResearchModel.findById(req.params.id);
     res.render('adminSingleResearch', { data, user: req.user });
 };
 
-exports.getInnovations = async(req, res) => {
+exports.getInnovations = async (req, res) => {
     checker(req, res);
     const page = +req.query.page || 1;
     const search = req.query.search;
@@ -501,7 +501,7 @@ exports.getInnovations = async(req, res) => {
     });
 };
 
-exports.singleInnoavtion = async(req, res) => {
+exports.singleInnoavtion = async (req, res) => {
     checker(req, res);
     const data = await InnovationModel.findById(req.params.id);
     res.render('adminSingleInnovation', { data, user: req.user });
@@ -517,8 +517,8 @@ const makeNumberLengthTwo = (data) => {
 const createTimeString = (frm, two) => {
     checker(req, res);
     return `${makeNumberLengthTwo(frm.from)}:00 ${revAPM(
-    frm.APM
-  )} - ${makeNumberLengthTwo(two.to)}:00 ${revAPM(two.APM)}`;
+        frm.APM
+    )} - ${makeNumberLengthTwo(two.to)}:00 ${revAPM(two.APM)}`;
 };
 
 const getScheduleArray = (visitingTime) => {
@@ -551,7 +551,7 @@ const getScheduleArray = (visitingTime) => {
     return schedule;
 };
 
-exports.addDoctor = async(req, res, next) => {
+exports.addDoctor = async (req, res, next) => {
     checker(req, res);
     const { error } = addDoctorValidation(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message });
@@ -565,7 +565,7 @@ exports.addDoctor = async(req, res, next) => {
     return res.json({ success: true, doc });
 };
 
-module.exports.postAddDoctor = async(req, res) => {
+module.exports.postAddDoctor = async (req, res) => {
     checker(req, res);
     const {
         name,
@@ -602,7 +602,7 @@ module.exports.replyEmail = (req, res) => {
 };
 
 // Research Module
-exports.getAllResearches = async(req, res) => {
+exports.getAllResearches = async (req, res) => {
     const { stage } = req.query;
     const researches = await ResearchModel.find({ researchStage: stage });
     console.log(researches);
@@ -612,20 +612,24 @@ exports.getAllResearches = async(req, res) => {
         res.render('completeResearches', { researches, search: null });
     }
 };
-exports.researchFile = async(req, res) => {
+exports.researchFile = async (req, res) => {
     console.log('file saved');
     res.redirect(`/admin/research/${req.body.id}`);
 };
 
 // ADMIN SUBMIT RESEARCH (GET)
 // OKAY
-exports.getAdminNewResearch = async(req, res, next) => {
+exports.getAdminNewResearch = async (req, res, next) => {
     return res.render('addResearchFromAdmin', { user: req.user });
 };
 
 // addmin add new special service
 const { ssModel } = require('../models/specialService.js');
-exports.getAdminNewSpecialService = async(req, res, next) => {
+exports.getAdminNewSpecialService = async (req, res, next) => {
+    return res.render('addSpecialService', { user: req.user });
+};
+
+exports.getExperts = async (req, res) => {
     const allDocs = await eUserModel.find();
     let doctors = [];
     let docIDs = [];
@@ -633,18 +637,25 @@ exports.getAdminNewSpecialService = async(req, res, next) => {
         doctors.push(allDocs[i].name);
         docIDs.push(allDocs[i]._id);
     }
-    return res.render('addSpecialService', { user: req.user, doctors, docIDs });
-};
+    res.send({
+        doctors,
+        docIDs
+    })
+}
 
-exports.postAdminNewSS = async(req, res) => {
+exports.postAdminNewSS = async (req, res) => {
     const { title, description, details, image } = req.body;
-    const doctors = JSON.parse(req.body.doctors);
+    const doctorIDs = JSON.parse(req.body.doctorIDs);
+    const doctorNames = JSON.parse(req.body.doctorNames)
+    const videos = JSON.parse(req.body.videos)
     const obj = {
         title,
         description,
         details,
         image,
-        doctors,
+        videos,
+        doctorIDs,
+        doctorNames
     };
     const newSS = new ssModel(obj);
     console.log(newSS);
@@ -655,7 +666,7 @@ exports.postAdminNewSS = async(req, res) => {
     });
 };
 
-exports.ssFile = async(req, res) => {
+exports.ssFile = async (req, res) => {
     console.log('special service file saved');
     res.redirect('back');
 };
@@ -663,7 +674,7 @@ exports.ssFile = async(req, res) => {
 // ADMIN SUBMIT RESEARCH (POST)
 // OKAY
 const { validateResearchData } = require('../validations/researches');
-exports.postResearches = async(req, res) => {
+exports.postResearches = async (req, res) => {
     if (!req.user) return res.send('User not found');
     const { error } = validateResearchData(req.body);
     console.log(error);
@@ -683,7 +694,7 @@ exports.postResearches = async(req, res) => {
 
 // ADMIN GET SINGLE RESEARCH
 // OKAY
-exports.getAdminResearch = async(req, res, next) => {
+exports.getAdminResearch = async (req, res, next) => {
     const data = await ResearchModel.findById(req.params.id);
     return res.render('singleResearchFromAdmin', {
         data,
@@ -693,7 +704,7 @@ exports.getAdminResearch = async(req, res, next) => {
 
 // ADMIN SHOW RESEARCH ( VERIFIED / UNVERIFIED)
 // OKAY
-exports.getAdminResearches = async(req, res, next) => {
+exports.getAdminResearches = async (req, res, next) => {
     const { verified } = req.query;
     let isVerified = verified === 'false' ? false : true;
     const data = await ResearchModel.find({ isVerified });
@@ -703,7 +714,7 @@ exports.getAdminResearches = async(req, res, next) => {
     });
 };
 
-exports.getUnverifiedResearches = async(req, res, next) => {
+exports.getUnverifiedResearches = async (req, res, next) => {
     const data = await ResearchModel.find({ isVerified: false });
     return res.render('unverifiedResearchesAdmin', {
         data,
@@ -711,7 +722,7 @@ exports.getUnverifiedResearches = async(req, res, next) => {
     });
 };
 
-exports.getAdminUpdateResearch = async(req, res, next) => {
+exports.getAdminUpdateResearch = async (req, res, next) => {
     const data = await ResearchModel.findOne({ _id: req.params.id });
     return res.render('updateResearchFromAdmin', {
         data,
@@ -719,7 +730,7 @@ exports.getAdminUpdateResearch = async(req, res, next) => {
     });
 };
 
-exports.postAdminUpdateResearch = async(req, res) => {
+exports.postAdminUpdateResearch = async (req, res) => {
     const {
         id,
         title,
@@ -756,12 +767,12 @@ exports.postAdminUpdateResearch = async(req, res) => {
     });
 };
 
-exports.approveResearch = async(req, res) => {
+exports.approveResearch = async (req, res) => {
     await ResearchModel.findOneAndUpdate({ _id: req.params.id }, { $set: { isVerified: true } });
     res.redirect('/admin/researches');
 };
 
-exports.disapproveResearch = async(req, res) => {
+exports.disapproveResearch = async (req, res) => {
     // checker(req, res);
     const id = req.params.id;
     await ResearchModel.findByIdAndDelete(id);
@@ -770,7 +781,7 @@ exports.disapproveResearch = async(req, res) => {
 
 // Innovations Module
 
-exports.innovationFile = async(req, res) => {
+exports.innovationFile = async (req, res) => {
     console.log('innovations file saved');
     res.redirect(`/admin/innovation/${req.body.id}`);
 };
@@ -778,7 +789,7 @@ exports.innovationFile = async(req, res) => {
 // ADMIN POST NEW INNOVATION
 // OKAY
 const { validateInnovationData } = require('../validations/innovations');
-exports.postInnovation = async(req, res) => {
+exports.postInnovation = async (req, res) => {
     console.log('I am in controller');
     const { error } = validateInnovationData(req.body);
     console.log('Checking Joi Error: ', error);
@@ -798,7 +809,7 @@ exports.postInnovation = async(req, res) => {
 
 // ADMIN GET INNOVATION
 // OKAY
-exports.getAdminInnovation = async(req, res, next) => {
+exports.getAdminInnovation = async (req, res, next) => {
     const data = await InnovationModel.findOne({ _id: req.params.id });
     return res.render('singleInnovationFromAdmin', {
         data,
@@ -806,7 +817,7 @@ exports.getAdminInnovation = async(req, res, next) => {
     });
 };
 
-exports.getUnverifiedInnoations = async(req, res, next) => {
+exports.getUnverifiedInnoations = async (req, res, next) => {
     const data = await InnovationModel.find({ isVerified: false });
     return res.render('unverifiedInnovationsAdmin', {
         data,
@@ -814,7 +825,7 @@ exports.getUnverifiedInnoations = async(req, res, next) => {
     });
 };
 
-exports.getAdminInnovations = async(req, res, next) => {
+exports.getAdminInnovations = async (req, res, next) => {
     const { verified } = req.query;
     let isVerified = verified === 'false' ? false : true;
     const data = await InnovationModel.find({ isVerified });
@@ -824,7 +835,7 @@ exports.getAdminInnovations = async(req, res, next) => {
     });
 };
 
-exports.getAdminUpdateInnovation = async(req, res, next) => {
+exports.getAdminUpdateInnovation = async (req, res, next) => {
     const data = await InnovationModel.findOne({ _id: req.params.id });
     return res.render('updateInnovationFromAdmin', {
         data,
@@ -832,7 +843,7 @@ exports.getAdminUpdateInnovation = async(req, res, next) => {
     });
 };
 
-exports.postAdminUpdateInnovation = async(req, res) => {
+exports.postAdminUpdateInnovation = async (req, res) => {
     const {
         id,
         title,
@@ -871,7 +882,7 @@ exports.postAdminUpdateInnovation = async(req, res) => {
     });
 };
 
-exports.approveInnovation = async(req, res) => {
+exports.approveInnovation = async (req, res) => {
     // checker(req, res);
     const id = req.params.id;
     await InnovationModel.findOneAndUpdate({ _id: id }, {
@@ -882,7 +893,7 @@ exports.approveInnovation = async(req, res) => {
     res.redirect('/admin/innovations');
 };
 
-exports.disapproveInnovation = async(req, res) => {
+exports.disapproveInnovation = async (req, res) => {
     // checker(req, res);
     const id = req.params.id;
     console.log(id);
@@ -893,7 +904,7 @@ exports.disapproveInnovation = async(req, res) => {
 // Events
 const { workshopModel } = require('../models/workshop.js');
 const { workshopReg } = require('../models/workshopRegistration.js');
-exports.getWorkshop = async(req, res, next) => {
+exports.getWorkshop = async (req, res, next) => {
     let { type, search } = req.query;
     let data;
     if (type) {
@@ -947,7 +958,7 @@ exports.getWorkshop = async(req, res, next) => {
     res.render('allWorkshopFromAdmin', { data, user: req.user });
 };
 
-exports.singleWorkshop = async(req, res) => {
+exports.singleWorkshop = async (req, res) => {
     const data = await workshopModel.findOne({ _id: req.params.id });
     const parts = await workshopReg.find({ workshop_id: req.params.id });
     res.render('singleWorkshopFromAdmin', {
@@ -957,7 +968,7 @@ exports.singleWorkshop = async(req, res) => {
     });
 };
 
-exports.postWorkshop = async(req, res) => {
+exports.postWorkshop = async (req, res) => {
     const { title, description, location, image } = req.body;
     const schedule = JSON.parse(req.body.schedule);
     const sdate = schedule.startDate.split('/');
@@ -1010,12 +1021,12 @@ exports.postWorkshop = async(req, res) => {
     });
 };
 
-exports.workshopFile = async(req, res) => {
+exports.workshopFile = async (req, res) => {
     console.log('Workshop file added');
     res.redirect('/admin/workshop');
 };
 
-exports.getUpdateWorkshop = async(req, res) => {
+exports.getUpdateWorkshop = async (req, res) => {
     const data = await workshopModel.findOne({ _id: req.params.id });
     res.render('updateWorkshop', {
         user: req.user,
@@ -1023,7 +1034,7 @@ exports.getUpdateWorkshop = async(req, res) => {
     });
 };
 
-exports.postUpdateWorkshop = async(req, res) => {
+exports.postUpdateWorkshop = async (req, res) => {
     const { id, title, description, location } = req.body;
     const schedule = JSON.parse(req.body.schedule);
     const sdate = schedule.startDate.split('/');
@@ -1080,7 +1091,7 @@ exports.postUpdateWorkshop = async(req, res) => {
     });
 };
 
-exports.deleteWorkshop = async(req, res) => {
-    await workshopModel.findByIdAndDelete({_id: req.params.id})
+exports.deleteWorkshop = async (req, res) => {
+    await workshopModel.findByIdAndDelete({ _id: req.params.id })
     res.redirect('/admin/workshop')
 }

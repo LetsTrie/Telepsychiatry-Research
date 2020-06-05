@@ -16,11 +16,11 @@ app.set('view engine', 'ejs');
 
 mongoose.connect(
     process.env.mongoURI, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true,
-    },
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+},
     () => console.log('connected to database!')
 );
 
@@ -29,7 +29,9 @@ app.use(express.static('data'));
 app.use(express.static('public'));
 
 if (process.env.NODE_ENV === 'development') app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 app.use(
     session({
@@ -54,7 +56,7 @@ require('./config/passport')(passport);
 
 app.use('/', require('./routes'));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3007;
 
 const server = app.listen(port, () =>
     console.log(`Server is running at port: ${port}`)
@@ -62,7 +64,9 @@ const server = app.listen(port, () =>
 // for real time communications, to be used later
 const io = require('socket.io').listen(server);
 const connections = [];
-const { appointment } = require('./models/appointment');
+const {
+    appointment
+} = require('./models/appointment');
 // io.sockets.on('connection', (socket) => {
 //     //Connect
 //     connections.push(socket);

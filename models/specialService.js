@@ -4,7 +4,9 @@ const ssModel = new mongoose.Schema({
     description: String,
     details: String,
     image: String,
-    doctors: [String],
+    videos: [String],
+    doctorIDs: [String],
+    doctorNames: [String]
 });
 
 exports.ssModel = mongoose.model('special-services', ssModel);

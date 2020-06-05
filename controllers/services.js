@@ -3,7 +3,7 @@ const { eUserModel } = require('../models/expertUser');
 const { appointment } = require('../models/appointment.js');
 const { Emergency } = require('../models/emergency.js');
 
-exports.getBookAppointment = async(req, res, next) => {
+exports.getBookAppointment = async (req, res, next) => {
     const data = await eUserModel.findById(req.params.expID);
     return res.render('newBookAppointment', { user: req.user, data });
 };
@@ -43,7 +43,7 @@ const mapping = {
     Friday: 6,
 };
 
-exports.getChamberTimes = async(req, res, next) => {
+exports.getChamberTimes = async (req, res, next) => {
     let { id: expID, day } = req.query;
     let user = await eUserModel.findById(expID);
     let times = getTimesArray(user);
@@ -53,7 +53,7 @@ exports.getChamberTimes = async(req, res, next) => {
     for (let i = 0; i < times.length; i++) {
         let mpfrm = mapping[times[i].dayFrm];
         let mpto = mapping[times[i].dayTo];
-        for (let j = mpfrm;; j++, j %= 7) {
+        for (let j = mpfrm; ; j++ , j %= 7) {
             if (j === mp) newTimeArray.push(times[i]);
             if (j === mpto) break;
         }
@@ -97,7 +97,7 @@ exports.getChamberTimes = async(req, res, next) => {
                     loc: [{
                         chamName: newTimeArray[i].chamberName,
                         chamAdd: newTimeArray[i].chamberAddress,
-                    }, ],
+                    },],
                     time: numberToTime(j),
                 };
             }
@@ -116,14 +116,14 @@ const nullCheck = (data) => {
     return data === '' || data === null || data === undefined;
 };
 
-exports.getAllResearchers = async(req, res, next) => {
+exports.getAllResearchers = async (req, res, next) => {
     const experts = await eUserModel
         .find({ speciality: 'Researcher' })
         .sort({ _id: -1 });
     res.render('researcherList', { experts, user: req.user });
 };
 
-exports.searchResearchers = async(req, res, next) => {
+exports.searchResearchers = async (req, res, next) => {
     let search = req.query.searchInput;
     let gender = getTheArray(req.query.gender);
     let city = getTheArray(req.query.city);
@@ -220,14 +220,14 @@ exports.searchResearchers = async(req, res, next) => {
     });
 };
 
-exports.consultation = async(req, res) => {
+exports.consultation = async (req, res) => {
     req.session.prev = 'consultation';
     const experts = await eUserModel
         .find({ speciality: 'Psychiatric Consultation' })
         .sort({ _id: -1 });
     res.render('consultation', { experts, user: req.user });
 };
-exports.searchConsultation = async(req, res) => {
+exports.searchConsultation = async (req, res) => {
     let search = req.query.searchInput;
     let gender = getTheArray(req.query.gender);
     let city = getTheArray(req.query.city);
@@ -338,7 +338,7 @@ exports.searchConsultation = async(req, res) => {
     });
 };
 
-exports.psychoTherapy = async(req, res) => {
+exports.psychoTherapy = async (req, res) => {
     req.session.prev = 'psychoTherapy';
     const experts = await eUserModel
         .find({ speciality: 'Psycho Therapy & Counselling' })
@@ -346,7 +346,7 @@ exports.psychoTherapy = async(req, res) => {
     res.render('psycho_therapy', { experts, user: req.user });
 };
 
-exports.searchPsychoTherapy = async(req, res) => {
+exports.searchPsychoTherapy = async (req, res) => {
     let search = req.query.searchInput;
     let gender = getTheArray(req.query.gender);
     let city = getTheArray(req.query.city);
@@ -456,10 +456,10 @@ exports.searchPsychoTherapy = async(req, res) => {
         experts: container.sort((a, b) => (a._id > b._id ? -1 : 1)),
     });
 };
-exports.getEmBooking = async(req, res) => {
+exports.getEmBooking = async (req, res) => {
     res.render('newEmergencyAppointment');
 };
-exports.emergenceBooking = async(req, res) => {
+exports.emergenceBooking = async (req, res) => {
     console.log(req.body);
     const newEm = new Emergency(req.body);
     await newEm.save();
@@ -469,7 +469,7 @@ exports.emergenceBooking = async(req, res) => {
     });
 };
 
-exports.getEmergency = async(req, res) => {
+exports.getEmergency = async (req, res) => {
     const { type } = req.query;
     let data;
     if (type == 'taken') {
@@ -490,7 +490,7 @@ exports.getEmergency = async(req, res) => {
     });
 };
 
-exports.approveEmergency = async(req, res) => {
+exports.approveEmergency = async (req, res) => {
     let emApt = await Emergency.findOne({ _id: req.params.id });
     isTaken = emApt.status;
     console.log(isTaken);
@@ -518,7 +518,7 @@ exports.approveEmergency = async(req, res) => {
     }
 };
 
-exports.bookAppointment = async(req, res) => {
+exports.bookAppointment = async (req, res) => {
     console.log(req.body);
     let startTime = req.body.time.split('-')[0].trim();
     if (startTime[startTime.length - 2] == 'P') {
@@ -545,7 +545,7 @@ exports.bookAppointment = async(req, res) => {
     });
 };
 
-exports.allAppointments = async(req, res) => {
+exports.allAppointments = async (req, res) => {
     const { type } = req.query;
     let data;
     if (type) {
@@ -606,7 +606,7 @@ exports.allAppointments = async(req, res) => {
     });
 };
 
-exports.dateTimeReset = async(req, res) => {
+exports.dateTimeReset = async (req, res) => {
     const { id, email, date, time } = req.body;
     const doctor = req.user.name;
     console.log(req.body);
@@ -641,7 +641,7 @@ function sendEmail(emailID, reply) {
         html: reply,
     };
 
-    Transport.sendMail(mailOptions, function(error, response) {
+    Transport.sendMail(mailOptions, function (error, response) {
         if (error) {
             console.log(error);
         } else {
@@ -650,7 +650,7 @@ function sendEmail(emailID, reply) {
     });
 }
 
-exports.singleDoctorConsultation = async(req, res, next) => {
+exports.singleDoctorConsultation = async (req, res, next) => {
     const doc = await eUserModel.findById(req.params.id);
     console.log(doc);
     return res.render('doctorsProfile', { doc, user: req.user });
@@ -673,7 +673,7 @@ const smtpTransport = nodemailer.createTransport({
     },
 });
 
-const sendSMTP = async(email, date, time, doctor, id, name) => {
+const sendSMTP = async (email, date, time, doctor, id, name) => {
     const mailBody = `
         Dear <strong> ${name} </strong>, <br>
 Your Appointment with ${doctor} confirms on ${date} at ${time}. <br>
@@ -689,7 +689,7 @@ Thank you for choosing TRIN Innovation Ltd.
     return await smtpTransport.sendMail(mailOptions);
 };
 
-const sendEmergencyLink = async(email, service, name, doctor, id) => {
+const sendEmergencyLink = async (email, service, name, doctor, id) => {
     console.log(email);
     const mailBody = `
         Dear <strong> ${name} </strong>, <br>
@@ -706,3 +706,27 @@ Thank you for choosing TRIN Innovation Ltd.
 
     return await smtpTransport.sendMail(mailOptions);
 };
+
+// special services
+const { ssModel } = require('../models/specialService.js')
+exports.allSS = async (req, res) => {
+    const data = await ssModel.find()
+    return res.render('specialServices', {
+        user: req.user,
+        data
+    })
+}
+
+exports.singleSS = async (req, res, next) => {
+    const eUser = require('../data/homepage_experts');
+    const data = await ssModel.findOne({ _id: req.params.id })
+    let doctorInfo = []
+    for (let i = 0; i < data.doctorIDs.length; i++) {
+        const doc = await eUserModel.findOne({ _id: data.doctorIDs[i] })
+        doctorInfo.push({
+            image: doc.propicURL,
+            designation: doc.designation
+        })
+    }
+    return res.render('specialServiceDetails', { ourExperts: eUser, user: req.user, data, doctorInfo });
+}

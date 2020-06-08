@@ -657,27 +657,27 @@ exports.getExperts = async (req, res) => {
 exports.postAdminNewSS = async (req, res) => {
   console.log('new special service data:')
   console.log(req.body)
-  // const { title, subTitle, description, details, image } = req.body;
-  // const doctorIDs = JSON.parse(req.body.doctorIDs);
-  // const doctorNames = JSON.parse(req.body.doctorNames);
-  // const videos = JSON.parse(req.body.videos);
-  // const obj = {
-  //   title,
-  //   subTitle,
-  //   description,
-  //   details,
-  //   image,
-  //   videos,
-  //   doctorIDs,
-  //   doctorNames,
-  // };
-  // const newSS = new ssModel(obj);
-  // console.log(newSS);
-  // await newSS.save();
-  // res.send({
-  //   status: true,
-  //   msg: 'Special service has been added',
-  // });
+  const { title, subTitle, description, details, image } = req.body;
+  const doctorIDs = JSON.parse(req.body.doctorIDs);
+  const doctorNames = JSON.parse(req.body.doctorNames);
+  const videos = JSON.parse(req.body.videos);
+  const obj = {
+    title,
+    subTitle,
+    description,
+    details,
+    image,
+    videos,
+    doctorIDs,
+    doctorNames,
+  };
+  const newSS = new ssModel(obj);
+  console.log(newSS);
+  await newSS.save();
+  res.send({
+    status: true,
+    msg: 'Special service has been added',
+  });
 };
 
 exports.ssFile = async (req, res) => {

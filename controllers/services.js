@@ -718,7 +718,6 @@ exports.allSS = async (req, res) => {
 }
 
 exports.singleSS = async (req, res, next) => {
-    const eUser = require('../data/homepage_experts');
     const data = await ssModel.findOne({ _id: req.params.id })
     let doctorInfo = []
     for (let i = 0; i < data.doctorIDs.length; i++) {
@@ -728,5 +727,5 @@ exports.singleSS = async (req, res, next) => {
             designation: doc.designation
         })
     }
-    return res.render('specialServiceDetails', { ourExperts: eUser, user: req.user, data, doctorInfo });
+    return res.render('specialServiceDetails', { serviceId: req.params.id, user: req.user, data, doctorInfo });
 }

@@ -61,6 +61,9 @@ const {
     postAdminNewSS,
     ssFile,
     getExperts,
+    deleteSpecialService,
+    getUpdateSingleSS,
+    postUpdateSingleSS,
 
     // backup
     getBackup,
@@ -209,6 +212,19 @@ router.post('/new/specialService', adminAccess, postAdminNewSS);
 router.post('/new/specialService/file', [adminAccess, uploadPhotoSS], ssFile);
 router.post('/new/specialService', adminAccess, postAdminNewSS);
 router.get('/new/specialService/getExperts', adminAccess, getExperts)
+router.get('/specialService/delete/:id', adminAccess, deleteSpecialService);
+router.get('/specialService/update/:id', adminAccess, getUpdateSingleSS);
+router.post('/specialService/update/:id', adminAccess, postUpdateSingleSS);
+// if representational photo is changed for service
+router.post('/specialService/update/file/:id', adminAccess,  (req, res) => {
+    let serviceId = req.params.id
+    res.redirect('/services/special_services/'+serviceId);
+});
+// if representational photo is unchanged for service
+router.post('/specialService/update/noFile/:id', adminAccess,  (req, res) => {
+    let serviceId = req.params.id
+    res.redirect('/services/special_services/'+serviceId);
+});
 
 // admin innovations
 router.get('/innovation/new', adminAccess, (req, res) => {

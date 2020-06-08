@@ -46,15 +46,33 @@
                                 <div class="input_box">
                                     <input type="text" name="title" id="title" placeholder="Title" />
                                 </div>
+                                <div class="box_header">
+                                    <p>Sub Title:</p>
+                                </div>
+                                <div class="input_box">
+                                    <input type="text" name="subTitle" id="subTitle" placeholder="Sub Title" />
+                                </div>
                             </div>
 
                             <div class="one_box">
                                 <div class="box_header">
                                     <p>Promotional Video:</p>
                                 </div>
-                                <input type="text" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
+                                <input
+                                    type="text"
+                                    id="videoCnt"
+                                    name="videoCnt"
+                                    value="0"
+                                    style="display: none;"
+                                />
+                                <input
+                                    type="text"
+                                    id="videoTotalCnt"
+                                    value="0"
+                                    style="display: none;"
+                                />
                                 <div id="videoAddPlace"></div>
-                                <button type="button" class="btn btn-secondary" onclick="addLink()">
+                                <button type="button" class="btn btn-secondary" onclick="addVideo()">
                                     Add Link
                                 </button>
                             </div>
@@ -71,7 +89,19 @@
                                 <div class="box_header">
                                     <p>Doctors:</p>
                                 </div>
-                                <input type="text" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
+                                <input
+                                    type="text"
+                                    id="doctorCnt"
+                                    name="doctorCnt"
+                                    value="0"
+                                    style="display: none;"
+                                />
+                                <input
+                                    type="text"
+                                    id="doctorTotalCnt"
+                                    value="0"
+                                    style="display: none;"
+                                />
                                 <div id="doctorAddPlace"></div>
                                 <button type="button" class="btn btn-secondary" onclick="addDoctor()">
                                     Add doctor
@@ -116,7 +146,6 @@
     let bdeditor, sdeditor;
     let DoctorIDs = []
     let DoctorNames = []
-
     ClassicEditor.create(document.querySelector('#BDeditor'))
         .then((editor) => {
             bdeditor = editor;
@@ -125,7 +154,6 @@
         .catch((error) => {
             console.error(error);
         });
-
     // This is for service details
     ClassicEditor.create(document.querySelector('#SDeditor'))
         .then((editor) => {
@@ -135,10 +163,10 @@
         .catch((error) => {
             console.error(error);
         });
-
     $('#submit-btn').click((e) => {
         e.preventDefault();
         const title = $('#title').val();
+        const subTitle = $('#subTitle').val();
         const description = bdeditor.getData();
         const details = sdeditor.getData();
         const imageFile = $('#repPhotoID');
@@ -147,9 +175,18 @@
         for (let i = 0; i < videoArr.length; i++) {
             const vd = $(videoArr[i]).val()
             videos.push(vd)
+        }   
+        
+        let doctorArr = $('.doctorClass')
+        for (let i = 0; i < doctorArr.length; i++) {
+            const docName = $(doctorArr[i]).val()
+            DoctorNames.push(docName)
+            DoctorIDs.push(docIDs[doctors.indexOf(docName)])
         }
         if (check(title)) {
             showAlert('Enter the title');
+        }if (check(subTitle)) {
+            showAlert('Enter the sub title');
         } else if (check(description)) {
             showAlert('Enter a brief description');
         } else if (check(details)) {
@@ -169,6 +206,7 @@
             $('#filename').val(image);
             const data = {
                 title,
+                subTitle,
                 description,
                 details,
                 image,
@@ -176,11 +214,10 @@
                 doctorIDs: JSON.stringify(DoctorIDs),
                 doctorNames: JSON.stringify(DoctorNames)
             };
-            console.log(data);
+            console.log('new special service data='+data);
             Submit(data);
         }
     });
-
     const check = (str) => {
         const res = str == '' || str == null || str == undefined;
         return res;
@@ -217,35 +254,51 @@
             },
         });
     };
-
-    function addLink() {
+    function addVideo() {
+        // videoNo is actual present video count
+        let videoNo = parseInt($('#videoCnt').val()) + 1
+        // videoTotalNo its just for unique id
+        let videoTotalNo = parseInt($('#videoTotalCnt').val()) + 1
+        $('#videoCnt').val(videoNo)
+        $('#videoTotalCnt').val(videoTotalNo)
         $('#videoAddPlace').replaceWith(
-            '<div class="keyContactPersonWrapper" id="doctor' + '">' +
+            '<div class="keyContactPersonWrapper" id="video' + videoNo + '">' +
             '<div class="keyContactPerson">' +
             '<div class="input_box_flx_prnt">' +
             '<div class="input_box_flx_chld">' +
-            '<input type="text" class="video-link" placeholder="Video link   ">' +
+            '<input class="video-link" id="videoName' + videoNo + '" type="text" placeholder="Video Link">' +
 
             '</div>' +
             '<div class="input_box_flx_chld_btn">' +
-            '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
+            '<button type="button" class="btn btn-danger" onclick="deleteVid(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
             '</div>' +
             '</div>' +
             '</div>' +
             '</div>' +
             '<div id="videoAddPlace"></div>'
         )
-    }
 
+    }
+    function deleteVid(id) {
+        let videoNo = parseInt($('#videoCnt').val()) - 1
+        $('#videoCnt').val(videoNo)
+        console.log('parent id=' + id)
+        $('#' + id + '').replaceWith('')
+    }
     function addDoctor() {
+        // doctorNo is actual present video count
         let doctorNo = parseInt($('#doctorCnt').val()) + 1
+        //doctorTotalNo its just for unique id
+        let doctorTotalNo = parseInt($('#doctorTotalCnt').val()) + 1
         $('#doctorCnt').val(doctorNo)
+        $('#doctorTotalCnt').val(doctorTotalNo)
+
         $('#doctorAddPlace').replaceWith(
             '<div class="keyContactPersonWrapper" id="doctor' + doctorNo + '">' +
             '<div class="keyContactPerson">' +
             '<div class="input_box_flx_prnt">' +
             '<div class="input_box_flx_chld">' +
-            '<input id="doctorName' + doctorNo + '" type="text" name="doctorName" placeholder="Doctor name">' +
+            '<input class="doctorClass" id="doctorName' + doctorNo + '" type="text" name="doctorName" placeholder="Doctor name">' +
 
             '</div>' +
             '<div class="input_box_flx_chld_btn">' +
@@ -259,16 +312,13 @@
 
 
         autocomplete(document.getElementById("doctorName" + doctorNo), doctors);
-
     }
-
     function deleteDoc(id) {
         let doctorNo = parseInt($('#doctorCnt').val()) - 1
         $('#doctorCnt').val(doctorNo)
         console.log('parent id=' + id)
         $('#' + id + '').replaceWith('')
     }
-
     // next section is for auto complete doctor
     function autocomplete(inp, arr) {
         /*the autocomplete function takes two arguments,
@@ -304,8 +354,8 @@
                     b.addEventListener("click", function (e) {
                         /*insert the value for the autocomplete text field:*/
                         inp.value = this.getElementsByTagName("input")[0].value;
-                        DoctorIDs.push(docIDs[arr.indexOf(inp.value)])
-                        DoctorNames.push(inp.value)
+                        // DoctorIDs.push(docIDs[arr.indexOf(inp.value)])
+                        // DoctorNames.push(inp.value)
                         /*close the list of autocompleted values,
                         (or any other open lists of autocompleted values:*/
                         closeAllLists();
@@ -315,7 +365,6 @@
             }
         });
         /*execute a function presses a key on the keyboard:*/
-
         inp.addEventListener("keydown", function (e) {
             var x = document.getElementById(this.id + "autocomplete-list");
             if (x) x = x.getElementsByTagName("div");
@@ -340,7 +389,6 @@
                 }
             }
         });
-
         function addActive(x) {
             /*a function to classify an item as "active":*/
             if (!x) return false;
@@ -351,14 +399,12 @@
             /*add class "autocomplete-active":*/
             x[currentFocus].classList.add("autocomplete-active");
         }
-
         function removeActive(x) {
             /*a function to remove the "active" class from all autocomplete items:*/
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("autocomplete-active");
             }
         }
-
         function closeAllLists(elmnt) {
             /*close all autocomplete lists in the document,
             except the one passed as an argument:*/
@@ -374,7 +420,6 @@
             closeAllLists(e.target);
         });
     }
-
     /*this doctors array is used in adding new doctor to service*/
     var doctors;
     var docIDs;
@@ -382,7 +427,6 @@
         doctors = data.doctors
         docIDs = data.docIDs
     })
-
 </script>
 
 </html>

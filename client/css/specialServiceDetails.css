@@ -1495,7 +1495,7 @@ body {
 
 @media (max-width: 1000px) {
   .specialServiceDoctors .eachDoctor {
-    width: calc(60% - 20px);
+    width: calc(60% -  px);
     height: calc((60vw - 20px) * 1);
   }
 }
@@ -1537,4 +1537,16 @@ body {
   font-size: 14px;
   font-weight: 500;
   color: #00adef;
+}
+
+.btn-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+}
+
+.btn-container .btn-children {
+  margin: auto;
 }

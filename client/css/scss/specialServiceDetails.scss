@@ -372,7 +372,6 @@ body {
     flex-wrap: wrap;
   }
 
-
   .eachDoctor {
     width: 24%;
     height: 300px;
@@ -382,7 +381,7 @@ body {
 
     box-shadow: 0px 0px 3px rgb(189, 187, 187);
     @media (max-width: 1000px) {
-      width: calc(60% - 20px);
+      width: calc(60% -  px);
       height: calc((60vw - 20px) * 1);
     }
     @media (max-width: 600px) {
@@ -417,5 +416,12 @@ body {
         }
       }
     }
+  }
+}
+.btn-container{
+  display: flex;
+  padding: 5px;;
+  .btn-children{
+    margin: auto;
   }
 }

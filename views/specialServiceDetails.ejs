@@ -24,7 +24,12 @@
           <p><%= data.title %></p>
         </div>
       </div>
-
+      <div class="btn-container">
+        <div class="btn-children">
+          <button type="button" class="btn btn-secondary" onclick="location.href='/admin/specialService/update/<%= serviceId %>';">Update</button>
+          <button type="button" class="btn btn-danger" onclick="location.href='/admin/specialService/delete/<%= serviceId %>';">Delete</button>
+        </div>        
+      </div>
       <div class="twoBigSectionFlex">
         <div class="oneBigFatCat_wrapper">
           <div class="oneBigFatCat">

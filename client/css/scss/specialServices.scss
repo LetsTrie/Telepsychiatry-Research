@@ -89,6 +89,19 @@ body {
       font-size: 22px;
     }
   }
+  .add-new-btn {
+    p {
+      text-align: right;
+      width: 95%;
+      margin: auto;
+      button {
+        padding: 10px 15px;
+        background-color: lightblue;
+        color: #fff;
+        border: none;
+      }
+    }
+  }
   .allSpecialServices {
     width: 80%;
     @media (max-width: 1500px) {
@@ -166,6 +179,32 @@ body {
           }
         }
       }
+    }
+  }
+}
+
+.con-wrapper {
+  width: 65%;
+  margin: 50px auto;
+  table {
+    width: 100%;
+    background-color: #ddd;
+    th {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+    td {
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+    }
+    button {
+      background-color: green;
+      color: #fff;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
     }
   }
 }

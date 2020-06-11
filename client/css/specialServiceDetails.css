@@ -1495,7 +1495,7 @@ body {
 
 @media (max-width: 1000px) {
   .specialServiceDoctors .eachDoctor {
-    width: calc(60% -  px);
+    width: calc(60% - px);
     height: calc((60vw - 20px) * 1);
   }
 }
@@ -1549,4 +1549,52 @@ body {
 
 .btn-container .btn-children {
   margin: auto;
+}
+
+.schedule {
+  margin-top: 40px;
+}
+
+.schedule .contents {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.schedule .contents .info {
+  font-size: 18px;
+}
+
+.parts .each-part {
+  padding: 10px 0;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.parts .each-part a {
+  color: #000;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.parts .each-part a i {
+  padding: 7.5px 10px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  color: gray;
+}
+
+.parts .each-part a:hover {
+  text-decoration: none;
+}
+
+.parts .each-part:hover {
+  background-color: #eee;
 }

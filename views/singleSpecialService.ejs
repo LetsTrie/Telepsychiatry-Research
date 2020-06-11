@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <input type="hidden" value="<%= data._id %>" id="id">
   <section class="wrapper">
     <nav>
       <%- include('./partials/navbar')%>
@@ -24,18 +25,17 @@
           <p><%= data.title %></p>
         </div>
       </div>
-      <div class="btn-container">
-        <div class="btn-children">
-          <button type="button" class="btn btn-secondary" onclick="location.href='/admin/specialService/update/<%= serviceId %>';">Update</button>
-          <button type="button" class="btn btn-danger" onclick="location.href='/admin/specialService/delete/<%= serviceId %>';">Delete</button>
-        </div>        
-      </div>
       <div class="twoBigSectionFlex">
         <div class="oneBigFatCat_wrapper">
           <div class="oneBigFatCat">
             <div class="main-Heading">
               <p><%= data.title %></p>
             </div>
+
+            <% if (errorMessage.length != 0) { %>
+              <div class="alert alert-danger"><p style="text-align: center;"><%= errorMessage %></p></div>
+            <% } %>
+
             <div class="specialServiceSubsection">
               <div class="subsection-Heading">
                 <p>ABOUT</p>
@@ -45,9 +45,17 @@
                   <%- data.description %>
                 </p>
               </div>
-              <button type="button" class="btn btn-danger">
-                Book Appointment
-              </button>
+              <div class="schedule">
+                <div class="subsection-Heading">
+                  <p>Schedule</p>
+                </div>
+                <div class="contents">
+                  <div class="info">
+                    Every week on <%= data.schedule.weekDay %>, from <%= data.schedule.start %> to <%= data.schedule.end %>
+                  </div> 
+                  <button id="book" class="btn btn-danger">Book Appointment</button>
+                </div>
+              </div>
             </div>
             <% if (data.videos.length != 0) { %>
             <div class="specialServiceSubsection">
@@ -106,3 +114,12 @@
   <%- include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
+
+<script>
+  $('#book').click((e) => {
+    const id = $('#id').val()
+    location = `/services/special_services/book/${id}`
+  })
+</script>
+
+</html>

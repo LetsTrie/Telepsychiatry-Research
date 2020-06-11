@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/specialServices.css" />
+
+  <title>
+    Admin Panel | Special Services
+  </title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/adminNavbar')%>
+    </nav>
+    <div class="sp_wrapper">
+      <div class="globalBlueDivider">
+        <div class="smallText">
+          <p><a href="/">Admin</a> / Special services</p>
+        </div>
+        <div class="bigText">
+          <p>Our Special Services</p>
+        </div>
+      </div>
+      <div class="allSpecialServices_wrapper">
+        <div class="specialHeading">
+          <p>Our Special Services</p>
+        </div>
+        <div class="specialSubHeading">
+          <p>
+            Click on each services to see more info and timetable
+          </p>
+        </div>
+        <div class="add-new-btn">
+            <p>
+              <button class="see-requests"> Booking Requests </button>
+              <button class="add-service"> Add Special Service </button>
+            </p>
+        </div>
+        <div class="allSpecialServices">
+          <!-- 1. -->
+
+          <% for (let i=0; i<data.length; i++) { %>
+          <div class="eachServices">
+            <div class="es_img">
+              <img src="/specialService/<%=data[i].image%>" alt="" />
+            </div>
+            <div class="es_name">
+              <p><a href="/admin/special_service/<%=data[i]._id%>"><%=data[i].title%></a></p>
+              <p><span>Clinical Treatment</span></p>
+            </div>
+          </div>
+          <% } %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+
+
+
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.add-service').click((e) => {
+    location = '/admin/new/specialService'
+  })
+  $('.see-requests').click((e) => {
+    location = '/admin/special_services/all-requests'
+  })
+</script>
+</html>

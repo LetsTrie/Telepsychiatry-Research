@@ -1,433 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
 
     <link rel="stylesheet" href="/css/admin.css" />
     <title>Add New Research | Admin Panel</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Special Service</p>
-                </div>
-                <div class="bigText">
-                    <p>Add New Special Service</p>
-                </div>
-            </div>
-        </header>
-
-        <div class="twoBigSectionFlex">
-            <div class="oneBigFatCat_wrapper">
-                <div class="oneBigFatCat">
-                    <div class="addResource text-center my-2">
-                        <h1>Add Special Service</h1>
-                    </div>
-                    <div class="addResource_form">
-                        <div class="alert alert-danger text-center" id="alert"></div>
-                        <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
-                        <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
-                        <form autocomplete="off" action="/admin/new/specialService/file" id="form"
-                            enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="filename" id="filename" />
-                            <input type="hidden" name="id" id="id" />
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Title:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" name="title" id="title" placeholder="Title" />
-                                </div>
-                                <div class="box_header">
-                                    <p>Sub Title:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" name="subTitle" id="subTitle" placeholder="Sub Title" />
-                                </div>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Promotional Video:</p>
-                                </div>
-                                <input
-                                    type="text"
-                                    id="videoCnt"
-                                    name="videoCnt"
-                                    value="0"
-                                    style="display: none;"
-                                />
-                                <input
-                                    type="text"
-                                    id="videoTotalCnt"
-                                    value="0"
-                                    style="display: none;"
-                                />
-                                <div id="videoAddPlace"></div>
-                                <button type="button" class="btn btn-secondary" onclick="addVideo()">
-                                    Add Link
-                                </button>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Breif Description:</p>
-                                </div>
-                                <div class="input_box">
-                                    <textarea name="BriefDesciption" id="BDeditor"> </textarea>
-                                </div>
-                            </div>
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Doctors:</p>
-                                </div>
-                                <input
-                                    type="text"
-                                    id="doctorCnt"
-                                    name="doctorCnt"
-                                    value="0"
-                                    style="display: none;"
-                                />
-                                <input
-                                    type="text"
-                                    id="doctorTotalCnt"
-                                    value="0"
-                                    style="display: none;"
-                                />
-                                <div id="doctorAddPlace"></div>
-                                <button type="button" class="btn btn-secondary" onclick="addDoctor()">
-                                    Add doctor
-                                </button>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Service Details:</p>
-                                </div>
-                                <div class="input_box">
-                                    <textarea name="ServiceDetails" id="SDeditor"> </textarea>
-                                </div>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Representational Photo</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="file" name="ssFile" id="repPhotoID"
-                                        accept="image/x-png,image/jpg,image/jpeg" />
-                                </div>
-                            </div>
-
-                            <div class="createResources__submit">
-                                <button id="submit-btn">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Special Service</p>
+          </div>
+          <div class="bigText">
+            <p>Add New Special Service</p>
+          </div>
         </div>
+      </header>
+
+      <div class="twoBigSectionFlex">
+        <div class="oneBigFatCat_wrapper">
+          <div class="oneBigFatCat">
+            <div class="addResource text-center my-2">
+              <h1>Add Special Service</h1>
+            </div>
+            <div class="addResource_form">
+              <div class="alert alert-danger text-center" id="alert"></div>
+              <div
+                class="alert alert-success text-center"
+                id="alert-success"
+                style="display: none;"
+              ></div>
+              <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
+              <form
+                autocomplete="off"
+                action="/admin/new/specialService/file"
+                id="form"
+                enctype="multipart/form-data"
+                method="POST"
+              >
+                <input type="hidden" name="filename" id="filename" />
+                <input type="hidden" name="id" id="id" />
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Title:</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      placeholder="Title"
+                    />
+                  </div>
+                  <div class="box_header">
+                    <p>Sub Title:</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="subTitle"
+                      id="subTitle"
+                      placeholder="Sub Title"
+                    />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Promotional Video:</p>
+                  </div>
+                  <input
+                    type="text"
+                    id="videoCnt"
+                    name="videoCnt"
+                    value="0"
+                    style="display: none;"
+                  />
+                  <input
+                    type="text"
+                    id="videoTotalCnt"
+                    value="0"
+                    style="display: none;"
+                  />
+                  <div id="videoAddPlace"></div>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="addVideo()"
+                  >
+                    Add Link
+                  </button>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Breif Description:</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea name="BriefDesciption" id="BDeditor"> </textarea>
+                  </div>
+                </div>
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Doctors:</p>
+                  </div>
+                  <input
+                    type="text"
+                    id="doctorCnt"
+                    name="doctorCnt"
+                    value="0"
+                    style="display: none;"
+                  />
+                  <input
+                    type="text"
+                    id="doctorTotalCnt"
+                    value="0"
+                    style="display: none;"
+                  />
+                  <div id="doctorAddPlace"></div>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="addDoctor()"
+                  >
+                    Add doctor
+                  </button>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Service Details:</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea name="ServiceDetails" id="SDeditor"> </textarea>
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Service Fees:</p>
+                  </div>
+                  <div class="input_box">
+                    <input type="text" placeholder="Service fee" id="fee" />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Schedule for the service</p>
+                  </div>
+                  <div class="input_box flex">
+                    <select name="" id="weekDay">
+                      <option value="" disabled selected
+                        >Select week day</option
+                      >
+                      <option value="Sunday">Sunday</option>
+                      <option value="Monday">Monday</option>
+                      <option value="Tuesday">Tuesday</option>
+                      <option value="Wednesday">Wednesday</option>
+                      <option value="Thursday">Thursday</option>
+                      <option value="Friday">Friday</option>
+                      <option value="Saturday">Saturday</option>
+                    </select>
+                    <select name="" id="start">
+                      <option value="" disabled selected
+                        >Select start time</option
+                      >
+                      <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%> PM"><%=i%> PM</option>
+                      <% } %> <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%> AM"><%=i%> AM</option>
+                      <% } %>
+                    </select>
+                    <select name="" id="end">
+                      <option value="" disabled selected
+                        >Select end time</option
+                      >
+                      <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%>PM"><%=i%> PM</option>
+                      <% } %> <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%>AM"><%=i%> AM</option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Representational Photo</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="file"
+                      name="ssFile"
+                      id="repPhotoID"
+                      accept="image/x-png,image/jpg,image/jpeg"
+                    />
+                  </div>
+                </div>
+
+                <div class="createResources__submit">
+                  <button id="submit-btn">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <%- include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-<script>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"
+  ></script>
+  <script>
     let bdeditor, sdeditor;
-    let DoctorIDs = []
-    let DoctorNames = []
+    let DoctorIDs = [];
+    let DoctorNames = [];
     ClassicEditor.create(document.querySelector('#BDeditor'))
-        .then((editor) => {
-            bdeditor = editor;
-            console.log(editor);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+      .then((editor) => {
+        bdeditor = editor;
+        console.log(editor);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     // This is for service details
     ClassicEditor.create(document.querySelector('#SDeditor'))
-        .then((editor) => {
-            sdeditor = editor;
-            console.log(editor);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+      .then((editor) => {
+        sdeditor = editor;
+        console.log(editor);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    const checkArr = (data) => {
+      console.log(data);
+      if (data.length == 0) {
+        return true;
+      }
+      for (let i = 0; i < data.length; i++) {
+        if (check(data[i])) {
+          return true;
+        }
+      }
+      return false;
+    };
+
     $('#submit-btn').click((e) => {
-        e.preventDefault();
-        const title = $('#title').val();
-        const subTitle = $('#subTitle').val();
-        const description = bdeditor.getData();
-        const details = sdeditor.getData();
-        const imageFile = $('#repPhotoID');
-        let videoArr = $('.video-link')
-        let videos = []
-        for (let i = 0; i < videoArr.length; i++) {
-            const vd = $(videoArr[i]).val()
-            videos.push(vd)
-        }   
-        
-        let doctorArr = $('.doctorClass')
-        for (let i = 0; i < doctorArr.length; i++) {
-            const docName = $(doctorArr[i]).val()
-            DoctorNames.push(docName)
-            DoctorIDs.push(docIDs[doctors.indexOf(docName)])
-        }
-        if (check(title)) {
-            showAlert('Enter the title');
-        }if (check(subTitle)) {
-            showAlert('Enter the sub title');
-        } else if (check(description)) {
-            showAlert('Enter a brief description');
-        } else if (check(details)) {
-            showAlert('Enter service details');
-        } else if (DoctorIDs.length == 0) {
-            showAlert('Enter doctors for this service');
-        } else if (!imageFile[0].files.length) {
-            showAlert('Enter the representational photo');
-        } else if ($('#repPhotoID')[0].files[0].size / 1024 > 250) {
-            showAlert('File size must be less then 250 KB');
-        } else {
-            $('#alert').hide()
-            const image =
-                Date.parse(new Date().toString()) +
-                '-' +
-                $('#repPhotoID')[0].files[0].name;
-            $('#filename').val(image);
-            const data = {
-                title,
-                subTitle,
-                description,
-                details,
-                image,
-                videos: JSON.stringify(videos),
-                doctorIDs: JSON.stringify(DoctorIDs),
-                doctorNames: JSON.stringify(DoctorNames)
-            };
-            console.log('new special service data='+data);
-            Submit(data);
-        }
+      e.preventDefault();
+
+      DoctorNames = [];
+      DoctorIDs = [];
+
+      const title = $('#title').val();
+      const subTitle = $('#subTitle').val();
+      const description = bdeditor.getData();
+      const details = sdeditor.getData();
+      const fee = $('#fee').val();
+      const weekDay = $('#weekDay').val();
+      const start = $('#start').val();
+      const end = $('#end').val();
+      const imageFile = $('#repPhotoID');
+      let videoArr = $('.video-link');
+      let videos = [];
+      for (let i = 0; i < videoArr.length; i++) {
+        const vd = $(videoArr[i]).val();
+        videos.push(vd);
+      }
+
+      let doctorArr = $('.doctorClass');
+      for (let i = 0; i < doctorArr.length; i++) {
+        const docName = $(doctorArr[i]).val();
+        DoctorNames.push(docName);
+        DoctorIDs.push(docIDs[doctors.indexOf(docName)]);
+      }
+      if (check(title)) {
+        showAlert('Enter the title');
+      }
+      if (check(subTitle)) {
+        showAlert('Enter the sub title');
+      } else if (check(description)) {
+        showAlert('Enter a brief description');
+      } else if (check(details)) {
+        showAlert('Enter service details');
+      } else if (check(fee)) {
+        showAlert('Enter the service fees');
+      } else if (checkArr(DoctorIDs)) {
+        showAlert('Enter doctors for this service');
+      } else if (check(weekDay)) {
+        showAlert('Enter the day of the week in the schedule');
+      } else if (check(start)) {
+        showAlert('Enter starting hour in the schedule');
+      } else if (check(end)) {
+        showAlert('Enter the ending hour in the schedule');
+      } else if (!imageFile[0].files.length) {
+        showAlert('Enter the representational photo');
+      } else if ($('#repPhotoID')[0].files[0].size / 1024 > 250) {
+        showAlert('File size must be less then 250 KB');
+      } else {
+        $('#alert').hide();
+        const image =
+          Date.parse(new Date().toString()) +
+          '-' +
+          $('#repPhotoID')[0].files[0].name;
+        $('#filename').val(image);
+        const schedule = {
+          weekDay,
+          start,
+          end,
+        };
+        const data = {
+          title,
+          subTitle,
+          description,
+          details,
+          fee,
+          image,
+          schedule: JSON.stringify(schedule),
+          videos: JSON.stringify(videos),
+          doctorIDs: JSON.stringify(DoctorIDs),
+          doctorNames: JSON.stringify(DoctorNames),
+        };
+        console.log('new special service data=' + data);
+        Submit(data);
+      }
     });
     const check = (str) => {
-        const res = str == '' || str == null || str == undefined;
-        return res;
+      const res = str == '' || str == null || str == undefined;
+      return res;
     };
     const showAlert = (msg) => {
-        $('#alert').show();
-        $('#alert').html(msg);
-        $('html, body').animate({
-            scrollTop: 0,
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate(
+        {
+          scrollTop: 0,
         },
-            'slow'
-        );
+        'slow'
+      );
     };
     const Submit = (data) => {
-        $.ajax({
-            type: 'POST',
-            url: '/admin/new/specialService',
-            data,
-            success: (data) => {
-                console.log(data);
-                if (data.status) {
-                    $('html, body').animate({
-                        scrollTop: 0,
-                    },
-                        'slow'
-                    );
-                    $('#alert-success').show()
-                    $('#alert-success').html(data.msg)
-                    $('#id').val(data.msg);
-                    setInterval(() => {
-                        $('#form').submit()
-                    }, 2000);
-                }
-            },
-        });
+      $.ajax({
+        type: 'POST',
+        url: '/admin/new/specialService',
+        data,
+        success: (data) => {
+          console.log(data);
+          if (data.status) {
+            $('html, body').animate(
+              {
+                scrollTop: 0,
+              },
+              'slow'
+            );
+            $('#alert-success').show();
+            $('#alert-success').html(data.msg);
+            $('#id').val(data.msg);
+            setInterval(() => {
+              $('#form').submit();
+            }, 2000);
+          }
+        },
+      });
     };
     function addVideo() {
-        // videoNo is actual present video count
-        let videoNo = parseInt($('#videoCnt').val()) + 1
-        // videoTotalNo its just for unique id
-        let videoTotalNo = parseInt($('#videoTotalCnt').val()) + 1
-        $('#videoCnt').val(videoNo)
-        $('#videoTotalCnt').val(videoTotalNo)
-        $('#videoAddPlace').replaceWith(
-            '<div class="keyContactPersonWrapper" id="video' + videoNo + '">' +
-            '<div class="keyContactPerson">' +
-            '<div class="input_box_flx_prnt">' +
-            '<div class="input_box_flx_chld">' +
-            '<input class="video-link" id="videoName' + videoNo + '" type="text" placeholder="Video Link">' +
-
-            '</div>' +
-            '<div class="input_box_flx_chld_btn">' +
-            '<button type="button" class="btn btn-danger" onclick="deleteVid(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '<div id="videoAddPlace"></div>'
-        )
-
+      // videoNo is actual present video count
+      let videoNo = parseInt($('#videoCnt').val()) + 1;
+      // videoTotalNo its just for unique id
+      let videoTotalNo = parseInt($('#videoTotalCnt').val()) + 1;
+      $('#videoCnt').val(videoNo);
+      $('#videoTotalCnt').val(videoTotalNo);
+      $('#videoAddPlace').replaceWith(
+        '<div class="keyContactPersonWrapper" id="video' +
+          videoNo +
+          '">' +
+          '<div class="keyContactPerson">' +
+          '<div class="input_box_flx_prnt">' +
+          '<div class="input_box_flx_chld">' +
+          '<input class="video-link" id="videoName' +
+          videoNo +
+          '" type="text" placeholder="Video Link">' +
+          '</div>' +
+          '<div class="input_box_flx_chld_btn">' +
+          '<button type="button" class="btn btn-danger" onclick="deleteVid(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '<div id="videoAddPlace"></div>'
+      );
     }
     function deleteVid(id) {
-        let videoNo = parseInt($('#videoCnt').val()) - 1
-        $('#videoCnt').val(videoNo)
-        console.log('parent id=' + id)
-        $('#' + id + '').replaceWith('')
+      let videoNo = parseInt($('#videoCnt').val()) - 1;
+      $('#videoCnt').val(videoNo);
+      console.log('parent id=' + id);
+      $('#' + id + '').replaceWith('');
     }
     function addDoctor() {
-        // doctorNo is actual present video count
-        let doctorNo = parseInt($('#doctorCnt').val()) + 1
-        //doctorTotalNo its just for unique id
-        let doctorTotalNo = parseInt($('#doctorTotalCnt').val()) + 1
-        $('#doctorCnt').val(doctorNo)
-        $('#doctorTotalCnt').val(doctorTotalNo)
+      // doctorNo is actual present video count
+      let doctorNo = parseInt($('#doctorCnt').val()) + 1;
+      //doctorTotalNo its just for unique id
+      let doctorTotalNo = parseInt($('#doctorTotalCnt').val()) + 1;
+      $('#doctorCnt').val(doctorNo);
+      $('#doctorTotalCnt').val(doctorTotalNo);
 
-        $('#doctorAddPlace').replaceWith(
-            '<div class="keyContactPersonWrapper" id="doctor' + doctorNo + '">' +
-            '<div class="keyContactPerson">' +
-            '<div class="input_box_flx_prnt">' +
-            '<div class="input_box_flx_chld">' +
-            '<input class="doctorClass" id="doctorName' + doctorNo + '" type="text" name="doctorName" placeholder="Doctor name">' +
+      $('#doctorAddPlace').replaceWith(
+        '<div class="keyContactPersonWrapper" id="doctor' +
+          doctorNo +
+          '">' +
+          '<div class="keyContactPerson">' +
+          '<div class="input_box_flx_prnt">' +
+          '<div class="input_box_flx_chld">' +
+          '<input class="doctorClass" id="doctorName' +
+          doctorNo +
+          '" type="text" name="doctorName" placeholder="Doctor name">' +
+          '</div>' +
+          '<div class="input_box_flx_chld_btn">' +
+          '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '<div id="doctorAddPlace"></div>'
+      );
 
-            '</div>' +
-            '<div class="input_box_flx_chld_btn">' +
-            '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '<div id="doctorAddPlace"></div>'
-        )
-
-
-        autocomplete(document.getElementById("doctorName" + doctorNo), doctors);
+      autocomplete(document.getElementById('doctorName' + doctorNo), doctors);
     }
     function deleteDoc(id) {
-        let doctorNo = parseInt($('#doctorCnt').val()) - 1
-        $('#doctorCnt').val(doctorNo)
-        console.log('parent id=' + id)
-        $('#' + id + '').replaceWith('')
+      let doctorNo = parseInt($('#doctorCnt').val()) - 1;
+      $('#doctorCnt').val(doctorNo);
+      console.log('parent id=' + id);
+      $('#' + id + '').replaceWith('');
     }
     // next section is for auto complete doctor
     function autocomplete(inp, arr) {
-        /*the autocomplete function takes two arguments,
+      /*the autocomplete function takes two arguments,
         the text field element and an array of possible autocompleted values:*/
-        var currentFocus;
-        /*execute a function when someone writes in the text field:*/
-        inp.addEventListener("input", function (e) {
-            var a, b, i, val = this.value;
-            /*close any already open lists of autocompleted values*/
-            closeAllLists();
-            if (!val) {
-                return false;
-            }
-            currentFocus = -1;
-            /*create a DIV element that will contain the items (values):*/
-            a = document.createElement("DIV");
-            a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items");
-            /*append the DIV element as a child of the autocomplete container:*/
-            this.parentNode.appendChild(a);
-            /*for each item in the array...*/
-            for (i = 0; i < arr.length; i++) {
-                /*check if the item starts with the same letters as the text field value:*/
-                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                    /*create a DIV element for each matching element:*/
-                    b = document.createElement("DIV");
-                    /*make the matching letters bold:*/
-                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                    b.innerHTML += arr[i].substr(val.length);
-                    /*insert a input field that will hold the current array item's value:*/
-                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                    /*execute a function when someone clicks on the item value (DIV element):*/
-                    b.addEventListener("click", function (e) {
-                        /*insert the value for the autocomplete text field:*/
-                        inp.value = this.getElementsByTagName("input")[0].value;
-                        // DoctorIDs.push(docIDs[arr.indexOf(inp.value)])
-                        // DoctorNames.push(inp.value)
-                        /*close the list of autocompleted values,
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener('input', function (e) {
+        var a,
+          b,
+          i,
+          val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) {
+          return false;
+        }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement('DIV');
+        a.setAttribute('id', this.id + 'autocomplete-list');
+        a.setAttribute('class', 'autocomplete-items');
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement('DIV');
+            /*make the matching letters bold:*/
+            b.innerHTML =
+              '<strong>' + arr[i].substr(0, val.length) + '</strong>';
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener('click', function (e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName('input')[0].value;
+              // DoctorIDs.push(docIDs[arr.indexOf(inp.value)])
+              // DoctorNames.push(inp.value)
+              /*close the list of autocompleted values,
                         (or any other open lists of autocompleted values:*/
-                        closeAllLists();
-                    });
-                    a.appendChild(b);
-                }
-            }
-        });
-        /*execute a function presses a key on the keyboard:*/
-        inp.addEventListener("keydown", function (e) {
-            var x = document.getElementById(this.id + "autocomplete-list");
-            if (x) x = x.getElementsByTagName("div");
-            if (e.keyCode == 40) {
-                /*If the arrow DOWN key is pressed,
+              closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener('keydown', function (e) {
+        var x = document.getElementById(this.id + 'autocomplete-list');
+        if (x) x = x.getElementsByTagName('div');
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
                 increase the currentFocus variable:*/
-                currentFocus++;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 38) { //up
-                /*If the arrow UP key is pressed,
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) {
+          //up
+          /*If the arrow UP key is pressed,
                 decrease the currentFocus variable:*/
-                currentFocus--;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 13) {
-                /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                e.preventDefault();
-                if (currentFocus > -1) {
-                    /*and simulate a click on the "active" item:*/
-                    if (x) x[currentFocus].click();
-                }
-            }
-        });
-        function addActive(x) {
-            /*a function to classify an item as "active":*/
-            if (!x) return false;
-            /*start by removing the "active" class on all items:*/
-            removeActive(x);
-            if (currentFocus >= x.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = (x.length - 1);
-            /*add class "autocomplete-active":*/
-            x[currentFocus].classList.add("autocomplete-active");
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
         }
-        function removeActive(x) {
-            /*a function to remove the "active" class from all autocomplete items:*/
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("autocomplete-active");
-            }
+      });
+      function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = x.length - 1;
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add('autocomplete-active');
+      }
+      function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove('autocomplete-active');
         }
-        function closeAllLists(elmnt) {
-            /*close all autocomplete lists in the document,
+      }
+      function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
             except the one passed as an argument:*/
-            var x = document.getElementsByClassName("autocomplete-items");
-            for (var i = 0; i < x.length; i++) {
-                if (elmnt != x[i] && elmnt != inp) {
-                    x[i].parentNode.removeChild(x[i]);
-                }
-            }
+        var x = document.getElementsByClassName('autocomplete-items');
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
         }
-        /*execute a function when someone clicks in the document:*/
-        document.addEventListener("click", function (e) {
-            closeAllLists(e.target);
-        });
+      }
+      /*execute a function when someone clicks in the document:*/
+      document.addEventListener('click', function (e) {
+        closeAllLists(e.target);
+      });
     }
     /*this doctors array is used in adding new doctor to service*/
     var doctors;
     var docIDs;
-    $.get('/admin/new/specialService/getExperts', data => {
-        doctors = data.doctors
-        docIDs = data.docIDs
-    })
-</script>
-
+    $.get('/admin/new/specialService/getExperts', (data) => {
+      doctors = data.doctors;
+      docIDs = data.docIDs;
+    });
+  </script>
 </html>
 <!-- https://www.youtube.com/watch?v=LnyDe73orLw&t=3s  -->

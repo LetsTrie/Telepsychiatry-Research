@@ -636,6 +636,36 @@ exports.getAdminNewResearch = async (req, res, next) => {
 
 // addmin add new special service
 const { ssModel } = require('../models/specialService.js');
+exports.getSS = async (req, res) => {
+  const data = await ssModel.find();
+  return res.render('specialServicesForAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.singleSS = async (req, res) => {
+  const data = await ssModel.findOne({ _id: req.params.id });
+  let doctorInfo = [];
+  for (let i = 0; i < data.doctorIDs.length; i++) {
+    const doc = await eUserModel.findOne({ _id: data.doctorIDs[i] });
+    doctorInfo.push({
+      image: doc.propicURL,
+      designation: doc.designation,
+    });
+  }
+
+  const parts = await ssBookModel.find({ ss_id: req.params.id });
+
+  return res.render('singleSpecialServiceFromAdmin', {
+    serviceId: req.params.id,
+    user: req.user,
+    data,
+    doctorInfo,
+    parts,
+  });
+};
+
 exports.getAdminNewSpecialService = async (req, res, next) => {
   return res.render('addSpecialService', { user: req.user });
 };
@@ -655,9 +685,10 @@ exports.getExperts = async (req, res) => {
 };
 
 exports.postAdminNewSS = async (req, res) => {
-  console.log('new special service data:')
-  console.log(req.body)
-  const { title, subTitle, description, details, image } = req.body;
+  console.log('new special service data:');
+  console.log(req.body);
+  const { title, subTitle, description, details, fee, image } = req.body;
+  const schedule = JSON.parse(req.body.schedule);
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
@@ -666,6 +697,8 @@ exports.postAdminNewSS = async (req, res) => {
     subTitle,
     description,
     details,
+    fee,
+    schedule,
     image,
     videos,
     doctorIDs,
@@ -683,6 +716,35 @@ exports.postAdminNewSS = async (req, res) => {
 exports.ssFile = async (req, res) => {
   console.log('special service file saved');
   res.redirect('back');
+};
+
+const { ssBookModel } = require('../models/ss_book.js');
+exports.getSSBookRequests = async (req, res) => {
+  const data = await ssBookModel.find({ isConfirmed: false });
+  return res.render('ssBookRequestsForAdmin', {
+    data,
+    user: req.user,
+  });
+};
+
+exports.approveSSBookRequest = async (req, res) => {
+  await ssModel.findOneAndUpdate(
+    { _id: req.params.ss_id },
+    {
+      $inc: {
+        alottedPatients: 1,
+      },
+    }
+  );
+  await ssBookModel.findOneAndUpdate(
+    { _id: req.params.apt_id },
+    {
+      $set: {
+        isConfirmed: true,
+      },
+    }
+  );
+  return res.redirect('back');
 };
 
 // ADMIN SUBMIT RESEARCH (POST)
@@ -1150,27 +1212,27 @@ exports.getUpdateSingleSS = async (req, res, next) => {
 };
 
 exports.postUpdateSingleSS = async (req, res) => {
-  console.log("service data for update:")
-  console.log(req.body)
+  console.log('service data for update:');
+  console.log(req.body);
   const serviceId = req.params.id;
   const { title, subTitle, description, details, image } = req.body;
- 
+
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
-   console.log({
-     serviceId,
-     title,
-     subTitle,
-     description,
-     details,
-     image,
-     doctorIDs,
-     doctorNames,
-     videos,
-   });
-  
-   if (image != '') {
+  console.log({
+    serviceId,
+    title,
+    subTitle,
+    description,
+    details,
+    image,
+    doctorIDs,
+    doctorNames,
+    videos,
+  });
+
+  if (image != '') {
     await ssModel.findOneAndUpdate(
       { _id: serviceId },
       {
@@ -1184,8 +1246,7 @@ exports.postUpdateSingleSS = async (req, res) => {
         doctorNames: doctorNames,
       }
     );
-  }
-  else{
+  } else {
     await ssModel.findOneAndUpdate(
       { _id: serviceId },
       {

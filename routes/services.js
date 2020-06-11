@@ -18,7 +18,9 @@ const {
   allAppointments,
   dateTimeReset,
   allSS,
-  singleSS
+  singleSS,
+  bookSS,
+  postBookSS,
 } = require('../controllers/services');
 
 router.get('/consultation', consultation);
@@ -47,8 +49,9 @@ router.get('/assessment/register', (req, res, next) => {
 });
 
 router.get('/special_services', allSS);
-
 router.get('/special_services/:id', singleSS);
+router.get('/special_services/book/:id', bookSS);
+router.post('/special_services/book', postBookSS);
 
 router.post('/book', bookAppointment);
 router.post('/book/emergency', emergenceBooking);

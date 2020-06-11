@@ -1103,6 +1103,19 @@ body {
   font-size: 22px;
 }
 
+.allSpecialServices_wrapper .add-new-btn p {
+  text-align: right;
+  width: 95%;
+  margin: auto;
+}
+
+.allSpecialServices_wrapper .add-new-btn p button {
+  padding: 10px 15px;
+  background-color: lightblue;
+  color: #fff;
+  border: none;
+}
+
 .allSpecialServices_wrapper .allSpecialServices {
   width: 80%;
   margin: auto;
@@ -1219,4 +1232,34 @@ body {
   font-size: 15px;
   color: #3f44a3;
   padding-left: 1px;
+}
+
+.con-wrapper {
+  width: 65%;
+  margin: 50px auto;
+}
+
+.con-wrapper table {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.con-wrapper table th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.con-wrapper table td {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.con-wrapper table button {
+  background-color: green;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
 }

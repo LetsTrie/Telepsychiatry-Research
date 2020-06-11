@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/vendorsTop')%>
+    <link rel="stylesheet" href="/css/specialServices.css" />
+
+    <title>
+      Admin Panel | Special Services
+    </title>
+  </head>
+
+  <body>
+    <section class="wrapper">
+      <nav>
+        <%- include('./partials/adminNavbar')%>
+      </nav>
+      <div class="sp_wrapper">
+        <div class="globalBlueDivider">
+          <div class="smallText">
+            <p><a href="/">Admin</a> / Special services / All Requests</p>
+          </div>
+          <div class="bigText">
+            <p>Booking Requests for Special Services</p>
+          </div>
+        </div>
+        <div class="con-wrapper">
+          <table>
+            <tr>
+              <th>Service</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Booking Type</th>
+              <th>Action</th>
+            </tr>
+            <% for (let i=0; i<data.length; i++) { %>
+            <tr>
+              <td><a style="color: blue;" href="/admin/special_service/<%= data[i].ss_id %>"><%= data[i].ss_name %></a></td>
+              <td><a style="color: blue;" href="/admin/special_service/<%= data[i].patient_id %>"><%= data[i].name %></a></td>
+              <td><%= data[i].age %></td>
+              <td><%= data[i].email %></td>
+              <td><%= data[i].phoneNumber %></td>
+              <td><%= data[i].bookingType %></td>
+              <td><button class="approve-btn" id="<%= data[i]._id %>-<%= data[i].ss_id %>">Approve</button></td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+    </section>
+    <%- include('./partials/footer')%>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script>
+    $('.approve-btn').click((e) => {
+      const apt_id = e.target.id.split('-')[0]
+      const ss_id = e.target.id.split('-')[1]
+      location = `/admin/special_services/approve/${apt_id}/${ss_id}`;
+    });
+  </script>
+</html>

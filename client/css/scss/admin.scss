@@ -626,3 +626,16 @@
   width: 25%;
   padding: 10px 0 0 0;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  select {
+    width: 25%;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

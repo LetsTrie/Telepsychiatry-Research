@@ -9,21 +9,49 @@ const admin = {
 };
 
 const { eUserModel } = require('../models/expertUser');
-
+const getResetTime = (day) => {
+  console.log(day);
+  const days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+  const dayNo = days.indexOf(day) + 1;
+  var resetDate = new Date();
+  resetDate.setDate(
+    resetDate.getDate() + ((7 - resetDate.getDay()) % 7) + dayNo
+  );
+  resetDate.setHours(12);
+  resetDate.setHours(resetDate.getHours() + 6);
+  resetDate.setMinutes(0);
+  console.log(resetDate);
+  const dif = Math.round((resetDate - new Date()) / 1000);
+  return dif;
+};
 router.get('/', async (req, res, next) => {
-  // $2a$10$.wX1L1QyW2zG1gdzh.qT3OSxwnAFtfuS8QSuiWSRhBJU21qtoDgQC
-  // const eUser = require('../data/homepage_experts');
+  // console.log(getResetTime('Friday'));
   const { eUserModel } = require('../models/expertUser.js');
-  // Dr. Mohammed Zubayer Miah, Mohammad Golam Rabbani, Tanjir Rashid Soron, Sharmin Ara, Ashik Rahman, Md Ashiqur Rahman Ashiq
+  /*
+  5ea6a986266de7450f67a0f5,
+  5ed219ea536d3a1465951cf5,
+  5e998ecb4fda502e5399178c,
+  5e9ff70a2793470405c3d913,
+  5ed3cce0d6e785040b85ec42
+  */
   let exNames = [
-    'Dr. Mohammed Zubayer Miah',
-    'Mohammad Golam Rabbani',
-    'Sharmin Ara',
-    'Ashik Rahman',
+    '5ea6a986266de7450f67a0f5',
+    '5ed219ea536d3a1465951cf5',
+    '5e998ecb4fda502e5399178c',
+    '5e9ff70a2793470405c3d913',
+    '5ed3cce0d6e785040b85ec42',
   ];
   let experts = [];
   for (let i = 0; i < exNames.length; i++) {
-    const expert = await eUserModel.findOne({ name: exNames[i] });
+    const expert = await eUserModel.findOne({ _id: exNames[i] });
     experts.push(expert);
   }
   // console.log(experts);

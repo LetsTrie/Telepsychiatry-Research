@@ -5,14 +5,18 @@ const ssModel = new mongoose.Schema({
   description: String,
   details: String,
   fee: String,
+
   schedule: {
     weekDay: String,
     start: String,
     end: String,
   },
-  alottedPatients: {
-    type: Number,
-    default: 0,
+  capacity: {
+    Max: Number,
+    alottedPatients: {
+      type: Number,
+      default: 0,
+    },
   },
   image: String,
   videos: [String],

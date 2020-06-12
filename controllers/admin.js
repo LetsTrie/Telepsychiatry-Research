@@ -685,13 +685,27 @@ exports.getExperts = async (req, res) => {
 };
 
 exports.postAdminNewSS = async (req, res) => {
-  console.log('new special service data:');
   console.log(req.body);
   const { title, subTitle, description, details, fee, image } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
+
+  const start = parseInt(schedule.start.split(' ')[0]);
+  if (schedule.start.split(' ')[0] == 'P') {
+    start = start + 12;
+  }
+
+  const end = parseInt(schedule.end.split(' ')[0]);
+  if (schedule.end.split(' ')[0] == 'P') {
+    end = end + 12;
+  }
+
+  const Max = Math.abs(start - end) * 2;
+  const capacity = {
+    Max,
+  };
   const obj = {
     title,
     subTitle,
@@ -699,6 +713,7 @@ exports.postAdminNewSS = async (req, res) => {
     details,
     fee,
     schedule,
+    capacity,
     image,
     videos,
     doctorIDs,
@@ -726,13 +741,42 @@ exports.getSSBookRequests = async (req, res) => {
     user: req.user,
   });
 };
-
+const getResetTime = (day) => {
+  console.log(day);
+  const days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+  const dayNo = days.indexOf(day) + 1;
+  var resetDate = new Date();
+  resetDate.setDate(
+    resetDate.getDate() + ((7 - resetDate.getDay()) % 7) + dayNo
+  );
+  resetDate.setHours(12);
+  resetDate.setHours(resetDate.getHours() + 6);
+  resetDate.setMinutes(0);
+  console.log(resetDate);
+  const dif = Math.round((resetDate - new Date()) / 1000);
+  return dif;
+};
 exports.approveSSBookRequest = async (req, res) => {
+  const ss = await ssModel.findOne({ _id: req.params.ss_id });
+  const alpat = ss.capacity.alottedPatients + 1;
+  let newCap = {
+    alottedPatients: alpat,
+    Max: ss.capacity.Max,
+  };
+  console.log(newCap);
   await ssModel.findOneAndUpdate(
     { _id: req.params.ss_id },
     {
-      $inc: {
-        alottedPatients: 1,
+      $set: {
+        capacity: newCap,
       },
     }
   );
@@ -744,7 +788,26 @@ exports.approveSSBookRequest = async (req, res) => {
       },
     }
   );
-  return res.redirect('back');
+  res.redirect('back');
+  if (alpat >= ss.capacity.Max) {
+    console.log('needs reset');
+    const day = ss.schedule.weekDay;
+    const resetTime = getResetTime(day);
+    newCap.alottedPatients = 0;
+    console.log(resetTime, newCap);
+    setTimeout(async () => {
+      await ssModel.findOneAndUpdate(
+        { _id: req.params.ss_id },
+        {
+          $set: {
+            capacity: newCap,
+          },
+        }
+      );
+      console.log('updated');
+    }, resetTime);
+  }
+  return;
 };
 
 // ADMIN SUBMIT RESEARCH (POST)

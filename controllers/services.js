@@ -746,31 +746,18 @@ exports.singleSS = async (req, res, next) => {
 };
 
 exports.bookSS = async (req, res) => {
-  const ss = await ssModel.findById(req.params.id);
-  const start = parseInt(ss.schedule.start.split(' ')[0]);
-  if (ss.schedule.start.split(' ')[0] == 'P') {
-    start = start + 12;
-  }
-
-  const end = parseInt(ss.schedule.end.split(' ')[0]);
-  if (ss.schedule.end.split(' ')[0] == 'P') {
-    end = end + 12;
-  }
-
-  const LIMIT = Math.abs(start - end);
-  console.log(LIMIT);
+  const data = await ssModel.findOne({ _id: req.params.id });
 
   if (!req.user) {
     req.flash('errorMessage', 'You must be logged in to book this appointment');
     return res.redirect('back');
-  } else if (ss.alottedPatients > LIMIT * 2) {
+  } else if (data.capacity.Max <= data.capacity.alottedPatients) {
     req.flash(
       'errorMessage',
       'This service is closed for this week. Try again next week'
     );
     return res.redirect('back');
   } else {
-    const data = await ssModel.findOne({ _id: req.params.id });
     res.render('newSSBook', {
       user: req.user,
       data,
@@ -787,7 +774,7 @@ exports.postBookSS = async (req, res) => {
     const newBook = new ssBookModel(obj);
     console.log(newBook);
     await newBook.save();
-    return res.send({
+    res.send({
       status: true,
       msg:
         'Booking recieved. You will be informed via the email address you provided',

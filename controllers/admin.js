@@ -726,6 +726,36 @@ exports.postAdminNewSS = async (req, res) => {
     status: true,
     msg: 'Special service has been added',
   });
+
+  const days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+  const resetTime = 7 * 24 * 1000 * 36000;
+  setInterval(async () => {
+    const day = new Date().getDay();
+    if (obj.schedule.weekDay == days[day - 1]) {
+      console.log('updates now');
+      const this_SS = await ssModel.findOne({ _id: newSS._id });
+      const newCap = {
+        alottedPatients: 0,
+        Max: this_SS.capacity.Max,
+      };
+      await ssModel.findOneAndUpdate(
+        { _id: newSS._id },
+        {
+          $set: {
+            capacity: newCap,
+          },
+        }
+      );
+    }
+  }, resetTime);
 };
 
 exports.ssFile = async (req, res) => {
@@ -788,26 +818,7 @@ exports.approveSSBookRequest = async (req, res) => {
       },
     }
   );
-  res.redirect('back');
-  if (alpat >= ss.capacity.Max) {
-    console.log('needs reset');
-    const day = ss.schedule.weekDay;
-    const resetTime = getResetTime(day);
-    newCap.alottedPatients = 0;
-    console.log(resetTime, newCap);
-    setTimeout(async () => {
-      await ssModel.findOneAndUpdate(
-        { _id: req.params.ss_id },
-        {
-          $set: {
-            capacity: newCap,
-          },
-        }
-      );
-      console.log('updated');
-    }, resetTime);
-  }
-  return;
+  return res.redirect('back');
 };
 
 // ADMIN SUBMIT RESEARCH (POST)

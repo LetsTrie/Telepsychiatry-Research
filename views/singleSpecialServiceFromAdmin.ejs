@@ -3,8 +3,7 @@
 
 <head>
   <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/specialServiceDetails.css" />
-
+  <link rel="stylesheet" href="/css/specialServiceDetails.css" />  
   <title>
     Special Services | Innovations | Telepsychiatry Research
   </title>
@@ -50,24 +49,87 @@
                 Book Appointment
               </button>
             </div>
-            <% if (data.videos.length != 0) { %>
-            <div class="specialServiceSubsection">
-              <div class="subsection-Body">
-                <div class="subsection-Heading">
-                  <p>Related Videos</p>
-                </div>
-                <div class="flx_prnt">
-                  <% for (let i=0; i<data.videos.length; i++) { %>
-                  <div class="flx_chld">
-                    <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe>
+
+            <div class="flx_super_prnt">
+              <% if (data.videos.length != 0) { %>
+              <div class="specialServiceSubsection">
+                <div class="subsection-Body">
+                  <div class="subsection-Heading">
+                    <p>Related Videos</p>
+                  </div>
+                  <% for (let i=0; i<data.videos.length; i+=2) { %>
+                  <div class="flx_prnt">
+                    <% for (let j=i; j<Math.min(data.videos.length, i+2); j++) { %>
+                    <div class="flx_chld">
+                      <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </div>
+                    <% } %>
                   </div>
                   <% } %>
                 </div>
               </div>
-            </div>
-            <% } %>
+              <% } %> 
+
+              <div class="flx-chld-feeds">
+                <div class="feedback-Heading">
+                    <p>User Feedback</p>
+                </div>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <div class="single-feedback">
+                        <iframe  src="https://www.youtube.com/embed/Xh0bdzeAZ1w" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>                     
+                        <div class="txt-cmnt">  
+                          <p>"Their service was great"</p>
+                           <p>-Hussain Safwan</p>
+                        </div>
+                        
+                      </div>             
+                    </div>
+                    <div class="carousel-item">
+                      <div class="single-feedback">
+                        <iframe  src="https://www.youtube.com/embed/Xh0bdzeAZ1w" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>                     
+                        <div class="txt-cmnt">  
+                          <p>"Their service was great"</p>
+                          <p>-Hussain Safwan</p>      
+                        </div>
+                      </div> 
+                    </div>
+                    <div class="carousel-item">
+                      <div class="single-feedback">
+                        <iframe  src="https://www.youtube.com/embed/Xh0bdzeAZ1w" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>                     
+                        <div class="txt-cmnt">  
+                          <p>"Their service was great"</p>
+                          <p>-Hussain Safwan</p>  
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+            </div>            
+                        
 
             <div class="specialServiceSubsection">
               <div class="subsection-Heading">

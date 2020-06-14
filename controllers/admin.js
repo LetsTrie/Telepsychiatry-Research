@@ -1337,7 +1337,7 @@ exports.postUpdateSingleSS = async (req, res) => {
 
   res.send({
     status: true,
-    msg: 'Workshop updated',
+    msg: 'Special service updated',
   });
 };
 

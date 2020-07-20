@@ -37,11 +37,11 @@
                 style="display: none;"
               ></div>
               <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
-              <form 
-                action="/admin/specialService/update/noFile/<%= serverData.serviceId%>" 
+              <form specialService/update/noFile
+                action="/admin/special_service/<%= serverData.serviceId%>" 
                 id="dummyForm"
                 enctype="multipart/form-data"
-                method="POST">
+                method="GET">
               </form>
               <form
                 autocomplete="off"
@@ -169,7 +169,7 @@
                   </div>
                 </div>
 
-                <div class="one_box">
+                <div class="one_box" style="display: none;">
                   <div class="box_header">
                     <p>Representational Photo</p>
                   </div>

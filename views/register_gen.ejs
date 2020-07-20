@@ -1,141 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <link rel="stylesheet" href="/css/register.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <link rel="stylesheet" href="/css/register.css" />
 
-        <title>Register | General User | Telepsychiatry Research</title>
-</head>
+    <title>Register | General User | Telepsychiatry Research</title>
+  </head>
 
-<body>
+  <body>
     <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="my-3 divider"></div>
-        <div class="createResources">
-            <div class="createResources__header">
-                <p id="submitResources">Register General User</p>
-            </div>
-            <%- include('./partials/messages')%>
-                <div id="alertF" class="alert alert-danger"></div>
+      <nav>
+        <%- include('./partials/navbar')%>
+      </nav>
+      <div class="my-3 divider"></div>
+      <div class="createResources">
+        <div class="createResources__header">
+          <p id="submitResources">Register General User</p>
+        </div>
+        <%- include('./partials/messages')%>
+        <div id="alertF" class="alert alert-danger"></div>
 
-                <div class="input_boxes">
-                    <form id="form" action="/auth/register/new/gen" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="filename" id="filename" />
-                        <div class="two_box flex-parent">
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>First Name:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" id="fname" name="fname" placeholder="First name" />
-                                </div>
-                            </div>
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Last Name:</p>
-                                </div>
-                                <div>
-                                    <div class="input_box">
-                                        <input type="text" name="lname" id="lname" placeholder="Last name" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box flex-parent">
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Email:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" name="email" id="email" placeholder="Email" />
-                                </div>
-                            </div>
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Phone Number:</p>
-                                </div>
-                                <div>
-                                    <div class="input_box">
-                                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box flex-parent">
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Password:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="password" id="password" name="password" placeholder="password" />
-                                </div>
-                            </div>
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Confirm Password:</p>
-                                </div>
-                                <div>
-                                    <div class="input_box">
-                                        <input type="password" id="cPassword" name="cPassword" placeholder="Confirm Password" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box flex-parent">
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Gender:</p>
-                                </div>
-                                <div class="input_box slct_picker">
-                                    <div class="form-selectpicker">
-                                        <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6" name="gender" required>
+        <div class="input_boxes">
+          <form
+            id="form"
+            action="/auth/register/new/gen"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="filename" id="filename" />
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>First Name:</p>
+                </div>
+                <div class="input_box">
+                  <input
+                    type="text"
+                    id="fname"
+                    name="fname"
+                    placeholder="First name"
+                  />
+                </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Last Name:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="lname"
+                      id="lname"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Email:</p>
+                </div>
+                <div class="input_box">
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                  />
+                </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Phone Number:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      placeholder="Phone Number"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Password:</p>
+                </div>
+                <div class="input_box">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                  />
+                </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Confirm Password:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="password"
+                      id="cPassword"
+                      name="cPassword"
+                      placeholder="Confirm Password"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Gender:</p>
+                </div>
+                <div class="input_box slct_picker">
+                  <div class="form-selectpicker">
+                    <select
+                      id="genderInput"
+                      class="selectpicker"
+                      data-width="100%"
+                      title="Gender"
+                      data-size="6"
+                      name="gender"
+                      required
+                    >
                       <option value="Male">Male</option>
                       <option value="Female"> Female </option>
                     </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Date of Birth:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" id="dob" name="dob" placeholder="Date Of Birth" autocomplete="off" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box flex-parent">
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Highest Academic Degree:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" id="hADegree" name="hADegree" placeholder="Highest Academic Degree" />
-                                </div>
-                            </div>
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Current Affiliation:</p>
-                                </div>
-                                <div>
-                                    <div class="input_box">
-                                        <input type="text" id="cAffiliation" name="cAffiliation" placeholder="Current Affiliation" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two_box flex-parent">
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Country:</p>
-                                </div>
-                                <div class="input_box slct_picker">
-                                    <div class="form-selectpicker">
-                                        <select class="selectpicker" id="countryInput" data-width="100%" title="Select Country" data-size="6" name="country" required>
+                  </div>
+                </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Date of Birth:</p>
+                </div>
+                <div class="input_box">
+                  <input
+                    type="text"
+                    id="dob"
+                    name="dob"
+                    placeholder="Date Of Birth"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Highest Academic Degree:</p>
+                </div>
+                <div class="input_box">
+                  <input
+                    type="text"
+                    id="hADegree"
+                    name="hADegree"
+                    placeholder="Highest Academic Degree"
+                  />
+                </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Current Affiliation:</p>
+                </div>
+                <div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      id="cAffiliation"
+                      name="cAffiliation"
+                      placeholder="Current Affiliation"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="two_box flex-parent">
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Country:</p>
+                </div>
+                <div class="input_box slct_picker">
+                  <div class="form-selectpicker">
+                    <select
+                      class="selectpicker"
+                      id="countryInput"
+                      data-width="100%"
+                      title="Select Country"
+                      data-size="6"
+                      name="country"
+                      required
+                    >
                       <!-- <% for(let i = 0 ; i < country.length; i++) { %>
                       <option value="<%=country[i].name%>"
                         ><%=country[i].name%></option
@@ -143,32 +213,179 @@
                       <% } %> -->
                       <option value="bangladesh">Bangladesh</option>
                     </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two_box_one flex-child">
-                                <div class="two_box_header form-header">
-                                    <p>Display Picture:</p>
-                                </div>
-                                <div class="input_box imageFile">
-                                    <input id="imageFile" type="file" name="exp_user_propic" accept="image/x-png,image/jpg,image/jpeg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="createResources__submit">
-                            <button type="submit" id="sub-btn">Submit</button>
-                        </div>
-                    </form>
+                  </div>
                 </div>
+              </div>
+              <div class="two_box_one flex-child">
+                <div class="two_box_header form-header">
+                  <p>Display Picture:</p>
+                </div>
+                <div class="input_box imageFile">
+                  <input
+                    id="imageFile"
+                    type="file"
+                    name="exp_user_propic"
+                    accept="image/x-png,image/jpg,image/jpeg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="createResources__submit">
+              <button type="submit" id="sub-btn">Submit</button>
+            </div>
+          </form>
         </div>
+      </div>
     </section>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+  ></script>
 
-    <script src="/js/register_gen.js"></script>
+  <script>
+    $('input[name="dob"]').daterangepicker({
+      autoUpdateInput: false,
+      singleDatePicker: true,
+      showDropdowns: true,
+      minYear: 1930,
+      maxYear: parseInt(moment().format('YYYY'), 10),
+      locale: {
+        cancelLabel: 'Clear',
+      },
+    });
 
+    $('input[name="dob"]').on('apply.daterangepicker', function (ev, picker) {
+      $(this).val(picker.startDate.format('DD/MM/YYYY'));
+    });
+
+    $('input[name="dob"]').on('cancel.daterangepicker', function (ev, picker) {
+      $(this).val('');
+    });
+
+    function showAlert(msg) {
+      $('#alertF').show();
+      $('#alertF').html(msg);
+    }
+
+    $('#sub-btn').click((e) => {
+      e.preventDefault();
+      let error = false;
+      const fname = $('#fname').val();
+      const lname = $('#lname').val();
+      const email = $('#email').val();
+      const phoneNumber = $('#phoneNumber').val();
+      const password = $('#password').val();
+      const cPassword = $('#cPassword').val();
+      const gender = $('#genderInput').val();
+      const hADegree = $('#hADegree').val();
+      const country = $('#countryInput').val();
+      const dob = $('#dob').val();
+      const cAffiliation = $('#cAffiliation').val();
+      const imageFile = $('#imageFile');
+
+      const fileName =
+        Date.parse(new Date().toString()) + $('#imageFile')[0].files[0].name;
+      $('#filename').val(fileName);
+      console.log($('#filename').val());
+
+      const nameRegex = /^[a-z A-Z](?!.* {2})[ \w.-]{2,24}$/;
+      const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      const dobRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+      const phoneRegex = /\w+/i;
+
+      if (fname === '') {
+        error = true;
+        showAlert('Enter First Name');
+      } else if (lname === '') {
+        error = true;
+        showAlert('Enter Last Name');
+      } else if (!nameRegex.test(fname)) {
+        error = true;
+        showAlert('Invalid First Name');
+      } else if (!nameRegex.test(lname)) {
+        error = true;
+        showAlert('Invalid Last Name');
+      } else if (email === '') {
+        error = true;
+        showAlert('Enter Email');
+      } else if (!emailRegex.test(email)) {
+        error = true;
+        showAlert('Invalid Email');
+      } else if (phoneNumber === '') {
+        error = true;
+        showAlert('Enter Phone Number');
+      } else if (!phoneRegex.test(phoneNumber) || phoneNumber.length < 7) {
+        error = true;
+        showAlert('Invalid Phone Number');
+      } else {
+        $.ajax({
+          url: '/auth/register/checkDuplicate',
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ email, phoneNumber }),
+        }).done((res) => {
+          if (!res.success) {
+            error = true;
+            showAlert(res.message);
+          } else if (password === '') {
+            error = true;
+            showAlert('Enter Password');
+          } else if (cPassword === '') {
+            error = true;
+            showAlert('Enter Confirm Password');
+          } else if (password.length < 6) {
+            error = true;
+            showAlert('Password must contain at least 6 characters');
+          } else if (password !== cPassword) {
+            error = true;
+            showAlert('Passwords not matching');
+          } else if (gender === '') {
+            error = true;
+            showAlert('Confirm Gender');
+          } else if (!dobRegex.test(dob)) {
+            error = true;
+            showAlert('Invalid Date Of Birth');
+          } else if (hADegree === '') {
+            error = true;
+            showAlert('Enter Highest Academic Degree');
+          } else if (cAffiliation === '') {
+            error = true;
+            showAlert('Enter Current Affiliation');
+          } else if (country === '') {
+            error = true;
+            showAlert('Confirm Country');
+          } else if (!imageFile[0].files.length) {
+            error = true;
+            showAlert('Provide Profile Picture');
+          } else if (
+            imageFile[0].files.length &&
+            !(
+              imageFile[0].files[0].type === 'image/png' ||
+              imageFile[0].files[0].type === 'image/jpg' ||
+              imageFile[0].files[0].type === 'image/jpeg'
+            )
+          ) {
+            error = true;
+            showAlert('Enter Appropriate Profile Picture');
+          }
+
+          if (!error) {
+            $('#alertF').hide();
+            $('#form').submit();
+          }
+        });
+      }
+    });
+  </script>
 </html>

@@ -2,6 +2,7 @@ const nodemailer = require('nodemailer');
 const { eUserModel } = require('../models/expertUser');
 const { appointment } = require('../models/appointment.js');
 const { Emergency } = require('../models/emergency.js');
+const { Feedback } = require('../models/feedback.js');
 
 exports.getBookAppointment = async (req, res, next) => {
   const data = await eUserModel.findById(req.params.expID);
@@ -459,7 +460,17 @@ exports.searchPsychoTherapy = async (req, res) => {
   });
 };
 exports.getEmBooking = async (req, res) => {
-  res.render('newEmergencyAppointment');
+  let creds = {};
+  if (req.query) {
+    const { name, age, email, phone } = req.query;
+    creds = {
+      name,
+      age,
+      email,
+      phone,
+    };
+  }
+  return res.render('newEmergencyAppointment', { creds });
 };
 exports.emergenceBooking = async (req, res) => {
   console.log(req.body);
@@ -737,11 +748,16 @@ exports.singleSS = async (req, res, next) => {
       designation: doc.designation,
     });
   }
+  const feedbacks = await Feedback.find({
+    service_id: req.params.id,
+    onDisplay: true,
+  });
   return res.render('singleSpecialService', {
     serviceId: req.params.id,
     user: req.user,
     data,
     doctorInfo,
+    feedbacks,
   });
 };
 
@@ -780,4 +796,26 @@ exports.postBookSS = async (req, res) => {
         'Booking recieved. You will be informed via the email address you provided',
     });
   }
+};
+
+exports.addFeedback = async (req, res) => {
+  if (req.user) {
+    const obj = {
+      ...req.body,
+      user_id: req.user._id,
+      user_name: req.user.name,
+    };
+    const feedback = new Feedback(obj);
+    console.log(feedback);
+    await feedback.save();
+    return res.send({
+      status: true,
+      msg: 'Your feedback has been recoreded. Thanks for your concern',
+    });
+  }
+};
+
+exports.addFeedbackVideo = async (req, res) => {
+  console.log('ss feedback vidoe added');
+  res.redirect('back');
 };

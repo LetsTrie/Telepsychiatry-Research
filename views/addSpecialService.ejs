@@ -154,6 +154,19 @@
 
                 <div class="one_box">
                   <div class="box_header">
+                    <p>Maximum Allotment</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      placeholder="Maximum Allotment"
+                      id="max"
+                    />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
                     <p>Schedule for the service</p>
                   </div>
                   <div class="input_box flex">
@@ -270,6 +283,7 @@
       const description = bdeditor.getData();
       const details = sdeditor.getData();
       const fee = $('#fee').val();
+      const Max = $('#max').val();
       const weekDay = $('#weekDay').val();
       const start = $('#start').val();
       const end = $('#end').val();
@@ -298,6 +312,8 @@
         showAlert('Enter service details');
       } else if (check(fee)) {
         showAlert('Enter the service fees');
+      } else if (check(Max)) {
+        showAlert('Enter the service fees');
       } else if (checkArr(DoctorIDs)) {
         showAlert('Enter doctors for this service');
       } else if (check(weekDay)) {
@@ -308,8 +324,8 @@
         showAlert('Enter the ending hour in the schedule');
       } else if (!imageFile[0].files.length) {
         showAlert('Enter the representational photo');
-      } else if ($('#repPhotoID')[0].files[0].size / 1024 > 250) {
-        showAlert('File size must be less then 250 KB');
+      } else if ($('#repPhotoID')[0].files[0].size / 1024 > 500) {
+        showAlert('File size must be less then 500 KB');
       } else {
         $('#alert').hide();
         const image =
@@ -327,6 +343,7 @@
           subTitle,
           description,
           details,
+          Max,
           fee,
           image,
           schedule: JSON.stringify(schedule),

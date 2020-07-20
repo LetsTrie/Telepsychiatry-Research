@@ -64,7 +64,7 @@ router.get('/logout', (req, res, next) => {
 });
 
 router.get('/register/new/gen', getRegisterGeneralUser);
-router.post('/register/new/gen', postRegisterGeneralUser);
+router.post('/register/new/gen', uploadPhoto, postRegisterGeneralUser);
 router.post('/register/checkDuplicate', postCheckDuplication);
 router.post('/register/eUserCheckDuplicate', eUserCheckDuplication);
 

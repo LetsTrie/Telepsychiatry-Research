@@ -83,6 +83,36 @@
                 data.schedule.endDate %>
                         </div>
                     </div>
+
+                    <div class="item">
+                        <div class="flx-chld-feeds">
+                <div class="heading">
+                    <i class="fa fa-clock-o"></i>Feedbacks
+                </div>
+                <div class="con">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        
+                        <div class="carousel-inner">
+                            <% for (let i=0; i<3; i++) { %>
+                            <div class="carousel-item">
+                            <div class="single-feedback">
+                                <iframe  src="/feedback_ss/we" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>                     
+                                <div class="txt-cmnt">  
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum inventore architecto nisi in quas vero neque itaque, quos, totam ipsam nesciunt sed minus asperiores culpa repellendus ipsa possimus alias beatae.</p>
+                                    <p>-Hussain Safwan</p>
+                                </div>
+                                
+                            </div>             
+                            </div>
+                            <% } %>
+                        </div>
+
+                </div>
+                </div>
+              </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,6 +180,15 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 <script>
+    const carouselItems = $('.carousel-item')
+    const len = carouselItems.length
+    let i = 0
+    setInterval(() => {
+        $('.active').removeClass('active')
+        $(carouselItems[i]).addClass('active')
+        i = (i+1)%len
+    }, 3000)
+
     $('.btn-success').click((e) => {
         const id = e.target.id;
         location = `/admin/workshop/update/${id}`;

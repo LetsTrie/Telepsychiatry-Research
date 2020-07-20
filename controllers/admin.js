@@ -794,7 +794,6 @@ exports.approveSSBookRequest = async (req, res) => {
   const ss = await ssModel.findOne({ _id: req.params.ss_id });
   const alpat = ss.capacity.alottedPatients + 1;
   const ssBook = await ssBookModel.findOne({ _id: req.params.apt_id });
-  const { patient_id, email, bookingType } = ssBook;
 
   let newCap = {
     alottedPatients: alpat,
@@ -817,14 +816,14 @@ exports.approveSSBookRequest = async (req, res) => {
       },
     }
   );
-  ssConfirmMail(email, patient_id, bookingType);
+  ssConfirmMail(ssBook, ss);
   return res.redirect('back');
 };
 
 exports.deleteBook = async (req, res) => {
   const { pid, sid } = req.params;
   console.log(pid, sid);
-  // await ssBookModel.findByIdAndDelete(pid);
+  await ssBookModel.findByIdAndDelete(pid);
   const ss = await ssModel.findById(sid);
   console.log(ss);
   const alpat = ss.capacity.alottedPatients - 1;
@@ -1308,51 +1307,28 @@ exports.postUpdateSingleSS = async (req, res) => {
   console.log('service data for update:');
   console.log(req.body);
   const serviceId = req.params.id;
-  const { title, subTitle, description, details, image } = req.body;
+  const { title, subTitle, description, details, schedule, Max } = req.body;
 
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
-  console.log({
-    serviceId,
-    title,
-    subTitle,
-    description,
-    details,
-    image,
-    doctorIDs,
-    doctorNames,
-    videos,
-  });
 
-  if (image != '') {
-    await ssModel.findOneAndUpdate(
-      { _id: serviceId },
-      {
-        title: title,
-        subTitle: subTitle,
-        description: description,
-        details: details,
-        image: image,
-        videos: videos,
-        doctorIDs: doctorIDs,
-        doctorNames: doctorNames,
-      }
-    );
-  } else {
-    await ssModel.findOneAndUpdate(
-      { _id: serviceId },
-      {
-        title: title,
-        subTitle: subTitle,
-        description: description,
-        details: details,
-        videos: videos,
-        doctorIDs: doctorIDs,
-        doctorNames: doctorNames,
-      }
-    );
-  }
+  await ssModel.findOneAndUpdate(
+    { _id: serviceId },
+    {
+      title: title,
+      subTitle: subTitle,
+      description: description,
+      details: details,
+      videos: videos,
+      doctorIDs: doctorIDs,
+      doctorNames: doctorNames,
+      capacity: {
+        Max: Max,
+      },
+      schedule: schedule,
+    }
+  );
 
   res.send({
     status: true,

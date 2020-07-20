@@ -33,13 +33,43 @@ module.exports.AccountVerifyMail = async (email, userID) => {
   return await Transport.sendMail(mailOptions);
 };
 
-module.exports.ssConfirmMail = async (email, mediaID, mode) => {
-  console.log(email);
+module.exports.ssConfirmMail = async (booking, ss) => {
+  console.log(booking);
+  const { email, bookingType, patient_id, schedule, ss_name, name } = booking;
+
   let mailBody = '';
-  if (mode == 'FaceToFace') {
-    mailBody = `Your request for our special services has been approved.<br> Thanks for being with us.`;
+  if (bookingType == 'FaceToFace') {
+    mailBody = `<strong>Dear ${name},</strong>
+    <br >
+    Your request for our special service entitled ${ss_name} has been confirmed. 
+    <br>
+    Please take note of the following meeting details
+    <br >
+    <br >
+    <strong>
+      Mode of meeting: Offline <br >
+      Time: Next ${ss.schedule.weekDay} at ${ss.schedule.start} <br >
+      Address: Rupayan Trade Center, 2nd Floor, Banglamotor, Dhaka-1215, Bangladesh <br >
+    </strong>
+    <br >
+    Thanks for being with TRIN
+     `;
   } else {
-    mailBody = `Your request for our special services has been approved.<br> Please click on <a href=https://media.monerdaktar.com/${mediaID}>this link</a> to continue.<br> Thanks for being with us.`;
+    mailBody = `<strong>Dear ${name},</strong>
+    <br >
+    Your request for our special service entitled ${ss_name} has been confirmed. 
+    <br>
+    Please take note of the following meeting details
+    <br >
+    <br >
+    <strong>
+      Mode of meeting: Online <br >
+      Time: Next ${ss.schedule.weekDay} at ${ss.schedule.start} <br >
+      Address (Online): https://media.monerdaktar.com/${patient_id} <br >
+    </strong>
+    <br >
+    Thanks for being with TRIN
+     `;
   }
   let mailOptions = {
     from: 'manager@trin-innovation.com',

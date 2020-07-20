@@ -135,7 +135,9 @@
                   <div class="inSecFlxPrnt locationOfChamber">
                     <p>
                       <span class="fa fa-map-marker pr-1"></span>
-                      <span style="color: gray;">Not yet finalized</span>
+                      <span style="color: gray;" id="loc-info"
+                        >Not yet finalized</span
+                      >
                     </p>
                   </div>
                 </div>
@@ -221,6 +223,15 @@
             </p>
           `);
         _location = `Online`;
+      }
+    });
+    $('#bookingTypeID').change((e) => {
+      if (e.target.value == 'FaceToFace') {
+        $('#loc-info').html(
+          'Rupayan Trade Center, 2nd Floor, Banglamotor, Dhaka-1215, Bangladesh'
+        );
+      } else {
+        $('#loc-info').html('Online');
       }
     });
     $('#bookingTypeID').on('change', (e) => {

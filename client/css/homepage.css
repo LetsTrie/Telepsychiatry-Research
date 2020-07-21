@@ -996,10 +996,10 @@ p {
 
 .intro_page_header {
   background: #2eb89a;
-  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.1))), url(/images/covid.jpg);
-  background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/covid.jpg);
-  background: -o-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/covid.jpg);
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/covid.jpg);
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url(/images/office.jpg);
+  background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/office.jpg);
+  background: -o-linear-gradient(right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/office.jpg);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/office.jpg);
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;

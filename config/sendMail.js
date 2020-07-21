@@ -22,7 +22,9 @@ const Transport = nodemailer.createTransport({
 const host = `http://trin-innovation.com`;
 
 module.exports.AccountVerifyMail = async (email, userID) => {
-  const mailBody = `Click <a href="${host}/auth/verify/${userID}">here</a> to verify your email.`;
+  const mailBody = `<strong>Dear User,</strong> <br>
+  Please click <a href="${host}/auth/verify/${userID}">here</a> to verify your email. <br>
+  Thanks for joining TRIN`;
   let mailOptions = {
     from: 'manager@trin-innovation.com',
     to: email,

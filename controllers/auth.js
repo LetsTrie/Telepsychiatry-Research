@@ -34,6 +34,8 @@ exports.postUpdateExpertPicture = (req, res, next) =>
 
 const { regGenUserVal } = require('../validations/auth');
 exports.postRegisterGeneralUser = async (req, res, next) => {
+  console.log(req.body);
+
   try {
     const { error } = regGenUserVal(req.body);
     if (error) {
@@ -48,6 +50,7 @@ exports.postRegisterGeneralUser = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const userObj = {
       ...req.body,
+      name: req.body.fname + ' ' + req.body.lname,
       password: hashedPassword,
       propicURL: req.body.filename,
     };
@@ -93,7 +96,7 @@ module.exports.postLogin = (req, res, next) => {
   } else {
     // agei sob kore nite hobe...
     passport.authenticate('local', {
-      successRedirect: '/auth/user/profile',
+      successRedirect: '/',
       failureRedirect: '/auth/login',
       failureFlash: true,
     })(req, res, next);

@@ -37,12 +37,12 @@
                 style="display: none;"
               ></div>
               <!-- autocomplete="off" is done to for the sake of autocomplete add doctor input -->
-              <form specialService/update/noFile
-                action="/admin/special_service/<%= serverData.serviceId%>" 
+              <form
+                action="/admin/special_service/<%= serverData.serviceId%>"
                 id="dummyForm"
                 enctype="multipart/form-data"
-                method="GET">
-              </form>
+                method="GET"
+              ></form>
               <form
                 autocomplete="off"
                 action="/admin/specialService/update/file/<%= serverData.serviceId%>"
@@ -169,6 +169,74 @@
                   </div>
                 </div>
 
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Service Fees:</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      placeholder="Service fee"
+                      id="fee"
+                      value="<%= serverData.ssData.fee %>"
+                    />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Maximum Allotment</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      placeholder="Maximum Allotment"
+                      id="max"
+                      value="<%= serverData.ssData.capacity.Max %>"
+                    />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Schedule for the service</p>
+                  </div>
+                  <div class="input_box flex">
+                    <select name="" id="weekDay">
+                      <option value="" disabled selected
+                        >Select week day</option
+                      >
+                      <option value="Sunday">Sunday</option>
+                      <option value="Monday">Monday</option>
+                      <option value="Tuesday">Tuesday</option>
+                      <option value="Wednesday">Wednesday</option>
+                      <option value="Thursday">Thursday</option>
+                      <option value="Friday">Friday</option>
+                      <option value="Saturday">Saturday</option>
+                    </select>
+                    <select name="" id="start">
+                      <option value="" disabled selected
+                        >Select start time</option
+                      >
+                      <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%> PM"><%=i%> PM</option>
+                      <% } %> <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%> AM"><%=i%> AM</option>
+                      <% } %>
+                    </select>
+                    <select name="" id="end">
+                      <option value="" disabled selected
+                        >Select end time</option
+                      >
+                      <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%>PM"><%=i%> PM</option>
+                      <% } %> <% for (let i=1; i<13; i++) { %>
+                      <option value="<%=i%>AM"><%=i%> AM</option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+
                 <div class="one_box" style="display: none;">
                   <div class="box_header">
                     <p>Representational Photo</p>
@@ -211,6 +279,16 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"
   ></script>
+
+  <!-- Setting the select boxes -->
+  <script>
+    const schedule = <%- serverData.ssData.schedule %>
+
+    $('#weekDay').val(schedule.weekDay)
+    $('#start').val(schedule.start)
+    $('#end').val(schedule.end)
+  </script>
+
   <script>
     let bdeditor, sdeditor;
     let DoctorIDs = []
@@ -248,7 +326,7 @@
             'slow'
         );
     };
-    
+
     function addVideo() {
         // videoNo is actual present video count
         let videoNo = parseInt($('#videoCnt').val()) + 1
@@ -510,7 +588,11 @@
         const subTitle = $('#subTitle').val();
         const description = bdeditor.getData();
         const details = sdeditor.getData();
-        const imageFile = $('#repPhotoID');
+        const fee = $('#fee').val()
+        const Max = $('#max').val()
+        const weekDay = $('#weekDay').val()
+        const start = $('#start').val()
+        const end = $('#end').val()
         let videoArr = $('.video-link')
         let videos = []
         for (let i = 0; i < videoArr.length; i++) {
@@ -531,21 +613,34 @@
             showAlert('Enter service details');
         } else if (DoctorIDs.length == 0) {
             showAlert('Enter doctors for this service');
-        } else if (imageFile[0].files.length && $('#repPhotoID')[0].files[0].size / 1024 > 250) {
-            showAlert('File size must be less then 250 KB');
+        } else if (check(fee)) {
+            showAlert('Enter service fee');
+        } else if (check(Max)) {
+            showAlert('Enter the maximum alottment range');
+        } else if (check(weekDay)) {
+            showAlert('Enter day of service');
+        } else if (check(start)) {
+            showAlert('Enter the start time');
+        } else if (check(end)) {
+            showAlert('Enter the ending time');
         } else {
             $('#alert').hide()
-            const image = imageFile[0].files.length? Date.parse(new Date().toString()) +'-' +$('#repPhotoID')[0].files[0].name : '';
-            $('#filename').val(image);
+            const schedule = {
+              weekDay,
+              start,
+              end
+            }
             const data = {
                 title,
                 subTitle,
                 description,
                 details,
-                image,
                 videos: JSON.stringify(videos),
                 doctorIDs: JSON.stringify(DoctorIDs),
-                doctorNames: JSON.stringify(DoctorNames)
+                doctorNames: JSON.stringify(DoctorNames),
+                Max,
+                fee,
+                schedule
             };
             Update(data);
         }

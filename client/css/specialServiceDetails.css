@@ -1611,6 +1611,8 @@ body {
 }
 
 .flx_super_prnt .flx-chld-feeds {
+  background-color: #fff;
+  border: none;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -1630,4 +1632,62 @@ body {
 
 .flx_super_prnt .flx-chld-feeds .feedback-Heading:hover {
   text-decoration: underline;
+}
+
+.comment-box {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 210px;
+  padding: 10px;
+}
+
+.comment-box textarea {
+  width: 100%;
+  height: 150px;
+  border: none;
+}
+
+.comment-box textarea:focus {
+  outline: none;
+}
+
+.comment-box p {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal .parts .each-part {
+  padding: 10px 5px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal .parts .each-part .user {
+  font-size: 13.5px;
+  color: gray;
+}
+
+.modal .parts .each-part button {
+  font-size: 12px;
+}
+
+.modal .parts .each-part:hover {
+  background-color: #eee;
 }

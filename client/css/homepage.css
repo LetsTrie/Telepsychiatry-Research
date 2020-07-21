@@ -1177,6 +1177,25 @@ p {
   background-color: #a0090b;
 }
 
+.show-more-btn {
+  text-align: right;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.show-more-btn button {
+  border: none;
+  outline: none;
+  background: #00adef;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
 .about_this_website {
   font-family: 'Lato', sans-serif;
 }

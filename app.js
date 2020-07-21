@@ -30,12 +30,14 @@ app.use(express.static('data'));
 app.use(express.static('public'));
 
 if (process.env.NODE_ENV === 'development') app.use(logger('dev'));
+
+app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: false,
+    extended: true,
   })
 );
-app.use(bodyParser.json());
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -68,6 +70,7 @@ const server = app.listen(port, () =>
 const io = require('socket.io').listen(server);
 const connections = [];
 const { appointment } = require('./models/appointment');
+// https://www.youtube.com/watch?v=yyuTmR90PYw
 
 // io.sockets.on('connection', (socket) => {
 //     //Connect

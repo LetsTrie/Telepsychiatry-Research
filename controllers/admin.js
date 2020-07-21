@@ -8,6 +8,7 @@ const passport = require('passport');
 const { makeSmallParagraphFromHTML } = require('./utils');
 const { testModel } = require('../models/test');
 const admin = require('../config/credentials').adminCredentials;
+const { Feedback } = require('../models/feedback.js');
 
 const { eUserModel } = require('../models/expertUser');
 
@@ -656,6 +657,9 @@ exports.singleSS = async (req, res) => {
   }
 
   const parts = await ssBookModel.find({ ss_id: req.params.id });
+  const feedbacks = await Feedback.find({
+    service_id: req.params.id,
+  });
 
   return res.render('singleSpecialServiceFromAdmin', {
     serviceId: req.params.id,
@@ -663,6 +667,7 @@ exports.singleSS = async (req, res) => {
     data,
     doctorInfo,
     parts,
+    feedbacks,
   });
 };
 
@@ -686,26 +691,16 @@ exports.getExperts = async (req, res) => {
 
 exports.postAdminNewSS = async (req, res) => {
   console.log(req.body);
-  const { title, subTitle, description, details, fee, image } = req.body;
+  const { title, subTitle, description, details, fee, image, Max } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
 
-  const start = parseInt(schedule.start.split(' ')[0]);
-  if (schedule.start.split(' ')[0] == 'P') {
-    start = start + 12;
-  }
-
-  const end = parseInt(schedule.end.split(' ')[0]);
-  if (schedule.end.split(' ')[0] == 'P') {
-    end = end + 12;
-  }
-
-  const Max = Math.abs(start - end) * 2;
   const capacity = {
     Max,
   };
+
   const obj = {
     title,
     subTitle,
@@ -727,35 +722,35 @@ exports.postAdminNewSS = async (req, res) => {
     msg: 'Special service has been added',
   });
 
-  const days = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
-  const resetTime = 7 * 24 * 1000 * 36000;
-  setInterval(async () => {
-    const day = new Date().getDay();
-    if (obj.schedule.weekDay == days[day - 1]) {
-      console.log('updates now');
-      const this_SS = await ssModel.findOne({ _id: newSS._id });
-      const newCap = {
-        alottedPatients: 0,
-        Max: this_SS.capacity.Max,
-      };
-      await ssModel.findOneAndUpdate(
-        { _id: newSS._id },
-        {
-          $set: {
-            capacity: newCap,
-          },
-        }
-      );
-    }
-  }, resetTime);
+  // const days = [
+  //   'Monday',
+  //   'Tuesday',
+  //   'Wednesday',
+  //   'Thursday',
+  //   'Friday',
+  //   'Saturday',
+  //   'Sunday',
+  // ];
+  // const resetTime = 7 * 24 * 1000 * 36000;
+  // setInterval(async () => {
+  //   const day = new Date().getDay();
+  //   if (obj.schedule.weekDay == days[day - 1]) {
+  //     console.log('updates now');
+  //     const this_SS = await ssModel.findOne({ _id: newSS._id });
+  //     const newCap = {
+  //       alottedPatients: 0,
+  //       Max: this_SS.capacity.Max,
+  //     };
+  //     await ssModel.findOneAndUpdate(
+  //       { _id: newSS._id },
+  //       {
+  //         $set: {
+  //           capacity: newCap,
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, resetTime);
 };
 
 exports.ssFile = async (req, res) => {
@@ -795,8 +790,11 @@ const getResetTime = (day) => {
   return dif;
 };
 exports.approveSSBookRequest = async (req, res) => {
+  const { ssConfirmMail } = require('../config/sendMail.js');
   const ss = await ssModel.findOne({ _id: req.params.ss_id });
   const alpat = ss.capacity.alottedPatients + 1;
+  const ssBook = await ssBookModel.findOne({ _id: req.params.apt_id });
+
   let newCap = {
     alottedPatients: alpat,
     Max: ss.capacity.Max,
@@ -818,7 +816,27 @@ exports.approveSSBookRequest = async (req, res) => {
       },
     }
   );
+  ssConfirmMail(ssBook, ss);
   return res.redirect('back');
+};
+
+exports.deleteBook = async (req, res) => {
+  const { pid, sid } = req.params;
+  console.log(pid, sid);
+  await ssBookModel.findByIdAndDelete(pid);
+  const ss = await ssModel.findById(sid);
+  console.log(ss);
+  const alpat = ss.capacity.alottedPatients - 1;
+  const newCap = {
+    alottedPatients: alpat,
+    Max: ss.capacity.Max,
+  };
+  await ssModel.findByIdAndUpdate(sid, {
+    $set: {
+      capacity: newCap,
+    },
+  });
+  res.redirect('back');
 };
 
 // ADMIN SUBMIT RESEARCH (POST)
@@ -1289,51 +1307,28 @@ exports.postUpdateSingleSS = async (req, res) => {
   console.log('service data for update:');
   console.log(req.body);
   const serviceId = req.params.id;
-  const { title, subTitle, description, details, image } = req.body;
+  const { title, subTitle, description, details, schedule, Max } = req.body;
 
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
-  console.log({
-    serviceId,
-    title,
-    subTitle,
-    description,
-    details,
-    image,
-    doctorIDs,
-    doctorNames,
-    videos,
-  });
 
-  if (image != '') {
-    await ssModel.findOneAndUpdate(
-      { _id: serviceId },
-      {
-        title: title,
-        subTitle: subTitle,
-        description: description,
-        details: details,
-        image: image,
-        videos: videos,
-        doctorIDs: doctorIDs,
-        doctorNames: doctorNames,
-      }
-    );
-  } else {
-    await ssModel.findOneAndUpdate(
-      { _id: serviceId },
-      {
-        title: title,
-        subTitle: subTitle,
-        description: description,
-        details: details,
-        videos: videos,
-        doctorIDs: doctorIDs,
-        doctorNames: doctorNames,
-      }
-    );
-  }
+  await ssModel.findOneAndUpdate(
+    { _id: serviceId },
+    {
+      title: title,
+      subTitle: subTitle,
+      description: description,
+      details: details,
+      videos: videos,
+      doctorIDs: doctorIDs,
+      doctorNames: doctorNames,
+      capacity: {
+        Max: Max,
+      },
+      schedule: schedule,
+    }
+  );
 
   res.send({
     status: true,
@@ -1345,5 +1340,21 @@ exports.deleteSpecialService = async (req, res) => {
   // checker(req, res);
   const id = req.params.id;
   await ssModel.findByIdAndDelete(id);
-  res.redirect('/services/special_services');
+  res.redirect('/admin/special_service');
+};
+
+exports.toggleFeedback = async (req, res) => {
+  const { id } = req.params;
+  const fb = await Feedback.findOne({ _id: id });
+  const display = !fb.onDisplay;
+  await Feedback.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: { onDisplay: display },
+    }
+  );
+  return res.send({
+    status: true,
+    msg: 'display toggled',
+  });
 };

@@ -47,7 +47,7 @@ router.get('/', async (req, res, next) => {
     '5ed219ea536d3a1465951cf5',
     '5e998ecb4fda502e5399178c',
     '5e9ff70a2793470405c3d913',
-    '5ed3cce0d6e785040b85ec42',
+    // '5ed3cce0d6e785040b85ec42',
   ];
   let experts = [];
   for (let i = 0; i < exNames.length; i++) {

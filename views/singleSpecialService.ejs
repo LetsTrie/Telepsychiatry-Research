@@ -35,6 +35,7 @@
             <% if (errorMessage.length != 0) { %>
               <div class="alert alert-danger"><p style="text-align: center;"><%= errorMessage %></p></div>
             <% } %>
+            <div class="alert alert-success" style="display: none;"> <p style="text-align: center;"></p> </div>
 
             <div class="specialServiceSubsection">
               <div class="subsection-Heading">
@@ -57,24 +58,54 @@
                 </div>
               </div>
             </div>
-            <% if (data.videos.length != 0) { %>
-            <div class="specialServiceSubsection">
-              <div class="subsection-Body">
-                <div class="subsection-Heading">
-                  <p>Related Videos</p>
-                </div>
-                <div class="flx_prnt">
-                  <% for (let i=0; i<data.videos.length; i++) { %>
-                  <div class="flx_chld">
-                    <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen></iframe>
+
+            <div class="flx_super_prnt">
+              <% if (data.videos.length != 0) { %>
+              <div class="specialServiceSubsection">
+                <div class="subsection-Body">
+                  <div class="subsection-Heading">
+                    <p>Related Videos</p>
+                  </div>
+                  <% for (let i=0; i<data.videos.length; i+=2) { %>
+                  <div class="flx_prnt">
+                    <% for (let j=i; j<Math.min(data.videos.length, i+2); j++) { %>
+                    <div class="flx_chld">
+                      <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </div>
+                    <% } %>
                   </div>
                   <% } %>
                 </div>
               </div>
-            </div>
-            <% } %>
+              <% } %> 
+
+              <div class="flx-chld-feeds">
+                <div class="feedback-Heading">
+                    <p>User Feedback</p>
+                </div>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  
+                  <div class="carousel-inner">
+                    <% for (let i=0; i<feedbacks.length; i++) { %>
+                      <div class="carousel-item">
+                      <div class="single-feedback">
+                        <iframe  src="/feedback_ss/<%= feedbacks[i].video %>" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>                     
+                        <div class="txt-cmnt">  
+                          <p>"<%= feedbacks[i].body %>"</p>
+                           <p>-<%= feedbacks[i].user_name %></p>
+                        </div>
+                        
+                      </div>             
+                    </div>
+                      <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>   
 
             <div class="specialServiceSubsection">
               <div class="subsection-Heading">
@@ -106,6 +137,27 @@
                 <%- data.details%>
               </div>
             </div>
+
+            <% if (user) { %>
+              <div class="specialServiceSubsection">
+              <div class="subsection-Heading">
+                <p>Feedback</p>
+              </div>
+              <div class="subsection-Body">
+                <div class="comment-box">
+                  <textarea placeholder="" id="comment"></textarea>
+                    <form action="/services/special_services/feedback/video" id="form" method="POST" enctype="multipart/form-data">
+                      <p>
+                        <input type="hidden" name="filename" id="filename">
+                        <input type="file" name="ss_feedback_video" accept="video/mp4" id="file">
+                        <button class="feedback btn btn-success">Submit</button>
+                      </p>
+                    </form>
+                </div>
+              </div>
+            </div>
+            <% } %>
+
           </div>
         </div>
       </div>
@@ -120,6 +172,53 @@
     const id = $('#id').val()
     location = `/services/special_services/book/${id}`
   })
+
+  $('.feedback').click((e) => {
+    e.preventDefault()
+    const body = $('#comment').val()
+    if (body != null || body != '') {
+      const service_id = $('#id').val()
+      let video = ''
+      if ($('#file')[0].files[0]) {
+        video = Date.parse(new Date().toString()) + '-' + $('#file')[0].files[0].name;
+      }
+      $('#filename').val(video)
+      const data = {
+        body,
+        service: 'special',
+        service_id,
+        video
+      }
+      $.ajax({
+        type: 'POST',
+        url: '/services/special_services/feedback',
+        data,
+        success: data => {
+          $('html, body').animate({
+            scrollTop: 0
+          }, 'slow')
+          $('.alert-success').show()
+          $('.alert-success p').html(data.msg)
+          setTimeout(() => {
+            if ($('#file')[0].files[0]) {
+              $('#form').submit()
+            } 
+          }, 1);
+        }
+      })
+    }
+  })
+</script>
+
+<script>
+  const carouselItems = $('.carousel-item')
+  const len = carouselItems.length
+  let i = 0
+  setInterval(() => {
+    $('.active').removeClass('active')
+    $(carouselItems[i]).addClass('active')
+    i = (i+1)%len
+  }, 3000)
 </script>
 
 </html>

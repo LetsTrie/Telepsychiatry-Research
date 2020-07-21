@@ -1,120 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
 
-        <link rel="stylesheet" href="/css/homepage.css" />
-        <link rel="stylesheet" href="/css/homepage_services.css" />
-        <link rel="stylesheet" href="/css/homepage_videoSection.css" />
-        <link rel="stylesheet" href="/css/homepage_meetOurDoctors.css" />
-        <link rel="stylesheet" href="/css/homepage_bestServices.css" />
-        <link rel="stylesheet" href="/css/homepage_collaboration.css" />
-        <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
-        <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <link rel="stylesheet" href="/css/homepage_services.css" />
+    <link rel="stylesheet" href="/css/homepage_videoSection.css" />
+    <link rel="stylesheet" href="/css/homepage_meetOurDoctors.css" />
+    <link rel="stylesheet" href="/css/homepage_bestServices.css" />
+    <link rel="stylesheet" href="/css/homepage_collaboration.css" />
+    <link
+      rel="stylesheet"
+      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+    />
 
-        <title>Homepage | Telepsychiatry Research</title>
+    <title>Homepage | Telepsychiatry Research</title>
 
-        <style>
-            .ourMainHomepage {
-                position: relative;
-            }
-            
-            .contactUsModal {
-                z-index: 1;
-                position: fixed;
-                height: 80px;
-                width: 80px;
-                bottom: 60px;
-                right: 60px;
-                cursor: default;
-                display: flex;
-                flex-direction: center;
-                justify-content: center;
-                align-items: center;
-                color: #228be6;
-                border-radius: 50%;
-                cursor: pointer;
-                box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-                border: 45px solid rgb(251, 245, 245);
-                background: white;
-            }
-            
-            @keyframes mymove {
-                50% {
-                    outline-offset: 25px;
-                }
-            }
-            
-            .contactUsModal img {
-                width: 90px;
-                border-radius: 50%;
-            }
-            
-            .imgg {
-                outline: 5px solid coral;
-                animation: mymove 2s infinite;
-                box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px, inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-            }
-            
-            .magicc {
-                position: relative;
-            }
-            
-            .c-alert {
-                margin-top: 20px;
-                position: absolute;
-                color: #155724;
-                background-color: #d4edda;
-                border-color: #c3e6cb;
-                padding: 0.75rem 1.25rem;
-                margin-bottom: 1rem;
-                border: 1px solid transparent;
-                border-radius: 0.25rem;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .c-alert p {
-                font-size: 18px;
-                margin-bottom: 5px;
-            }
-        </style>
-</head>
+    <style>
+      .ourMainHomepage {
+        position: relative;
+      }
 
-<body>
-    <%- include('./partials/homepage_contact_us_modal.ejs')%>
-        <%-
+      .contactUsModal {
+        z-index: 1;
+        position: fixed;
+        height: 80px;
+        width: 80px;
+        bottom: 60px;
+        right: 60px;
+        cursor: default;
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        align-items: center;
+        color: #228be6;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+        border: 45px solid rgb(251, 245, 245);
+        background: white;
+      }
+
+      @keyframes mymove {
+        50% {
+          outline-offset: 25px;
+        }
+      }
+
+      .contactUsModal img {
+        width: 90px;
+        border-radius: 50%;
+      }
+
+      .imgg {
+        outline: 5px solid coral;
+        animation: mymove 2s infinite;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+      }
+
+      .magicc {
+        position: relative;
+      }
+
+      .c-alert {
+        margin-top: 20px;
+        position: absolute;
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .c-alert p {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('./partials/homepage_contact_us_modal.ejs')%> <%-
     include('./partials/homepage_bookDoctor.ejs')%>
 
-            <div class="ourMainHomepage">
-                <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
-                    <img src="/images/contactUsIcon.png" alt="" />
-                </div>
+    <div class="ourMainHomepage">
+      <div
+        class="contactUsModal"
+        data-toggle="modal"
+        data-target="#HOMEPAGE_CONTACTUS_MODAL"
+      >
+        <img src="/images/contactUsIcon.png" alt="" />
+      </div>
 
-                <div class="intro_page">
-                    <header class="intro_page_header">
-                        <%- include('./partials/navbar.ejs')%>
-                            <div class="wrapper magicc">
-                                <% if(successMessage!='') { %>
-                                    <div class="c-alert">
-                                        <p>
-                                            <%=successMessage%>
-                                        </p>
-                                    </div>
-                                    <% } %>
+      <div class="intro_page">
+        <header class="intro_page_header">
+          <%- include('./partials/navbar.ejs')%>
+          <div class="wrapper magicc">
+            <% if(successMessage!='') { %>
+            <div class="c-alert">
+              <p>
+                <%=successMessage%>
+              </p>
+            </div>
+            <% } %>
 
-                                        <div class="desc">
-                                            <div class="largeText">
-                                                <p>We are with <span>you</span></p>
-                                            </div>
-                                            <div class="smallText">
-                                                <p>
-                                                    TRIN ensure wellbeing and energize mind through innovation, collaboration, and care.
-                                                </p>
-                                            </div>
-                                            <div class="btnBook">
-                                                <a href="#" data-toggle="modal" data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL">Book Appointments</a
+            <div class="desc">
+              <div class="largeText">
+                <p>We are with <span>you</span></p>
+              </div>
+              <div class="smallText">
+                <p>
+                  TRIN ensure wellbeing and energize mind through innovation,
+                  collaboration, and care.
+                </p>
+              </div>
+              <div class="btnBook">
+                <a
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL"
+                  >Book Appointments</a
                 >
               </div>
             </div>
@@ -216,200 +231,242 @@
                       <img src="/images/consultants.jpg" alt="" class="image" />
                     </div>
                   </a>
-                                                <div class="card-non-image">
-                                                    <a href="#">
-                                                        <div class="cardHeader">
-                                                            <p>Psychiatric Consultation</p>
-                                                        </div>
-                                                    </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Psychiatric Consultation</p>
+                      </div>
+                    </a>
 
-                                                    <div class="cardBody">
-                                                        <p>
-                                                            We offer best psychiatric consultation from the most famous and respected psychiatrists. After the complete mental state examination, the experts make your diagnosis and provide appropriate treatment either medication or psychotherapy or both.
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="readMore pt-2">
-                                                        <p>
-                                                            Read More <span class="fa fa-long-arrow-right"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="single-card">
-                                                <a href="#">
-                                                    <div class="card-image">
-                                                        <img src="/images/corporate.png" alt="" class="image" />
-                                                    </div>
-                                                </a>
-                                                <div class="card-non-image">
-                                                    <a href="#">
-                                                        <div class="cardHeader">
-                                                            <p>Psychotherapy and Counselling</p>
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="cardBody">
-                                                        <p>
-                                                            The best and brightest Clinical Psychologists and Councilors are providing evidence- based quality sessions for our clients. Psychotherapy and Counselling help eliminate or control troubling symptoms due to the impact of stress, trauma, medical illness
-                                                            or loss and different mental disorders, so that a person can function better and can increase well-being.
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="readMore pt-2">
-                                                        <p>
-                                                            Read More <span class="fa fa-long-arrow-right"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="single-card">
-                                                <a href="#">
-                                                    <div class="card-image">
-                                                        <img src="/images/childCare.jpg" alt="" />
-                                                    </div>
-                                                </a>
-                                                <div class="card-non-image">
-                                                    <a href="#">
-                                                        <div class="cardHeader">
-                                                            <p>Mental Health Assessment</p>
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="cardBody">
-                                                        <p>
-                                                            We give you the access to measure mental health and wellbeing, personality, intelligence, social, communication skill extending from the early childhood to older age group for screening, identification, severity assessment and monitoring.
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="readMore pt-2">
-                                                        <p>
-                                                            Read More <span class="fa fa-long-arrow-right"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="single-card">
-                                                <a href="#">
-                                                    <div class="card-image">
-                                                        <img src="/images/careForFuture.jpg" alt="" />
-                                                    </div>
-                                                </a>
-                                                <div class="card-non-image">
-                                                    <a href="#">
-                                                        <div class="cardHeader">
-                                                            <p>Special Services</p>
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="cardBody">
-                                                        <p>
-                                                            We offer multi-disciplinary, super-specialized care for our clients in different chronic distressing conditions involving at least three experts on relevant area in each clinic. Our special services are designed in a manner that our clients can have all
-                                                            sorts of supports at one place. From child care to geriatric care, from screen addiction to drug addiction, from management of psychosexual problems to postpartum depression- We have it all here,
-                                                            at one place!
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="readMore pt-2">
-                                                        <p>
-                                                            Read More <span class="fa fa-long-arrow-right"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="single-card">
-                                                <a href="#">
-                                                    <div class="card-image">
-                                                        <img src="/images/caringRelation.jpg" alt="" class="image" />
-                                                    </div>
-                                                </a>
-                                                <div class="card-non-image">
-                                                    <a href="#">
-                                                        <div class="cardHeader">
-                                                            <p>Training and Awareness</p>
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="cardBody">
-                                                        <p>
-                                                            Our belief in the power of awareness motivated us to initiate training and awareness programs on different issues that we need to face on our day to day life. We organize trainings and workshops on various issues such as stress management, time management,
-                                                            social anxiety, screen addiction etc which are deeply associated to our lives but are not taken care of. To develop the coping skills of our clients about the contemporary issues, the training
-                                                            and awareness programs are carefully sketched and facilitated by experts of relevant fields. We are running exclusive workshops during this ‘Pandemic Period’ to help our clients in resolving
-                                                            newer issues.
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="readMore pt-2">
-                                                        <p>
-                                                            Read More <span class="fa fa-long-arrow-right"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="single-card">
-                                                <a href="#">
-                                                    <div class="card-image">
-                                                        <img src="/images/trust.jpg" alt="" class="image" />
-                                                    </div>
-                                                </a>
-                                                <div class="card-non-image">
-                                                    <a href="#">
-                                                        <div class="cardHeader">
-                                                            <p>Research</p>
-                                                        </div>
-                                                    </a>
-
-                                                    <div class="cardBody">
-                                                        <p>
-                                                            To design and develop evidence-based services, our promising and hard-working research team is conducting leading-edge researches targeting the mental health problems and possible solutions. Our learnings on qualitative aspects of mental health scenario
-                                                            of Bangladesh helped us to commence researches on topics that are stigmatized, unattended but carry great importance. Our collaboration with national and international organizations and institutions
-                                                            gave us the opportunity to take our research works at international platforms.
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="readMore pt-2">
-                                                        <p>
-                                                            Read More <span class="fa fa-long-arrow-right"></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                            </div>
-                </div>
-            </div>
-            <div class="meet-doctors-section_wrapper">
-                <div class="container">
-                    <div class="meet-doctors-section">
-                        <div class="meet_doctors_header mb-3">
-                            <p>MEET OUR <span>EXPERTS</span></p>
-                            
-                        </div>
+                    <div class="cardBody">
+                      <p>
+                        We offer best psychiatric consultation from the most
+                        famous and respected psychiatrists. After the complete
+                        mental state examination, the experts make your
+                        diagnosis and provide appropriate treatment either
+                        medication or psychotherapy or both.
+                      </p>
                     </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/corporate.png" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Psychotherapy and Counselling</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        The best and brightest Clinical Psychologists and
+                        Councilors are providing evidence- based quality
+                        sessions for our clients. Psychotherapy and Counselling
+                        help eliminate or control troubling symptoms due to the
+                        impact of stress, trauma, medical illness or loss and
+                        different mental disorders, so that a person can
+                        function better and can increase well-being.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/childCare.jpg" alt="" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Mental Health Assessment</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        We give you the access to measure mental health and
+                        wellbeing, personality, intelligence, social,
+                        communication skill extending from the early childhood
+                        to older age group for screening, identification,
+                        severity assessment and monitoring.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/careForFuture.jpg" alt="" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Special Services</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        We offer multi-disciplinary, super-specialized care for
+                        our clients in different chronic distressing conditions
+                        involving at least three experts on relevant area in
+                        each clinic. Our special services are designed in a
+                        manner that our clients can have all sorts of supports
+                        at one place. From child care to geriatric care, from
+                        screen addiction to drug addiction, from management of
+                        psychosexual problems to postpartum depression- We have
+                        it all here, at one place!
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img
+                        src="/images/caringRelation.jpg"
+                        alt=""
+                        class="image"
+                      />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Training and Awareness</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        Our belief in the power of awareness motivated us to
+                        initiate training and awareness programs on different
+                        issues that we need to face on our day to day life. We
+                        organize trainings and workshops on various issues such
+                        as stress management, time management, social anxiety,
+                        screen addiction etc which are deeply associated to our
+                        lives but are not taken care of. To develop the coping
+                        skills of our clients about the contemporary issues, the
+                        training and awareness programs are carefully sketched
+                        and facilitated by experts of relevant fields. We are
+                        running exclusive workshops during this ‘Pandemic
+                        Period’ to help our clients in resolving newer issues.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/trust.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Research</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        To design and develop evidence-based services, our
+                        promising and hard-working research team is conducting
+                        leading-edge researches targeting the mental health
+                        problems and possible solutions. Our learnings on
+                        qualitative aspects of mental health scenario of
+                        Bangladesh helped us to commence researches on topics
+                        that are stigmatized, unattended but carry great
+                        importance. Our collaboration with national and
+                        international organizations and institutions gave us the
+                        opportunity to take our research works at international
+                        platforms.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <p>
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="upcomingEvents_wrapper">
-                <div class="upcomingEvents">
-                    <div class="container">
-                        <div class="upEvHeading">
-                            <p>Training and <span>Workshop</span></p>
-                        </div>
-                        <div class="upcomingEvents_flx_prnt">
-                            <div class="upcomingEvents_flx_chld chld_one">
-                                <div class="upcomingEvents_flx_chld_img">
-                                    <img src="/images/coronaevent1.jpg" />
-                                </div>
-                                <div class="upcomingEvents_flx_chld_title">
-                                    <p>Stress Management During Corona</p>
-                                </div>
-                                <div class="upcomingEvents_flx_chld_address">
-                                    <p>
-                                        <i class="fa fa-map-marker" style="font-size: 20px;">
+          </div>
+        </div>
+        <div class="meet-doctors-section_wrapper">
+          <div class="container">
+            <div class="meet-doctors-section">
+              <div class="meet_doctors_header mb-3">
+                <p>MEET OUR <span>EXPERTS</span></p>
+                <%- include('./partials/homepage_experts.ejs') %>
+                <p class="show-more-btn">
+                  <button id="show-docs">View More</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="upcomingEvents_wrapper">
+          <div class="upcomingEvents">
+            <div class="container">
+              <div class="upEvHeading">
+                <p>Training and <span>Workshop</span></p>
+              </div>
+              <div class="upcomingEvents_flx_prnt">
+                <div class="upcomingEvents_flx_chld chld_one">
+                  <div class="upcomingEvents_flx_chld_img">
+                    <img src="/images/coronaevent1.jpg" />
+                  </div>
+                  <div class="upcomingEvents_flx_chld_title">
+                    <p>Stress Management During Corona</p>
+                  </div>
+                  <div class="upcomingEvents_flx_chld_address">
+                    <p>
+                      <i class="fa fa-map-marker" style="font-size: 20px;">
                         &nbsp;</i
                       >
                       Rupayan Trade Center, Banglamotor
@@ -417,20 +474,20 @@
                   </div>
                   <div class="upcomingEvents_flx_chld_date">
                     <p><i class="fa fa-calendar"> &nbsp; </i> 07/03/2020</p>
-                                </div>
-                            </div>
-                            <div class="upcomingEvents_flx_chld FlxCol">
-                                <div class="upcomingEvents_flx_chld_scnd_one">
-                                    <div class="upcomingEvents_flx_chld_img">
-                                        <img src="/images/coronaPandemic.png" />
-                                    </div>
-                                    <div class="upcomingEvents_flx_chld_scnd_one_info">
-                                        <div class="upcomingEvents_flx_chld_title">
-                                            <p>Parenting During Corona Pandemic</p>
-                                        </div>
-                                        <div class="upcomingEvents_flx_chld_address">
-                                            <p>
-                                                <i class="fa fa-map-marker" style="font-size: 20px;">
+                  </div>
+                </div>
+                <div class="upcomingEvents_flx_chld FlxCol">
+                  <div class="upcomingEvents_flx_chld_scnd_one">
+                    <div class="upcomingEvents_flx_chld_img">
+                      <img src="/images/coronaPandemic.png" />
+                    </div>
+                    <div class="upcomingEvents_flx_chld_scnd_one_info">
+                      <div class="upcomingEvents_flx_chld_title">
+                        <p>Parenting During Corona Pandemic</p>
+                      </div>
+                      <div class="upcomingEvents_flx_chld_address">
+                        <p>
+                          <i class="fa fa-map-marker" style="font-size: 20px;">
                             &nbsp;</i
                           >
                           Rupayan Trade Center, Banglamotor
@@ -438,20 +495,20 @@
                       </div>
                       <div class="upcomingEvents_flx_chld_date">
                         <p><i class="fa fa-calendar"> &nbsp; </i> 10/03/2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="upcomingEvents_flx_chld_scnd_one">
-                                    <div class="upcomingEvents_flx_chld_img">
-                                        <img src="/images/conf3.jpg" />
-                                    </div>
-                                    <div class="upcomingEvents_flx_chld_scnd_one_info">
-                                        <div class="upcomingEvents_flx_chld_title">
-                                            <p>Prospects of Telepsychiatry</p>
-                                        </div>
-                                        <div class="upcomingEvents_flx_chld_address">
-                                            <p>
-                                                <i class="fa fa-map-marker" style="font-size: 20px;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="upcomingEvents_flx_chld_scnd_one">
+                    <div class="upcomingEvents_flx_chld_img">
+                      <img src="/images/conf3.jpg" />
+                    </div>
+                    <div class="upcomingEvents_flx_chld_scnd_one_info">
+                      <div class="upcomingEvents_flx_chld_title">
+                        <p>Prospects of Telepsychiatry</p>
+                      </div>
+                      <div class="upcomingEvents_flx_chld_address">
+                        <p>
+                          <i class="fa fa-map-marker" style="font-size: 20px;">
                             &nbsp;</i
                           >
                           Rupayan Trade Center, Banglamotor
@@ -459,79 +516,81 @@
                       </div>
                       <div class="upcomingEvents_flx_chld_date">
                         <p><i class="fa fa-calendar"> &nbsp; </i> 13/03/2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="showMoreBtn">
-                            <button>Show more</button>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <div class="showMoreBtn">
+                <button>Show more</button>
+              </div>
             </div>
-            <%- include('./partials/homepage_organization')%>
-                </div>
-                </div>
+          </div>
+        </div>
+        <%- include('./partials/homepage_organization')%>
+      </div>
+    </div>
 
-                <%- include('./partials/footer')%>
-                    <%- include('./partials/vendorsBottom')%>
-                        <script src="/js/homepage.js"></script>
+    <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
+    <script src="/js/homepage.js"></script>
 
-                        <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-                        <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
-                        <script>
-                            var owldl = $('.owl-doctor-list');
-                            owldl.owlCarousel({
-                                loop: true,
-                                margin: 10,
-                                autoplay: true,
-                                autoplayTimeout: 3500,
-                                autoplayHoverPause: true,
-                                dots: false,
-                                responsive: {
-                                    0: {
-                                        items: 1,
-                                    },
-                                    750: {
-                                        items: 1,
-                                    },
-                                    960: {
-                                        items: 2,
-                                    },
-                                    1100: {
-                                        items: 3,
-                                    },
-                                },
-                            });
-                            let owlorg = $('.owl-organizations');
-                            owlorg.owlCarousel({
-                                loop: true,
-                                margin: 10,
-                                autoplay: true,
-                                autoplayTimeout: 1300,
-                                autoplayHoverPause: true,
-                                dots: false,
-                                responsive: {
-                                    0: {
-                                        items: 2,
-                                    },
-                                    750: {
-                                        items: 3,
-                                    },
-                                    960: {
-                                        items: 3,
-                                    },
-                                    1100: {
-                                        items: 6,
-                                    },
-                                },
-                            });
+    <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
+    <script>
+      var owldl = $('.owl-doctor-list');
+      owldl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: true,
+        dots: false,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          750: {
+            items: 1,
+          },
+          960: {
+            items: 2,
+          },
+          1100: {
+            items: 3,
+          },
+        },
+      });
+      let owlorg = $('.owl-organizations');
+      owlorg.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 1300,
+        autoplayHoverPause: true,
+        dots: false,
+        responsive: {
+          0: {
+            items: 2,
+          },
+          750: {
+            items: 3,
+          },
+          960: {
+            items: 3,
+          },
+          1100: {
+            items: 6,
+          },
+        },
+      });
 
-                            function gotoLink(url) {
-                                window.open(url, '_blank');
-                            }
-                        </script>
-</body>
+      function gotoLink(url) {
+        window.open(url, '_blank');
+      }
 
+      $('#show-docs').click((e) => {
+        location = `/services/consultation`;
+      });
+    </script>
+  </body>
 </html>

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const multer = require('multer');
 
 const {
   bookAppointment,
@@ -17,11 +18,29 @@ const {
   getChamberTimes,
   allAppointments,
   dateTimeReset,
+
+  // special services
   allSS,
   singleSS,
   bookSS,
   postBookSS,
+  addFeedback,
+  addFeedbackVideo,
 } = require('../controllers/services');
+
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    console.log('here');
+    cb(null, 'public/feedback_ss/');
+  },
+  filename: (req, file, cb) => {
+    const filename = req.body.filename;
+    cb(null, filename);
+  },
+});
+const uploadVideo = multer({
+  storage: fileStorage,
+}).single('ss_feedback_video');
 
 router.get('/consultation', consultation);
 router.get('/consultation/search', searchConsultation);
@@ -52,6 +71,8 @@ router.get('/special_services', allSS);
 router.get('/special_services/:id', singleSS);
 router.get('/special_services/book/:id', bookSS);
 router.post('/special_services/book', postBookSS);
+router.post('/special_services/feedback/', addFeedback);
+router.post('/special_services/feedback/video', uploadVideo, addFeedbackVideo);
 
 router.post('/book', bookAppointment);
 router.post('/book/emergency', emergenceBooking);

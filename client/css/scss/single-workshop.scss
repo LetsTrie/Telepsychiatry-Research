@@ -1,264 +1,268 @@
 @import '_main';
 @import '_navbar';
 .blueDivider {
-    padding: 13px 0 10px 0;
-    padding-left: 20px;
-    background-color: #15558d;
-    font-family: 'Poppins', sans-serif;
+  padding: 13px 0 10px 0;
+  padding-left: 20px;
+  background-color: #15558d;
+  font-family: 'Poppins', sans-serif;
+  p {
+    a {
+      color: white;
+      // cursor pointer not working
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .smallText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
+    }
+    padding-bottom: 3px;
     p {
-        a {
-            color: white;
-            // cursor pointer not working
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+      font-size: 13px;
     }
-    .smallText {
-        margin: auto;
-        width: 90%;
-        @media (max-width: 1410px) {
-            width: 97%;
-        }
-        padding-bottom: 3px;
-        p {
-            font-size: 13px;
-        }
+  }
+  .bigText {
+    margin: auto;
+    width: 90%;
+    @media (max-width: 1410px) {
+      width: 97%;
     }
-    .bigText {
-        margin: auto;
-        width: 90%;
-        @media (max-width: 1410px) {
-            width: 97%;
-        }
-        padding-bottom: 3px;
-        p {
-            font-size: 22px;
-            font-weight: 700;
-            @media (max-width: 550px) {
-                font-size: 18px;
-            }
-        }
-    }
+    padding-bottom: 3px;
     p {
-        margin-bottom: 0px;
-        color: white;
+      font-size: 22px;
+      font-weight: 700;
+      @media (max-width: 550px) {
+        font-size: 18px;
+      }
     }
+  }
+  p {
+    margin-bottom: 0px;
+    color: white;
+  }
 }
 
 .cover-image {
-    background: url('https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-01.jpg');
-    height: 250px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background: url('https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-01.jpg');
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (max-width: 1000px) {
+    height: 150px;
+  }
+  p {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+    color: #fff;
+    padding: 90px 0;
     @media (max-width: 1000px) {
-        height: 150px;
+      font-size: 20px;
+      font-weight: 400;
+      padding: 50px 0;
     }
-    p {
-        text-align: center;
-        font-size: 35px;
-        font-weight: 700;
-        color: #fff;
-        padding: 90px 0;
-        @media (max-width: 1000px) {
-            font-size: 20px;
-            font-weight: 400;
-            padding: 50px 0;
-        }
-    }
+  }
 }
 
 .contentWrapper {
-    width: 70%;
-    margin: auto;
-    padding: 100px 0;
-    display: flex;
-    justify-content: space-between;
-    @media (max-width: 1410px) {
-        width: 85%;
+  width: 70%;
+  margin: auto;
+  padding: 100px 0;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 1410px) {
+    width: 85%;
+  }
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    padding: 50px 0;
+    width: 98%;
+  }
+  .left {
+    width: 65%;
+    font-size: 18px;
+    line-height: 180%;
+    color: #333;
+    @media (max-width: 1200px) {
+      width: 72%;
     }
     @media (max-width: 1000px) {
-        flex-direction: column;
-        padding: 50px 0;
-        width: 98%;
+      width: 85%;
+      margin: auto;
     }
-    .left {
-        width: 65%;
+    h1,
+    h2,
+    h3 {
+      color: darkblue;
+      padding: 30px 0px;
+    }
+    li {
+      list-style-type: square;
+      margin-left: 5%;
+    }
+    iframe {
+      width: 50;
+      margin: auto;
+      padding: 20px 0px;
+    }
+  }
+  .right {
+    padding: 50px 40px;
+    border-left: 1px solid #ddd;
+    width: 35%;
+    @media (max-width: 1000px) {
+      width: 85%;
+      margin: auto;
+      border: none;
+      border-top: 1px solid #ddd;
+      padding: 10px 0 0;
+      margin-top: 15px;
+    }
+    .contents {
+      @media (max-width: 1000px) {
+      }
+      .item {
         font-size: 18px;
-        line-height: 180%;
-        color: #333;
-        @media (max-width: 1200px) {
-            width: 72%;
-        }
+        color: gray;
+        margin-top: 50px;
+        white-space: nowrap;
         @media (max-width: 1000px) {
-            width: 85%;
-            margin: auto;
+          font-size: 13.5px;
+          margin-top: 25px;
         }
-        h1,
-        h2,
-        h3 {
-            color: darkblue;
-            padding: 30px 0px;
+        .heading {
+          font-size: 22px;
+          color: #000;
+          @media (max-width: 1410px) {
+            font-size: 20px;
+          }
+          @media (max-width: 1000px) {
+            font-size: 15px;
+          }
+          i {
+            padding-right: 10px;
+          }
+          &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            margin-top: 5px;
+            height: 2px;
+            width: 100px;
+            background: #ddd;
+          }
         }
-        li {
-            list-style-type: square;
-            margin-left: 5%;
+        .con {
+          padding: 20px 0 0 5px;
+          p {
+            white-space: normal;
+          }
         }
-        iframe {
-            width: 50;
-            margin: auto;
-            padding: 20px 0px;
-        }
+      }
     }
-    .right {
-        padding: 50px 40px;
-        border-left: 1px solid #ddd;
-        width: 27.5%;
-        @media (max-width: 1000px) {
-            width: 85%;
-            margin: auto;
-            border: none;
-            border-top: 1px solid #ddd;
-            padding: 10px 0 0;
-            margin-top: 15px;
-        }
-        .contents {
-            @media (max-width: 1000px) {}
-            .item {
-                font-size: 18px;
-                color: gray;
-                margin-top: 50px;
-                white-space: nowrap;
-                @media (max-width: 1000px) {
-                    font-size: 13.5px;
-                    margin-top: 25px;
-                }
-                .heading {
-                    font-size: 22px;
-                    color: #000;
-                    @media (max-width: 1410px) {
-                        font-size: 20px;
-                    }
-                    @media (max-width: 1000px) {
-                        font-size: 15px;
-                    }
-                    i {
-                        padding-right: 10px;
-                    }
-                    &:after {
-                        position: absolute;
-                        content: '';
-                        display: block;
-                        margin-top: 5px;
-                        height: 2px;
-                        width: 100px;
-                        background: #ddd;
-                    }
-                }
-                .con {
-                    padding: 20px 0 0 5px;
-                }
-            }
-        }
-    }
+  }
 }
 
 .mobile-reg {
-    display: none;
-    @media (max-width: 1000px) {
-        display: block;
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+  p {
+    text-align: center;
+    padding-bottom: 20px;
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: rgb(211, 158, 14);
+      color: #fff;
+      font-size: 18px;
+      border-radius: 5px;
+      opacity: 1;
     }
-    p {
-        text-align: center;
-        padding-bottom: 20px;
-        button {
+  }
+}
+
+.lower {
+  padding-bottom: 75px;
+  @media (max-width: 1000px) {
+    display: none;
+  }
+  .lower-cover {
+    background: url('https://cdn.hipwallpaper.com/i/96/50/TJfwDN.jpg');
+    height: 400px;
+    opacity: 0.7;
+    background-position: bottom;
+    .contents {
+      display: flex;
+      width: 75%;
+      justify-content: space-between;
+      margin: auto;
+      padding-top: 90px;
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+      }
+      .texts {
+        width: 60%;
+        background: #ddd;
+        opacity: 0.9;
+        border: none;
+        border-radius: 20px;
+        padding: 20px;
+        @media (max-width: 1200px) {
+          width: 90%;
+        }
+        .heading {
+          font-size: 35px;
+          padding: 10px 0;
+        }
+        .reg-btn {
+          padding: 15px 0 0 0;
+          display: flex;
+          justify-content: space-between;
+          button {
             padding: 10px 15px;
             border: none;
             background-color: rgb(211, 158, 14);
             color: #fff;
-            font-size: 18px;
+            font-size: 25px;
             border-radius: 5px;
             opacity: 1;
+          }
         }
+      }
     }
-}
-
-.lower {
-    padding-bottom: 75px;
-    @media (max-width: 1000px) {
-        display: none;
-    }
-    .lower-cover {
-        background: url('https://cdn.hipwallpaper.com/i/96/50/TJfwDN.jpg');
-        height: 400px;
-        opacity: 0.7;
-        background-position: bottom;
-        .contents {
-            display: flex;
-            width: 75%;
-            justify-content: space-between;
-            margin: auto;
-            padding-top: 90px;
-            @media (max-width: 1000px) {
-                flex-direction: column;
-                width: 100%;
-                margin: auto;
-            }
-            .texts {
-                width: 60%;
-                background: #ddd;
-                opacity: 0.9;
-                border: none;
-                border-radius: 20px;
-                padding: 20px;
-                @media (max-width: 1200px) {
-                    width: 90%;
-                }
-                .heading {
-                    font-size: 35px;
-                    padding: 10px 0;
-                }
-                .reg-btn {
-                    padding: 15px 0 0 0;
-                    display: flex;
-                    justify-content: space-between;
-                    button {
-                        padding: 10px 15px;
-                        border: none;
-                        background-color: rgb(211, 158, 14);
-                        color: #fff;
-                        font-size: 25px;
-                        border-radius: 5px;
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-    }
+  }
 }
 
 .parts {
-    .each-part {
-        padding: 10px 0;
-        transition: 0.5s;
-        cursor: pointer;
-        a {
-            color: #000;
-            padding: 0 10px;
-            font-size: 18px;
-            i {
-                padding: 7.5px 10px;
-                border: 1px solid gray;
-                border-radius: 50%;
-                color: gray;
-            }
-        }
-        a:hover {
-            text-decoration: none;
-        }
+  .each-part {
+    padding: 10px 0;
+    transition: 0.5s;
+    cursor: pointer;
+    a {
+      color: #000;
+      padding: 0 10px;
+      font-size: 18px;
+      i {
+        padding: 7.5px 10px;
+        border: 1px solid gray;
+        border-radius: 50%;
+        color: gray;
+      }
     }
-    .each-part:hover {
-        background-color: #eee;
+    a:hover {
+      text-decoration: none;
     }
+  }
+  .each-part:hover {
+    background-color: #eee;
+  }
 }

@@ -465,6 +465,8 @@ body {
     flex: 3;
   }
   .flx-chld-feeds {
+    background-color: #fff;
+    border: none;
     flex: 1;
     .feedback-Heading {
       color: #026fa5;
@@ -478,6 +480,49 @@ body {
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+}
+
+.comment-box {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 210px;
+  padding: 10px;
+  textarea {
+    width: 100%;
+    height: 150px;
+    border: none;
+  }
+  textarea:focus {
+    outline: none;
+  }
+  p {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+// Modal styles
+.modal {
+  .parts {
+    .each-part {
+      padding: 10px 5px;
+      transition: 0.5s;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      .user {
+        font-size: 13.5px;
+        color: gray;
+      }
+      button {
+        font-size: 12px;
+      }
+    }
+    .each-part:hover {
+      background-color: #eee;
     }
   }
 }

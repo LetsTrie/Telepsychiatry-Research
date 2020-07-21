@@ -68,6 +68,8 @@ const {
   postUpdateSingleSS,
   getSSBookRequests,
   approveSSBookRequest,
+  toggleFeedback,
+  deleteBook,
 
   // backup
   getBackup,
@@ -227,6 +229,8 @@ router.get(
   adminAccess,
   approveSSBookRequest
 );
+router.get('/special_services/toggle/:id', adminAccess, toggleFeedback);
+router.get('/special_service/delete-book/:pid/:sid', adminAccess, deleteBook);
 
 // if representational photo is changed for service
 router.post('/specialService/update/file/:id', adminAccess, (req, res) => {

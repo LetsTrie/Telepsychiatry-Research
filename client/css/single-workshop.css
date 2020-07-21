@@ -1157,7 +1157,7 @@ p {
 .contentWrapper .right {
   padding: 50px 40px;
   border-left: 1px solid #ddd;
-  width: 27.5%;
+  width: 35%;
 }
 
 @media (max-width: 1000px) {
@@ -1218,6 +1218,10 @@ p {
 
 .contentWrapper .right .contents .item .con {
   padding: 20px 0 0 5px;
+}
+
+.contentWrapper .right .contents .item .con p {
+  white-space: normal;
 }
 
 .mobile-reg {

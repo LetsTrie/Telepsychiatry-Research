@@ -3,9 +3,9 @@
 .intro_page_header {
   background: rgb(46, 184, 154);
   background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(/images/office.jpg);
+    url(/images/officeDesk.jpg);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center 30px;
   background-size: cover;
   min-height: 100vh;
 }

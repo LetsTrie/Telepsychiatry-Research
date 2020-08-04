@@ -59,7 +59,7 @@ module.exports.ssConfirmMail = async (booking, ss) => {
   } else {
     mailBody = `<strong>Dear ${name},</strong>
     <br >
-    Your request for our special service entitled ${ss_name} has been confirmed. 
+    Thanks for your request for our special service entitled <strong>${ss_name}</strong>, which has been confirmed. 
     <br>
     Please take note of the following meeting details
     <br >
@@ -76,7 +76,7 @@ module.exports.ssConfirmMail = async (booking, ss) => {
   let mailOptions = {
     from: 'manager@trin-innovation.com',
     to: email,
-    subject: 'Special Service Request Confirmation',
+    subject: `TRIN - ${ss_name} special service confirmation`,
     html: mailBody,
   };
 

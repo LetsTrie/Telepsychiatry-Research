@@ -173,7 +173,9 @@
 ></script>
 <script>
   $.get('/getUser', (data) => {
-    console.log(data);
+    if (data && data.hADegree) {
+      console.log('gen');
+    }
     const nameGen = (data) => {
       const sp = data.split(' ');
       if (sp.length >= 2) return sp[0] + sp[1];
@@ -185,13 +187,13 @@
       $('#profilee').show();
       $('.userNamee').text(`Hi, ${nameGen(data.name)}`);
       $('#profile_link').attr('href', profileLink);
-
-      if (data.fee == undefined) {
-        $('#profile_link').hide();
-        $('#show_apts').hide();
-      }
+    }
+    if (data && data.hADegree) {
+      console.log('general');
+      $('#profile_link').hide();
+      $('#show_apts').hide();
     } else if (!data) {
-      $('#login').hide();
+      // $('#login').hide();
       $('#profilee').hide();
     }
   });

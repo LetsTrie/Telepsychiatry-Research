@@ -1149,7 +1149,7 @@ exports.singleWorkshop = async (req, res) => {
 };
 
 exports.postWorkshop = async (req, res) => {
-  const { title, description, location, image } = req.body;
+  const { title, description, about, location, image } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1186,6 +1186,8 @@ exports.postWorkshop = async (req, res) => {
   obj = {
     title,
     description,
+    about,
+    videos: JSON.parse(req.body.videos),
     location,
     schedule,
     start,
@@ -1215,7 +1217,7 @@ exports.getUpdateWorkshop = async (req, res) => {
 };
 
 exports.postUpdateWorkshop = async (req, res) => {
-  const { id, title, description, location } = req.body;
+  const { id, title, description, about, location } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1255,6 +1257,8 @@ exports.postUpdateWorkshop = async (req, res) => {
       $set: {
         title: title,
         description: description,
+        about: about,
+        videos: JSON.parse(req.body.videos),
         location: location,
         schedule: {
           startDate: schedule.startDate,

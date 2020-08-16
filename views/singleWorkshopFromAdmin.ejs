@@ -44,10 +44,32 @@
         </div>
         <div class="contentWrapper">
             <div class="left">
-                <div class="body">
-                    <%- data.description %>
-                </div>
+          <div class="body">
+            <%- data.about %>
+          </div>
+          <div
+            class="body videos"
+          >
+            <% for(let i=0; i<data.videos.length; i++) { %>
+            <div class="video">
+              <iframe
+                width="300"
+                height="200"
+                src="<%= data.videos[i] %>"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
+            <% } %>
+          </div>
+          <div class="body" style="margin-top: 20px;">
+            <strong class="header" style="font-size: 25px; color: #008ecc;">
+              Description
+            </strong>
+            <%- data.description %>
+          </div>
+        </div>
             <div class="right">
                 <div class="contents">
                     <div class="item">
@@ -197,6 +219,7 @@
         const id = e.target.id;
         location = `/admin/workshop/delete/${id}`
     })
+    // Shin Jhua, Hydaspes(Hu Dang Sapu), Tapoyye 
 </script>
 
 </html>

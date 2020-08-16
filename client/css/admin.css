@@ -1629,6 +1629,18 @@ p {
   width: 100%;
 }
 
+.addResource_form .one_box .input_box .each-video {
+  margin-top: 15px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .addResource_form .one_box .input_box .side-by-side {
   display: -webkit-box;
   display: -webkit-flex;

@@ -1224,6 +1224,22 @@ p {
   white-space: normal;
 }
 
+.videos {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-row-gap: 1em;
+  grid-column-gap: 1em;
+}
+
+@media (max-width: 900px) {
+  .videos {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
 .mobile-reg {
   display: none;
 }

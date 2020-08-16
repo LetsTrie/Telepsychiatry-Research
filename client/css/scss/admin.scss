@@ -519,6 +519,11 @@
     }
     .input_box {
       width: 100%;
+      .each-video {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
       .side-by-side {
         display: flex;
         justify-content: space-between;

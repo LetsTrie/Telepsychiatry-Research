@@ -59,6 +59,35 @@
 
                 <div class="one_box">
                   <div class="box_header">
+                    <p>About</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea name="BriefDesciption" id="About"><%= data.about %></textarea>
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Promotional Video</p>
+                  </div>
+                  <div class="input_box video-input">
+                    <% for (let i=0; i<data.videos.length; i++) { %>
+                      <div class="each-video">
+                        <input type="text" style="width: 80%;" class="video"  value="<%= data.videos[i] %>"/>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                      <% } %>
+                  </div>
+                  <button
+                    style="margin-top: 20px;"
+                    class="btn btn-secondary add-video"
+                  >
+                    Add
+                  </button>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
                     <p>Event Location</p>
                   </div>
                   <div class="input_box">
@@ -146,7 +175,7 @@
     //     });
     var config = {
       height: 600,
-      width: 1125,
+      width: 900,
       extraPlugins: 'embed,autoembed,image2',
       contentsCss: [
         'http://cdn.ckeditor.com/4.14.0/full-all/contents.css',
@@ -162,16 +191,27 @@
       image2_disableResizer: true,
     };
     const editor = CKEDITOR.replace('BDeditor', config);
+    CKEDITOR.replace('About', config);
 
     $('#submit-btn').click((e) => {
       e.preventDefault();
       const title = $('#title').val();
       const description = CKEDITOR.instances.BDeditor.getData();
+      const about = CKEDITOR.instances.About.getData();
       const location = $('#location').val();
       const startDate = $('#startDate').val();
       const startTime = $('#startTime').val();
       const endDate = $('#endDate').val();
       const endTime = $('#endTime').val();
+
+      const videoArr = $('.video');
+      let videos = [];
+      for (let i = 0; i < videoArr.length; i++) {
+        const link = $(videoArr[i]).val();
+        videos.push(link);
+      }
+      console.log(videos);
+
       if (check(title)) {
         showAlert('Enter the title');
       } else if (check(description)) {
@@ -199,6 +239,8 @@
           id,
           title,
           description,
+          about,
+          videos: JSON.stringify(videos),
           location,
           schedule: JSON.stringify(schedule),
         };
@@ -244,5 +286,21 @@
         },
       });
     };
+
+    $('.add-video').click((e) => {
+      e.preventDefault();
+      const node = ` <div class="each-video">
+                      <input type="text" style="width: 80%;" class="video" />
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+                  </div>`;
+      $('.video-input').append(node);
+    });
+
+    $('body').on('click', '.btn-danger', (e) => {
+      e.preventDefault()
+      $(e.target.parentElement).remove();
+    });
+
   </script>
 </html>

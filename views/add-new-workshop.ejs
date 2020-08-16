@@ -1,221 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"
+    />
 
-        <link rel="stylesheet" href="/css/admin.css" />
-        <title>Add New Workshop | Admin Panel</title>
-</head>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Add New Workshop | Admin Panel</title>
+  </head>
 
-<body>
+  <body>
     <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Events</p>
-                </div>
-                <div class="bigText">
-                    <p>Add New Workshop</p>
-                </div>
-            </div>
-        </header>
-        <div class="twoBigSectionFlex">
-            <div class="oneBigFatCat_wrapper">
-                <div class="oneBigFatCat">
-                    <div class="addResource text-center my-2">
-                        <h1>Add Workshop</h1>
-                    </div>
-                    <div class="addResource_form">
-                        <div class="alert alert-danger text-center" id="alert"></div>
-                        <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
-                        <form action="/admin/workshop/new/file" id="form" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="filename" id="filename" />
-                            <input type="hidden" name="id" id="id" />
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Title:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" name="title" id="title" placeholder="Title" />
-                                </div>
-                            </div>
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Breif Description:</p>
-                                </div>
-                                <div class="input_box">
-                                    <textarea name="BriefDesciption" id="BDeditor"> </textarea>
-                                </div>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Event Location</p>
-                                </div>
-                                <div class="input_box">
-                                    <input name="location" id="location" placeholder="Location of the event" />
-                                </div>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Event Date and Time</p>
-                                </div>
-                                <div class="input_box">
-                                    <div class="side-by-side">
-                                        <input type="text" name="date" placeholder="Start Date" class="side" id="startDate" />
-                                        <input type="text" name="time" class="side" placeholder="Start Time" id="startTime" />
-                                        <input type="text" name="date" class="side" placeholder="End Date" id="endDate" />
-                                        <input type="text" name="time" class="side" placeholder="End Time" id="endTime" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Representational Photo</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="file" name="workshopFile" id="file" accept="image/x-png,image/jpg,image/jpeg" />
-                                </div>
-                            </div>
-
-                            <div class="createResources__submit">
-                                <button id="submit-btn">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+      <header>
+        <nav>
+          <%- include('./partials/adminNavbar')%>
+        </nav>
+        <div class="blueDivider">
+          <div class="smallText">
+            <p><a href="#">Admin Panel</a> / Events</p>
+          </div>
+          <div class="bigText">
+            <p>Add New Workshop</p>
+          </div>
         </div>
+      </header>
+      <div class="twoBigSectionFlex">
+        <div class="oneBigFatCat_wrapper">
+          <div class="oneBigFatCat">
+            <div class="addResource text-center my-2">
+              <h1>Add Workshop</h1>
+            </div>
+            <div class="addResource_form">
+              <div class="alert alert-danger text-center" id="alert"></div>
+              <div
+                class="alert alert-success text-center"
+                id="alert-success"
+                style="display: none;"
+              ></div>
+              <form
+                action="/admin/workshop/new/file"
+                id="form"
+                enctype="multipart/form-data"
+                method="POST"
+              >
+                <input type="hidden" name="filename" id="filename" />
+                <input type="hidden" name="id" id="id" />
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Title:</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      placeholder="Title"
+                    />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Breif Description:</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea name="BriefDesciption" id="BDeditor"> </textarea>
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>About</p>
+                  </div>
+                  <div class="input_box">
+                    <textarea name="BriefDesciption" id="About"> </textarea>
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Promotional Video</p>
+                  </div>
+                  <div class="input_box video-input">
+                    <div class="each-video">
+                      <input type="text" style="width: 80%;" class="video" />
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+                  </div>
+                  <button
+                    style="margin-top: 20px;"
+                    class="btn btn-secondary add-video"
+                  >
+                    Add
+                  </button>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Event Location</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      name="location"
+                      id="location"
+                      placeholder="Location of the event"
+                    />
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Event Date and Time</p>
+                  </div>
+                  <div class="input_box">
+                    <div class="side-by-side">
+                      <input
+                        type="text"
+                        name="date"
+                        placeholder="Start Date"
+                        class="side"
+                        id="startDate"
+                      />
+                      <input
+                        type="text"
+                        name="time"
+                        class="side"
+                        placeholder="Start Time"
+                        id="startTime"
+                      />
+                      <input
+                        type="text"
+                        name="date"
+                        class="side"
+                        placeholder="End Date"
+                        id="endDate"
+                      />
+                      <input
+                        type="text"
+                        name="time"
+                        class="side"
+                        placeholder="End Time"
+                        id="endTime"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="one_box">
+                  <div class="box_header">
+                    <p>Representational Photo</p>
+                  </div>
+                  <div class="input_box">
+                    <input
+                      type="file"
+                      name="workshopFile"
+                      id="file"
+                      accept="image/x-png,image/jpg,image/jpeg"
+                    />
+                  </div>
+                </div>
+
+                <div class="createResources__submit">
+                  <button id="submit-btn">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <%- include('./partials/footer')%>
-</body>
-<%- include('./partials/vendorsBottom')%>
-    <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  </body>
+  <%- include('./partials/vendorsBottom')%>
+  <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-    <script>
-        $('input[name="date"]').datepicker();
-        $('input[name="time"]').timepicker();
+  <script>
+    $('input[name="date"]').datepicker();
+    $('input[name="time"]').timepicker();
 
-        // let bdeditor;
+    // let bdeditor;
 
-        // ClassicEditor.create(document.querySelector('#BDeditor'))
-        //     .then((editor) => {
-        //         bdeditor = editor;
-        //         console.log(editor);
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
-        var config = {
-            height: 600,
-            width: 1125,
-            extraPlugins: 'embed,autoembed,image2',
-            contentsCss: [
-                'http://cdn.ckeditor.com/4.14.0/full-all/contents.css',
-                'https://ckeditor.com/docs/vendors/4.14.0/ckeditor/assets/css/widgetstyles.css',
-            ],
-            embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
-            image2_alignClasses: [
-                'image-align-left',
-                'image-align-center',
-                'image-align-right',
-            ],
-            image2_disableResizer: true,
+    // ClassicEditor.create(document.querySelector('#BDeditor'))
+    //     .then((editor) => {
+    //         bdeditor = editor;
+    //         console.log(editor);
+    //     })
+    //     .catch((error) => {
+    //         console.error(error);
+    //     });
+    var config = {
+      height: 600,
+      width: 900,
+      extraPlugins: 'embed,autoembed,image2',
+      contentsCss: [
+        'http://cdn.ckeditor.com/4.14.0/full-all/contents.css',
+        'https://ckeditor.com/docs/vendors/4.14.0/ckeditor/assets/css/widgetstyles.css',
+      ],
+      embed_provider:
+        '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+      image2_alignClasses: [
+        'image-align-left',
+        'image-align-center',
+        'image-align-right',
+      ],
+      image2_disableResizer: true,
+    };
+    const editor = CKEDITOR.replace('BDeditor', config);
+    CKEDITOR.replace('About', config);
+
+    $('#submit-btn').click((e) => {
+      e.preventDefault();
+      const title = $('#title').val();
+      const about = CKEDITOR.instances.About.getData();
+      const description = CKEDITOR.instances.BDeditor.getData();
+      const location = $('#location').val();
+      const startDate = $('#startDate').val();
+      const startTime = $('#startTime').val();
+      const endDate = $('#endDate').val();
+      const endTime = $('#endTime').val();
+      const imageFile = $('#reqpPhotoID');
+
+      const videoArr = $('.video');
+      let videos = [];
+      for (let i = 0; i < videoArr.length; i++) {
+        const link = $(videoArr[i]).val();
+        videos.push(link);
+      }
+      console.log(videos);
+
+      if (check(title)) {
+        showAlert('Enter the title');
+      } else if (check(description)) {
+        showAlert('Enter a brief description');
+      } else if (check(about)) {
+        showAlert('Enter something in the about section');
+      } else if (check(location)) {
+        showAlert('Enter the location');
+      } else if (check(startDate)) {
+        showAlert('Enter the starting date');
+      } else if (check(startTime)) {
+        showAlert('Enter the starting time');
+      } else if (check(endDate)) {
+        showAlert('Enter the ending date');
+      } else if (check(endTime)) {
+        showAlert('Enter the ending time');
+      } else if ($('#file')[0].files.length == 0) {
+        showAlert('Enter the representational photo');
+      } else {
+        const image =
+          Date.parse(new Date().toString()) + '-' + $('#file')[0].files[0].name;
+        $('#filename').val(image);
+        $('#alert').hide();
+        schedule = {
+          startDate,
+          startTime,
+          endDate,
+          endTime,
         };
-        const editor = CKEDITOR.replace('BDeditor', config);
-
-        $('#submit-btn').click((e) => {
-            e.preventDefault();
-            const title = $('#title').val();
-            const description = CKEDITOR.instances.BDeditor.getData();
-            const location = $('#location').val();
-            const startDate = $('#startDate').val();
-            const startTime = $('#startTime').val();
-            const endDate = $('#endDate').val();
-            const endTime = $('#endTime').val();
-            const imageFile = $('#reqpPhotoID');
-            if (check(title)) {
-                showAlert('Enter the title');
-            } else if (check(description)) {
-                showAlert('Enter a brief description');
-            } else if (check(location)) {
-                showAlert('Enter the location');
-            } else if (check(startDate)) {
-                showAlert('Enter the starting date');
-            } else if (check(startTime)) {
-                showAlert('Enter the starting time');
-            } else if (check(endDate)) {
-                showAlert('Enter the ending date');
-            } else if (check(endTime)) {
-                showAlert('Enter the ending time');
-            } else if ($('#file')[0].files.length == 0) {
-                showAlert('Enter the representational photo');
-            } else {
-                const image =
-                    Date.parse(new Date().toString()) + '-' + $('#file')[0].files[0].name;
-                $('#filename').val(image);
-                $('#alert').hide();
-                schedule = {
-                    startDate,
-                    startTime,
-                    endDate,
-                    endTime,
-                };
-                const data = {
-                    title,
-                    description,
-                    location,
-                    schedule: JSON.stringify(schedule),
-                    image,
-                };
-                console.log(data);
-                Submit(data);
-            }
-        });
-
-        const check = (str) => {
-            const res = str == '' || str == null || str == undefined;
-            return res;
+        const data = {
+          title,
+          description,
+          about,
+          videos: JSON.stringify(videos),
+          location,
+          schedule: JSON.stringify(schedule),
+          image,
         };
-        const showAlert = (msg) => {
-            $('#alert').show();
-            $('#alert').html(msg);
-            $('html, body').animate({
-                    scrollTop: 0,
-                },
-                'slow'
+        console.log(data);
+        Submit(data);
+      }
+    });
+
+    const check = (str) => {
+      const res = str == '' || str == null || str == undefined;
+      return res;
+    };
+    const showAlert = (msg) => {
+      $('#alert').show();
+      $('#alert').html(msg);
+      $('html, body').animate(
+        {
+          scrollTop: 0,
+        },
+        'slow'
+      );
+    };
+    const Submit = (data) => {
+      $.ajax({
+        type: 'POST',
+        url: '/admin/workshop/new',
+        data,
+        success: (data) => {
+          if (data.status) {
+            $('html, body').animate(
+              {
+                scrollTop: 0,
+              },
+              'slow'
             );
-        };
-        const Submit = (data) => {
-            $.ajax({
-                type: 'POST',
-                url: '/admin/workshop/new',
-                data,
-                success: (data) => {
-                    if (data.status) {
-                        $('html, body').animate({
-                                scrollTop: 0,
-                            },
-                            'slow'
-                        );
-                        $('#alert-success').show();
-                        $('#alert-success').html('The workshop is being added');
-                        $('#form').submit();
-                    }
-                },
-            });
-        };
-    </script>
+            $('#alert-success').show();
+            $('#alert-success').html('The workshop is being added');
+            $('#form').submit();
+          }
+        },
+      });
+    };
 
+    $('.add-video').click((e) => {
+      e.preventDefault();
+      const node = ` <div class="each-video">
+                      <input type="text" style="width: 80%;" class="video" />
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+                  </div>`;
+      $('.video-input').append(node);
+    });
+
+    $('body').on('click', '.btn-danger', (e) => {
+      e.preventDefault();
+      $(e.target.parentElement).remove();
+    });
+  </script>
 </html>

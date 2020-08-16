@@ -1423,6 +1423,36 @@ body {
   text-decoration: underline;
 }
 
+.specialServiceSubsection .subsection-Body-videos {
+  text-align: justify;
+  background-color: 0;
+}
+
+@media (min-width: 1100px) {
+  .specialServiceSubsection .subsection-Body-videos {
+    padding-left: 2%;
+  }
+}
+
+.specialServiceSubsection .subsection-Body-videos .subsection-Body-elm {
+  padding: 10px;
+}
+
+.specialServiceSubsection .subsection-Body-videos .subsection-Body-elm .subsection-Heading-elm {
+  color: #1c82ca;
+  font-family: 'Roboto';
+  cursor: pointer;
+}
+
+.specialServiceSubsection .subsection-Body-videos .subsection-Body-elm .subsection-Heading-elm p {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.specialServiceSubsection .subsection-Body-videos .subsection-Body-elm .subsection-Heading-elm:hover {
+  text-decoration: underline;
+}
+
 .flx_prnt {
   -webkit-box-flex: 1;
   -webkit-flex: 1;

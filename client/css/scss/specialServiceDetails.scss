@@ -338,6 +338,30 @@ body {
       }
     }
   }
+  .subsection-Body-videos{
+    @media(min-width: 1100px){
+      padding-left:2%;
+    }
+    text-align: justify;
+    background-color: blue($color: #000000);
+    .subsection-Body-elm {
+      padding: 10px;
+
+      .subsection-Heading-elm {
+        color: #1c82ca;
+        font-family: 'Roboto';
+        p {
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 .flx_prnt {

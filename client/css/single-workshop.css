@@ -1224,6 +1224,55 @@ p {
   white-space: normal;
 }
 
+.contentWrapper .right .flx-chld-feeds {
+  margin-top: 100px;
+  padding: 10px;
+  max-width: 100%;
+  min-height: 300px;
+  background-color: #e9ecef;
+  border-style: solid;
+  border-color: #4f6969;
+  border-width: 0px;
+  border-left-width: 5px;
+}
+
+.contentWrapper .right .flx-chld-feeds .feedback-Heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: #15558d;
+}
+
+.contentWrapper .right .flx-chld-feeds .single-feedback {
+  padding-top: 10px;
+  min-height: 300px;
+  text-align: center;
+}
+
+.contentWrapper .right .flx-chld-feeds .single-feedback iframe {
+  width: 200px;
+  height: 150px;
+}
+
+.contentWrapper .right .flx-chld-feeds .single-feedback .txt-cmnt {
+  width: 100%;
+  font-style: italic;
+  color: #311818;
+}
+
+.contentWrapper .right .flx-chld-feeds .single-feedback .txt-cmnt .cmnt-user {
+  margin-right: 3px;
+  text-align: right;
+}
+
+.contentWrapper .right .flx-chld-feeds .carousel-indicators {
+  background-color: rgba(162, 161, 161, 0.166);
+}
+
+.contentWrapper .right .flx-chld-feeds span {
+  height: 30px;
+  background-color: rgba(162, 161, 161, 0.68);
+}
+
 .videos {
   display: -ms-grid;
   display: grid;

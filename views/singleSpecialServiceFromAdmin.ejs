@@ -3,7 +3,7 @@
 
 <head>
   <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/specialServiceDetails.css" />  
+  <link rel="stylesheet" href="/css/specialServiceDetails.css" />
   <title>
     Special Services | Innovations | Telepsychiatry Research
   </title>
@@ -25,11 +25,13 @@
       </div>
       <div class="btn-container">
         <div class="btn-children">
-          <button data-target="#parts" data-toggle="modal" class="btn btn-secondary" >Show Patients</button>
-          <button data-target="#feedbacks" data-toggle="modal" class="btn btn-secondary" >Show Feedbacks</button>
-          <button type="button" class="btn btn-success" onclick="location.href='/admin/specialService/update/<%= serviceId %>';">Update</button>
-          <button type="button" class="btn btn-danger" onclick="location.href='/admin/specialService/delete/<%= serviceId %>';">Delete</button>
-        </div>        
+          <button data-target="#parts" data-toggle="modal" class="btn btn-secondary">Show Patients</button>
+          <button data-target="#feedbacks" data-toggle="modal" class="btn btn-secondary">Show Feedbacks</button>
+          <button type="button" class="btn btn-success"
+            onclick="location.href='/admin/specialService/update/<%= serviceId %>';">Update</button>
+          <button type="button" class="btn btn-danger"
+            onclick="location.href='/admin/specialService/delete/<%= serviceId %>';">Delete</button>
+        </div>
       </div>
       <div class="twoBigSectionFlex">
         <div class="oneBigFatCat_wrapper">
@@ -71,34 +73,34 @@
                   <% } %>
                 </div>
               </div>
-              <% } %> 
+              <% } %>
 
               <div class="flx-chld-feeds">
                 <div class="feedback-Heading">
-                    <p>User Feedback</p>
+                  <p>User Feedback</p>
                 </div>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  
+
                   <div class="carousel-inner">
                     <% for (let i=0; i<feedbacks.length; i++) { %>
-                      <div class="carousel-item">
+                    <div class="carousel-item">
                       <div class="single-feedback">
-                        <iframe  src="/feedback_ss/<%= feedbacks[i].video %>" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>                     
-                        <div class="txt-cmnt">  
+                        <iframe src="/feedback_ss/<%= feedbacks[i].video %>" frameborder="0"
+                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen></iframe>
+                        <div class="txt-cmnt">
                           <p>"<%= feedbacks[i].body %>"</p>
-                           <p>-<%= feedbacks[i].user_name %></p>
+                          <p>-<%= feedbacks[i].user_name %></p>
                         </div>
-                        
-                      </div>             
+
+                      </div>
                     </div>
-                      <% } %>
+                    <% } %>
                   </div>
                 </div>
               </div>
-            </div>            
-                        
+            </div>
+
 
             <div class="specialServiceSubsection">
               <div class="subsection-Heading">
@@ -137,104 +139,109 @@
   </section>
   <%- include('./partials/footer')%>
 
-<div class="modal fade" id="parts" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">
-                        Patients 
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="parts">
-                        <% for (let i=0; i<parts.length; i++) { %>
-                        <div class="each-part">
-                            <a href="/services/doctor/profile/<%=parts[i].patient_id%>"> <i class="fa fa-user"></i>
-                                <%= parts[i].name %>
-                            </a>
-                            <% if (parts[i].bookingType == 'FaceToFace') { %>
-                              <div class="right">
-                                <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
-                            </div>
-                            <% } else { %>
-                              <div class="right">
-                              <button class="btn btn-primary chat" id="<%= parts[i].patient_id %>"><i class="fa fa-play-circle"></i></button>
-                              <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
-                            </div>
-                        <% } %>
-                        </div>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-            </div>
+  <div class="modal fade" id="parts" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">
+            Patients
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <div class="parts">
+            <% for (let i=0; i<parts.length; i++) { %>
+            <div class="each-part">
+              <a href="/services/doctor/profile/<%=parts[i].patient_id%>"> <i class="fa fa-user"></i>
+                <%= parts[i].name %>
+              </a>
+              <% if (parts[i].bookingType == 'FaceToFace') { %>
+              <div class="right">
+                <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
+              </div>
+              <% } else { %>
+              <div class="right">
+                <button class="btn btn-primary chat" id="<%= parts[i].patient_id %>"><i
+                    class="fa fa-play-circle"></i></button>
+                <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
+              </div>
+              <% } %>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 
-<div class="modal fade" id="feedbacks" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">
-                        Feedbacks 
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                
-                <div class="modal-body">
-                    <div class="parts">
-                        <% for (let i=0; i<feedbacks.length; i++) { %>
-                        <div class="each-part">
-                            <div class="left">
-                              <div class="user"><%= feedbacks[i].user_name %></div>
-                              <div class="body"><%= feedbacks[i].body %></div>
-                              <% if (feedbacks[i].video && feedbacks[i].video != '') { %>
-                              <button class="btn btn-secondary">Open video</button> 
-                              <% } %>
-                            </div>
-                            <div class="right">
-                              <% if (feedbacks[i].onDisplay) { %>
-                                <input type="checkbox" id="<%= feedbacks[i]._id %>" checked>
-                              <% } else { %>
-                                <input type="checkbox" id="<%= feedbacks[i]._id %>">
-                                <% } %>
-                            </div>
-                        </div>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-            </div>
+  <div class="modal fade" id="feedbacks" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">
+            Feedbacks
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+
+        <div class="modal-body">
+          <div class="parts">
+            <% for (let i=0; i<feedbacks.length; i++) { %>
+            <div class="each-part">
+              <div class="left">
+                <div class="user"><%= feedbacks[i].user_name %></div>
+                <div class="body"><%= feedbacks[i].body %></div>
+                <% if (feedbacks[i].video && feedbacks[i].video != '') { %>
+                <button class="btn btn-secondary">Open video</button>
+                <% } %>
+              </div>
+              <div class="right">
+                <% if (feedbacks[i].onDisplay) { %>
+                <input type="checkbox" id="<%= feedbacks[i]._id %>" checked>
+                <% } else { %>
+                <input type="checkbox" id="<%= feedbacks[i]._id %>">
+                <% } %>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 
 </body>
 <%- include('./partials/vendorsBottom')%>
 
 <script>
-  const carouselItems = $('.carousel-item')
-  const len = carouselItems.length
-  let i = 0
-  setInterval(() => {
-    $('.active').removeClass('active')
-    $(carouselItems[i]).addClass('active')
-    i = (i+1)%len
-  }, 3000)
+  // const carouselItems = $('.carousel-item')
+  // const len = carouselItems.length
+  // let i = 0
+  // setInterval(() => {
+  //   $('.active').removeClass('active')
+  //   $(carouselItems[i]).addClass('active')
+  //   i = (i+1)%len
+  // }, 3000)
+
+  $('.carousel').carousel({
+    interval: false
+  })
 
   $('input[type="checkbox"]').click((e) => {
     const url = `/admin/special_services/toggle/${e.target.id}`

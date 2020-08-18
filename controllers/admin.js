@@ -1141,9 +1141,14 @@ exports.getWorkshop = async (req, res, next) => {
 exports.singleWorkshop = async (req, res) => {
   const data = await workshopModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ workshop_id: req.params.id });
+
+  // for displaying doctors list in the page (temporary)
+  const eUser = require('../data/homepage_experts');
+
   res.render('singleWorkshopFromAdmin', {
     user: req.user,
     data,
+    ourExperts: eUser,
     parts,
   });
 };

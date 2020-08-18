@@ -44,32 +44,57 @@
         </div>
         <div class="contentWrapper">
             <div class="left">
-          <div class="body">
-            <%- data.about %>
-          </div>
-          <div
-            class="body videos"
-          >
-            <% for(let i=0; i<data.videos.length; i++) { %>
-            <div class="video">
-              <iframe
-                width="300"
-                height="200"
-                src="<%= data.videos[i] %>"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                <div class="body">
+                    <strong class="header" style="font-size: 25px; color: #008ecc;">
+                        About
+                    </strong>
+                    <%- data.about %>
+                </div>
+                <div class="body">
+                    <strong class="header" style="font-size: 25px; color: #008ecc;">
+                        Videos
+                    </strong>
+                    <div class="videos">
+                        <% for(let i=0; i<data.videos.length; i++) { %>
+                        <div class="video">
+                            <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="body" style="margin-top: 20px;">
+                    <strong class="header" style="font-size: 25px; color: #008ecc;">
+                        Description
+                    </strong>
+                    <%- data.description %>
+                </div>
+
+                <div class="body">
+                    <strong class="header" style="font-size: 25px; color: #008ecc;">
+                        Resource Persons
+                    </strong>
+                    <div class="specialServiceDoctors">
+
+                        <% for(let i = 0 ; i < 6; i++) { %>
+                        <div class="eachDoctor">
+                            <div class="es_img">
+                                <img src="/images/experts/<%=ourExperts[i].url%>.jpg" alt="" />
+                            </div>
+                            <div class="es_name">
+                                <p><%=ourExperts[i].name%></p>
+                                <p>
+                                    <span><%=ourExperts[i].designation%></span>
+                                </p>
+                            </div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                </div>
+
             </div>
-            <% } %>
-          </div>
-          <div class="body" style="margin-top: 20px;">
-            <strong class="header" style="font-size: 25px; color: #008ecc;">
-              Description
-            </strong>
-            <%- data.description %>
-          </div>
-        </div>
             <div class="right">
                 <div class="contents">
                     <div class="item">
@@ -113,52 +138,54 @@
                         <p>User Feedback</p>
                     </div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <% for (let i=0; i<4; i++) { %>
-                        <%if(i==0) {%>
+                        <ol class="carousel-indicators">
+                            <% for (let i=0; i<4; i++) { %>
+                            <%if(i==0) {%>
                             <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
-                        <%}else{%>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>"</li>
+                            <%}else{%>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
+                                <%}%>
                         <%}%>
-                        <%}%>
-                    </ol>
-                    <div class="carousel-inner">
-                        <% for (let i=0; i<4; i++) { %>
-                        <%if(i==0) {%>
+                        </ol>
+                        <div class="carousel-inner">
+                            <% for (let i=0; i<4; i++) { %>
+                            <%if(i==0) {%>
                             <div class="carousel-item active">
-                            <div class="single-feedback">
-                                <iframe  src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>                     
-                                <div class="txt-cmnt">  
-                                <p>"It was an informative workshop"</p>
-                                <p>-MD Rofikul Kholil</p>
-                                </div>                        
-                            </div>             
+                                <div class="single-feedback">
+                                    <iframe src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="txt-cmnt">
+                                        <p>"It was an informative workshop"</p>
+                                        <p>-MD Rofikul Kholil</p>
+                                    </div>
+                                </div>
                             </div>
-                        <%}else{%>
+                            <%}else{%>
                             <div class="carousel-item">
-                            <div class="single-feedback">
-                                <iframe  src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>                     
-                                <div class="txt-cmnt">  
-                                    <p>"It was an informative workshop"</p>
-                                    <p>-MD Rofikul Kholil</p>
-                                </div>                        
-                            </div>             
-                            </div> 
+                                <div class="single-feedback">
+                                    <iframe src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="txt-cmnt">
+                                        <p>"It was an informative workshop"</p>
+                                        <p>-MD Rofikul Kholil</p>
+                                    </div>
+                                </div>
+                            </div>
                             <%}%>                   
                         <% } %>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -227,14 +254,18 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 <script>
-    const carouselItems = $('.carousel-item')
-    const len = carouselItems.length
-    let i = 0
-    setInterval(() => {
-        $('.active').removeClass('active')
-        $(carouselItems[i]).addClass('active')
-        i = (i+1)%len
-    }, 3000)
+    // const carouselItems = $('.carousel-item')
+    // const len = carouselItems.length
+    // let i = 0
+    // setInterval(() => {
+    //     $('.active').removeClass('active')
+    //     $(carouselItems[i]).addClass('active')
+    //     i = (i + 1) % len
+    // }, 3000)
+
+    $('.carousel').carousel({
+        interval: false
+    })
 
     $('.btn-success').click((e) => {
         const id = e.target.id;
@@ -244,7 +275,7 @@
         const id = e.target.id;
         location = `/admin/workshop/delete/${id}`
     })
-    // Shin Jhua, Hydaspes(Hu Dang Sapu), Tapoyye 
+    // Shin Jhua, Hydaspes(Hu Dang Sapu), Tapoyye
 </script>
 
 </html>

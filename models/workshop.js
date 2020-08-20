@@ -14,6 +14,7 @@ const eventsSchema = new mongoose.Schema({
   location: {
     type: String,
   },
+  doctors: [String],
   schedule: {
     startDate: String,
     startTime: String,

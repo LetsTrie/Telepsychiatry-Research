@@ -1142,8 +1142,11 @@ exports.singleWorkshop = async (req, res) => {
   const data = await workshopModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ workshop_id: req.params.id });
 
-  // for displaying doctors list in the page (temporary)
-  const eUser = require('../data/homepage_experts');
+  const eUser = [];
+  for (let i = 0; i < data.doctors.length; i++) {
+    const doc = await eUserModel.findOne({ name: data.doctors[i] });
+    eUser.push(doc);
+  }
 
   res.render('singleWorkshopFromAdmin', {
     user: req.user,
@@ -1193,6 +1196,7 @@ exports.postWorkshop = async (req, res) => {
     description,
     about,
     videos: JSON.parse(req.body.videos),
+    doctors: JSON.parse(req.body.doctors),
     location,
     schedule,
     start,
@@ -1264,6 +1268,7 @@ exports.postUpdateWorkshop = async (req, res) => {
         description: description,
         about: about,
         videos: JSON.parse(req.body.videos),
+        doctors: JSON.parse(req.body.doctors),
         location: location,
         schedule: {
           startDate: schedule.startDate,

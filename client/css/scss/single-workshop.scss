@@ -374,3 +374,38 @@
     background-color: #eee;
   }
 }
+
+.comment-section {
+  margin-top: 30px;
+  padding: 10px;
+  .span-opener {
+    font-size: 25px;
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    transition: 0.5s;
+  }
+  .span-opener:hover {
+    background-color: #ddd;
+  }
+  .textbox {
+    display: none;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+    textarea {
+      width: 100%;
+      border: none;
+    }
+    textarea:focus {
+      outline: none;
+    }
+    .bottom {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

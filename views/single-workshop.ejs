@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <input type="hidden" value="<%=data._id%>" id="id">
   <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
     <header>
       <nav>
@@ -76,13 +77,13 @@
           </strong>
           <div class="specialServiceDoctors">
 
-            <% for(let i = 0 ; i < 6; i++) { %>
+            <% for(let i = 0 ; i < ourExperts.length; i++) { %>
             <div class="eachDoctor">
               <div class="es_img">
-                <img src="/images/experts/<%=ourExperts[i].url%>.jpg" alt="" />
+                <img src="/images/experts/<%=ourExperts[i].propicURL%>.jpg" alt="" />
               </div>
               <div class="es_name">
-                <p><%=ourExperts[i].name%></p>
+                <p><a href="#"><%=ourExperts[i].name%></a></p>
                 <p>
                   <span><%=ourExperts[i].designation%></span>
                 </p>
@@ -93,7 +94,21 @@
           </div>
         </div>
 
+        <% if (user) { %>
+        <div class="comment-section">
+          <div class="span-opener">Leave a comment</div>
+          <div class="textbox">
+            <textarea id="text" cols="30" rows="5"></textarea>
+            <div class="bottom">
+              <input type="file" name="video" id="video">
+              <button class="btn btn-secondary" id="submit" disabled>Submit</button>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
       </div>
+
       <div class="right">
         <div class="contents">
           <div class="item">
@@ -142,28 +157,32 @@
                  <%}%>
             </ol>
             <div class="carousel-inner">
-              <% for (let i=0; i<4; i++) { %>
+              <% for (let i=0; i<comments.length; i++) { %>
               <%if(i==0) {%>
               <div class="carousel-item active">
                 <div class="single-feedback">
-                  <iframe src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
+                  <% if (comments[i].video != 'none') { %>
+                  <iframe src=" /workshop/videos/<%=comments[i].video %>" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
+                  <% } %>
                   <div class="txt-cmnt">
-                    <p>"It was an informative workshop"</p>
-                    <p>-MD Rofikul Kholil</p>
+                    <p><%= comments[i].text %></p>
+                    <p>-<%= comments[i].userName %></p>
                   </div>
                 </div>
               </div>
               <%}else{%>
               <div class="carousel-item">
                 <div class="single-feedback">
-                  <iframe src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
+                  <% if (comments[i].video != 'none') { %>
+                  <iframe src=" /workshop/videos/<%=comments[i].video %>" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
+                  <% } %>
                   <div class="txt-cmnt">
-                    <p>"It was an informative workshop"</p>
-                    <p>-MD Rofikul Kholil</p>
+                    <p><%= comments[i].text %></p>
+                    <p>-<%= comments[i].userName %></p>
                   </div>
                 </div>
               </div>
@@ -260,6 +279,60 @@
 
   $('.carousel').carousel({
     interval: false
+  })
+
+  $('.span-opener').click((e) => {
+    $('.textbox').slideToggle()
+  })
+
+  $('#text').on('keyup', e => {
+    if (e.target.value) {
+      $('#submit').prop('disabled', false)
+    } else {
+      $('#submit').prop('disabled', true)
+    }
+  })
+
+  $('#submit').click(e => {
+    const text = $('#text').val()
+    const video = $('#video')[0].files[0]
+    const workshopID = $('#id').val()
+
+    if (!video) {
+      const data = {
+        text,
+        workshopID
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: '/events/workshop/add-comment',
+        data,
+        success: data => {
+          location.reload()
+        }
+      })
+    }
+
+    else {
+      let filename = Date.parse(new Date().toString()) + '-' + $('#video')[0].files[0].name
+      let data = new FormData()
+      data.append('workshopID', workshopID)
+      data.append('filename', filename)
+      data.append('text', text)
+      data.append('video', video)
+
+      $.ajax({
+        type: 'POST',
+        url: '/events/workshop/add-comment',
+        data,
+        processData: false,
+        contentType: false,
+        success: data => {
+          location.reload()
+        }
+      })
+    }
   })
 </script>
 

@@ -1500,3 +1500,52 @@ p {
 .parts .each-part:hover {
   background-color: #eee;
 }
+
+.comment-section {
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.comment-section .span-opener {
+  font-size: 25px;
+  font-weight: bolder;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.comment-section .span-opener:hover {
+  background-color: #ddd;
+}
+
+.comment-section .textbox {
+  display: none;
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.comment-section .textbox textarea {
+  width: 100%;
+  border: none;
+}
+
+.comment-section .textbox textarea:focus {
+  outline: none;
+}
+
+.comment-section .textbox .bottom {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}

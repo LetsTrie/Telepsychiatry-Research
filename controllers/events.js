@@ -30,6 +30,7 @@
 // }
 const { workshopModel } = require('../models/workshop.js');
 const { workshopReg } = require('../models/workshopRegistration.js');
+const { eUserModel } = require('../models/expertUser.js');
 
 exports.getTraining = (req, res, next) =>
   res.render('listOfTrainingSession', { user: req.user });
@@ -41,19 +42,32 @@ exports.eventsAll = (req, res, next) =>
   res.render('eventShowAll', { user: req.user });
 
 exports.singleWorkshop = async (req, res) => {
+  const comments = await wsComment.find({ workshopID: req.params.id });
   if (!req.user) {
-    // for displaying doctors list in the page (temporary)
-    const eUser = require('../data/homepage_experts');
-
     const data = await workshopModel.findOne({ _id: req.params.id });
+
+    const eUser = [];
+    for (let i = 0; i < data.doctors.length; i++) {
+      const doc = await eUserModel.findOne({ name: data.doctors[i] });
+      eUser.push(doc);
+    }
+
     res.render('single-workshop', {
       user: req.user,
       data,
+      comments,
       ourExperts: eUser,
       registered: false,
     });
   } else {
     const data = await workshopModel.findOne({ _id: req.params.id });
+
+    const eUser = [];
+    for (let i = 0; i < data.doctors.length; i++) {
+      const doc = await eUserModel.findOne({ name: data.doctors[i] });
+      eUser.push(doc);
+    }
+
     let regList = [];
     let registered = false;
     const arr = await workshopReg.find({ user_id: req.user._id });
@@ -64,13 +78,10 @@ exports.singleWorkshop = async (req, res) => {
       registered = true;
     }
     console.log(registered);
-
-    // for displaying doctors list in the page (temporary)
-    const eUser = require('../data/homepage_experts');
-
     res.render('single-workshop', {
       user: req.user,
       data,
+      comments,
       ourExperts: eUser,
       registered,
     });
@@ -161,4 +172,21 @@ exports.regForWorkshop = async (req, res) => {
     );
     res.redirect('back');
   }
+};
+
+const { wsComment } = require('../models/workshopComment.js');
+exports.addComment = async (req, res) => {
+  console.log(req.body);
+  const comment = {
+    userName: req.user.name,
+    userID: req.user._id,
+    video: req.body.filename,
+    ...req.body,
+  };
+  const newComment = wsComment(comment);
+  console.log(newComment);
+  await newComment.save();
+  res.send({
+    status: true,
+  });
 };

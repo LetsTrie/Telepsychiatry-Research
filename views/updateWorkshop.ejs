@@ -2,482 +2,468 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
 
-        <link rel="stylesheet" href="/css/admin.css" />
-        <title>Update Workshop | Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+  <title>Update Workshop | Admin Panel</title>
 </head>
 
 <body>
-    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Events</p>
+  <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+    <header>
+      <nav>
+        <%- include('./partials/adminNavbar')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Admin Panel</a> / Events</p>
+        </div>
+        <div class="bigText">
+          <p>Update Workshop</p>
+        </div>
+      </div>
+    </header>
+    <input type="hidden" value="<%= data._id %>" id="id" />
+    <div class="twoBigSectionFlex">
+      <div class="oneBigFatCat_wrapper">
+        <div class="oneBigFatCat">
+          <div class="addResource text-center my-2">
+            <h1>Update Workshop</h1>
+          </div>
+          <div class="addResource_form">
+            <div class="alert alert-danger text-center" id="alert"></div>
+            <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
+            <form action="/admin/workshop/new/file" id="form" enctype="multipart/form-data" method="POST">
+              <input type="hidden" name="filename" id="filename" />
+              <input type="hidden" name="id" id="id" />
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Title:</p>
                 </div>
-                <div class="bigText">
-                    <p>Update Workshop</p>
+                <div class="input_box">
+                  <input type="text" value="<%=data.title%>" name="title" id="title" placeholder="Title" />
                 </div>
-            </div>
-        </header>
-        <input type="hidden" value="<%= data._id %>" id="id" />
-        <div class="twoBigSectionFlex">
-            <div class="oneBigFatCat_wrapper">
-                <div class="oneBigFatCat">
-                    <div class="addResource text-center my-2">
-                        <h1>Update Workshop</h1>
-                    </div>
-                    <div class="addResource_form">
-                        <div class="alert alert-danger text-center" id="alert"></div>
-                        <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
-                        <form action="/admin/workshop/new/file" id="form" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="filename" id="filename" />
-                            <input type="hidden" name="id" id="id" />
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Title:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="text" value="<%=data.title%>" name="title" id="title" placeholder="Title" />
-                                </div>
-                            </div>
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Breif Description:</p>
-                                </div>
-                                <div class="input_box">
-                                    <textarea name="BriefDesciption" id="BDeditor">
- <%=data.description%></textarea
-                    >
-                  </div>
+              </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Breif Description:</p>
                 </div>
+                <div class="input_box">
+                  <textarea name="BriefDesciption" id="BDeditor">
+ <%=data.description%></textarea>
+                </div>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>About</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea name="BriefDesciption" id="About"><%= data.about %></textarea>
-                  </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>About</p>
                 </div>
+                <div class="input_box">
+                  <textarea name="BriefDesciption" id="About"><%= data.about %></textarea>
+                </div>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Promotional Video</p>
-                  </div>
-                  <div class="input_box video-input">
-                    <% for (let i=0; i<data.videos.length; i++) { %>
-                      <div class="each-video">
-                        <input type="text" style="width: 80%;" class="video"  value="<%= data.videos[i] %>"/>
-                        <button class="btn btn-danger">Delete</button>
-                    </div>
-                      <% } %>
-                  </div>
-                  <button
-                    style="margin-top: 20px;"
-                    class="btn btn-secondary add-video"
-                  >
-                    Add
-                  </button>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Promotional Video</p>
                 </div>
+                <div class="input_box video-input">
+                  <% for (let i=0; i<data.videos.length; i++) { %>
+                  <div class="each-video">
+                    <input type="text" style="width: 80%;" class="video" value="<%= data.videos[i] %>" />
+                    <button class="btn btn-danger">Delete</button>
+                  </div>
+                  <% } %>
+                </div>
+                <button style="margin-top: 20px;" class="btn btn-secondary add-video">
+                  Add
+                </button>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Doctors:</p>
-                  </div>
-                  <input
-                    type="text"
-                    id="doctorCnt"
-                    name="doctorCnt"
-                    value="0"
-                    style="display: none;"
-                  />
-                  <input
-                    type="text"
-                    id="doctorTotalCnt"
-                    value="0"
-                    style="display: none;"
-                  />
-                  <div id="doctorAddPlace"></div>
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    onclick="addDoctor()"
-                  >
-                    Add doctor
-                  </button>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Doctors:</p>
                 </div>
+                <input type="text" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
+                <input type="text" id="doctorTotalCnt" value="0" style="display: none;" />
+                <div id="doctorAddPlace"></div>
+                <button type="button" class="btn btn-secondary" onclick="addDoctor()">
+                  Add doctor
+                </button>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Event Location</p>
-                  </div>
-                  <div class="input_box">
-                    <input
-                      name="location"
-                      id="location"
-                      placeholder="Location of the event"
-                      value="<%=data.location%>"
-                    />
-                  </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Event Location</p>
                 </div>
+                <div class="input_box">
+                  <input name="location" id="location" placeholder="Location of the event" value="<%=data.location%>" />
+                </div>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Event Date and Time</p>
-                  </div>
-                  <div class="input_box">
-                    <div class="side-by-side">
-                      <input
-                        type="text"
-                        name="date"
-                        placeholder="Start Date"
-                        class="side"
-                        id="startDate"
-                        value="<%=data.schedule.startDate%>"
-                      />
-                      <input
-                        type="text"
-                        name="time"
-                        class="side"
-                        placeholder="Start Time"
-                        id="startTime"
-                        value="<%=data.schedule.startTime%>"
-                      />
-                      <input
-                        type="text"
-                        name="date"
-                        class="side"
-                        placeholder="End Date"
-                        id="endDate"
-                        value="<%=data.schedule.endDate%>"
-                      />
-                      <input
-                        type="text"
-                        name="time"
-                        class="side"
-                        placeholder="End Time"
-                        id="endTime"
-                        value="<%=data.schedule.endTime%>"
-                      />
-                    </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Event Date and Time</p>
+                </div>
+                <div class="input_box">
+                  <div class="side-by-side">
+                    <input type="text" name="date" placeholder="Start Date" class="side" id="startDate"
+                      value="<%=data.schedule.startDate%>" />
+                    <input type="text" name="time" class="side" placeholder="Start Time" id="startTime"
+                      value="<%=data.schedule.startTime%>" />
+                    <input type="text" name="date" class="side" placeholder="End Date" id="endDate"
+                      value="<%=data.schedule.endDate%>" />
+                    <input type="text" name="time" class="side" placeholder="End Time" id="endTime"
+                      value="<%=data.schedule.endTime%>" />
                   </div>
                 </div>
+              </div>
 
-                <div class="createResources__submit">
-                  <button id="submit-btn">Submit</button>
-                </div>
-              </form>
-            </div>
+              <div class="createResources__submit">
+                <button id="submit-btn">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+  <input type="hidden" id="doctor-info" value="<%= data %>">
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-  <script>
-    $('input[name="date"]').datepicker();
-    $('input[name="time"]').timepicker();
+<script>
+  const addDoctors = name => {
+    $('#doctorAddPlace').replaceWith(
+      '<div class="keyContactPersonWrapper"  ">' +
+      '<div class="keyContactPerson">' +
+      '<div class="input_box_flx_prnt">' +
+      '<div class="input_box_flx_chld">' +
+      '<input class="doctorClass" type="text" name="doctorName" value="' + name + '">' +
+      '</div>' +
+      '<div class="input_box_flx_chld_btn">' +
+      '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '<div id="doctorAddPlace"></div>'
+    );
+  }
 
-    // let bdeditor;
+  let data = <%- JSON.stringify(data) %>
+  for (let i = 0; i < data.doctors.length; i++) {
+    addDoctors(data.doctors[i])
+  }
+</script>
 
-    // ClassicEditor.create(document.querySelector('#BDeditor'))
-    //     .then((editor) => {
-    //         bdeditor = editor;
-    //         console.log(editor);
-    //     })
-    //     .catch((error) => {
-    //         console.error(error);
-    //     });
-    var config = {
-      height: 600,
-      width: 900,
-      extraPlugins: 'embed,autoembed,image2',
-      contentsCss: [
-        'http://cdn.ckeditor.com/4.14.0/full-all/contents.css',
-        'https://ckeditor.com/docs/vendors/4.14.0/ckeditor/assets/css/widgetstyles.css',
-      ],
-      embed_provider:
-        '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
-      image2_alignClasses: [
-        'image-align-left',
-        'image-align-center',
-        'image-align-right',
-      ],
-      image2_disableResizer: true,
-    };
-    const editor = CKEDITOR.replace('BDeditor', config);
-    CKEDITOR.replace('About', config);
+<script>
+  $('input[name="date"]').datepicker();
+  $('input[name="time"]').timepicker();
 
-    $('#submit-btn').click((e) => {
-      e.preventDefault();
-      const title = $('#title').val();
-      const description = CKEDITOR.instances.BDeditor.getData();
-      const about = CKEDITOR.instances.About.getData();
-      const location = $('#location').val();
-      const startDate = $('#startDate').val();
-      const startTime = $('#startTime').val();
-      const endDate = $('#endDate').val();
-      const endTime = $('#endTime').val();
+  // let bdeditor;
 
-      const videoArr = $('.video');
-      let videos = [];
-      for (let i = 0; i < videoArr.length; i++) {
-        const link = $(videoArr[i]).val();
-        videos.push(link);
-      }
-      console.log(videos);
+  // ClassicEditor.create(document.querySelector('#BDeditor'))
+  //     .then((editor) => {
+  //         bdeditor = editor;
+  //         console.log(editor);
+  //     })
+  //     .catch((error) => {
+  //         console.error(error);
+  //     });
+  var config = {
+    height: 600,
+    width: 900,
+    extraPlugins: 'embed,autoembed,image2',
+    contentsCss: [
+      'http://cdn.ckeditor.com/4.14.0/full-all/contents.css',
+      'https://ckeditor.com/docs/vendors/4.14.0/ckeditor/assets/css/widgetstyles.css',
+    ],
+    embed_provider:
+      '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+    image2_alignClasses: [
+      'image-align-left',
+      'image-align-center',
+      'image-align-right',
+    ],
+    image2_disableResizer: true,
+  };
+  const editor = CKEDITOR.replace('BDeditor', config);
+  CKEDITOR.replace('About', config);
 
-      if (check(title)) {
-        showAlert('Enter the title');
-      } else if (check(description)) {
-        showAlert('Enter a brief description');
-      } else if (check(location)) {
-        showAlert('Enter the location');
-      } else if (check(startDate)) {
-        showAlert('Enter the starting date');
-      } else if (check(startTime)) {
-        showAlert('Enter the starting time');
-      } else if (check(endDate)) {
-        showAlert('Enter the ending date');
-      } else if (check(endTime)) {
-        showAlert('Enter the ending time');
-      } else {
-        $('#alert').hide();
-        const id = $('#id').val();
-        schedule = {
-          startDate,
-          startTime,
-          endDate,
-          endTime,
-        };
-        const data = {
-          id,
-          title,
-          description,
-          about,
-          videos: JSON.stringify(videos),
-          location,
-          schedule: JSON.stringify(schedule),
-        };
-        console.log(data);
-        Submit(data);
-      }
+  $('#submit-btn').click((e) => {
+    e.preventDefault();
+    const title = $('#title').val();
+    const description = CKEDITOR.instances.BDeditor.getData();
+    const about = CKEDITOR.instances.About.getData();
+    const location = $('#location').val();
+    const startDate = $('#startDate').val();
+    const startTime = $('#startTime').val();
+    const endDate = $('#endDate').val();
+    const endTime = $('#endTime').val();
+
+    const videoArr = $('.video');
+    let videos = [];
+    for (let i = 0; i < videoArr.length; i++) {
+      const link = $(videoArr[i]).val();
+      videos.push(link);
+    }
+    
+    const docs = $('.doctorClass')
+    let doctors = []
+    for (let i = 0; i < docs.length; i++) {
+      doctors.push($(docs[i]).val())
+    }
+    console.log(doctors)
+
+    if (check(title)) {
+      showAlert('Enter the title');
+    } else if (check(description)) {
+      showAlert('Enter a brief description');
+    } else if (check(location)) {
+      showAlert('Enter the location');
+    } else if (check(startDate)) {
+      showAlert('Enter the starting date');
+    } else if (check(startTime)) {
+      showAlert('Enter the starting time');
+    } else if (check(endDate)) {
+      showAlert('Enter the ending date');
+    } else if (check(endTime)) {
+      showAlert('Enter the ending time');
+    } else {
+      $('#alert').hide();
+      const id = $('#id').val();
+      schedule = {
+        startDate,
+        startTime,
+        endDate,
+        endTime,
+      };
+      const data = {
+        id,
+        title,
+        description,
+        about,
+        videos: JSON.stringify(videos),
+        doctors: JSON.stringify(doctors),
+        location,
+        schedule: JSON.stringify(schedule),
+      };
+      console.log(data);
+      Submit(data);
+    }
+  });
+
+  const check = (str) => {
+    const res = str == '' || str == null || str == undefined;
+    return res;
+  };
+  const showAlert = (msg) => {
+    $('#alert').show();
+    $('#alert').html(msg);
+    $('html, body').animate(
+      {
+        scrollTop: 0,
+      },
+      'slow'
+    );
+  };
+  const Submit = (data) => {
+    $.ajax({
+      type: 'POST',
+      url: '/admin/workshop/update',
+      data,
+      success: (data) => {
+        if (data.status) {
+          $('html, body').animate(
+            {
+              scrollTop: 0,
+            },
+            'slow'
+          );
+          $('#alert-success').show();
+          $('#alert-success').html(data.msg);
+          const id = $('#id').val();
+          setInterval(() => {
+            location = `/admin/workshop/${id}`;
+          }, 3000);
+        }
+      },
     });
+  };
 
-    const check = (str) => {
-      const res = str == '' || str == null || str == undefined;
-      return res;
-    };
-    const showAlert = (msg) => {
-      $('#alert').show();
-      $('#alert').html(msg);
-      $('html, body').animate(
-        {
-          scrollTop: 0,
-        },
-        'slow'
-      );
-    };
-    const Submit = (data) => {
-      $.ajax({
-        type: 'POST',
-        url: '/admin/workshop/update',
-        data,
-        success: (data) => {
-          if (data.status) {
-            $('html, body').animate(
-              {
-                scrollTop: 0,
-              },
-              'slow'
-            );
-            $('#alert-success').show();
-            $('#alert-success').html(data.msg);
-            const id = $('#id').val();
-            setInterval(() => {
-              location = `/admin/workshop/${id}`;
-            }, 3000);
-          }
-        },
-      });
-    };
-
-    $('.add-video').click((e) => {
-      e.preventDefault();
-      const node = ` <div class="each-video">
+  $('.add-video').click((e) => {
+    e.preventDefault();
+    const node = ` <div class="each-video">
                       <input type="text" style="width: 80%;" class="video" />
                       <button class="btn btn-danger">Delete</button>
                     </div>
                   </div>`;
-      $('.video-input').append(node);
-    });
+    $('.video-input').append(node);
+  });
 
-    $('body').on('click', '.btn-danger', (e) => {
-      e.preventDefault()
-      $(e.target.parentElement).remove();
-    });
+  $('body').on('click', '.btn-danger', (e) => {
+    e.preventDefault()
+    $(e.target.parentElement).remove();
+  });
 
-    // for doctors
-      function addDoctor() {
-      // doctorNo is actual present video count
-      let doctorNo = parseInt($('#doctorCnt').val()) + 1;
-      //doctorTotalNo its just for unique id
-      let doctorTotalNo = parseInt($('#doctorTotalCnt').val()) + 1;
-      $('#doctorCnt').val(doctorNo);
-      $('#doctorTotalCnt').val(doctorTotalNo);
+  // for doctors
+  function addDoctor() {
+    // doctorNo is actual present video count
+    let doctorNo = parseInt($('#doctorCnt').val()) + 1;
+    //doctorTotalNo its just for unique id
+    let doctorTotalNo = parseInt($('#doctorTotalCnt').val()) + 1;
+    $('#doctorCnt').val(doctorNo);
+    $('#doctorTotalCnt').val(doctorTotalNo);
 
-      $('#doctorAddPlace').replaceWith(
-        '<div class="keyContactPersonWrapper" id="doctor' +
-          doctorNo +
-          '">' +
-          '<div class="keyContactPerson">' +
-          '<div class="input_box_flx_prnt">' +
-          '<div class="input_box_flx_chld">' +
-          '<input class="doctorClass" id="doctorName' +
-          doctorNo +
-          '" type="text" name="doctorName" placeholder="Doctor name">' +
-          '</div>' +
-          '<div class="input_box_flx_chld_btn">' +
-          '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '<div id="doctorAddPlace"></div>'
-      );
+    $('#doctorAddPlace').replaceWith(
+      '<div class="keyContactPersonWrapper" id="doctor' +
+      doctorNo +
+      '">' +
+      '<div class="keyContactPerson">' +
+      '<div class="input_box_flx_prnt">' +
+      '<div class="input_box_flx_chld">' +
+      '<input class="doctorClass" id="doctorName' +
+      doctorNo +
+      '" type="text" name="doctorName" placeholder="Doctor name">' +
+      '</div>' +
+      '<div class="input_box_flx_chld_btn">' +
+      '<button type="button" class="btn btn-danger" onclick="deleteDoc(this.parentElement.parentElement.parentElement.parentElement.id)">Delete</button>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '<div id="doctorAddPlace"></div>'
+    );
 
-      autocomplete(document.getElementById('doctorName' + doctorNo), doctors);
-    }
-    function deleteDoc(id) {
-      let doctorNo = parseInt($('#doctorCnt').val()) - 1;
-      $('#doctorCnt').val(doctorNo);
-      console.log('parent id=' + id);
-      $('#' + id + '').replaceWith('');
-    }
-    // next section is for auto complete doctor
-    function autocomplete(inp, arr) {
-      /*the autocomplete function takes two arguments,
-        the text field element and an array of possible autocompleted values:*/
-      var currentFocus;
-      /*execute a function when someone writes in the text field:*/
-      inp.addEventListener('input', function (e) {
-        var a,
-          b,
-          i,
-          val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        if (!val) {
-          return false;
-        }
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        a = document.createElement('DIV');
-        a.setAttribute('id', this.id + 'autocomplete-list');
-        a.setAttribute('class', 'autocomplete-items');
-        /*append the DIV element as a child of the autocomplete container:*/
-        this.parentNode.appendChild(a);
-        /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
-            b = document.createElement('DIV');
-            /*make the matching letters bold:*/
-            b.innerHTML =
-              '<strong>' + arr[i].substr(0, val.length) + '</strong>';
-            b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
-            b.addEventListener('click', function (e) {
-              /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsByTagName('input')[0].value;
-              // DoctorIDs.push(docIDs[arr.indexOf(inp.value)])
-              // DoctorNames.push(inp.value)
-              /*close the list of autocompleted values,
-                        (or any other open lists of autocompleted values:*/
-              closeAllLists();
-            });
-            a.appendChild(b);
-          }
-        }
-      });
-      /*execute a function presses a key on the keyboard:*/
-      inp.addEventListener('keydown', function (e) {
-        var x = document.getElementById(this.id + 'autocomplete-list');
-        if (x) x = x.getElementsByTagName('div');
-        if (e.keyCode == 40) {
-          /*If the arrow DOWN key is pressed,
-                increase the currentFocus variable:*/
-          currentFocus++;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 38) {
-          //up
-          /*If the arrow UP key is pressed,
-                decrease the currentFocus variable:*/
-          currentFocus--;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
-        }
-      });
-      function addActive(x) {
-        /*a function to classify an item as "active":*/
-        if (!x) return false;
-        /*start by removing the "active" class on all items:*/
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = x.length - 1;
-        /*add class "autocomplete-active":*/
-        x[currentFocus].classList.add('autocomplete-active');
+    autocomplete(document.getElementById('doctorName' + doctorNo), doctors);
+  }
+  function deleteDoc(id) {
+    let doctorNo = parseInt($('#doctorCnt').val()) - 1;
+    $('#doctorCnt').val(doctorNo);
+    console.log('parent id=' + id);
+    $('#' + id + '').replaceWith('');
+  }
+  // next section is for auto complete doctor
+  function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener('input', function (e) {
+      var a,
+        b,
+        i,
+        val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) {
+        return false;
       }
-      function removeActive(x) {
-        /*a function to remove the "active" class from all autocomplete items:*/
-        for (var i = 0; i < x.length; i++) {
-          x[i].classList.remove('autocomplete-active');
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement('DIV');
+      a.setAttribute('id', this.id + 'autocomplete-list');
+      a.setAttribute('class', 'autocomplete-items');
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement('DIV');
+          /*make the matching letters bold:*/
+          b.innerHTML =
+            '<strong>' + arr[i].substr(0, val.length) + '</strong>';
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener('click', function (e) {
+            /*insert the value for the autocomplete text field:*/
+            inp.value = this.getElementsByTagName('input')[0].value;
+            // DoctorIDs.push(docIDs[arr.indexOf(inp.value)])
+            // DoctorNames.push(inp.value)
+            /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+            closeAllLists();
+          });
+          a.appendChild(b);
         }
       }
-      function closeAllLists(elmnt) {
-        /*close all autocomplete lists in the document,
-            except the one passed as an argument:*/
-        var x = document.getElementsByClassName('autocomplete-items');
-        for (var i = 0; i < x.length; i++) {
-          if (elmnt != x[i] && elmnt != inp) {
-            x[i].parentNode.removeChild(x[i]);
-          }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener('keydown', function (e) {
+      var x = document.getElementById(this.id + 'autocomplete-list');
+      if (x) x = x.getElementsByTagName('div');
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+              increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) {
+        //up
+        /*If the arrow UP key is pressed,
+              decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
         }
       }
-      /*execute a function when someone clicks in the document:*/
-      document.addEventListener('click', function (e) {
-        closeAllLists(e.target);
-      });
-    }
-    /*this doctors array is used in adding new doctor to service*/
-    var doctors;
-    var docIDs;
-    $.get('/admin/new/specialService/getExperts', (data) => {
-      doctors = data.doctors;
-      docIDs = data.docIDs;
     });
-  </script>
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = x.length - 1;
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add('autocomplete-active');
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove('autocomplete-active');
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+          except the one passed as an argument:*/
+      var x = document.getElementsByClassName('autocomplete-items');
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener('click', function (e) {
+      closeAllLists(e.target);
+    });
+  }
+  /*this doctors array is used in adding new doctor to service*/
+  var doctors;
+  var docIDs;
+  $.get('/admin/new/specialService/getExperts', (data) => {
+    doctors = data.doctors;
+    docIDs = data.docIDs;
+  });
+</script>
+
 </html>

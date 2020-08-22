@@ -146,9 +146,10 @@
           <div class="feedback-Heading">
             <p>User Feedback</p>
           </div>
+          <%if(comments.length){%>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-              <% for (let i=0; i<4; i++) { %>
+              <% for (let i=0; i<comments.length; i++) { %>
               <%if(i==0) {%>
               <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
               <%}else{%>
@@ -163,11 +164,11 @@
                 <div class="single-feedback">
                   <% if (comments[i].video != 'none') { %>
                   <iframe src=" /workshop/videos/<%=comments[i].video %>" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                   <% } %>
                   <div class="txt-cmnt">
-                    <p><%= comments[i].text %></p>
+                    <p>"<%= comments[i].text %>"</p>
                     <p>-<%= comments[i].userName %></p>
                   </div>
                 </div>
@@ -177,7 +178,7 @@
                 <div class="single-feedback">
                   <% if (comments[i].video != 'none') { %>
                   <iframe src=" /workshop/videos/<%=comments[i].video %>" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                   <% } %>
                   <div class="txt-cmnt">
@@ -198,6 +199,7 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
+          <%}%>
         </div>
       </div>
     </div>

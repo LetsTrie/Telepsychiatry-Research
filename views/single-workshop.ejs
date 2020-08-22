@@ -50,6 +50,7 @@
           </strong>
           <%- data.about %>
         </div>
+        <% if (data.videos.length != 0) { %>
         <div class="body">
           <strong class="header" style="font-size: 25px; color: #008ecc;">
             Videos
@@ -64,6 +65,7 @@
             <% } %>
           </div>
         </div>
+        <% } %>
         <div class="body" style="margin-top: 20px;">
           <strong class="header" style="font-size: 25px; color: #008ecc;">
             Description

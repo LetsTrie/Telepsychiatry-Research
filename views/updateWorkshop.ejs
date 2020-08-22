@@ -215,7 +215,7 @@
       const link = $(videoArr[i]).val();
       videos.push(link);
     }
-    
+
     const docs = $('.doctorClass')
     let doctors = []
     for (let i = 0; i < docs.length; i++) {
@@ -311,7 +311,7 @@
 
   $('body').on('click', '.btn-danger', (e) => {
     e.preventDefault()
-    $(e.target.parentElement).remove();
+    $(e.target.parentElement.parentElement).remove();
   });
 
   // for doctors

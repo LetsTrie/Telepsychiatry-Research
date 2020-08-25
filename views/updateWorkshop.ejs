@@ -158,7 +158,7 @@
     );
   }
 
-  let data = <% - JSON.stringify(data) %>
+  let data = <%- JSON.stringify(data) %>
   for (let i = 0; i < data.doctors.length; i++) {
     addDoctors(data.doctors[i])
   }
@@ -311,7 +311,7 @@
 
   $('body').on('click', '.btn-danger', (e) => {
     e.preventDefault()
-    $(e.target.parentElement).remove();
+    $(e.target.parentElement.parentElement).remove();
   });
 
   // for doctors

@@ -464,12 +464,16 @@ body {
     padding-top: 10px;
     min-height: 300px;
     text-align: center;
-    iframe {
+    display: flex;
+    flex-direction: column;
+    video {
+      margin: auto;
       width: 200px;
       height: 150px;
     }
 
     .txt-cmnt {
+      margin: auto;
       width: 100%;
       font-style: italic;
       color: rgb(49, 24, 24);

@@ -149,7 +149,38 @@
                         </ol>
                         <div class="carousel-inner">
                             <% for (let i=0; i<4; i++) { %>
-                            <%if(i==0) {%>
+                                <%if(i==0) {%>
+                                <div class="carousel-item active">
+                                    <div class="single-feedback">
+                                        <% if (comments[i].video != 'none') { %>
+                                        <video width="320" height="240" controls>
+                                            <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <% } %>
+                                        <div class="txt-cmnt">
+                                            <p>"<%= comments[i].text %>"</p>
+                                            <p>-<%= comments[i].userName %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}else{%>
+                                <div class="carousel-item">
+                                    <div class="single-feedback">
+                                        <% if (comments[i].video != 'none') { %>
+                                        <video width="320" height="240" controls>
+                                            <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <% } %>
+                                        <div class="txt-cmnt">
+                                            <p><%= comments[i].text %></p>
+                                            <p>-<%= comments[i].userName %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                            <!-- <%if(i==0) {%>
                             <div class="carousel-item active">
                                 <div class="single-feedback">
                                     <iframe src="https://www.youtube.com/embed/FTU0Yi-_dGM" frameborder="0"
@@ -173,7 +204,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <%}%>                   
+                            <%}%>                    -->
                         <% } %>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"

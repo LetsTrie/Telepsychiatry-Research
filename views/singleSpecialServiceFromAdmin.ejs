@@ -80,21 +80,48 @@
                   <p>User Feedback</p>
                 </div>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-
+                  <ol class="carousel-indicators">
+                    <% for (let i=0; i<feedbacks.length; i++) { %>
+                      <%if(i==0) {%>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
+                      <%}else{%>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
+                      <%}%>
+                    <%}%>
+                  </ol>
                   <div class="carousel-inner">
                     <% for (let i=0; i<feedbacks.length; i++) { %>
-                    <div class="carousel-item">
+                    <%if(i==0) {%>
+                    <div class="carousel-item active">
                       <div class="single-feedback">
-                        <iframe src="/feedback_ss/<%= feedbacks[i].video %>" frameborder="0"
-                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen></iframe>
+                        <% if (feedbacks[i].video != 'none') { %>
+                        <video width="320" height="240" controls>
+                          <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <% } %>
                         <div class="txt-cmnt">
                           <p>"<%= feedbacks[i].body %>"</p>
                           <p>-<%= feedbacks[i].user_name %></p>
                         </div>
-
                       </div>
                     </div>
+                    <%}else{%>
+                    <div class="carousel-item">
+                      <div class="single-feedback">
+                        <% if (feedbacks[i].video != 'none') { %>
+                        <video width="320" height="240" controls>
+                          <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <% } %>
+                        <div class="txt-cmnt">
+                          <p>"<%= feedbacks[i].body %>"</p>
+                          <p>-<%= feedbacks[i].user_name %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <%}%>                     
                     <% } %>
                   </div>
                 </div>

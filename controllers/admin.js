@@ -12,6 +12,8 @@ const { Feedback } = require('../models/feedback.js');
 
 const { eUserModel } = require('../models/expertUser');
 
+const { wsComment } = require('../models/workshopComment.js');
+
 const LIMIT = 9;
 
 exports.postTestVersion = async (req, res, next) => {
@@ -1139,6 +1141,7 @@ exports.getWorkshop = async (req, res, next) => {
 };
 
 exports.singleWorkshop = async (req, res) => {
+  const comments = await wsComment.find({ workshopID: req.params.id });
   const data = await workshopModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ workshop_id: req.params.id });
 
@@ -1151,6 +1154,7 @@ exports.singleWorkshop = async (req, res) => {
   res.render('singleWorkshopFromAdmin', {
     user: req.user,
     data,
+    comments,
     ourExperts: eUser,
     parts,
   });

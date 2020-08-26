@@ -1246,14 +1246,25 @@ p {
   padding-top: 10px;
   min-height: 300px;
   text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.contentWrapper .right .flx-chld-feeds .single-feedback iframe {
+.contentWrapper .right .flx-chld-feeds .single-feedback video {
+  margin: auto;
   width: 200px;
   height: 150px;
 }
 
 .contentWrapper .right .flx-chld-feeds .single-feedback .txt-cmnt {
+  margin: auto;
   width: 100%;
   font-style: italic;
   color: #311818;

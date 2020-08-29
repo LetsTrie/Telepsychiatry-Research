@@ -103,31 +103,37 @@
                   </ol>
                   <div class="carousel-inner">
                     <% for (let i=0; i<feedbacks.length; i++) { %>
-                    <%if(i==0) {%>
-                    <div class="carousel-item active">
-                      <div class="single-feedback">
-                        <iframe src="/feedback_ss/<%= feedbacks[i].video %>" frameborder="0"
-                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen></iframe>
-                        <div class="txt-cmnt">
-                          <p>"<%= feedbacks[i].body %>"</p>
-                          <p>-<%= feedbacks[i].user_name %></p>
+                      <%if(i==0) {%>
+                      <div class="carousel-item active">
+                        <div class="single-feedback">
+                          <% if (feedbacks[i].video != 'none') { %>
+                          <video width="320" height="240" controls>
+                            <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                          <% } %>
+                          <div class="txt-cmnt">
+                            <p>"<%= feedbacks[i].body %>"</p>
+                            <p>-<%= feedbacks[i].user_name %></p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <%}else{%>
-                    <div class="carousel-item">
-                      <div class="single-feedback">
-                        <iframe src="/feedback_ss/<%= feedbacks[i].video %>" frameborder="0"
-                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen></iframe>
-                        <div class="txt-cmnt">
-                          <p>"<%= feedbacks[i].body %>"</p>
-                          <p>-<%= feedbacks[i].user_name %></p>
+                      <%}else{%>
+                      <div class="carousel-item">
+                        <div class="single-feedback">
+                          <% if (feedbacks[i].video != 'none') { %>
+                          <video width="320" height="240" controls>
+                            <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                          <% } %>
+                          <div class="txt-cmnt">
+                            <p>"<%= feedbacks[i].body %>"</p>
+                            <p>-<%= feedbacks[i].user_name %></p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <%}%>                      
+                      <%}%>                     
                       <% } %>
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

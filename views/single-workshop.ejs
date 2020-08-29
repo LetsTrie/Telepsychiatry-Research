@@ -165,9 +165,10 @@
               <div class="carousel-item active">
                 <div class="single-feedback">
                   <% if (comments[i].video != 'none') { %>
-                  <iframe src=" /workshop/videos/<%=comments[i].video %>" frameborder="0"
-                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    <video width="320" height="240" controls>
+                      <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
                   <% } %>
                   <div class="txt-cmnt">
                     <p>"<%= comments[i].text %>"</p>
@@ -179,12 +180,13 @@
               <div class="carousel-item">
                 <div class="single-feedback">
                   <% if (comments[i].video != 'none') { %>
-                  <iframe src=" /workshop/videos/<%=comments[i].video %>" frameborder="0"
-                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    <video width="320" height="240" controls>
+                      <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
                   <% } %>
                   <div class="txt-cmnt">
-                    <p><%= comments[i].text %></p>
+                    <p>"<%= comments[i].text %>"</p>
                     <p>-<%= comments[i].userName %></p>
                   </div>
                 </div>

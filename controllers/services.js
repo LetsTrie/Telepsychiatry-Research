@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { eUserModel } = require('../models/expertUser');
+const { gUserModel } = require('../models/generalUser')
 const { appointment } = require('../models/appointment.js');
 const { Emergency } = require('../models/emergency.js');
 const { Feedback } = require('../models/feedback.js');
@@ -670,9 +671,15 @@ function sendEmail(emailID, reply) {
 }
 
 exports.singleDoctorConsultation = async (req, res, next) => {
-  const doc = await eUserModel.findById(req.params.id);
-  console.log(doc);
-  return res.render('doctorsProfile', { doc, user: req.user });
+  const { type, id } = req.params
+  let doc
+  if (type == 'general') {
+    doc = await gUserModel.findById(id);
+    return res.render('generalUserProfile', { doc, user: req.user });
+  } else {
+    doc = await eUserModel.findById(id);
+    return res.render('doctorsProfile', { doc, user: req.user });
+  }
 };
 
 // send mail to the patient

@@ -1,26 +1,22 @@
+<style>
+  p {
+    font-weight: bolder;
+  }
+</style>
+
 <div style="width: 100%; background: white;">
   <div class="navbarWrapper">
     <nav class="navbar navbar-expand-lg">
       <a class="navbar-brand" href="/">
-        <img src="/images/logo.png" alt="logo" style="max-width: 130px;" />
+        <img src="/images/trin-logo.png" alt="logo" style="max-width: 180px;" />
       </a>
-      <button
-        class="navbar-toggler p-2"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        style="border: 2px solid black;"
-      >
+      <button class="navbar-toggler p-2" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+        style="border: 2px solid black;">
         <i class="fa fa-align-right"></i>
       </button>
 
-      <div
-        class="collapse navbar-collapse justify-content-between"
-        id="navbarNavAltMarkup"
-      >
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
         <div></div>
         <div>
           <ul class="navbar-nav">
@@ -78,10 +74,7 @@
                       </a>
                     </li>
                     <li>
-                      <a
-                        class="dropdown-item"
-                        href="/researches?stage=completed"
-                      >
+                      <a class="dropdown-item" href="/researches?stage=completed">
                         <p>Complete Researches</p>
                       </a>
                     </li>
@@ -154,9 +147,7 @@
               <a href="#" class="nav-link userNamee">x</a>
               <div class="dropdown-content profileeDcontent">
                 <a id="profile_link" href=""> My Profile</a>
-                <a href="/services/all-appointments" id="show_apts"
-                  >Appointments</a
-                >
+                <a href="/services/all-appointments" id="show_apts">Appointments</a>
                 <a href="/auth/logout">Sign Out</a>
               </div>
             </li>
@@ -166,11 +157,8 @@
     </nav>
   </div>
 </div>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"
-></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <script>
   $.get('/getUser', (data) => {
     if (data && data.hADegree) {

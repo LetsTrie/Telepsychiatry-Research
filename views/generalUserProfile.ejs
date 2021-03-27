@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/doctorProfile.css" />
+
+  <title>Profile | Expert | Telepsychiatry Research</title>
+</head>
+
+<body>
+  <section>
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="blueDivider">
+      <div class="smallText">
+        <p><a href="/">Services</a> / General Use Profile</p>
+      </div>
+      <div class="bigText">
+        <p>
+          <%=doc.name%>
+        </p>
+      </div>
+    </div>
+
+    <section class="py-5 mt-1 docProWrapper">
+      <div class="container">
+        <div class="doctor_identity">
+          <div class="his_photo">
+            <img src="/uploads/<%=doc.propicURL%>" alt="General User" />
+          </div>
+          <div class="His_profession">
+            <p class="name">
+              <%= doc.name %>
+            </p>
+            <p class="">
+              <span style="color: #00adef; font-size: 18px;">Affiliation:</span> <%= doc.cAffiliation %>
+            </p>
+            <p><span style="color: #00adef; font-size: 18px;">Phone:</span> <%= doc.phoneNumber %></p>
+            <p><span style="color: #00adef; font-size: 18px;">Email:</span> <a
+                href="mailto:<%= doc.email %>"><%= doc.email %></p></a>
+
+            <p class="expertize">
+              <span style="color: #00adef; font-size: 18px;">Highest Degree:</span> <%=
+                doc.hADegree %>
+            </p>
+            <p class="aff">
+              <span style="color: #00adef; font-size: 18px;">From:</span> <%= doc.country %>
+            </p>
+            <p class="college">
+              <span style="color: #00adef; font-size: 18px;">Born:</span> <%= doc.dob %>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </section>
+
+  <%- include('./partials/vendorsBottom')%> <%-
+    include('./partials/bookAppointment') %> <%- include('./partials/footer')%>
+</body>
+<script>
+  $('.bookingg button').click((e) => {
+    location = '/services/bookAppointment/' + $(e.target).attr('data-id');
+  });
+</script>
+
+</html>

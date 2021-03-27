@@ -1,0 +1,87 @@
+<div class="upcomingEvents_wrapper">
+  <div class="upcomingEvents">
+    <div class="container">
+      <div class="upEvHeading">
+        <p>Training and <span>Workshop</span></p>
+      </div>
+      <div class="upcomingEvents_flx_prnt">
+        <% if (workshops.length > 0) { %>
+        <div class="upcomingEvents_flx_chld chld_one">
+          <div class="upcomingEvents_flx_chld_img">
+            <img src="/workshop/<%= workshops[0].image %>" />
+          </div>
+          <div class="upcomingEvents_flx_chld_title">
+            <p class="workshop-title" id="<%= workshops[0]._id %>"><%= workshops[0].title %></p>
+          </div>
+          <div class="upcomingEvents_flx_chld_address">
+            <p>
+              <i class="fa fa-map-marker" style="font-size: 20px;">
+                &nbsp;</i>
+              <%= workshops[0].location %>
+            </p>
+          </div>
+          <div class="upcomingEvents_flx_chld_date">
+            <p><i class="fa fa-calendar"> &nbsp; </i><%= workshops[0].schedule.startDate %></p>
+          </div>
+        </div>
+        <% } %>
+        <% if (workshops.length > 1) { %>
+        <div class="upcomingEvents_flx_chld FlxCol">
+          <div class="upcomingEvents_flx_chld_scnd_one">
+            <div class="upcomingEvents_flx_chld_img">
+              <img src="/workshop/<%= workshops[1].image %>" />
+            </div>
+            <div class="upcomingEvents_flx_chld_scnd_one_info">
+              <div class="upcomingEvents_flx_chld_title">
+                <p class="workshop-title" id="<%= workshops[1]._id %>"><%= workshops[1].title %></p>
+              </div>
+              <div class="upcomingEvents_flx_chld_address">
+                <p>
+                  <i class="fa fa-map-marker" style="font-size: 20px;">
+                    &nbsp;</i>
+                  <%= workshops[1].location %>
+                </p>
+              </div>
+              <div class="upcomingEvents_flx_chld_date">
+                <p><i class="fa fa-calendar"> &nbsp; </i> <%= workshops[1].schedule.startDate %></p>
+              </div>
+            </div>
+          </div>
+          <% if (workshops.length > 2) { %>
+          <div class="upcomingEvents_flx_chld_scnd_one">
+            <div class="upcomingEvents_flx_chld_img">
+              <img src="/workshop/<%= workshops[2].image %>" />
+            </div>
+            <div class="upcomingEvents_flx_chld_scnd_one_info">
+              <div class="upcomingEvents_flx_chld_title">
+                <p class="workshop-title" id="<%= workshops[2]._id %>"><%= workshops[2].title %></p>
+              </div>
+              <div class="upcomingEvents_flx_chld_address">
+                <p>
+                  <i class="fa fa-map-marker" style="font-size: 20px;">
+                    &nbsp;</i>
+                  <%= workshops[2].location %>
+                </p>
+              </div>
+              <div class="upcomingEvents_flx_chld_date">
+                <p><i class="fa fa-calendar"> &nbsp; </i><%= workshops[2].schedule.startDate %></p>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+      <div class="showMoreBtn">
+        <button class="workshop-showmore">Show more</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  $('p.workshop-title').click(e => location = `/events/workshop/${e.target.id}`)
+  $('button.workshop-showmore').click(e => location = `/events/workshop/`)
+
+</script>

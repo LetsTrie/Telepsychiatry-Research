@@ -113,8 +113,8 @@
 </head>
 
 <body>
-  <%- include('./partials/homepage_contact_us_modal.ejs')%> <%-
-    include('./partials/homepage_bookDoctor.ejs')%>
+  <%- include('./partials/homepage_contact_us_modal.ejs')%>
+  <%-include('./partials/homepage_bookDoctor.ejs')%>
 
   <div class="ourMainHomepage">
     <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
@@ -257,7 +257,7 @@
               <div class="single-card">
                 <a href="#">
                   <div class="card-image">
-                    <img src="/images/consult1.jpg" alt="" class="image" />
+                    <img src="/images/psychiatric-consultation.jpg" alt="" class="image" />
                   </div>
                 </a>
                 <div class="card-non-image">
@@ -288,7 +288,7 @@
               <div class="single-card">
                 <a href="#">
                   <div class="card-image">
-                    <img src="/images/consult2.jpg" alt="" class="image" />
+                    <img src="/images/psychotherapy-couselling.jpg" alt="" class="image" />
                   </div>
                 </a>
                 <div class="card-non-image">
@@ -321,7 +321,7 @@
               <div class="single-card">
                 <a href="#">
                   <div class="card-image">
-                    <img src="/images/mentalHealthAssessment.jpg" alt="" />
+                    <img src="/images/mental-health.jpg" alt="" />
                   </div>
                 </a>
                 <div class="card-non-image">
@@ -467,7 +467,6 @@
           <div class="meet-doctors-section">
             <div class="meet_doctors_header mb-3">
               <p>MEET OUR <span>EXPERTS</span></p>
-              <%- include('./partials/homepage_experts.ejs') %>
               <p class="show-more-btn">
                 <button id="show-docs">View More</button>
               </p>
@@ -475,80 +474,7 @@
           </div>
         </div>
       </div>
-      <div class="upcomingEvents_wrapper">
-        <div class="upcomingEvents">
-          <div class="container">
-            <div class="upEvHeading">
-              <p>Training and <span>Workshop</span></p>
-            </div>
-            <div class="upcomingEvents_flx_prnt">
-              <div class="upcomingEvents_flx_chld chld_one">
-                <div class="upcomingEvents_flx_chld_img">
-                  <img src="/images/coronaevent1.jpg" />
-                </div>
-                <div class="upcomingEvents_flx_chld_title">
-                  <p>Stress Management During Corona</p>
-                </div>
-                <div class="upcomingEvents_flx_chld_address">
-                  <p>
-                    <i class="fa fa-map-marker" style="font-size: 20px;">
-                      &nbsp;</i>
-                    Rupayan Trade Center, Banglamotor
-                  </p>
-                </div>
-                <div class="upcomingEvents_flx_chld_date">
-                  <p><i class="fa fa-calendar"> &nbsp; </i> 07/03/2020</p>
-                </div>
-              </div>
-              <div class="upcomingEvents_flx_chld FlxCol">
-                <div class="upcomingEvents_flx_chld_scnd_one">
-                  <div class="upcomingEvents_flx_chld_img">
-                    <img src="/images/coronaPandemic.png" />
-                  </div>
-                  <div class="upcomingEvents_flx_chld_scnd_one_info">
-                    <div class="upcomingEvents_flx_chld_title">
-                      <p>Parenting During Corona Pandemic</p>
-                    </div>
-                    <div class="upcomingEvents_flx_chld_address">
-                      <p>
-                        <i class="fa fa-map-marker" style="font-size: 20px;">
-                          &nbsp;</i>
-                        Rupayan Trade Center, Banglamotor
-                      </p>
-                    </div>
-                    <div class="upcomingEvents_flx_chld_date">
-                      <p><i class="fa fa-calendar"> &nbsp; </i> 10/03/2020</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="upcomingEvents_flx_chld_scnd_one">
-                  <div class="upcomingEvents_flx_chld_img">
-                    <img src="/images/conf3.jpg" />
-                  </div>
-                  <div class="upcomingEvents_flx_chld_scnd_one_info">
-                    <div class="upcomingEvents_flx_chld_title">
-                      <p>Prospects of Telepsychiatry</p>
-                    </div>
-                    <div class="upcomingEvents_flx_chld_address">
-                      <p>
-                        <i class="fa fa-map-marker" style="font-size: 20px;">
-                          &nbsp;</i>
-                        Rupayan Trade Center, Banglamotor
-                      </p>
-                    </div>
-                    <div class="upcomingEvents_flx_chld_date">
-                      <p><i class="fa fa-calendar"> &nbsp; </i> 13/03/2020</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="showMoreBtn">
-              <button>Show more</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%- include('./partials/homepage_upcoming_events')%>
       <%- include('./partials/homepage_organization')%>
     </div>
   </div>

@@ -7,6 +7,7 @@ const admin = {
   email: 'admin@trin',
   password: '123456',
 };
+const { workshopModel } = require('../models/workshop.js');
 
 const { eUserModel } = require('../models/expertUser');
 const getResetTime = (day) => {
@@ -54,10 +55,12 @@ router.get('/', async (req, res, next) => {
     const expert = await eUserModel.findOne({ _id: exNames[i] });
     experts.push(expert);
   }
-  // console.log(experts);
+
+  const workshops = await workshopModel.find({ homepageDisplay: true })
   res.render('homepage', {
     ourExperts: experts,
     user: req.user,
+    workshops
   });
 });
 router.get('/getUser', (req, res, next) => {

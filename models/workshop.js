@@ -24,6 +24,10 @@ const eventsSchema = new mongoose.Schema({
   start: Date,
   end: Date,
   image: String,
+  homepageDisplay: {
+    type: Boolean,
+    default: false
+  }
 });
 
 exports.workshopModel = mongoose.model('workshop', eventsSchema);

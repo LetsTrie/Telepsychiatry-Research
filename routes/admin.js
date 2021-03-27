@@ -55,6 +55,8 @@ const {
   getUpdateWorkshop,
   postUpdateWorkshop,
   deleteWorkshop,
+  addWorkshopToHomepage,
+  removeWorkshopFromHomepage,
 
   // special service
   getSS,
@@ -275,6 +277,8 @@ router.get('/workshop/:id', adminAccess, singleWorkshop);
 router.get('/workshop/update/:id', adminAccess, getUpdateWorkshop);
 router.post('/workshop/update', adminAccess, postUpdateWorkshop);
 router.get('/workshop/delete/:id', adminAccess, deleteWorkshop);
+router.get('/workshop/add-to-homepage/:id', adminAccess, addWorkshopToHomepage)
+router.get('/workshop/rem-from-homepage/:id', adminAccess, removeWorkshopFromHomepage)
 
 // admin backup
 router.get('/backup', getBackup);

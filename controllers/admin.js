@@ -8,6 +8,8 @@ const passport = require('passport');
 const { makeSmallParagraphFromHTML } = require('./utils');
 const { testModel } = require('../models/test');
 const admin = require('../config/credentials').adminCredentials;
+const path = require('path')
+const fs = require('fs')
 const { Feedback } = require('../models/feedback.js');
 
 const { eUserModel } = require('../models/expertUser');
@@ -1086,6 +1088,7 @@ exports.disapproveInnovation = async (req, res) => {
 // Events
 const { workshopModel } = require('../models/workshop.js');
 const { workshopReg } = require('../models/workshopRegistration.js');
+const { readFileSync } = require('fs');
 exports.getWorkshop = async (req, res, next) => {
   let { type, search } = req.query;
   let data;
@@ -1144,7 +1147,7 @@ exports.singleWorkshop = async (req, res) => {
   const comments = await wsComment.find({ workshopID: req.params.id });
   const data = await workshopModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ workshop_id: req.params.id });
-
+  console.log(parts)
   const eUser = [];
   for (let i = 0; i < data.doctors.length; i++) {
     const doc = await eUserModel.findOne({ name: data.doctors[i] });
@@ -1291,6 +1294,19 @@ exports.postUpdateWorkshop = async (req, res) => {
     msg: 'Workshop updated',
   });
 };
+
+exports.addWorkshopToHomepage = async (req, res) => {
+  const { id } = req.params
+  await workshopModel.findOneAndUpdate({ _id: id }, { homepageDisplay: true })
+  res.redirect('back')
+}
+
+exports.removeWorkshopFromHomepage = async (req, res) => {
+  const { id } = req.params
+  await workshopModel.findOneAndUpdate({ _id: id }, { homepageDisplay: false })
+  res.redirect('back')
+}
+
 
 exports.deleteWorkshop = async (req, res) => {
   await workshopModel.findByIdAndDelete({ _id: req.params.id });

@@ -20,14 +20,12 @@
                                 </div>
                                 <div class="input_box slct_picker">
                                     <div class="form-selectpicker">
-                                        <select class="selectpicker" id="book-service" data-width="100%" title="Select service" name="service" required>
-                      <option value="Psychiatric Consultation"
-                        >Psychiatric Consultation</option
-                      >
-                      <option value="Psychology and Counselling"
-                        >Psychology and Counselling</option
-                      >
-                    </select>
+                                        <select class="selectpicker" id="book-service" data-width="100%"
+                                            title="Select service" name="service" required>
+                                            <option value="Psychiatric Consultation">Psychiatric Consultation</option>
+                                            <option value="Psychology and Counselling">Psychotherapy and Counselling
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +46,8 @@
                                 </div>
                                 <div class="input_box slct_picker">
                                     <div class="input_box">
-                                        <input type="text" id="book-contact" class="contact" name="contact" placeholder="Your email" />
+                                        <input type="text" id="book-contact" class="contact" name="contact"
+                                            placeholder="Your email" />
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +59,8 @@
                                     <p>Phone Number</p>
                                 </div>
                                 <div class="input_box">
-                                    <input type="text" id="phoneNumber" name="phoneNumber" class="contact" placeholder="Your phone number" />
+                                    <input type="text" id="phoneNumber" name="phoneNumber" class="contact"
+                                        placeholder="Your phone number" />
                                 </div>
                             </div>
                             <div class="two_box_on flex-child">
@@ -75,8 +75,8 @@
 
                         <div class="modal-body-submit submit">
                             <button id="book-submit-btn" class="green-btn gotoResetPass">
-                Confirm
-              </button>
+                                Confirm
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -84,8 +84,8 @@
 
             <div class="modal-footer submit">
                 <button type="button" class="red-btn" data-dismiss="modal">
-          Close
-        </button>
+                    Close
+                </button>
             </div>
         </div>
     </div>
@@ -182,11 +182,11 @@
         },
     });
 
-    $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
+    $('input[name="date"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY'));
     });
 
-    $('input[name="date"]').on('cancel.daterangepicker', function(ev, picker) {
+    $('input[name="date"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
     });
 </script>

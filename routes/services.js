@@ -46,7 +46,7 @@ router.get('/consultation', consultation);
 router.get('/consultation/search', searchConsultation);
 router.get('/psychoTherapy', psychoTherapy);
 router.get('/psychoTherapy/search', searchPsychoTherapy);
-router.get('/doctor/profile/:id', singleDoctorConsultation);
+router.get('/doctor/profile/:type/:id', singleDoctorConsultation);
 
 router.get('/institution', (req, res, next) => {
   res.render('institution', { user: req.user });

@@ -354,29 +354,17 @@
   }
 }
 
-.parts {
-  .each-part {
-    padding: 10px 0;
-    transition: 0.5s;
-    cursor: pointer;
-    a {
-      color: #000;
-      padding: 0 10px;
-      font-size: 18px;
-      i {
-        padding: 7.5px 10px;
-        border: 1px solid gray;
-        border-radius: 50%;
-        color: gray;
-      }
-    }
-    a:hover {
-      text-decoration: none;
-    }
-  }
-  .each-part:hover {
-    background-color: #eee;
-  }
+.part-list {
+ .each-part {
+   cursor: pointer;
+   border-bottom: 1px solid #ddd;
+   padding: 10px;
+   span {
+     margin-top: -20px;
+     color: #666;
+     font-size: small;
+   }
+ }
 }
 
 .comment-section {

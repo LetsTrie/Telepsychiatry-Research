@@ -30,7 +30,7 @@ const fileStorage = multer.diskStorage({
     cb(null, 'public/uploads/');
   },
   filename: (req, file, cb) => {
-    const filename = req.body.filename + '-' + file.originalname;
+    const filename = req.body.filename
     cb(null, filename);
   },
 });

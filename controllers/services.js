@@ -4,6 +4,7 @@ const { gUserModel } = require('../models/generalUser')
 const { appointment } = require('../models/appointment.js');
 const { Emergency } = require('../models/emergency.js');
 const { Feedback } = require('../models/feedback.js');
+const { sendGrid } = require('../config/sendMail')
 
 exports.getBookAppointment = async (req, res, next) => {
   const data = await eUserModel.findById(req.params.expID);
@@ -790,6 +791,7 @@ exports.bookSS = async (req, res) => {
 
 exports.postBookSS = async (req, res) => {
   if (req.user) {
+    const { name, bookingType } = req.body
     const obj = {
       ...req.body,
       patient_id: req.user._id,
@@ -797,6 +799,7 @@ exports.postBookSS = async (req, res) => {
     const newBook = new ssBookModel(obj);
     console.log(newBook);
     await newBook.save();
+
     res.send({
       status: true,
       msg:

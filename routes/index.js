@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 const { postLogin } = require('../controllers/admin');
+const { sendGrid } = require('../config/sendMail')
 const admin = {
   id: 'admin123',
   name: 'admin',
@@ -63,6 +64,9 @@ router.get('/', async (req, res, next) => {
     workshops
   });
 });
+
+router.get('/mail', (req, res) => sendGrid())
+
 router.get('/getUser', (req, res, next) => {
   if (req.user) {
     res.send(req.user);

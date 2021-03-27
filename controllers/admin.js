@@ -11,7 +11,7 @@ const admin = require('../config/credentials').adminCredentials;
 const path = require('path')
 const fs = require('fs')
 const { Feedback } = require('../models/feedback.js');
-
+const { sendGrid } = require('../config/sendMail')
 const { eUserModel } = require('../models/expertUser');
 
 const { wsComment } = require('../models/workshopComment.js');
@@ -820,7 +820,22 @@ exports.approveSSBookRequest = async (req, res) => {
       },
     }
   );
-  ssConfirmMail(ssBook, ss);
+  const { ss_name, bookingType, email } = ssBook
+  let body
+  if (bookingType == 'Online') {
+    body = `This is to confirm that your request for the special service <strong>${ss_name}</strong> has been confirmed. The meeting will be an online one and please join <a href=http://monerdaktar.com/${ss._id}>this link</a> to participate. <br/> Thanks for choosing us.`
+  } else {
+    body = `This is to confirm that your request for the special service <strong>${ss_name}</strong> has been confirmed. The meeting will be an Face to Face one, so please drop by at our office address at the due time. <br/> Thanks for choosing us.`
+  }
+  console.log(email)
+  const data = {
+    address: email,
+    subject: 'Special Service booking confirmation',
+    body
+  }
+
+  await sendGrid(data)
+
   return res.redirect('back');
 };
 

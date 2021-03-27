@@ -26,7 +26,7 @@
       <div class="btn-container">
         <div class="btn-children">
           <button data-target="#parts" data-toggle="modal" class="btn btn-secondary">Show Patients</button>
-          <button data-target="#feedbacks" data-toggle="modal" class="btn btn-secondary">Show Feedbacks</button>
+          <!-- <button data-target="#feedbacks" data-toggle="modal" class="btn btn-secondary">Show Feedbacks</button> -->
           <button type="button" class="btn btn-success"
             onclick="location.href='/admin/specialService/update/<%= serviceId %>';">Update</button>
           <button type="button" class="btn btn-danger"
@@ -82,10 +82,10 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
                     <% for (let i=0; i<feedbacks.length; i++) { %>
-                      <%if(i==0) {%>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
-                      <%}else{%>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
+                    <%if(i==0) {%>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
+                    <%}else{%>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
                       <%}%>
                     <%}%>
                   </ol>
@@ -182,7 +182,7 @@
           <div class="parts">
             <% for (let i=0; i<parts.length; i++) { %>
             <div class="each-part">
-              <a href="/services/doctor/profile/<%=parts[i].patient_id%>"> <i class="fa fa-user"></i>
+              <a href="/services/doctor/profile/general/<%=parts[i].patient_id%>"> <i class="fa fa-user"></i>
                 <%= parts[i].name %>
               </a>
               <% if (parts[i].bookingType == 'FaceToFace') { %>

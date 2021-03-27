@@ -1,6 +1,6 @@
 // OKAY
 const nodemailer = require('nodemailer');
-
+const mailer = require('@sendgrid/mail')
 const Transport = nodemailer.createTransport({
   host: 'mail.trin-innovation.com.netsolmail.net',
   port: 587,
@@ -82,3 +82,18 @@ module.exports.ssConfirmMail = async (booking, ss) => {
 
   return await Transport.sendMail(mailOptions);
 };
+
+mailer.setApiKey(process.env.APIKEY)
+
+module.exports.sendGrid = async (data) => {
+  const { address, subject, body } = data
+  const options = {
+    to: address,
+    from: 'TRIN <bookings@trin.website>',
+    subject: subject,
+    html: body,
+  }
+
+  await mailer.send(options)
+  return
+}

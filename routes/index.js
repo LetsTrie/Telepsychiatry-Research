@@ -35,21 +35,13 @@ const getResetTime = (day) => {
   return dif;
 };
 router.get('/', async (req, res, next) => {
-  // console.log(getResetTime('Friday'));
   const { eUserModel } = require('../models/expertUser.js');
-  /*
-  5ea6a986266de7450f67a0f5,
-  5ed219ea536d3a1465951cf5,
-  5e998ecb4fda502e5399178c,
-  5e9ff70a2793470405c3d913,
-  5ed3cce0d6e785040b85ec42
-  */
+
   let exNames = [
     '5ea6a986266de7450f67a0f5',
     '5ed219ea536d3a1465951cf5',
     '5e998ecb4fda502e5399178c',
     '5e9ff70a2793470405c3d913',
-    // '5ed3cce0d6e785040b85ec42',
   ];
   let experts = [];
   for (let i = 0; i < exNames.length; i++) {

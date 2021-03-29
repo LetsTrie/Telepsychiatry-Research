@@ -5,6 +5,8 @@ const { appointment } = require('../models/appointment.js');
 const { Emergency } = require('../models/emergency.js');
 const { Feedback } = require('../models/feedback.js');
 const { sendGrid } = require('../config/sendMail')
+const fs = require('fs')
+const path = require('path')
 
 exports.getBookAppointment = async (req, res, next) => {
   const data = await eUserModel.findById(req.params.expID);
@@ -737,6 +739,7 @@ Thank you for choosing TRIN Innovation Ltd.
 // special services
 const { ssModel } = require('../models/specialService.js');
 const { ssBookModel } = require('../models/ss_book.js');
+const { fstat } = require('fs');
 
 exports.allSS = async (req, res) => {
   const data = await ssModel.find();
@@ -829,3 +832,13 @@ exports.addFeedbackVideo = async (req, res) => {
   console.log('ss feedback vidoe added');
   res.redirect('back');
 };
+
+exports.staticPageLoader = async (req, res) => {
+  const unSlug = s => { return s.split('-').map(word => word.charAt(0).toUpperCase() + word.substr(1, word.length - 1)).join(' ') }
+  const { id } = req.params
+  let data = await fs.readFileSync(path.join(__dirname, '..', 'data', 'static-files', id + '.txt'), 'utf8')
+  res.render('static-service', {
+    title: unSlug(id),
+    data
+  })
+}

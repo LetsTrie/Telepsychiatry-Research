@@ -10,7 +10,7 @@ const { orgUserModel } = require('../models/orgUser');
 const joi = require('@hapi/joi');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
-const { AccountVerifyMail } = require('../config/sendMail');
+const { sendGrid } = require('../config/sendMail');
 
 exports.getMyAppointments = (req, res, next) => {
   return res.render('appointmentListFrExprt');
@@ -217,20 +217,28 @@ exports.postRegisterExpertUserData = async (req, res, next) => {
   }
 
   const newExpUser = new eUserModel(userObj);
-  console.log('created instance of model');
+  await newExpUser.save()
 
-  console.log('New Exp User: Line 188: (Before mongo Save)', newExpUser);
-  AccountVerifyMail(newExpUser.email, newExpUser._id)
-    .then(() => newExpUser.save())
-    .then((resObj) => {
-      console.log(resObj);
-      req.flash('successMessage', 'You have successfully been regsitered');
-      return res.send({ status: true, message: 'success' });
-    })
-    .catch((err) => {
-      req.flash('errorMessage', 'Unexpected Error Occured!');
-      return res.send({ status: false, message: 'Unexpected Error Occured!' });
-    });
+  const data = {
+    address: newExpUser.email,
+    subject: 'TRIN Expert account confirmation',
+    body: `Please click on <a href="${process.env.host}auth/verify/${newExpUser._id}">this link</a> to confirm your TRIN account. <br/> Thanks.`
+  }
+  await sendGrid(data)
+  req.flash('successMessage', 'You have successfully been regsitered');
+  return res.send({ status: true, message: 'success' });
+
+  // AccountVerifyMail(newExpUser.email, newExpUser._id)
+  //   .then(() => newExpUser.save())
+  //   .then((resObj) => {
+  //     console.log(resObj);
+  //     req.flash('successMessage', 'You have successfully been regsitered');
+  //     return res.send({ status: true, message: 'success' });
+  //   })
+  //   .catch((err) => {
+  //     req.flash('errorMessage', 'Unexpected Error Occured!');
+  //     return res.send({ status: false, message: 'Unexpected Error Occured!' });
+  //   });
 };
 
 exports.verifyAccount = async (req, res, next) => {

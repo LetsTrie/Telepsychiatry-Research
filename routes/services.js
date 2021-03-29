@@ -26,6 +26,9 @@ const {
   postBookSS,
   addFeedback,
   addFeedbackVideo,
+
+  // static
+  staticPageLoader
 } = require('../controllers/services');
 
 const fileStorage = multer.diskStorage({
@@ -85,5 +88,9 @@ router.get('/getTimes', getChamberTimes);
 router.get('/all-appointments', allAppointments);
 router.get('/emergency', getEmergency);
 router.post('/date-time-reset', dateTimeReset);
+
+// static page loading services
+
+router.get('/static/:id', staticPageLoader)
 
 module.exports = router;

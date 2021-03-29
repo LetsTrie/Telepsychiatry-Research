@@ -1,7 +1,12 @@
+# directories
+
 node_modules/
+public/
+
+# files
+
 package-lock.json
 .env
 todo.txt
 troubleShooting.txt
 
-/Backup

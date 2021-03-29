@@ -601,12 +601,18 @@ module.exports.postAddDoctor = async (req, res) => {
   console.log(req.body);
 };
 
-module.exports.replyEmail = (req, res) => {
+module.exports.replyEmail = async (req, res) => {
   checker(req, res);
   const reply = req.body.reply;
   const emailID = req.body.emailID;
   const id = req.body.id;
-  // sendReply(emailID, reply)
+  const data = {
+    address: emailID,
+    subject: 'TRIN - Contact Us',
+    body: reply
+  }
+  console.log(data)
+  await sendGrid(data)
   contactUsModel.updateOne(
     { _id: id },
     { $set: { isReplied: true } },

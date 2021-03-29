@@ -144,7 +144,7 @@
           </div>
         </div>
 
-        <div class="flx-chld-feeds">
+        <div class="flx-chld-feeds" style="display: none;">
           <div class="feedback-Heading">
             <p>User Feedback</p>
           </div>
@@ -165,10 +165,10 @@
               <div class="carousel-item active">
                 <div class="single-feedback">
                   <% if (comments[i].video != 'none') { %>
-                    <video width="320" height="240" controls>
-                      <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
+                  <video width="320" height="240" controls>
+                    <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
                   <% } %>
                   <div class="txt-cmnt">
                     <p>"<%= comments[i].text %>"</p>
@@ -180,10 +180,10 @@
               <div class="carousel-item">
                 <div class="single-feedback">
                   <% if (comments[i].video != 'none') { %>
-                    <video width="320" height="240" controls>
-                      <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
+                  <video width="320" height="240" controls>
+                    <source src="/workshop/videos/<%=comments[i].video %>" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
                   <% } %>
                   <div class="txt-cmnt">
                     <p>"<%= comments[i].text %>"</p>
@@ -209,43 +209,43 @@
     </div>
     <div class="mobile-reg">
       <% if (registered) { %>
-      <p>
-        <button disabled>
-          <i class="fa fa-check" style="color: #fff;"></i> Registered
-        </button>
-      </p>
-      <% } else { %>
-      <p><button>Register</button></p>
-      <% } %>
-    </div>
-    <div class="lower">
-      <div class="lower-cover">
-        <div class="contents">
-          <div class="texts">
-            <div class="heading">Some random heading</div>
-            <div class="body">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium, nulla recusandae tempore reprehenderit unde eius.
-              In quae odio ad voluptas dolorem earum placeat ducimus sapiente!
-              Incidunt deserunt itaque fugit explicabo.
-            </div>
-            <div class="reg-btn">
+          <p>
+            <button disabled>
+              <i class="fa fa-check" style="color: #fff;"></i> Registered
+            </button>
+          </p>
+          <% } else { %>
+          <p><button>Register</button></p>
+          <% } %>
+        </div>
+        <div class="lower">
+          <div class="lower-cover">
+            <div class="contents">
+              <div class="texts">
+                <div class="heading">Some random heading</div>
+                <div class="body">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Accusantium, nulla recusandae tempore reprehenderit unde eius.
+                  In quae odio ad voluptas dolorem earum placeat ducimus sapiente!
+                  Incidunt deserunt itaque fugit explicabo.
+                </div>
+                <div class="reg-btn">
+                  <div class=""></div>
+                  <% if (registered) { %>
+                  <button disabled>
+                    <i class="fa fa-check" style="color: #fff;"></i> Registered
+                  </button>
+                  <% } else { %>
+                  <button class="reg" data-toggle="modal" data-target="#exampleModal">
+                    Register
+                  </button>
+                  <% } %>
+                </div>
+              </div>
               <div class=""></div>
-              <% if (registered) { %>
-              <button disabled>
-                <i class="fa fa-check" style="color: #fff;"></i> Registered
-              </button>
-              <% } else { %>
-              <button class="reg" data-toggle="modal" data-target="#exampleModal">
-                Register
-              </button>
-              <% } %>
             </div>
           </div>
-          <div class=""></div>
         </div>
-      </div>
-    </div>
   </section>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

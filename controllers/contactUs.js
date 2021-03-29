@@ -1,10 +1,11 @@
 const { contactUsModel } = require('../models/contactUs');
+const { sendGrid } = require('../config/sendMail')
 
 exports.getContactUsPage = (req, res, next) =>
     res.render('contactUs', {
         user: req.user,
     });
-exports.postContactUsPage = async(req, res, next) => {
+exports.postContactUsPage = async (req, res, next) => {
     try {
         const newMessage = new contactUsModel(req.body);
         console.log(newMessage);

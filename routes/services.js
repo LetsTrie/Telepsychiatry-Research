@@ -70,12 +70,16 @@ router.get('/assessment/register', (req, res, next) => {
   res.render('assessment_reg', { user: req.user });
 });
 
+// Special services
+
 router.get('/special_services', allSS);
 router.get('/special_services/:id', singleSS);
 router.get('/special_services/book/:id', bookSS);
 router.post('/special_services/book', postBookSS);
 router.post('/special_services/feedback/', addFeedback);
 router.post('/special_services/feedback/video', uploadVideo, addFeedbackVideo);
+
+// Appointments
 
 router.post('/book', bookAppointment);
 router.post('/book/emergency', emergenceBooking);

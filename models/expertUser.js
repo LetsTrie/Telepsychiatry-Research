@@ -49,6 +49,9 @@ const eUserSchema = new mongoose.Schema({
     aboutYourself: {
         type: String,
     },
+    priority: {
+        type: Number,
+    },
     isVerified: {
         type: Boolean,
         default: false,
@@ -61,22 +64,22 @@ const eUserSchema = new mongoose.Schema({
         degree: String,
         field: String,
         passingYear: String,
-    }, ],
+    },],
     training: [{
         trainingName: String,
         trainingYear: String,
         trainingDetails: String,
-    }, ],
+    },],
     awards: [{
         awardsName: String,
         awardsYear: String,
         awardsDetails: String,
-    }, ],
+    },],
     workExperience: [{
         expInstitute: String,
         expFrom: String,
         expTo: String,
-    }, ],
+    },],
     visitingHour: [{
         chamberName: String,
         chamberAddress: String,
@@ -85,8 +88,8 @@ const eUserSchema = new mongoose.Schema({
             dayTo: String,
             timeFrom: String,
             timeTo: String,
-        }, ],
-    }, ],
+        },],
+    },],
     createdAt: {
         type: Date,
         default: Date.now(),

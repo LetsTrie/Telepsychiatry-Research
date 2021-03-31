@@ -6,7 +6,7 @@ public/
 # files
 
 package-lock.json
-
+.env
 todo.txt
 troubleShooting.txt
 

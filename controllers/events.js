@@ -89,6 +89,14 @@ exports.singleWorkshop = async (req, res) => {
 };
 
 exports.getWorkshop = async (req, res, next) => {
+
+  let workshops = await workshopModel.find()
+  for (let ws of workshops) {
+    // Object.assign(ws, { homepageDisplay: false })
+    // await ws.save()
+    console.log(ws.homepageDisplay)
+  }
+
   let { type, search } = req.query;
   let data;
   let regList = [];

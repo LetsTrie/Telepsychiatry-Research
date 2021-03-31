@@ -13,7 +13,7 @@ const fs = require('fs')
 const { Feedback } = require('../models/feedback.js');
 const { sendGrid } = require('../config/sendMail')
 const { eUserModel } = require('../models/expertUser');
-
+const { expertPriority } = require('../models/expertPriorities')
 const { wsComment } = require('../models/workshopComment.js');
 
 const LIMIT = 9;
@@ -1413,3 +1413,17 @@ exports.toggleFeedback = async (req, res) => {
     msg: 'display toggled',
   });
 };
+
+
+exports.getExpertPriorities = async (req, res) => {
+  let data = await eUserModel.find()
+  res.render('adminPriorityListing', {data})
+}
+
+exports.setExpertPriorities = async (req, res) => {
+  const { id, priority } = req.body
+  await eUserModel.findOneAndUpdate({ _id: id }, {$set: { priority: priority }})
+  res.json({
+    success: true
+  })
+}

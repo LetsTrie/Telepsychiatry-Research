@@ -37,17 +37,7 @@ const getResetTime = (day) => {
 router.get('/', async (req, res, next) => {
   const { eUserModel } = require('../models/expertUser.js');
 
-  let exNames = [
-    '5ea6a986266de7450f67a0f5',
-    '5ed219ea536d3a1465951cf5',
-    '5e998ecb4fda502e5399178c',
-    '5e9ff70a2793470405c3d913',
-  ];
-  let experts = [];
-  for (let i = 0; i < exNames.length; i++) {
-    const expert = await eUserModel.findOne({ _id: exNames[i] });
-    experts.push(expert);
-  }
+  let experts = await eUserModel.find().sort({ priority: -1 }).limit(6)
 
   const workshops = await workshopModel.find({ homepageDisplay: true })
   res.render('homepage', {

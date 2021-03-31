@@ -231,7 +231,7 @@ exports.consultation = async (req, res) => {
   req.session.prev = 'consultation';
   const experts = await eUserModel
     .find({ speciality: 'Psychiatric Consultation' })
-    .sort({ _id: -1 });
+    .sort({ priority: -1 });
   res.render('consultation', { experts, user: req.user });
 };
 exports.searchConsultation = async (req, res) => {
@@ -349,7 +349,7 @@ exports.psychoTherapy = async (req, res) => {
   req.session.prev = 'psychoTherapy';
   const experts = await eUserModel
     .find({ speciality: 'Psycho Therapy & Counselling' })
-    .sort({ _id: -1 });
+    .sort({ priority: 1 });
   res.render('psycho_therapy', { experts, user: req.user });
 };
 

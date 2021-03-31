@@ -1,12 +1,12 @@
 # directories
 
 node_modules/
-# public/
+public/
 
 # files
 
 package-lock.json
-.env
+# .env
 todo.txt
 troubleShooting.txt
 

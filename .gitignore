@@ -1,6 +1,6 @@
 # directories
 
-node_modules/
+# node_modules/
 public/
 
 # files

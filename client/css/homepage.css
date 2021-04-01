@@ -1001,7 +1001,7 @@ p {
   background: -o-linear-gradient(right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/trin-cover.jpg);
   background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/trin-cover.jpg);
   background-repeat: no-repeat;
-  background-position: center 30px;
+  background-position: center 100px;
   -webkit-background-size: cover;
           background-size: cover;
   min-height: 100vh;

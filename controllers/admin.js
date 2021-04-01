@@ -13,7 +13,6 @@ const fs = require('fs')
 const { Feedback } = require('../models/feedback.js');
 const { sendGrid } = require('../config/sendMail')
 const { eUserModel } = require('../models/expertUser');
-const { expertPriority } = require('../models/expertPriorities')
 const { wsComment } = require('../models/workshopComment.js');
 
 const LIMIT = 9;

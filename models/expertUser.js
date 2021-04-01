@@ -49,6 +49,9 @@ const eUserSchema = new mongoose.Schema({
   aboutYourself: {
     type: String,
   },
+  priority: {
+    type: Number,
+  },
   isVerified: {
     type: Boolean,
     default: false,
@@ -105,7 +108,7 @@ const eUserSchema = new mongoose.Schema({
   },
   otp: {
     type: String,
-  }
+  },
 });
 
 exports.eUserModel = mongoose.model('expertUser', eUserSchema);

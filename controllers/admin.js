@@ -13,7 +13,7 @@ const fs = require('fs')
 const { Feedback } = require('../models/feedback.js');
 const { sendGrid } = require('../config/sendMail')
 const { eUserModel } = require('../models/expertUser');
-
+const { expertPriority } = require('../models/expertPriorities')
 const { wsComment } = require('../models/workshopComment.js');
 
 const LIMIT = 9;
@@ -601,12 +601,18 @@ module.exports.postAddDoctor = async (req, res) => {
   console.log(req.body);
 };
 
-module.exports.replyEmail = (req, res) => {
+module.exports.replyEmail = async (req, res) => {
   checker(req, res);
   const reply = req.body.reply;
   const emailID = req.body.emailID;
   const id = req.body.id;
-  // sendReply(emailID, reply)
+  const data = {
+    address: emailID,
+    subject: 'TRIN - Contact Us',
+    body: reply
+  }
+  console.log(data)
+  await sendGrid(data)
   contactUsModel.updateOne(
     { _id: id },
     { $set: { isReplied: true } },
@@ -1407,3 +1413,17 @@ exports.toggleFeedback = async (req, res) => {
     msg: 'display toggled',
   });
 };
+
+
+exports.getExpertPriorities = async (req, res) => {
+  let data = await eUserModel.find()
+  res.render('adminPriorityListing', {data})
+}
+
+exports.setExpertPriorities = async (req, res) => {
+  const { id, priority } = req.body
+  await eUserModel.findOneAndUpdate({ _id: id }, {$set: { priority: priority }})
+  res.json({
+    success: true
+  })
+}

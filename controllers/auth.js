@@ -335,7 +335,7 @@ exports.updateExpertFile = (req, res, next) => {
     req.user.propicURL
   );
   fs.unlink(filePath, function (err) {
-    const filename = req.body.filename + '-' + req.file.originalname;
+    const filename = req.body.filename
     eUserModel.findOneAndUpdate(
       { _id: req.user._id },
       {

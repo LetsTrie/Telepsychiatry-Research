@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/specialServices.css" />
+
+  <title>
+    Admin Panel | Management
+  </title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/adminNavbar')%>
+    </nav>
+    <div class="sp_wrapper">
+      <div class="globalBlueDivider">
+        <div class="smallText">
+          <p><a href="/">Admin</a> / Management</p>
+        </div>
+        <div class="bigText">
+          <p>Sorting Priority Management</p>
+        </div>
+      </div>
+      
+      
+
+      <div class="con-wrapper">
+      <div class="alert alert-success" id="alert" role="alert" style="display: none">
+        Priority updated.
+      </div>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Speciality</th>
+            <th>Email</th>
+            <th>Priority</th>
+          </tr>
+          <% for (let i=0; i<data.length; i++) { %>
+          <tr>
+            <td><a style="color: blue;" href="/admin/special_service/<%= data[i].ss_id %>"><%= data[i].name %></a>
+            </td>
+            <td><%= data[i].speciality %>
+            </td>
+            <td><%= data[i].email %></td>
+            <td> <input type="text" id="input-<%= data[i]._id %>" value="<%= data[i].priority %>"> <button class="approve-btn"
+                id="<%= data[i]._id %>">Set</button></td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.approve-btn').click((e) => {
+    const id = e.target.id
+    const priority = $(`#input-${id}`).val()
+    $.post(
+      '/admin/management/expert-priorities',
+      { id, priority },
+      res => {
+        if (res.success) {
+          $('#alert').show()
+          setTimeout(() => {
+              $('#alert').hide()
+          }, 3000);
+        }
+      }
+    )
+  })
+</script>
+
+</html>

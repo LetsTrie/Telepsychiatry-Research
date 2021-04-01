@@ -1,395 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    />
-    <link rel="stylesheet" href="/css/reg_exp_users.css" />
 
-    <title>Register | Expert User | Telepsychiatry Research</title>
-  </head>
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" href="/css/reg_exp_users.css" />
 
-  <body>
-    <% let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
+  <title>Register | Expert User | Telepsychiatry Research</title>
+</head>
+
+<body>
+  <% let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
     'Thursday', 'Friday'] %> <% const yr = (new Date(Date.now())).getFullYear();
     %>
-    <section class="admin_addDoctor_wrapper" style="background-color: #ebebeb;">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="blueDivider">
-        <div class="smallText">
-          <p><a href="#">Authentication</a> / Register</p>
-        </div>
-        <div class="bigText">
-          <p>Expert User Registration</p>
-        </div>
+  <section class="admin_addDoctor_wrapper" style="background-color: #ebebeb;">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="blueDivider">
+      <div class="smallText">
+        <p><a href="#">Authentication</a> / Register</p>
       </div>
-      <div class="doMagicWrapper">
-        <div class="doMagic">
-          <div class="createResources addDoctor pb-5">
-            <form
-              action="/auth/register/new/exp/file"
-              method="POST"
-              enctype="multipart/form-data"
-              id="DocRegform"
-            >
-              <input type="hidden" name="filename" id="filename" />
-              <div class="container">
-                <div id="alert" class="alert alert-danger"></div>
-                <% if (errorMessage != '') { %>
-                <div id="alert" class="alert alert-danger">
-                  <%= errorMessage %>
+      <div class="bigText">
+        <p>Expert User Registration</p>
+      </div>
+    </div>
+    <div class="doMagicWrapper">
+      <div class="doMagic">
+        <div class="createResources addDoctor pb-5">
+          <form action="/auth/register/new/exp/file" method="POST" enctype="multipart/form-data" id="DocRegform">
+            <input type="hidden" name="filename" id="filename" />
+            <div class="container">
+              <div id="alert" class="alert alert-danger"></div>
+              <% if (errorMessage != '') { %>
+              <div id="alert" class="alert alert-danger">
+                <%= errorMessage %>
+              </div>
+              <% } %>
+              <div class="header addDoctor__header">
+                <p id="submitResources">Register Expert User</p>
+              </div>
+              <div class="input_boxes">
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>First name <span style="color: red;">*</span></p>
+                      </div>
+                      <input type="text" name="fname" placeholder="First name" class="fname" id="fname" />
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Last name <span style="color: red;">*</span></p>
+                      </div>
+                      <input type="text" name="lname" placeholder="Last name" class="lname" id="lname" />
+                    </div>
+                  </div>
                 </div>
-                <% } %>
-                <div class="header addDoctor__header">
-                  <p id="submitResources">Register Expert User</p>
+
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Gender <span style="color: red;">*</span></p>
+                      </div>
+                      <div class="input_box slct_picker">
+                        <div class="form-selectpicker">
+                          <select id="genderInput" class="selectpicker" data-width="100%" title="Gender" data-size="6"
+                            name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female"> Female </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Email <span style="color: red;">*</span></p>
+                      </div>
+                      <input name="email" type="email" placeholder="Email" class="email" id="email" />
+                    </div>
+                  </div>
                 </div>
-                <div class="input_boxes">
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>First name <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          type="text"
-                          name="fname"
-                          placeholder="First name"
-                          class="fname"
-                          id="fname"
-                        />
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Last name <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          type="text"
-                          name="lname"
-                          placeholder="Last name"
-                          class="lname"
-                          id="lname"
-                        />
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Gender <span style="color: red;">*</span></p>
-                        </div>
-                        <div class="input_box slct_picker">
-                          <div class="form-selectpicker">
-                            <select
-                              id="genderInput"
-                              class="selectpicker"
-                              data-width="100%"
-                              title="Gender"
-                              data-size="6"
-                              name="gender"
-                            >
-                              <option value="Male">Male</option>
-                              <option value="Female"> Female </option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Email <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          name="email"
-                          type="email"
-                          placeholder="Email"
-                          class="email"
-                          id="email"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>
-                            Date of birth <span style="color: red;">*</span>
-                          </p>
-                        </div>
-                        <input
-                          name="dob"
-                          type="text"
-                          placeholder="Date of Birth"
-                          class="dob"
-                          id="dob"
-                          autocomplete="off"
-                        />
-                      </div>
-
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Phone number <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          name="phone"
-                          type="text"
-                          placeholder="Phone Number"
-                          class="phone"
-                          id="phone"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Password <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          name="password"
-                          type="password"
-                          placeholder="Password"
-                          class="password"
-                          id="password"
-                        />
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>
-                            Confirm Password <span style="color: red;">*</span>
-                          </p>
-                        </div>
-                        <input
-                          name="cpassword"
-                          type="password"
-                          placeholder="Confirm Password"
-                          class="cpassword"
-                          id="cpassword"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Country <span style="color: red;">*</span></p>
-                        </div>
-                        <div class="input_box slct_picker">
-                          <div class="form-selectpicker">
-                            <select
-                              class="selectpicker"
-                              data-width="100%"
-                              title="Select Country"
-                              name="country"
-                              id="countryInput"
-                              data-size="6"
-                            >
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>City <span style="color: red;">*</span></p>
-                        </div>
-                        <div class="input_box slct_picker">
-                          <div class="form-selectpicker">
-                            <select
-                              class="selectpicker"
-                              data-width="100%"
-                              title="Select City"
-                              name="city"
-                              id="cityInput"
-                              data-size="6"
-                            >
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>License / Registration No.</p>
-                        </div>
-                        <input
-                          name="regno"
-                          type="text"
-                          placeholder="License / Registration No."
-                          class="regno"
-                          id="regno"
-                        />
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>
-                            Display Picture <span style="color: red;">*</span>
-                          </p>
-                        </div>
-                        <div class="input_box imageFile">
-                          <input
-                            type="file"
-                            id="exp_user_propic"
-                            name="exp_user_propic"
-                            accept="image/x-png,image/jpg,image/jpeg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="two_box_header form-header">
-                      <p>About Yourself</p>
-                    </div>
-                    <textarea
-                      name="aboutYourself"
-                      placeholder="Write about yourself"
-                      id="about_me"
-                      cols="30"
-                      rows="5"
-                      class="about_me"
-                    ></textarea>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Designation <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          name="designation"
-                          type="text"
-                          placeholder="Designation"
-                          class="designation"
-                          id="designation"
-                        />
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>
-                            Current Affiliation
-                            <span style="color: red;">*</span>
-                          </p>
-                        </div>
-                        <input
-                          name="affiliation"
-                          type="text"
-                          placeholder="Current Affiliation"
-                          class="affiliation"
-                          id="affiliation"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="two_box_one flex-child">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Key Research Area</p>
-                        </div>
-                        <input
-                          name="researchArea"
-                          type="text"
-                          placeholder="Key Research Area"
-                          class="research-area"
-                          id="research-area"
-                        />
-                      </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>
-                            Expertise Area <span style="color: red;">*</span>
-                          </p>
-                        </div>
-                        <input
-                          name="expertise"
-                          type="text"
-                          placeholder="Expert Area"
-                          class="expertise"
-                          id="expertise"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- ** EDUCATION ** -->
-                  <div class="two_box_one flex-child">
-                    <div class="" id="education-section">
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
                       <div class="two_box_header form-header">
                         <p>
-                          Education <span style="color: red;">*</span>
-                          <span class="littleText"
-                            >(Give your highest achieved degree details in first
-                            row. It will be highlighted in your profile)</span
-                          >
+                          Date of birth <span style="color: red;">*</span>
                         </p>
                       </div>
-                      <div id="all_edu_inputs">
-                        <div class="education_input">
-                          <div class="arrow_sign">
-                            <i class="fa fa-arrow-right"></i>
+                      <input name="dob" type="text" placeholder="Date of Birth" class="dob" id="dob"
+                        autocomplete="off" />
+                    </div>
+
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Phone number <span style="color: red;">*</span></p>
+                      </div>
+                      <input name="phone" type="text" placeholder="Phone Number" class="phone" id="phone" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Password <span style="color: red;">*</span></p>
+                      </div>
+                      <input name="password" type="password" placeholder="Password" class="password" id="password" />
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>
+                          Confirm Password <span style="color: red;">*</span>
+                        </p>
+                      </div>
+                      <input name="cpassword" type="password" placeholder="Confirm Password" class="cpassword"
+                        id="cpassword" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Country <span style="color: red;">*</span></p>
+                      </div>
+                      <div class="input_box slct_picker">
+                        <div class="form-selectpicker">
+                          <select class="selectpicker" data-width="100%" title="Select Country" name="country"
+                            id="countryInput" data-size="6">
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>City <span style="color: red;">*</span></p>
+                      </div>
+                      <div class="input_box slct_picker">
+                        <div class="form-selectpicker">
+                          <select class="selectpicker" data-width="100%" title="Select City" name="city" id="cityInput"
+                            data-size="6">
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>License / Registration No.</p>
+                      </div>
+                      <input name="regno" type="text" placeholder="License / Registration No." class="regno"
+                        id="regno" />
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>
+                          Display Picture <span style="color: red;">*</span>
+                        </p>
+                      </div>
+                      <div class="input_box imageFile">
+                        <input type="file" id="exp_user_propic" name="exp_user_propic"
+                          accept="image/x-png,image/jpg,image/jpeg" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="two_box_one flex-child">
+                  <div class="two_box_header form-header">
+                    <p>About Yourself</p>
+                  </div>
+                  <textarea name="aboutYourself" placeholder="Write about yourself" id="about_me" cols="30" rows="5"
+                    class="about_me"></textarea>
+                </div>
+
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Designation <span style="color: red;">*</span></p>
+                      </div>
+                      <input name="designation" type="text" placeholder="Designation" class="designation"
+                        id="designation" />
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>
+                          Current Affiliation
+                          <span style="color: red;">*</span>
+                        </p>
+                      </div>
+                      <input name="affiliation" type="text" placeholder="Current Affiliation" class="affiliation"
+                        id="affiliation" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="two_box_one flex-child">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Key Research Area</p>
+                      </div>
+                      <input name="researchArea" type="text" placeholder="Key Research Area" class="research-area"
+                        id="research-area" />
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>
+                          Expertise Area <span style="color: red;">*</span>
+                        </p>
+                      </div>
+                      <input name="expertise" type="text" placeholder="Expert Area" class="expertise" id="expertise" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ** EDUCATION ** -->
+                <div class="two_box_one flex-child">
+                  <div class="" id="education-section">
+                    <div class="two_box_header form-header">
+                      <p>
+                        Education <span style="color: red;">*</span>
+                        <span class="littleText">(Give your highest achieved degree details in first
+                          row. It will be highlighted in your profile)</span>
+                      </p>
+                    </div>
+                    <div id="all_edu_inputs">
+                      <div class="education_input">
+                        <div class="arrow_sign">
+                          <i class="fa fa-arrow-right"></i>
+                        </div>
+                        <div class="edu_in">
+                          <input type="text" name="eduInstitute" placeholder="Institute" id="institute"
+                            class="institute" />
+                        </div>
+                        <div class="edu_in">
+                          <input type="text" name="degree" placeholder="Degree (Highest achieved)" id="degree"
+                            class="degree" />
+                        </div>
+                        <div class="edu_in">
+                          <input type="text" name="subject" placeholder="Subject/Field" id="edu_subject"
+                            class="subject" />
+                        </div>
+                        <div class="edu_in">
+                          <div class="input_box slct_picker">
+                            <div class="form-selectpicker">
+                              <select id="eduTo" class="selectpicker year-selector" data-width="100%"
+                                title="Passing year" data-size="6" name="eduTo">
+                                <% for (let i= yr; i >= 1950; i--) { %>
+                                <option value="<%= i %>"><%= i %></option>
+                                <% } %>
+                              </select>
+                            </div>
                           </div>
-                          <div class="edu_in">
-                            <input
-                              type="text"
-                              name="eduInstitute"
-                              placeholder="Institute"
-                              id="institute"
-                              class="institute"
-                            />
+                        </div>
+                        <div class="delete-btn">
+                          <div class="delete delete-edu-class" type="button" id="delete-edu">
+                            <i class="fa fa-minus"></i>
                           </div>
-                          <div class="edu_in">
-                            <input
-                              type="text"
-                              name="degree"
-                              placeholder="Degree (Highest achieved)"
-                              id="degree"
-                              class="degree"
-                            />
-                          </div>
-                          <div class="edu_in">
-                            <input
-                              type="text"
-                              name="subject"
-                              placeholder="Subject/Field"
-                              id="edu_subject"
-                              class="subject"
-                            />
-                          </div>
-                          <div class="edu_in">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="add-edu-field" class="add-edu-field-class">
+                    <i class="fa fa-plus plus"></i>Add Field
+                  </div>
+                </div>
+
+                <!-- ** PROFESSIONAL TRAINING ** -->
+                <div class="two_box_one skill flex-child">
+                  <div class="" id="training-section">
+                    <div class="two_box_header form-header">
+                      <p>Professional Training</p>
+                    </div>
+                    <div id="all_training_inputs">
+                      <div class="training_input">
+                        <div class="arrow_sign">
+                          <i class="fa fa-arrow-right" style="margin-right: 20px;"></i>
+                        </div>
+                        <div class="training_in">
+                          <div class="same_row_inputs">
+                            <div class="input_box">
+                              <input type="text" placeholder="Name of Training" name="trainingName" id="training-name"
+                                class="training-name" />
+                            </div>
                             <div class="input_box slct_picker">
                               <div class="form-selectpicker">
-                                <select
-                                  id="eduTo"
-                                  class="selectpicker year-selector"
-                                  data-width="100%"
-                                  title="Passing year"
-                                  data-size="6"
-                                  name="eduTo"
-                                >
+                                <select id="trainingFrom" class="selectpicker year-selector" data-width="100%"
+                                  title="Training Year" data-size="6" name="trainingYear">
                                   <% for (let i= yr; i >= 1950; i--) { %>
                                   <option value="<%= i %>"><%= i %></option>
                                   <% } %>
@@ -397,531 +308,361 @@
                               </div>
                             </div>
                           </div>
-                          <div class="delete-btn">
-                            <div
-                              class="delete delete-edu-class"
-                              type="button"
-                              id="delete-edu"
-                            >
-                              <i class="fa fa-minus"></i>
-                            </div>
-                          </div>
+                          <textarea name="trainingDetails" placeholder="Tell us about your professional training"
+                            id="training-details" cols="30" rows="5" class="more_on_workplace"></textarea>
                         </div>
-                      </div>
-                    </div>
-                    <div id="add-edu-field" class="add-edu-field-class">
-                      <i class="fa fa-plus plus"></i>Add Field
-                    </div>
-                  </div>
-
-                  <!-- ** PROFESSIONAL TRAINING ** -->
-                  <div class="two_box_one skill flex-child">
-                    <div class="" id="training-section">
-                      <div class="two_box_header form-header">
-                        <p>Professional Training</p>
-                      </div>
-                      <div id="all_training_inputs">
-                        <div class="training_input">
-                          <div class="arrow_sign">
-                            <i
-                              class="fa fa-arrow-right"
-                              style="margin-right: 20px;"
-                            ></i>
-                          </div>
-                          <div class="training_in">
-                            <div class="same_row_inputs">
-                              <div class="input_box">
-                                <input
-                                  type="text"
-                                  placeholder="Name of Training"
-                                  name="trainingName"
-                                  id="training-name"
-                                  class="training-name"
-                                />
-                              </div>
-                              <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                  <select
-                                    id="trainingFrom"
-                                    class="selectpicker year-selector"
-                                    data-width="100%"
-                                    title="Training Year"
-                                    data-size="6"
-                                    name="trainingYear"
-                                  >
-                                    <% for (let i= yr; i >= 1950; i--) { %>
-                                    <option value="<%= i %>"><%= i %></option>
-                                    <% } %>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <textarea
-                              name="trainingDetails"
-                              placeholder="Tell us about your professional training"
-                              id="training-details"
-                              cols="30"
-                              rows="5"
-                              class="more_on_workplace"
-                            ></textarea>
-                          </div>
-                          <div class="delete-btn">
-                            <div
-                              class="delete delete-training-class"
-                              id="delete-training"
-                            >
-                              <i class="fa fa-minus"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="add-training-field" class="add-training-field">
-                      <i class="fa fa-plus plus"></i>Add Field
-                    </div>
-                  </div>
-
-                  <!-- ** WORK AND EXPERIENCE ** -->
-                  <div class="two_box_one flex-child mt-3 pt-2">
-                    <div class="two_box_header form-header">
-                      <p>Works and Experience</p>
-                    </div>
-                    <div class="" id="exp-section">
-                      <div class="exp_input">
-                        <div class="arrow_sign">
-                          <i class="fa fa-arrow-right"></i>
-                        </div>
-                        <div class="exp_in">
-                          <input
-                            type="text"
-                            name="expInstitute"
-                            placeholder="Work Place"
-                            id="exp-institute"
-                            class="exp-institute"
-                          />
-                        </div>
-                        <div class="exp_in">
-                          <div class="input_box slct_picker">
-                            <div class="form-selectpicker">
-                              <select
-                                id="expFrom"
-                                class="selectpicker year-selector"
-                                data-width="100%"
-                                title="Year: From"
-                                data-size="6"
-                                name="expFrom"
-                              >
-                                <% for (let i= yr; i >= 1950; i--) { %>
-                                <option value="<%= i %>"><%= i %></option>
-                                <% } %>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="exp_in">
-                          <div class="input_box slct_picker">
-                            <div class="form-selectpicker">
-                              <select
-                                id="expTo"
-                                class="selectpicker year-selector"
-                                data-width="100%"
-                                title="Year: To"
-                                data-size="6"
-                                name="expTo"
-                              >
-                                <% for (let i= yr; i >= 1950; i--) { %>
-                                <option value="<%= i %>"><%= i %></option>
-                                <% } %>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
                         <div class="delete-btn">
-                          <div class="delete delete-exp-class" id="delete-exp">
+                          <div class="delete delete-training-class" id="delete-training">
                             <i class="fa fa-minus"></i>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="add-exp-field" class="add-exp-field">
-                      <i class="fa fa-plus plus"></i>Add Field
-                    </div>
                   </div>
-
-                  <!-- ** AWARDS AND HONORS ** -->
-                  <div class="two_box_one skill flex-child">
-                    <div class="" id="awards-section">
-                      <div class="two_box_header form-header">
-                        <p>Awards and Honors</p>
-                      </div>
-                      <div id="all_awards">
-                        <div class="awards_input">
-                          <div class="arrow_sign">
-                            <i
-                              class="fa fa-arrow-right"
-                              style="margin-right: 20px;"
-                            ></i>
-                          </div>
-                          <div class="awards_in">
-                            <div class="same_row_inputs">
-                              <div class="input_box">
-                                <input
-                                  type="text"
-                                  placeholder="Name of the award"
-                                  id="awardsName"
-                                  class="award-name"
-                                />
-                              </div>
-                              <div class="input_box slct_picker">
-                                <div class="form-selectpicker">
-                                  <select
-                                    id="award-year"
-                                    class="selectpicker year-selector"
-                                    data-width="100%"
-                                    title="Achievement Year"
-                                    data-size="6"
-                                    name="awardsYear"
-                                  >
-                                    <% for (let i= yr; i >= 1950; i--) { %>
-                                    <option value="<%= i %>"><%= i %></option>
-                                    <% } %>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <textarea
-                              name="awardsDetails"
-                              placeholder="Tell us about your award"
-                              id="award-details"
-                              cols="30"
-                              rows="5"
-                              class="award-details"
-                            ></textarea>
-                          </div>
-                          <div class="delete-btn">
-                            <div
-                              class="delete delete-awards-class"
-                              type="button"
-                              id="delete-awards"
-                            >
-                              <i class="fa fa-minus"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="add-awards-field" class="add-awards-field">
-                      <i class="fa fa-plus plus"></i> Add Field
-                    </div>
+                  <div id="add-training-field" class="add-training-field">
+                    <i class="fa fa-plus plus"></i>Add Field
                   </div>
+                </div>
 
-                  <!-- ** CHAMBER DETAILS ** -->
-                  <div class="two_box_one flex-child pt-2">
-                    <div class="two_box_header form-header">
-                      <p>Visiting Hours Details</p>
-                    </div>
-                    <div class="chambers">
-                      <div class="oneChamber">
-                        <div class="arrow_sign">
-                          <i class="fa fa-arrow-right"></i>
-                        </div>
-                        <div class="chamberInfo">
-                          <div class="nameAddress">
-                            <div class="free-input">
-                              <input
-                                type="text"
-                                placeholder="Name of the chamber"
-                                name="chamberName"
-                                class="chamberName"
-                              />
-                            </div>
-                            <div class="free-input">
-                              <input
-                                type="text"
-                                placeholder="Address of the chamber"
-                                name="chamberAddress"
-                                class="chamberAddress"
-                              />
-                            </div>
-                            <div
-                              class="delete-btn delete-vh-chamber-class-wrapper"
-                            >
-                              <div
-                                class="delete delete-vh-chamber-class"
-                                id="delete-vh-chamber"
-                              >
-                                <i class="fa fa-minus"></i>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="dayTime">
-                            <div class="allRowsDayTime">
-                              <div class="DayTimeFlexParent">
-                                <div class="free-input">
-                                  <div class="input_box slct_picker">
-                                    <div class="form-selectpicker">
-                                      <select
-                                        class="vh-selector selectpicker year-selector"
-                                        data-width="100%"
-                                        title="Day: From"
-                                        id="vhFrom"
-                                        data-size="6"
-                                        name="dayFrom"
-                                      >
-                                        <% for (let i=0; i < 7; i++) { %>
-                                        <option value="<%=days[i] %>">
-                                          <%= days[i] %>
-                                        </option>
-                                        <% } %>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="free-input">
-                                  <div class="input_box slct_picker">
-                                    <div class="form-selectpicker">
-                                      <select
-                                        class="vh-selector selectpicker year-selector"
-                                        data-width="100%"
-                                        title="Day: To"
-                                        id="vhFrom"
-                                        data-size="6"
-                                        name="dayTo"
-                                      >
-                                        <% for (let i=0; i < 7; i++) { %>
-                                        <option value="<%=days[i] %>">
-                                          <%= days[i] %>
-                                        </option>
-                                        <% } %>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="free-input">
-                                  <div class="input_box slct_picker">
-                                    <div class="form-selectpicker">
-                                      <select
-                                        class="vh-selector selectpicker"
-                                        data-width="100%"
-                                        title="Time: From"
-                                        id="vhFrom"
-                                        data-size="6"
-                                        name="timeFrom"
-                                      >
-                                        <% for (let i=6; i<=11; i++) { %>
-                                        <option value="<%=i %>:00 AM">
-                                          <%= i %>:00 AM
-                                        </option>
-                                        <% } %>
-                                        <option value="12:00 PM">
-                                          12:00 PM
-                                        </option>
-                                        <% for (let i=1; i<=11; i++) { %>
-                                        <option value="<%= i %>:00 PM">
-                                          <%= i %>:00 PM</option
-                                        >
-                                        <% } %>
-                                        <option value="12:00 AM">
-                                          12:00 AM
-                                        </option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="free-input">
-                                  <div class="input_box slct_picker">
-                                    <div class="form-selectpicker">
-                                      <select
-                                        class="vh-selector selectpicker"
-                                        data-width="100%"
-                                        title="Time: To"
-                                        id="vhFrom"
-                                        name="timeTo"
-                                        data-size="6"
-                                      >
-                                        <% for (let i=6; i<=11; i++) { %>
-                                        <option value="<%=i %>:00 AM">
-                                          <%= i %>:00 AM
-                                        </option>
-                                        <% } %>
-                                        <option value="12:00 PM">
-                                          12:00 PM
-                                        </option>
-                                        <% for (let i=1; i<=11; i++) { %>
-                                        <option value="<%= i %>:00 PM">
-                                          <%= i %>:00 PM</option
-                                        >
-                                        <% } %>
-                                        <option value="12:00 AM">
-                                          12:00 AM
-                                        </option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="delete-btn">
-                                  <div
-                                    class="delete delete-vh-shift-class"
-                                    id="delete-vh-shift"
-                                  >
-                                    <i class="fa fa-minus"></i>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div id="add-vh-shift" class="add-vh-shift">
-                              <i class="fa fa-plus plus"></i>Add Shifts
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="add-vh-chamber" class="add-vh-chamber">
-                      <i class="fa fa-plus plus"></i>Add Chambers
-                    </div>
+                <!-- ** WORK AND EXPERIENCE ** -->
+                <div class="two_box_one flex-child mt-3 pt-2">
+                  <div class="two_box_header form-header">
+                    <p>Works and Experience</p>
                   </div>
-
-                  <!-- ** VISITING FEE ** SPECIALITY ** -->
-                  <div class="two_box_one flex-child pt-2">
-                    <div class="side_by_side">
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Fee <span style="color: red;">*</span></p>
-                        </div>
-                        <input
-                          name="fee"
-                          type="text"
-                          placeholder="Visiting Fee"
-                          class="visitingFee"
-                          id="visitingFee"
-                        />
+                  <div class="" id="exp-section">
+                    <div class="exp_input">
+                      <div class="arrow_sign">
+                        <i class="fa fa-arrow-right"></i>
                       </div>
-                      <div class="input_div">
-                        <div class="two_box_header form-header">
-                          <p>Speciality <span style="color: red;">*</span></p>
-                        </div>
+                      <div class="exp_in">
+                        <input type="text" name="expInstitute" placeholder="Work Place" id="exp-institute"
+                          class="exp-institute" />
+                      </div>
+                      <div class="exp_in">
                         <div class="input_box slct_picker">
                           <div class="form-selectpicker">
-                            <select
-                              id="speciality"
-                              class="selectpicker"
-                              data-width="100%"
-                              title="Speciality"
-                              data-size="6"
-                              name="speciality"
-                            >
-                              <option value="Psychiatric Consultation">
-                                Psychiatric Consultation</option
-                              >
-                              <option value="Psycho Therapy & Counselling">
-                                Psychotherapy & Counselling
-                              </option>
-                              <option value="Researcher">
-                                Researcher
-                              </option>
+                            <select id="expFrom" class="selectpicker year-selector" data-width="100%" title="Year: From"
+                              data-size="6" name="expFrom">
+                              <% for (let i= yr; i >= 1950; i--) { %>
+                              <option value="<%= i %>"><%= i %></option>
+                              <% } %>
                             </select>
                           </div>
                         </div>
                       </div>
+                      <div class="exp_in">
+                        <div class="input_box slct_picker">
+                          <div class="form-selectpicker">
+                            <select id="expTo" class="selectpicker year-selector" data-width="100%" title="Year: To"
+                              data-size="6" name="expTo">
+                              <% for (let i= yr; i >= 1950; i--) { %>
+                              <option value="<%= i %>"><%= i %></option>
+                              <% } %>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="delete-btn">
+                        <div class="delete delete-exp-class" id="delete-exp">
+                          <i class="fa fa-minus"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="add-exp-field" class="add-exp-field">
+                    <i class="fa fa-plus plus"></i>Add Field
+                  </div>
+                </div>
+
+                <!-- ** AWARDS AND HONORS ** -->
+                <div class="two_box_one skill flex-child">
+                  <div class="" id="awards-section">
+                    <div class="two_box_header form-header">
+                      <p>Awards and Honors</p>
+                    </div>
+                    <div id="all_awards">
+                      <div class="awards_input">
+                        <div class="arrow_sign">
+                          <i class="fa fa-arrow-right" style="margin-right: 20px;"></i>
+                        </div>
+                        <div class="awards_in">
+                          <div class="same_row_inputs">
+                            <div class="input_box">
+                              <input type="text" placeholder="Name of the award" id="awardsName" class="award-name" />
+                            </div>
+                            <div class="input_box slct_picker">
+                              <div class="form-selectpicker">
+                                <select id="award-year" class="selectpicker year-selector" data-width="100%"
+                                  title="Achievement Year" data-size="6" name="awardsYear">
+                                  <% for (let i= yr; i >= 1950; i--) { %>
+                                  <option value="<%= i %>"><%= i %></option>
+                                  <% } %>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <textarea name="awardsDetails" placeholder="Tell us about your award" id="award-details"
+                            cols="30" rows="5" class="award-details"></textarea>
+                        </div>
+                        <div class="delete-btn">
+                          <div class="delete delete-awards-class" type="button" id="delete-awards">
+                            <i class="fa fa-minus"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="add-awards-field" class="add-awards-field">
+                    <i class="fa fa-plus plus"></i> Add Field
+                  </div>
+                </div>
+
+                <!-- ** CHAMBER DETAILS ** -->
+                <div class="two_box_one flex-child pt-2">
+                  <div class="two_box_header form-header">
+                    <p>Visiting Hours Details</p>
+                  </div>
+                  <div class="chambers">
+                    <div class="oneChamber">
+                      <div class="arrow_sign">
+                        <i class="fa fa-arrow-right"></i>
+                      </div>
+                      <div class="chamberInfo">
+                        <div class="nameAddress">
+                          <div class="free-input">
+                            <input type="text" placeholder="Name of the chamber" name="chamberName"
+                              class="chamberName" />
+                          </div>
+                          <div class="free-input">
+                            <input type="text" placeholder="Address of the chamber" name="chamberAddress"
+                              class="chamberAddress" />
+                          </div>
+                          <div class="delete-btn delete-vh-chamber-class-wrapper">
+                            <div class="delete delete-vh-chamber-class" id="delete-vh-chamber">
+                              <i class="fa fa-minus"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dayTime">
+                          <div class="allRowsDayTime">
+                            <div class="DayTimeFlexParent">
+                              <div class="free-input">
+                                <div class="input_box slct_picker">
+                                  <div class="form-selectpicker">
+                                    <select class="vh-selector selectpicker year-selector" data-width="100%"
+                                      title="Day: From" id="vhFrom" data-size="6" name="dayFrom">
+                                      <% for (let i=0; i < 7; i++) { %>
+                                      <option value="<%=days[i] %>">
+                                        <%= days[i] %>
+                                      </option>
+                                      <% } %>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="free-input">
+                                <div class="input_box slct_picker">
+                                  <div class="form-selectpicker">
+                                    <select class="vh-selector selectpicker year-selector" data-width="100%"
+                                      title="Day: To" id="vhFrom" data-size="6" name="dayTo">
+                                      <% for (let i=0; i < 7; i++) { %>
+                                      <option value="<%=days[i] %>">
+                                        <%= days[i] %>
+                                      </option>
+                                      <% } %>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="free-input">
+                                <div class="input_box slct_picker">
+                                  <div class="form-selectpicker">
+                                    <select class="vh-selector selectpicker" data-width="100%" title="Time: From"
+                                      id="vhFrom" data-size="6" name="timeFrom">
+                                      <% for (let i=6; i<=11; i++) { %>
+                                      <option value="<%=i %>:00 AM">
+                                        <%= i %>:00 AM
+                                      </option>
+                                      <% } %>
+                                      <option value="12:00 PM">
+                                        12:00 PM
+                                      </option>
+                                      <% for (let i=1; i<=11; i++) { %>
+                                      <option value="<%= i %>:00 PM">
+                                        <%= i %>:00 PM</option>
+                                      <% } %>
+                                      <option value="12:00 AM">
+                                        12:00 AM
+                                      </option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="free-input">
+                                <div class="input_box slct_picker">
+                                  <div class="form-selectpicker">
+                                    <select class="vh-selector selectpicker" data-width="100%" title="Time: To"
+                                      id="vhFrom" name="timeTo" data-size="6">
+                                      <% for (let i=6; i<=11; i++) { %>
+                                      <option value="<%=i %>:00 AM">
+                                        <%= i %>:00 AM
+                                      </option>
+                                      <% } %>
+                                      <option value="12:00 PM">
+                                        12:00 PM
+                                      </option>
+                                      <% for (let i=1; i<=11; i++) { %>
+                                      <option value="<%= i %>:00 PM">
+                                        <%= i %>:00 PM</option>
+                                      <% } %>
+                                      <option value="12:00 AM">
+                                        12:00 AM
+                                      </option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="delete-btn">
+                                <div class="delete delete-vh-shift-class" id="delete-vh-shift">
+                                  <i class="fa fa-minus"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="add-vh-shift" class="add-vh-shift">
+                            <i class="fa fa-plus plus"></i>Add Shifts
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="add-vh-chamber" class="add-vh-chamber">
+                    <i class="fa fa-plus plus"></i>Add Chambers
+                  </div>
+                </div>
+
+                <!-- ** VISITING FEE ** SPECIALITY ** -->
+                <div class="two_box_one flex-child pt-2">
+                  <div class="side_by_side">
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Fee <span style="color: red;">*</span></p>
+                      </div>
+                      <input name="fee" type="text" placeholder="Visiting Fee" class="visitingFee" id="visitingFee" />
+                    </div>
+                    <div class="input_div">
+                      <div class="two_box_header form-header">
+                        <p>Speciality <span style="color: red;">*</span></p>
+                      </div>
+                      <div class="input_box slct_picker">
+                        <div class="form-selectpicker">
+                          <select id="speciality" class="selectpicker" data-width="100%" title="Speciality"
+                            data-size="6" name="speciality">
+                            <option value="Psychiatric Consultation">
+                              Psychiatric Consultation</option>
+                            <option value="Psycho Therapy & Counselling">
+                              Psychotherapy & Counselling
+                            </option>
+                            <option value="Researcher">
+                              Researcher
+                            </option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="addDoctor__submit">
-                  <button id="sub-btn" type="submit">Submit</button>
-                </div>
               </div>
-            </form>
-          </div>
+              <div class="addDoctor__submit">
+                <button id="sub-btn" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-  ></script>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-  <!-- ERROR SHOWING AND OTHER UTILS -->
-  <script>
-    function showAlert(msg) {
-      console.log(msg);
-      $('#alert').show();
-      $('#alert').html(msg);
-      $('html, body').animate({ scrollTop: 0 }, 'slow');
+<!-- ERROR SHOWING AND OTHER UTILS -->
+<script>
+  function showAlert(msg) {
+    console.log(msg);
+    $('#alert').show();
+    $('#alert').html(msg);
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+  }
+  const check = (data) => {
+    return data == '' || data == null || data == undefined;
+  };
+  const checkTimes = (from, to) => {
+    let a1 = from.split(':');
+    let a2 = to.split(':');
+    from = a1[0];
+    to = a2[0];
+    if (a1[1][3] == 'P') {
+      from = (parseInt(from) + 12).toString();
     }
-    const check = (data) => {
-      return data == '' || data == null || data == undefined;
-    };
-    const checkTimes = (from, to) => {
-      let a1 = from.split(':');
-      let a2 = to.split(':');
-      from = a1[0];
-      to = a2[0];
-      if (a1[1][3] == 'P') {
-        from = (parseInt(from) + 12).toString();
-      }
-      if (a2[1][3] == 'P') {
-        to = (parseInt(to) + 12).toString();
-      }
-      from = parseInt(from);
-      to = parseInt(to);
-      if (from > to) {
-        return true;
-      }
-      return false;
-    };
-    const checkYears = (from, to) => {
-      const res = parseInt(from) > parseInt(to);
-      return res;
-    };
-    function checkAllFields2(data1, data2) {
-      const ch1 = check(data1) ? 0 : 1;
-      const ch2 = check(data2) ? 0 : 1;
-      return ch1 + ch2;
+    if (a2[1][3] == 'P') {
+      to = (parseInt(to) + 12).toString();
     }
-    function checkAllFields3(data1, data2, data3) {
-      const ch1 = check(data1) ? 0 : 1;
-      const ch2 = check(data2) ? 0 : 1;
-      const ch3 = check(data3) ? 0 : 1;
-      console.log('sum : ', ch1 + ch2 + ch3);
-      return ch1 + ch2 + ch3;
+    from = parseInt(from);
+    to = parseInt(to);
+    if (from > to) {
+      return true;
     }
-    function checkAllFields4(data1, data2, data3, data4) {
-      const ch1 = check(data1) ? 0 : 1;
-      const ch2 = check(data2) ? 0 : 1;
-      const ch3 = check(data3) ? 0 : 1;
-      const ch4 = check(data4) ? 0 : 1;
-      return ch1 + ch2 + ch3 + ch4;
-    }
-    $('input[name="dob"]').daterangepicker({
-      autoUpdateInput: false,
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1930,
-      maxYear: parseInt(moment().format('YYYY'), 10),
-      locale: {
-        cancelLabel: 'Clear',
-      },
-    });
-    $('input[name="dob"]').on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(picker.startDate.format('DD/MM/YYYY'));
-    });
-    $('input[name="dob"]').on('cancel.daterangepicker', function (ev, picker) {
-      $(this).val('');
-    });
-  </script>
+    return false;
+  };
+  const checkYears = (from, to) => {
+    const res = parseInt(from) > parseInt(to);
+    return res;
+  };
+  function checkAllFields2(data1, data2) {
+    const ch1 = check(data1) ? 0 : 1;
+    const ch2 = check(data2) ? 0 : 1;
+    return ch1 + ch2;
+  }
+  function checkAllFields3(data1, data2, data3) {
+    const ch1 = check(data1) ? 0 : 1;
+    const ch2 = check(data2) ? 0 : 1;
+    const ch3 = check(data3) ? 0 : 1;
+    console.log('sum : ', ch1 + ch2 + ch3);
+    return ch1 + ch2 + ch3;
+  }
+  function checkAllFields4(data1, data2, data3, data4) {
+    const ch1 = check(data1) ? 0 : 1;
+    const ch2 = check(data2) ? 0 : 1;
+    const ch3 = check(data3) ? 0 : 1;
+    const ch4 = check(data4) ? 0 : 1;
+    return ch1 + ch2 + ch3 + ch4;
+  }
+  $('input[name="dob"]').daterangepicker({
+    autoUpdateInput: false,
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1930,
+    maxYear: parseInt(moment().format('YYYY'), 10),
+    locale: {
+      cancelLabel: 'Clear',
+    },
+  });
+  $('input[name="dob"]').on('apply.daterangepicker', function (ev, picker) {
+    $(this).val(picker.startDate.format('DD/MM/YYYY'));
+  });
+  $('input[name="dob"]').on('cancel.daterangepicker', function (ev, picker) {
+    $(this).val('');
+  });
+</script>
 
-  <!-- EDUCATION - ADD - DELETE -->
-  <script>
-    $(document).on('click', '#add-edu-field', (e) => {
-      const edu_field = ` 
+<!-- EDUCATION - ADD - DELETE -->
+<script>
+  $(document).on('click', '#add-edu-field', (e) => {
+    const edu_field = ` 
       <div class="education_input">
         <div class="arrow_sign">
           <i class="fa fa-arrow-right"></i>
@@ -982,29 +723,29 @@
         </div>
       </div>
       `;
-      $('#all_edu_inputs').append(edu_field);
-      $('.additional').selectpicker('refresh');
-      $('.additional').css('width', '100%');
-    });
-    $(document).on('click', '.delete-edu-class', (e) => {
-      let fld = e.target;
-      while (true) {
-        let val = $(fld)[0].className;
-        if (val === 'education_input') break;
-        fld = fld.parentElement;
-      }
-      const numOfChildren = fld.parentElement.children.length;
-      if (numOfChildren > 1) {
-        $(fld).remove();
-      }
-    });
-  </script>
+    $('#all_edu_inputs').append(edu_field);
+    $('.additional').selectpicker('refresh');
+    $('.additional').css('width', '100%');
+  });
+  $(document).on('click', '.delete-edu-class', (e) => {
+    let fld = e.target;
+    while (true) {
+      let val = $(fld)[0].className;
+      if (val === 'education_input') break;
+      fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+      $(fld).remove();
+    }
+  });
+</script>
 
-  <!-- WORK AND EXPERIENCE - ADD - DELETE -->
-  <script>
-    $(document).on('click', '#add-exp-field', (e) => {
-      console.log('Hi');
-      const edu_field = `
+<!-- WORK AND EXPERIENCE - ADD - DELETE -->
+<script>
+  $(document).on('click', '#add-exp-field', (e) => {
+    console.log('Hi');
+    const edu_field = `
               <div class="exp_input">
                     <div class="arrow_sign">
                       <i class="fa fa-arrow-right"></i>
@@ -1061,31 +802,31 @@
                     </div>
                   </div>
             `;
-      $('#exp-section').append(edu_field);
-      $('.additional-select-field1').selectpicker('refresh');
-      $('.additional-select-field1').css('width', '100%');
-      $('.additional-select-field2').selectpicker('refresh');
-      $('.additional-select-field2').css('width', '100%');
-    });
-    $(document).on('click', '.delete-exp-class', (e) => {
-      let fld = e.target;
-      while (true) {
-        let val = $(fld)[0].className;
-        if (val === 'exp_input') break;
-        fld = fld.parentElement;
-      }
-      const numOfChildren = fld.parentElement.children.length;
-      if (numOfChildren > 1) {
-        $(fld).remove();
-      }
-    });
-  </script>
+    $('#exp-section').append(edu_field);
+    $('.additional-select-field1').selectpicker('refresh');
+    $('.additional-select-field1').css('width', '100%');
+    $('.additional-select-field2').selectpicker('refresh');
+    $('.additional-select-field2').css('width', '100%');
+  });
+  $(document).on('click', '.delete-exp-class', (e) => {
+    let fld = e.target;
+    while (true) {
+      let val = $(fld)[0].className;
+      if (val === 'exp_input') break;
+      fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+      $(fld).remove();
+    }
+  });
+</script>
 
-  <!-- PROFESSIONAL TRAINING - ADD - DELETE -->
-  <script>
-    $(document).on('click', '#add-training-field', (e) => {
-      console.log('Add training event in');
-      const trainingField = `
+<!-- PROFESSIONAL TRAINING - ADD - DELETE -->
+<script>
+  $(document).on('click', '#add-training-field', (e) => {
+    console.log('Add training event in');
+    const trainingField = `
             <div class="training_input">
               <div class="arrow_sign">
                 <i
@@ -1140,28 +881,28 @@
               </div>
             </div>
               `;
-      $('#all_training_inputs').append(trainingField);
-      $('.additional-select-field').selectpicker('refresh');
-      $('.additional-select-field').css('width', '100%');
-    });
-    $(document).on('click', '.delete-training-class', (e) => {
-      let fld = e.target;
-      while (true) {
-        let val = $(fld)[0].className;
-        if (val === 'training_input') break;
-        fld = fld.parentElement;
-      }
-      const numOfChildren = fld.parentElement.children.length;
-      if (numOfChildren > 1) {
-        $(fld).remove();
-      }
-    });
-  </script>
+    $('#all_training_inputs').append(trainingField);
+    $('.additional-select-field').selectpicker('refresh');
+    $('.additional-select-field').css('width', '100%');
+  });
+  $(document).on('click', '.delete-training-class', (e) => {
+    let fld = e.target;
+    while (true) {
+      let val = $(fld)[0].className;
+      if (val === 'training_input') break;
+      fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+      $(fld).remove();
+    }
+  });
+</script>
 
-  <!-- AWARDS AND HONORS - ADD - DELETE -->
-  <script>
-    $(document).on('click', '#add-awards-field', (e) => {
-      $('#all_awards').append(` 
+<!-- AWARDS AND HONORS - ADD - DELETE -->
+<script>
+  $(document).on('click', '#add-awards-field', (e) => {
+    $('#all_awards').append(` 
       <div class="awards_input">
         <div class="arrow_sign">
           <i
@@ -1214,26 +955,26 @@
           </div>
         </div>
       </div>`);
-      $('.additional-select-field').selectpicker('refresh');
-      $('.additional-select-field').css('width', '100%');
-    });
-    $(document).on('click', '.delete-awards-class', (e) => {
-      let fld = e.target;
-      while (true) {
-        let val = $(fld)[0].className;
-        if (val === 'awards_input') break;
-        fld = fld.parentElement;
-      }
-      const numOfChildren = fld.parentElement.children.length;
-      if (numOfChildren > 1) {
-        $(fld).remove();
-      }
-    });
-  </script>
+    $('.additional-select-field').selectpicker('refresh');
+    $('.additional-select-field').css('width', '100%');
+  });
+  $(document).on('click', '.delete-awards-class', (e) => {
+    let fld = e.target;
+    while (true) {
+      let val = $(fld)[0].className;
+      if (val === 'awards_input') break;
+      fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+      $(fld).remove();
+    }
+  });
+</script>
 
-  <script>
-    $(document).on('click', '#add-vh-chamber', (e) => {
-      const chamber = `
+<script>
+  $(document).on('click', '#add-vh-chamber', (e) => {
+    const chamber = `
                   <div class="oneChamber">
                     <div class="arrow_sign">
                       <i class="fa fa-arrow-right"></i>
@@ -1387,42 +1128,42 @@
                     </div>
                   </div>
       `;
-      $('.chambers').append(chamber);
-      $('.sp-1').selectpicker('refresh');
-      $('.sp-1').css('width', '100%');
-      $('.sp-2').selectpicker('refresh');
-      $('.sp-2').css('width', '100%');
-      $('.sp-3').selectpicker('refresh');
-      $('.sp-3').css('width', '100%');
-      $('.sp-4').selectpicker('refresh');
-      $('.sp-4').css('width', '100%');
-    });
-    $(document).on('click', '.delete-vh-chamber-class', (e) => {
-      let fld = e.target;
-      while (true) {
-        let val = $(fld)[0].className;
-        if (val === 'oneChamber') break;
-        fld = fld.parentElement;
-      }
-      const numOfChildren = fld.parentElement.children.length;
-      if (numOfChildren > 1) {
-        $(fld).remove();
-      }
-    });
-    $(document).on('click', '.delete-vh-shift-class', (e) => {
-      let fld = e.target;
-      while (true) {
-        let val = $(fld)[0].className;
-        if (val === 'DayTimeFlexParent') break;
-        fld = fld.parentElement;
-      }
-      const numOfChildren = fld.parentElement.children.length;
-      if (numOfChildren > 1) {
-        $(fld).remove();
-      }
-    });
-    $(document).on('click', '#add-vh-shift', (e) => {
-      const shift = `
+    $('.chambers').append(chamber);
+    $('.sp-1').selectpicker('refresh');
+    $('.sp-1').css('width', '100%');
+    $('.sp-2').selectpicker('refresh');
+    $('.sp-2').css('width', '100%');
+    $('.sp-3').selectpicker('refresh');
+    $('.sp-3').css('width', '100%');
+    $('.sp-4').selectpicker('refresh');
+    $('.sp-4').css('width', '100%');
+  });
+  $(document).on('click', '.delete-vh-chamber-class', (e) => {
+    let fld = e.target;
+    while (true) {
+      let val = $(fld)[0].className;
+      if (val === 'oneChamber') break;
+      fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+      $(fld).remove();
+    }
+  });
+  $(document).on('click', '.delete-vh-shift-class', (e) => {
+    let fld = e.target;
+    while (true) {
+      let val = $(fld)[0].className;
+      if (val === 'DayTimeFlexParent') break;
+      fld = fld.parentElement;
+    }
+    const numOfChildren = fld.parentElement.children.length;
+    if (numOfChildren > 1) {
+      $(fld).remove();
+    }
+  });
+  $(document).on('click', '#add-vh-shift', (e) => {
+    const shift = `
       <div class="DayTimeFlexParent">
         <div class="free-input">
           <div class="input_box slct_picker">
@@ -1535,340 +1276,340 @@
           </div>
         </div>
       </div>`;
-      $(e.target.parentElement.children[0]).append(shift);
-      $('.sp-1').selectpicker('refresh');
-      $('.sp-1').css('width', '100%');
-      $('.sp-2').selectpicker('refresh');
-      $('.sp-2').css('width', '100%');
-      $('.sp-3').selectpicker('refresh');
-      $('.sp-3').css('width', '100%');
-      $('.sp-4').selectpicker('refresh');
-      $('.sp-4').css('width', '100%');
-    });
-  </script>
+    $(e.target.parentElement.children[0]).append(shift);
+    $('.sp-1').selectpicker('refresh');
+    $('.sp-1').css('width', '100%');
+    $('.sp-2').selectpicker('refresh');
+    $('.sp-2').css('width', '100%');
+    $('.sp-3').selectpicker('refresh');
+    $('.sp-3').css('width', '100%');
+    $('.sp-4').selectpicker('refresh');
+    $('.sp-4').css('width', '100%');
+  });
+</script>
 
-  <script>
-    const submitBtn = $('.addDoctor__submit button');
-    submitBtn.prop('disabled', false);
-    submitBtn.text('Submit');
-  </script>
+<script>
+  const submitBtn = $('.addDoctor__submit button');
+  submitBtn.prop('disabled', false);
+  submitBtn.text('Submit');
+</script>
 
-  <!-- FORM SUBMIT -->
-  <script>
-    $('.addDoctor__submit').on('click', (e) => {
-      e.preventDefault();
-      console.log('Clicking submit button');
-      const fname = $('#fname').val();
-      const lname = $('#lname').val();
-      const gender = $('#genderInput').val();
-      const email = $('#email').val();
-      const dob = $('#dob').val();
-      const phone = $('#phone').val();
-      const password = $('#password').val();
-      const cPassword = $('#cpassword').val();
-      const country = $('#countryInput').val();
-      const city = $('#cityInput').val();
-      const regno = $('#regno').val();
-      const image = $('#exp_user_propic');
-      const about_me = $('#about_me').val();
-      const designation = $('#designation').val();
-      const affiliation = $('#affiliation').val();
-      const researchArea = $('#research-area').val();
-      const expertise = $('#expertise').val();
-      const speciality = $('#speciality').val();
-      const visitingFee = $('#visitingFee').val();
-      const workInstitutes = $('.exp_in input.exp-institute');
-      const workFrom = $('.exp_in select[name="expFrom"]');
-      const workTo = $('.exp_in select[name="expTo"]');
-      const eduInValue = $('.edu_in input');
-      const eduInSelect = $('.edu_in select');
-      const trainingNames = $('.training_in input.training-name');
-      const trainingYears = $('.training_in select[name="trainingYear"]');
-      const trainingDes = $('.training_in textarea');
-      const awardsNames = $('.awards_in input.award-name');
-      const awardsYears = $('.awards_in select[name="awardsYear"]');
-      const awardsDes = $('.awards_in textarea');
-      let education = getEducationData(eduInValue, eduInSelect);
-      let WorkNexp = getWorkNexpData(workInstitutes, workFrom, workTo);
-      let proTrain = getProTrainData(trainingNames, trainingYears, trainingDes);
-      let awardData = getAwardData(awardsNames, awardsYears, awardsDes);
-      let visitingTimes = getVisitingTimeData();
-      const dobRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
-      const phoneRegex = /^[0-9]*$/;
-      if (check(fname)) showAlert('"First name" is required');
-      else if (check(lname)) showAlert('"Last name" is required');
-      else if (check(gender)) showAlert('"Gender" is required');
-      else if (check(email)) showAlert('"Email" is required');
-      else {
-        $.ajax({
-          type: 'POST',
-          url: '/auth/register/eUserCheckDuplicate',
-          contentType: 'application/json',
-          data: JSON.stringify({ email, phone }),
-        }).done((res) => {
-          console.log(res);
-          if (res.message === 'EMAIL') showAlert('Email is already used!!');
-          else if (res.message === 'PHONE')
-            showAlert('Phone number is already used!!');
+<!-- FORM SUBMIT -->
+<script>
+  $('.addDoctor__submit').on('click', (e) => {
+    e.preventDefault();
+    console.log('Clicking submit button');
+    const fname = $('#fname').val();
+    const lname = $('#lname').val();
+    const gender = $('#genderInput').val();
+    const email = $('#email').val();
+    const dob = $('#dob').val();
+    const phone = $('#phone').val();
+    const password = $('#password').val();
+    const cPassword = $('#cpassword').val();
+    const country = $('#countryInput').val();
+    const city = $('#cityInput').val();
+    const regno = $('#regno').val();
+    const image = $('#exp_user_propic');
+    const about_me = $('#about_me').val();
+    const designation = $('#designation').val();
+    const affiliation = $('#affiliation').val();
+    const researchArea = $('#research-area').val();
+    const expertise = $('#expertise').val();
+    const speciality = $('#speciality').val();
+    const visitingFee = $('#visitingFee').val();
+    const workInstitutes = $('.exp_in input.exp-institute');
+    const workFrom = $('.exp_in select[name="expFrom"]');
+    const workTo = $('.exp_in select[name="expTo"]');
+    const eduInValue = $('.edu_in input');
+    const eduInSelect = $('.edu_in select');
+    const trainingNames = $('.training_in input.training-name');
+    const trainingYears = $('.training_in select[name="trainingYear"]');
+    const trainingDes = $('.training_in textarea');
+    const awardsNames = $('.awards_in input.award-name');
+    const awardsYears = $('.awards_in select[name="awardsYear"]');
+    const awardsDes = $('.awards_in textarea');
+    let education = getEducationData(eduInValue, eduInSelect);
+    let WorkNexp = getWorkNexpData(workInstitutes, workFrom, workTo);
+    let proTrain = getProTrainData(trainingNames, trainingYears, trainingDes);
+    let awardData = getAwardData(awardsNames, awardsYears, awardsDes);
+    let visitingTimes = getVisitingTimeData();
+    const dobRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+    const phoneRegex = /^[0-9]*$/;
+    if (check(fname)) showAlert('"First name" is required');
+    else if (check(lname)) showAlert('"Last name" is required');
+    else if (check(gender)) showAlert('"Gender" is required');
+    else if (check(email)) showAlert('"Email" is required');
+    else {
+      $.ajax({
+        type: 'POST',
+        url: '/auth/register/eUserCheckDuplicate',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, phone }),
+      }).done((res) => {
+        console.log(res);
+        if (res.message === 'EMAIL') showAlert('Email is already used!!');
+        else if (res.message === 'PHONE')
+          showAlert('Phone number is already used!!');
+        else {
+          if (check(dob)) showAlert('"Date of birth" is required');
+          else if (!dobRegex.test(dob))
+            showAlert('"Date of birth" is not valid');
+          else if (
+            check(phone) ||
+            !phoneRegex.test(phone) ||
+            phone.length !== 11
+          )
+            showAlert('"Phone number" must be 11 characters long');
+          else if (check(password)) showAlert('"Password" is required');
+          else if (password.length < 6)
+            showAlert('Password must contain at least 6 characters');
+          else if (check(cPassword))
+            showAlert('"Confirm password" is required');
+          else if (password !== cPassword)
+            showAlert('Passwords are not matching');
+          else if (check(country)) showAlert('"Country" is required');
+          else if (check(city)) showAlert('"City" is required');
+          else if (!image[0].files.length)
+            showAlert('Upload your display picture');
+          else if (
+            image[0].files.length &&
+            $('#exp_user_propic')[0].files[0].size / 1024 > 250
+          )
+            showAlert('"Display Picture" must be within 250KB');
+          else if (check(designation)) showAlert('"Designation" is required');
+          else if (check(affiliation))
+            showAlert('"Current Affiliation" is required');
+          else if (check(expertise))
+            showAlert('"Expertise Area" is required');
+          else if (check(visitingFee))
+            showAlert('"Visiting Fee" is required');
+          else if (check(speciality)) showAlert('"Speciality" is required');
+          else if (!phoneRegex.test(visitingFee))
+            showAlert('"Visiting Fee" must only contain numbers');
+          else if (education.errMsg) showAlert(education.errMsg);
+          else if (WorkNexp.errMsg) showAlert(WorkNexp.errMsg);
+          else if (visitingTimes.errMsg) showAlert(visitingTimes.errMsg);
           else {
-            if (check(dob)) showAlert('"Date of birth" is required');
-            else if (!dobRegex.test(dob))
-              showAlert('"Date of birth" is not valid');
-            else if (
-              check(phone) ||
-              !phoneRegex.test(phone) ||
-              phone.length !== 11
-            )
-              showAlert('"Phone number" must be 11 characters long');
-            else if (check(password)) showAlert('"Password" is required');
-            else if (password.length < 6)
-              showAlert('Password must contain at least 6 characters');
-            else if (check(cPassword))
-              showAlert('"Confirm password" is required');
-            else if (password !== cPassword)
-              showAlert('Passwords are not matching');
-            else if (check(country)) showAlert('"Country" is required');
-            else if (check(city)) showAlert('"City" is required');
-            else if (!image[0].files.length)
-              showAlert('Upload your display picture');
-            else if (
-              image[0].files.length &&
-              $('#exp_user_propic')[0].files[0].size / 1024 > 250
-            )
-              showAlert('"Display Picture" must be within 250KB');
-            else if (check(designation)) showAlert('"Designation" is required');
-            else if (check(affiliation))
-              showAlert('"Current Affiliation" is required');
-            else if (check(expertise))
-              showAlert('"Expertise Area" is required');
-            else if (check(visitingFee))
-              showAlert('"Visiting Fee" is required');
-            else if (check(speciality)) showAlert('"Speciality" is required');
-            else if (!phoneRegex.test(visitingFee))
-              showAlert('"Visiting Fee" must only contain numbers');
-            else if (education.errMsg) showAlert(education.errMsg);
-            else if (WorkNexp.errMsg) showAlert(WorkNexp.errMsg);
-            else if (visitingTimes.errMsg) showAlert(visitingTimes.errMsg);
-            else {
-              let nowInMilSec = Date.parse(new Date().toString());
-              let _propic =
-                nowInMilSec + '-' + $('#exp_user_propic')[0].files[0].name;
-              let formData = {
-                fname,
-                lname,
-                gender,
-                email,
-                dob,
-                phone,
-                password,
-                cPassword,
-                country,
-                city,
-                regno,
-                propicURL: _propic,
-                aboutYourself: about_me,
-                designation,
-                affiliation,
-                researchArea,
-                expertise,
-                education: JSON.stringify(education.eduArray),
-                training: JSON.stringify(proTrain),
-                workExperience: JSON.stringify(WorkNexp.workExpArray),
-                awards: JSON.stringify(awardData),
-                visitingHour: JSON.stringify(visitingTimes.vhArray),
-                fee: visitingFee,
-                speciality,
-              };
-              $('#filename').val(nowInMilSec);
-              console.log(formData);
-              submitBtn.text('Submitting...');
-              submitBtn.prop('disabled', true);
-              console.log('Ajax inserting');
-              console.log(formData);
-              $.ajax({
-                type: 'POST',
-                url: '/auth/register/new/exp/data',
-                data: formData,
-                success: (data) => {
-                  console.log('File Started');
-                  if (!data.status) {
-                    showAlert(data.message);
-                    submitBtn.text('Submit');
-                    submitBtn.prop('disabled', false);
-                  } else if (data.status) {
-                    $('#DocRegform').submit();
-                  }
-                },
-              });
-            }
-          }
-        });
-      }
-    });
-  </script>
-
-  <!-- FUNCTIONS -->
-  <script>
-    // 1. EDUCATION
-    function getEducationData(eduInValue, eduInSelect) {
-      const eduArray = [];
-      let error = false;
-      let errMsg = '';
-      console.log(eduInValue, eduInSelect);
-      for (let i = 0; i < eduInValue.length / 3; i++) {
-        const eduInstitute = eduInValue[3 * i + 0].value;
-        const degree = eduInValue[3 * i + 1].value;
-        const field = eduInValue[3 * i + 2].value;
-        const passingYear = eduInSelect[i + 0].value;
-        if (check(eduInstitute)) {
-          error = true;
-          errMsg = 'Provide Institute name in Eduction Section';
-        } else if (check(degree)) {
-          error = true;
-          errMsg = 'Provide Degree name in Eduction Section';
-        } else if (check(field)) {
-          error = true;
-          errMsg = 'Provide field name in Eduction Section';
-        } else if (check(passingYear)) {
-          error = true;
-          errMsg = 'Provide Passing Year in Education section';
-        }
-        if (error) return { errMsg, eduArray: null };
-        eduArray.push({ eduInstitute, degree, field, passingYear });
-      }
-      return { errMsg: null, eduArray };
-    }
-    // 2. WORK AND EXPERIENCE
-    function getWorkNexpData(workInstitutes, workFrom, workTo) {
-      let error = false;
-      let errMsg = '';
-      const workExpArray = [];
-      for (let i = 0; i < workInstitutes.length; i++) {
-        const expInstitute = workInstitutes[i].value;
-        const expFrom = workFrom[i].value;
-        const expTo = workTo[i].value;
-        const checking = checkAllFields3(expInstitute, expFrom, expTo);
-        // 0 => All fields are empty
-        // 3 => All fields are filled up
-        console.log(checking);
-        if (checking !== 0 && checking !== 3) {
-          return {
-            errMsg: 'Fillup the fields properly in "Work and experience"',
-            workExpArray: null,
-          };
-        }
-        if (!check(expFrom) && !check(expTo) && checkYears(expFrom, expTo)) {
-          return {
-            errMsg: 'Enter a valid range of years in "Work and experience"',
-            workExpArray: null,
-          };
-        }
-        if (checking === 3) workExpArray.push({ expInstitute, expFrom, expTo });
-      }
-      return { errMsg: null, workExpArray };
-    }
-    // 3. PROFESSIONAL TRAINING
-    function getProTrainData(trainingNames, trainingYears, trainingDes) {
-      let trainingArray = [];
-      for (let i = 0; i < trainingNames.length; i++) {
-        const trainingName = trainingNames[i].value;
-        const trainingYear = trainingYears[i].value;
-        const trainingDetails = trainingDes[i].value;
-        if (
-          check(trainingName) &&
-          check(trainingYear) &&
-          check(trainingDetails)
-        )
-          continue;
-        trainingArray.push({ trainingName, trainingYear, trainingDetails });
-      }
-      return trainingArray;
-    }
-    // 4. AWARDS AND HONORS
-    function getAwardData(awardsNames, awardsYears, awardsDes) {
-      let awardsArray = [];
-      for (let i = 0; i < awardsNames.length; i++) {
-        const awardsName = awardsNames[i].value;
-        const awardsYear = awardsYears[i].value;
-        const awardsDetails = awardsDes[i].value;
-        if (check(awardsName) && check(awardsYear) && check(awardsDetails))
-          continue;
-        awardsArray.push({ awardsName, awardsYear, awardsDetails });
-      }
-      return awardsArray;
-    }
-    // 5. CLINICAL INFORMATION
-    function getVisitingTimeData() {
-      const vhArray = [];
-      let error = false;
-      let errMsg = '';
-      let providedTime = false;
-      const chambers = $('.oneChamber');
-      for (let i = 0; i < chambers.length; i++) {
-        providedTime = false;
-        const chamberName = $(chambers[i]).find('.chamberName').val();
-        const chamberAddress = $(chambers[i]).find('.chamberAddress').val();
-        console.log(chamberName, chamberAddress);
-        shifts = [];
-        const shiftsArray = $(chambers[i]).find('.DayTimeFlexParent');
-        for (let j = 0; j < shiftsArray.length; j++) {
-          const dayFrom = $(shiftsArray[j])
-            .find('select[name="dayFrom"]')
-            .val();
-          const dayTo = $(shiftsArray[j]).find('select[name="dayTo"]').val();
-          const timeFrom = $(shiftsArray[j])
-            .find('select[name="timeFrom"]')
-            .val();
-          const timeTo = $(shiftsArray[j]).find('select[name="timeTo"]').val();
-          const checksum = checkAllFields4(dayFrom, dayTo, timeFrom, timeTo);
-          console.log(dayFrom, dayTo, timeFrom, check(timeTo));
-          if (checksum === 4) {
-            providedTime = true;
-          }
-          if (checksum === 4) {
-            shifts.push({ dayFrom, dayTo, timeFrom, timeTo });
-          } else if (checksum !== 0) {
-            return {
-              errMsg: 'Please provide correct time in "Visiting Hours Details"',
-              vhArray: null,
+            let nowInMilSec = Date.parse(new Date().toString());
+            let _propic =
+              nowInMilSec + '-' + $('#exp_user_propic')[0].files[0].name;
+            let formData = {
+              fname,
+              lname,
+              gender,
+              email,
+              dob,
+              phone,
+              password,
+              cPassword,
+              country,
+              city,
+              regno,
+              propicURL: _propic,
+              aboutYourself: about_me,
+              designation,
+              affiliation,
+              researchArea,
+              expertise,
+              education: JSON.stringify(education.eduArray),
+              training: JSON.stringify(proTrain),
+              workExperience: JSON.stringify(WorkNexp.workExpArray),
+              awards: JSON.stringify(awardData),
+              visitingHour: JSON.stringify(visitingTimes.vhArray),
+              fee: visitingFee,
+              speciality,
             };
+            $('#filename').val(_propic);
+            console.log(formData);
+            submitBtn.text('Submitting...');
+            submitBtn.prop('disabled', true);
+            console.log('Ajax inserting');
+            console.log(formData);
+            $.ajax({
+              type: 'POST',
+              url: '/auth/register/new/exp/data',
+              data: formData,
+              success: (data) => {
+                console.log('File Started');
+                if (!data.status) {
+                  showAlert(data.message);
+                  submitBtn.text('Submit');
+                  submitBtn.prop('disabled', false);
+                } else if (data.status) {
+                  $('#DocRegform').submit();
+                }
+              },
+            });
           }
         }
-        if ((check(chamberName) || check(chamberAddress)) && providedTime) {
+      });
+    }
+  });
+</script>
+
+<!-- FUNCTIONS -->
+<script>
+  // 1. EDUCATION
+  function getEducationData(eduInValue, eduInSelect) {
+    const eduArray = [];
+    let error = false;
+    let errMsg = '';
+    console.log(eduInValue, eduInSelect);
+    for (let i = 0; i < eduInValue.length / 3; i++) {
+      const eduInstitute = eduInValue[3 * i + 0].value;
+      const degree = eduInValue[3 * i + 1].value;
+      const field = eduInValue[3 * i + 2].value;
+      const passingYear = eduInSelect[i + 0].value;
+      if (check(eduInstitute)) {
+        error = true;
+        errMsg = 'Provide Institute name in Eduction Section';
+      } else if (check(degree)) {
+        error = true;
+        errMsg = 'Provide Degree name in Eduction Section';
+      } else if (check(field)) {
+        error = true;
+        errMsg = 'Provide field name in Eduction Section';
+      } else if (check(passingYear)) {
+        error = true;
+        errMsg = 'Provide Passing Year in Education section';
+      }
+      if (error) return { errMsg, eduArray: null };
+      eduArray.push({ eduInstitute, degree, field, passingYear });
+    }
+    return { errMsg: null, eduArray };
+  }
+  // 2. WORK AND EXPERIENCE
+  function getWorkNexpData(workInstitutes, workFrom, workTo) {
+    let error = false;
+    let errMsg = '';
+    const workExpArray = [];
+    for (let i = 0; i < workInstitutes.length; i++) {
+      const expInstitute = workInstitutes[i].value;
+      const expFrom = workFrom[i].value;
+      const expTo = workTo[i].value;
+      const checking = checkAllFields3(expInstitute, expFrom, expTo);
+      // 0 => All fields are empty
+      // 3 => All fields are filled up
+      console.log(checking);
+      if (checking !== 0 && checking !== 3) {
+        return {
+          errMsg: 'Fillup the fields properly in "Work and experience"',
+          workExpArray: null,
+        };
+      }
+      if (!check(expFrom) && !check(expTo) && checkYears(expFrom, expTo)) {
+        return {
+          errMsg: 'Enter a valid range of years in "Work and experience"',
+          workExpArray: null,
+        };
+      }
+      if (checking === 3) workExpArray.push({ expInstitute, expFrom, expTo });
+    }
+    return { errMsg: null, workExpArray };
+  }
+  // 3. PROFESSIONAL TRAINING
+  function getProTrainData(trainingNames, trainingYears, trainingDes) {
+    let trainingArray = [];
+    for (let i = 0; i < trainingNames.length; i++) {
+      const trainingName = trainingNames[i].value;
+      const trainingYear = trainingYears[i].value;
+      const trainingDetails = trainingDes[i].value;
+      if (
+        check(trainingName) &&
+        check(trainingYear) &&
+        check(trainingDetails)
+      )
+        continue;
+      trainingArray.push({ trainingName, trainingYear, trainingDetails });
+    }
+    return trainingArray;
+  }
+  // 4. AWARDS AND HONORS
+  function getAwardData(awardsNames, awardsYears, awardsDes) {
+    let awardsArray = [];
+    for (let i = 0; i < awardsNames.length; i++) {
+      const awardsName = awardsNames[i].value;
+      const awardsYear = awardsYears[i].value;
+      const awardsDetails = awardsDes[i].value;
+      if (check(awardsName) && check(awardsYear) && check(awardsDetails))
+        continue;
+      awardsArray.push({ awardsName, awardsYear, awardsDetails });
+    }
+    return awardsArray;
+  }
+  // 5. CLINICAL INFORMATION
+  function getVisitingTimeData() {
+    const vhArray = [];
+    let error = false;
+    let errMsg = '';
+    let providedTime = false;
+    const chambers = $('.oneChamber');
+    for (let i = 0; i < chambers.length; i++) {
+      providedTime = false;
+      const chamberName = $(chambers[i]).find('.chamberName').val();
+      const chamberAddress = $(chambers[i]).find('.chamberAddress').val();
+      console.log(chamberName, chamberAddress);
+      shifts = [];
+      const shiftsArray = $(chambers[i]).find('.DayTimeFlexParent');
+      for (let j = 0; j < shiftsArray.length; j++) {
+        const dayFrom = $(shiftsArray[j])
+          .find('select[name="dayFrom"]')
+          .val();
+        const dayTo = $(shiftsArray[j]).find('select[name="dayTo"]').val();
+        const timeFrom = $(shiftsArray[j])
+          .find('select[name="timeFrom"]')
+          .val();
+        const timeTo = $(shiftsArray[j]).find('select[name="timeTo"]').val();
+        const checksum = checkAllFields4(dayFrom, dayTo, timeFrom, timeTo);
+        console.log(dayFrom, dayTo, timeFrom, check(timeTo));
+        if (checksum === 4) {
+          providedTime = true;
+        }
+        if (checksum === 4) {
+          shifts.push({ dayFrom, dayTo, timeFrom, timeTo });
+        } else if (checksum !== 0) {
           return {
-            errMsg: 'Please provide correct chamber information',
+            errMsg: 'Please provide correct time in "Visiting Hours Details"',
             vhArray: null,
           };
         }
-        if (!check(chamberName) && !check(chamberAddress)) {
-          vhArray.push({ chamberName, chamberAddress, shifts });
-        }
       }
-      return {
-        errMsg: null,
-        vhArray,
-      };
+      if ((check(chamberName) || check(chamberAddress)) && providedTime) {
+        return {
+          errMsg: 'Please provide correct chamber information',
+          vhArray: null,
+        };
+      }
+      if (!check(chamberName) && !check(chamberAddress)) {
+        vhArray.push({ chamberName, chamberAddress, shifts });
+      }
     }
-  </script>
+    return {
+      errMsg: null,
+      vhArray,
+    };
+  }
+</script>
 
-  <script src="/js/countrySelector.js"></script>
-  <script>
-    const country = countryArray.map((x) => x.country);
-    for (let i = 0; i < country.length; i++) {
-      $('#countryInput').append(`<option value="${i}">${country[i]}</option>`);
+<script src="/js/countrySelector.js"></script>
+<script>
+  const country = countryArray.map((x) => x.country);
+  for (let i = 0; i < country.length; i++) {
+    $('#countryInput').append(`<option value="${i}">${country[i]}</option>`);
+  }
+  const citySelector = $('#cityInput');
+  $(document).on('change', '#countryInput', (e) => {
+    const selectedIndex = e.target.value;
+    citySelector.empty();
+    for (let i = 0; i < countryArray[selectedIndex].states.length; i++) {
+      const city = countryArray[selectedIndex].states[i];
+      citySelector.append(
+        `<option value="${selectedIndex}-${i}">${city}</option>`
+      );
     }
-    const citySelector = $('#cityInput');
-    $(document).on('change', '#countryInput', (e) => {
-      const selectedIndex = e.target.value;
-      citySelector.empty();
-      for (let i = 0; i < countryArray[selectedIndex].states.length; i++) {
-        const city = countryArray[selectedIndex].states[i];
-        citySelector.append(
-          `<option value="${selectedIndex}-${i}">${city}</option>`
-        );
-      }
-      citySelector.selectpicker('refresh');
-    });
-  </script>
+    citySelector.selectpicker('refresh');
+  });
+</script>
+
 </html>
-

@@ -73,6 +73,9 @@ const {
   toggleFeedback,
   deleteBook,
 
+  getExpertPriorities,
+  setExpertPriorities,
+
   // backup
   getBackup,
 } = require('../controllers/admin');
@@ -279,6 +282,9 @@ router.post('/workshop/update', adminAccess, postUpdateWorkshop);
 router.get('/workshop/delete/:id', adminAccess, deleteWorkshop);
 router.get('/workshop/add-to-homepage/:id', adminAccess, addWorkshopToHomepage)
 router.get('/workshop/rem-from-homepage/:id', adminAccess, removeWorkshopFromHomepage)
+
+router.get('/management/expert-priorities', getExpertPriorities)
+router.post('/management/expert-priorities', setExpertPriorities)
 
 // admin backup
 router.get('/backup', getBackup);

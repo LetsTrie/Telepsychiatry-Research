@@ -231,7 +231,7 @@ exports.consultation = async (req, res) => {
   req.session.prev = 'consultation';
   const experts = await eUserModel
     .find({ speciality: 'Psychiatric Consultation' })
-    .sort({ _id: -1 });
+    .sort({ priority: -1 });
   res.render('consultation', { experts, user: req.user });
 };
 exports.searchConsultation = async (req, res) => {
@@ -349,7 +349,7 @@ exports.psychoTherapy = async (req, res) => {
   req.session.prev = 'psychoTherapy';
   const experts = await eUserModel
     .find({ speciality: 'Psycho Therapy & Counselling' })
-    .sort({ _id: -1 });
+    .sort({ priority: 1 });
   res.render('psycho_therapy', { experts, user: req.user });
 };
 
@@ -719,21 +719,17 @@ Thank you for choosing TRIN Innovation Ltd.
 };
 
 const sendEmergencyLink = async (email, service, name, doctor, id) => {
-  console.log(email);
-  const mailBody = `
+  const data = {
+    address: email,
+    subject: 'TRIN - Emergency booking confirmation',
+    body: `
         Dear <strong> ${name} </strong>, <br>
 Your Appointment for ${service} with ${doctor} is confirmed. <br>
 Please visit this <a href="https://media.monerdaktar.com/${id}" target="_blank">link</a> to participate in the video conference. <br>
 Thank you for choosing TRIN Innovation Ltd.
-    `;
-  let mailOptions = {
-    from: 'manager@trin-innovation.com',
-    to: email,
-    subject: 'TRIN - Emergency meeting',
-    html: mailBody,
-  };
-
-  return await smtpTransport.sendMail(mailOptions);
+    `
+  }
+  await sendGrid(data)
 };
 
 // special services

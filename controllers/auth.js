@@ -12,6 +12,11 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const { sendGrid } = require('../config/sendMail');
 
+
+let checkNotNull = (val) => {
+  return typeof val != 'undefined' && val != '' && val != null;
+};
+
 exports.getMyAppointments = (req, res, next) => {
   return res.render('appointmentListFrExprt');
 };
@@ -88,15 +93,23 @@ const admin = require('../config/credentials').adminCredentials;
 // admin er login er upor homepage er kuno effect porbe na...
 // admin logged in thakle homapage e authentication related kisui show korbe na..
 
-module.exports.postLogin = (req, res, next) => {
+module.exports.postLogin = async(req, res, next) => {
   console.log(req.body);
   if (req.body.email == admin.email && req.body.password === admin.password) {
     req.flash('errorMessage', 'User not found');
     res.redirect('/auth/login');
   } else {
+    let user = await eUserModel.findOne({ email: req.body.email });
+    if(!checkNotNull(user)){
+      user = await gUserModel.findOne({ email: req.body.email });
+    }
+    let successUrl = checkNotNull(user)&&checkNotNull(user.otp)
+      ? '/auth/resetPass'
+      : '/';
+    console.log({successUrl})
     // agei sob kore nite hobe...
     passport.authenticate('local', {
-      successRedirect: '/',
+      successRedirect: successUrl,
       failureRedirect: '/auth/login',
       failureFlash: true,
     })(req, res, next);

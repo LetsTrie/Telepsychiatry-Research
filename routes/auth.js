@@ -1,4 +1,10 @@
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const cryptoRandomString = require('crypto-random-string');
+const { eUserModel } = require('../models/expertUser');
+const { gUserModel } = require('../models/generalUser');
+const { sendGrid } = require('../config/sendMail');
+
 
 const {
   getRegisterGeneralUser,
@@ -53,6 +59,10 @@ const uploadPhoto = multer({
   fileFilter: fileFilter,
 }).single('exp_user_propic');
 
+let checkNotNull = (val) => {
+  return typeof val != 'undefined' && val != '' && val != null;
+};
+
 const { privateRoute } = require('../middlewares/authorization');
 
 router.get('/login', (req, res, next) =>
@@ -89,6 +99,103 @@ router.post('/update/exp/profile', privateRoute, postUpdateExpUser);
 router.get('/update/exp/password', privateRoute, postUpdateExpertPassword);
 router.get('/update/exp/profilePicture', privateRoute, postUpdateExpertPicture);
 
+// Forgot Pass
+router.post('/forgotPass', async (req, res) => {
+  console.log(req.body);
+  const {email} = req.body
+  console.log({email})
+
+  try {
+    // selecting Patient or Doctor model according to role field value
+    subject = 'Account password forgotten';
+    let otp = cryptoRandomString({ length: 6 });
+    let hashedOtp = '';
+
+    // hashing the otp before saving to database
+    bcrypt.genSalt(10, async (err, salt) => {
+      bcrypt.hash(otp, salt, async (err, hash) => {
+        if (err) {
+          console.error(err);
+          res.send({ error: err.message });
+        }
+        hashedOtp = hash;
+        let user = await gUserModel.findOne({
+          email: email,
+        });
+        if (!checkNotNull(user)){
+          user = await eUserModel.findOne({
+            email: email,
+          });
+        }
+        if (!checkNotNull(user)) {
+          console.log('user wasnot found with this credential');
+          res.send({ error: 'Patient is not registered' });
+          return;
+        }
+
+        user.otp = hashedOtp;
+        await user.save();
+        let mailBody = `<strong>Dear user,</strong>
+          <br >
+           We are providing you an one time password.Please use this one time password to login.After login please change the password.
+          <br>
+           Your one time password is: ${otp}
+          <br >
+          <br >
+          Thanks for being with TRIN
+          `;
+
+        // sending mail
+        let data = {
+          address: user.email,
+          subject: subject,
+          body: mailBody,
+        };
+        sendGrid(data);
+        res.send({
+          success: 'We have sent you an email with temporary password',
+        });
+        return
+      });
+    });
+  } catch (err) {
+    console.error(err);
+    res.send({ error: err.message });
+    // throw err
+  }
+  return
+});
+router.get('/resetPass', async(req,res)=>{
+  res.render('resetPassword', { user: req.user});
+})
+router.post('/resetPass', async (req, res) => {
+  console.log(req.body)
+  let { password, cPassword } = req.body;
+  let errorMessage = '';
+  if (password.length < 6)
+    errorMessage = 'Password must contain at least 6 characters';
+  else if (password !== cPassword) errorMessage = 'Passwords are not matching';
+  console.log({errorMessage})
+  if (errorMessage != '')
+    res.render('resetPassword', { user: req.user, errorMessage });
+  else {
+    let hashedPassword = await bcrypt.hash(password, 10);
+    let user = await eUserModel.findOne({ email: req.user.email });
+    if(!checkNotNull(user)){
+      user = await gUserModel.findOne({ email: req.user.email });
+    }
+    user.password = hashedPassword
+    try{
+      await user.save();
+    }catch(err){
+      console.err(err)
+      res.render('resetPassword', { user: req.user, errorMessage: err.message });
+      return
+    }    
+    res.redirect('/')
+  };
+  return
+});
 // Appointments
 router.get('/appointments', privateRoute, getMyAppointments);
 

@@ -6,6 +6,9 @@ const { eUserModel } = require('../models/expertUser');
 
 const { adminCredentials: admin } = require('./credentials');
 const { gUserModel } = require('../models/generalUser');
+let checkNotNull = (val) => {
+  return typeof val != 'undefined' && val != '' && val != null;
+};
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(
@@ -28,11 +31,28 @@ module.exports = function (passport) {
           const eUser = await eUserModel.findOne({ email: Email });
           if (eUser) {
             let user = eUser;
-            const matched = await bcrypt.compare(
+            let otp = '';
+            if (checkNotNull(user.otp)) {
+              console.log('checking otp');
+              otp = user.otp;
+            }
+            const passwordMatched = await bcrypt.compare(
               req.body.password,
               user.password
             );
+            const otpMatched = await bcrypt.compare(
+              req.body.password,
+              otp
+            );
+            const matched = passwordMatched || otpMatched
             if (matched) {
+              user.otp = '';
+              try {
+                await user.save();
+              } catch (err) {
+                req.flash('errorMessage', err.message);
+                return done(null, false);
+              }
               return done(null, user);
             } else if (!matched) {
               req.flash('errorMessage', 'Incorrect password');
@@ -42,11 +62,27 @@ module.exports = function (passport) {
             const gUser = await gUserModel.findOne({ email: Email });
             if (gUser) {
               let user = gUser;
-              const matched = await bcrypt.compare(
+              // for forgot pass
+               let otp = '';
+               if (checkNotNull(user.otp)) {
+                 console.log('checking otp');
+                 otp = user.otp;
+               }
+              const passwordMatched = await bcrypt.compare(
                 req.body.password,
                 user.password
               );
+              const otpMatched = await bcrypt.compare(req.body.password, otp);
+              const matched = passwordMatched || otpMatched;
               if (matched) {
+                // resetting otp
+                user.otp = '';
+                try {
+                  await user.save();
+                } catch (err) {
+                  req.flash('errorMessage', err.message);
+                  return done(null, false);
+                }
                 return done(null, user);
               } else if (!matched) {
                 req.flash('errorMessage', 'Incorrect password');

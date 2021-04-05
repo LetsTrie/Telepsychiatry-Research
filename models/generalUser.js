@@ -37,6 +37,9 @@ const gUserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  otp: {
+    type: String,
+  }
 });
 
 exports.gUserModel = mongoose.model('generalUser', gUserSchema);

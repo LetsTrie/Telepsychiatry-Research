@@ -1,176 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/newResearches.css" />
 
-    <title>
-      Complete Researches | Telepsychiatry Research
-    </title>
-  </head>
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/newResearches.css" />
 
-  <body>
-    <section class="wrapper">
-      <nav>
-        <%- include('./partials/navbar')%>
-      </nav>
-      <div class="assessment_wrapper">
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Home</a> / Researches</p>
+  <title>
+    Complete Researches | Telepsychiatry Research
+  </title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="assessment_wrapper">
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Home</a> / Researches</p>
+        </div>
+        <div class="bigText">
+          <p>Completed Researches</p>
+        </div>
+      </div>
+
+      <div class="twoBigSectionFlex">
+        <div class="eachBigSection">
+          <div class="searchFilter">
+            <p>Search Filter</p>
           </div>
-          <div class="bigText">
-            <p>Completed Researches</p>
-          </div>
+          <form action="#" id="search-form">
+            <div class="searchFields">
+              <div class="sField">
+                <div class="input-group">
+                  <input type="text" required class="form-control py-4" id="search-input" name="searchInput"
+                    placeholder="Search Researches (With any keywords)" />
+                  <input type="hidden" name="type" value="completed" />
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" id="" type="submit" disabled>
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="cat">
+                <div class="cat_heading">
+                  <p>Research Stage</p>
+                </div>
+                <div class="catOptions">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage"
+                      value="ongoingResearches" aria-selected="true" />
+                    <label class="custom-control-label" for="customCheck">Ongoing Researches
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage"
+                      value="completedResearches" />
+                    <label class="custom-control-label" for="customCheckw">
+                      Completed Researches
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="findDocBtn">
+                <button id="search-btn">Search</button>
+              </div>
+            </div>
+          </form>
         </div>
 
-        <div class="twoBigSectionFlex">
-          <div class="eachBigSection">
-            <div class="searchFilter">
-              <p>Search Filter</p>
+        <div class="eachBigSection">
+          <div class="bigHeading">
+            <p>Completed Researches</p>
+          </div>
+          <p style="color: #666; padding: 30px;">We are engaged in multiple researches of different dimensions of health
+            care service starting from identifying the
+            problem, measuring the burden of the problem, design and develop evidence-based for the problem, evaluate
+            the impact of
+            the solution its implementation challenges and ultimate possible policy level implication.
+          </p>
+          <% if(showSubmitBtn) { %>
+          <div class="submitResource mb-3" id="submitResource">
+            <button>Submit Research</button>
+          </div>
+          <% } %>
+
+          <div class="all_resources">
+            <% if (successMessage != '') { %>
+            <div class="alert alert-success text-center">
+              <p>
+                <%= successMessage %>
+              </p>
             </div>
-            <form action="#" id="search-form">
-              <div class="searchFields">
-                <div class="sField">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      required
-                      class="form-control py-4"
-                      id="search-input"
-                      name="searchInput"
-                      placeholder="Search Researches (With any keywords)"
-                    />
-                    <input type="hidden" name="type" value="completed" />
-                    <div class="input-group-btn">
-                      <button
-                        class="btn btn-default"
-                        id=""
-                        type="submit"
-                        disabled
-                      >
-                        <i class="fa fa-search"></i>
-                      </button>
-                    </div>
+            <% } %> <% for(let i = 0 ; i < data.length; i++) { %>
+            <div class="each_resources">
+              <div class="flx-prnt">
+                <div class="flx-chld">
+                  <div class="each_resources_img">
+                    <img src="/research/<%= data[i].file %>" id="<%= data[i]._id %>" alt="image"
+                      class="goToDetailsPage" />
                   </div>
                 </div>
-                <div class="cat">
-                  <div class="cat_heading">
-                    <p>Research Stage</p>
+                <div class="flx-chld">
+                  <div class="each_resources_heading">
+                    <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
+                      <%= data[i].title %>
+                    </h4>
                   </div>
-                  <div class="catOptions">
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheck"
-                        name="rStage"
-                        value="ongoingResearches"
-                        aria-selected="true"
-                      />
-                      <label class="custom-control-label" for="customCheck"
-                        >Ongoing Researches
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheckw"
-                        name="rStage"
-                        value="completedResearches"
-                      />
-                      <label class="custom-control-label" for="customCheckw">
-                        Completed Researches
-                      </label>
-                    </div>
+                  <div class="each_resources_desc">
+                    <p>
+                      <%- data[i].description %>
+                    </p>
                   </div>
-                </div>
-                <div class="findDocBtn">
-                  <button id="search-btn">Search</button>
+                  <div class="each_resources_btn">
+                    <button class="goToDetailsPage" id="<%= data[i]._id %>">
+                      READ MORE
+                    </button>
+                  </div>
                 </div>
               </div>
-            </form>
-          </div>
-
-          <div class="eachBigSection">
-            <div class="bigHeading">
-              <p>Completed Researches</p>
-            </div>
-            <% if(showSubmitBtn) { %>
-            <div class="submitResource mb-3" id="submitResource">
-              <button>Submit Research</button>
+              <hr />
             </div>
             <% } %>
-
-            <div class="all_resources">
-              <% if (successMessage != '') { %>
-              <div class="alert alert-success text-center">
-                <p>
-                  <%= successMessage %>
-                </p>
-              </div>
-              <% } %> <% for(let i = 0 ; i < data.length; i++) { %>
-              <div class="each_resources">
-                <div class="flx-prnt">
-                  <div class="flx-chld">
-                    <div class="each_resources_img">
-                      <img
-                        src="/research/<%= data[i].file %>"
-                        id="<%= data[i]._id %>"
-                        alt="image"
-                        class="goToDetailsPage"
-                      />
-                    </div>
-                  </div>
-                  <div class="flx-chld">
-                    <div class="each_resources_heading">
-                      <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
-                        <%= data[i].title %>
-                      </h4>
-                    </div>
-                    <div class="each_resources_desc">
-                      <p>
-                        <%- data[i].description %>
-                      </p>
-                    </div>
-                    <div class="each_resources_btn">
-                      <button class="goToDetailsPage" id="<%= data[i]._id %>">
-                        READ MORE
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <hr />
-              </div>
-              <% } %>
-            </div>
           </div>
         </div>
       </div>
-    </section>
-    <%- include('./partials/bookAppointment') %> <%-
+    </div>
+  </section>
+  <%- include('./partials/bookAppointment') %> <%-
     include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $('.goToDetailsPage').click((e) => {
-      const id = e.target.id;
-      location = '/researches/' + id;
-    });
-    $('#submitResource').click((e) => {
-      location = '/researches/new';
-    });
-    $('.search-btn').click((e) => {
-      $('#form').submit();
-    });
-    $('#customCheck').click((e) => {
-      console.log('wrong?');
-      location = '/researches?stage=ongoing';
-    });
-    $('#customCheckw').click((e) => {
-      console.log('wrong?');
-      location = '/researches?stage=completed';
-    });
-  </script>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.goToDetailsPage').click((e) => {
+    const id = e.target.id;
+    location = '/researches/' + id;
+  });
+  $('#submitResource').click((e) => {
+    location = '/researches/new';
+  });
+  $('.search-btn').click((e) => {
+    $('#form').submit();
+  });
+  $('#customCheck').click((e) => {
+    console.log('wrong?');
+    location = '/researches?stage=ongoing';
+  });
+  $('#customCheckw').click((e) => {
+    console.log('wrong?');
+    location = '/researches?stage=completed';
+  });
+</script>
+
 </html>

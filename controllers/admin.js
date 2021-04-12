@@ -1416,12 +1416,12 @@ exports.toggleFeedback = async (req, res) => {
 
 exports.getExpertPriorities = async (req, res) => {
   let data = await eUserModel.find()
-  res.render('adminPriorityListing', {data})
+  res.render('adminPriorityListing', { data })
 }
 
 exports.setExpertPriorities = async (req, res) => {
   const { id, priority } = req.body
-  await eUserModel.findOneAndUpdate({ _id: id }, {$set: { priority: priority }})
+  await eUserModel.findOneAndUpdate({ _id: id }, { $set: { priority: priority } })
   res.json({
     success: true
   })

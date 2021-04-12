@@ -35,6 +35,7 @@ const getResetTime = (day) => {
   return dif;
 };
 router.get('/', async (req, res, next) => {
+
   const { eUserModel } = require('../models/expertUser.js');
 
   let experts = await eUserModel.find().sort({ priority: -1 }).limit(6)

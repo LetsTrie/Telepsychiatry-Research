@@ -235,7 +235,7 @@ exports.postRegisterExpertUserData = async (req, res, next) => {
   const data = {
     address: newExpUser.email,
     subject: 'TRIN Expert account confirmation',
-    body: `Please click on <a href="${process.env.host}auth/verify/${newExpUser._id}">this link</a> to confirm your TRIN account. <br/> Thanks.`
+    body: `Please click on <a href="${req.headers.host}auth/verify/${newExpUser._id}">this link</a> to confirm your TRIN account. <br/> Thanks.`
   }
   await sendGrid(data)
   req.flash('successMessage', 'You have successfully been regsitered');

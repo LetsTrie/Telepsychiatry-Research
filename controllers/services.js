@@ -229,7 +229,7 @@ exports.searchResearchers = async (req, res, next) => {
 
 exports.consultation = async (req, res) => {
   req.session.prev = 'consultation';
-  const experts = await eUserModel
+  let experts = await eUserModel
     .find({ speciality: 'Psychiatric Consultation' })
     .sort({ priority: -1 });
   res.render('consultation', { experts, user: req.user });
@@ -349,7 +349,7 @@ exports.psychoTherapy = async (req, res) => {
   req.session.prev = 'psychoTherapy';
   const experts = await eUserModel
     .find({ speciality: 'Psycho Therapy & Counselling' })
-    .sort({ priority: 1 });
+    .sort({ priority: -1 });
   res.render('psycho_therapy', { experts, user: req.user });
 };
 
@@ -501,6 +501,7 @@ exports.getEmergency = async (req, res) => {
       status: type,
     }).sort({ _id: -1 });
   }
+
   res.render('emergencyAppointments', {
     cat: type,
     data,
@@ -725,7 +726,7 @@ const sendEmergencyLink = async (email, service, name, doctor, id) => {
     body: `
         Dear <strong> ${name} </strong>, <br>
 Your Appointment for ${service} with ${doctor} is confirmed. <br>
-Please visit this <a href="https://media.monerdaktar.com/${id}" target="_blank">link</a> to participate in the video conference. <br>
+Please visit this <a href="https://meet.jit.si/services/consultation/${id}" target="_blank">link</a> to participate in the video conference. <br>
 Thank you for choosing TRIN Innovation Ltd.
     `
   }

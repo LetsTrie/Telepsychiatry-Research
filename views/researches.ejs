@@ -3,8 +3,8 @@
 
 <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/resources.css" />
-        <title>Resources | Telepsychiatry Research</title>
+    <link rel="stylesheet" href="/css/resources.css" />
+    <title>Resources | Telepsychiatry Research</title>
 </head>
 
 <body>
@@ -27,10 +27,10 @@
             <form action="/researches" method="GET">
                 <div class="searchbox">
                     <% if(search) { %>
-                        <input type="text" name="search" value="<%=search%>" required />
-                        <% } else { %>
-                            <input type="text" name="search" required />
-                            <% } %>
+                    <input type="text" name="search" value="<%=search%>" required />
+                    <% } else { %>
+                    <input type="text" name="search" required />
+                    <% } %>
                 </div>
                 <div class="searchBtn">
                     <input type="submit" value="search" />
@@ -40,20 +40,21 @@
 
         <div class="allResources container">
             <% for(let i = 0 ; i < data.length; i++) { %>
-                <a href="/researches/<%= data[i]._id %>">
-                    <div class="m-1 mb-5 eachCard" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
-                        <img src="/images/res1.jpg" class="card-img-top" />
-                        <div class="card-body">
-                            <h5 class="card-title researchTitle">
-                                <%= data[i].title %>
-                            </h5>
-                            <p class="card-text">
-                                <%- data[i].BriefDesciption %>
-                            </p>
-                        </div>
+            <a href="/researches/<%= data[i]._id %>">
+                <div class="m-1 mb-5 eachCard" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1000">
+                    <img src="/images/res1.jpg" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title researchTitle">
+                            <%= data[i].title %>
+                        </h5>
+                        <p class="card-text">
+                            <%- data[i].BriefDesciption %>
+                        </p>
                     </div>
-                </a>
-                <% } %>
+                </div>
+            </a>
+            <% } %>
         </div>
 
         <%- include('./partials/pagination.ejs') %>
@@ -62,10 +63,10 @@
     <%- include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
-    <script>
-        $('.submitResources').on('click', (e) => {
-            window.location = '/researches/new';
-        });
-    </script>
+<script>
+    $('.submitResources').on('click', (e) => {
+        window.location = '/researches/new';
+    });
+</script>
 
 </html>

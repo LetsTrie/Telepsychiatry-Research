@@ -2,26 +2,50 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/vendorsTop')%>
+  <%- include('./partials/vendorsTop')%>
     <link rel="stylesheet" href="/css/all-workshops.css" />
 
     <title>
-        Workshops | Telepsychiatry Research
+      Workshops | Telepsychiatry Research
     </title>
 </head>
 
 <body>
-    <section class="wrapper">
-        <nav>
-            <%- include('./partials/navbar')%>
-        </nav>
-        <div class="assessment_wrapper">
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Events</a> / Workshops</p>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="assessment_wrapper">
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Events</a> / Workshops</p>
+        </div>
+        <div class="bigText">
+          <p>Workshops</p>
+        </div>
+      </div>
+
+      <div class="twoBigSectionFlex">
+        <div class="eachBigSection">
+          <div class="searchFilter">
+            <p>Search Filter</p>
+          </div>
+          <form action="#" id="search-form">
+            <div class="searchFields">
+              <div class="sField">
+                <div class="input-group">
+                  <input type="text" required class="form-control py-4" id="search-input" name="search"
+                    placeholder="Search Researches (With any keywords)" />
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" id="" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="bigText">
-                    <p>Workshops</p>
+              </div>
+              <div class="cat">
+                <div class="cat_heading">
+                  <p>Workshop Stage</p>
                 </div>
             </div>
 
@@ -76,130 +100,139 @@
                         </div>
                     </form>
                 </div>
-
-                <div class="eachBigSection">
-                    <div class="bigHeading">
-                        <p>Workshops</p>
-                    </div>
-                    <div class="all_resources">
-                        <% if (successMessage.length != 0) { %>
-                        <div class="alert alert-success text-center">
-                            <p>
-                                <%= successMessage %>
-                            </p>
-                        </div>
-                        <% } %>
-                        <% if (errorMessage.length != 0) { %>
-                        <div class="alert alert-danger text-center">
-                            <p>
-                                <%= errorMessage %>
-                            </p>
-                        </div>
-                        <% } %>
-                        <% for(let i = 0 ; i < data.length; i++) { %>
-                        <div class="each-resources">
-                            <div class="image">
-                                <img src="/workshop/<%=data[i].image%>" alt="">
-                            </div>
-                            <div class="texts">
-                                <div class="title">
-                                    <%= data[i].title %>
-                                </div>
-                                <div class="body">
-                                    <%- data[i].description %>
-                                </div>
-                                <div class="last-row">
-                                    <div class="add-info">
-                                        <div class="add-child"><i class="fa fa-map-marker"></i> <%= data[i].location %>
-                                        </div>
-                                        <div class="add-child"> <i class="fa fa-clock-o"></i>
-                                            <%= data[i].schedule.startTime %> to
-                                            <%= data[i].schedule.startTime %></div>
-                                        <div class="add-child"> <i class="fa fa-table"></i>
-                                            <%= data[i].schedule.startDate %> to
-                                            <%= data[i].schedule.endDate %></div>
-                                    </div>
-                                    <div class="btn-flex">
-                                        <button class="view-btn" id="<%= data[i]._id %>">View Details</button>
-                                        <% if (regList.includes(data[i]._id.toString())) { %>
-                                        <button class="regd-btn" disabled><i class="fa fa-check"></i>
-                                            Registered</button>
-                                        <% } else { %>
-                                        <button class="reg-btn" name="<%=data[i]._id%>" data-toggle="modal"
-                                            data-target="#exampleModal">Register</button>
-                                        <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <% } %>
-                    </div>
-                </div>
+              </div>
+              <div class="findDocBtn">
+                <button id="search-btn">Search</button>
+              </div>
             </div>
+          </form>
         </div>
-    </section>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="justify-content: flex-start;">
-                    <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i>
-                    Confirmation
-                </div>
-                <div class="modal-body">
-                    <p style="text-align: center;">
-                        Are you sure you want to register for this event?
+        <div class="eachBigSection">
+          <div class="bigHeading">
+            <p>Workshops</p>
+          </div>
+          <div class="all_resources">
+            <% if (successMessage.length !=0) { %>
+              <div class="alert alert-success text-center">
+                <p>
+                  <%= successMessage %>
+                </p>
+              </div>
+              <% } %>
+                <% if (errorMessage.length !=0) { %>
+                  <div class="alert alert-danger text-center">
+                    <p>
+                      <%= errorMessage %>
                     </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Cancel
-                    </button>
-                    <button type="button" class="btn go-ahead btn-primary">
-                        Go Ahead
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+                  </div>
+                  <% } %>
+                    <% for(let i=0 ; i < data.length; i++) { %>
+                      <div class="each-resources">
+                        <div class="image">
+                          <img src="/workshop/<%=data[i].image%>" alt="">
+                        </div>
+                        <div class="texts">
+                          <div class="title">
+                            <%= data[i].title %>
+                          </div>
+                          <div class="body">
+                            <%- data[i].description %>
+                          </div>
+                          <div class="last-row">
+                            <div class="add-info">
+                              <div class="add-child"><i class="fa fa-map-marker"></i>
+                                <%= data[i].location %>
+                              </div>
+                              <div class="add-child"> <i class="fa fa-clock-o"></i>
+                                <%= data[i].schedule.startTime %> to
+                                  <%= data[i].schedule.startTime %>
+                              </div>
+                              <div class="add-child"> <i class="fa fa-table"></i>
+                                <%= data[i].schedule.startDate %> to
+                                  <%= data[i].schedule.endDate %>
+                              </div>
+                            </div>
+                            <div class="btn-flex">
+                              <button class="view-btn" id="<%= data[i]._id %>">View Details</button>
+                              <% if (regList.includes(data[i]._id.toString())) { %>
+                                <button class="regd-btn" disabled><i class="fa fa-check"></i>
+                                  Registered</button>
+                                <% } else { %>
+                                  <button class="reg-btn" name="<%=data[i]._id%>" data-toggle="modal"
+                                    data-target="#exampleModal">Register</button>
+                                  <% } %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-    <%- include('./partials/bookAppointment') %>
-    <%-
-    include('./partials/footer')%>
+                      <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="justify-content: flex-start;">
+          <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i>
+          Confirmation
+        </div>
+        <div class="modal-body">
+          <p style="text-align: center;">
+            Are you sure you want to register for this event?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn go-ahead btn-primary">
+            Go Ahead
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/bookAppointment') %>
+    <%- include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
-<script>
+  <script>
     let regID;
     $('.reg-btn').click((e) => {
-        regID = e.target.name;
-        console.log(regID);
+      regID = e.target.name;
+      console.log(regID);
     });
     $('.go-ahead').click((e) => {
-        console.log('go-ahead');
-        location = `/events/workshop/reg/${regID}`;
+      console.log('go-ahead');
+      location = `/events/workshop/reg/${regID}`;
     });
     $('.view-btn').click((e) => {
-        const id = e.target.id;
-        location = '/events/workshop/' + id;
+      const id = e.target.id;
+      location = '/events/workshop/' + id;
     });
     $('#submitResource').click((e) => {
-        location = '/events/workshop/new';
+      location = '/events/workshop/new';
     });
     $('.search-btn').click((e) => {
-        $('#form').submit();
+      $('#form').submit();
     });
     $('input[name="rStage"]').click((e) => {
-        const stage = $(e.target).val();
-        console.log(stage);
-        location = `/events/workshop?type=${stage}`;
+      const stage = $(e.target).val();
+      console.log(stage);
+      location = `/events/workshop?type=${stage}`;
     });
     $('#search-btn').click((e) => {
-        const phrase = $('#search-input').val();
-        console.log(`/events/workshop?search=${phrase}`);
-        location = `/events/workshop?search=${phrase}`;
+      const phrase = $('#search-input').val();
+      console.log(`/events/workshop?search=${phrase}`);
+      location = `/events/workshop?search=${phrase}`;
     });
-</script>
+  </script>
 
 </html>

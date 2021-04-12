@@ -2,204 +2,153 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/vendorsTop')%>
+  <%- include('./partials/vendorsTop')%>
 
-        <link rel="stylesheet" href="/css/admin.css" />
-        <title>Update Innovation | Admin Panel</title>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Update Innovation | Admin Panel</title>
 </head>
 
 <body>
-    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-        <header>
-            <nav>
-                <%- include('./partials/adminNavbar')%>
-            </nav>
-            <div class="blueDivider">
-                <div class="smallText">
-                    <p><a href="#">Admin Panel</a> / Innovation</p>
+  <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+    <header>
+      <nav>
+        <%- include('./partials/adminNavbar')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Admin Panel</a> / Innovation</p>
+        </div>
+        <div class="bigText">
+          <p>Update Innovation</p>
+        </div>
+      </div>
+    </header>
+    <div class="twoBigSectionFlex">
+      <div class="oneBigFatCat_wrapper">
+        <div class="oneBigFatCat">
+          <div class="addResource text-center my-2">
+            <h1>Update Innovation</h1>
+          </div>
+          <div class="addResource_form">
+            <div class="alert alert-danger" id="alert"></div>
+            <div class="alert alert-success" id="alert-success" style="display: none;"></div>
+            <form action="/admin/innovation/update/file" id="form" enctype="multipart/form-data" method="POST">
+              <input type="hidden" value="<%= data._id %>" name="id" id="id" />
+              <input type="hidden" name="filename" id="filename" />
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Title:</p>
                 </div>
-                <div class="bigText">
-                    <p>Update Innovation</p>
+                <div class="input_box">
+                  <input value="<%= data.title %>" type="text" name="title" id="title" placeholder="Title" />
                 </div>
-            </div>
-        </header>
-        <div class="twoBigSectionFlex">
-            <div class="oneBigFatCat_wrapper">
-                <div class="oneBigFatCat">
-                    <div class="addResource text-center my-2">
-                        <h1>Update Innovation</h1>
-                    </div>
-                    <div class="addResource_form">
-                        <div class="alert alert-danger" id="alert"></div>
-                        <div class="alert alert-success" id="alert-success" style="display: none;"></div>
-                        <form action="/admin/research/new/file" id="form" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" value="<%= data._id %>" name="id" id="id" />
-                            <input type="hidden" value="<%= data.innovationStage %>" id="stage" />
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Title:</p>
-                                </div>
-                                <div class="input_box">
-                                    <input value="<%= data.title %>" type="text" name="title" id="title" placeholder="Title" />
-                                </div>
-                            </div>
-                            <div class="one_box">
-                                <div class="box_header">
-                                    <p>Breif Description:</p>
-                                </div>
-                                <div class="input_box">
-                                    <textarea name="BriefDesciption" id="BDeditor">
-<%= data.description %></textarea
-                    >
-                  </div>
+              </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Breif Description:</p>
                 </div>
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Key Contact Persons:</p>
-                  </div>
-                  <div class="keyContactPersonWrapper">
-                    <div class="keyContactPerson">
-                      <div class="input_box_flx_prnt">
-                        <div class="input_box_flx_chld">
-                          <input
-                            value="<%= data.name %>"
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="name"
-                          />
-                        </div>
-                        <div class="input_box_flx_chld">
-                          <input
-                            value="<%= data.designation %>"
-                            type="text"
-                            name="designation"
-                            id="designation"
-                            placeholder="Designation"
-                          />
-                        </div>
-                        <div class="input_box_flx_chld">
-                          <input
-                            value="<%= data.email %>"
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="Email"
-                          />
-                        </div>
-                        <div class="input_box_flx_chld">
-                          <input
-                            value="<%= data.phone %>"
-                            type="text"
-                            name="phoneNumber"
-                            id="phone"
-                            placeholder="Phone Number"
-                          />
-                        </div>
+                <div class="input_box">
+                  <textarea name="BriefDesciption" id="BDeditor">
+<%= data.description %></textarea>
+                </div>
+              </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Key Contact Persons:</p>
+                </div>
+                <div class="keyContactPersonWrapper">
+                  <div class="keyContactPerson">
+                    <div class="input_box_flx_prnt">
+                      <div class="input_box_flx_chld">
+                        <input value="<%= data.name %>" type="text" name="name" id="name" placeholder="name" />
+                      </div>
+                      <div class="input_box_flx_chld">
+                        <input value="<%= data.designation %>" type="text" name="designation" id="designation"
+                          placeholder="Designation" />
+                      </div>
+                      <div class="input_box_flx_chld">
+                        <input value="<%= data.email %>" type="email" name="email" id="email" placeholder="Email" />
+                      </div>
+                      <div class="input_box_flx_chld">
+                        <input value="<%= data.phone %>" type="text" name="phoneNumber" id="phone"
+                          placeholder="Phone Number" />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Collaboration: (If any)</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea
-                      name="collaboration"
-                      id="collaboration"
-                      cols="30"
-                      rows="3"
-                    >
-<%= data.collaboration %></textarea
-                    >
-                  </div>
+              </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Collaboration: (If any)</p>
                 </div>
-
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Scope for collaboration:</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea
-                      name="collabScope"
-                      id="collabScope"
-                      cols="30"
-                      rows="3"
-                    >
-<%= data.collabScope %></textarea
-                    >
-                  </div>
+                <div class="input_box">
+                  <textarea name="collaboration" id="collaboration" cols="30" rows="3">
+<%= data.collaboration %></textarea>
                 </div>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>Financial Support and Grant:</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea
-                      name="financialSupport"
-                      id="financialSupport"
-                      cols="30"
-                      rows="3"
-                    >
-<%= data.financialSupport %></textarea
-                    >
-                  </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Scope for collaboration:</p>
                 </div>
-
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>News and Publications:</p>
-                  </div>
-                  <div class="input_box">
-                    <textarea
-                      name="newsAndPub"
-                      id="newsAndPub"
-                      cols="30"
-                      rows="3"
-                    >
-<%= data.newsAndPub %></textarea
-                    >
-                  </div>
+                <div class="input_box">
+                  <textarea name="collabScope" id="collabScope" cols="30" rows="3">
+<%= data.collabScope %></textarea>
                 </div>
+              </div>
 
-                <div class="one_box">
-                  <div class="box_header">
-                    <p>URL:</p>
-                  </div>
-                  <div class="input_box">
-                    <input
-                      value="<%= data.link %>"
-                      type="text"
-                      name="link"
-                      id="link"
-                      placeholder="Title"
-                    />
-                  </div>
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Financial Support and Grant:</p>
                 </div>
-
-                <!-- <div class="one_box">
-                                <div class="box_header">
-                                    <p>Representational Photo</p>
-                                </div>
-                                <div class="input_box">
-                                    <input type="file" name="researchFile" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
-                                </div>
-                            </div> -->
-
-                <div class="createResources__submit">
-                  <button id="submit-btn">Submit</button>
+                <div class="input_box">
+                  <textarea name="financialSupport" id="financialSupport" cols="30" rows="3">
+<%= data.financialSupport %></textarea>
                 </div>
-              </form>
-            </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
+                  <p>News and Publications:</p>
+                </div>
+                <div class="input_box">
+                  <textarea name="newsAndPub" id="newsAndPub" cols="30" rows="3">
+<%= data.newsAndPub %></textarea>
+                </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
+                  <p>URL:</p>
+                </div>
+                <div class="input_box">
+                  <input value="<%= data.link %>" type="text" name="link" id="link" placeholder="Useful URL" />
+                </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Representational Photo</p>
+                </div>
+                <div class="input_box">
+                  <input type="hidden" name="prevFilename" id="prevFilename"
+                    value="<%= (typeof data.file != 'undefined') ? data.file : '' %>" />
+                  <input type="file" name="innovationFile" id="repPhotoID" accept="image/x-png,image/jpg,image/jpeg" />
+                </div>
+              </div>
+
+              <div class="createResources__submit">
+                <button id="submit-btn">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
 
   <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
 
@@ -228,6 +177,8 @@
       const financialSupport = $('#financialSupport').val();
       const newsAndPub = $('#newsAndPub').val();
       const link = $('#link').val();
+      const imageFile = $('#repPhotoID');
+      const prevFile = $('#prevFilename').val();
 
       if (check(title)) {
         showAlert('Enter the title');
@@ -247,7 +198,14 @@
         showAlert('Enter the financial support');
       } else if (check(newsAndPub)) {
         showAlert('Enter the news and publication');
+      } else if (imageFile[0].files.length && (imageFile[0].files[0].size / 1024) > 250) {
+        showAlert('File size must be less then 250 KB');
       } else {
+        let file = null
+        if (imageFile[0].files.length != 0) {
+          file = Date.parse(new Date().toString()) + '-' + imageFile[0].files[0].name;
+        }
+        $('#filename').val(file);
         const id = $('#id').val();
         const data = {
           id,
@@ -262,6 +220,8 @@
           financialSupport,
           newsAndPub,
           link,
+          file,
+          prevFile
         };
         console.log(data);
         Submit(data, id);
@@ -290,10 +250,26 @@
         success: (data) => {
           console.log(data);
           if (data.status) {
-            location = '/admin/innovation/' + id;
+            $('html, body').animate(
+              {
+                scrollTop: 0,
+              },
+              'slow'
+            );
+            $('#alert-success').show();
+            $('#alert-success').html(data.msg);
+
+            if (data.newFileUploaded) {
+              $('#form').submit();
+            } else {
+              setInterval(() => {
+                location = `/admin/innovation/${id}`;
+              }, 3000);
+            }
           }
         },
       });
     };
   </script>
+
 </html>

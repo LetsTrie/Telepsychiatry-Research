@@ -47,26 +47,58 @@
                 <div class="cat_heading">
                   <p>Workshop Stage</p>
                 </div>
-                <div class="catOptions">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage" value="current"
-                      aria-selected="true" />
-                    <label class="custom-control-label" for="customCheck">Current
-                    </label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage" value="past" />
-                    <label class="custom-control-label" for="customCheckw">
-                      Past
-                    </label>
-                  </div>
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheckc" name="rStage"
-                      value="upcoming" />
-                    <label class="custom-control-label" for="customCheckc">
-                      Upcoming
-                    </label>
-                  </div>
+            </div>
+
+            <div class="twoBigSectionFlex">
+                <div class="eachBigSection">
+                    <div class="searchFilter">
+                        <p>Search Filter</p>
+                    </div>
+                    <form action="#" id="search-form">
+                        <div class="searchFields">
+                            <div class="sField">
+                                <div class="input-group">
+                                    <input type="text" required class="form-control py-4" id="search-input"
+                                        name="search" placeholder="Search Workshops (With any keywords)" />
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" id="" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cat">
+                                <div class="cat_heading">
+                                    <p>Workshop Stage</p>
+                                </div>
+                                <div class="catOptions">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck"
+                                            name="rStage" value="current" aria-selected="true" />
+                                        <label class="custom-control-label" for="customCheck">Current
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckw"
+                                            name="rStage" value="past" />
+                                        <label class="custom-control-label" for="customCheckw">
+                                            Past
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckc"
+                                            name="rStage" value="upcoming" />
+                                        <label class="custom-control-label" for="customCheckc">
+                                            Upcoming
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="findDocBtn">
+                                <button id="search-btn">Search</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
               </div>
               <div class="findDocBtn">

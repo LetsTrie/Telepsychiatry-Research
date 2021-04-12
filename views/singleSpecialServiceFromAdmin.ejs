@@ -12,7 +12,7 @@
 <body>
   <section class="wrapper">
     <nav>
-      <%- include('./partials/navbar')%>
+      <%- include('./partials/adminNavbar')%>
     </nav>
     <div class="assessment_wrapper">
       <div class="blueDivider">
@@ -138,7 +138,11 @@
                 <% for(let i = 0 ; i < data.doctorIDs.length; i++) { %>
                 <div class="eachDoctor">
                   <div class="es_img">
-                    <img src="/images/experts/<%=doctorInfo[i].propicURL%>.jpg" alt="" />
+                    <% if(doctorInfo[i] != null){ %>
+                      <img src="/images/experts/<%=doctorInfo[i].propicURL%>.jpg" alt="" />
+                    <% }else{ %>
+                      <img src="" alt="photo is unavailable" />
+                    <% } %>
                   </div>
                   <div class="es_name">
                     <p><%=data.doctorNames[i]%></p>

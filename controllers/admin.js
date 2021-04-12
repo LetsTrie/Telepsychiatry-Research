@@ -8,10 +8,11 @@ const passport = require('passport');
 const { makeSmallParagraphFromHTML } = require('./utils');
 const { testModel } = require('../models/test');
 const admin = require('../config/credentials').adminCredentials;
-const path = require('path')
-const fs = require('fs')
+const path = require('path');
+const fs = require('fs');
+const fsPromises = require('fs').promises;
 const { Feedback } = require('../models/feedback.js');
-const { sendGrid } = require('../config/sendMail')
+const { sendGrid } = require('../config/sendMail');
 const { eUserModel } = require('../models/expertUser');
 const { wsComment } = require('../models/workshopComment.js');
 
@@ -608,10 +609,10 @@ module.exports.replyEmail = async (req, res) => {
   const data = {
     address: emailID,
     subject: 'TRIN - Contact Us',
-    body: reply
-  }
-  console.log(data)
-  await sendGrid(data)
+    body: reply,
+  };
+  console.log(data);
+  await sendGrid(data);
   contactUsModel.updateOne(
     { _id: id },
     { $set: { isReplied: true } },
@@ -638,6 +639,44 @@ exports.researchFile = async (req, res) => {
   res.redirect(`/admin/research/${req.body.id}`);
 };
 
+exports.adminUpdateResearchFile = async (req, res) => {
+  console.log('Research file updated');
+  const { id, filename, prevFilename } = req.body;
+  // console.log(id, filename, prevFilename);
+  try {
+    let research = await ResearchModel.findOne({ _id: id });
+    research.file = filename;
+    await research.save();
+
+    await deleteFile('research', prevFilename);
+    res.redirect(`/admin/research/${id}`);
+    return;
+  } catch (err) {
+    req.flash('errorMessage', err.message);
+    res.redirect(`/admin/research/${id}`);
+    return;
+  }
+};
+
+exports.adminUpdateInnovationFile = async (req, res) => {
+  console.log('Innovation file updated');
+  const { id, filename, prevFilename } = req.body;
+  // console.log(id, filename, prevFilename);
+  try {
+    let innovation = await InnovationModel.findOne({ _id: id });
+    innovation.file = filename;
+    await innovation.save();
+
+    await deleteFile('innovation', prevFilename);
+    res.redirect(`/admin/innovation/${id}`);
+    return;
+  } catch (err) {
+    req.flash('errorMessage', err.message);
+    res.redirect(`/admin/innovation/${id}`);
+    return;
+  }
+};
+
 // ADMIN SUBMIT RESEARCH (GET)
 // OKAY
 exports.getAdminNewResearch = async (req, res, next) => {
@@ -659,6 +698,7 @@ exports.singleSS = async (req, res) => {
   let doctorInfo = [];
   for (let i = 0; i < data.doctorIDs.length; i++) {
     const doc = await eUserModel.findOne({ _id: data.doctorIDs[i] });
+    if (doc == null) continue;
     doctorInfo.push({
       image: doc.propicURL,
       designation: doc.designation,
@@ -825,21 +865,21 @@ exports.approveSSBookRequest = async (req, res) => {
       },
     }
   );
-  const { ss_name, bookingType, email } = ssBook
-  let body
+  const { ss_name, bookingType, email } = ssBook;
+  let body;
   if (bookingType == 'Online') {
-    body = `This is to confirm that your request for the special service <strong>${ss_name}</strong> has been confirmed. The meeting will be an online one and please join <a href=http://monerdaktar.com/${ss._id}>this link</a> to participate. <br/> Thanks for choosing us.`
+    body = `This is to confirm that your request for the special service <strong>${ss_name}</strong> has been confirmed. The meeting will be an online one and please join <a href=http://monerdaktar.com/${ss._id}>this link</a> to participate. <br/> Thanks for choosing us.`;
   } else {
-    body = `This is to confirm that your request for the special service <strong>${ss_name}</strong> has been confirmed. The meeting will be an Face to Face one, so please drop by at our office address at the due time. <br/> Thanks for choosing us.`
+    body = `This is to confirm that your request for the special service <strong>${ss_name}</strong> has been confirmed. The meeting will be an Face to Face one, so please drop by at our office address at the due time. <br/> Thanks for choosing us.`;
   }
-  console.log(email)
+  console.log(email);
   const data = {
     address: email,
     subject: 'Special Service booking confirmation',
-    body
-  }
+    body,
+  };
 
-  await sendGrid(data)
+  await sendGrid(data);
 
   return res.redirect('back');
 };
@@ -936,6 +976,8 @@ exports.postAdminUpdateResearch = async (req, res) => {
     financialSupport,
     newsAndPub,
     researchStage,
+    file,
+    prevFile,
   } = req.body;
 
   await ResearchModel.findOneAndUpdate(
@@ -956,9 +998,15 @@ exports.postAdminUpdateResearch = async (req, res) => {
       },
     }
   );
+
+  let newFileUploaded = nullChk(file) ? false : true;
+  // file name will be updated after file uploading done and prev file deletion done.
+  // File uploading and deletion will be done in route named "/admin/research/update/file"
+
   res.send({
     status: true,
-    msg: 'okke',
+    newFileUploaded: newFileUploaded,
+    msg: 'Research updated',
   });
 };
 
@@ -1056,6 +1104,8 @@ exports.postAdminUpdateInnovation = async (req, res) => {
     newsAndPub,
     innovationStage,
     link,
+    file,
+    prevFile,
   } = req.body;
 
   await InnovationModel.findOneAndUpdate(
@@ -1077,9 +1127,14 @@ exports.postAdminUpdateInnovation = async (req, res) => {
       },
     }
   );
+  let newFileUploaded = nullChk(file) ? false : true;
+  // file name will be updated after file uploading done and prev file deletion done.
+  // File uploading and deletion will be done in route named "/admin/innovation/update/file"
+
   res.send({
     status: true,
-    msg: 'okke',
+    newFileUploaded: newFileUploaded,
+    msg: 'Innovation updated',
   });
 };
 
@@ -1167,11 +1222,11 @@ exports.singleWorkshop = async (req, res) => {
   const comments = await wsComment.find({ workshopID: req.params.id });
   const data = await workshopModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ workshop_id: req.params.id });
-  console.log(parts)
+  console.log('In singleWorkshop, parts = ', parts);
   const eUser = [];
   for (let i = 0; i < data.doctors.length; i++) {
     const doc = await eUserModel.findOne({ name: data.doctors[i] });
-    eUser.push(doc);
+    if (doc != null) eUser.push(doc);
   }
 
   res.render('singleWorkshopFromAdmin', {
@@ -1244,6 +1299,59 @@ exports.workshopFile = async (req, res) => {
   res.redirect('/admin/workshop');
 };
 
+exports.updateWorkshopFile = async (req, res) => {
+  console.log('Workshop file updated');
+  const { id, filename, prevFilename } = req.body;
+  // console.log(id, filename, prevFilename);
+  try {
+    let workshop = await workshopModel.findOne({ _id: id });
+    workshop.image = filename;
+    await workshop.save();
+
+    await deleteFile('workshop', prevFilename);
+    res.redirect(`/admin/workshop/${id}`);
+    return;
+  } catch (err) {
+    req.flash('errorMessage', err.message);
+    res.redirect(`/admin/workshop/${id}`);
+    return;
+  }
+};
+
+exports.updateSSFile = async (req, res) => {
+  console.log('Special Service file updated');
+  const { id, filename, prevFilename } = req.body;
+  // console.log(id, filename, prevFilename);
+  try {
+    let specialService = await ssModel.findOne({ _id: id });
+    specialService.image = filename;
+    await specialService.save();
+
+    await deleteFile('specialService', prevFilename);
+    res.redirect(`/admin/special_service/${id}`);
+    return;
+  } catch (err) {
+    req.flash('errorMessage', err.message);
+    res.redirect(`/admin/special_service/${id}`);
+    return;
+  }
+};
+
+async function deleteFile(directory, fileName) {
+  if (nullChk(fileName)) return;
+
+  const filePath = path.join(process.cwd(), '/public', directory, fileName);
+  console.log('filepath of the file that needs to be deleted: ', filePath);
+
+  try {
+    await fsPromises.unlink(filePath);
+    console.log(`successfully deleted the file : ${fileName}`);
+  } catch (err) {
+    console.log('deleteFile err = ', { err });
+    throw new Error(err.message);
+  }
+}
+
 exports.getUpdateWorkshop = async (req, res) => {
   const data = await workshopModel.findOne({ _id: req.params.id });
   res.render('updateWorkshop', {
@@ -1253,7 +1361,7 @@ exports.getUpdateWorkshop = async (req, res) => {
 };
 
 exports.postUpdateWorkshop = async (req, res) => {
-  const { id, title, description, about, location } = req.body;
+  const { id, title, description, about, location, image } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1287,6 +1395,10 @@ exports.postUpdateWorkshop = async (req, res) => {
   end.setHours(end.getHours() - new Date().getTimezoneOffset() / 60);
   console.log(end);
 
+  let newFileUploaded = nullChk(image) ? false : true;
+  // image name will be updated after file uploading done and prev file deletion done.
+  // File uploading and deletion will be done in route named "/admin/workshop/update/file"
+
   await workshopModel.findOneAndUpdate(
     { _id: id },
     {
@@ -1311,22 +1423,22 @@ exports.postUpdateWorkshop = async (req, res) => {
 
   res.send({
     status: true,
+    newFileUploaded: newFileUploaded,
     msg: 'Workshop updated',
   });
 };
 
 exports.addWorkshopToHomepage = async (req, res) => {
-  const { id } = req.params
-  await workshopModel.findOneAndUpdate({ _id: id }, { homepageDisplay: true })
-  res.redirect('back')
-}
+  const { id } = req.params;
+  await workshopModel.findOneAndUpdate({ _id: id }, { homepageDisplay: true });
+  res.redirect('back');
+};
 
 exports.removeWorkshopFromHomepage = async (req, res) => {
-  const { id } = req.params
-  await workshopModel.findOneAndUpdate({ _id: id }, { homepageDisplay: false })
-  res.redirect('back')
-}
-
+  const { id } = req.params;
+  await workshopModel.findOneAndUpdate({ _id: id }, { homepageDisplay: false });
+  res.redirect('back');
+};
 
 exports.deleteWorkshop = async (req, res) => {
   await workshopModel.findByIdAndDelete({ _id: req.params.id });
@@ -1360,15 +1472,25 @@ exports.getUpdateSingleSS = async (req, res, next) => {
 exports.postUpdateSingleSS = async (req, res) => {
   console.log('service data for update:');
   console.log(req.body);
-  const serviceId = req.params.id;
-  const { title, subTitle, description, details, schedule, Max } = req.body;
+  const {
+    id,
+    title,
+    subTitle,
+    description,
+    details,
+    schedule,
+    fee,
+    Max,
+    image,
+    prevImage,
+  } = req.body;
 
   const doctorIDs = JSON.parse(req.body.doctorIDs);
   const doctorNames = JSON.parse(req.body.doctorNames);
   const videos = JSON.parse(req.body.videos);
 
   await ssModel.findOneAndUpdate(
-    { _id: serviceId },
+    { _id: id },
     {
       title: title,
       subTitle: subTitle,
@@ -1377,6 +1499,7 @@ exports.postUpdateSingleSS = async (req, res) => {
       videos: videos,
       doctorIDs: doctorIDs,
       doctorNames: doctorNames,
+      fee: fee,
       capacity: {
         Max: Max,
       },
@@ -1384,8 +1507,13 @@ exports.postUpdateSingleSS = async (req, res) => {
     }
   );
 
+  let newFileUploaded = nullChk(image) ? false : true;
+  // image name will be updated after file uploading done and prev file deletion done.
+  // File uploading and deletion will be done in route named "/admin/specialService/update/file"
+
   res.send({
     status: true,
+    newFileUploaded: newFileUploaded,
     msg: 'Special service updated',
   });
 };
@@ -1413,16 +1541,18 @@ exports.toggleFeedback = async (req, res) => {
   });
 };
 
-
 exports.getExpertPriorities = async (req, res) => {
-  let data = await eUserModel.find()
-  res.render('adminPriorityListing', { data })
-}
+  let data = await eUserModel.find();
+  res.render('adminPriorityListing', { data });
+};
 
 exports.setExpertPriorities = async (req, res) => {
-  const { id, priority } = req.body
-  await eUserModel.findOneAndUpdate({ _id: id }, { $set: { priority: priority } })
+  const { id, priority } = req.body;
+  await eUserModel.findOneAndUpdate(
+    { _id: id },
+    { $set: { priority: priority } }
+  );
   res.json({
-    success: true
-  })
-}
+    success: true,
+  });
+};

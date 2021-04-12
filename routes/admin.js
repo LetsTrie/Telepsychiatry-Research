@@ -33,6 +33,7 @@ const {
   getAdminNewResearch,
   postResearches,
   researchFile,
+  adminUpdateResearchFile,
   getAllResearches,
   getAdminUpdateResearch,
   postAdminUpdateResearch,
@@ -41,6 +42,7 @@ const {
   // innovations
   postInnovation,
   innovationFile,
+  adminUpdateInnovationFile,
   getAdminInnovations,
   getAdminInnovation,
   getAdminUpdateInnovation,
@@ -54,6 +56,7 @@ const {
   singleWorkshop,
   getUpdateWorkshop,
   postUpdateWorkshop,
+  updateWorkshopFile,
   deleteWorkshop,
   addWorkshopToHomepage,
   removeWorkshopFromHomepage,
@@ -64,6 +67,7 @@ const {
   getAdminNewSpecialService,
   postAdminNewSS,
   ssFile,
+  updateSSFile,
   getExperts,
   deleteSpecialService,
   getUpdateSingleSS,
@@ -215,6 +219,12 @@ router.post(
 );
 router.get('/research/update/:id', adminAccess, getAdminUpdateResearch);
 router.post('/research/update', adminAccess, postAdminUpdateResearch);
+router.post(
+  '/research/update/file',
+  adminAccess,
+  uploadResearchFile,
+  adminUpdateResearchFile
+);
 router.get('/researches/unverified', adminAccess, getUnverifiedResearches);
 
 // special services
@@ -227,7 +237,14 @@ router.post('/new/specialService', adminAccess, postAdminNewSS);
 router.get('/new/specialService/getExperts', adminAccess, getExperts);
 router.get('/specialService/delete/:id', adminAccess, deleteSpecialService);
 router.get('/specialService/update/:id', adminAccess, getUpdateSingleSS);
-router.post('/specialService/update/:id', adminAccess, postUpdateSingleSS);
+router.post('/specialService/update', adminAccess, postUpdateSingleSS);
+router.post(
+  '/specialService/update/file',
+  adminAccess,
+  uploadPhotoSS,
+  updateSSFile
+);
+
 router.get('/special_services/all-requests', adminAccess, getSSBookRequests);
 router.get(
   '/special_services/approve/:apt_id/:ss_id',
@@ -236,17 +253,6 @@ router.get(
 );
 router.get('/special_services/toggle/:id', adminAccess, toggleFeedback);
 router.get('/special_service/delete-book/:pid/:sid', adminAccess, deleteBook);
-
-// if representational photo is changed for service
-router.post('/specialService/update/file/:id', adminAccess, (req, res) => {
-  let serviceId = req.params.id;
-  res.redirect('/services/special_services/' + serviceId);
-});
-// if representational photo is unchanged for service
-router.post('/specialService/update/noFile/:id', adminAccess, (req, res) => {
-  let serviceId = req.params.id;
-  res.redirect('/services/special_services/' + serviceId);
-});
 
 // admin innovations
 router.get('/innovation/new', adminAccess, (req, res) => {
@@ -263,6 +269,12 @@ router.get('/innovations', adminAccess, getAdminInnovations);
 router.get('/innovation/:id', adminAccess, getAdminInnovation);
 router.get('/innovation/update/:id', adminAccess, getAdminUpdateInnovation);
 router.post('/innovation/update', adminAccess, postAdminUpdateInnovation);
+router.post(
+  '/innovation/update/file',
+  [adminAccess, uploadInnovationFile],
+  adminUpdateInnovationFile
+);
+
 router.get('/innovations/unverified', adminAccess, getUnverifiedInnoations);
 
 // admin workshop
@@ -279,12 +291,22 @@ router.get('/workshop', adminAccess, getWorkshop);
 router.get('/workshop/:id', adminAccess, singleWorkshop);
 router.get('/workshop/update/:id', adminAccess, getUpdateWorkshop);
 router.post('/workshop/update', adminAccess, postUpdateWorkshop);
-router.get('/workshop/delete/:id', adminAccess, deleteWorkshop);
-router.get('/workshop/add-to-homepage/:id', adminAccess, addWorkshopToHomepage)
-router.get('/workshop/rem-from-homepage/:id', adminAccess, removeWorkshopFromHomepage)
+router.post(
+  '/workshop/update/file',
+  [adminAccess, uploadPhotoWorkshop],
+  updateWorkshopFile
+);
 
-router.get('/management/expert-priorities', getExpertPriorities)
-router.post('/management/expert-priorities', setExpertPriorities)
+router.get('/workshop/delete/:id', adminAccess, deleteWorkshop);
+router.get('/workshop/add-to-homepage/:id', adminAccess, addWorkshopToHomepage);
+router.get(
+  '/workshop/rem-from-homepage/:id',
+  adminAccess,
+  removeWorkshopFromHomepage
+);
+
+router.get('/management/expert-priorities', getExpertPriorities);
+router.post('/management/expert-priorities', setExpertPriorities);
 
 // admin backup
 router.get('/backup', getBackup);

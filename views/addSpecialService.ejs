@@ -288,6 +288,7 @@
       const start = $('#start').val();
       const end = $('#end').val();
       const imageFile = $('#repPhotoID');
+      
       let videoArr = $('.video-link');
       let videos = [];
       for (let i = 0; i < videoArr.length; i++) {
@@ -298,13 +299,14 @@
       let doctorArr = $('.doctorClass');
       for (let i = 0; i < doctorArr.length; i++) {
         const docName = $(doctorArr[i]).val();
+        if(doctors.indexOf(docName) == -1) continue;
         DoctorNames.push(docName);
         DoctorIDs.push(docIDs[doctors.indexOf(docName)]);
       }
       if (check(title)) {
         showAlert('Enter the title');
       }
-      if (check(subTitle)) {
+      else if (check(subTitle)) {
         showAlert('Enter the sub title');
       } else if (check(description)) {
         showAlert('Enter a brief description');
@@ -385,7 +387,6 @@
             );
             $('#alert-success').show();
             $('#alert-success').html(data.msg);
-            $('#id').val(data.msg);
             setInterval(() => {
               $('#form').submit();
             }, 2000);

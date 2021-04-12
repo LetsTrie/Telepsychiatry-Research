@@ -49,7 +49,7 @@ exports.singleWorkshop = async (req, res) => {
     const eUser = [];
     for (let i = 0; i < data.doctors.length; i++) {
       const doc = await eUserModel.findOne({ name: data.doctors[i] });
-      eUser.push(doc);
+      if (doc != null) eUser.push(doc);
     }
 
     res.render('single-workshop', {
@@ -89,12 +89,11 @@ exports.singleWorkshop = async (req, res) => {
 };
 
 exports.getWorkshop = async (req, res, next) => {
-
-  let workshops = await workshopModel.find()
+  let workshops = await workshopModel.find();
   for (let ws of workshops) {
     // Object.assign(ws, { homepageDisplay: false })
     // await ws.save()
-    console.log(ws.homepageDisplay)
+    console.log(ws.homepageDisplay);
   }
 
   let { type, search } = req.query;

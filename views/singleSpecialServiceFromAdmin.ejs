@@ -3,10 +3,10 @@
 
 <head>
   <%- include('./partials/vendorsTop')%>
-  <link rel="stylesheet" href="/css/specialServiceDetails.css" />
-  <title>
-    Special Services | Innovations | Telepsychiatry Research
-  </title>
+    <link rel="stylesheet" href="/css/specialServiceDetails.css" />
+    <title>
+      Special Services | Innovations | Telepsychiatry Research
+    </title>
 </head>
 
 <body>
@@ -20,7 +20,9 @@
           <p><a href="/">Home</a> / Services</p>
         </div>
         <div class="bigText">
-          <p><%= data.title %></p>
+          <p>
+            <%= data.title %>
+          </p>
         </div>
       </div>
       <div class="btn-container">
@@ -37,7 +39,9 @@
         <div class="oneBigFatCat_wrapper">
           <div class="oneBigFatCat">
             <div class="main-Heading">
-              <p><%= data.title %></p>
+              <p>
+                <%= data.title %>
+              </p>
             </div>
             <div class="specialServiceSubsection">
               <div class="subsection-Heading">
@@ -54,78 +58,80 @@
             </div>
 
             <div class="flx_super_prnt">
-              <% if (data.videos.length != 0) { %>
-              <div class="specialServiceSubsection">
-                <div class="subsection-Body">
-                  <div class="subsection-Heading">
-                    <p>Related Videos</p>
-                  </div>
-                  <% for (let i=0; i<data.videos.length; i+=2) { %>
-                  <div class="flx_prnt">
-                    <% for (let j=i; j<Math.min(data.videos.length, i+2); j++) { %>
-                    <div class="flx_chld">
-                      <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+              <% if (data.videos.length !=0) { %>
+                <div class="specialServiceSubsection">
+                  <div class="subsection-Body">
+                    <div class="subsection-Heading">
+                      <p>Related Videos</p>
                     </div>
-                    <% } %>
+                    <% for (let i=0; i<data.videos.length; i+=2) { %>
+                      <div class="flx_prnt">
+                        <% for (let j=i; j<Math.min(data.videos.length, i+2); j++) { %>
+                          <div class="flx_chld">
+                            <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                              allowfullscreen></iframe>
+                          </div>
+                          <% } %>
+                      </div>
+                      <% } %>
                   </div>
-                  <% } %>
                 </div>
-              </div>
-              <% } %>
+                <% } %>
 
-              <div class="flx-chld-feeds" style="display: none;">
-                <div class="feedback-Heading">
-                  <p>User Feedback</p>
-                </div>
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <% for (let i=0; i<feedbacks.length; i++) { %>
-                    <%if(i==0) {%>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
-                    <%}else{%>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
-                      <%}%>
-                    <%}%>
-                  </ol>
-                  <div class="carousel-inner">
-                    <% for (let i=0; i<feedbacks.length; i++) { %>
-                    <%if(i==0) {%>
-                    <div class="carousel-item active">
-                      <div class="single-feedback">
-                        <% if (feedbacks[i].video != 'none') { %>
-                        <video width="320" height="240" controls>
-                          <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                        <% } %>
-                        <div class="txt-cmnt">
-                          <p>"<%= feedbacks[i].body %>"</p>
-                          <p>-<%= feedbacks[i].user_name %></p>
-                        </div>
+                  <div class="flx-chld-feeds" style="display: none;">
+                    <div class="feedback-Heading">
+                      <p>User Feedback</p>
+                    </div>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <% for (let i=0; i<feedbacks.length; i++) { %>
+                          <%if(i==0) {%>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
+                            <%}else{%>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
+                                <%}%>
+                                  <%}%>
+                      </ol>
+                      <div class="carousel-inner">
+                        <% for (let i=0; i<feedbacks.length; i++) { %>
+                          <%if(i==0) {%>
+                            <div class="carousel-item active">
+                              <div class="single-feedback">
+                                <% if (feedbacks[i].video !='none' ) { %>
+                                  <video width="320" height="240" controls>
+                                    <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                  <% } %>
+                                    <div class="txt-cmnt">
+                                      <p>"<%= feedbacks[i].body %>"</p>
+                                      <p>-<%= feedbacks[i].user_name %>
+                                      </p>
+                                    </div>
+                              </div>
+                            </div>
+                            <%}else{%>
+                              <div class="carousel-item">
+                                <div class="single-feedback">
+                                  <% if (feedbacks[i].video !='none' ) { %>
+                                    <video width="320" height="240" controls>
+                                      <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
+                                      Your browser does not support the video tag.
+                                    </video>
+                                    <% } %>
+                                      <div class="txt-cmnt">
+                                        <p>"<%= feedbacks[i].body %>"</p>
+                                        <p>-<%= feedbacks[i].user_name %>
+                                        </p>
+                                      </div>
+                                </div>
+                              </div>
+                              <%}%>
+                                <% } %>
                       </div>
                     </div>
-                    <%}else{%>
-                    <div class="carousel-item">
-                      <div class="single-feedback">
-                        <% if (feedbacks[i].video != 'none') { %>
-                        <video width="320" height="240" controls>
-                          <source src="/feedback_ss/<%= feedbacks[i].video %>" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                        <% } %>
-                        <div class="txt-cmnt">
-                          <p>"<%= feedbacks[i].body %>"</p>
-                          <p>-<%= feedbacks[i].user_name %></p>
-                        </div>
-                      </div>
-                    </div>
-                    <%}%>                     
-                    <% } %>
                   </div>
-                </div>
-              </div>
             </div>
 
 
@@ -135,23 +141,27 @@
               </div>
               <div class="subsection-Body specialServiceDoctors">
 
-                <% for(let i = 0 ; i < data.doctorIDs.length; i++) { %>
-                <div class="eachDoctor">
-                  <div class="es_img">
-                    <% if(doctorInfo[i] != null){ %>
-                      <img src="/images/experts/<%=doctorInfo[i].propicURL%>.jpg" alt="" />
-                    <% }else{ %>
-                      <img src="" alt="photo is unavailable" />
-                    <% } %>
+                <% for(let i=0 ; i < data.doctorIDs.length; i++) { %>
+                  <div class="eachDoctor">
+                    <div class="es_img">
+                      <% if(doctorInfo[i] !=null){ %>
+                        <img src="/uploads/<%=doctorInfo[i].image%>" alt="" />
+                        <% }else{ %>
+                          <img src="" alt="photo is unavailable" />
+                          <% } %>
+                    </div>
+                    <div class="es_name">
+                      <p>
+                        <%=data.doctorNames[i]%>
+                      </p>
+                      <p>
+                        <span>
+                          <%=doctorInfo[i].designation%>
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                  <div class="es_name">
-                    <p><%=data.doctorNames[i]%></p>
-                    <p>
-                      <span><%=doctorInfo[i].designation%></span>
-                    </p>
-                  </div>
-                </div>
-                <% } %>
+                  <% } %>
               </div>
             </div>
 
@@ -170,127 +180,132 @@
   </section>
   <%- include('./partials/footer')%>
 
-  <div class="modal fade" id="parts" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalScrollableTitle">
-            Patients
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="parts">
-            <% for (let i=0; i<parts.length; i++) { %>
-            <div class="each-part">
-              <a href="/services/doctor/profile/general/<%=parts[i].patient_id%>"> <i class="fa fa-user"></i>
-                <%= parts[i].name %>
-              </a>
-              <% if (parts[i].bookingType == 'FaceToFace') { %>
-              <div class="right">
-                <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
-              </div>
-              <% } else { %>
-              <div class="right">
-                <button class="btn btn-primary chat" id="<%= parts[i].patient_id %>"><i
-                    class="fa fa-play-circle"></i></button>
-                <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
-              </div>
-              <% } %>
-            </div>
-            <% } %>
+    <div class="modal fade" id="parts" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">
+              Patients
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
+          <div class="modal-body">
+            <div class="parts">
+              <% for (let i=0; i<parts.length; i++) { %>
+                <div class="each-part">
+                  <a href="/services/doctor/profile/general/<%=parts[i].patient_id%>"> <i class="fa fa-user"></i>
+                    <%= parts[i].name %>
+                  </a>
+                  <% if (parts[i].bookingType=='FaceToFace' ) { %>
+                    <div class="right">
+                      <button class="btn btn-secondary done" id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
+                    </div>
+                    <% } else { %>
+                      <div class="right">
+                        <button class="btn btn-primary chat" id="<%= parts[i].patient_id %>"><i
+                            class="fa fa-play-circle"></i></button>
+                        <button class="btn btn-secondary done"
+                          id="<%= parts[i]._id%>-<%= parts[i].ss_id %>">Done</button>
+                      </div>
+                      <% } %>
+                </div>
+                <% } %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal fade" id="feedbacks" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalScrollableTitle">
-            Feedbacks
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <div class="parts">
-            <% for (let i=0; i<feedbacks.length; i++) { %>
-            <div class="each-part">
-              <div class="left">
-                <div class="user"><%= feedbacks[i].user_name %></div>
-                <div class="body"><%= feedbacks[i].body %></div>
-                <% if (feedbacks[i].video && feedbacks[i].video != '') { %>
-                <button class="btn btn-secondary">Open video</button>
-                <% } %>
-              </div>
-              <div class="right">
-                <% if (feedbacks[i].onDisplay) { %>
-                <input type="checkbox" id="<%= feedbacks[i]._id %>" checked>
-                <% } else { %>
-                <input type="checkbox" id="<%= feedbacks[i]._id %>">
-                <% } %>
-              </div>
-            </div>
-            <% } %>
+    <div class="modal fade" id="feedbacks" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">
+              Feedbacks
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
+
+          <div class="modal-body">
+            <div class="parts">
+              <% for (let i=0; i<feedbacks.length; i++) { %>
+                <div class="each-part">
+                  <div class="left">
+                    <div class="user">
+                      <%= feedbacks[i].user_name %>
+                    </div>
+                    <div class="body">
+                      <%= feedbacks[i].body %>
+                    </div>
+                    <% if (feedbacks[i].video && feedbacks[i].video !='' ) { %>
+                      <button class="btn btn-secondary">Open video</button>
+                      <% } %>
+                  </div>
+                  <div class="right">
+                    <% if (feedbacks[i].onDisplay) { %>
+                      <input type="checkbox" id="<%= feedbacks[i]._id %>" checked>
+                      <% } else { %>
+                        <input type="checkbox" id="<%= feedbacks[i]._id %>">
+                        <% } %>
+                  </div>
+                </div>
+                <% } %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 </body>
 <%- include('./partials/vendorsBottom')%>
 
-<script>
-  // const carouselItems = $('.carousel-item')
-  // const len = carouselItems.length
-  // let i = 0
-  // setInterval(() => {
-  //   $('.active').removeClass('active')
-  //   $(carouselItems[i]).addClass('active')
-  //   i = (i+1)%len
-  // }, 3000)
+  <script>
+    // const carouselItems = $('.carousel-item')
+    // const len = carouselItems.length
+    // let i = 0
+    // setInterval(() => {
+    //   $('.active').removeClass('active')
+    //   $(carouselItems[i]).addClass('active')
+    //   i = (i+1)%len
+    // }, 3000)
 
-  $('.carousel').carousel({
-    interval: false
-  })
-
-  $('input[type="checkbox"]').click((e) => {
-    const url = `/admin/special_services/toggle/${e.target.id}`
-    $.get(url, data => {
-      console.log(data)
+    $('.carousel').carousel({
+      interval: false
     })
-  })
 
-  $('.done').click((e) => {
-    const pid = e.target.id.split('-')[0]
-    const sid = e.target.id.split('-')[1]
-    location = `/admin/special_service/delete-book/${pid}/${sid}`
-  })
+    $('input[type="checkbox"]').click((e) => {
+      const url = `/admin/special_services/toggle/${e.target.id}`
+      $.get(url, data => {
+        console.log(data)
+      })
+    })
 
-  $('.chat').click((e) => {
-    console.log(e.target.id)
-    window.open(`https://meet.jit.si/${e.target.id}`, '_blank')
-  })
-</script>
+    $('.done').click((e) => {
+      const pid = e.target.id.split('-')[0]
+      const sid = e.target.id.split('-')[1]
+      location = `/admin/special_service/delete-book/${pid}/${sid}`
+    })
+
+    $('.chat').click((e) => {
+      console.log(e.target.id)
+      window.open(`https://meet.jit.si/${e.target.id}`, '_blank')
+    })
+  </script>
 
 </html>

@@ -706,6 +706,9 @@ exports.singleSS = async (req, res) => {
     });
   }
 
+  console.log('data : ', data);
+  console.log('doctorInfo : ', doctorInfo);
+
   const parts = await ssBookModel.find({ ss_id: req.params.id });
   const feedbacks = await Feedback.find({
     service_id: req.params.id,

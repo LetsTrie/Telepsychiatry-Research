@@ -1163,6 +1163,27 @@ body {
   line-height: 1.8;
 }
 
+.twoBigSectionFlex .eachBigSection .btn-section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 50px 0;
+}
+
+.twoBigSectionFlex .eachBigSection .btn-section button {
+  background-color: #20c0f3;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #20c0f3;
+  color: #fff;
+  font-size: 18px;
+}
+
 .twoBigSectionFlex .eachBigSection:last-child {
   width: 73%;
   padding: 20px 50px;

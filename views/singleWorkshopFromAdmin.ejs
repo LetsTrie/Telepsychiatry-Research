@@ -3,10 +3,10 @@
 
 <head>
   <%- include('./partials/vendorsTop')%>
-    <link rel="stylesheet" href="/css/single-workshop.css" />
-    <title>
-      <%= data.title %> | Workshops | Admin Panel
-    </title>
+  <link rel="stylesheet" href="/css/single-workshop.css" />
+  <title>
+    <%= data.title %> | Workshops | Admin Panel
+  </title>
 </head>
 
 <body>
@@ -43,98 +43,98 @@
         <button id="<%= data._id %>" name="delete" class="btn delete btn-lg px-4"
           style="background-color: red; border: none; color: #fff;">Delete</button>
         <% if (data.homepageDisplay==false) { %>
-          <button id="<%= data._id %>" class="btn btn-lg px-4 add" style="border: 1px solid green;">Add</button>
-          <% } else { %>
-            <button id="<%= data._id %>" name="delete" class="btn btn-lg px-4 rem" style="border: 1px solid red;">
-              Remove </button>
-            <% } %>
+        <button id="<%= data._id %>" class="btn btn-lg px-4 add" style="border: 1px solid green;">Add</button>
+        <% } else { %>
+        <button id="<%= data._id %>" name="delete" class="btn btn-lg px-4 rem" style="border: 1px solid red;">
+          Remove </button>
+        <% } %>
       </p>
       <p style="text-align: center; color: red;">NB: Delete button permanently deletes the resource without any
         warning. Please take care.</p>
     </div>
 
     <% if (successMessage.length !=0) { %>
-      <div class="alert alert-success" style="width: 60%; margin: 40px auto;">
-        <p style="text-align: center;">
-          <%= successMessage %>
-        </p>
-      </div>
-      <% } %>
-        <% if (errorMessage.length !=0) { %>
-          <div class="alert alert-danger" style="width: 60%; margin: 40px auto;">
-            <p style="text-align: center;">
-              <%= errorMessage %>
-            </p>
+    <div class="alert alert-success" style="width: 60%; margin: 40px auto;">
+      <p style="text-align: center;">
+        <%= successMessage %>
+      </p>
+    </div>
+    <% } %>
+    <% if (errorMessage.length !=0) { %>
+    <div class="alert alert-danger" style="width: 60%; margin: 40px auto;">
+      <p style="text-align: center;">
+        <%= errorMessage %>
+      </p>
+    </div>
+    <% } %>
+    <input type="hidden" value="<%=data._id%>" id="id" />
+    <div class="contentWrapper">
+      <div class="left">
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            About
+          </strong>
+          <%- data.about %>
+        </div>
+        <% if (data.videos.length !=0) { %>
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Videos
+          </strong>
+          <div class="videos">
+            <% for(let i=0; i<data.videos.length; i++) { %>
+            <div class="video">
+              <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <% } %>
           </div>
-          <% } %>
-            <input type="hidden" value="<%=data._id%>" id="id" />
-            <div class="contentWrapper">
-              <div class="left">
-                <div class="body">
-                  <strong class="header" style="font-size: 25px; color: #008ecc;">
-                    About
-                  </strong>
-                  <%- data.about %>
-                </div>
-                <% if (data.videos.length !=0) { %>
-                  <div class="body">
-                    <strong class="header" style="font-size: 25px; color: #008ecc;">
-                      Videos
-                    </strong>
-                    <div class="videos">
-                      <% for(let i=0; i<data.videos.length; i++) { %>
-                        <div class="video">
-                          <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                        </div>
-                        <% } %>
-                    </div>
-                  </div>
-                  <% } %>
-                    <div class="body" style="margin-top: 20px;">
-                      <strong class="header" style="font-size: 25px; color: #008ecc;">
-                        Description
-                      </strong>
-                      <%- data.description %>
-                    </div>
-                    <% if (ourExperts.length) { %>
+        </div>
+        <% } %>
+        <div class="body" style="margin-top: 20px;">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Description
+          </strong>
+          <%- data.description %>
+        </div>
+        <% if (ourExperts.length) { %>
 
-                      <div class="body">
-                        <strong class="header" style="font-size: 25px; color: #008ecc;">
-                          Resource Persons
-                        </strong>
-                        <div class="specialServiceDoctors">
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Resource Persons
+          </strong>
+          <div class="specialServiceDoctors">
 
-                          <% for(let i=0 ; i < ourExperts.length; i++) { %>
-                            <div class="eachDoctor">
-                              <div class="es_img">
-                                <% if(ourExperts[i] !=null && typeof ourExperts[i].propicURL !='undefined' ){ %>
-                                  <img src="/images/experts/<%= ourExperts[i].propicURL %>.jpg" alt="" />
-                                  <% } else{ %>
-                                    <img src="" alt="photo is not uploaded" />
-                                    <% } %>
-                              </div>
-                              <div class="es_name">
-                                <p><a href="#">
-                                    <%= (ourExperts[i] !=null && typeof ourExperts[i].name !='undefined' ) ?
+            <% for(let i=0 ; i < ourExperts.length; i++) { %>
+            <div class="eachDoctor">
+              <div class="es_img">
+                <% if(ourExperts[i] !=null && typeof ourExperts[i].propicURL !='undefined' ){ %>
+                <img src="/images/experts/<%= ourExperts[i].propicURL %>.jpg" alt="" />
+                <% } else{ %>
+                <img src="" alt="photo is not uploaded" />
+                <% } %>
+              </div>
+              <div class="es_name">
+                <p><a href="#">
+                    <%= (ourExperts[i] !=null && typeof ourExperts[i].name !='undefined' ) ?
                                       ourExperts[i].name : '' %>
-                                  </a></p>
-                                <p>
-                                  <span>
-                                    <%= (ourExperts[i] !=null && typeof ourExperts[i].designation !='undefined' ) ?
+                  </a></p>
+                <p>
+                  <span>
+                    <%= (ourExperts[i] !=null && typeof ourExperts[i].designation !='undefined' ) ?
                                       ourExperts[i].designation : '' %>
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                            <% } %>
-                        </div>
-                      </div>
-                      <% } %>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
 
 
-                        <!-- <% if (user) { %>
+        <!-- <% if (user) { %>
                 <div class="comment-section">
                     <div class="span-opener">Leave a comment</div>
                     <div class="textbox">
@@ -147,59 +147,41 @@
                 </div>
                 <% } %> -->
 
-              </div>
+      </div>
 
-              <div class="right">
-                <div class="contents">
-                  <div class="item">
-                    <div class="heading">
-                      <i class="fa fa-volume-up"></i>To speak to someone
-                    </div>
-
-                    <div class="con">+8801552-525252</div>
-                    <div class="con">info@trin-innovation.com</div>
-                  </div>
-                  <div class="item">
-                    <div class="heading">
-                      <i class="fa fa-map-marker"></i>Location
-                    </div>
-                    <div class="con">
-                      <%= data.location %>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="heading">
-                      <i class="fa fa-clock-o"></i>Event Timing
-                    </div>
-                    <div class="con">
-                      Time: <%= data.schedule.startTime %> to <%= data.schedule.endTime %>
-                    </div>
-                    <div class="con">
-                      Date: <%= data.schedule.startDate %> to <%= data.schedule.endDate %>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+      <div class="right">
+        <div class="contents">
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-volume-up"></i>To speak to someone
             </div>
 
-            <div class="lower">
-              <div class="lower-cover">
-                <div class="contents">
-                  <div class="texts">
-                    <div class="heading">Some random heading</div>
-                    <div class="body">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Accusantium, nulla recusandae tempore reprehenderit unde eius.
-                      In quae odio ad voluptas dolorem earum placeat ducimus sapiente!
-                      Incidunt deserunt itaque fugit explicabo.
-                    </div>
-
-                  </div>
-                  <div class=""></div>
-                </div>
-              </div>
+            <div class="con">+8801552-525252</div>
+            <div class="con">info@trin-innovation.com</div>
+          </div>
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-map-marker"></i>Location
             </div>
+            <div class="con">
+              <%= data.location %>
+            </div>
+          </div>
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-clock-o"></i>Event Timing
+            </div>
+            <div class="con">
+              Time: <%= data.schedule.startTime %> to <%= data.schedule.endTime %>
+            </div>
+            <div class="con">
+              Date: <%= data.schedule.startDate %> to <%= data.schedule.endDate %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
   <!-- Participents modal -->
   <div class="modal fade" id="participents-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -212,19 +194,19 @@
         <div class="modal-body">
           <div class="part-list">
             <% for (let i=0; i <parts.length; i++) { %>
-              <a href="/services/doctor/profile/general/<%= parts[i].user_id %>">
-                <div class="each-part" id="<%= parts[i].user_id %>">
-                  <div class="name">
-                    <h6>
-                      <%= parts[i].user_name %>
-                    </h6>
-                  </div>
-                  <div class="email"><span>
-                      <%= parts[i].user_email %>
-                    </span></div>
+            <a href="/services/doctor/profile/general/<%= parts[i].user_id %>">
+              <div class="each-part" id="<%= parts[i].user_id %>">
+                <div class="name">
+                  <h6>
+                    <%= parts[i].user_name %>
+                  </h6>
                 </div>
-              </a>
-              <% } %>
+                <div class="email"><span>
+                    <%= parts[i].user_email %>
+                  </span></div>
+              </div>
+            </a>
+            <% } %>
           </div>
         </div>
         <div class="modal-footer">

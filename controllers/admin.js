@@ -15,6 +15,7 @@ const { Feedback } = require('../models/feedback.js');
 const { sendGrid } = require('../config/sendMail');
 const { eUserModel } = require('../models/expertUser');
 const { wsComment } = require('../models/workshopComment.js');
+const { trainingModel } = require('../models/training')
 
 const LIMIT = 9;
 
@@ -1221,7 +1222,7 @@ exports.getWorkshop = async (req, res, next) => {
 exports.singleWorkshop = async (req, res) => {
   const comments = await wsComment.find({ workshopID: req.params.id });
   const data = await workshopModel.findOne({ _id: req.params.id });
-  const parts = await workshopReg.find({ workshop_id: req.params.id });
+  const parts = await workshopReg.find({ event_id: req.params.id });
   console.log('In singleWorkshop, parts = ', parts);
   const eUser = [];
   for (let i = 0; i < data.doctors.length; i++) {
@@ -1444,6 +1445,245 @@ exports.deleteWorkshop = async (req, res) => {
   await workshopModel.findByIdAndDelete({ _id: req.params.id });
   res.redirect('/admin/workshop');
 };
+
+// Admin training sessions
+
+exports.getTraining = async (req, res, next) => {
+  let { type, search } = req.query;
+  let data;
+  if (type) {
+    if (type == 'current') {
+      data = await trainingModel.find({
+        start: { $lte: new Date() },
+        end: { $gte: new Date() },
+      });
+      res.render('allTrainingFromAdmin', {
+        data,
+        user: req.user,
+      });
+    } else if (type == 'past') {
+      data = await Trainingnd({
+        end: { $lte: new Date() },
+      });
+      res.render('allTrainingFromAdmin', {
+        data,
+        user: req.user,
+      });
+    } else if (type == 'upcoming') {
+      data = await trainingModel.find({
+        start: { $gte: new Date() },
+      });
+      res.render('allTrainingFromAdmin', {
+        data,
+        user: req.user,
+      });
+    }
+  }
+  if (search) {
+    console.log(search);
+    search = search.trim();
+    let searchOptions = {
+      $regex: search,
+      $options: 'i',
+    };
+    data = await trainingModel.find({
+      $or: [
+        { title: searchOptions },
+        { description: searchOptions },
+        { location: searchOptions },
+      ],
+    });
+    return res.render('allTrainingFromAdmin', {
+      data,
+      user: req.user,
+    });
+  }
+  data = await trainingModel.find().sort({ _id: -1 });
+  res.render('allTrainingFromAdmin', { data, user: req.user });
+};
+
+exports.singleTraining = async (req, res) => {
+  const comments = await wsComment.find({ workshopID: req.params.id });
+  const data = await trainingModel.findOne({ _id: req.params.id });
+  const parts = await workshopReg.find({ event_id: req.params.id });
+  console.log('In singleWorkshop, parts = ', parts);
+  const eUser = [];
+  for (let i = 0; i < data.doctors.length; i++) {
+    const doc = await eUserModel.findOne({ name: data.doctors[i] });
+    if (doc != null) eUser.push(doc);
+  }
+
+  res.render('singleTrainingFromAdmin', {
+    user: req.user,
+    data,
+    comments,
+    ourExperts: eUser,
+    parts,
+  });
+};
+
+exports.postTraining = async (req, res) => {
+  const { title, description, about, location, image } = req.body;
+  const schedule = JSON.parse(req.body.schedule);
+  const sdate = schedule.startDate.split('/');
+  const stime = schedule.startTime.split(':');
+  let x;
+  let y = ('0' + parseInt(stime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+  if (schedule.startTime[6] == 'P' && stime != '12') {
+    x = ('0' + (parseInt(stime[0]) + 12)).slice(-2);
+  } else {
+    x = ('0' + (parseInt(stime[0]) % 12)).slice(-2);
+  }
+
+  let start = sdate[2] + '-' + sdate[0] + '-' + sdate[1] + 'T' + x + ':' + y;
+  console.log(start);
+  start = new Date(start);
+  start.setHours(start.getHours() - new Date().getTimezoneOffset() / 60);
+  console.log(start);
+
+  const edate = schedule.endDate.split('/');
+  const etime = schedule.endTime.split(':');
+  let a;
+  let b = ('0' + parseInt(etime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+  if (schedule.endTime[6] == 'P' && etime != '12') {
+    a = ('0' + (parseInt(etime[0]) + 12)).slice(-2);
+  } else {
+    a = ('0' + (parseInt(etime[0]) % 12)).slice(-2);
+  }
+
+  let end = edate[2] + '-' + edate[0] + '-' + edate[1] + 'T' + a + ':' + b;
+  console.log(end);
+  end = new Date(end);
+  end.setHours(end.getHours() - new Date().getTimezoneOffset() / 60);
+  console.log(end);
+
+  obj = {
+    title,
+    description,
+    about,
+    videos: JSON.parse(req.body.videos),
+    doctors: JSON.parse(req.body.doctors),
+    location,
+    schedule,
+    start,
+    end,
+    image,
+  };
+  const newWorkshop = new trainingModel(obj);
+  console.log(newWorkshop);
+  await newWorkshop.save();
+  res.send({
+    status: true,
+    msg: 'Training created',
+  });
+};
+
+exports.trainingFile = async (req, res) => {
+  console.log('Training file added');
+  res.redirect('/admin/training');
+};
+
+exports.getUpdateTraining = async (req, res) => {
+  const data = await trainingModel.findOne({ _id: req.params.id });
+  res.render('updateTraining', {
+    user: req.user,
+    data,
+  });
+};
+
+exports.postUpdateTraining = async (req, res) => {
+  const { id, title, description, about, location, image } = req.body;
+  const schedule = JSON.parse(req.body.schedule);
+  const sdate = schedule.startDate.split('/');
+  const stime = schedule.startTime.split(':');
+  let x;
+  let y = ('0' + parseInt(stime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+  if (schedule.startTime[6] == 'P' && stime != '12') {
+    x = ('0' + (parseInt(stime[0]) + 12)).slice(-2);
+  } else {
+    x = ('0' + (parseInt(stime[0]) % 12)).slice(-2);
+  }
+
+  let start = sdate[2] + '-' + sdate[0] + '-' + sdate[1] + 'T' + x + ':' + y;
+  console.log(start);
+  start = new Date(start);
+  start.setHours(start.getHours() - new Date().getTimezoneOffset() / 60);
+  console.log(start);
+
+  const edate = schedule.endDate.split('/');
+  const etime = schedule.endTime.split(':');
+  let a;
+  let b = ('0' + parseInt(etime[1].split(' ')[0])).slice(-2); //0 prepended for formatting
+  if (schedule.endTime[6] == 'P' && etime != '12') {
+    a = ('0' + (parseInt(etime[0]) + 12)).slice(-2);
+  } else {
+    a = ('0' + (parseInt(etime[0]) % 12)).slice(-2);
+  }
+
+  let end = edate[2] + '-' + edate[0] + '-' + edate[1] + 'T' + a + ':' + b;
+  console.log(end);
+  end = new Date(end);
+  end.setHours(end.getHours() - new Date().getTimezoneOffset() / 60);
+  console.log(end);
+
+  let newFileUploaded = nullChk(image) ? false : true;
+  // image name will be updated after file uploading done and prev file deletion done.
+  // File uploading and deletion will be done in route named "/admin/workshop/update/file"
+
+  await trainingModel.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        title: title,
+        description: description,
+        about: about,
+        videos: JSON.parse(req.body.videos),
+        doctors: JSON.parse(req.body.doctors),
+        location: location,
+        schedule: {
+          startDate: schedule.startDate,
+          startTime: schedule.startTime,
+          endDate: schedule.endDate,
+          endTime: schedule.endTime,
+        },
+        start: start,
+        end: end,
+      },
+    }
+  );
+
+  res.send({
+    status: true,
+    newFileUploaded: newFileUploaded,
+    msg: 'Training updated',
+  });
+};
+
+exports.updateTrainingFile = async (req, res) => {
+  console.log('Training file updated');
+  const { id, filename, prevFilename } = req.body;
+
+  try {
+    let training = await trainingModel.findOne({ _id: id });
+    training.image = filename;
+    await training.save();
+
+    await deleteFile('training', prevFilename);
+    res.redirect(`/admin/training/${id}`);
+    return;
+  } catch (err) {
+    req.flash('errorMessage', err.message);
+    res.redirect(`/admin/training/${id}`);
+    return;
+  }
+};
+
+exports.deleteTraining = async (req, res) => {
+  await trainingModel.findByIdAndDelete({ _id: req.params.id });
+  res.redirect('/admin/training');
+};
+
+// Admin special services
 
 exports.getUpdateSingleSS = async (req, res, next) => {
   const eUser = require('../data/homepage_experts');

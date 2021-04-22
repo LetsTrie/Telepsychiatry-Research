@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/all-workshops.css" />
+
+  <title>
+    Training Sessions | Telepsychiatry Research
+  </title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/navbar')%>
+    </nav>
+    <div class="assessment_wrapper">
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Events</a> / Training Sessions</p>
+        </div>
+        <div class="bigText">
+          <p>Training Sessions</p>
+        </div>
+      </div>
+
+      <div class="twoBigSectionFlex">
+        <div class="eachBigSection">
+          <div class="searchFilter">
+            <p>Search Filter</p>
+          </div>
+          <form action="#" id="search-form">
+            <div class="searchFields">
+              <div class="sField">
+                <div class="input-group">
+                  <input type="text" required class="form-control py-4" id="search-input" name="search"
+                    placeholder="Search Training Sessions" />
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" id="" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="cat">
+                <div class="cat_heading">
+                  <p>Training Session Stage</p>
+                </div>
+              </div>
+
+              <div class="twoBigSectionFlex">
+                <div class="eachBigSection">
+                  <div class="searchFilter">
+                    <p>Search Filter</p>
+                  </div>
+                  <form action="#" id="search-form">
+                    <div class="searchFields">
+                      <div class="sField">
+                        <div class="input-group">
+                          <input type="text" required class="form-control py-4" id="search-input" name="search"
+                            placeholder="Search Workshops (With any keywords)" />
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" id="" type="submit">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cat">
+                        <div class="cat_heading">
+                          <p>Training Session Stage</p>
+                        </div>
+                        <div class="catOptions">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage"
+                              value="current" aria-selected="true" />
+                            <label class="custom-control-label" for="customCheck">Current
+                            </label>
+                          </div>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage"
+                              value="past" />
+                            <label class="custom-control-label" for="customCheckw">
+                              Past
+                            </label>
+                          </div>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheckc" name="rStage"
+                              value="upcoming" />
+                            <label class="custom-control-label" for="customCheckc">
+                              Upcoming
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="findDocBtn">
+                        <button id="search-btn">Search</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="findDocBtn">
+                <button id="search-btn">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="eachBigSection">
+          <div class="bigHeading">
+            <p>Training Sessions</p>
+          </div>
+          <div class="all_resources">
+            <% if (successMessage.length !=0) { %>
+            <div class="alert alert-success text-center">
+              <p>
+                <%= successMessage %>
+              </p>
+            </div>
+            <% } %>
+            <% if (errorMessage.length !=0) { %>
+            <div class="alert alert-danger text-center">
+              <p>
+                <%= errorMessage %>
+              </p>
+            </div>
+            <% } %>
+            <% for(let i=0 ; i < data.length; i++) { %>
+            <div class="each-resources">
+              <div class="image">
+                <img src="/training/<%=data[i].image%>" alt="">
+              </div>
+              <div class="texts">
+                <div class="title">
+                  <%= data[i].title %>
+                </div>
+                <div class="body">
+                  <%- data[i].description %>
+                </div>
+                <div class="last-row">
+                  <div class="add-info">
+                    <div class="add-child"><i class="fa fa-map-marker"></i>
+                      <%= data[i].location %>
+                    </div>
+                    <div class="add-child"> <i class="fa fa-clock-o"></i>
+                      <%= data[i].schedule.startTime %> to
+                      <%= data[i].schedule.startTime %>
+                    </div>
+                    <div class="add-child"> <i class="fa fa-table"></i>
+                      <%= data[i].schedule.startDate %> to
+                      <%= data[i].schedule.endDate %>
+                    </div>
+                  </div>
+                  <div class="btn-flex">
+                    <button class="view-btn" id="<%= data[i]._id %>">View Details</button>
+                    <% if (regList.includes(data[i]._id.toString())) { %>
+                    <button class="regd-btn" disabled><i class="fa fa-check"></i>
+                      Registered</button>
+                    <% } else { %>
+                    <button class="reg-btn" name="<%=data[i]._id%>" data-toggle="modal"
+                      data-target="#exampleModal">Register</button>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="justify-content: flex-start;">
+          <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i>
+          Confirmation
+        </div>
+        <div class="modal-body">
+          <p style="text-align: center;">
+            Are you sure you want to register for this event?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn go-ahead btn-primary">
+            Go Ahead
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/bookAppointment') %>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  let regID;
+  $('.reg-btn').click((e) => {
+    regID = e.target.name;
+    console.log(regID);
+  });
+  $('.go-ahead').click((e) => {
+    console.log('go-ahead');
+    location = `/events/training/reg/${regID}`;
+  });
+  $('.view-btn').click((e) => {
+    const id = e.target.id;
+    location = '/events/training/' + id;
+  });
+  $('#submitResource').click((e) => {
+    location = '/events/training/new';
+  });
+  $('.search-btn').click((e) => {
+    $('#form').submit();
+  });
+  $('input[name="rStage"]').click((e) => {
+    const stage = $(e.target).val();
+    console.log(stage);
+    location = `/events/workshop?type=${stage}`;
+  });
+  $('#search-btn').click((e) => {
+    const phrase = $('#search-input').val();
+    console.log(`/events/training?search=${phrase}`);
+    location = `/events/training?search=${phrase}`;
+  });
+</script>
+
+</html>

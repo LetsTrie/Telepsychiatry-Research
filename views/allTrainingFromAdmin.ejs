@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/all-workshops.css" />
+
+  <title>
+    Training Sessions | Telepsychiatry Research
+  </title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <nav>
+      <%- include('./partials/adminNavbar')%>
+    </nav>
+    <div class="assessment_wrapper">
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Admin</a> / Training Sessions</p>
+        </div>
+        <div class="bigText">
+          <p>Training Sessions</p>
+        </div>
+      </div>
+
+      <div class="twoBigSectionFlex">
+        <div class="eachBigSection">
+          <div class="searchFilter">
+            <p>Search Filter</p>
+          </div>
+          <form action="#" id="search-form">
+            <div class="searchFields">
+              <div class="sField">
+                <div class="input-group">
+                  <input type="text" required class="form-control py-4" id="search-input" name="search"
+                    placeholder="Search Researches (With any keywords)" />
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" id="" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="cat">
+                <div class="cat_heading">
+                  <p>Training Session Stage</p>
+                </div>
+                <div class="catOptions">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck" name="rStage" value="current"
+                      aria-selected="true" />
+                    <label class="custom-control-label" for="customCheck">Current
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheckw" name="rStage" value="past" />
+                    <label class="custom-control-label" for="customCheckw">
+                      Past
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheckc" name="rStage"
+                      value="upcoming" />
+                    <label class="custom-control-label" for="customCheckc">
+                      Upcoming
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="findDocBtn">
+                <button id="search-btn">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="eachBigSection">
+          <div class="bigHeading">
+            <p>Training Sessions - Admin Panel</p>
+          </div>
+          <div class="submitResource mb-3" id="submitResource">
+            <button>Add New Training Session</button>
+          </div>
+          <div class="all_resources">
+            <div class="alert alert-success text-center" id="alert">
+              <p></p>
+            </div>
+            <% for(let i = 0 ; i < data.length; i++) { %>
+            <div class="each-resources">
+              <div class="image">
+                <img src="/training/<%=data[i].image%>" alt="">
+              </div>
+              <div class="texts">
+                <div class="title">
+                  <%= data[i].title %>
+                </div>
+                <div class="body">
+                  <%- data[i].description %>
+                </div>
+                <div class="last-row">
+                  <div class="add-info">
+                    <div class="add-child"><i class="fa fa-map-marker"></i> <%= data[i].location %>
+                    </div>
+                    <div class="add-child"> <i class="fa fa-clock-o"></i>
+                      <%= data[i].schedule.startTime %> to
+                      <%= data[i].schedule.startTime %></div>
+                    <div class="add-child"> <i class="fa fa-table"></i>
+                      <%= data[i].schedule.startDate %> to
+                      <%= data[i].schedule.endDate %></div>
+                  </div>
+                  <div class="btn-flex">
+                    <button class="view-btn" id="<%= data[i]._id %>">View Details</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('./partials/bookAppointment') %>
+  <%-
+    include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('.view-btn').click((e) => {
+    const id = e.target.id;
+    location = '/admin/training/' + id;
+  });
+  $('#submitResource').click((e) => {
+    console.log('hi')
+    location = '/admin/training/new';
+  });
+  $('.search-btn').click((e) => {
+    $('#form').submit();
+  });
+  $('input[name="rStage"]').click((e) => {
+    const stage = $(e.target).val();
+    console.log(stage);
+    location = `/admin/training?type=${stage}`;
+  });
+  $('#search-btn').click((e) => {
+    const phrase = $('#search-input').val();
+    console.log(`/admin/training?search=${phrase}`);
+    location = `/admin/training?search=${phrase}`;
+  });
+</script>
+
+</html>

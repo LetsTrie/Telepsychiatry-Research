@@ -1325,82 +1325,11 @@ p {
   opacity: 1;
 }
 
-.lower {
-  padding-bottom: 75px;
-}
-
-@media (max-width: 1000px) {
-  .lower {
-    display: none;
-  }
-}
-
-.lower .lower-cover {
-  background: url("https://cdn.hipwallpaper.com/i/96/50/TJfwDN.jpg");
-  height: 400px;
-  opacity: 0.7;
-  background-position: bottom;
-}
-
-.lower .lower-cover .contents {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 75%;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: auto;
-  padding-top: 90px;
-}
-
-@media (max-width: 1000px) {
-  .lower .lower-cover .contents {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    width: 100%;
-    margin: auto;
-  }
-}
-
-.lower .lower-cover .contents .texts {
-  width: 60%;
-  background: #ddd;
-  opacity: 0.9;
-  border: none;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-@media (max-width: 1200px) {
-  .lower .lower-cover .contents .texts {
-    width: 90%;
-  }
-}
-
-.lower .lower-cover .contents .texts .heading {
-  font-size: 35px;
-  padding: 10px 0;
-}
-
-.lower .lower-cover .contents .texts .reg-btn {
+.reg-btn {
   padding: 15px 0 0 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
-.lower .lower-cover .contents .texts .reg-btn button {
+.reg-btn button {
   padding: 10px 15px;
   border: none;
   background-color: #d39e0e;

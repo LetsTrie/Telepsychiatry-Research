@@ -61,6 +61,16 @@ const {
   addWorkshopToHomepage,
   removeWorkshopFromHomepage,
 
+  // trainings
+  getTraining,
+  singleTraining,
+  postTraining,
+  trainingFile,
+  getUpdateTraining,
+  postUpdateTraining,
+  updateTrainingFile,
+  deleteTraining,
+
   // special service
   getSS,
   singleSS,
@@ -113,8 +123,18 @@ const innovationStorage = multer.diskStorage({
 
 const workshopStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    console.log('here');
     cb(null, 'public/workshop/');
+  },
+  filename: (req, file, cb) => {
+    const filename = req.body.filename;
+    cb(null, filename);
+  },
+});
+
+const trainingStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    console.log('here');
+    cb(null, 'public/training/');
   },
   filename: (req, file, cb) => {
     const filename = req.body.filename;
@@ -158,6 +178,11 @@ const uploadPhotoWorkshop = multer({
   storage: workshopStorage,
   fileFilter: fileFilter,
 }).single('workshopFile');
+
+const uploadPhotoTraining = multer({
+  storage: trainingStorage,
+  fileFilter: fileFilter,
+}).single('trainingFile');
 
 const uploadPhotoSS = multer({
   storage: ssStorage,
@@ -278,6 +303,7 @@ router.post(
 router.get('/innovations/unverified', adminAccess, getUnverifiedInnoations);
 
 // admin workshop
+
 router.get('/workshop/new', (req, res) => {
   res.render('add-new-workshop');
 });
@@ -304,6 +330,23 @@ router.get(
   adminAccess,
   removeWorkshopFromHomepage
 );
+
+// Admin training sessions
+
+router.get('/training', adminAccess, getTraining)
+router.get('/training/new', adminAccess, (req, res) => res.render('addNewTraining'))
+router.get('/training/:id', adminAccess, singleTraining)
+router.post('/training/new', adminAccess, postTraining)
+router.post('/training/new/file', [adminAccess, uploadPhotoTraining], trainingFile)
+router.get('/training/update/:id', adminAccess, getUpdateTraining)
+router.post('/training/update/', adminAccess, postUpdateTraining)
+router.post(
+  '/training/update/file',
+  [adminAccess, uploadPhotoTraining],
+  updateTrainingFile
+);
+router.get('/training/delete/:id', adminAccess, deleteTraining)
+// Expert priority settings
 
 router.get('/management/expert-priorities', getExpertPriorities);
 router.post('/management/expert-priorities', setExpertPriorities);

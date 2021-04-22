@@ -1,170 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
 
-    <link rel="stylesheet" href="/css/admin.css" />
-    <title>Innovations | Admin Panel</title>
-  </head>
+<head>
+  <%- include('./partials/vendorsTop')%>
 
-  <body>
-    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-      <header>
-        <nav>
-          <%- include('./partials/adminNavbar')%>
-        </nav>
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Admin Panel</a> / Innovation</p>
+  <link rel="stylesheet" href="/css/admin.css" />
+  <title>Innovations | Admin Panel</title>
+</head>
+<style>
+  a {
+    color: #20c0f3;
+  }
+</style>
+
+<body>
+  <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+    <header>
+      <nav>
+        <%- include('./partials/adminNavbar')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Admin Panel</a> / Innovation</p>
+        </div>
+        <div class="bigText">
+          <p>
+            <%= data.title %>
+          </p>
+        </div>
+      </div>
+    </header>
+    <input type="hidden" value="<%= data._id %>" id="id" />
+    <div class="twoBigSectionFlex">
+      <div class="oneBigFatCat_wrapper">
+        <div class="oneBigFatCat">
+          <% if(user && user._id.toString().trim() ===
+            data.authorID.toString().trim()) { %>
+          <div class="updateBtn text-right">
+            <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
+              Update
+            </button>
           </div>
-          <div class="bigText">
+          <% } %>
+          <div class="contentTitle">
             <p>
               <%= data.title %>
             </p>
           </div>
-        </div>
-      </header>
-      <input type="hidden" value="<%= data._id %>" id="id" />
-      <div class="twoBigSectionFlex">
-        <div class="oneBigFatCat_wrapper">
-          <div class="oneBigFatCat">
-            <% if(user && user._id.toString().trim() ===
-            data.authorID.toString().trim()) { %>
-            <div class="updateBtn text-right">
-              <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
-                Update
-              </button>
-            </div>
-            <% } %>
-            <div class="contentTitle">
-              <p>
-                <%= data.title %>
-              </p>
-            </div>
-            <div class="contentDescription">
-              <p>
-                <%- data.description %>
-              </p>
-            </div>
-            <% if (data.collaboration) { %>
-            <div class="content_box">
-              <div class="content_box_header">
-                <p>Collaboration</p>
-              </div>
-              <div class="content_box_details">
-                <p>
-                  <%= data.collaboration %>
-                </p>
-              </div>
-            </div>
-            <% } %>
-            <div class="content_box">
-              <div class="content_box_header">
-                <p>Financial support and grant</p>
-              </div>
-              <div class="content_box_details">
-                <p>
-                  <%= data.financialSupport %>
-                </p>
-              </div>
-            </div>
+          <div class="contentDescription">
 
-            <div class="content_box">
-              <div class="content_box_header">
-                <p>Scope of Collaboration</p>
-              </div>
-              <div class="content_box_details">
-                <p>
-                  <%= data.collabScope %>
-                </p>
-              </div>
-            </div>
+            <p>
+              <%- data.description %>
+            </p>
+          </div>
 
-            <div class="content_box">
-              <div class="content_box_header">
-                <p>News and Publication</p>
-              </div>
-              <div class="content_box_details">
-                <p>
-                  <%= data.newsAndPub %>
-                </p>
-              </div>
-            </div>
-
-            <% if (data.link) { %>
-            <div class="content_box">
-              <div class="content_box_header">
-                <p>URL</p>
-              </div>
-              <div class="content_box_details">
-                <a
-                  style="font-size: 20px; color: rgb(12, 150, 214);"
-                  href="<%= data.link %>"
-                  target="_blank"
-                >
-                  <%= data.link %>
-                </a>
-              </div>
-            </div>
-            <% } %>
-
-            <div class="content_box">
-              <div class="content_box_header">
-                <p>Key Contact Persons</p>
-              </div>
-              <div class="content_box_details">
-                <p>
-                  <%= data.name %> <br />
-                  <%= data.designation %>, <br />
-                  <%= data.email %> <br />
-                  <%= data.phone %>
-                </p>
-              </div>
-            </div>
-
-            <!-- <div class="content_box">
-              <div class="content_box_header">
-                <p>Additional Files</p>
-              </div>
-              <div class="content_box_details">
-                <% const file = data.file.split('-')[1] %>
-                <input type="hidden" value="<%= data.file %>" id="file-link" />
-                <p class="additionalFileName">
-                  <%= file %>
-                </p>
-              </div>
-            </div> -->
-
-            <div class="text-center">
-              <% if (!data.isVerified && user && user._id.toString().trim() ===
+          <div class="text-center">
+            <% if (!data.isVerified && user && user._id.toString().trim() ===
               'ADMIN_ID_TRIN_POIUYTREWQ') { %>
-              <button id="approve-btn" class="btn btn-success btn-lg px-4 w-25">
-                Approve
-              </button>
-              <% } %>
-            </div>
+            <button id="approve-btn" class="btn btn-success btn-lg px-4 w-25">
+              Approve
+            </button>
+            <% } %>
           </div>
         </div>
       </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
-  <script>
-    $('button').click((e) => {
-      const id = e.target.id;
-      location = '/admin/innovation/update/' + id;
-    });
-    $('#approve-btn').click((e) => {
-      const id = $('#id').val();
-      location = '/admin/innovation/approve/' + id;
-    });
-    $('#disapprove-btn').click((e) => {
-      const id = $('#id').val();
-      location = '/admin/innovation/disapprove/' + id;
-    });
-    $('.additionalFileName').click((e) => {
-      location = '/innovations/download/' + $('#file-link').val();
-    });
-  </script>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
+<script>
+  $('button').click((e) => {
+    const id = e.target.id;
+    location = '/admin/innovation/update/' + id;
+  });
+  $('#approve-btn').click((e) => {
+    const id = $('#id').val();
+    location = '/admin/innovation/approve/' + id;
+  });
+  $('#disapprove-btn').click((e) => {
+    const id = $('#id').val();
+    location = '/admin/innovation/disapprove/' + id;
+  });
+  $('.additionalFileName').click((e) => {
+    location = '/innovations/download/' + $('#file-link').val();
+  });
+</script>
+
 </html>

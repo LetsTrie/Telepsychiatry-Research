@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/single-workshop.css" />
+  <title><%= data.title %> | Training Session</title>
+</head>
+
+<style>
+  .cover-image {
+    background: url('https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lZXRpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');
+  }
+
+  .lower-cover {
+    background: url('../client/images/single-training-bgi.jpg');
+  }
+</style>
+
+<body>
+  <input type="hidden" value="<%=data._id%>" id="id">
+  <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+    <header>
+      <nav>
+        <%- include('./partials/navbar.ejs')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Events</a>/Trainings</p>
+        </div>
+        <div class="bigText">
+          <p>Single Training</p>
+        </div>
+      </div>
+    </header>
+    <div class="cover-image">
+      <p>
+        <%= data.title %>
+      </p>
+    </div>
+    <% if (successMessage.length != 0) { %>
+    <div class="alert alert-success" style="width: 60%; margin: 40px auto;">
+      <p style="text-align: center;">
+        <%= successMessage %>
+      </p>
+    </div>
+    <% } %> <% if (errorMessage.length != 0) { %>
+    <div class="alert alert-danger" style="width: 60%; margin: 40px auto;">
+      <p style="text-align: center;">
+        <%= errorMessage %>
+      </p>
+    </div>
+    <% } %>
+    <input type="hidden" value="<%=data._id%>" id="id" />
+    <div class="contentWrapper">
+      <div class="left">
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            About
+          </strong>
+          <%- data.about %>
+        </div>
+        <% if (data.videos.length != 0) { %>
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Videos
+          </strong>
+          <div class="videos">
+            <% for(let i=0; i<data.videos.length; i++) { %>
+            <div class="video">
+              <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+        <div class="body" style="margin-top: 20px;">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Description
+          </strong>
+          <%- data.description %>
+        </div>
+
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Resource Persons
+          </strong>
+          <div class="specialServiceDoctors">
+
+            <% for(let i = 0 ; i < ourExperts.length; i++) { %>
+            <div class="eachDoctor">
+              <div class="es_img">
+                <img src="/images/experts/<%=ourExperts[i].propicURL%>.jpg" alt="" />
+              </div>
+              <div class="es_name">
+                <p><a href="#"><%=ourExperts[i].name%></a></p>
+                <p>
+                  <span><%=ourExperts[i].designation%></span>
+                </p>
+              </div>
+            </div>
+            <% } %>
+
+          </div>
+        </div>
+
+        <% if (user) { %>
+        <div class="comment-section">
+          <div class="span-opener">Leave a comment</div>
+          <div class="textbox">
+            <textarea id="text" cols="30" rows="5"></textarea>
+            <div class="bottom">
+              <input type="file" name="video" id="video">
+              <button class="btn btn-secondary" id="submit" disabled>Submit</button>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+      </div>
+
+      <div class="right">
+        <div class="contents">
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-volume-up"></i>To speak to someone
+            </div>
+
+            <div class="con">+8801552-525252</div>
+            <div class="con">info@trin-innovation.com</div>
+          </div>
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-map-marker"></i>Location
+            </div>
+            <div class="con">
+              <%= data.location %>
+            </div>
+          </div>
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-clock-o"></i>Event Timing
+            </div>
+            <div class="con">
+              Time: <%= data.schedule.startTime %> to <%=
+                data.schedule.endTime %>
+            </div>
+            <div class="con">
+              Date: <%= data.schedule.startDate %> to <%=
+                data.schedule.endDate %>
+            </div>
+          </div>
+          <div class="item">
+            <div class="reg-btn">
+              <div class=""></div>
+              <% if (registered) { %>
+              <button disabled>
+                <i class="fa fa-check" style="color: #fff;"></i> Registered
+              </button>
+              <% } else { %>
+              <button class="reg" data-toggle="modal" data-target="#exampleModal">
+                Register
+              </button>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="flx-chld-feeds" style="display: none;">
+          <div class="feedback-Heading">
+            <p>User Feedback</p>
+          </div>
+          <%if(comments.length){%>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <% for (let i=0; i<comments.length; i++) { %>
+              <%if(i==0) {%>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" class="active"></li>
+              <%}else{%>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<%=i%>" </li>
+                <%}%>
+                 <%}%>
+            </ol>
+            <div class="carousel-inner">
+              <% for (let i=0; i<comments.length; i++) { %>
+              <%if(i==0) {%>
+              <div class="carousel-item active">
+                <div class="single-feedback">
+                  <% if (comments[i].video != 'none') { %>
+                  <video width="320" height="240" controls>
+                    <source src="/training/videos/<%=comments[i].video %>" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <% } %>
+                  <div class="txt-cmnt">
+                    <p>"<%= comments[i].text %>"</p>
+                    <p>-<%= comments[i].userName %></p>
+                  </div>
+                </div>
+              </div>
+              <%}else{%>
+              <div class="carousel-item">
+                <div class="single-feedback">
+                  <% if (comments[i].video != 'none') { %>
+                  <video width="320" height="240" controls>
+                    <source src="/training/videos/<%=comments[i].video %>" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <% } %>
+                  <div class="txt-cmnt">
+                    <p>"<%= comments[i].text %>"</p>
+                    <p>-<%= comments[i].userName %></p>
+                  </div>
+                </div>
+              </div>
+              <%}%>                   
+                  <% } %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <%}%>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-reg">
+      <% if (registered) { %>
+          <p>
+            <button disabled>
+              <i class="fa fa-check" style="color: #fff;"></i> Registered
+            </button>
+          </p>
+          <% } else { %>
+          <p><button>Register</button></p>
+          <% } %>
+        </div>
+        <!-- <div class="lower">
+          <div class="lower-cover">
+            <div class="contents">
+              <div class="texts">
+                <div class="reg-btn">
+                  <div class=""></div>
+                  <% if (registered) { %>
+                  <button disabled>
+                    <i class="fa fa-check" style="color: #fff;"></i> Registered
+                  </button>
+                  <% } else { %>
+                  <button class="reg" data-toggle="modal" data-target="#exampleModal">
+                    Register
+                  </button>
+                  <% } %>
+                </div>
+              </div>
+              <div class=""></div>
+            </div>
+          </div>
+        </div> -->
+  </section>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="justify-content: flex-start;">
+          <i class="fa fa-info-circle" style="font-size: 20px; color: red; padding: 2px 5px;"></i>
+          Confirmation
+        </div>
+        <div class="modal-body">
+          <p style="text-align: center;">
+            Are you sure you want to register for this event?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn go-ahead btn-primary">
+            Go Ahead
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/footer')%>
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+  $('.go-ahead').click((e) => {
+    const id = $('#id').val();
+    location = `/events/training/reg/${id}`;
+  });
+
+  $('.carousel').carousel({
+    interval: false
+  })
+
+  $('.span-opener').click((e) => {
+    $('.textbox').slideToggle()
+  })
+
+  $('#text').on('keyup', e => {
+    if (e.target.value) {
+      $('#submit').prop('disabled', false)
+    } else {
+      $('#submit').prop('disabled', true)
+    }
+  })
+
+  $('#submit').click(e => {
+    const text = $('#text').val()
+    const video = $('#video')[0].files[0]
+    const workshopID = $('#id').val()
+
+    if (!video) {
+      const data = {
+        text,
+        workshopID
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: '/events/workshop/add-comment',
+        data,
+        success: data => {
+          location.reload()
+        }
+      })
+    }
+
+    else {
+      let filename = Date.parse(new Date().toString()) + '-' + $('#video')[0].files[0].name
+      let data = new FormData()
+      data.append('workshopID', workshopID)
+      data.append('filename', filename)
+      data.append('text', text)
+      data.append('video', video)
+
+      $.ajax({
+        type: 'POST',
+        url: '/events/workshop/add-comment',
+        data,
+        processData: false,
+        contentType: false,
+        success: data => {
+          location.reload()
+        }
+      })
+    }
+  })
+</script>
+
+</html>

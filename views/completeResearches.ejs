@@ -95,6 +95,12 @@
               </p>
             </div>
             <% } %> <% for(let i = 0 ; i < data.length; i++) { %>
+            <% 
+                                                                          let desc = data[i].description
+                                                                          if (desc.length > 200) {
+                                                                            desc = desc.slice(0, 300) + '  .  .  .'
+                                                                          }
+                                                                        %>
             <div class="each_resources">
               <div class="flx-prnt">
                 <div class="flx-chld">
@@ -111,7 +117,7 @@
                   </div>
                   <div class="each_resources_desc">
                     <p>
-                      <%- data[i].description %>
+                      <%- desc %>
                     </p>
                   </div>
                   <div class="each_resources_btn">

@@ -1,9 +1,15 @@
 const router = require('express').Router();
 const {
-  getWorkshop,
+  // Training sessions
+
   getTraining,
+  singleTraining,
+  regForTraining,
+
+  // Workshops
+
+  getWorkshop,
   getNewWorkshop,
-  getNewTraining,
   singleWorkshop,
   postWorkshop,
   workshopFile,
@@ -55,17 +61,18 @@ const uploadVideo = multer({
   storage: commentVideoStorage,
 }).single('video');
 
-// router.get('/', getEvents);
-// router.get('/new', (req, res, next) => res.render('createEvents'));
-// router.get('/single', (req, res, next) => res.render('singleEvent'));
-// router.post('/new', createEvent)
+// Workshops
 
 router.get('/workshop', getWorkshop);
-router.get('/training', getTraining);
 router.get('/workshop/:id', singleWorkshop);
-router.get('/training/new', getNewTraining);
-router.get('/showAll', eventsAll);
 router.get('/workshop/reg/:id', regForWorkshop);
 router.post('/workshop/add-comment', uploadVideo, addComment);
+
+// Training Sessions
+
+router.get('/training', getTraining);
+router.get('/training/:id', singleTraining)
+router.get('/training/reg/:id', regForTraining);
+
 
 module.exports = router;

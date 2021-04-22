@@ -725,9 +725,9 @@ const sendEmergencyLink = async (email, service, name, doctor, id) => {
     subject: 'TRIN - Emergency booking confirmation',
     body: `
         Dear <strong> ${name} </strong>, <br>
-Your Appointment for ${service} with ${doctor} is confirmed. <br>
-Please visit this <a href="https://meet.jit.si/services/consultation/${id}" target="_blank">link</a> to participate in the video conference. <br>
-Thank you for choosing TRIN Innovation Ltd.
+        Your Appointment for ${service} with ${doctor} is confirmed. <br>
+        Please visit this <a href="https://meet.jit.si/${id}" target="_blank">link</a> to participate in the video conference. <br>
+        Thank you for choosing TRIN Innovation Ltd.
     `
   }
   await sendGrid(data)
@@ -839,3 +839,4 @@ exports.staticPageLoader = async (req, res) => {
     data
   })
 }
+

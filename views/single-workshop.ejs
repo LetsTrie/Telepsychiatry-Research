@@ -142,6 +142,20 @@
                 data.schedule.endDate %>
             </div>
           </div>
+          <div class="item">
+            <div class="reg-btn">
+              <div class=""></div>
+              <% if (registered) { %>
+              <button disabled>
+                <i class="fa fa-check" style="color: #fff;"></i> Registered
+              </button>
+              <% } else { %>
+              <button class="reg" data-toggle="modal" data-target="#exampleModal">
+                Register
+              </button>
+              <% } %>
+            </div>
+          </div>
         </div>
 
         <div class="flx-chld-feeds" style="display: none;">
@@ -218,34 +232,7 @@
           <p><button>Register</button></p>
           <% } %>
         </div>
-        <div class="lower">
-          <div class="lower-cover">
-            <div class="contents">
-              <div class="texts">
-                <div class="heading">Some random heading</div>
-                <div class="body">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium, nulla recusandae tempore reprehenderit unde eius.
-                  In quae odio ad voluptas dolorem earum placeat ducimus sapiente!
-                  Incidunt deserunt itaque fugit explicabo.
-                </div>
-                <div class="reg-btn">
-                  <div class=""></div>
-                  <% if (registered) { %>
-                  <button disabled>
-                    <i class="fa fa-check" style="color: #fff;"></i> Registered
-                  </button>
-                  <% } else { %>
-                  <button class="reg" data-toggle="modal" data-target="#exampleModal">
-                    Register
-                  </button>
-                  <% } %>
-                </div>
-              </div>
-              <div class=""></div>
-            </div>
-          </div>
-        </div>
+
   </section>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

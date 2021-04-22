@@ -4,8 +4,8 @@
 <head>
   <%- include('./partials/vendorsTop')%>
 
-    <link rel="stylesheet" href="/css/admin.css" />
-    <title>Add New Research | Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+  <title>Add New Research | Admin Panel</title>
 </head>
 
 <body>
@@ -51,64 +51,6 @@
                   <textarea name="BriefDesciption" id="BDeditor"> </textarea>
                 </div>
               </div>
-              <div class="one_box">
-                <div class="box_header">
-                  <p>Key Contact Persons:</p>
-                </div>
-                <div class="keyContactPersonWrapper">
-                  <div class="keyContactPerson">
-                    <div class="input_box_flx_prnt">
-                      <div class="input_box_flx_chld">
-                        <input type="text" name="name" id="name" placeholder="name" />
-                      </div>
-                      <div class="input_box_flx_chld">
-                        <input type="text" name="designation" id="designation" placeholder="Designation" />
-                      </div>
-                      <div class="input_box_flx_chld">
-                        <input type="email" name="email" id="email" placeholder="Email" />
-                      </div>
-                      <div class="input_box_flx_chld">
-                        <input type="text" name="phoneNumber" id="phone" placeholder="Phone Number" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="one_box">
-                <div class="box_header">
-                  <p>Collaboration: (If any)</p>
-                </div>
-                <div class="input_box">
-                  <textarea name="collaboration" id="collaboration" cols="30" rows="3"></textarea>
-                </div>
-              </div>
-
-              <div class="one_box">
-                <div class="box_header">
-                  <p>Scope for collaboration:</p>
-                </div>
-                <div class="input_box">
-                  <textarea name="collabScope" id="collabScope" cols="30" rows="3"></textarea>
-                </div>
-              </div>
-
-              <div class="one_box">
-                <div class="box_header">
-                  <p>Financial Support and Grant:</p>
-                </div>
-                <div class="input_box">
-                  <textarea name="financialSupport" id="financialSupport" cols="30" rows="3"></textarea>
-                </div>
-              </div>
-
-              <div class="one_box">
-                <div class="box_header">
-                  <p>News and Publications:</p>
-                </div>
-                <div class="input_box">
-                  <textarea name="newsAndPub" id="newsAndPub" cols="30" rows="3"></textarea>
-                </div>
-              </div>
 
               <div class="one_box">
                 <div class="box_header">
@@ -146,112 +88,80 @@
   <%- include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
-  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-  <script>
-    let bdeditor;
+<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+  let bdeditor;
 
-    ClassicEditor.create(document.querySelector('#BDeditor'))
-      .then((editor) => {
-        bdeditor = editor;
-        console.log(editor);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    $('#submit-btn').click((e) => {
-      e.preventDefault();
-      const title = $('#title').val();
-      const description = bdeditor.getData();
-      const name = $('#name').val();
-      const designation = $('#designation').val();
-      const email = $('#email').val();
-      const phone = $('#phone').val();
-      const collaboration = $('#collaboration').val();
-      const collabScope = $('#collabScope').val();
-      const financialSupport = $('#financialSupport').val();
-      const newsAndPub = $('#newsAndPub').val();
-      const researchStage = $('#researchStageID').val();
-      const imageFile = $('#repPhotoID');
-
-      if (check(title)) {
-        showAlert('Enter the title');
-      } else if (check(description)) {
-        showAlert('Enter a brief description');
-      } else if (check(name)) {
-        showAlert('Enter the name of the key contact person');
-      } else if (check(designation)) {
-        showAlert('Enter the designation of the key contact person');
-      } else if (check(email)) {
-        showAlert('Enter the email of the key contact person');
-      } else if (check(phone)) {
-        showAlert('Enter the phone of the key contact person');
-      } else if (check(collabScope)) {
-        showAlert('Enter the scope of collaboration');
-      } else if (check(financialSupport)) {
-        showAlert('Enter the financial support');
-      } else if (check(newsAndPub)) {
-        showAlert('Enter the news and publication');
-      } else if (check(researchStage)) {
-        showAlert('Enter the stage of the research');
-      } else if (!imageFile[0].files.length) {
-        showAlert('Enter the representational photo');
-      } else if ($('#repPhotoID')[0].files[0].size / 1024 > 250) {
-        showAlert('File size must be less then 250 KB');
-      } else {
-        const file =
-          Date.parse(new Date().toString()) +
-          '-' +
-          $('#repPhotoID')[0].files[0].name;
-        $('#filename').val(file);
-        const data = {
-          title,
-          description,
-          name,
-          designation,
-          email,
-          phone,
-          collaboration,
-          collabScope,
-          financialSupport,
-          newsAndPub,
-          researchStage,
-          file,
-        };
-        console.log(data);
-        Submit(data);
-      }
+  ClassicEditor.create(document.querySelector('#BDeditor'))
+    .then((editor) => {
+      bdeditor = editor;
+      console.log(editor);
+    })
+    .catch((error) => {
+      console.error(error);
     });
 
-    const check = (str) => {
-      const res = str == '' || str == null || str == undefined;
-      return res;
-    };
-    const showAlert = (msg) => {
-      $('#alert').show();
-      $('#alert').html(msg);
-      $('html, body').animate({
-        scrollTop: 0,
+  $('#submit-btn').click((e) => {
+    e.preventDefault();
+    const title = $('#title').val();
+    const description = bdeditor.getData();
+    const researchStage = $('#researchStageID').val();
+    const imageFile = $('#repPhotoID');
+
+    if (check(title)) {
+      showAlert('Enter the title');
+    } else if (check(description)) {
+      showAlert('Enter a brief description');
+    } else if (check(researchStage)) {
+      showAlert('Enter the stage of the research');
+    } else if (!imageFile[0].files.length) {
+      showAlert('Enter the representational photo');
+    } else {
+      const file =
+        Date.parse(new Date().toString()) +
+        '-' +
+        $('#repPhotoID')[0].files[0].name;
+      $('#filename').val(file);
+      const data = {
+        title,
+        description,
+        researchStage,
+        file,
+      };
+      console.log(data);
+      Submit(data);
+    }
+  });
+
+  const check = (str) => {
+    const res = str == '' || str == null || str == undefined;
+    return res;
+  };
+  const showAlert = (msg) => {
+    $('#alert').show();
+    $('#alert').html(msg);
+    $('html, body').animate({
+      scrollTop: 0,
+    },
+      'slow'
+    );
+  };
+  const Submit = (data) => {
+    $.ajax({
+      type: 'POST',
+      url: '/admin/research/new',
+      data,
+      success: (data) => {
+        console.log(data);
+        if (data.status) {
+          $('#id').val(data.msg);
+          $('#form').submit();
+        }
       },
-        'slow'
-      );
-    };
-    const Submit = (data) => {
-      $.ajax({
-        type: 'POST',
-        url: '/admin/research/new',
-        data,
-        success: (data) => {
-          console.log(data);
-          if (data.status) {
-            $('#id').val(data.msg);
-            $('#form').submit();
-          }
-        },
-      });
-    };
-  </script>
+    });
+  };
+</script>
 
 </html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="/css/single-workshop.css" />
+  <title>
+    <%= data.title %> | Training Sessionss | Admin Panel
+  </title>
+</head>
+
+<body>
+  <input type="hidden" value="<%=data._id%>" id="id">
+  <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+    <header>
+      <nav>
+        <%- include('./partials/adminNavbar.ejs')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Events</a>/Training Sessionss/Single</p>
+        </div>
+        <div class="bigText">
+          <p>Single Training Sessions</p>
+        </div>
+      </div>
+    </header>
+    <div class="cover-image">
+      <p>
+        <%= data.title %>
+      </p>
+    </div>
+
+    <div class="updateBtn text-right">
+      <p style="text-align: center; margin-top: 20px;">
+        <button class="btn btn-secondary" data-toggle="modal" data-target="#participents-modal"
+          style="font-size: 18px; padding: 10px;">
+          Show All Participents
+        </button>
+        <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
+          Update
+        </button>
+        <button id="<%= data._id %>" name="delete" class="btn delete btn-lg px-4"
+          style="background-color: red; border: none; color: #fff;">Delete</button>
+
+      </p>
+      <p style="text-align: center; color: red;">NB: Delete button permanently deletes the resource without any
+        warning. Please take care.</p>
+    </div>
+
+    <% if (successMessage.length !=0) { %>
+    <div class="alert alert-success" style="width: 60%; margin: 40px auto;">
+      <p style="text-align: center;">
+        <%= successMessage %>
+      </p>
+    </div>
+    <% } %>
+    <% if (errorMessage.length !=0) { %>
+    <div class="alert alert-danger" style="width: 60%; margin: 40px auto;">
+      <p style="text-align: center;">
+        <%= errorMessage %>
+      </p>
+    </div>
+    <% } %>
+    <input type="hidden" value="<%=data._id%>" id="id" />
+    <div class="contentWrapper">
+      <div class="left">
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            About
+          </strong>
+          <%- data.about %>
+        </div>
+        <% if (data.videos.length !=0) { %>
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Videos
+          </strong>
+          <div class="videos">
+            <% for(let i=0; i<data.videos.length; i++) { %>
+            <div class="video">
+              <iframe width="300" height="200" src="<%= data.videos[i] %>" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+        <div class="body" style="margin-top: 20px;">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Description
+          </strong>
+          <%- data.description %>
+        </div>
+        <% if (ourExperts.length) { %>
+
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            Resource Persons
+          </strong>
+          <div class="specialServiceDoctors">
+
+            <% for(let i=0 ; i < ourExperts.length; i++) { %>
+            <div class="eachDoctor">
+              <div class="es_img">
+                <% if(ourExperts[i] !=null && typeof ourExperts[i].propicURL !='undefined' ){ %>
+                <img src="/images/experts/<%= ourExperts[i].propicURL %>.jpg" alt="" />
+                <% } else{ %>
+                <img src="" alt="photo is not uploaded" />
+                <% } %>
+              </div>
+              <div class="es_name">
+                <p><a href="#">
+                    <%= (ourExperts[i] !=null && typeof ourExperts[i].name !='undefined' ) ?
+                                      ourExperts[i].name : '' %>
+                  </a></p>
+                <p>
+                  <span>
+                    <%= (ourExperts[i] !=null && typeof ourExperts[i].designation !='undefined' ) ?
+                                      ourExperts[i].designation : '' %>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <% } %>
+
+
+        <!-- <% if (user) { %>
+                <div class="comment-section">
+                    <div class="span-opener">Leave a comment</div>
+                    <div class="textbox">
+                        <textarea id="text" cols="30" rows="5"></textarea>
+                        <div class="bottom">
+                            <input type="file" name="video" id="video">
+                            <button class="btn btn-secondary" id="submit" disabled>Submit</button>
+                        </div>
+                    </div>
+                </div>
+                <% } %> -->
+
+      </div>
+
+      <div class="right">
+        <div class="contents">
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-volume-up"></i>To speak to someone
+            </div>
+
+            <div class="con">+8801552-525252</div>
+            <div class="con">info@trin-innovation.com</div>
+          </div>
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-map-marker"></i>Location
+            </div>
+            <div class="con">
+              <%= data.location %>
+            </div>
+          </div>
+          <div class="item">
+            <div class="heading">
+              <i class="fa fa-clock-o"></i>Event Timing
+            </div>
+            <div class="con">
+              Time: <%= data.schedule.startTime %> to <%= data.schedule.endTime %>
+            </div>
+            <div class="con">
+              Date: <%= data.schedule.startDate %> to <%= data.schedule.endDate %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Participents modal -->
+  <div class="modal fade" id="participents-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registered participents</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="part-list">
+            <% for (let i=0; i <parts.length; i++) { %>
+            <a href="/services/doctor/profile/general/<%= parts[i].user_id %>">
+              <div class="each-part" id="<%= parts[i].user_id %>">
+                <div class="name">
+                  <h6>
+                    <%= parts[i].user_name %>
+                  </h6>
+                </div>
+                <div class="email"><span>
+                    <%= parts[i].user_email %>
+                  </span></div>
+              </div>
+            </a>
+            <% } %>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/footer')%>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+  // const carouselItems = $('.carousel-item')
+  // const len = carouselItems.length
+  // let i = 0
+  // setInterval(() => {
+  //     $('.active').removeClass('active')
+  //     $(carouselItems[i]).addClass('active')
+  //     i = (i + 1) % len
+  // }, 3000)
+  $('.carousel').carousel({
+    interval: false
+  })
+  $('.btn-success').click((e) => {
+    const id = e.target.id;
+    location = `/admin/training/update/${id}`;
+  });
+  $('.delete').click((e) => {
+    const id = e.target.id;
+    location = `/admin/training/delete/${id}`
+  })
+
+  $('.add').click(e => {
+    const id = e.target.id;
+    location = `/admin/training/add-to-homepage/${id}`
+  })
+
+  $('.rem').click(e => {
+    const id = e.target.id;
+    location = `/admin/training/rem-from-homepage/${id}`
+  })
+
+</script>
+
+</html>

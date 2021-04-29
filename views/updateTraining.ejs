@@ -82,13 +82,13 @@
 
               <div class="one_box">
                 <div class="box_header">
-                  <p>Doctors:</p>
+                  <p>Resource Persons</p>
                 </div>
                 <input type="text" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
                 <input type="text" id="doctorTotalCnt" value="0" style="display: none;" />
                 <div id="doctorAddPlace"></div>
                 <button type="button" class="btn btn-secondary" onclick="addDoctor()">
-                  Add doctor
+                  Add
                 </button>
               </div>
 
@@ -121,12 +121,32 @@
 
               <div class="one_box">
                 <div class="box_header">
+                  <p>FAQs:</p>
+                </div>
+                <div class="input_box">
+                  <textarea name="FAQs" id="FAQs"><%= data.faqs %></textarea>
+                </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
                   <p>Representational Photo</p>
                 </div>
                 <div class="input_box">
                   <input type="hidden" name="prevFilename" id="prevFilename"
                     value="<%= (typeof data.image != 'undefined') ? data.image : '' %>" />
-                  <input type="file" name="trainingFile" id="file" accept="image/x-png,image/jpg,image/jpeg" />
+                  <input type="file" name="trainingFile" id="rep-photo" accept="image/x-png,image/jpg,image/jpeg" />
+                </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Certificate</p>
+                </div>
+                <div class="input_box">
+                  <input type="hidden" name="prevCertificateName" id="prevCertificateName"
+                    value="<%= (typeof data.certificate != 'undefined') ? data.certificate : '' %>" />
+                  <input type="file" name="trainingCertificate" id="certificate" accept="pdf" />
                 </div>
               </div>
 
@@ -207,6 +227,8 @@
   };
   const editor = CKEDITOR.replace('BDeditor', config);
   CKEDITOR.replace('About', config);
+  CKEDITOR.replace('FAQs', config);
+
 
   $('#submit-btn').click((e) => {
     e.preventDefault();
@@ -220,7 +242,10 @@
     const endDate = $('#endDate').val();
     const endTime = $('#endTime').val();
     const prevImage = $('#prevFilename').val();
-    const imageFile = $('#file');
+    const prevCertificateName = $('#prevCertificateName').val();
+    const faqs = CKEDITOR.instances.FAQs.getData();
+    const imageFile = $('#rep-photo');
+    const certificateFile = $('#certificate')
 
     const videoArr = $('.video');
     let videos = [];
@@ -252,8 +277,12 @@
       showAlert('Enter the ending time');
     } else {
       let image = null
+      let certificate = null
       if (imageFile[0].files.length != 0) {
         image = Date.parse(new Date().toString()) + '-' + imageFile[0].files[0].name;
+      }
+      if (certificateFile[0].files.length != 0) {
+        certificate = Date.parse(new Date().toString()) + '-' + certificateFile[0].files[0].name;
       }
       $('#filename').val(image);
       $('#alert').hide();
@@ -272,8 +301,11 @@
         doctors: JSON.stringify(doctors),
         location,
         schedule: JSON.stringify(schedule),
+        faqs,
         image,
-        prevImage
+        certificate,
+        prevImage,
+        prevCertificateName
       };
       console.log(data);
       Submit(data);
@@ -311,6 +343,7 @@
           $('#alert-success').html(data.msg);
           const id = $('#id').val();
           if (data.newFileUploaded) {
+            console.log('file form')
             $('#form').submit();
           } else {
             setInterval(() => {

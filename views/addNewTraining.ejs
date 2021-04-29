@@ -36,6 +36,7 @@
             <div class="alert alert-success text-center" id="alert-success" style="display: none;"></div>
             <form action="/admin/training/new/file" id="form" enctype="multipart/form-data" method="POST">
               <input type="hidden" name="filename" id="filename" />
+              <input type="hidden" name="certificate-name" id="certificate-name" />
               <input type="hidden" name="id" id="id" />
               <div class="one_box">
                 <div class="box_header">
@@ -81,13 +82,13 @@
 
               <div class="one_box">
                 <div class="box_header">
-                  <p>Doctors:</p>
+                  <p>Resource Persons</p>
                 </div>
                 <input type="text" id="doctorCnt" name="doctorCnt" value="0" style="display: none;" />
                 <input type="text" id="doctorTotalCnt" value="0" style="display: none;" />
                 <div id="doctorAddPlace"></div>
                 <button type="button" class="btn btn-secondary" onclick="addDoctor()">
-                  Add doctor
+                  Add
                 </button>
               </div>
 
@@ -116,10 +117,28 @@
 
               <div class="one_box">
                 <div class="box_header">
+                  <p>FAQs:</p>
+                </div>
+                <div class="input_box">
+                  <textarea name="FAQs" id="FAQs"> </textarea>
+                </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
                   <p>Representational Photo</p>
                 </div>
                 <div class="input_box">
-                  <input type="file" name="trainingFile" id="file" accept="image/x-png,image/jpg,image/jpeg" />
+                  <input type="file" name="trainingFile" id="rep-photo" accept="image/x-png,image/jpg,image/jpeg" />
+                </div>
+              </div>
+
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Certificate</p>
+                </div>
+                <div class="input_box">
+                  <input type="file" name="trainingCertificate" id="certificate" accept="pdf" />
                 </div>
               </div>
 
@@ -173,6 +192,7 @@
   };
   const editor = CKEDITOR.replace('BDeditor', config);
   CKEDITOR.replace('About', config);
+  CKEDITOR.replace('FAQs', config);
 
   $('#submit-btn').click((e) => {
     e.preventDefault();
@@ -184,7 +204,8 @@
     const startTime = $('#startTime').val();
     const endDate = $('#endDate').val();
     const endTime = $('#endTime').val();
-    const imageFile = $('#reqpPhotoID');
+    const faqs = CKEDITOR.instances.FAQs.getData();
+    const imageFile = $('#rep-photo');
 
     const videoArr = $('.video');
     let videos = [];
@@ -202,26 +223,30 @@
 
     if (check(title)) {
       showAlert('Enter the title');
-    } else if (check(description)) {
-      showAlert('Enter a brief description');
-    } else if (check(about)) {
-      showAlert('Enter something in the about section');
-    } else if (check(location)) {
-      showAlert('Enter the location');
-    } else if (check(startDate)) {
-      showAlert('Enter the starting date');
-    } else if (check(startTime)) {
-      showAlert('Enter the starting time');
-    } else if (check(endDate)) {
-      showAlert('Enter the ending date');
-    } else if (check(endTime)) {
-      showAlert('Enter the ending time');
-    } else if ($('#file')[0].files.length == 0) {
-      showAlert('Enter the representational photo');
-    } else {
+    }
+    // else if (check(description)) {
+    //   showAlert('Enter a brief description');
+    // } else if (check(about)) {
+    //   showAlert('Enter something in the about section');
+    // } else if (check(location)) {
+    //   showAlert('Enter the location');
+    // } else if (check(startDate)) {
+    //   showAlert('Enter the starting date');
+    // } else if (check(startTime)) {
+    //   showAlert('Enter the starting time');
+    // } else if (check(endDate)) {
+    //   showAlert('Enter the ending date');
+    // } else if (check(endTime)) {
+    //   showAlert('Enter the ending time');
+    // } else if ($('#file')[0].files.length == 0) {
+    //   showAlert('Enter the representational photo');
+    // } 
+    else {
       const image =
-        Date.parse(new Date().toString()) + '-' + $('#file')[0].files[0].name;
+        Date.parse(new Date().toString()) + '-' + $('#rep-photo')[0].files[0].name;
+      const certificate = Date.parse(new Date().toString()) + '-' + $('#certificate')[0].files[0].name;
       $('#filename').val(image);
+      $('#certificate-name').val(certificate)
       $('#alert').hide();
       schedule = {
         startDate,
@@ -237,6 +262,7 @@
         doctors: JSON.stringify(doctors),
         location,
         schedule: JSON.stringify(schedule),
+        faqs,
         image,
       };
       console.log(data);
@@ -273,6 +299,7 @@
           );
           $('#alert-success').show();
           $('#alert-success').html('The training session is being added');
+          $('#id').val(data._id)
           $('#form').submit();
         }
       },

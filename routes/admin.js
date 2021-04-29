@@ -133,11 +133,10 @@ const workshopStorage = multer.diskStorage({
 
 const trainingStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    console.log('here');
     cb(null, 'public/training/');
   },
   filename: (req, file, cb) => {
-    const filename = req.body.filename;
+    const filename = Date.parse(new Date().toString()) + '-' + file.originalname;
     cb(null, filename);
   },
 });
@@ -181,8 +180,10 @@ const uploadPhotoWorkshop = multer({
 
 const uploadPhotoTraining = multer({
   storage: trainingStorage,
-  fileFilter: fileFilter,
-}).single('trainingFile');
+}).fields([
+  { name: 'trainingFile' },
+  { name: 'trainingCertificate' }
+]);
 
 const uploadPhotoSS = multer({
   storage: ssStorage,

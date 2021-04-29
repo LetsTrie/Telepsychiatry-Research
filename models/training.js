@@ -23,7 +23,9 @@ const eventsSchema = new mongoose.Schema({
   },
   start: Date,
   end: Date,
+  faqs: String,
   image: String,
+  certificate: String,
   homepageDisplay: {
     type: Boolean,
     default: false

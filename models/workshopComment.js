@@ -3,12 +3,9 @@ const mongoose = require('mongoose');
 const wsComment = new mongoose.Schema({
   userName: String,
   userID: String,
-  workshopID: String,
+  eventID: String,
   text: String,
-  video: {
-    type: String,
-    default: 'none',
-  },
+  eventType: String
 });
 
 exports.wsComment = mongoose.model('ws-comment', wsComment);

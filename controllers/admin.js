@@ -1223,10 +1223,9 @@ exports.getWorkshop = async (req, res, next) => {
 };
 
 exports.singleWorkshop = async (req, res) => {
-  const comments = await wsComment.find({ workshopID: req.params.id });
+  const comments = await wsComment.find({ eventID: req.params.id, eventType: 'workshop' });
   const data = await workshopModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ event_id: req.params.id });
-  console.log('In singleWorkshop, parts = ', parts);
   const eUser = [];
   for (let i = 0; i < data.doctors.length; i++) {
     const doc = await eUserModel.findOne({ name: data.doctors[i] });
@@ -1506,10 +1505,9 @@ exports.getTraining = async (req, res, next) => {
 };
 
 exports.singleTraining = async (req, res) => {
-  const comments = await wsComment.find({ workshopID: req.params.id });
+  const comments = await wsComment.find({ eventID: req.params.id, eventType: 'training' });
   const data = await trainingModel.findOne({ _id: req.params.id });
   const parts = await workshopReg.find({ event_id: req.params.id });
-  console.log('In singleWorkshop, parts = ', parts);
   const eUser = [];
   for (let i = 0; i < data.doctors.length; i++) {
     const doc = await eUserModel.findOne({ name: data.doctors[i] });
@@ -1526,7 +1524,7 @@ exports.singleTraining = async (req, res) => {
 };
 
 exports.postTraining = async (req, res) => {
-  const { title, description, about, location, image } = req.body;
+  const { title, description, about, location, faqs, image } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1570,6 +1568,7 @@ exports.postTraining = async (req, res) => {
     schedule,
     start,
     end,
+    faqs,
     image,
   };
   const newWorkshop = new trainingModel(obj);
@@ -1577,12 +1576,20 @@ exports.postTraining = async (req, res) => {
   await newWorkshop.save();
   res.send({
     status: true,
+    _id: newWorkshop._id,
     msg: 'Training created',
   });
 };
 
 exports.trainingFile = async (req, res) => {
-  console.log('Training file added');
+  const image = req.files['trainingFile'][0].filename
+  const certificate = req.files['trainingCertificate'][0].filename
+
+  const training = await trainingModel.findOne({ _id: req.body.id })
+  training.image = image
+  training.certificate = certificate
+  await training.save()
+
   res.redirect('/admin/training');
 };
 
@@ -1595,7 +1602,7 @@ exports.getUpdateTraining = async (req, res) => {
 };
 
 exports.postUpdateTraining = async (req, res) => {
-  const { id, title, description, about, location, image } = req.body;
+  const { id, title, description, about, location, faqs, image, certificate } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1629,7 +1636,10 @@ exports.postUpdateTraining = async (req, res) => {
   end.setHours(end.getHours() - new Date().getTimezoneOffset() / 60);
   console.log(end);
 
-  let newFileUploaded = nullChk(image) ? false : true;
+  let newFileUploaded = false
+  if (!nullChk(image) || !nullChk(certificate)) {
+    newFileUploaded = true
+  }
   // image name will be updated after file uploading done and prev file deletion done.
   // File uploading and deletion will be done in route named "/admin/workshop/update/file"
 
@@ -1651,6 +1661,7 @@ exports.postUpdateTraining = async (req, res) => {
         },
         start: start,
         end: end,
+        faqs: faqs,
       },
     }
   );
@@ -1664,14 +1675,20 @@ exports.postUpdateTraining = async (req, res) => {
 
 exports.updateTrainingFile = async (req, res) => {
   console.log('Training file updated');
-  const { id, filename, prevFilename } = req.body;
+  const { id, prevFilename, prevCertificateName, trainingCertificate } = req.body;
 
   try {
     let training = await trainingModel.findOne({ _id: id });
-    training.image = filename;
+    if (req.files.trainingFile) {
+      training.image = req.files.trainingFile[0].filename
+      await deleteFile('training', prevFilename);
+    }
+    if (req.files.trainingCertificate) {
+      training.certificate = req.files.trainingCertificate[0].filename
+      await deleteFile('training', prevCertificateName);
+    }
     await training.save();
 
-    await deleteFile('training', prevFilename);
     res.redirect(`/admin/training/${id}`);
     return;
   } catch (err) {

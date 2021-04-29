@@ -62,9 +62,7 @@ exports.getBackup = async (req, res, next) => {
   return res.json(expertUserData);
 };
 
-exports.getAdminNewResearch = async (req, res, next) => {
-  return res.render('addResearchFromAdmin', { user: req.user });
-};
+
 
 exports.getAdminResearch = async (req, res, next) => {
   return res.render('singleResearchFromAdmin', { user: req.user });
@@ -681,7 +679,16 @@ exports.adminUpdateInnovationFile = async (req, res) => {
 // ADMIN SUBMIT RESEARCH (GET)
 // OKAY
 exports.getAdminNewResearch = async (req, res, next) => {
-  return res.render('addResearchFromAdmin', { user: req.user });
+  let researches = await workshopModel.find({}, 'priority');
+  // console.log({ researches });
+  let mxPriority = 0;
+  researches.forEach((obj) => {
+    if (obj.priority != null) {
+      mxPriority = Math.max(mxPriority, obj.priority);
+    }
+  });
+  console.log({ mxPriority });
+  return res.render('addResearchFromAdmin', { user: req.user, mxPriority });
 };
 
 // addmin add new special service
@@ -911,7 +918,10 @@ exports.deleteBook = async (req, res) => {
 // OKAY
 const { validateResearchData } = require('../validations/researches');
 exports.postResearches = async (req, res) => {
+  // let {title, description, researchStage, priority, file} = req.body
   if (!req.user) return res.send('User not found');
+  console.log('body : ')
+  console.log(req.body)
   const { error } = validateResearchData(req.body);
   console.log(error);
   if (error) return res.send({ status: false, msg: 'error' });
@@ -943,7 +953,10 @@ exports.getAdminResearch = async (req, res, next) => {
 exports.getAdminResearches = async (req, res, next) => {
   const { verified } = req.query;
   let isVerified = verified === 'false' ? false : true;
-  const data = await ResearchModel.find({ isVerified });
+  const data = await ResearchModel.find({
+     isVerified 
+    }).sort({ priority: -1, _id: -1 });;
+  console.log({isVerified})
   return res.render('researchsFromAdmin', {
     data,
     user: req.user,
@@ -1173,26 +1186,32 @@ exports.getWorkshop = async (req, res, next) => {
   let data;
   if (type) {
     if (type == 'current') {
-      data = await workshopModel.find({
-        start: { $lte: new Date() },
-        end: { $gte: new Date() },
-      });
+      data = await workshopModel
+        .find({
+          start: { $lte: new Date() },
+          end: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allWorkshopFromAdmin', {
         data,
         user: req.user,
       });
     } else if (type == 'past') {
-      data = await workshopModel.find({
-        end: { $lte: new Date() },
-      });
+      data = await workshopModel
+        .find({
+          end: { $lte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allWorkshopFromAdmin', {
         data,
         user: req.user,
       });
     } else if (type == 'upcoming') {
-      data = await workshopModel.find({
-        start: { $gte: new Date() },
-      });
+      data = await workshopModel
+        .find({
+          start: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allWorkshopFromAdmin', {
         data,
         user: req.user,
@@ -1206,19 +1225,24 @@ exports.getWorkshop = async (req, res, next) => {
       $regex: search,
       $options: 'i',
     };
-    data = await workshopModel.find({
-      $or: [
-        { title: searchOptions },
-        { description: searchOptions },
-        { location: searchOptions },
-      ],
-    });
+    data = await workshopModel
+      .find({
+        $or: [
+          { title: searchOptions },
+          { description: searchOptions },
+          { location: searchOptions },
+        ],
+      })
+      .sort({ priority: -1, _id: -1 });
     return res.render('allWorkshopFromAdmin', {
       data,
       user: req.user,
     });
   }
-  data = await workshopModel.find().sort({ _id: -1 });
+  data = await workshopModel.find().sort({ 
+    priority: -1,
+    _id: -1 
+  });
   res.render('allWorkshopFromAdmin', { data, user: req.user });
 };
 
@@ -1243,7 +1267,7 @@ exports.singleWorkshop = async (req, res) => {
 };
 
 exports.postWorkshop = async (req, res) => {
-  const { title, description, about, location, image } = req.body;
+  const { title, description, about, location, image, priority } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1288,6 +1312,7 @@ exports.postWorkshop = async (req, res) => {
     start,
     end,
     image,
+    priority
   };
   const newWorkshop = new workshopModel(obj);
   console.log(newWorkshop);
@@ -1459,23 +1484,25 @@ exports.getTraining = async (req, res, next) => {
       data = await trainingModel.find({
         start: { $lte: new Date() },
         end: { $gte: new Date() },
-      });
+      }).sort({priority: -1, _id:-1});
       res.render('allTrainingFromAdmin', {
         data,
         user: req.user,
       });
     } else if (type == 'past') {
-      data = await Trainingnd({
+      data = await trainingModel.find({
         end: { $lte: new Date() },
-      });
+      }).sort({ priority: -1, _id: -1 });
       res.render('allTrainingFromAdmin', {
         data,
         user: req.user,
       });
     } else if (type == 'upcoming') {
-      data = await trainingModel.find({
-        start: { $gte: new Date() },
-      });
+      data = await trainingModel
+        .find({
+          start: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allTrainingFromAdmin', {
         data,
         user: req.user,
@@ -1489,19 +1516,21 @@ exports.getTraining = async (req, res, next) => {
       $regex: search,
       $options: 'i',
     };
-    data = await trainingModel.find({
-      $or: [
-        { title: searchOptions },
-        { description: searchOptions },
-        { location: searchOptions },
-      ],
-    });
+    data = await trainingModel
+      .find({
+        $or: [
+          { title: searchOptions },
+          { description: searchOptions },
+          { location: searchOptions },
+        ],
+      })
+      .sort({ priority: -1, _id: -1 });
     return res.render('allTrainingFromAdmin', {
       data,
       user: req.user,
     });
   }
-  data = await trainingModel.find().sort({ _id: -1 });
+  data = await trainingModel.find().sort({ priority: -1, _id: -1 });
   res.render('allTrainingFromAdmin', { data, user: req.user });
 };
 
@@ -1526,7 +1555,7 @@ exports.singleTraining = async (req, res) => {
 };
 
 exports.postTraining = async (req, res) => {
-  const { title, description, about, location, image } = req.body;
+  const { title, description, about, location, image, priority } = req.body;
   const schedule = JSON.parse(req.body.schedule);
   const sdate = schedule.startDate.split('/');
   const stime = schedule.startTime.split(':');
@@ -1571,6 +1600,7 @@ exports.postTraining = async (req, res) => {
     start,
     end,
     image,
+    priority,
   };
   const newWorkshop = new trainingModel(obj);
   console.log(newWorkshop);
@@ -1799,3 +1829,40 @@ exports.setExpertPriorities = async (req, res) => {
     success: true,
   });
 };
+
+exports.setWorkshopPriorities = async (req, res) => {
+  const { id, priority } = req.body;
+  // console.log({priority})
+  await workshopModel.findOneAndUpdate(
+    { _id: id },
+    { $set: { priority: priority } }
+  );
+  res.json({
+    success: true,
+  });
+};
+
+exports.setResearchPriorities = async (req, res) => {
+  const { id, priority } = req.body;
+  // console.log({ priority });
+  await ResearchModel.findOneAndUpdate(
+    { _id: id },
+    { $set: { priority: priority } }
+  );
+  res.json({
+    success: true,
+  });
+};
+
+exports.setTrainingPriorities = async (req, res) => {
+  const { id, priority } = req.body;
+  // console.log({ priority });
+  await trainingModel.findOneAndUpdate(
+    { _id: id },
+    { $set: { priority: priority } }
+  );
+  res.json({
+    success: true,
+  });
+};
+

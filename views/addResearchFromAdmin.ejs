@@ -76,6 +76,15 @@
                 </div>
               </div>
 
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Priority:</p>
+                </div>
+                <div class="input_box">
+                  <input type="number" name="priority" id="priority" value="<%=mxPriority%>" />
+                </div>
+              </div>
+
               <div class="createResources__submit">
                 <button id="submit-btn">Submit</button>
               </div>
@@ -109,6 +118,7 @@
     const description = bdeditor.getData();
     const researchStage = $('#researchStageID').val();
     const imageFile = $('#repPhotoID');
+    const priority = $('#priority').val()
 
     if (check(title)) {
       showAlert('Enter the title');
@@ -116,6 +126,8 @@
       showAlert('Enter a brief description');
     } else if (check(researchStage)) {
       showAlert('Enter the stage of the research');
+    } if (check(priority)) {
+      showAlert('Enter the priority');
     } else if (!imageFile[0].files.length) {
       showAlert('Enter the representational photo');
     } else {
@@ -128,6 +140,7 @@
         title,
         description,
         researchStage,
+        priority,
         file,
       };
       console.log(data);

@@ -50,6 +50,10 @@
               <h1>Our Researches</h1>
             </div>
 
+            <div class="alert alert-success" id="alert" role="alert" style="display: none">
+              Priority updated.
+            </div>
+
             <div class="all_researchers">
               <% for(let i = 0 ; i < data.length; i++) { %>
               <div class="each_researchers">
@@ -69,6 +73,13 @@
                       <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
                         <%= data[i].title %>
                       </h4>
+                    </div>
+                    <div class="single-row">
+                      <label for="priority<%=data[i]._id%>">Priority: </label>
+                      <input type="number" id="priority<%=data[i]._id%>" class="form-control" aria-label="Priority level"
+                        value="<%=data[i].priority%>" />
+                      <button type="button" id="priorityBtn<%=data[i]._id%>" data-id="<%=data[i]._id%>"
+                        class="set-priority-btn">SET</button>
                     </div>
                     <div class="each_researchers_desc">
                       <p>
@@ -108,5 +119,26 @@
     $('#UnverifiedResearches').click((e) => {
       location = '/admin/researches?verified=false';
     });
+
+    $('.set-priority-btn').on("click", function (e) {
+        e.preventDefault()
+        // const id = e.target.id
+        let id = $(e.target).data('id')
+        console.log({ id })
+
+        const priority = $(`#priority${id}`).val()
+        $.post(
+          '/admin/management/research-priorities',
+          { id, priority },
+          res => {
+            if (res.success) {
+              $('#alert').show()
+              setTimeout(() => {
+                $('#alert').hide()
+              }, 3000);
+            }
+          }
+        )
+      })
   </script>
 </html>

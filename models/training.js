@@ -26,8 +26,11 @@ const eventsSchema = new mongoose.Schema({
   image: String,
   homepageDisplay: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
+  priority: {
+    type: Number,
+  },
 });
 
 exports.trainingModel = mongoose.model('training', eventsSchema);

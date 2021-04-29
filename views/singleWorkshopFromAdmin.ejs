@@ -3,6 +3,8 @@
 
 <head>
   <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="/css/single-workshop.css" />
   <title>
     <%= data.title %> | Workshops | Admin Panel
@@ -134,18 +136,23 @@
         <% } %>
 
 
-        <!-- <% if (user) { %>
-                <div class="comment-section">
-                    <div class="span-opener">Leave a comment</div>
-                    <div class="textbox">
-                        <textarea id="text" cols="30" rows="5"></textarea>
-                        <div class="bottom">
-                            <input type="file" name="video" id="video">
-                            <button class="btn btn-secondary" id="submit" disabled>Submit</button>
-                        </div>
-                    </div>
-                </div>
-                <% } %> -->
+        <div class="body">
+          <strong class="header" style="font-size: 25px; color: #008ecc;">
+            User Feedbacks
+          </strong>
+          <div class="comments">
+            <% for (i=0; i< comments.length; i++) { %>
+            <div class="comment">
+              <div class="user-name">
+                <h3><i class="fas fa-user-alt"></i> <%= comments[i].userName%></h3>
+              </div>
+              <div class="comment-body">
+                <p><%= comments[i].text%></p>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
 
       </div>
 

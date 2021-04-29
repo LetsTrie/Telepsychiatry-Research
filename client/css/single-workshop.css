@@ -1140,7 +1140,8 @@ p {
 .contentWrapper .left h2,
 .contentWrapper .left h3 {
   color: darkblue;
-  padding: 30px 0px;
+  padding: 10px 0px;
+  font-size: 18px;
 }
 
 .contentWrapper .left li {
@@ -1426,7 +1427,7 @@ p {
 
 .comment-section {
   margin-top: 30px;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .comment-section .span-opener {
@@ -1471,4 +1472,20 @@ p {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.comments {
+  padding: 20px 0;
+}
+
+.comments .comment h3 {
+  color: #000;
+  font-size: 16.5px;
+  padding: 0;
+}
+
+.comments .comment p {
+  color: #666;
+  font-size: 15px;
+  padding: 0 10px;
 }

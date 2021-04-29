@@ -73,7 +73,7 @@ exports.getTraining = async (req, res, next) => {
 };
 
 exports.singleTraining = async (req, res) => {
-  const comments = await wsComment.find({ workshopID: req.params.id });
+  const comments = await wsComment.find({ eventID: req.params.id, eventType: 'training' });
   if (!req.user) {
     const data = await trainingModel.findOne({ _id: req.params.id });
 
@@ -143,7 +143,7 @@ exports.getNewTraining = (req, res, next) =>
   res.render('createNewTraining', { user: req.user });
 
 exports.singleWorkshop = async (req, res) => {
-  const comments = await wsComment.find({ workshopID: req.params.id });
+  const comments = await wsComment.find({ eventID: req.params.id, eventType: 'workshop' });
   if (!req.user) {
     const data = await workshopModel.findOne({ _id: req.params.id });
 
@@ -280,7 +280,6 @@ exports.addComment = async (req, res) => {
   const comment = {
     userName: req.user.name,
     userID: req.user._id,
-    video: req.body.filename,
     ...req.body,
   };
   const newComment = wsComment(comment);

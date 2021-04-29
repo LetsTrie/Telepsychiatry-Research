@@ -249,8 +249,10 @@
       showAlert('Enter the ending time');
     } if (check(priority)) {
       showAlert('Enter the priority');
-    } else if ($('#file')[0].files.length == 0) {
+    } else if ($('#rep-photo')[0].files.length == 0) {
       showAlert('Enter the representational photo');
+    } else if ($('#certificate')[0].files.length == 0) {
+      showAlert('Enter the certificate photo');
     } else {
       const image =
         Date.parse(new Date().toString()) + '-' + $('#rep-photo')[0].files[0].name;

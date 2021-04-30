@@ -7,7 +7,7 @@ const { eUserModel } = require('../models/expertUser.js');
 
 exports.getTraining = async (req, res, next) => {
 
-  let workshops = await trainingModel.find()
+  let workshops = await trainingModel.find().sort({priority: -1, _id: -1})
 
   let { type, search } = req.query;
   let data;
@@ -19,28 +19,34 @@ exports.getTraining = async (req, res, next) => {
   console.log(regList)
   if (type) {
     if (type == 'current') {
-      data = await trainingModel.find({
-        start: { $lte: new Date() },
-        end: { $gte: new Date() },
-      });
+      data = await trainingModel
+        .find({
+          start: { $lte: new Date() },
+          end: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allTrainings', {
         data,
         user: req.user,
         regList,
       });
     } else if (type == 'past') {
-      data = await trainingModel.find({
-        end: { $lte: new Date() },
-      });
+      data = await trainingModel
+        .find({
+          end: { $lte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allTrainings', {
         data,
         user: req.user,
         regList,
       });
     } else if (type == 'upcoming') {
-      data = await trainingModel.find({
-        start: { $gte: new Date() },
-      });
+      data = await trainingModel
+        .find({
+          start: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('allTrainings', {
         data,
         user: req.user,
@@ -55,20 +61,22 @@ exports.getTraining = async (req, res, next) => {
       $regex: search,
       $options: 'i',
     };
-    data = await trainingModel.find({
-      $or: [
-        { title: searchOptions },
-        { description: searchOptions },
-        { location: searchOptions },
-      ],
-    });
+    data = await trainingModel
+      .find({
+        $or: [
+          { title: searchOptions },
+          { description: searchOptions },
+          { location: searchOptions },
+        ],
+      })
+      .sort({ priority: -1, _id: -1 });
     return res.render('allTrainings', {
       data,
       user: req.user,
       regList,
     });
   }
-  data = await trainingModel.find().sort({ _id: -1 });
+  data = await trainingModel.find().sort({ priority: -1, _id: -1 });
   res.render('allTrainings', { data, user: req.user, regList });
 };
 
@@ -199,28 +207,34 @@ exports.getWorkshop = async (req, res, next) => {
   }
   if (type) {
     if (type == 'current') {
-      data = await workshopModel.find({
-        start: { $lte: new Date() },
-        end: { $gte: new Date() },
-      });
+      data = await workshopModel
+        .find({
+          start: { $lte: new Date() },
+          end: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('all-workshops', {
         data,
         user: req.user,
         regList,
       });
     } else if (type == 'past') {
-      data = await workshopModel.find({
-        end: { $lte: new Date() },
-      });
+      data = await workshopModel
+        .find({
+          end: { $lte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('all-workshops', {
         data,
         user: req.user,
         regList,
       });
     } else if (type == 'upcoming') {
-      data = await workshopModel.find({
-        start: { $gte: new Date() },
-      });
+      data = await workshopModel
+        .find({
+          start: { $gte: new Date() },
+        })
+        .sort({ priority: -1, _id: -1 });
       res.render('all-workshops', {
         data,
         user: req.user,
@@ -235,20 +249,22 @@ exports.getWorkshop = async (req, res, next) => {
       $regex: search,
       $options: 'i',
     };
-    data = await workshopModel.find({
-      $or: [
-        { title: searchOptions },
-        { description: searchOptions },
-        { location: searchOptions },
-      ],
-    });
+    data = await workshopModel
+      .find({
+        $or: [
+          { title: searchOptions },
+          { description: searchOptions },
+          { location: searchOptions },
+        ],
+      })
+      .sort({ priority: -1, _id: -1 });
     return res.render('all-workshops', {
       data,
       user: req.user,
       regList,
     });
   }
-  data = await workshopModel.find().sort({ _id: -1 });
+  data = await workshopModel.find().sort({ priority: -1, _id: -1 });
   res.render('all-workshops', { data, user: req.user, regList });
 };
 

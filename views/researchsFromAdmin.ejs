@@ -1,112 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/vendorsTop')%>
 
-    <link rel="stylesheet" href="/css/admin.css" />
-    <title>Researches | Admin Panel</title>
-  </head>
+<head>
+  <%- include('./partials/vendorsTop')%>
 
-  <body>
-    <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
-      <header>
-        <nav>
-          <%- include('./partials/adminNavbar')%>
-        </nav>
-        <div class="blueDivider">
-          <div class="smallText">
-            <p><a href="#">Admin Panel</a> / Researches</p>
-          </div>
-          <div class="bigText">
-            <p>Researches</p>
-          </div>
+  <link rel="stylesheet" href="/css/admin.css" />
+  <title>Researches | Admin Panel</title>
+</head>
+
+<body>
+  <section class="adminTest" style="min-height: 100vh; background: #ebebeb;">
+    <header>
+      <nav>
+        <%- include('./partials/adminNavbar')%>
+      </nav>
+      <div class="blueDivider">
+        <div class="smallText">
+          <p><a href="#">Admin Panel</a> / Researches</p>
         </div>
-      </header>
-      <div class="twoBigSectionFlex">
-        <div class="eachBigSection">
-          <div class="imageee py-2 pb-4">
-            <img
-              src="/images/scientists-working-concept_23-2148497600.jpg"
-              alt=""
-            />
-          </div>
-          <div class="addNewTestBtn" style="padding: 0px;">
-            <button class="addNewResearch addRes">Add New Research</button>
-          </div>
-          <div class="addNewTestBtn pt-3" style="padding: 0px;">
-            <button class="addNewResearch" id="VerifiedResearches">
-              Verified Researches
-            </button>
-          </div>
-          <div class="addNewTestBtn pt-3" style="padding: 0px;">
-            <button class="addNewResearch" id="UnverifiedResearches">
-              Unverified Researches
-            </button>
-          </div>
+        <div class="bigText">
+          <p>Researches</p>
         </div>
-        <div class="eachBigSection">
-          <div class="all_resources_wrapper">
-            <div class="resources_title text-center pt-4 pb-2">
-              <h1>Our Researches</h1>
-            </div>
+      </div>
+    </header>
+    <div class="twoBigSectionFlex">
+      <div class="eachBigSection">
+        <div class="imageee py-2 pb-4">
+          <img src="/images/scientists-working-concept_23-2148497600.jpg" alt="" />
+        </div>
+        <div class="addNewTestBtn" style="padding: 0px;">
+          <button class="addNewResearch addRes">Add New Research</button>
+        </div>
+        <div class="addNewTestBtn pt-3" style="padding: 0px;">
+          <button class="addNewResearch" id="VerifiedResearches">
+            Verified Researches
+          </button>
+        </div>
+        <div class="addNewTestBtn pt-3" style="padding: 0px;">
+          <button class="addNewResearch" id="UnverifiedResearches">
+            Unverified Researches
+          </button>
+        </div>
+      </div>
+      <div class="eachBigSection">
+        <div class="all_resources_wrapper">
+          <div class="resources_title text-center pt-4 pb-2">
+            <h1>Our Researches</h1>
+          </div>
 
-            <div class="all_researchers">
-              <% for(let i = 0 ; i < data.length; i++) { %>
-              <div class="each_researchers">
-                <div class="flx-prnt">
-                  <div class="flx-chld">
-                    <div class="each_researchers_img">
-                      <img
-                        src="/research/<%= data[i].file %>"
-                        id="<%= data[i]._id %>"
-                        alt="image"
-                        class="goToDetailsPage"
-                      />
-                    </div>
-                  </div>
-                  <div class="flx-chld">
-                    <div class="each_researchers_heading">
-                      <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
-                        <%= data[i].title %>
-                      </h4>
-                    </div>
-                    <div class="each_researchers_desc">
-                      <p>
-                        <%- data[i].description %>
-                      </p>
-                    </div>
-                    <div class="each_researchers_btn">
-                      <button class="goToDetailsPage" id="<%= data[i]._id %>">
-                        READ MORE
-                      </button>
-                    </div>
+          <div class="all_researchers">
+            <% for(let i = 0 ; i < data.length; i++) { %>
+            <div class="each_researchers">
+              <div class="flx-prnt">
+                <div class="flx-chld">
+                  <div class="each_researchers_img">
+                    <img src="/research/<%= data[i].file %>" id="<%= data[i]._id %>" alt="image"
+                      class="goToDetailsPage" />
                   </div>
                 </div>
-                <hr />
+                <div class="flx-chld">
+                  <div class="each_researchers_heading">
+                    <h4 class="goToDetailsPage" id="<%= data[i]._id %>">
+                      <%= data[i].title %>
+                    </h4>
+                  </div>
+                  <div class="each_researchers_desc">
+                    <p>
+                      <% const desc = (data[i].description.length > 200) ? data[i].description.slice(0, 200) + '  .  .  .' : data[i].description  %>
+                      <%-  desc %>
+                    </p>
+                  </div>
+                  <div class="each_researchers_btn">
+                    <button class="goToDetailsPage" id="<%= data[i]._id %>">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
               </div>
-              <% } %>
+              <hr />
             </div>
+            <% } %>
           </div>
         </div>
       </div>
-    </section>
-    <%- include('./partials/footer')%>
-  </body>
-  <%- include('./partials/vendorsBottom')%>
+    </div>
+  </section>
+  <%- include('./partials/footer')%>
+</body>
+<%- include('./partials/vendorsBottom')%>
 
-  <script>
-    $('.goToDetailsPage').on('click', (e) => {
-      const id = e.target.id;
-      location = '/admin/research/' + id;
-    });
-    $('.addRes').on('click', (e) => {
-      location = '/admin/new/research/';
-    });
-    $('#VerifiedResearches').click((e) => {
-      location = '/admin/researches?verified=true';
-    });
-    $('#UnverifiedResearches').click((e) => {
-      location = '/admin/researches?verified=false';
-    });
-  </script>
+<script>
+  $('.goToDetailsPage').on('click', (e) => {
+    const id = e.target.id;
+    location = '/admin/research/' + id;
+  });
+  $('.addRes').on('click', (e) => {
+    location = '/admin/new/research/';
+  });
+  $('#VerifiedResearches').click((e) => {
+    location = '/admin/researches?verified=true';
+  });
+  $('#UnverifiedResearches').click((e) => {
+    location = '/admin/researches?verified=false';
+  });
+</script>
+
 </html>

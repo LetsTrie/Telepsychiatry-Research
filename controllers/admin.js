@@ -74,6 +74,16 @@ exports.getAdminResearches = async (req, res, next) => {
   return res.render('researchsFromAdmin', { user: req.user });
 };
 
+exports.deleteResearch = async (req, res) => {
+  await ResearchModel.findOneAndDelete({ _id: req.params.id })
+  return res.redirect('/admin/researches')
+}
+
+exports.deleteInnovation = async (req, res) => {
+  await InnovationModel.findOneAndDelete({ _id: req.params.id })
+  return res.redirect('/admin/innovations')
+}
+
 exports.postTestVersion = async (req, res, next) => {
   const { id } = req.body;
   const qItem = JSON.parse(req.body.qItem);

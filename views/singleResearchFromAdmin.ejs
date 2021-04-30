@@ -37,10 +37,17 @@
       <div class="oneBigFatCat_wrapper">
         <div class="oneBigFatCat">
           <% if(user && user._id.toString().trim()===data.authorID.toString().trim()) { %>
-          <div class="updateBtn text-right">
-            <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
-              Update
-            </button>
+          <div class="" style="display: flex; justify-content: space-between;">
+            <div class="update-btn text-right">
+              <button id="<%= data._id %>" class="btn btn-success btn-lg px-4">
+                Update
+              </button>
+            </div>
+            <div class="delete-btn text-right">
+              <button id="<%= data._id %>" class="btn btn-danger btn-lg px-4">
+                Delete
+              </button>
+            </div>
           </div>
           <% } %>
           <div class="contentTitle">
@@ -68,9 +75,13 @@
 </body>
 <%- include('./partials/vendorsBottom')%>
 <script>
-  $('button').click((e) => {
+  $('.update-btn').click((e) => {
     const id = e.target.id;
     location = '/admin/research/update/' + id;
+  });
+  $('.delete-btn').click((e) => {
+    const id = e.target.id;
+    location = '/admin/research/delete/' + id;
   });
   $('#approve-btn').click((e) => {
     location = '/admin/research/approve/' + $('#id').val();

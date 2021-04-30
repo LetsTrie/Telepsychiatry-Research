@@ -38,6 +38,7 @@ const {
   getAdminUpdateResearch,
   postAdminUpdateResearch,
   getUnverifiedResearches,
+  deleteResearch,
 
   // innovations
   postInnovation,
@@ -48,6 +49,7 @@ const {
   getAdminUpdateInnovation,
   postAdminUpdateInnovation,
   getUnverifiedInnoations,
+  deleteInnovation,
 
   // workshops
   postWorkshop,
@@ -252,6 +254,7 @@ router.post(
   adminUpdateResearchFile
 );
 router.get('/researches/unverified', adminAccess, getUnverifiedResearches);
+router.get('/research/delete/:id', adminAccess, deleteResearch)
 
 // special services
 router.get('/special_service', adminAccess, getSS);
@@ -302,6 +305,8 @@ router.post(
 );
 
 router.get('/innovations/unverified', adminAccess, getUnverifiedInnoations);
+router.get('/innovation/delete/:id', adminAccess, deleteInnovation)
+
 
 // admin workshop
 

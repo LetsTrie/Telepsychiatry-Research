@@ -1534,6 +1534,41 @@ p {
   color: #b88c18;
 }
 
+.all_researchers .each_researchers .flx-prnt .flx-chld .single-row {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.all_researchers .each_researchers .flx-prnt .flx-chld .single-row input {
+  margin: 0 10px;
+  max-width: 200px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.all_researchers .each_researchers .flx-prnt .flx-chld .single-row .set-priority-btn {
+  background-color: #3981e7;
+  padding: 5px;
+  border-radius: 4px;
+  border-width: 0;
+  min-width: 50px;
+  color: #ffffff;
+}
+
+.all_researchers .each_researchers .flx-prnt .flx-chld .single-row .set-priority-btn:hover {
+  background-color: #1063d8;
+}
+
 .oneBigFatCat_wrapper {
   background: white;
   margin: 0px auto;

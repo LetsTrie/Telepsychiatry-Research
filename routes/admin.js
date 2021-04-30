@@ -91,10 +91,14 @@ const {
 
   getExpertPriorities,
   setExpertPriorities,
-
+  setWorkshopPriorities,
+  setResearchPriorities,
+  setTrainingPriorities,
   // backup
   getBackup,
 } = require('../controllers/admin');
+
+const { workshopModel } = require('../models/workshop');
 
 const {
   adminAccess,
@@ -102,6 +106,7 @@ const {
 } = require('../middlewares/authorization');
 
 const multer = require('multer');
+const { trainingModel } = require('../models/training');
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'public/research/');
@@ -310,8 +315,17 @@ router.get('/innovation/delete/:id', adminAccess, deleteInnovation)
 
 // admin workshop
 
-router.get('/workshop/new', (req, res) => {
-  res.render('add-new-workshop');
+router.get('/workshop/new', async(req, res) => {
+  let workshops = await workshopModel.find({}, 'priority');
+  // console.log({ workshops });  
+  let mxPriority = 0;
+  workshops.forEach((obj) => {
+    if (obj.priority != null) {
+      mxPriority = Math.max(mxPriority, obj.priority);
+    }
+  });
+  console.log({ mxPriority });
+  res.render('add-new-workshop', { user: req.user, mxPriority });
 });
 router.post('/workshop/new', postWorkshop);
 router.post(
@@ -340,7 +354,18 @@ router.get(
 // Admin training sessions
 
 router.get('/training', adminAccess, getTraining)
-router.get('/training/new', adminAccess, (req, res) => res.render('addNewTraining'))
+router.get('/training/new', adminAccess, async (req, res) => {
+  let trainings = await trainingModel.find({}, 'priority');
+  // console.log({ workshops });  
+  let mxPriority = 0;
+  trainings.forEach((obj) => {
+    if (obj.priority != null) {
+      mxPriority = Math.max(mxPriority, obj.priority);
+    }
+  });
+  console.log({ mxPriority });
+  res.render('addNewTraining', {mxPriority})
+})
 router.get('/training/:id', adminAccess, singleTraining)
 router.post('/training/new', adminAccess, postTraining)
 router.post('/training/new/file', [adminAccess, uploadPhotoTraining], trainingFile)
@@ -356,6 +381,11 @@ router.get('/training/delete/:id', adminAccess, deleteTraining)
 
 router.get('/management/expert-priorities', getExpertPriorities);
 router.post('/management/expert-priorities', setExpertPriorities);
+
+
+router.post('/management/workshop-priorities', setWorkshopPriorities);
+router.post('/management/research-priorities', setResearchPriorities);
+router.post('/management/training-priorities', setTrainingPriorities);
 
 // admin backup
 router.get('/backup', getBackup);

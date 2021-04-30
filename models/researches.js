@@ -11,6 +11,9 @@ const researchSchema = new mongoose.Schema({
   // collabScope: String,
   // newsAndPub: String,
   researchStage: String,
+  priority: {
+    type: Number,
+  },
   file: String,
   authorID: String,
   isVerified: {

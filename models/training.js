@@ -28,8 +28,11 @@ const eventsSchema = new mongoose.Schema({
   certificate: String,
   homepageDisplay: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
+  priority: {
+    type: Number,
+  },
 });
 
 exports.trainingModel = mongoose.model('training', eventsSchema);

@@ -142,6 +142,15 @@
                 </div>
               </div>
 
+              <div class="one_box">
+              <div class="box_header">
+                <p>Priority:</p>
+              </div>
+              <div class="input_box">
+                <input type="number" name="priority" id="priority" value="<%=mxPriority%>" />
+              </div>
+              </div>
+
               <div class="createResources__submit">
                 <button id="submit-btn">Submit</button>
               </div>
@@ -206,6 +215,7 @@
     const endTime = $('#endTime').val();
     const faqs = CKEDITOR.instances.FAQs.getData();
     const imageFile = $('#rep-photo');
+    const priority = $('#priority').val()
 
     const videoArr = $('.video');
     let videos = [];
@@ -223,25 +233,27 @@
 
     if (check(title)) {
       showAlert('Enter the title');
-    }
-    // else if (check(description)) {
-    //   showAlert('Enter a brief description');
-    // } else if (check(about)) {
-    //   showAlert('Enter something in the about section');
-    // } else if (check(location)) {
-    //   showAlert('Enter the location');
-    // } else if (check(startDate)) {
-    //   showAlert('Enter the starting date');
-    // } else if (check(startTime)) {
-    //   showAlert('Enter the starting time');
-    // } else if (check(endDate)) {
-    //   showAlert('Enter the ending date');
-    // } else if (check(endTime)) {
-    //   showAlert('Enter the ending time');
-    // } else if ($('#file')[0].files.length == 0) {
-    //   showAlert('Enter the representational photo');
-    // } 
-    else {
+    } else if (check(description)) {
+      showAlert('Enter a brief description');
+    } else if (check(about)) {
+      showAlert('Enter something in the about section');
+    } else if (check(location)) {
+      showAlert('Enter the location');
+    } else if (check(startDate)) {
+      showAlert('Enter the starting date');
+    } else if (check(startTime)) {
+      showAlert('Enter the starting time');
+    } else if (check(endDate)) {
+      showAlert('Enter the ending date');
+    } else if (check(endTime)) {
+      showAlert('Enter the ending time');
+    } if (check(priority)) {
+      showAlert('Enter the priority');
+    } else if ($('#rep-photo')[0].files.length == 0) {
+      showAlert('Enter the representational photo');
+    } else if ($('#certificate')[0].files.length == 0) {
+      showAlert('Enter the certificate photo');
+    } else {
       const image =
         Date.parse(new Date().toString()) + '-' + $('#rep-photo')[0].files[0].name;
       const certificate = Date.parse(new Date().toString()) + '-' + $('#certificate')[0].files[0].name;
@@ -264,6 +276,7 @@
         schedule: JSON.stringify(schedule),
         faqs,
         image,
+        priority
       };
       console.log(data);
       Submit(data);

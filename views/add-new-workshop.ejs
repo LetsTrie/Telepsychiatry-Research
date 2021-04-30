@@ -123,6 +123,15 @@
                 </div>
               </div>
 
+              <div class="one_box">
+                <div class="box_header">
+                  <p>Priority:</p>
+                </div>
+                <div class="input_box">
+                  <input type="number" name="priority" id="priority" value="<%=mxPriority%>" />
+                </div>
+              </div>
+
               <div class="createResources__submit">
                 <button id="submit-btn">Submit</button>
               </div>
@@ -185,6 +194,8 @@
     const endDate = $('#endDate').val();
     const endTime = $('#endTime').val();
     const imageFile = $('#reqpPhotoID');
+    const priority = $('#priority').val()
+    
 
     const videoArr = $('.video');
     let videos = [];
@@ -216,7 +227,9 @@
       showAlert('Enter the ending date');
     } else if (check(endTime)) {
       showAlert('Enter the ending time');
-    } else if ($('#file')[0].files.length == 0) {
+    } if (check(priority)) {
+      showAlert('Enter the priority');
+    }  else if ($('#file')[0].files.length == 0) {
       showAlert('Enter the representational photo');
     } else {
       const image =
@@ -238,6 +251,7 @@
         location,
         schedule: JSON.stringify(schedule),
         image,
+        priority
       };
       console.log(data);
       Submit(data);

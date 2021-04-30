@@ -2344,6 +2344,41 @@ body {
   color: #333;
 }
 
+.all_resources .each-resources .texts .single-row {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.all_resources .each-resources .texts .single-row input {
+  margin: 0 10px;
+  max-width: 200px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.all_resources .each-resources .texts .single-row .set-priority-btn {
+  background-color: #3981e7;
+  padding: 5px;
+  border-radius: 4px;
+  border-width: 0;
+  min-width: 50px;
+  color: #ffffff;
+}
+
+.all_resources .each-resources .texts .single-row .set-priority-btn:hover {
+  background-color: #1063d8;
+}
+
 .all_resources .each-resources .texts .last-row {
   display: -webkit-box;
   display: -webkit-flex;

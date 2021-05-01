@@ -90,7 +90,7 @@ exports.getAllResearches = async (req, res) => {
     };
     data = await ResearchModel.find({
       $and: [keyword, searchKey],
-    });
+    }).sort({ priority: -1, _id: -1 });
     console.log(type);
     if (type == 'ongoing') {
       return res.render('ongoingResearches', {
@@ -108,7 +108,10 @@ exports.getAllResearches = async (req, res) => {
       });
     }
   }
-  data = await ResearchModel.find({ researchStage: stage, isVerified: true });
+  data = await ResearchModel.find({
+    researchStage: stage,
+    isVerified: true,
+  }).sort({ priority: -1, _id: -1 });
   if (stage == 'ongoing') {
     return res.render('ongoingResearches', {
       data,

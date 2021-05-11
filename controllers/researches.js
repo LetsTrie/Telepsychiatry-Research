@@ -36,7 +36,7 @@ exports.getResearches = async (req, res) => {
 
   const data = await ResearchModel.find(searchKey)
     .limit(LIMIT)
-    .skip(LIMIT * (page - 1));
+    .skip(LIMIT * (page - 1))
   const totalItems = await ResearchModel.find(searchKey).countDocuments();
   return res.render('researches', {
     user: req.user,

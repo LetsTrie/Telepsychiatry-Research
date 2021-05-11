@@ -1416,7 +1416,7 @@ body {
 
 .specialServiceSubsection .subsection-Body .subsection-Body-elm .subsection-Heading-elm p {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 .specialServiceSubsection .subsection-Body .subsection-Body-elm .subsection-Heading-elm:hover {
@@ -1446,7 +1446,7 @@ body {
 
 .specialServiceSubsection .subsection-Body-videos .subsection-Body-elm .subsection-Heading-elm p {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 .specialServiceSubsection .subsection-Body-videos .subsection-Body-elm .subsection-Heading-elm:hover {

@@ -13,6 +13,10 @@ const emergencySchema = new mongoose.Schema({
         type: String,
         default: 'none',
     },
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+    },
 });
 
 exports.Emergency = mongoose.model('emergency', emergencySchema);

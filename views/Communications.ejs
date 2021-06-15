@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/vendorsTop')%>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/css/communications.css" />
+
+  <title>Admin | Communications | Telepsychiatry Research</title>
+</head>
+
+<body>
+
+  <nav>
+    <%- include('./partials/adminNavbar')%>
+  </nav>
+  <div class="assessment_wrapper">
+    <div class="blueDivider">
+      <div class="smallText">
+        <p><a href="/">Admin</a> </p>
+      </div>
+      <div class="bigText">
+        <p>
+          Communications
+        </p>
+      </div>
+    </div>
+
+    <div class="page-wrapper">
+      <div class="content-wrapper">
+        <div class="top">
+          <div class="search-box">
+            <div class="input">
+              <input type="text" id="start-date">
+            </div>
+            <div class="input">
+              <input type="text" id="end-date">
+            </div>
+            <div class="input">
+              <button class="btn btn-primary" id="search">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <div class="title">
+              <strong>May 5, 2017 - May 5, 2021</strong>
+            </div>
+            <div class="list">
+              <!-- list items to be appended here -->
+            </div>
+          </div>
+          <div class="right">
+            <div class="title">
+              <strong>Details</strong>
+            </div>
+            <div class="details">
+              <p style="text-align: center;">None selected</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  let data = []
+
+  $('#start-date').datepicker()
+  $('#end-date').datepicker()
+
+  $.ajax({
+    method: 'GET',
+    url: '/admin//management/communcations/range',
+  }).done(res => {
+    data = res.data
+    makeList(data)
+  })
+
+  const makeList = data => {
+    let i = 0
+    data.forEach(element => {
+      $('.list').append(`
+    <div class="item communication">
+                <div class="x-left">
+                  <div class="date">${makeDate(element.createdAt)}</div>
+                  <div class="expert">${element.name}</div>
+                  <div class="patient">
+                    ${element.doctorID == 'none' ? 'Not taken yet' : 'with ' + element.doctorID}
+                  </div >
+                </div>
+                <div class="x-right">
+                  <button class="btn btn-secondary" id="${i}">View</button>
+                </div>
+              </div >`)
+      i++
+    });
+  }
+
+  const makeDate = date => {
+    date = new Date(date)
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getYear()}`
+  }
+
+  $('#search').click(e => {
+    const startDate = $('#start-date').val()
+    const endDate = $('#end-date').val()
+  })
+
+  $(document).on('click', '.communication', e => {
+    const idx = parseInt(e.target.id)
+    const item = data[idx]
+    $('.details').html(`
+    <div class="item">
+                <div class="field">Service</div>
+                <div class="" style="color: #fff;">.......</div>
+                <div class="value">${item.service}</div>
+              </div>
+              <div class="item">
+                <div class="field">Expert</div>
+                <div class="" style="color: #fff;">.......</div>
+                <div class="value">${item.doctorID == 'none' ? 'Not taken yet' : item.doctorID}</div>
+              </div>
+              <div class="item">
+                <div class="field">Patient</div>
+                <div class="" style="color: #fff;">.......</div>
+                <div class="value">${item.name}</div>
+              </div>
+              <div class="item">
+                <div class="field">Fees</div>
+                <div class="" style="color: #fff;">.......</div>
+                <div class="value"></div>
+              </div>
+              <div class="item">
+                <div class="field">Date</div>
+                <div class="" style="color: #fff;">.......</div>
+                <div class="value">${makeDate(item.createdAt)}</div>
+              </div>
+              <div class="item">
+                <div class="field">Duration</div>
+                <div class="" style="color: #fff;">.......</div>
+                <div class="value">30 mins</div>
+              </div>
+    `)
+  })
+</script>
+
+</html>

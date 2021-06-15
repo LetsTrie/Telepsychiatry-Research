@@ -35,7 +35,7 @@
               <div class="sField">
                 <div class="input-group">
                   <input type="text" required class="form-control py-4" id="search-input" name="search"
-                    placeholder="Search Researches" />
+                    placeholder="Search" />
                   <div class="input-group-btn">
                     <button class="btn btn-default" id="" type="submit">
                       <i class="fa fa-search"></i>
@@ -160,25 +160,25 @@
   });
 
   $('.set-priority-btn').on("click", function (e) {
-      e.preventDefault()
-      // const id = e.target.id
-      let id = $(e.target).data('id')
-      console.log({ id })
+    e.preventDefault()
+    // const id = e.target.id
+    let id = $(e.target).data('id')
+    console.log({ id })
 
-      const priority = $(`#priority${id}`).val()
-      $.post(
-        '/admin/management/training-priorities',
-        { id, priority },
-        res => {
-          if (res.success) {
-            $('#alert').show()
-            setTimeout(() => {
-              $('#alert').hide()
-            }, 3000);
-          }
+    const priority = $(`#priority${id}`).val()
+    $.post(
+      '/admin/management/training-priorities',
+      { id, priority },
+      res => {
+        if (res.success) {
+          $('#alert').show()
+          setTimeout(() => {
+            $('#alert').hide()
+          }, 3000);
         }
-      )
-    })
+      }
+    )
+  })
 </script>
 
 </html>

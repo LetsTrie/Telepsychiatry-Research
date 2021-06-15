@@ -13,6 +13,10 @@ const ssBookModel = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 exports.ssBookModel = mongoose.model('ss-booking', ssBookModel);

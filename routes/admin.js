@@ -89,11 +89,14 @@ const {
   toggleFeedback,
   deleteBook,
 
+  // management
   getExpertPriorities,
   setExpertPriorities,
   setWorkshopPriorities,
   setResearchPriorities,
   setTrainingPriorities,
+  getCommunications,
+
   // backup
   getBackup,
 } = require('../controllers/admin');
@@ -315,7 +318,7 @@ router.get('/innovation/delete/:id', adminAccess, deleteInnovation)
 
 // admin workshop
 
-router.get('/workshop/new', async(req, res) => {
+router.get('/workshop/new', async (req, res) => {
   let workshops = await workshopModel.find({}, 'priority');
   // console.log({ workshops });  
   let mxPriority = 0;
@@ -364,7 +367,7 @@ router.get('/training/new', adminAccess, async (req, res) => {
     }
   });
   console.log({ mxPriority });
-  res.render('addNewTraining', {mxPriority})
+  res.render('addNewTraining', { mxPriority })
 })
 router.get('/training/:id', adminAccess, singleTraining)
 router.post('/training/new', adminAccess, postTraining)
@@ -377,15 +380,16 @@ router.post(
   updateTrainingFile
 );
 router.get('/training/delete/:id', adminAccess, deleteTraining)
+
 // Expert priority settings
 
 router.get('/management/expert-priorities', getExpertPriorities);
 router.post('/management/expert-priorities', setExpertPriorities);
-
-
 router.post('/management/workshop-priorities', setWorkshopPriorities);
 router.post('/management/research-priorities', setResearchPriorities);
 router.post('/management/training-priorities', setTrainingPriorities);
+router.get('/management/communications', adminAccess, (req, res) => res.render('Communications'))
+router.get('/management/communcations/range', adminAccess, getCommunications)
 
 // admin backup
 router.get('/backup', getBackup);

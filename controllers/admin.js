@@ -16,6 +16,7 @@ const { sendGrid } = require('../config/sendMail');
 const { eUserModel } = require('../models/expertUser');
 const { wsComment } = require('../models/workshopComment.js');
 const { trainingModel } = require('../models/training')
+const { Emergency } = require('../models/emergency')
 
 const LIMIT = 9;
 
@@ -964,9 +965,9 @@ exports.getAdminResearches = async (req, res, next) => {
   const { verified } = req.query;
   let isVerified = verified === 'false' ? false : true;
   const data = await ResearchModel.find({
-     isVerified 
-    }).sort({ priority: -1, _id: -1 });;
-  console.log({isVerified})
+    isVerified
+  }).sort({ priority: -1, _id: -1 });;
+  console.log({ isVerified })
   return res.render('researchsFromAdmin', {
     data,
     user: req.user,
@@ -1249,9 +1250,9 @@ exports.getWorkshop = async (req, res, next) => {
       user: req.user,
     });
   }
-  data = await workshopModel.find().sort({ 
+  data = await workshopModel.find().sort({
     priority: -1,
-    _id: -1 
+    _id: -1
   });
   res.render('allWorkshopFromAdmin', { data, user: req.user });
 };
@@ -1493,7 +1494,7 @@ exports.getTraining = async (req, res, next) => {
       data = await trainingModel.find({
         start: { $lte: new Date() },
         end: { $gte: new Date() },
-      }).sort({priority: -1, _id:-1});
+      }).sort({ priority: -1, _id: -1 });
       res.render('allTrainingFromAdmin', {
         data,
         user: req.user,
@@ -1893,3 +1894,19 @@ exports.setTrainingPriorities = async (req, res) => {
   });
 };
 
+exports.getCommunications = async (req, res) => {
+  const { start, end } = req.query
+  let emergencies = []
+
+  if (start == null || end == null) {
+    emergencies = await Emergency.find()
+    emergencies = (emergencies.length > 9) ? emergencies.slice(0, 9) : emergencies
+  } else {
+    emergencies = await Emergency.find({ createdAt: { $gte: start, $lte: end } })
+  }
+
+  return res.json({
+    data: emergencies
+  })
+
+}

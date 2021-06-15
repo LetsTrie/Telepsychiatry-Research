@@ -3,11 +3,11 @@
 
 <head>
     <%- include('./partials/vendorsTop')%>
-        <link rel="stylesheet" href="/css/ourDoctors.css" />
+    <link rel="stylesheet" href="/css/ourDoctors.css" />
 
-        <title>
-            Our Doctors | Telepsychiatry Research
-        </title>
+    <title>
+        Our Doctors | Telepsychiatry Research
+    </title>
 </head>
 
 <body>
@@ -34,11 +34,12 @@
                         <div class="searchFields">
                             <div class="sField">
                                 <div class="input-group">
-                                    <input type="text" class="form-control py-4" id="search-input" name="searchInput" placeholder="Search researchers" />
+                                    <input type="text" class="form-control py-4" id="search-input" name="searchInput"
+                                        placeholder="Search" />
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" id="" type="submit" disabled>
-                        <i class="fa fa-search"></i>
-                      </button>
+                                            <i class="fa fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -48,14 +49,16 @@
                                 </div>
                                 <div class="catOptions">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="gender" value="Male" />
+                                        <input type="checkbox" class="custom-control-input" id="customCheck"
+                                            name="gender" value="Male" />
                                         <label class="custom-control-label" for="customCheck">Male researchers
-                      </label>
+                                        </label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckw" name="gender" value="Female" />
+                                        <input type="checkbox" class="custom-control-input" id="customCheckw"
+                                            name="gender" value="Female" />
                                         <label class="custom-control-label" for="customCheckw">Female researchers
-                      </label>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -73,67 +76,67 @@
 
                     <div class="allDoctors container">
                         <% if (successMessage != '') { %>
-                            <div class="alert alert-success text-center">
-                                <p>
-                                    <%= successMessage %>
-                                </p>
+                        <div class="alert alert-success text-center">
+                            <p>
+                                <%= successMessage %>
+                            </p>
+                        </div>
+                        <% } %>
+                        <% for(let i = 0 ; i < experts.length; i++) { %>
+                        <div class="doctor_identity">
+                            <div class="his_photo">
+                                <img src="/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
                             </div>
-                            <% } %>
-                                <% for(let i = 0 ; i < experts.length; i++) { %>
-                                    <div class="doctor_identity">
-                                        <div class="his_photo">
-                                            <img src="/uploads/<%=experts[i].propicURL%>" alt="Doctor" />
-                                        </div>
-                                        <div class="His_profession">
-                                            <p class="name">
-                                                <%= experts[i].name %>
-                                            </p>
-                                            <p class="degreeNspeciality">
-                                                <%= experts[i].education[0].degree %> in
-                                                    <%=
+                            <div class="His_profession">
+                                <p class="name">
+                                    <%= experts[i].name %>
+                                </p>
+                                <p class="degreeNspeciality">
+                                    <%= experts[i].education[0].degree %> in
+                                    <%=
                     experts[i].education[0].field %>
-                                            </p>
+                                </p>
 
-                                            <p class="expertize">
-                                                <span class="fa fa-user-md">&nbsp;&nbsp;</span> Experts in
-                                                <%= experts[i].expertise %>
-                                            </p>
-                                            <p class="aff">
-                                                <span class="fa fa-user">&nbsp;&nbsp;</span>
-                                                <%= experts[i].designation %>
-                                            </p>
-                                            <p class="college">
-                                                <span class="fa fa-university">&nbsp;</span>
-                                                <%= experts[i].affiliation %>
-                                            </p>
+                                <p class="expertize">
+                                    <span class="fa fa-user-md">&nbsp;&nbsp;</span> Experts in
+                                    <%= experts[i].expertise %>
+                                </p>
+                                <p class="aff">
+                                    <span class="fa fa-user">&nbsp;&nbsp;</span>
+                                    <%= experts[i].designation %>
+                                </p>
+                                <p class="college">
+                                    <span class="fa fa-university">&nbsp;</span>
+                                    <%= experts[i].affiliation %>
+                                </p>
 
-                                            <div class="bookingg">
-                                                <input type="hidden" name="docID" value="<%=experts[i]._id%>" />
-                                                <button class="viewProfile">
-                      View Profile
-                    </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <% } %>
+                                <div class="bookingg">
+                                    <input type="hidden" name="docID" value="<%=experts[i]._id%>" />
+                                    <button class="viewProfile">
+                                        View Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <%- include('./partials/bookAppointment') %>
-        <%-
+    <%-
     include('./partials/footer')%>
 </body>
 <%- include('./partials/vendorsBottom')%>
-    <script>
-        $('.viewProfile').on('click', (e) => {
-            const ID = $(e.target.parentNode.children[0]).val();
-            location = '/services/doctor/profile/' + ID;
-        });
-        $('.search-btn').click((e) => {
-            $('#form').submit();
-        });
-    </script>
+<script>
+    $('.viewProfile').on('click', (e) => {
+        const ID = $(e.target.parentNode.children[0]).val();
+        location = '/services/doctor/profile/' + ID;
+    });
+    $('.search-btn').click((e) => {
+        $('#form').submit();
+    });
+</script>
 
 </html>

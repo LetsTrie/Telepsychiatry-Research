@@ -28,7 +28,7 @@
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": -2,
   "explorer.confirmDelete": false,
   "eslint.autoFixOnSave": true,
   "[javascript]": {

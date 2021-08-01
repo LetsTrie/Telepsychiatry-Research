@@ -4,131 +4,130 @@
 <head>
   <%- include('./partials/vendorsTop')%>
 
-  <link rel="stylesheet" href="/css/homepage.css" />
-  <link rel="stylesheet" href="/css/homepage_services.css" />
-  <link rel="stylesheet" href="/css/homepage_videoSection.css" />
-  <link rel="stylesheet" href="/css/homepage_meetOurDoctors.css" />
-  <link rel="stylesheet" href="/css/homepage_bestServices.css" />
-  <link rel="stylesheet" href="/css/homepage_collaboration.css" />
-  <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <link rel="stylesheet" href="/css/homepage_services.css" />
+    <link rel="stylesheet" href="/css/homepage_videoSection.css" />
+    <link rel="stylesheet" href="/css/homepage_meetOurDoctors.css" />
+    <link rel="stylesheet" href="/css/homepage_bestServices.css" />
+    <link rel="stylesheet" href="/css/homepage_collaboration.css" />
+    <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/vendors/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
 
-  <title>Homepage | Telepsychiatry Research</title>
+    <title>Homepage | Telepsychiatry Research</title>
 
-  <style>
-    .ourMainHomepage {
-      position: relative;
-    }
-
-    .contactUsModal {
-      z-index: 1;
-      position: fixed;
-      height: 80px;
-      width: 80px;
-      bottom: 80px;
-      right: 60px;
-      cursor: default;
-      display: flex;
-      flex-direction: center;
-      justify-content: center;
-      align-items: center;
-      color: #228be6;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
-        inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-      border: 45px solid rgb(251, 245, 245);
-      background: white;
-    }
-
-    .bookAppointmentModal {
-      z-index: 2;
-      position: fixed;
-      height: 50px;
-      width: 200px;
-      bottom: 10px;
-      right: 10px;
-      cursor: default;
-      display: flex;
-      flex-direction: center;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .bookAppointmentModal button {
-      background-color: lightseagreen;
-      color: white;
-      border: 3px solid lightseagreen;
-      border-radius: 5px;
-      font-size: 18px;
-      padding: 5px 10px 5px 10px;
-    }
-
-    .bookAppointmentModal button:hover {
-      background-color: lightseagreen;
-    }
-
-    @keyframes mymove {
-      50% {
-        outline-offset: 25px;
+    <style>
+      .ourMainHomepage {
+        position: relative;
       }
-    }
 
-    .contactUsModal img {
-      width: 90px;
-      height: 80px;
-      border-radius: 50%;
-    }
+      .contactUsModal {
+        z-index: 1;
+        position: fixed;
+        height: 80px;
+        width: 80px;
+        bottom: 80px;
+        right: 60px;
+        cursor: default;
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        align-items: center;
+        color: #228be6;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 8px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+        border: 45px solid rgb(251, 245, 245);
+        background: white;
+      }
 
-    .imgg {
-      outline: 5px solid coral;
-      animation: mymove 2s infinite;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
-        inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
-    }
+      .bookAppointmentModal {
+        z-index: 2;
+        position: fixed;
+        height: 50px;
+        width: 200px;
+        bottom: 10px;
+        right: 10px;
+        cursor: default;
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .magicc {
-      position: relative;
-    }
+      .bookAppointmentModal button {
+        background-color: lightseagreen;
+        color: white;
+        border: 3px solid lightseagreen;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 5px 10px 5px 10px;
+      }
 
-    .c-alert {
-      margin-top: 20px;
-      position: absolute;
-      color: #155724;
-      background-color: #d4edda;
-      border-color: #c3e6cb;
-      padding: 0.75rem 1.25rem;
-      margin-bottom: 1rem;
-      border: 1px solid transparent;
-      border-radius: 0.25rem;
-      width: 100%;
-      text-align: center;
-    }
+      .bookAppointmentModal button:hover {
+        background-color: lightseagreen;
+      }
 
-    .c-alert p {
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-  </style>
+      @keyframes mymove {
+        50% {
+          outline-offset: 25px;
+        }
+      }
+
+      .contactUsModal img {
+        width: 90px;
+        height: 80px;
+        border-radius: 50%;
+      }
+
+      .imgg {
+        outline: 5px solid coral;
+        animation: mymove 2s infinite;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 7px,
+          inset rgba(0, 0, 0, 0.15) 0px -5px 10px;
+      }
+
+      .magicc {
+        position: relative;
+      }
+
+      .c-alert {
+        margin-top: 20px;
+        position: absolute;
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .c-alert p {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+    </style>
 </head>
 
 <body>
   <%- include('./partials/homepage_contact_us_modal.ejs')%>
-  <%-include('./partials/homepage_bookDoctor.ejs')%>
 
-  <div class="ourMainHomepage">
-    <!-- <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
+    <div class="ourMainHomepage">
+      <!-- <div class="contactUsModal" data-toggle="modal" data-target="#HOMEPAGE_CONTACTUS_MODAL">
       <img src="/images/contactUsIcon2.png" alt="" />
     </div> -->
 
-    <!-- <div class="bookAppointmentModal" data-toggle="modal" data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL">
+      <!-- <div class="bookAppointmentModal" data-toggle="modal" data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL">
       <button>Book Appointment</button>
     </div> -->
 
-    <div class="bookAppointmentModal" onclick="location.href='https://telepsychiatryresearchandinnovationnetworkltdtrin.setmore.com/'">
+      <!-- <div class="bookAppointmentModal" onclick="location.href='https://telepsychiatryresearchandinnovationnetworkltdtrin.setmore.com/'">
       <button>Book Appointment</button>
-    </div>
-    <!-- <div class="btnBook">
+    </div> -->
+      <!-- <div class="btnBook">
         <a
           href="#"
           data-toggle="modal"
@@ -137,408 +136,414 @@
         >
       </div> -->
 
-    <div class="intro_page">
-      <header class="intro_page_header">
-        <%- include('./partials/navbar.ejs')%>
-        <div class="wrapper magicc">
-          <% if(successMessage!='') { %>
-          <div class="c-alert">
-            <p>
-              <%=successMessage%>
-            </p>
-          </div>
-          <% } %>
+      <div class="intro_page">
+        <header class="intro_page_header">
+          <%- include('./partials/navbar.ejs')%>
+            <div class="wrapper magicc">
+              <% if(successMessage!='' ) { %>
+                <div class="c-alert">
+                  <p>
+                    <%=successMessage%>
+                  </p>
+                </div>
+                <% } %>
 
-          <div class="desc">
-            <div class="largeText">
-              <p>We are with <span>you</span></p>
-            </div>
-            <div class="smallText">
-              <p>
-                TRIN ensure wellbeing and energize mind through innovation,
-                collaboration, and care.
-              </p>
-            </div>
-            <!-- <div class="btnBook">
+                  <div class="desc">
+                    <div class="largeText">
+                      <p>We are with <span>you</span></p>
+                    </div>
+                    <div class="smallText">
+                      <p>
+                        TRIN ensure wellbeing and energize mind through innovation,
+                        collaboration, and care.
+                      </p>
+                    </div>
+                    <!-- <div class="btnBook">
               <a href="#" data-toggle="modal" data-target="#HOMEPAGE_BOOK_APPOINTMENT_MODAL"
                 style="background-color: lightseagreen;">Book Appointments</a>
             </div> -->
-            <div class="btnBook">
+                    <!-- <div class="btnBook">
               <a href="https://telepsychiatryresearchandinnovationnetworkltdtrin.setmore.com/" 
                 style="background-color: lightseagreen;">Book Appointments</a>
+            </div> -->
+                  </div>
             </div>
-          </div>
-        </div>
-      </header>
-    </div>
-
-    <div class="about_this_website">
-      <div class="beautifulDivider">
-        <div class="BeDivFlex">
-          <div class="BeDivIcon"><i class="fa fa-heartbeat"></i></div>
-          <div class="BeDivHeader">
-            <p>QUALITY AND EVIDENCE BASED CARE</p>
-          </div>
-          <div class="BeDivDes">
-            <p>
-              We provide the best evidence based psychiatric consultation, psychotherapy
-              and counselling both online and offline.
-            </p>
-          </div>
-        </div>
-        <div class="BeDivFlex">
-          <div class="BeDivIcon"><i class="fa fa-user-md"></i></div>
-          <div class="BeDivHeader">
-            <p>BRIGHTEST PROFESSIONALS</p>
-          </div>
-          <div class="BeDivDes">
-            <p>
-              The best and brightest professionals dedicatedly engaged to serve you by
-              ensuring world class service.
-            </p>
-          </div>
-        </div>
-        <div class="BeDivFlex">
-          <div class="BeDivIcon"><i class="fa fa-user"></i></div>
-          <div class="BeDivHeader">
-            <p>ENERGIZE PEOPLE</p>
-          </div>
-          <div class="BeDivDes">
-            <p>
-              We believe in energizing people and community by sharing knowledge through
-              various training and workshops.
-            </p>
-          </div>
-        </div>
-        <div class="BeDivFlex">
-          <div class="BeDivIcon"><i class="fa fa-file-text"></i></div>
-          <div class="BeDivHeader">
-            <p>RESEARCH TO REACH</p>
-          </div>
-          <div class="BeDivDes">
-            <p>
-              We conduct researches to reach minds and transform lives for a better tomorrow.
-            </p>
-          </div>
-        </div>
+        </header>
       </div>
-      <div class="healthCareWithTrin my-5">
-        <div class="container">
-          <div class="HC_flex">
-            <div class="HC_Des">
-              <div class="Des_Header mb-4">
-                <p>About TRIN<span></span></p>
-              </div>
-              <div class="Des_text">
-                <p>
-                  Telepsychiatry Research and Innovation Network (TRIN) is providing holistic evidence based and best
-                  quality mental
-                  health services where you are our first priority. We understand the importance of your personal or
-                  workplace mental
-                  health and wellbeing that motivate us to work from mental health promotion, prevention to
-                  evidence-based intervention
-                  and rehabilitation. TRIN incorporates digital tools and methods in the form of telepsychiatry to serve
-                  maximum number of
-                  people within the short period.
-                </p>
-                <p>
-                  TRIN has developed multiple award winning digital mental health
-                  solutions that made us
-                  the pioneer organization in the region focused on designing, developing and implementing technology
-                  based mental healthhow to put .env in gitignore
-                  solutions to remove the geographic barriers, waiting time and cost of travel. We focused on conducting
-                  impactful world
-                  class research that has been funded by world leading scientific organizations like National Institute
-                  of Health, USA.
-                </p>
-              </div>
-              <div class="readMore pt-2">
-                <a href="/services/static/about-us">
-                  Read More <span class="fa fa-long-arrow-right"></span>
-                </a>
-              </div>
+
+      <div class="about_this_website">
+        <div class="beautifulDivider">
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-heartbeat"></i></div>
+            <div class="BeDivHeader">
+              <p>QUALITY AND EVIDENCE BASED CARE</p>
             </div>
-            <div class="HC_Vid">
-              <iframe width="1280" height="720" src="https://www.youtube.com/embed/LnyDe73orLw"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+            <div class="BeDivDes">
+              <p>
+                We provide the best evidence based psychiatric consultation, psychotherapy
+                and counselling both online and offline.
+              </p>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="services_section_wrapper">
-        <div class="container">
-          <div class="services-section">
-            <div class="service_header">
-              <p>OUR SERVICES <span></span></p>
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-user-md"></i></div>
+            <div class="BeDivHeader">
+              <p>BRIGHTEST PROFESSIONALS</p>
             </div>
-            <div class="cardspace">
-              <div class="single-card">
-                <a href="#">
-                  <div class="card-image">
-                    <img src="/images/psychiatric-consultation.jpg" alt="" class="image" />
-                  </div>
-                </a>
-                <div class="card-non-image">
-                  <a href="#">
-                    <div class="cardHeader">
-                      <p>Psychiatric Consultation</p>
-                    </div>
-                  </a>
-
-                  <div class="cardBody">
-                    <p>
-                      A Psychiatrist is a medical doctor with advanced degrees in mental health who is
-                      legally permitted to diagnose and prescribe medicines for treating mental
-                      illnesses
-                    </p>
-                  </div>
-
-                  <div class="readMore pt-2">
-                    <a href="/services/consultation">
-                      Read More <span class="fa fa-long-arrow-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="single-card">
-                <a href="#">
-                  <div class="card-image">
-                    <img src="/images/psychotherapy-couselling.jpg" alt="" class="image" />
-                  </div>
-                </a>
-                <div class="card-non-image">
-                  <a href="#">
-                    <div class="cardHeader">
-                      <p>Psychotherapy and Counselling</p>
-                    </div>
-                  </a>
-
-                  <div class="cardBody">
-                    <p>
-                      A psychologist is a mental health professional who is not from medical
-                      background but received academic degrees and training on Psychology to provide
-                      non pharmacological mental health care and services.
-                    </p>
-                  </div>
-
-                  <div class="readMore pt-2">
-                    <a href="/services/psychoTherapy">
-                      Read More <span class="fa fa-long-arrow-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="single-card">
-                <a href="#">
-                  <div class="card-image">
-                    <img src="/images/research.jpg" alt="" class="image" />
-                  </div>
-                </a>
-                <div class="card-non-image">
-                  <a href="#">
-                    <div class="cardHeader">
-                      <p>Research</p>
-                    </div>
-                  </a>
-
-                  <div class="cardBody">
-                    <p>
-                      To design and develop evidence-based services, our
-                      promising and hard-working research team is conducting
-                      leading-edge researches targeting the mental health
-                      problems and possible solutions. Our learnings on
-                      qualitative aspects of mental health scenario of
-                      Bangladesh helped us to commence researches on topics
-                      that are stigmatized, unattended but carry great
-                      importance. Our collaboration with national and
-                      international organizations and institutions gave us the
-                      opportunity to take our research works at international
-                      platforms.
-                    </p>
-                  </div>
-
-                  <div class="readMore pt-2">
-                    <a href="/researches?stage=ongoing">
-                      Read More <span class="fa fa-long-arrow-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="single-card">
-                <a href="#">
-                  <div class="card-image">
-                    <img src="/images/specialService.jpg" alt="" />
-                  </div>
-                </a>
-                <div class="card-non-image">
-                  <a href="#">
-                    <div class="cardHeader">
-                      <p>Special Services</p>
-                    </div>
-                  </a>
-
-                  <div class="cardBody">
-                    <p>
-                      We offer multi-disciplinary, super-specialized care for our clients in different chronic
-                      distressing conditions
-                      involving multiple experts...
-                    </p>
-                  </div>
-
-                  <div class="readMore pt-2">
-                    <a href="/services/special_services">
-                      Read More <span class="fa fa-long-arrow-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="single-card">
-                <a href="#">
-                  <div class="card-image">
-                    <img src="/images/training.jpg" alt="" class="image" />
-                  </div>
-                </a>
-                <div class="card-non-image">
-                  <a href="#">
-                    <div class="cardHeader">
-                      <p>Training and Awareness</p>
-                    </div>
-                  </a>
-
-                  <div class="cardBody">
-                    <p>
-                      Our belief in the power of awareness motivated us to initiate awareness programs on different
-                      issues and the dream to
-                      empower the...
-                    </p>
-                  </div>
-
-                  <div class="readMore pt-2">
-                    <a href="/services/training-awareness">
-                      Read More <span class="fa fa-long-arrow-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="single-card">
-                <a href="#">
-                  <div class="card-image">
-                    <img src="/images/mental-health.jpg" alt="" />
-                  </div>
-                </a>
-                <div class="card-non-image">
-                  <a href="#">
-                    <div class="cardHeader">
-                      <p>Mental Health Assessment</p>
-                    </div>
-                  </a>
-
-                  <div class="cardBody">
-                    <p>
-                      Everyone has an interest to learn about his/her mental health, personality,
-                      intelligence and capabilities. The assessment can be completed by yourself or
-                      with the help our psychologist.
-                    </p>
-                  </div>
-
-                  <div class="readMore pt-2">
-                    <a href="/services/assessment">
-                      Read More <span class="fa fa-long-arrow-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
+            <div class="BeDivDes">
+              <p>
+                The best and brightest professionals dedicatedly engaged to serve you by
+                ensuring world class service.
+              </p>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="meet-doctors-section_wrapper">
-        <div class="container">
-          <div class="meet-doctors-section">
-            <div class="meet_doctors_header mb-3">
-              <p>MEET OUR EXPERTS<span></span></p>
-              <%- include('./partials/homepage_experts')%>
-              <p class="show-more-btn">
-                <button id="show-docs">View More</button>
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-user"></i></div>
+            <div class="BeDivHeader">
+              <p>ENERGIZE PEOPLE</p>
+            </div>
+            <div class="BeDivDes">
+              <p>
+                We believe in energizing people and community by sharing knowledge through
+                various training and workshops.
+              </p>
+            </div>
+          </div>
+          <div class="BeDivFlex">
+            <div class="BeDivIcon"><i class="fa fa-file-text"></i></div>
+            <div class="BeDivHeader">
+              <p>RESEARCH TO REACH</p>
+            </div>
+            <div class="BeDivDes">
+              <p>
+                We conduct researches to reach minds and transform lives for a better tomorrow.
               </p>
             </div>
           </div>
         </div>
+        <div class="healthCareWithTrin my-5">
+          <div class="container">
+            <div class="HC_flex">
+              <div class="HC_Des">
+                <div class="Des_Header mb-4">
+                  <p>About TRIN<span></span></p>
+                </div>
+                <div class="Des_text">
+                  <p>
+                    Telepsychiatry Research and Innovation Network (TRIN) is providing holistic evidence based and
+                    best
+                    quality mental
+                    health services where you are our first priority. We understand the importance of your personal or
+                    workplace mental
+                    health and wellbeing that motivate us to work from mental health promotion, prevention to
+                    evidence-based intervention
+                    and rehabilitation. TRIN incorporates digital tools and methods in the form of telepsychiatry to
+                    serve
+                    maximum number of
+                    people within the short period.
+                  </p>
+                  <p>
+                    TRIN has developed multiple award winning digital mental health
+                    solutions that made us
+                    the pioneer organization in the region focused on designing, developing and implementing
+                    technology
+                    based mental healthhow to put .env in gitignore
+                    solutions to remove the geographic barriers, waiting time and cost of travel. We focused on
+                    conducting
+                    impactful world
+                    class research that has been funded by world leading scientific organizations like National
+                    Institute
+                    of Health, USA.
+                  </p>
+                </div>
+                <div class="readMore pt-2">
+                  <a href="/services/static/about-us">
+                    Read More <span class="fa fa-long-arrow-right"></span>
+                  </a>
+                </div>
+              </div>
+              <div class="HC_Vid">
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/LnyDe73orLw"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="services_section_wrapper">
+          <div class="container">
+            <div class="services-section">
+              <div class="service_header">
+                <p>OUR SERVICES <span></span></p>
+              </div>
+              <div class="cardspace">
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/psychiatric-consultation.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Psychiatric Consultation</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        A Psychiatrist is a medical doctor with advanced degrees in mental health who is
+                        legally permitted to diagnose and prescribe medicines for treating mental
+                        illnesses
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <a href="/services/consultation">
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/psychotherapy-couselling.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Psychotherapy and Counselling</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        A psychologist is a mental health professional who is not from medical
+                        background but received academic degrees and training on Psychology to provide
+                        non pharmacological mental health care and services.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <a href="/services/psychoTherapy">
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/research.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Research</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        To design and develop evidence-based services, our
+                        promising and hard-working research team is conducting
+                        leading-edge researches targeting the mental health
+                        problems and possible solutions. Our learnings on
+                        qualitative aspects of mental health scenario of
+                        Bangladesh helped us to commence researches on topics
+                        that are stigmatized, unattended but carry great
+                        importance. Our collaboration with national and
+                        international organizations and institutions gave us the
+                        opportunity to take our research works at international
+                        platforms.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <a href="/researches?stage=ongoing">
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/specialService.jpg" alt="" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Special Services</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        We offer multi-disciplinary, super-specialized care for our clients in different chronic
+                        distressing conditions
+                        involving multiple experts...
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <a href="/services/special_services">
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/training.jpg" alt="" class="image" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Training and Awareness</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        Our belief in the power of awareness motivated us to initiate awareness programs on different
+                        issues and the dream to
+                        empower the...
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <a href="/services/training-awareness">
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-card">
+                  <a href="#">
+                    <div class="card-image">
+                      <img src="/images/mental-health.jpg" alt="" />
+                    </div>
+                  </a>
+                  <div class="card-non-image">
+                    <a href="#">
+                      <div class="cardHeader">
+                        <p>Mental Health Assessment</p>
+                      </div>
+                    </a>
+
+                    <div class="cardBody">
+                      <p>
+                        Everyone has an interest to learn about his/her mental health, personality,
+                        intelligence and capabilities. The assessment can be completed by yourself or
+                        with the help our psychologist.
+                      </p>
+                    </div>
+
+                    <div class="readMore pt-2">
+                      <a href="/services/assessment">
+                        Read More <span class="fa fa-long-arrow-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="meet-doctors-section_wrapper">
+          <div class="container">
+            <div class="meet-doctors-section">
+              <div class="meet_doctors_header mb-3">
+                <p>MEET OUR EXPERTS<span></span></p>
+                <%- include('./partials/homepage_experts')%>
+                  <p class="show-more-btn">
+                    <button id="show-docs">View More</button>
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%- include('./partials/homepage_upcoming_events')%>
+          <%- include('./partials/homepage_organization')%>
       </div>
-      <%- include('./partials/homepage_upcoming_events')%>
-      <%- include('./partials/homepage_organization')%>
     </div>
-  </div>
 
-  <%- include('./partials/footer')%> <%- include('./partials/vendorsBottom')%>
-  <script src="/js/homepage.js"></script>
+    <%- include('./partials/footer')%>
+      <%- include('./partials/vendorsBottom')%>
+        <script src="/js/homepage.js"></script>
 
-  <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-  <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
-  <script>
-    var owldl = $('.owl-doctor-list');
-    owldl.owlCarousel({
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 3500,
-      autoplayHoverPause: true,
-      dots: false,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        750: {
-          items: 1,
-        },
-        960: {
-          items: 2,
-        },
-        1100: {
-          items: 3,
-        },
-      },
-    });
-    let owlorg = $('.owl-organizations');
-    owlorg.owlCarousel({
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 1300,
-      autoplayHoverPause: true,
-      dots: false,
-      responsive: {
-        0: {
-          items: 2,
-        },
-        750: {
-          items: 3,
-        },
-        960: {
-          items: 3,
-        },
-        1100: {
-          items: 6,
-        },
-      },
-    });
+        <script src="/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+        <script src="/vendors/OwlCarousel2-2.3.4/dist/jquery.mousewheel.min.js"></script>
+        <script>
+          var owldl = $('.owl-doctor-list');
+          owldl.owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            dots: false,
+            responsive: {
+              0: {
+                items: 1,
+              },
+              750: {
+                items: 1,
+              },
+              960: {
+                items: 2,
+              },
+              1100: {
+                items: 3,
+              },
+            },
+          });
+          let owlorg = $('.owl-organizations');
+          owlorg.owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 1300,
+            autoplayHoverPause: true,
+            dots: false,
+            responsive: {
+              0: {
+                items: 2,
+              },
+              750: {
+                items: 3,
+              },
+              960: {
+                items: 3,
+              },
+              1100: {
+                items: 6,
+              },
+            },
+          });
 
-    function gotoLink(url) {
-      window.open(url, '_blank');
-    }
+          function gotoLink(url) {
+            window.open(url, '_blank');
+          }
 
-    $('#show-docs').click((e) => {
-      location = `/services/consultation`;
-    });
-  </script>
+          $('#show-docs').click((e) => {
+            location = `/services/consultation`;
+          });
+        </script>
 </body>
 
 </html>
